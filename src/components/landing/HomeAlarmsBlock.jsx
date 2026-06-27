@@ -119,7 +119,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
             }}
           >
             <Phone style={{ width: 18, height: 18 }} />
-            638 10 99 47
+            Llamar
           </a>
         </div>
       </div>
