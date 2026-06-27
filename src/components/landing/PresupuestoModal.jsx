@@ -1,20 +1,19 @@
 import React, { useState } from "react";
-import { X, Phone } from "lucide-react";
+import { X, Phone, Home, Building2, Users, Warehouse, Camera, ShieldAlert, Video, KeyRound, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-
 const SPACES = [
-  { id: "hogar", emoji: "🏠", label: "Mi hogar" },
-  { id: "negocio", emoji: "🏢", label: "Mi negocio" },
-  { id: "comunidad", emoji: "🏘️", label: "Mi comunidad" },
-  { id: "nave", emoji: "🏭", label: "Mi nave industrial" },
+  { id: "hogar", Icon: Home, label: "Mi hogar" },
+  { id: "negocio", Icon: Building2, label: "Mi negocio" },
+  { id: "comunidad", Icon: Users, label: "Mi comunidad" },
+  { id: "nave", Icon: Warehouse, label: "Mi nave industrial" },
 ];
 
 const SERVICES = [
-  { id: "Cámaras de seguridad", emoji: "📹", label: "Cámaras de seguridad" },
-  { id: "Sistema de alarma", emoji: "🔔", label: "Sistema de alarma" },
-  { id: "Videoportero", emoji: "🔔", label: "Videoportero" },
-  { id: "Control de accesos", emoji: "🚪", label: "Control de accesos" },
+  { id: "Cámaras de seguridad", Icon: Camera, label: "Cámaras de seguridad" },
+  { id: "Sistema de alarma", Icon: ShieldAlert, label: "Sistema de alarma" },
+  { id: "Videoportero", Icon: Video, label: "Videoportero" },
+  { id: "Control de accesos", Icon: KeyRound, label: "Control de accesos" },
 ];
 
 export default function PresupuestoModal({ open, onClose }) {
@@ -91,7 +90,7 @@ export default function PresupuestoModal({ open, onClose }) {
           {success ? (
             <div className="text-center py-6">
               <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4">
-                <span className="text-3xl">✅</span>
+                <CheckCircle style={{ width: 36, height: 36, color: "#22C55E" }} />
               </div>
               <h3 style={{ fontWeight: 800, fontSize: 20, color: "#0A0A1A", marginBottom: 8 }}>¡Perfecto! Te llamamos antes de 24h.</h3>
               <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 20 }}>Mientras tanto, puedes llamarnos</p>
@@ -111,8 +110,17 @@ export default function PresupuestoModal({ open, onClose }) {
                         <button key={s.id} onClick={() => setSpace(s.id)}
                           className="p-5 rounded-2xl border-2 text-center transition-all"
                           style={{ borderColor: space === s.id ? "#E53E3E" : "#E5E7EB", backgroundColor: space === s.id ? "#FFF5F5" : "white" }}>
-                          <span className="text-3xl block mb-2">{s.emoji}</span>
-                          <span style={{ fontWeight: 700, fontSize: 14, color: "#0A0A1A" }}>{s.label}</span>
+                          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
+                            <div style={{
+                              width: 48, height: 48, borderRadius: 14,
+                              backgroundColor: space === s.id ? "#FEE2E2" : "#F3F4F6",
+                              display: "flex", alignItems: "center", justifyContent: "center",
+                              transition: "background-color 0.2s"
+                            }}>
+                              <s.Icon style={{ width: 22, height: 22, color: "#E53E3E" }} />
+                            </div>
+                          </div>
+                          <span style={{ fontWeight: 700, fontSize: 13, color: "#0A0A1A" }}>{s.label}</span>
                         </button>
                       ))}
                     </div>
@@ -126,11 +134,18 @@ export default function PresupuestoModal({ open, onClose }) {
                         <button key={s.id} onClick={() => toggleService(s.id)}
                           className="w-full p-4 rounded-2xl border-2 text-left flex items-center gap-4 transition-all"
                           style={{ borderColor: services.includes(s.id) ? "#E53E3E" : "#E5E7EB", backgroundColor: services.includes(s.id) ? "#FFF5F5" : "white" }}>
-                          <span className="text-2xl">{s.emoji}</span>
+                          <div style={{
+                            width: 42, height: 42, borderRadius: 12, flexShrink: 0,
+                            backgroundColor: services.includes(s.id) ? "#FEE2E2" : "#F3F4F6",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            transition: "background-color 0.2s"
+                          }}>
+                            <s.Icon style={{ width: 20, height: 20, color: "#E53E3E" }} />
+                          </div>
                           <span style={{ fontWeight: 700, fontSize: 14, color: "#0A0A1A" }}>{s.label}</span>
-                          <div className="ml-auto w-5 h-5 rounded border-2 flex items-center justify-center"
+                          <div className="ml-auto w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0"
                             style={{ borderColor: services.includes(s.id) ? "#E53E3E" : "#D1D5DB", backgroundColor: services.includes(s.id) ? "#E53E3E" : "white" }}>
-                            {services.includes(s.id) && <span className="text-white text-xs">✓</span>}
+                            {services.includes(s.id) && <span style={{ color: "white", fontSize: 10, fontWeight: 900 }}>✓</span>}
                           </div>
                         </button>
                       ))}
