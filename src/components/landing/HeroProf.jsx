@@ -99,7 +99,7 @@ export default function HeroProf({ onOpenModal }) {
       </div>
 
       {/* Content */}
-      <div className="mx-auto px-4 py-8 relative max-w-7xl sm:px-6 lg:px-8 sm:py-20 lg:py-28 flex flex-col justify-center h-full">
+      <div className="mx-auto px-4 py-8 relative z-10 max-w-7xl sm:px-6 lg:px-8 sm:py-20 lg:py-28 flex flex-col justify-center h-full">
         <div className="max-w-3xl">
           {/* Service Tabs */}
           <div className="flex gap-2 mb-5">
@@ -163,7 +163,7 @@ export default function HeroProf({ onOpenModal }) {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-white to-transparent pointer-events-none" aria-hidden="true" />
     </section>
   );
 }
