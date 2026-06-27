@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     if (dbError) throw dbError;
 
     await resend.emails.send({
-      from: 'notificaciones@tsoapp.es',
+      from: 'info@alarmasenbarcelona.com',
       to: 'tcnpremium@gmail.com',
       subject: `🔔 NUEVO PRESUPUESTO - ${formData.nombre}`,
       html: `<h2 style="color:#E53E3E">🔔 NUEVA SOLICITUD</h2>
@@ -57,7 +57,7 @@ export default async function handler(req, res) {
 
     if (formData.email) {
       await resend.emails.send({
-        from: 'notificaciones@tsoapp.es',
+        from: 'info@alarmasenbarcelona.com',
         to: formData.email,
         subject: '✅ Hemos recibido tu solicitud — Premium Tech Security',
         html: `<h2 style="color:#E53E3E">¡Gracias, ${formData.nombre}!</h2>
