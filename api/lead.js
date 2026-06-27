@@ -47,9 +47,9 @@ export default async function handler(req, res) {
     let notifStatus = 'not_sent';
     let notifError = null;
 
-    // 2. Email de notificacion a tcnpremium@gmail.com
+    // 2. Email de notificacion a tcnpremium@gmail.com (Resend SDK v3: devuelve { data, error })
     try {
-      const notifResult = await resend.emails.send({
+      const { data: notifData, error: notifErr } = await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: 'tcnpremium@gmail.com',
         reply_to: 'tcnpremium@gmail.com',
@@ -71,8 +71,14 @@ export default async function handler(req, res) {
           </div>
         </div>`
       });
-      notifStatus = 'sent';
-      console.log('Notif email sent id:', notifResult?.id);
+      if (notifErr) {
+        notifStatus = 'failed';
+        notifError = notifErr.message || JSON.stringify(notifErr);
+        console.error('Notif email RESEND ERROR:', JSON.stringify(notifErr));
+      } else {
+        notifStatus = 'sent';
+        console.log('Notif email OK, id:', notifData?.id);
+      }
     } catch (emailErr) {
       notifStatus = 'failed';
       notifError = emailErr.message;
@@ -82,7 +88,7 @@ export default async function handler(req, res) {
     // 3. Email de confirmacion al cliente (si dio su email)
     if (formData.email?.trim()) {
       try {
-        await resend.emails.send({
+        const { data: confirmData, error: confirmErr } = await resend.emails.send({
           from: 'onboarding@resend.dev',
           to: formData.email.trim(),
           subject: 'Hemos recibido tu solicitud - Premium Tech Security',
@@ -97,9 +103,13 @@ export default async function handler(req, res) {
             </div>
           </div>`
         });
-        console.log('Confirm email sent to:', formData.email.trim());
+        if (confirmErr) {
+          console.error('Confirm email RESEND ERROR:', JSON.stringify(confirmErr));
+        } else {
+          console.log('Confirm email OK, to:', formData.email.trim(), 'id:', confirmData?.id);
+        }
       } catch (emailErr) {
-        console.error('Confirm email failed:', emailErr.message);
+        console.error('Confirm email FAILED:', emailErr.message);
       }
     }
 
