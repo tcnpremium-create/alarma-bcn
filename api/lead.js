@@ -1,6 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
+// alarmasenbarcelona.com - notificaciones van a tcnpremium@gmail.com
+// NO usar notificaciones@tsoapp.es (eso es del proyecto TSO Software, diferente)
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
@@ -18,12 +20,12 @@ export default async function handler(req, res) {
   try {
     const formData = req.body;
     if (!formData?.nombre?.trim() || !formData?.telefono?.trim()) {
-      return res.status(400).json({ error: 'Nombre y teléfono son obligatorios' });
+      return res.status(400).json({ error: 'Nombre y telefono son obligatorios' });
     }
 
     const phoneClean = formData.telefono.replace(/\s/g, '');
 
-    // Guardar lead en Supabase (crítico)
+    // 1. Guardar lead en Supabase
     const { data: lead, error: dbError } = await supabase
       .from('leads')
       .insert([{
@@ -45,56 +47,59 @@ export default async function handler(req, res) {
     let notifStatus = 'not_sent';
     let notifError = null;
 
-    // Email de notificación a tcnpremium@gmail.com
+    // 2. Email de notificacion a tcnpremium@gmail.com
     try {
       const notifResult = await resend.emails.send({
-        from: 'notificaciones@tsoapp.es',
+        from: 'onboarding@resend.dev',
         to: 'tcnpremium@gmail.com',
+        reply_to: 'tcnpremium@gmail.com',
         subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
-        html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
-          <div style="background:#E53E3E;padding:20px;border-radius:8px 8px 0 0">
-            <h2 style="color:white;margin:0">NUEVA SOLICITUD DE PRESUPUESTO</h2>
+        html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
+          <div style="background:#E53E3E;padding:24px">
+            <h2 style="color:white;margin:0;font-size:20px">NUEVA SOLICITUD - alarmasenbarcelona.com</h2>
           </div>
-          <div style="background:#f9f9f9;padding:20px;border:1px solid #eee;border-radius:0 0 8px 8px">
-            <p><strong>Nombre:</strong> ${formData.nombre.trim()}</p>
-            <p><strong>Telefono:</strong> ${phoneClean}</p>
-            <p><strong>Email:</strong> ${formData.email?.trim() || '-'}</p>
-            <p><strong>Tipo cliente:</strong> ${formData.tipo_cliente || '-'}</p>
-            <p><strong>Zona:</strong> ${formData.zona?.trim() || '-'}</p>
-            <p><strong>Servicio:</strong> ${formData.servicio_interes?.trim() || '-'}</p>
-            <p><strong>Mensaje:</strong> ${formData.mensaje?.trim() || '-'}</p>
-            <a href="tel:+34${phoneClean}" style="display:inline-block;background:#E53E3E;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold;margin-top:12px">Llamar ahora</a>
+          <div style="padding:24px;background:#fff">
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td style="padding:8px 0;color:#666;width:140px">Nombre</td><td style="padding:8px 0;font-weight:bold">${formData.nombre.trim()}</td></tr>
+              <tr><td style="padding:8px 0;color:#666">Telefono</td><td style="padding:8px 0;font-weight:bold">${phoneClean}</td></tr>
+              <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0">${formData.email?.trim() || '-'}</td></tr>
+              <tr><td style="padding:8px 0;color:#666">Tipo cliente</td><td style="padding:8px 0">${formData.tipo_cliente || '-'}</td></tr>
+              <tr><td style="padding:8px 0;color:#666">Zona</td><td style="padding:8px 0">${formData.zona?.trim() || '-'}</td></tr>
+              <tr><td style="padding:8px 0;color:#666">Servicio</td><td style="padding:8px 0">${formData.servicio_interes?.trim() || '-'}</td></tr>
+            </table>
+            <a href="tel:+34${phoneClean}" style="display:inline-block;margin-top:20px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold;font-size:16px">Llamar ${phoneClean}</a>
           </div>
         </div>`
       });
       notifStatus = 'sent';
-      console.log('Email enviado OK:', notifResult?.id);
+      console.log('Notif email sent id:', notifResult?.id);
     } catch (emailErr) {
       notifStatus = 'failed';
       notifError = emailErr.message;
-      console.error('Email FALLIDO:', emailErr.message);
+      console.error('Notif email FAILED:', emailErr.message);
     }
 
-    // Email de confirmación al usuario (si proporcionó email)
+    // 3. Email de confirmacion al cliente (si dio su email)
     if (formData.email?.trim()) {
       try {
         await resend.emails.send({
-          from: 'notificaciones@tsoapp.es',
+          from: 'onboarding@resend.dev',
           to: formData.email.trim(),
           subject: 'Hemos recibido tu solicitud - Premium Tech Security',
-          html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
-            <div style="background:#E53E3E;padding:20px;border-radius:8px 8px 0 0">
+          html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
+            <div style="background:#E53E3E;padding:24px">
               <h2 style="color:white;margin:0">Gracias, ${formData.nombre.trim()}!</h2>
             </div>
-            <div style="background:#f9f9f9;padding:20px;border:1px solid #eee;border-radius:0 0 8px 8px">
-              <p>Recibimos tu solicitud para <strong>${formData.servicio_interes || 'sistema de seguridad'}</strong>.</p>
-              <p>Te contactamos antes de <strong>24 horas</strong>.</p>
-              <a href="tel:+34638109947" style="display:inline-block;background:#E53E3E;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold;margin-top:12px">638 10 99 47</a>
+            <div style="padding:24px;background:#fff">
+              <p style="color:#333">Hemos recibido tu solicitud de presupuesto para <strong>${formData.servicio_interes || 'sistema de seguridad'}</strong>.</p>
+              <p style="color:#333">Nuestro equipo te contactara antes de <strong>24 horas</strong>.</p>
+              <a href="tel:+34638109947" style="display:inline-block;margin-top:16px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold">638 10 99 47</a>
             </div>
           </div>`
         });
+        console.log('Confirm email sent to:', formData.email.trim());
       } catch (emailErr) {
-        console.error('Email confirmacion fallido:', emailErr.message);
+        console.error('Confirm email failed:', emailErr.message);
       }
     }
 
@@ -106,7 +111,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Error handler:', error);
+    console.error('Handler error:', error);
     return res.status(500).json({ error: 'Error interno', detail: error.message });
   }
 }
