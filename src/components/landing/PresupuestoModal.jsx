@@ -20,7 +20,7 @@ export default function PresupuestoModal({ open, onClose }) {
   const [step, setStep] = useState(1);
   const [space, setSpace] = useState("");
   const [services, setServices] = useState([]);
-  const [form, setForm] = useState({ nombre: "", telefono: "", ciudad: "" });
+  const [form, setForm] = useState({ nombre: "", telefono: "", email: "", ciudad: "" });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -40,6 +40,7 @@ export default function PresupuestoModal({ open, onClose }) {
       body: JSON.stringify({
         nombre: form.nombre,
         telefono: form.telefono,
+        email: form.email,
         zona: form.ciudad,
         servicio_interes: services.join(", "),
         tipo_cliente: space,
@@ -53,7 +54,7 @@ export default function PresupuestoModal({ open, onClose }) {
 
   const handleClose = () => {
     onClose();
-    setTimeout(() => { setStep(1); setSpace(""); setServices([]); setForm({ nombre: "", telefono: "", ciudad: "" }); setSuccess(false); }, 300);
+    setTimeout(() => { setStep(1); setSpace(""); setServices([]); setForm({ nombre: "", telefono: "", email: "", ciudad: "" }); setSuccess(false); }, 300);
   };
 
   const canNext = step === 1 ? !!space : step === 2 ? services.length > 0 : false;
@@ -159,6 +160,8 @@ export default function PresupuestoModal({ open, onClose }) {
                       <input type="text" placeholder="Tu nombre" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
                       <input type="tel" placeholder="Tu teléfono" required value={form.telefono} onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+                        className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
+                      <input type="email" placeholder="Tu email (opcional)" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
                       <input type="text" placeholder="Barcelona, Sabadell..." value={form.ciudad} onChange={(e) => setForm({ ...form, ciudad: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
