@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Flame } from "lucide-react";
 
 function AccordionItem({ item, isOpen, onToggle }) {
   return (
@@ -122,7 +122,6 @@ export default function PromoAccordion({ title, urgencyLine1, urgencyLine2, item
   return (
     <section style={{ background: bg, padding: "32px 20px" }}>
       <div className="max-w-2xl mx-auto">
-        {/* Urgency banner */}
         <div
           style={{
             backgroundColor: "#E53E3E",
@@ -134,7 +133,7 @@ export default function PromoAccordion({ title, urgencyLine1, urgencyLine2, item
             alignItems: "center",
           }}
         >
-          <span style={{ fontSize: 24, flexShrink: 0 }}>🔥</span>
+          <Flame style={{ width: 22, height: 22, color: "#fff", flexShrink: 0 }} />
           <div>
             <p style={{ color: "#fff", fontWeight: 800, fontSize: 14, margin: 0 }}>{urgencyLine1}</p>
             <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 12, margin: 0 }}>{urgencyLine2}</p>
