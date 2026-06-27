@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { Phone } from "lucide-react";
 import useCountUp from "@/hooks/useCountUp";
 import useScrollReveal from "@/hooks/useScrollReveal";
 import HeroContactModal from "./HeroContactModal";
@@ -8,7 +8,6 @@ import HeroContactModal from "./HeroContactModal";
 const TABS = [
   {
     id: "camaras",
-    icon: "📹",
     shortLabel: "Cámaras",
     image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/768a8c455_IMG_8651.jpeg",
     badge: "VIDEOVIGILANCIA PROFESIONAL",
@@ -18,7 +17,6 @@ const TABS = [
   },
   {
     id: "alarmas",
-    icon: "🔔",
     shortLabel: "Alarmas",
     image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/09fa8cb8c_IMG_8738.jpeg",
     badge: "PROTECCIÓN 24/7",
@@ -28,7 +26,6 @@ const TABS = [
   },
   {
     id: "accesos",
-    icon: "🚪",
     shortLabel: "Accesos",
     image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/e318f18f7_IMG_8740.jpg",
     badge: "ACCESO INTELIGENTE",
@@ -51,7 +48,6 @@ function AnimatedStat({ end, duration, suffix, label, trigger }) {
 export default function HeroProf({ onOpenModal }) {
   const [activeTab, setActiveTab] = useState(0);
   const [statsRef, statsVisible] = useScrollReveal(0.3);
-  // Modal is now managed by parent via onOpenModal prop
 
   const tab = TABS[activeTab];
 
@@ -160,17 +156,14 @@ export default function HeroProf({ onOpenModal }) {
               href="tel:+34638109947"
               className="bg-white hover:bg-gray-100 text-[#1A1A2E] px-6 sm:px-7 py-6 rounded-full font-bold text-base border border-gray-200 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2" style={{ minHeight: 52 }}
             >
-              📞 Llamar
+              <Phone className="w-4 h-4 text-[#E53E3E]" />
+              638 10 99 47
             </a>
           </div>
         </div>
       </div>
 
-
-
       <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" aria-hidden="true" />
-
-      {/* Modal now managed by parent */}
     </section>
   );
 }

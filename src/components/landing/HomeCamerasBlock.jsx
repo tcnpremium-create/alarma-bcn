@@ -1,4 +1,13 @@
 import React from "react";
+import { Phone, Cpu, Camera, Moon, Smartphone, Shield } from "lucide-react";
+
+const FEATURES = [
+  { Icon: Cpu, label: "IA Activa" },
+  { Icon: Camera, label: "4K HD" },
+  { Icon: Moon, label: "Visión Nocturna" },
+  { Icon: Smartphone, label: "App 24/7" },
+  { Icon: Shield, label: "Sin cuotas" },
+];
 
 export default function HomeCamerasBlock({ onOpenModal }) {
   return (
@@ -10,14 +19,15 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             display: "inline-block",
             backgroundColor: "#E53E3E",
             color: "#fff",
-            borderRadius: 20,
+            borderRadius: 4,
             fontSize: 11,
             fontWeight: 800,
             padding: "6px 14px",
+            letterSpacing: "0.06em",
             marginBottom: 12,
           }}
         >
-          📹 CÁMARAS DE SEGURIDAD · BARCELONA
+          CÁMARAS DE SEGURIDAD · BARCELONA
         </span>
 
         <h2 style={{ fontWeight: 900, fontSize: 28, color: "#0A0A1A", lineHeight: 1.15, margin: 0 }}>
@@ -28,30 +38,30 @@ export default function HomeCamerasBlock({ onOpenModal }) {
           No dejes que los delincuentes elijan tu propiedad. Nuestras cámaras con Inteligencia Artificial detectan intrusos en tiempo real y te avisan al instante. Imagen cristalina en 4K, visión nocturna en color y grabación continua. Instalación profesional incluida. Sin cuotas mensuales.
         </p>
 
-        {/* Pills */}
-        <div style={{ display: "flex", gap: 8, marginTop: 16, overflowX: "auto", paddingBottom: 4 }}>
-          {["🤖 IA Activa", "📹 4K HD", "🌙 Nocturna Color", "📱 App 24/7", "🛡️ Sin cuotas"].map((pill) => (
+        <div style={{ display: "flex", gap: 8, marginTop: 16, flexWrap: "wrap" }}>
+          {FEATURES.map(({ Icon, label }) => (
             <span
-              key={pill}
+              key={label}
               style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
                 backgroundColor: "#F3F4F6",
                 borderRadius: 20,
                 padding: "8px 14px",
                 fontSize: 12,
                 fontWeight: 700,
-                whiteSpace: "nowrap",
-                flexShrink: 0,
               }}
             >
-              {pill}
+              <Icon style={{ width: 13, height: 13, color: "#E53E3E" }} />
+              {label}
             </span>
           ))}
         </div>
 
-        {/* CTAs */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 24 }}>
           <button
-            onClick={() => onOpenModal("Cámaras de seguridad")}
+            onClick={() => onOpenModal && onOpenModal()}
             style={{
               width: "100%",
               backgroundColor: "#E53E3E",
@@ -64,7 +74,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
               cursor: "pointer",
             }}
           >
-            Presupuesto →
+            Solicitar presupuesto →
           </button>
           <a
             href="tel:+34638109947"
@@ -86,7 +96,8 @@ export default function HomeCamerasBlock({ onOpenModal }) {
               boxSizing: "border-box",
             }}
           >
-            📞 Llamar
+            <Phone style={{ width: 18, height: 18 }} />
+            638 10 99 47
           </a>
         </div>
       </div>
