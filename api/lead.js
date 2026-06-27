@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 // alarmasenbarcelona.com - notificaciones van a tcnpremium@gmail.com
 // NO usar notificaciones@tsoapp.es (eso es del proyecto TSO Software, diferente)
@@ -8,7 +8,15 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const resend = new Resend(process.env.RESEND_API_KEY || 're_YtBbkkFs_8kgEEDjHQfGPGxuVxF8RdFGD');
+function getTransporter() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'tcnpremium@gmail.com',
+      pass: process.env.GMAIL_APP_PASSWORD
+    }
+  });
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -47,12 +55,15 @@ export default async function handler(req, res) {
     let notifStatus = 'not_sent';
     let notifError = null;
 
-    // 2. Email de notificacion a tcnpremium@gmail.com (Resend SDK v3: devuelve { data, error })
+    // 2. Email de notificacion a tcnpremium@gmail.com via Gmail SMTP
     try {
-      const { data: notifData, error: notifErr } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
+      if (!process.env.GMAIL_APP_PASSWORD) {
+        throw new Error('GMAIL_APP_PASSWORD no configurada en Vercel');
+      }
+      const transporter = getTransporter();
+      const info = await transporter.sendMail({
+        from: '"alarmasenbarcelona.com" <tcnpremium@gmail.com>',
         to: 'tcnpremium@gmail.com',
-        reply_to: 'tcnpremium@gmail.com',
         subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
         html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
           <div style="background:#E53E3E;padding:24px">
@@ -71,14 +82,8 @@ export default async function handler(req, res) {
           </div>
         </div>`
       });
-      if (notifErr) {
-        notifStatus = 'failed';
-        notifError = notifErr.message || JSON.stringify(notifErr);
-        console.error('Notif email RESEND ERROR:', JSON.stringify(notifErr));
-      } else {
-        notifStatus = 'sent';
-        console.log('Notif email OK, id:', notifData?.id);
-      }
+      notifStatus = 'sent';
+      console.log('Notif email OK, messageId:', info.messageId);
     } catch (emailErr) {
       notifStatus = 'failed';
       notifError = emailErr.message;
@@ -88,10 +93,11 @@ export default async function handler(req, res) {
     // 3. Email de confirmacion al cliente (si dio su email)
     if (formData.email?.trim()) {
       try {
-        const { data: confirmData, error: confirmErr } = await resend.emails.send({
-          from: 'onboarding@resend.dev',
+        const transporter = getTransporter();
+        await transporter.sendMail({
+          from: '"alarmasenbarcelona.com" <tcnpremium@gmail.com>',
           to: formData.email.trim(),
-          subject: 'Hemos recibido tu solicitud - Premium Tech Security',
+          subject: 'Hemos recibido tu solicitud - alarmasenbarcelona.com',
           html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
             <div style="background:#E53E3E;padding:24px">
               <h2 style="color:white;margin:0">Gracias, ${formData.nombre.trim()}!</h2>
@@ -99,15 +105,11 @@ export default async function handler(req, res) {
             <div style="padding:24px;background:#fff">
               <p style="color:#333">Hemos recibido tu solicitud de presupuesto para <strong>${formData.servicio_interes || 'sistema de seguridad'}</strong>.</p>
               <p style="color:#333">Nuestro equipo te contactara antes de <strong>24 horas</strong>.</p>
-              <a href="tel:+34638109947" style="display:inline-block;margin-top:16px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold">638 10 99 47</a>
+              <a href="tel:+34638109947" style="display:inline-block;margin-top:16px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold">Llamar</a>
             </div>
           </div>`
         });
-        if (confirmErr) {
-          console.error('Confirm email RESEND ERROR:', JSON.stringify(confirmErr));
-        } else {
-          console.log('Confirm email OK, to:', formData.email.trim(), 'id:', confirmData?.id);
-        }
+        console.log('Confirm email OK to:', formData.email.trim());
       } catch (emailErr) {
         console.error('Confirm email FAILED:', emailErr.message);
       }
