@@ -157,7 +157,7 @@ export default function HeroProf({ onOpenModal }) {
               className="bg-white hover:bg-gray-100 text-[#1A1A2E] px-6 sm:px-7 py-6 rounded-full font-bold text-base border border-gray-200 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2" style={{ minHeight: 52 }}
             >
               <Phone className="w-4 h-4 text-[#E53E3E]" />
-              638 10 99 47
+              Llamar
             </a>
           </div>
         </div>
