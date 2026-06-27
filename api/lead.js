@@ -22,6 +22,7 @@ export default async function handler(req, res) {
 
     const phoneClean = formData.telefono.replace(/\s/g, '');
 
+    // Save lead first (critical)
     const { data: lead, error: dbError } = await supabase
       .from('leads')
       .insert([{
@@ -40,31 +41,41 @@ export default async function handler(req, res) {
 
     if (dbError) throw dbError;
 
-    await resend.emails.send({
-      from: 'notificaciones@tsoapp.es',
-      to: 'tcnpremium@gmail.com',
-      subject: `🔔 NUEVO PRESUPUESTO - ${formData.nombre}`,
-      html: `<h2 style="color:#E53E3E">🔔 NUEVA SOLICITUD</h2>
-        <p><b>Nombre:</b> ${formData.nombre}</p>
-        <p><b>Teléfono:</b> ${phoneClean}</p>
-        <p><b>Email:</b> ${formData.email || '-'}</p>
-        <p><b>Tipo:</b> ${formData.tipo_cliente || '-'}</p>
-        <p><b>Zona:</b> ${formData.zona || '-'}</p>
-        <p><b>Servicio:</b> ${formData.servicio_interes || '-'}</p>
-        <p><b>Mensaje:</b> ${formData.mensaje || '-'}</p>
-        <a href="tel:+34${phoneClean}" style="background:#E53E3E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:16px">📞 Llamar ahora</a>`
-    });
-
-    if (formData.email) {
+    // Send notification email (non-critical - don't fail if email fails)
+    try {
       await resend.emails.send({
-        from: 'notificaciones@tsoapp.es',
-        to: formData.email,
-        subject: '✅ Hemos recibido tu solicitud — Premium Tech Security',
-        html: `<h2 style="color:#E53E3E">¡Gracias, ${formData.nombre}!</h2>
-          <p>Recibimos tu solicitud para <b>${formData.servicio_interes || 'sistema de seguridad'}</b>.</p>
-          <p>Te contactamos antes de <b>24 horas</b>. O llámanos:</p>
-          <a href="tel:+34638109947" style="background:#E53E3E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block">📞 Llamar</a>`
+        from: 'onboarding@resend.dev',
+        to: 'tcnpremium@gmail.com',
+        subject: `🔔 NUEVO PRESUPUESTO - ${formData.nombre}`,
+        html: `<h2 style="color:#E53E3E">🔔 NUEVA SOLICITUD</h2>
+          <p><b>Nombre:</b> ${formData.nombre}</p>
+          <p><b>Teléfono:</b> ${phoneClean}</p>
+          <p><b>Email:</b> ${formData.email || '-'}</p>
+          <p><b>Tipo:</b> ${formData.tipo_cliente || '-'}</p>
+          <p><b>Zona:</b> ${formData.zona || '-'}</p>
+          <p><b>Servicio:</b> ${formData.servicio_interes || '-'}</p>
+          <p><b>Mensaje:</b> ${formData.mensaje || '-'}</p>
+          <a href="tel:+34${phoneClean}" style="background:#E53E3E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:16px">📞 Llamar ahora</a>`
       });
+    } catch (emailErr) {
+      console.error('Email failed:', emailErr.message);
+    }
+
+    // Send confirmation email to user (non-critical)
+    if (formData.email) {
+      try {
+        await resend.emails.send({
+          from: 'onboarding@resend.dev',
+          to: formData.email,
+          subject: '✅ Hemos recibido tu solicitud — Premium Tech Security',
+          html: `<h2 style="color:#E53E3E">¡Gracias, ${formData.nombre}!</h2>
+            <p>Recibimos tu solicitud para <b>${formData.servicio_interes || 'sistema de seguridad'}</b>.</p>
+            <p>Te contactamos antes de <b>24 horas</b>. O llámanos:</p>
+            <a href="tel:+34638109947" style="background:#E53E3E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block">📞 Llamar</a>`
+        });
+      } catch (emailErr) {
+        console.error('Confirmation email failed:', emailErr.message);
+      }
     }
 
     return res.status(200).json({ success: true, id: lead.id });
