@@ -6,7 +6,6 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-// Fallback key so emails work even if env var is not set in Vercel
 const resend = new Resend(process.env.RESEND_API_KEY || 're_YtBbkkFs_8kgEEDjHQfGPGxuVxF8RdFGD');
 
 export default async function handler(req, res) {
@@ -24,7 +23,7 @@ export default async function handler(req, res) {
 
     const phoneClean = formData.telefono.replace(/\s/g, '');
 
-    // Save lead (critical)
+    // Guardar lead en Supabase (crítico)
     const { data: lead, error: dbError } = await supabase
       .from('leads')
       .insert([{
@@ -46,10 +45,10 @@ export default async function handler(req, res) {
     let notifStatus = 'not_sent';
     let notifError = null;
 
-    // Notification email to tcnpremium@gmail.com
+    // Email de notificación a tcnpremium@gmail.com
     try {
       const notifResult = await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'notificaciones@tsoapp.es',
         to: 'tcnpremium@gmail.com',
         subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
         html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
@@ -69,18 +68,18 @@ export default async function handler(req, res) {
         </div>`
       });
       notifStatus = 'sent';
-      console.log('Notification email sent:', notifResult?.id);
+      console.log('Email enviado OK:', notifResult?.id);
     } catch (emailErr) {
       notifStatus = 'failed';
       notifError = emailErr.message;
-      console.error('Notification email FAILED:', emailErr.message, emailErr.statusCode);
+      console.error('Email FALLIDO:', emailErr.message);
     }
 
-    // Confirmation email to user
+    // Email de confirmación al usuario (si proporcionó email)
     if (formData.email?.trim()) {
       try {
         await resend.emails.send({
-          from: 'onboarding@resend.dev',
+          from: 'notificaciones@tsoapp.es',
           to: formData.email.trim(),
           subject: 'Hemos recibido tu solicitud - Premium Tech Security',
           html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
@@ -94,9 +93,8 @@ export default async function handler(req, res) {
             </div>
           </div>`
         });
-        console.log('Confirmation email sent to:', formData.email.trim());
       } catch (emailErr) {
-        console.error('Confirmation email FAILED:', emailErr.message);
+        console.error('Email confirmacion fallido:', emailErr.message);
       }
     }
 
@@ -108,7 +106,7 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error('Handler error:', error);
+    console.error('Error handler:', error);
     return res.status(500).json({ error: 'Error interno', detail: error.message });
   }
 }
