@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 
 // alarmasenbarcelona.com - notificaciones van a tcnpremium@gmail.com
 // NO usar notificaciones@tsoapp.es (eso es del proyecto TSO Software, diferente)
@@ -8,15 +8,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-function getTransporter() {
-  return nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'tcnpremium@gmail.com',
-      pass: process.env.GMAIL_APP_PASSWORD
-    }
-  });
-}
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -55,15 +47,13 @@ export default async function handler(req, res) {
     let notifStatus = 'not_sent';
     let notifError = null;
 
-    // 2. Email de notificacion a tcnpremium@gmail.com via Gmail SMTP
+    // 2. Email de notificacion a tcnpremium@gmail.com
+    // Resend SDK v3: resend.emails.send() devuelve { data, error }
     try {
-      if (!process.env.GMAIL_APP_PASSWORD) {
-        throw new Error('GMAIL_APP_PASSWORD no configurada en Vercel');
-      }
-      const transporter = getTransporter();
-      const info = await transporter.sendMail({
-        from: '"alarmasenbarcelona.com" <tcnpremium@gmail.com>',
+      const { data: notifData, error: notifErr } = await resend.emails.send({
+        from: 'onboarding@resend.dev',
         to: 'tcnpremium@gmail.com',
+        reply_to: 'tcnpremium@gmail.com',
         subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
         html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
           <div style="background:#E53E3E;padding:24px">
@@ -82,8 +72,14 @@ export default async function handler(req, res) {
           </div>
         </div>`
       });
-      notifStatus = 'sent';
-      console.log('Notif email OK, messageId:', info.messageId);
+      if (notifErr) {
+        notifStatus = 'failed';
+        notifError = JSON.stringify(notifErr);
+        console.error('RESEND ERROR notif:', JSON.stringify(notifErr));
+      } else {
+        notifStatus = 'sent';
+        console.log('Notif email OK id:', notifData?.id);
+      }
     } catch (emailErr) {
       notifStatus = 'failed';
       notifError = emailErr.message;
@@ -93,9 +89,8 @@ export default async function handler(req, res) {
     // 3. Email de confirmacion al cliente (si dio su email)
     if (formData.email?.trim()) {
       try {
-        const transporter = getTransporter();
-        await transporter.sendMail({
-          from: '"alarmasenbarcelona.com" <tcnpremium@gmail.com>',
+        const { data: confirmData, error: confirmErr } = await resend.emails.send({
+          from: 'onboarding@resend.dev',
           to: formData.email.trim(),
           subject: 'Hemos recibido tu solicitud - alarmasenbarcelona.com',
           html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
@@ -109,7 +104,11 @@ export default async function handler(req, res) {
             </div>
           </div>`
         });
-        console.log('Confirm email OK to:', formData.email.trim());
+        if (confirmErr) {
+          console.error('RESEND ERROR confirm:', JSON.stringify(confirmErr));
+        } else {
+          console.log('Confirm email OK id:', confirmData?.id, 'to:', formData.email.trim());
+        }
       } catch (emailErr) {
         console.error('Confirm email FAILED:', emailErr.message);
       }
