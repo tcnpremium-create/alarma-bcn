@@ -5,7 +5,9 @@ const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
 );
-const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Fallback key so emails work even if env var is not set in Vercel
+const resend = new Resend(process.env.RESEND_API_KEY || 're_YtBbkkFs_8kgEEDjHQfGPGxuVxF8RdFGD');
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,7 +24,7 @@ export default async function handler(req, res) {
 
     const phoneClean = formData.telefono.replace(/\s/g, '');
 
-    // Save lead first (critical)
+    // Save lead (critical)
     const { data: lead, error: dbError } = await supabase
       .from('leads')
       .insert([{
@@ -41,46 +43,72 @@ export default async function handler(req, res) {
 
     if (dbError) throw dbError;
 
-    // Send notification email (non-critical)
+    let notifStatus = 'not_sent';
+    let notifError = null;
+
+    // Notification email to tcnpremium@gmail.com
     try {
-      await resend.emails.send({
+      const notifResult = await resend.emails.send({
         from: 'onboarding@resend.dev',
         to: 'tcnpremium@gmail.com',
-        subject: 'NUEVO PRESUPUESTO - ' + formData.nombre,
-        html: '<h2 style="color:#E53E3E">NUEVA SOLICITUD</h2>' +
-          '<p><b>Nombre:</b> ' + formData.nombre + '</p>' +
-          '<p><b>Telefono:</b> ' + phoneClean + '</p>' +
-          '<p><b>Email:</b> ' + (formData.email || '-') + '</p>' +
-          '<p><b>Tipo:</b> ' + (formData.tipo_cliente || '-') + '</p>' +
-          '<p><b>Zona:</b> ' + (formData.zona || '-') + '</p>' +
-          '<p><b>Servicio:</b> ' + (formData.servicio_interes || '-') + '</p>' +
-          '<p><b>Mensaje:</b> ' + (formData.mensaje || '-') + '</p>' +
-          '<a href="tel:+34' + phoneClean + '" style="background:#E53E3E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:16px">Llamar ahora</a>'
+        subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
+        html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+          <div style="background:#E53E3E;padding:20px;border-radius:8px 8px 0 0">
+            <h2 style="color:white;margin:0">NUEVA SOLICITUD DE PRESUPUESTO</h2>
+          </div>
+          <div style="background:#f9f9f9;padding:20px;border:1px solid #eee;border-radius:0 0 8px 8px">
+            <p><strong>Nombre:</strong> ${formData.nombre.trim()}</p>
+            <p><strong>Telefono:</strong> ${phoneClean}</p>
+            <p><strong>Email:</strong> ${formData.email?.trim() || '-'}</p>
+            <p><strong>Tipo cliente:</strong> ${formData.tipo_cliente || '-'}</p>
+            <p><strong>Zona:</strong> ${formData.zona?.trim() || '-'}</p>
+            <p><strong>Servicio:</strong> ${formData.servicio_interes?.trim() || '-'}</p>
+            <p><strong>Mensaje:</strong> ${formData.mensaje?.trim() || '-'}</p>
+            <a href="tel:+34${phoneClean}" style="display:inline-block;background:#E53E3E;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold;margin-top:12px">Llamar ahora</a>
+          </div>
+        </div>`
       });
+      notifStatus = 'sent';
+      console.log('Notification email sent:', notifResult?.id);
     } catch (emailErr) {
-      console.error('Notification email failed:', emailErr.message);
+      notifStatus = 'failed';
+      notifError = emailErr.message;
+      console.error('Notification email FAILED:', emailErr.message, emailErr.statusCode);
     }
 
-    // Send confirmation email to user (non-critical)
-    if (formData.email) {
+    // Confirmation email to user
+    if (formData.email?.trim()) {
       try {
         await resend.emails.send({
           from: 'onboarding@resend.dev',
-          to: formData.email,
+          to: formData.email.trim(),
           subject: 'Hemos recibido tu solicitud - Premium Tech Security',
-          html: '<h2 style="color:#E53E3E">Gracias, ' + formData.nombre + '!</h2>' +
-            '<p>Recibimos tu solicitud para <b>' + (formData.servicio_interes || 'sistema de seguridad') + '</b>.</p>' +
-            '<p>Te contactamos antes de <b>24 horas</b>. O llámanos:</p>' +
-            '<a href="tel:+34638109947" style="background:#E53E3E;color:white;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;display:inline-block">638 10 99 47</a>'
+          html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto">
+            <div style="background:#E53E3E;padding:20px;border-radius:8px 8px 0 0">
+              <h2 style="color:white;margin:0">Gracias, ${formData.nombre.trim()}!</h2>
+            </div>
+            <div style="background:#f9f9f9;padding:20px;border:1px solid #eee;border-radius:0 0 8px 8px">
+              <p>Recibimos tu solicitud para <strong>${formData.servicio_interes || 'sistema de seguridad'}</strong>.</p>
+              <p>Te contactamos antes de <strong>24 horas</strong>.</p>
+              <a href="tel:+34638109947" style="display:inline-block;background:#E53E3E;color:white;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:bold;margin-top:12px">638 10 99 47</a>
+            </div>
+          </div>`
         });
+        console.log('Confirmation email sent to:', formData.email.trim());
       } catch (emailErr) {
-        console.error('Confirmation email failed:', emailErr.message);
+        console.error('Confirmation email FAILED:', emailErr.message);
       }
     }
 
-    return res.status(200).json({ success: true, id: lead.id });
+    return res.status(200).json({
+      success: true,
+      id: lead.id,
+      emailNotif: notifStatus,
+      emailError: notifError
+    });
+
   } catch (error) {
-    console.error('Error:', error);
-    return res.status(500).json({ error: 'Error interno' });
+    console.error('Handler error:', error);
+    return res.status(500).json({ error: 'Error interno', detail: error.message });
   }
 }
