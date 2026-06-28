@@ -1,261 +1,450 @@
 import React, { useState } from "react";
-import Navbar from "../components/landing/Navbar";
+import { Shield, Wifi, Clock, Smartphone, AlertTriangle, Eye, Lock, Radio, ChevronDown, ChevronUp, Check, Zap, MapPin, Phone } from "lucide-react";
 import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
-import PromoAccordion from "../components/landing/PromoAccordion";
-import AdvancedSEO from "../components/seo/AdvancedSEO";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Shield, Smartphone, Clock, CheckCircle, Wifi, Bell, Lock, Radio, ChevronRight } from "lucide-react";
-
-const ALARM_PROMOS = [
-  {
-    header: "Kit Alarma Hogar — Sistema Avanzado",
-    oldPrice: "590€", price: "349€", savings: "241€",
-    features: ["Central de alarma Ajax Hub 2", "2 detectores de movimiento PIR", "1 detector de apertura puerta/ventana", "Sirena exterior disuasoria", "Conexión a Central Receptora 24/7", "App móvil control total", "Instalación profesional incluida", "Sin cuotas de mantenimiento obligatorias"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20el%20Kit%20Alarma%20Hogar%20Avanzado%20por%20349€",
-  },
-  {
-    header: "Kit Alarma Negocio — Oficina y Comercio · Más Vendido", badge: "MÁS VENDIDO",
-    oldPrice: "990€", price: "599€", savings: "391€",
-    features: ["Central Ajax Hub 2 Plus (4G + WiFi + Ethernet)", "4 detectores de movimiento con cámara integrada (fotoverificación)", "2 detectores apertura puertas/ventanas", "Sirena interior + exterior certificada grado 2", "Detector de rotura de cristales", "Conexión a Central Receptora 24/7", "App multidispositivo para todo el equipo", "Instalación profesional en 1 día", "Garantía de por vida en equipos"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20el%20Kit%20Alarma%20Negocio%20por%20599€",
-  },
-  {
-    header: "Kit Alarma Comunidad — Gran Empresa y Comunidades",
-    oldPrice: "1.490€", price: "899€", savings: "591€",
-    features: ["Central Ajax Hub 3 de máxima capacidad", "8 detectores PIR avanzados", "4 aperturas zonas comunes", "2 sirenas exteriores certificadas grado 2", "Control de accesos integrado", "Conexión a Central Receptora con verificación visual", "App multiadministrador comunidad", "Instalación profesional 1-2 días", "Cumplimiento normativa RGPD incluido", "Garantía de por vida en equipos"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20el%20Kit%20Alarma%20Comunidad%20por%20899€",
-  },
-];
 
 const AJAX_COMPONENTS = [
-  { title: "Hub 2 / Hub 2 Plus", desc: "Central de control Ajax. Conecta hasta 100 dispositivos. WiFi + Ethernet + 4G (en Hub 2 Plus). Batería de respaldo 16h." },
-  { title: "MotionProtect", desc: "Detector de movimiento PIR inalámbrico. Alcance 12m × 110°. Batería 7 años. Inmune a mascotas (<20kg)." },
-  { title: "DoorProtect", desc: "Sensor magnético de apertura para puertas y ventanas. Detecta apertura y vibración. Batería 6 años." },
-  { title: "MotionCam", desc: "Detector PIR con cámara integrada. Al detectar movimiento toma fotos en tiempo real para verificación visual." },
-  { title: "GlassProtect", desc: "Detector de rotura de cristales. Cobertura 9m. Distingue entre impacto en cristal y ruidos ambientales." },
-  { title: "StreetSiren / HomeSiren", desc: "Sirenas interior y exterior certificadas grado 2. Potencia 113 dB. Luz estroboscópica. Batería propia anti-sabotaje." },
-  { title: "KeyPad / Button", desc: "Teclado con código PIN o botón de pánico físico para armar/desarmar la alarma sin app." },
-  { title: "ReX (Extensor)", desc: "Duplica el rango de cobertura hasta 1800m adicionales. Para edificios grandes, sótanos o naves industriales." },
+  {
+    name: "Hub 2",
+    desc: "Central principal del sistema. Gestiona todos los dispositivos con cifrado de extremo a extremo.",
+    img: "/images/ajax-hub.jpeg",
+    tag: "Central",
+  },
+  {
+    name: "MotionProtect",
+    desc: "Detector de movimiento con tecnología dual PIR. Antimasking integrado para máxima seguridad.",
+    img: null,
+    tag: "Detector",
+  },
+  {
+    name: "DoorProtect",
+    desc: "Sensor magnético para puertas y ventanas. Detecta apertura y vibración simultáneamente.",
+    img: null,
+    tag: "Sensor",
+  },
+  {
+    name: "MotionCam",
+    desc: "Detector con cámara integrada. Fotografía el intruso en el momento del disparo.",
+    img: null,
+    tag: "Cámara",
+  },
+  {
+    name: "GlassProtect",
+    desc: "Detector de rotura de cristal de amplio alcance. Cubre ventanas de toda la habitación.",
+    img: null,
+    tag: "Detector",
+  },
+  {
+    name: "StreetSiren",
+    desc: "Sirena exterior con señalización LED. 113 dB audibles a 400 metros de distancia.",
+    img: null,
+    tag: "Sirena",
+  },
+  {
+    name: "KeyPad",
+    desc: "Teclado táctil para armar y desarmar el sistema con código PIN personalizable.",
+    img: null,
+    tag: "Control",
+  },
+  {
+    name: "ReX 2",
+    desc: "Repetidor de señal radio. Duplica el alcance del sistema en instalaciones grandes.",
+    img: null,
+    tag: "Repetidor",
+  },
 ];
 
-const FEATURES = [
-  { icon: <Radio className="w-6 h-6" />, title: "Protocolo Jeweller", desc: "Protocolo inalámbrico de Ajax con alcance hasta 2000m. Comunicación cifrada y bidireccional en tiempo real." },
-  { icon: <Shield className="w-6 h-6" />, title: "Cifrado AES-256", desc: "El mismo cifrado que usan los gobiernos. Imposible interceptar o hackear la comunicación." },
-  { icon: <Bell className="w-6 h-6" />, title: "Anti-inhibición GSM", desc: "El sistema detecta y alerta si alguien intenta bloquear la señal con inhibidores de frecuencia." },
-  { icon: <Wifi className="w-6 h-6" />, title: "Triple Comunicación", desc: "WiFi + Ethernet + SIM 4G simultáneos. Si falla uno, el sistema sigue comunicando por los otros dos canales." },
-  { icon: <Clock className="w-6 h-6" />, title: "Batería 7 años", desc: "Los sensores inalámbricos funcionan hasta 7 años con una sola pila. Sin preocupaciones de mantenimiento." },
-  { icon: <Smartphone className="w-6 h-6" />, title: "App Ajax Security", desc: "Control total desde el móvil: armar, desarmar, ver el estado de cada sensor, recibir notificaciones y gestionar usuarios." },
-  { icon: <Lock className="w-6 h-6" />, title: "Anti-Tamper", desc: "Cada sensor Ajax detecta si alguien intenta desmontarlo o abrirlo. Alerta inmediata ante manipulación física." },
-  { icon: <CheckCircle className="w-6 h-6" />, title: "Fotoverificación", desc: "Los detectores MotionCam envían fotos en tiempo real al dispararse, permitiendo verificar la alarma antes de llamar a Policía." },
+const HOW_IT_WORKS = [
+  {
+    step: "01",
+    title: "Detección",
+    desc: "Los sensores Ajax detectan movimiento, apertura o vibración en milisegundos con tecnología dual.",
+    icon: Eye,
+  },
+  {
+    step: "02",
+    title: "Señal cifrada",
+    desc: "La alerta viaja cifrada por radio Jeweller hasta la central. Sin cables, sin interferencias.",
+    icon: Radio,
+  },
+  {
+    step: "03",
+    title: "Verificación",
+    desc: "La CRA (Central Receptora de Alarmas) verifica la alerta en menos de 15 segundos.",
+    icon: Shield,
+  },
+  {
+    step: "04",
+    title: "Respuesta",
+    desc: "Guardia de seguridad o Policía Nacional en su domicilio. Actuación real y documentada.",
+    icon: AlertTriangle,
+  },
+];
+
+const TECH_FEATURES = [
+  { icon: Wifi, title: "Comunicación Jeweller", desc: "Protocolo radio propietario de doble vía con cifrado AES-128" },
+  { icon: Clock, title: "Respuesta en 15 seg", desc: "De la detección a la CRA en menos de un cuarto de minuto" },
+  { icon: Smartphone, title: "App Ajax 24/7", desc: "Control total desde el móvil: armar, desarmar, historial" },
+  { icon: Lock, title: "Antimanipulación", desc: "Detección de sabotaje físico y electrónico en todos los dispositivos" },
+  { icon: Zap, title: "Batería 7 años", desc: "Sensores autónomos con pila de larga duración sin mantenimiento" },
+  { icon: MapPin, title: "Sin obras", desc: "Instalación inalámbrica en horas, sin agujeros ni canaletas" },
 ];
 
 const FAQS = [
-  { q: "¿Qué diferencia hay entre una alarma inalámbrica y una cableada?", a: "La alarma inalámbrica (Ajax) no requiere pasar cables por paredes, se instala en pocas horas y es ideal para viviendas, oficinas y negocios. La alarma cableada se instala durante obra o reforma y es más recomendable para proyectos de construcción nueva o renovación total del inmueble. Ambas ofrecen el mismo nivel de seguridad. Te asesoramos sobre cuál encaja mejor con tu situación." },
-  { q: "¿El sistema Ajax funciona si se va la luz o cortan internet?", a: "Sí. La central Ajax Hub 2 tiene batería de respaldo integrada que aguanta hasta 16 horas sin corriente. Además, el Hub 2 Plus tiene SIM 4G incorporada: si falla el internet, la alarma sigue comunicando por red móvil. Es un sistema diseñado específicamente para resistir intentos de sabotaje." },
-  { q: "¿Puede alguien bloquear la señal Ajax con un inhibidor GSM?", a: "Ajax detecta los inhibidores de señal y genera una alerta de anti-jamming. El sistema avisa inmediatamente si alguien intenta bloquear las comunicaciones. Es uno de los pocos sistemas del mercado con esta protección activa." },
-  { q: "¿Necesito contratar una Central Receptora de Alarmas?", a: "No es obligatorio. Puedes optar por autogestión (recibir tú las alertas en el móvil) o conectar a nuestra Central Receptora 24/7 que verifica cada alarma y avisa a la Policía. Para negocios y comunidades siempre recomendamos Central Receptora. Para uso doméstico depende de tus preferencias." },
-  { q: "¿Cuántos sensores puede conectar una central Ajax?", a: "El Hub 2 admite hasta 100 dispositivos Ajax. El Hub 2 Plus hasta 200 dispositivos. Para instalaciones muy grandes (naves industriales, grandes edificios) se pueden conectar varios Hubs entre sí o usar extensores ReX para ampliar la cobertura." },
-  { q: "¿Incluye la instalación en el precio?", a: "Sí, todos nuestros kits incluyen la instalación profesional. Nuestros técnicos certificados realizan la instalación, configuración de la app, alta en el sistema y formación al cliente. Sin costes ocultos." },
-  { q: "¿Qué pasa si me roban un sensor?", a: "Cada sensor Ajax tiene protección anti-tamper que detecta cualquier intento de desmontaje y genera una alerta inmediata. Además, si alguien extrae el dispositivo con fuerza, el sistema lo reporta como manipulado y alerta en tiempo real." },
+  {
+    q: "¿Cuánto tiempo tarda la instalación de una alarma Ajax?",
+    a: "Una instalación residencial estándar se completa en 3-4 horas. Al ser inalámbrica no requiere obra ni canaletas, por lo que el tiempo se reduce considerablemente respecto a sistemas cableados.",
+  },
+  {
+    q: "¿Necesito línea de teléfono fija?",
+    a: "No. Ajax trabaja sobre conexión a internet (WiFi o Ethernet) y tiene SIM de respaldo integrada en la central. Si falla el internet, sigue funcionando por red móvil automáticamente.",
+  },
+  {
+    q: "¿Qué pasa si cortan la luz?",
+    a: "La central Hub 2 tiene batería de respaldo interna de hasta 16 horas. Los sensores funcionan con pilas de larga duración independientemente de la red eléctrica.",
+  },
+  {
+    q: "¿Incluye servicio de CRA (Central Receptora de Alarmas)?",
+    a: "Sí. Todos nuestros sistemas incluyen la conexión a una CRA homologada. Cuando salta la alarma, un operador verifica la incidencia y coordina la respuesta policial en menos de 15 segundos.",
+  },
+  {
+    q: "¿Puedo controlar la alarma desde el móvil?",
+    a: "Sí, a través de la aplicación oficial Ajax Systems para iOS y Android. Puede armar, desarmar, recibir notificaciones y ver el historial de eventos en tiempo real.",
+  },
+  {
+    q: "¿Los sensores Ajax funcionan en el exterior?",
+    a: "Sí. Ajax tiene una gama específica de dispositivos outdoor: detectores de movimiento exteriores, sirenas de calle y cámaras de vigilancia diseñadas para entornos expuestos a lluvia y temperaturas extremas.",
+  },
+  {
+    q: "¿Qué diferencia hay entre alarma inalámbrica y cableada?",
+    a: "La inalámbrica (Ajax) no requiere obra, se instala en horas y es fácilmente ampliable. La cableada es más robusta para instalaciones industriales de gran tamaño. Para viviendas y pymes, Ajax ofrece el mejor equilibrio entre fiabilidad y comodidad de instalación.",
+  },
 ];
 
 export default function SistemasAlarma() {
-  const [showModal, setShowModal] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
-      <AdvancedSEO
-        title="Sistemas de Alarma Profesionales Barcelona | Instalación AJAX Inalámbrica y Cableada"
-        description="Sistemas de alarma Ajax inalámbricos y cableados en Barcelona. Instalación profesional, monitoreo 24/7, control desde móvil. Kits desde 349€. Presupuesto gratuito sin compromiso."
-        keywords="sistemas alarma Barcelona, alarmas profesionales, alarma AJAX, instalación alarmas, alarma casa Barcelona, alarma negocio, alarma inalámbrica, alarma cableada, seguridad hogar"
-        canonicalUrl="https://alarmasenbarcelona.com/sistemas-alarma"
-      />
-      <Navbar />
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#fff" }}>
 
       {/* ── HERO ── */}
-      <section style={{ background: "linear-gradient(135deg, #0A0A1A 0%, #0F1923 60%, #1a2a3a 100%)", minHeight: "65vh", paddingTop: 100, paddingBottom: 48, overflow: "hidden", position: "relative" }}>
-        <div style={{ position: "absolute", top: "5%", left: "50%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.08) 0%, transparent 70%)", pointerEvents: "none", transform: "translateX(-50%)" }} />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "6px 14px", marginBottom: 24 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E53E3E", boxShadow: "0 0 8px #E53E3E" }} />
-            <span style={{ color: "#F87171", fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>ALARMAS AJAX · INALÁMBRICAS Y CABLEADAS · BARCELONA</span>
+      <section style={{ position: "relative", background: "#0A0F1A", overflow: "hidden", minHeight: 620 }}>
+        {/* Background image with overlay */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: "url('/images/ajax-sistema-alarma.jpeg')",
+          backgroundSize: "cover", backgroundPosition: "center right",
+          opacity: 0.35,
+        }} />
+        <div style={{
+          position: "absolute", inset: 0,
+          background: "linear-gradient(105deg, #0A0F1A 55%, transparent 100%)",
+        }} />
+
+        <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto", padding: "80px 24px 80px" }}>
+          {/* Badge */}
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.4)",
+            borderRadius: 100, padding: "6px 16px", marginBottom: 28,
+          }}>
+            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#E53E3E" }} />
+            <span style={{ color: "#FC8181", fontSize: 12, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>
+              Ajax Systems · Partner Oficial · Barcelona
+            </span>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 44px)", color: "#fff", lineHeight: 1.15, margin: 0 }}>
-                Sistemas de Alarma<br />
-                <span style={{ color: "#E53E3E" }}>Profesionales Ajax.</span><br />
-                Respuesta en 15 segundos.
-              </h1>
-              <p style={{ color: "#94A3B8", fontSize: 15, lineHeight: 1.75, marginTop: 14 }}>
-                Instalamos sistemas de alarma Ajax inalámbricos y alarmas cableadas en Barcelona y toda Catalunya. Detección perimetral avanzada, anti-inhibición GSM y conexión a Central Receptora 24/7. Sin cuotas obligatorias.
-              </p>
-              <div style={{ display: "flex", gap: 20, marginTop: 20, paddingTop: 18, paddingBottom: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>15s</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>Respuesta central</div></div>
-                <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>2000m</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>Alcance sensores</div></div>
-                <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>7 años</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>Batería sensores</div></div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
-                <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: "16px 24px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                  Solicitar presupuesto gratis <ChevronRight className="w-5 h-5" />
-                </button>
-                <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "14px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                  📞 Llamar
-                </a>
-              </div>
-            </div>
-            {/* Ajax image */}
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-              <div style={{ position: "relative" }}>
-                <div style={{ position: "absolute", inset: -24, borderRadius: 32, background: "radial-gradient(circle, rgba(229,62,62,0.12) 0%, transparent 70%)" }} />
-                <img
-                  src="/images/ajax-sistema-alarma.jpeg"
-                  alt="Sistema de alarma Ajax — central, detectores y sirenas"
-                  style={{ width: "100%", maxWidth: 420, borderRadius: 20, boxShadow: "0 32px 80px rgba(0,0,0,0.6)", display: "block", position: "relative" }}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          <h1 style={{
+            fontSize: "clamp(2rem, 5vw, 3.5rem)", fontWeight: 900, color: "#FFFFFF",
+            lineHeight: 1.1, maxWidth: 700, margin: "0 0 20px",
+            letterSpacing: "-0.02em",
+          }}>
+            Sistemas de Alarma<br />
+            <span style={{ color: "#E53E3E" }}>Profesionales Ajax.</span>
+          </h1>
 
-      {/* ── AJAX SYSTEM DESCRIPTION ── */}
-      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
-        <div className="max-w-4xl mx-auto">
-          <div className="grid sm:grid-cols-2 gap-10 items-start">
-            <div>
-              <span style={{ display: "inline-block", backgroundColor: "rgba(229,62,62,0.1)", color: "#E53E3E", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", marginBottom: 14, letterSpacing: 1 }}>
-                TECNOLOGÍA AJAX · LÍDER EUROPEO
-              </span>
-              <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 14px" }}>¿Qué es el sistema Ajax?</h2>
-              <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.8, margin: "0 0 12px" }}>
-                Ajax Systems es la marca de seguridad electrónica de más rápido crecimiento en Europa, galardonada con múltiples premios internacionales. Sus sistemas son utilizados por cuerpos de seguridad, embajadas y empresas de primer nivel en más de 130 países.
-              </p>
-              <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.8, margin: "0 0 12px" }}>
-                A diferencia de las alarmas convencionales, Ajax utiliza su propio protocolo inalámbrico propietario llamado <strong>Jeweller</strong>, que garantiza comunicación en tiempo real con respuesta de menos de 0,15 segundos entre el sensor y la central. El alcance en campo abierto es de hasta <strong>2000 metros</strong>, mucho mayor que cualquier alarma WiFi convencional.
-              </p>
-              <p style={{ fontSize: 14, color: "#374151", lineHeight: 1.8, margin: 0 }}>
-                Toda la comunicación está cifrada con <strong>AES-256</strong> y el sistema detecta activamente los intentos de inhibición de señal (jamming), algo que ninguna alarma de baja gama ofrece. La central Hub dispone de batería de respaldo de 16 horas y triple canal de comunicación: WiFi, Ethernet y 4G simultáneos.
-              </p>
-            </div>
-            <div>
-              <span style={{ display: "inline-block", backgroundColor: "rgba(229,62,62,0.1)", color: "#E53E3E", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", marginBottom: 14, letterSpacing: 1 }}>
-                INALÁMBRICA VS. CABLEADA
-              </span>
-              <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 14px" }}>¿Cuál necesito?</h2>
-              <div style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 20, marginBottom: 12, border: "1px solid #E5E7EB" }}>
-                <div style={{ fontWeight: 800, fontSize: 15, color: "#0A0A1A", marginBottom: 8 }}>Alarma Inalámbrica Ajax</div>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, margin: "0 0 10px" }}>
-                  Sin obras ni cableado. Instalación en pocas horas. Ideal para viviendas, pisos, oficinas y comercios ya construidos. Fácilmente ampliable y reubicable. La opción más popular hoy.
-                </p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {["Sin pasar cables por paredes", "Instalación en pocas horas", "Ampliable en cualquier momento", "Batería de respaldo en todos los sensores"].map(f => (
-                    <li key={f} style={{ fontSize: 12, color: "#374151", lineHeight: 2 }}>
-                      <span style={{ color: "#22C55E", fontWeight: 700, marginRight: 6 }}>✓</span>{f}
-                    </li>
-                  ))}
-                </ul>
+          <p style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)", color: "#CBD5E0", maxWidth: 520, lineHeight: 1.65, margin: "0 0 40px" }}>
+            La tecnología de alarma más avanzada del mercado. Respuesta certificada en menos de 15 segundos. Instalación inalámbrica sin obras.
+          </p>
+
+          {/* Stats */}
+          <div style={{ display: "flex", gap: 40, marginBottom: 44, flexWrap: "wrap" }}>
+            {[
+              { val: "15s", label: "Tiempo de respuesta" },
+              { val: "2000m", label: "Alcance de señal" },
+              { val: "7 años", label: "Batería sensores" },
+              { val: "AES-128", label: "Cifrado militar" },
+            ].map(s => (
+              <div key={s.val}>
+                <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{s.val}</div>
+                <div style={{ fontSize: 12, color: "#718096", marginTop: 4, fontWeight: 500 }}>{s.label}</div>
               </div>
-              <div style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 20, border: "1px solid #E5E7EB" }}>
-                <div style={{ fontWeight: 800, fontSize: 15, color: "#0A0A1A", marginBottom: 8 }}>Alarma Cableada Tradicional</div>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.7, margin: "0 0 10px" }}>
-                  Instalación durante obra o reforma. Cableado oculto en paredes para máxima integración. Recomendada para proyectos de construcción nueva, edificios industriales y grandes instalaciones.
-                </p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {["Cableado completamente oculto", "Sin baterías que cambiar en sensores", "Mayor capacidad de zonas", "Integración total con domótica"].map(f => (
-                    <li key={f} style={{ fontSize: 12, color: "#374151", lineHeight: 2 }}>
-                      <span style={{ color: "#22C55E", fontWeight: 700, marginRight: 6 }}>✓</span>{f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            ))}
+          </div>
+
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+            <button
+              onClick={() => setModalOpen(true)}
+              style={{
+                background: "#E53E3E", color: "#fff", border: "none", borderRadius: 8,
+                padding: "14px 32px", fontSize: 15, fontWeight: 700, cursor: "pointer",
+                transition: "background 0.2s",
+              }}
+            >
+              Solicitar presupuesto gratis
+            </button>
+            <a
+              href="tel:+34638109947"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                background: "transparent", color: "#fff",
+                border: "2px solid rgba(255,255,255,0.25)", borderRadius: 8,
+                padding: "14px 28px", fontSize: 15, fontWeight: 700, textDecoration: "none",
+              }}
+            >
+              <Phone size={16} />
+              Llamar
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ── AJAX COMPONENTS ── */}
-      <section style={{ backgroundColor: "#0F1923", padding: "56px 20px" }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#fff", margin: "0 0 8px" }}>Componentes del Sistema Ajax</h2>
-          <p style={{ color: "#64748B", fontSize: 14, marginBottom: 28 }}>Cada pieza del sistema trabaja en conjunto para una protección sin puntos ciegos</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {AJAX_COMPONENTS.map((c) => (
-              <div key={c.title} style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: 18 }}>
-                <div style={{ width: 8, height: 8, backgroundColor: "#E53E3E", borderRadius: "50%", marginBottom: 10 }} />
-                <h3 style={{ fontWeight: 800, fontSize: 13, color: "#fff", margin: "0 0 6px" }}>{c.title}</h3>
-                <p style={{ fontSize: 11, color: "#64748B", lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
+      {/* ── CÓMO FUNCIONA ── */}
+      <section style={{ background: "#FFFFFF", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Proceso</span>
+            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>
+              ¿Cómo funciona el sistema?
+            </h2>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 2 }}>
+            {HOW_IT_WORKS.map((step, idx) => (
+              <div key={step.step} style={{ position: "relative", padding: "40px 32px", background: idx % 2 === 0 ? "#F8FAFC" : "#FFFFFF", borderTop: "3px solid " + (idx === 0 ? "#E53E3E" : "#E2E8F0") }}>
+                <div style={{ fontSize: "3.5rem", fontWeight: 900, color: "#E8ECF0", lineHeight: 1, marginBottom: 16 }}>{step.step}</div>
+                <div style={{ width: 44, height: 44, background: "#FFF1F1", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                  <step.icon size={22} color="#E53E3E" />
+                </div>
+                <h3 style={{ fontSize: 18, fontWeight: 800, color: "#0A0F1A", margin: "0 0 10px" }}>{step.title}</h3>
+                <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── TECH FEATURES ── */}
-      <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Por qué Ajax es lo mejor del mercado</h2>
-          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Tecnología de nivel profesional para protección real</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {FEATURES.map((f) => (
-              <div key={f.title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: 18, border: "1px solid #E5E7EB" }}>
-                <div style={{ color: "#E53E3E", marginBottom: 10 }}>{f.icon}</div>
-                <h3 style={{ fontWeight: 800, fontSize: 13, color: "#0A0A1A", margin: "0 0 6px" }}>{f.title}</h3>
-                <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{f.desc}</p>
+      {/* ── AJAX IMAGE SHOWCASE ── */}
+      <section style={{ background: "#0A0F1A", padding: "80px 24px", position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", top: 0, right: 0, width: "50%", height: "100%",
+          backgroundImage: "url('/images/ajax-sistema-alarma.jpeg')",
+          backgroundSize: "cover", backgroundPosition: "center",
+          opacity: 0.2,
+        }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg, #0A0F1A 50%, transparent 100%)" }} />
+
+        <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+          <div>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Tecnología Ajax</span>
+            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#FFFFFF", margin: "12px 0 20px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+              El sistema de alarma más fiable del mundo
+            </h2>
+            <p style={{ fontSize: 15, color: "#94A3B8", lineHeight: 1.75, margin: "0 0 28px" }}>
+              Ajax Systems es el fabricante europeo nº1 en alarmas profesionales. Sus dispositivos utilizan el protocolo radio <strong style={{ color: "#CBD5E0" }}>Jeweller</strong> — un sistema propietario de doble vía con alcance de 2.000 metros y cifrado AES-128.
+            </p>
+            <p style={{ fontSize: 15, color: "#94A3B8", lineHeight: 1.75, margin: 0 }}>
+              A diferencia de sistemas convencionales, Ajax elimina los puntos de fallo: sin cableado que cortar, sin interferencias WiFi, con batería de respaldo automática y comunicación redundante por SIM + internet.
+            </p>
+          </div>
+
+          <div style={{ position: "relative" }}>
+            <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}>
+              <img
+                src="/images/ajax-sistema-alarma.jpeg"
+                alt="Sistema de alarma Ajax profesional"
+                style={{ width: "100%", display: "block", aspectRatio: "4/3", objectFit: "cover" }}
+              />
+            </div>
+            <div style={{
+              position: "absolute", bottom: -20, left: -20,
+              background: "#E53E3E", borderRadius: 12, padding: "16px 20px",
+              boxShadow: "0 8px 32px rgba(229,62,62,0.4)",
+            }}>
+              <div style={{ fontSize: 24, fontWeight: 900, color: "#fff", lineHeight: 1 }}>15s</div>
+              <div style={{ fontSize: 11, color: "rgba(255,255,255,0.8)", marginTop: 2 }}>Respuesta CRA</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── COMPONENTES AJAX ── */}
+      <section style={{ background: "#F8FAFC", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 56 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Dispositivos</span>
+            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 12px", letterSpacing: "-0.02em" }}>
+              Componentes del sistema Ajax
+            </h2>
+            <p style={{ fontSize: 15, color: "#64748B", maxWidth: 520, margin: "0 auto" }}>
+              Cada dispositivo está diseñado para trabajar en conjunto. Una instalación completa adapta los componentes a la geometría y necesidades del espacio.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 16 }}>
+            {AJAX_COMPONENTS.map((c, idx) => (
+              <div key={c.name} style={{
+                background: "#FFFFFF", borderRadius: 12, padding: "28px 24px",
+                border: "1px solid #E2E8F0",
+                transition: "transform 0.2s, box-shadow 0.2s",
+              }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
+                  <div style={{
+                    width: 48, height: 48, background: "#0A0F1A", borderRadius: 10,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <Shield size={22} color="#E53E3E" />
+                  </div>
+                  <span style={{
+                    fontSize: 11, fontWeight: 700, color: "#E53E3E",
+                    background: "#FFF1F1", borderRadius: 100, padding: "3px 10px",
+                    letterSpacing: "0.06em", textTransform: "uppercase",
+                  }}>{c.tag}</span>
+                </div>
+                <h3 style={{ fontSize: 16, fontWeight: 800, color: "#0A0F1A", margin: "0 0 8px" }}>{c.name}</h3>
+                <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── PROMOTIONS ── */}
-      <PromoAccordion
-        bg="#111827"
-        title="Kits de Alarma Ajax — Precios Especiales"
-        items={ALARM_PROMOS}
-        footerText="Instalación profesional incluida en todos los kits · Garantía de por vida en equipos"
-      />
+      {/* ── CARACTERÍSTICAS TÉCNICAS ── */}
+      <section style={{ background: "#FFFFFF", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+            <div>
+              <span style={{ fontSize: 12, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Especificaciones</span>
+              <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#0A0F1A", margin: "12px 0 20px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+                Por qué Ajax es diferente
+              </h2>
+              <p style={{ fontSize: 15, color: "#64748B", lineHeight: 1.75, marginBottom: 32 }}>
+                Cada detalle del sistema ha sido diseñado para eliminar los puntos de fallo que afectan a otras alarmas del mercado. Protocolo propietario, cifrado end-to-end, redundancia de comunicaciones.
+              </p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                {["Compatibilidad con +50 CRA profesionales en España", "Aplicación oficial para iOS y Android incluida", "Integración con Google Home y Amazon Alexa", "Soporte técnico en español disponible 24/7"].map(item => (
+                  <div key={item} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                    <div style={{ width: 20, height: 20, borderRadius: "50%", background: "#E53E3E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 1 }}>
+                      <Check size={11} color="#fff" strokeWidth={3} />
+                    </div>
+                    <span style={{ fontSize: 14, color: "#374151", lineHeight: 1.55 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              {TECH_FEATURES.map(f => (
+                <div key={f.title} style={{
+                  background: "#F8FAFC", borderRadius: 12, padding: "24px 20px",
+                  border: "1px solid #E2E8F0",
+                }}>
+                  <div style={{ width: 40, height: 40, background: "#FFF1F1", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                    <f.icon size={20} color="#E53E3E" />
+                  </div>
+                  <h4 style={{ fontSize: 13, fontWeight: 800, color: "#0A0F1A", margin: "0 0 6px" }}>{f.title}</h4>
+                  <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ── FAQ ── */}
-      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
-        <div className="max-w-3xl mx-auto">
-          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Preguntas Frecuentes sobre Alarmas Ajax</h2>
-          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Todo lo que necesitas saber antes de instalar una alarma</p>
-          <Accordion type="single" collapsible className="space-y-2">
-            {FAQS.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-[#F8F9FA] rounded-xl border border-gray-200 px-5 overflow-hidden">
-                <AccordionTrigger className="text-left text-[15px] font-semibold text-[#0A0A1A] hover:text-[#E53E3E] transition-colors duration-300 py-5">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-gray-600 text-sm leading-relaxed pb-5">
-                  {faq.a}
-                </AccordionContent>
-              </AccordionItem>
+      <section style={{ background: "#F8FAFC", padding: "80px 24px" }}>
+        <div style={{ maxWidth: 760, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>FAQ</span>
+            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>
+              Preguntas frecuentes
+            </h2>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            {FAQS.map((faq, idx) => (
+              <div key={idx} style={{
+                background: "#FFFFFF", borderRadius: 10, border: "1px solid #E2E8F0",
+                overflow: "hidden",
+              }}>
+                <button
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  style={{
+                    width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center",
+                    padding: "20px 24px", background: "none", border: "none", cursor: "pointer", textAlign: "left",
+                  }}
+                >
+                  <span style={{ fontSize: 15, fontWeight: 700, color: "#0A0F1A", paddingRight: 16, lineHeight: 1.4 }}>{faq.q}</span>
+                  {openFaq === idx
+                    ? <ChevronUp size={18} color="#E53E3E" style={{ flexShrink: 0 }} />
+                    : <ChevronDown size={18} color="#94A3B8" style={{ flexShrink: 0 }} />}
+                </button>
+                {openFaq === idx && (
+                  <div style={{ padding: "0 24px 20px", borderTop: "1px solid #F1F5F9" }}>
+                    <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.75, margin: "16px 0 0" }}>{faq.a}</p>
+                  </div>
+                )}
+              </div>
             ))}
-          </Accordion>
+          </div>
         </div>
       </section>
 
       {/* ── FINAL CTA ── */}
-      <section style={{ background: "linear-gradient(135deg, #E53E3E, #C53030)", padding: "48px 20px" }}>
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 8px" }}>¿Necesitas una Alarma en Barcelona?</h2>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, margin: "0 0 28px" }}>Presupuesto gratuito · Instalación en 1 día · Garantía de por vida</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
-              Solicitar presupuesto gratis →
+      <section style={{ background: "#0A0F1A", padding: "80px 24px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: "url('/images/ajax-sistema-alarma.jpeg')",
+          backgroundSize: "cover", backgroundPosition: "center",
+          opacity: 0.08,
+        }} />
+        <div style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}>
+          <div style={{ width: 64, height: 64, background: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
+            <Shield size={28} color="#E53E3E" />
+          </div>
+          <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 16px", letterSpacing: "-0.02em" }}>
+            Protege tu hogar hoy mismo
+          </h2>
+          <p style={{ fontSize: 16, color: "#94A3B8", lineHeight: 1.7, margin: "0 0 40px" }}>
+            Presupuesto personalizado en 24 horas. Instalación en menos de una semana. Sin compromiso.
+          </p>
+          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <button
+              onClick={() => setModalOpen(true)}
+              style={{
+                background: "#E53E3E", color: "#fff", border: "none", borderRadius: 8,
+                padding: "16px 36px", fontSize: 16, fontWeight: 700, cursor: "pointer",
+              }}
+            >
+              Solicitar presupuesto gratis
             </button>
-            <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
-              📞 Llamar
+            <a
+              href="tel:+34638109947"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                color: "#fff", border: "2px solid rgba(255,255,255,0.25)", borderRadius: 8,
+                padding: "16px 28px", fontSize: 16, fontWeight: 700, textDecoration: "none",
+              }}
+            >
+              <Phone size={18} />
+              Llamar ahora
             </a>
           </div>
         </div>
       </section>
 
       <FooterSection />
-      <HeroContactModal open={showModal} onClose={() => setShowModal(false)} defaultServicio="Sistema de alarma" />
+      {modalOpen && <HeroContactModal onClose={() => setModalOpen(false)} defaultServicio="Alarmas" />}
     </div>
   );
 }
