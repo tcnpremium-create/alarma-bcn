@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { Camera, Shield, Bell, Key } from "lucide-react";
 
 const SERVICES = [
-  { icon: Camera, title: "Cámaras 4K con IA", text: "Detecta intrusos al instante. Visión nocturna en color. Control desde el móvil.", link: "/camaras-barcelona", cta: "Ver cámaras →" },
-  { icon: Shield, title: "Alarmas Conectadas", text: "Blindadas contra inhibidores. Central Receptora 24/7. Respuesta en 15 segundos.", link: "/alarmas-barcelona", cta: "Ver alarmas →" },
+  { icon: Camera, title: "Cámaras 4K con IA", text: "Detecta intrusos al instante. Visión nocturna en color. Control desde el móvil.", link: "/videovigilancia", cta: "Ver cámaras →" },
+  { icon: Shield, title: "Alarmas Conectadas", text: "Blindadas contra inhibidores. Central Receptora 24/7. Respuesta en 15 segundos.", link: "/sistemas-alarma", cta: "Ver alarmas →" },
   { icon: Bell, title: "Videoporteros IP", text: "Ve quién llama desde tu móvil. Apertura remota. Fermax, Bticino y Golmar.", link: "/videoporteros", cta: "Ver videoporteros →" },
-  { icon: Key, title: "Control de Accesos", text: "Biometría facial, tarjetas RFID y apertura remota para empresas y comunidades.", link: "/ControlAccesos", cta: "Ver accesos →" },
+  { icon: Key, title: "Control de Accesos", text: "Biometría facial, tarjetas RFID y apertura remota para empresas y comunidades.", link: "/control-accesos", cta: "Ver accesos →" },
 ];
 
 export default function HomeServicesGrid() {
