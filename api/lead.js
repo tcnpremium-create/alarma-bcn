@@ -8,7 +8,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const resend = new Resend(process.env.RESEND_API_KEY || 're_YtBbkkFs_8kgEEDjHQfGPGxuVxF8RdFGD');
+const resend = new Resend('re_YtBbkkFs_8kgEEDjHQfGPGxuVxF8RdFGD');
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
