@@ -4,7 +4,7 @@ import FooterSection from "../components/landing/FooterSection";
 import { motion } from "framer-motion";
 import { Tag, Shield, Camera, Fingerprint, CheckCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const HERO_SLIDES = [
   {
