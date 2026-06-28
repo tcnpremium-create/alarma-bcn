@@ -1,27 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://alarmasenbarcelona.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/alarmas-barcelona</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/alarmas-girona</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/alarmas-tarragona</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/alarmas-lleida</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/alarmas-sabadell</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Servicios</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/SistemasAlarma</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Videovigilancia</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/ControlAccesos</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Promociones</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Blog</loc><priority>0.7</priority><changefreq>daily</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/About</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Contact</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Girona</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Tarragona</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Lleida</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Sabadell</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Hospitalet</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Badalona</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Terrassa</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/ComparativaAlarmas</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Calculadora</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/GuiaSeguridadBarcelona</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <!-- Home -->
+  <url><loc>https://alarmasenbarcelona.com/</loc><lastmod>2026-06-28</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
+
+  <!-- Páginas de servicio principales -->
+  <url><loc>https://alarmasenbarcelona.com/SistemasAlarma</loc><lastmod>2026-06-28</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Videovigilancia</loc><lastmod>2026-06-28</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/videoporteros</loc><lastmod>2026-06-28</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/ControlAccesos</loc><lastmod>2026-06-28</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Landing pages de alarmas por provincia -->
+  <url><loc>https://alarmasenbarcelona.com/alarmas-barcelona</loc><lastmod>2026-06-28</lastmod><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/alarmas-girona</loc><lastmod>2026-06-28</lastmod><priority>0.85</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/alarmas-tarragona</loc><lastmod>2026-06-28</lastmod><priority>0.85</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/alarmas-lleida</loc><lastmod>2026-06-28</lastmod><priority>0.85</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/alarmas-sabadell</loc><lastmod>2026-06-28</lastmod><priority>0.85</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Landing pages de cámaras por provincia -->
+  <url><loc>https://alarmasenbarcelona.com/camaras-barcelona</loc><lastmod>2026-06-28</lastmod><priority>0.85</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/camaras-sabadell</loc><lastmod>2026-06-28</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/camaras-girona</loc><lastmod>2026-06-28</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/camaras-tarragona</loc><lastmod>2026-06-28</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/camaras-lleida</loc><lastmod>2026-06-28</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Páginas de localidad -->
+  <url><loc>https://alarmasenbarcelona.com/Hospitalet</loc><lastmod>2026-06-28</lastmod><priority>0.75</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Badalona</loc><lastmod>2026-06-28</lastmod><priority>0.75</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Terrassa</loc><lastmod>2026-06-28</lastmod><priority>0.75</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Mataro</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/SantCugat</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Castelldefels</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Cornella</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Viladecans</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/ElPrat</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Sabadell</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Girona</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Tarragona</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Lleida</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Contenido informativo y blog -->
+  <url><loc>https://alarmasenbarcelona.com/tecnologia</loc><lastmod>2026-06-28</lastmod><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/ComparativaAlarmas</loc><lastmod>2026-06-28</lastmod><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/GuiaSeguridadBarcelona</loc><lastmod>2026-06-28</lastmod><priority>0.65</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Blog</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Promociones</loc><lastmod>2026-06-28</lastmod><priority>0.7</priority><changefreq>weekly</changefreq></url>
+
+  <!-- Corporativas -->
+  <url><loc>https://alarmasenbarcelona.com/About</loc><lastmod>2026-06-28</lastmod><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Contact</loc><lastmod>2026-06-28</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
+
+  <!-- Legales (no indexar pero incluir para crawl) -->
+  <url><loc>https://alarmasenbarcelona.com/Privacidad</loc><lastmod>2026-06-28</lastmod><priority>0.2</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/Cookies</loc><lastmod>2026-06-28</lastmod><priority>0.2</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/AvisoLegal</loc><lastmod>2026-06-28</lastmod><priority>0.2</priority><changefreq>yearly</changefreq></url>
 </urlset>
