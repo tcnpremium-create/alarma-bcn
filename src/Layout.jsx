@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useHubSpotTracking } from "@/components/tracking/useHubSpotTracking";
 import MobileFloatingCTA from "@/components/landing/MobileFloatingCTA";
-import AIChatBot from "@/components/chatbot/AIChatBot";
+import HeroContactModal from "@/components/landing/HeroContactModal";
 
 export default function Layout({ children }) {
   const location = useLocation();
+  const [modalOpen, setModalOpen] = useState(false);
   useHubSpotTracking();
 
-  // SOLUCIÓN CRÍTICA: Scroll al principio al cambiar de página
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location.pathname]);
 
-  // Show floating CTA only on public-facing pages
   const hiddenPaths = ["/AdminLeads", "/AreaClientes"];
   const showFloatingCTA = !hiddenPaths.includes(location.pathname);
 
@@ -27,33 +26,16 @@ export default function Layout({ children }) {
       </Helmet>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
-        * {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        
-        html {
-          scroll-behavior: smooth;
-        }
-        
-        /* Hide default scrollbar styling for a cleaner look */
-        ::-webkit-scrollbar {
-          width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #c1c1c1;
-          border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #a1a1a1;
-        }
+        * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a1a1a1; }
       `}</style>
       {children}
-      {showFloatingCTA && <MobileFloatingCTA />}
-      {showFloatingCTA && <AIChatBot />}
+      {showFloatingCTA && <MobileFloatingCTA onOpenModal={() => setModalOpen(true)} />}
+      {modalOpen && <HeroContactModal onClose={() => setModalOpen(false)} />}
     </div>
   );
 }
