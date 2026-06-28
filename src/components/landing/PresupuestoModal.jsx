@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import { X, Phone, Home, Building2, Users, Warehouse, Camera, ShieldAlert, Video, KeyRound, CheckCircle } from "lucide-react";
+import { X, Phone, CheckCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const SPACES = [
-  { id: "hogar", Icon: Home, label: "Mi hogar" },
-  { id: "negocio", Icon: Building2, label: "Mi negocio" },
-  { id: "comunidad", Icon: Users, label: "Mi comunidad" },
-  { id: "nave", Icon: Warehouse, label: "Mi nave industrial" },
+  { id: "hogar", label: "Mi hogar" },
+  { id: "negocio", label: "Mi negocio" },
+  { id: "comunidad", label: "Mi comunidad de vecinos" },
+  { id: "nave", label: "Mi nave industrial" },
 ];
 
 const SERVICES = [
-  { id: "Cámaras de seguridad", Icon: Camera, label: "Cámaras de seguridad" },
-  { id: "Sistema de alarma", Icon: ShieldAlert, label: "Sistema de alarma" },
-  { id: "Videoportero", Icon: Video, label: "Videoportero" },
-  { id: "Control de accesos", Icon: KeyRound, label: "Control de accesos" },
+  { id: "Cámaras de seguridad", label: "Cámaras de seguridad" },
+  { id: "Sistema de alarma", label: "Sistema de alarma" },
+  { id: "Videoportero", label: "Videoportero" },
+  { id: "Control de accesos", label: "Control de accesos" },
 ];
 
 export default function PresupuestoModal({ open, onClose }) {
@@ -54,7 +54,11 @@ export default function PresupuestoModal({ open, onClose }) {
 
   const handleClose = () => {
     onClose();
-    setTimeout(() => { setStep(1); setSpace(""); setServices([]); setForm({ nombre: "", telefono: "", email: "", ciudad: "" }); setSuccess(false); }, 300);
+    setTimeout(() => {
+      setStep(1); setSpace(""); setServices([]);
+      setForm({ nombre: "", telefono: "", email: "", ciudad: "" });
+      setSuccess(false);
+    }, 300);
   };
 
   const canNext = step === 1 ? !!space : step === 2 ? services.length > 0 : false;
@@ -69,7 +73,7 @@ export default function PresupuestoModal({ open, onClose }) {
         className="relative bg-white w-full sm:max-w-md sm:rounded-3xl rounded-t-3xl shadow-2xl max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6 sm:p-8">
+        <div className="p-6 sm:p-8 pb-24 sm:pb-8">
           {/* Header */}
           <div className="flex items-start justify-between mb-1">
             <div>
@@ -105,23 +109,27 @@ export default function PresupuestoModal({ open, onClose }) {
               <motion.div key={step} initial={{ x: 40, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -40, opacity: 0 }} transition={{ duration: 0.2 }}>
                 {step === 1 && (
                   <div>
-                    <h4 style={{ fontWeight: 700, fontSize: 17, color: "#0A0A1A", marginBottom: 16 }}>¿Qué necesitas proteger?</h4>
-                    <div className="grid grid-cols-2 gap-3">
+                    <h4 style={{ fontWeight: 700, fontSize: 17, color: "#0A0A1A", marginBottom: 8 }}>¿Para qué tipo de espacio?</h4>
+                    <div style={{ borderTop: "1px solid #F3F4F6" }}>
                       {SPACES.map((s) => (
-                        <button key={s.id} onClick={() => setSpace(s.id)}
-                          className="p-5 rounded-2xl border-2 text-center transition-all"
-                          style={{ borderColor: space === s.id ? "#E53E3E" : "#E5E7EB", backgroundColor: space === s.id ? "#FFF5F5" : "white" }}>
-                          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
-                            <div style={{
-                              width: 48, height: 48, borderRadius: 14,
-                              backgroundColor: space === s.id ? "#FEE2E2" : "#F3F4F6",
-                              display: "flex", alignItems: "center", justifyContent: "center",
-                              transition: "background-color 0.2s"
-                            }}>
-                              <s.Icon style={{ width: 22, height: 22, color: "#E53E3E" }} />
-                            </div>
+                        <button
+                          key={s.id}
+                          onClick={() => setSpace(s.id)}
+                          style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px 4px", borderBottom: "1px solid #F3F4F6", background: "none", cursor: "pointer", border: "none", borderBottom: "1px solid #F3F4F6", outline: "none" }}
+                        >
+                          <div style={{
+                            width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
+                            border: space === s.id ? "2px solid #E53E3E" : "2px solid #D1D5DB",
+                            display: "flex", alignItems: "center", justifyContent: "center",
+                            transition: "border-color 0.15s"
+                          }}>
+                            {space === s.id && (
+                              <div style={{ width: 11, height: 11, borderRadius: "50%", backgroundColor: "#E53E3E" }} />
+                            )}
                           </div>
-                          <span style={{ fontWeight: 700, fontSize: 13, color: "#0A0A1A" }}>{s.label}</span>
+                          <span style={{ fontSize: 16, color: "#0A0A1A", fontWeight: space === s.id ? 700 : 400, textAlign: "left" }}>
+                            {s.label}
+                          </span>
                         </button>
                       ))}
                     </div>
@@ -129,25 +137,30 @@ export default function PresupuestoModal({ open, onClose }) {
                 )}
                 {step === 2 && (
                   <div>
-                    <h4 style={{ fontWeight: 700, fontSize: 17, color: "#0A0A1A", marginBottom: 16 }}>¿Qué servicio te interesa?</h4>
-                    <div className="space-y-3">
+                    <h4 style={{ fontWeight: 700, fontSize: 17, color: "#0A0A1A", marginBottom: 8 }}>¿Qué servicio necesitas?</h4>
+                    <div style={{ borderTop: "1px solid #F3F4F6" }}>
                       {SERVICES.map((s) => (
-                        <button key={s.id} onClick={() => toggleService(s.id)}
-                          className="w-full p-4 rounded-2xl border-2 text-left flex items-center gap-4 transition-all"
-                          style={{ borderColor: services.includes(s.id) ? "#E53E3E" : "#E5E7EB", backgroundColor: services.includes(s.id) ? "#FFF5F5" : "white" }}>
+                        <button
+                          key={s.id}
+                          onClick={() => toggleService(s.id)}
+                          style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px 4px", borderBottom: "1px solid #F3F4F6", background: "none", cursor: "pointer", border: "none", borderBottom: "1px solid #F3F4F6", outline: "none" }}
+                        >
                           <div style={{
-                            width: 42, height: 42, borderRadius: 12, flexShrink: 0,
-                            backgroundColor: services.includes(s.id) ? "#FEE2E2" : "#F3F4F6",
+                            width: 22, height: 22, borderRadius: 6, flexShrink: 0,
+                            border: services.includes(s.id) ? "2px solid #E53E3E" : "2px solid #D1D5DB",
+                            backgroundColor: services.includes(s.id) ? "#E53E3E" : "white",
                             display: "flex", alignItems: "center", justifyContent: "center",
-                            transition: "background-color 0.2s"
+                            transition: "all 0.15s"
                           }}>
-                            <s.Icon style={{ width: 20, height: 20, color: "#E53E3E" }} />
+                            {services.includes(s.id) && (
+                              <svg width="12" height="9" viewBox="0 0 12 9" fill="none">
+                                <path d="M1 4L4.5 7.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            )}
                           </div>
-                          <span style={{ fontWeight: 700, fontSize: 14, color: "#0A0A1A" }}>{s.label}</span>
-                          <div className="ml-auto w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0"
-                            style={{ borderColor: services.includes(s.id) ? "#E53E3E" : "#D1D5DB", backgroundColor: services.includes(s.id) ? "#E53E3E" : "white" }}>
-                            {services.includes(s.id) && <span style={{ color: "white", fontSize: 10, fontWeight: 900 }}>✓</span>}
-                          </div>
+                          <span style={{ fontSize: 16, color: "#0A0A1A", fontWeight: services.includes(s.id) ? 700 : 400, textAlign: "left" }}>
+                            {s.label}
+                          </span>
                         </button>
                       ))}
                     </div>
