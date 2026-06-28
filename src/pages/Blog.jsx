@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Calendar, ArrowRight, Home, Building2, Cpu, Scale, Camera, Newspaper } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { base44 } from "@/api/api";
 import { newArticlesData } from "../components/blog/newArticlesData";
 import BlogHighlights from "../components/landing/BlogHighlights";
