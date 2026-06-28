@@ -4,7 +4,7 @@ import { Calendar, Clock, Share2, Phone, ChevronRight, CheckCircle, HelpCircle, 
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet-async";
 import { newArticlesData } from '@/components/blog/newArticlesData';
 import { originalArticlesData } from '@/components/blog/originalArticlesData';
 import { articleSEOData } from '@/components/blog/articleSEOData';
