@@ -10,6 +10,90 @@ const supabase = createClient(
 
 const resend = new Resend('re_E4tE5cMB_4mpUbRzaSf6xujq15454JsQw');
 
+function buildNotifEmail(formData, phoneClean) {
+  return `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
+    <div style="background:#E53E3E;padding:24px">
+      <h2 style="color:white;margin:0;font-size:20px">NUEVA SOLICITUD - alarmasenbarcelona.com</h2>
+    </div>
+    <div style="padding:24px;background:#fff">
+      <table style="width:100%;border-collapse:collapse">
+        <tr><td style="padding:8px 0;color:#666;width:140px">Nombre</td><td style="padding:8px 0;font-weight:bold">${formData.nombre.trim()}</td></tr>
+        <tr><td style="padding:8px 0;color:#666">Telefono</td><td style="padding:8px 0;font-weight:bold">${phoneClean}</td></tr>
+        <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0">${formData.email?.trim() || '-'}</td></tr>
+        <tr><td style="padding:8px 0;color:#666">Tipo cliente</td><td style="padding:8px 0">${formData.tipo_cliente || '-'}</td></tr>
+        <tr><td style="padding:8px 0;color:#666">Zona</td><td style="padding:8px 0">${formData.zona?.trim() || '-'}</td></tr>
+        <tr><td style="padding:8px 0;color:#666">Servicio</td><td style="padding:8px 0">${formData.servicio_interes?.trim() || '-'}</td></tr>
+      </table>
+      <a href="tel:+34${phoneClean}" style="display:inline-block;margin-top:20px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold;font-size:16px">Llamar ${phoneClean}</a>
+    </div>
+  </div>`;
+}
+
+function buildConfirmEmail(formData) {
+  const nombre = formData.nombre.trim();
+  const servicio = formData.servicio_interes?.trim() || 'sistema de seguridad';
+  return `<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#F3F4F6">
+  <div style="max-width:600px;margin:0 auto;background:#fff;font-family:Arial,Helvetica,sans-serif">
+
+    <div style="background:#0A0A1A;padding:24px 28px;text-align:center">
+      <div style="color:#E53E3E;font-size:20px;font-weight:900;letter-spacing:-0.5px">alarmasenbarcelona.com</div>
+      <div style="color:#9CA3AF;font-size:12px;margin-top:4px">Seguridad profesional en Barcelona</div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#E53E3E 0%,#C53030 100%);padding:36px 28px;text-align:center">
+      <div style="width:64px;height:64px;margin:0 auto 16px;background:rgba(255,255,255,0.15);border-radius:50%">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.15)"/>
+          <path d="M32 14L46 20V32C46 40.8 39.6 49 32 51C24.4 49 18 40.8 18 32V20L32 14Z" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M26 32L30 36L38 28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1 style="color:white;margin:0 0 8px;font-size:24px;font-weight:900">Solicitud recibida, ${nombre}!</h1>
+      <p style="color:rgba(255,255,255,0.88);margin:0;font-size:15px">Tu seguridad es nuestra prioridad</p>
+    </div>
+
+    <div style="padding:32px 28px">
+      <p style="color:#374151;font-size:16px;line-height:1.7;margin:0 0 24px">
+        Hemos recibido tu solicitud para <strong style="color:#0A0A1A">${servicio}</strong>.
+        Nuestro equipo especializado te contactar&aacute; en menos de <strong style="color:#E53E3E">24 horas</strong> con una propuesta personalizada.
+      </p>
+
+      <div style="background:#F9FAFB;border-radius:12px;padding:20px 24px;margin-bottom:24px;border-left:4px solid #E53E3E">
+        <div style="font-weight:800;font-size:12px;color:#6B7280;letter-spacing:0.08em;margin-bottom:14px;text-transform:uppercase">Por qu&eacute; elegirnos</div>
+        <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Instalaci&oacute;n profesional</strong> incluida sin costes ocultos</span></div>
+        <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Sin permanencias</strong> &mdash; cancela cuando quieras</span></div>
+        <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Soporte 24/7</strong> &mdash; siempre disponibles para ti</span></div>
+        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>M&aacute;s de 500 instalaciones</strong> en Barcelona y alrededores</span></div>
+      </div>
+
+      <div style="background:#0A0A1A;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px">
+        <div style="color:#E53E3E;font-size:11px;font-weight:800;letter-spacing:0.12em;margin-bottom:8px">OFERTA EXCLUSIVA</div>
+        <div style="color:white;font-size:20px;font-weight:900;margin-bottom:6px">Descuento especial en tu primera instalaci&oacute;n</div>
+        <div style="color:#9CA3AF;font-size:13px;margin-bottom:14px">Menciona este email al llamar y te aplicamos el descuento</div>
+        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">V&Aacute;LIDO HASTA 31 JULIO 2025</div>
+      </div>
+
+      <a href="tel:+34638109947" style="display:block;background:#E53E3E;color:white;text-align:center;padding:18px;border-radius:50px;font-weight:800;font-size:16px;text-decoration:none;margin-bottom:12px">
+        Llamar ahora: 638 109 947
+      </a>
+      <a href="https://wa.me/34638109947" style="display:block;background:#25D366;color:white;text-align:center;padding:18px;border-radius:50px;font-weight:800;font-size:16px;text-decoration:none">
+        Contactar por WhatsApp
+      </a>
+    </div>
+
+    <div style="background:#F9FAFB;padding:20px 28px;text-align:center;border-top:1px solid #E5E7EB">
+      <p style="color:#9CA3AF;font-size:12px;margin:0 0 4px">alarmasenbarcelona.com &middot; Barcelona y alrededores</p>
+      <p style="color:#9CA3AF;font-size:12px;margin:0">Tel: 638 109 947 &middot; info@alarmasenbarcelona.com</p>
+    </div>
+
+  </div>
+</body>
+</html>`;
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -25,7 +109,6 @@ export default async function handler(req, res) {
 
     const phoneClean = formData.telefono.replace(/\s/g, '');
 
-    // 1. Guardar lead en Supabase
     const { data: lead, error: dbError } = await supabase
       .from('leads')
       .insert([{
@@ -47,30 +130,13 @@ export default async function handler(req, res) {
     let notifStatus = 'not_sent';
     let notifError = null;
 
-    // 2. Email de notificacion a tcnpremium@gmail.com
-    // Resend SDK v3: resend.emails.send() devuelve { data, error }
     try {
       const { data: notifData, error: notifErr } = await resend.emails.send({
         from: 'info@alarmasenbarcelona.com',
         to: 'tcnpremium@gmail.com',
         reply_to: 'tcnpremium@gmail.com',
         subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
-        html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
-          <div style="background:#E53E3E;padding:24px">
-            <h2 style="color:white;margin:0;font-size:20px">NUEVA SOLICITUD - alarmasenbarcelona.com</h2>
-          </div>
-          <div style="padding:24px;background:#fff">
-            <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#666;width:140px">Nombre</td><td style="padding:8px 0;font-weight:bold">${formData.nombre.trim()}</td></tr>
-              <tr><td style="padding:8px 0;color:#666">Telefono</td><td style="padding:8px 0;font-weight:bold">${phoneClean}</td></tr>
-              <tr><td style="padding:8px 0;color:#666">Email</td><td style="padding:8px 0">${formData.email?.trim() || '-'}</td></tr>
-              <tr><td style="padding:8px 0;color:#666">Tipo cliente</td><td style="padding:8px 0">${formData.tipo_cliente || '-'}</td></tr>
-              <tr><td style="padding:8px 0;color:#666">Zona</td><td style="padding:8px 0">${formData.zona?.trim() || '-'}</td></tr>
-              <tr><td style="padding:8px 0;color:#666">Servicio</td><td style="padding:8px 0">${formData.servicio_interes?.trim() || '-'}</td></tr>
-            </table>
-            <a href="tel:+34${phoneClean}" style="display:inline-block;margin-top:20px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold;font-size:16px">Llamar ${phoneClean}</a>
-          </div>
-        </div>`
+        html: buildNotifEmail(formData, phoneClean)
       });
       if (notifErr) {
         notifStatus = 'failed';
@@ -86,23 +152,13 @@ export default async function handler(req, res) {
       console.error('Notif email FAILED:', emailErr.message);
     }
 
-    // 3. Email de confirmacion al cliente (si dio su email)
     if (formData.email?.trim()) {
       try {
         const { data: confirmData, error: confirmErr } = await resend.emails.send({
           from: 'info@alarmasenbarcelona.com',
           to: formData.email.trim(),
-          subject: 'Hemos recibido tu solicitud - alarmasenbarcelona.com',
-          html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
-            <div style="background:#E53E3E;padding:24px">
-              <h2 style="color:white;margin:0">Gracias, ${formData.nombre.trim()}!</h2>
-            </div>
-            <div style="padding:24px;background:#fff">
-              <p style="color:#333">Hemos recibido tu solicitud de presupuesto para <strong>${formData.servicio_interes || 'sistema de seguridad'}</strong>.</p>
-              <p style="color:#333">Nuestro equipo te contactara antes de <strong>24 horas</strong>.</p>
-              <a href="tel:+34638109947" style="display:inline-block;margin-top:16px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold">Llamar</a>
-            </div>
-          </div>`
+          subject: 'Solicitud recibida — te llamamos antes de 24h',
+          html: buildConfirmEmail(formData)
         });
         if (confirmErr) {
           console.error('RESEND ERROR confirm:', JSON.stringify(confirmErr));
