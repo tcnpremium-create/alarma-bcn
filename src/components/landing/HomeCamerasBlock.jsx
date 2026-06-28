@@ -1,8 +1,8 @@
 import React from "react";
-import { Phone, Cpu, Camera, Moon, Smartphone, Shield } from "lucide-react";
+import { Phone, Eye, Camera, Moon, Smartphone, Shield } from "lucide-react";
 
 const FEATURES = [
-  { Icon: Cpu, label: "IA Activa" },
+  { Icon: Eye, label: "Detección" },
   { Icon: Camera, label: "4K HD" },
   { Icon: Moon, label: "Visión Nocturna" },
   { Icon: Smartphone, label: "App 24/7" },
@@ -38,7 +38,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
         />
 
         <p style={{ color: "#374151", fontSize: 16, lineHeight: 1.7, marginTop: 14 }}>
-          No dejes que los delincuentes elijan tu propiedad. Nuestras cámaras con Inteligencia Artificial detectan intrusos en tiempo real y te avisan al instante. Imagen cristalina en 4K, visión nocturna en color y grabación continua. Instalación profesional incluida. Sin cuotas mensuales.
+          No dejes que los delincuentes elijan tu propiedad. Nuestras cámaras detectan movimiento e intrusos en tiempo real y te avisan al instante. Imagen cristalina en 4K, visión nocturna en color y grabación continua. Instalación profesional incluida. Sin cuotas mensuales.
         </p>
 
         <div style={{ display: "flex", gap: 8, marginTop: 16, flexWrap: "wrap" }}>
