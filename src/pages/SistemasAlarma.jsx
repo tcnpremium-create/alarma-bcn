@@ -102,7 +102,7 @@ export default function SistemasAlarma() {
                   Solicitar presupuesto gratis <ChevronRight className="w-5 h-5" />
                 </button>
                 <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "14px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                  📞 638 10 99 47
+                  📞 Llamar
                 </a>
               </div>
             </div>
@@ -248,7 +248,7 @@ export default function SistemasAlarma() {
               Solicitar presupuesto gratis →
             </button>
             <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
-              📞 638 10 99 47
+              📞 Llamar
             </a>
           </div>
         </div>
