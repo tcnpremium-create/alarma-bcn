@@ -70,7 +70,8 @@ export default function Videovigilancia() {
         title="Cámaras Videovigilancia 4K Barcelona | Hikvision y Dahua | Premium Tech Security"
         description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía de por vida. Sin cuotas. Tel: 638 10 99 47"
         keywords="cámaras videovigilancia Barcelona, cámaras seguridad 4K Barcelona, Hikvision Barcelona, Dahua Barcelona, instalación CCTV Barcelona, videovigilancia hogar empresa comunidad"
-        canonicalUrl="https://alarmasenbarcelona.com/Videovigilancia"
+        canonicalUrl="https://alarmasenbarcelona.com/videovigilancia"
+        ogImage="https://alarmasenbarcelona.com/images/camaras-seguridad-hero.jpeg"
         schema={{
           "@context": "https://schema.org",
           "@graph": [
