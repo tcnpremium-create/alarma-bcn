@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Shield, Camera, Fingerprint, Home, Building2, CheckCircle, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
