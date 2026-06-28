@@ -97,6 +97,7 @@ export default function Videoporteros() {
         description="Instalamos videoporteros IP, control de accesos biométrico y reconocimiento facial en Barcelona y toda Catalunya. Fermax, Bticino, Golmar. Presupuesto gratis 638 10 99 47."
         keywords="videoporteros Barcelona, instalación videoportero, Fermax Barcelona, Bticino, Golmar, videoportero IP, control accesos biométrico, reconocimiento facial"
         canonicalUrl="https://alarmasenbarcelona.com/videoporteros"
+        ogImage="https://alarmasenbarcelona.com/images/bticino-videoportero.jpeg"
       />
       <Navbar />
 
