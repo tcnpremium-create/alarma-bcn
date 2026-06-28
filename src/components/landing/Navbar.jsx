@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const NAV_LINKS = [
   { label: "Inicio", href: "/" },
-  { label: "Cámaras", href: "/camaras-barcelona" },
-  { label: "Alarmas", href: "/alarmas-barcelona" },
-  { label: "Control Accesos", href: "/ControlAccesos" },
+  { label: "Cámaras", href: "/videovigilancia" },
+  { label: "Alarmas", href: "/sistemas-alarma" },
+  { label: "Control Accesos", href: "/control-accesos" },
   { label: "Videoporteros", href: "/videoporteros" },
   { label: "Tecnología", href: "/tecnologia" },
   { label: "Blog", href: "/Blog" },
