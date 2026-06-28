@@ -4,7 +4,7 @@ import { AlertTriangle, Shield, MapPin, TrendingUp, Phone, ChevronDown, BarChart
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet-async";
 
 const barrios = [
   {
