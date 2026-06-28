@@ -8,7 +8,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const resend = new Resend('re_YtBbkkFs_8kgEEDjHQfGPGxuVxF8RdFGD');
+const resend = new Resend('re_E4tE5cMB_4mpUbRzaSf6xujq15454JsQw');
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
     // Resend SDK v3: resend.emails.send() devuelve { data, error }
     try {
       const { data: notifData, error: notifErr } = await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'info@alarmasenbarcelona.com',
         to: 'tcnpremium@gmail.com',
         reply_to: 'tcnpremium@gmail.com',
         subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
@@ -90,7 +90,7 @@ export default async function handler(req, res) {
     if (formData.email?.trim()) {
       try {
         const { data: confirmData, error: confirmErr } = await resend.emails.send({
-          from: 'onboarding@resend.dev',
+          from: 'info@alarmasenbarcelona.com',
           to: formData.email.trim(),
           subject: 'Hemos recibido tu solicitud - alarmasenbarcelona.com',
           html: `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
