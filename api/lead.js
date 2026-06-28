@@ -23,6 +23,7 @@ function buildNotifEmail(formData, phoneClean) {
         <tr><td style="padding:8px 0;color:#666">Tipo cliente</td><td style="padding:8px 0">${formData.tipo_cliente || '-'}</td></tr>
         <tr><td style="padding:8px 0;color:#666">Zona</td><td style="padding:8px 0">${formData.zona?.trim() || '-'}</td></tr>
         <tr><td style="padding:8px 0;color:#666">Servicio</td><td style="padding:8px 0">${formData.servicio_interes?.trim() || '-'}</td></tr>
+        <tr><td style="padding:8px 0;color:#666">Descripcion</td><td style="padding:8px 0">${formData.mensaje?.trim() || '-'}</td></tr>
       </table>
       <a href="tel:+34${phoneClean}" style="display:inline-block;margin-top:20px;background:#E53E3E;color:white;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold;font-size:16px">Llamar ${phoneClean}</a>
     </div>
@@ -38,20 +39,19 @@ function buildConfirmEmail(formData) {
 <body style="margin:0;padding:0;background:#F3F4F6">
   <div style="max-width:600px;margin:0 auto;background:#fff;font-family:Arial,Helvetica,sans-serif">
 
-    <div style="background:#0A0A1A;padding:24px 28px;text-align:center">
+    <div style="background:#0A0A1A;padding:20px 28px;text-align:center">
       <div style="color:#E53E3E;font-size:20px;font-weight:900;letter-spacing:-0.5px">alarmasenbarcelona.com</div>
       <div style="color:#9CA3AF;font-size:12px;margin-top:4px">Seguridad profesional en Barcelona</div>
     </div>
 
-    <div style="background:linear-gradient(135deg,#E53E3E 0%,#C53030 100%);padding:36px 28px;text-align:center">
-      <div style="width:64px;height:64px;margin:0 auto 16px;background:rgba(255,255,255,0.15);border-radius:50%">
-        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-          <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.15)"/>
-          <path d="M32 14L46 20V32C46 40.8 39.6 49 32 51C24.4 49 18 40.8 18 32V20L32 14Z" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M26 32L30 36L38 28" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h1 style="color:white;margin:0 0 8px;font-size:24px;font-weight:900">Solicitud recibida, ${nombre}!</h1>
+    <div style="background:linear-gradient(135deg,#E53E3E 0%,#C53030 100%);padding:32px 28px;text-align:center">
+      <img
+        src="https://alarmasenbarcelona.com/images/logo-premium.jpeg"
+        alt="Premium Tech Security"
+        width="200"
+        style="width:200px;max-width:200px;height:auto;display:block;margin:0 auto 20px;border-radius:16px;box-shadow:0 0 50px 35px #C53030"
+      />
+      <h1 style="color:white;margin:0 0 8px;font-size:24px;font-weight:900">&#161;Solicitud recibida, ${nombre}!</h1>
       <p style="color:rgba(255,255,255,0.88);margin:0;font-size:15px">Tu seguridad es nuestra prioridad</p>
     </div>
 
@@ -66,7 +66,7 @@ function buildConfirmEmail(formData) {
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Instalaci&oacute;n profesional</strong> incluida sin costes ocultos</span></div>
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Sin permanencias</strong> &mdash; cancela cuando quieras</span></div>
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Soporte 24/7</strong> &mdash; siempre disponibles para ti</span></div>
-        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>M&aacute;s de 500 instalaciones</strong> en Barcelona y alrededores</span></div>
+        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>M&aacute;s de 5.000 instalaciones</strong> en Barcelona y alrededores</span></div>
       </div>
 
       <div style="background:#0A0A1A;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px">
