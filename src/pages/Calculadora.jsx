@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import FooterSection from "@/components/landing/FooterSection";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const SPACE_OPTIONS = [
   { id: "hogar", emoji: "🏠", label: "Mi hogar" },
