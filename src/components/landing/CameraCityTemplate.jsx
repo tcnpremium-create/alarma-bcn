@@ -1,35 +1,68 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
 import HeroContactModal from "./HeroContactModal";
+import PromoAccordion from "./PromoAccordion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Shield, Smartphone, Clock, CheckCircle, ArrowRight } from "lucide-react";
+import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
 
-const fadeUp = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 } } };
-
-const SERVICES = [
+const CAMERA_PROMOS = [
   {
-    icon: "🏠",
-    title: "Cámaras para Hogar",
-    features: ["Cámaras HD exteriores e interiores", "App móvil iOS y Android", "Visión nocturna en color", "Detección de personas por IA", "Sin cuotas mensuales"],
+    header: "Kit Básico — 2 Cámaras · Ideal Hogar",
+    oldPrice: "690€", price: "449€", savings: "241€",
+    features: ["2 Cámaras HD 4MPx (2K) exterior/interior", "Grabador NVR local con disco 1TB", "Visión nocturna en color", "App móvil iOS/Android incluida", "Instalación profesional incluida", "Garantía de por vida", "Sin cuotas mensuales"],
+    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%202%20Cámaras%20por%20449€",
   },
   {
-    icon: "🏢",
-    title: "Cámaras para Negocio",
-    features: ["IA detección inteligente", "Grabación 24/7 continua", "Identificación 4K ultra HD", "Compatible con Central Receptora", "Control remoto total"],
+    header: "Kit Profesional — 4 Cámaras · Más Vendido", badge: "MÁS VENDIDO",
+    oldPrice: "1.190€", price: "699€", savings: "491€",
+    features: ["4 Cámaras HD 4MPx (2K) exterior/interior", "Grabador NVR 4 canales con disco 2TB", "Detección de movimiento avanzada", "Visión nocturna en color 30m", "App móvil iOS/Android incluida", "Instalación profesional en 1 día", "Garantía de por vida", "Sin cuotas mensuales"],
+    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%204%20Cámaras%20por%20699€",
   },
   {
-    icon: "🏘️",
-    title: "Cámaras para Comunidades",
-    features: ["Portal, garaje y zonas comunes", "Gestión legal RGPD incluida", "Señalética homologada", "NVR local seguro", "Acceso restringido por roles"],
+    header: "Kit Empresarial — 8 Cámaras · Negocio y Comunidades",
+    oldPrice: "1.990€", price: "1.199€", savings: "791€",
+    features: ["8 Cámaras 4K Ultra HD exterior/interior", "Grabador NVR 8 canales con disco 4TB", "Detección de movimiento y zona perimetral", "Reconocimiento de matrículas opcional", "Visión nocturna en color 40m", "App móvil multiusuario", "Instalación profesional 1-2 días", "Garantía de por vida", "Sin cuotas mensuales"],
+    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%208%20Cámaras%20por%201.199€",
   },
 ];
 
+const SERVICES = [
+  {
+    num: "01",
+    title: "Cámaras para Hogar",
+    desc: "Protege tu vivienda con cámaras HD 4K en puntos clave: acceso principal, garaje, jardín. Control total desde el móvil, visión nocturna en color y grabación local sin cuotas.",
+    features: ["Cámaras domo y bala HD 4K exteriores e interiores", "Visión nocturna en color hasta 30m", "Grabador NVR con disco duro local", "App móvil iOS y Android gratuita", "Alertas por movimiento en tiempo real", "Sin cuotas mensuales"],
+  },
+  {
+    num: "02",
+    title: "Cámaras para Negocio",
+    desc: "Instalaciones profesionales para tiendas, oficinas y locales comerciales. Grabación continua 24/7, acceso multiusuario y alta resolución para identificar detalles con claridad.",
+    features: ["Resolución 4K Ultra HD para identificación de detalles", "Grabación continua 24/7 con grabador profesional", "Cámaras PTZ motorizadas con zoom óptico", "Acceso remoto multiusuario desde cualquier dispositivo", "Compatible con central receptora de alarmas", "Cumplimiento normativa RGPD incluido"],
+  },
+  {
+    num: "03",
+    title: "Cámaras para Comunidades",
+    desc: "Solución completa para portales, garajes, escaleras y zonas comunes. Gestión RGPD incluida, señalética homologada y acceso restringido por perfiles.",
+    features: ["Cobertura de portal, garaje y zonas comunes", "Cámaras domo antivandálicas IP66", "Grabador NVR con almacenamiento RAID", "Gestión legal RGPD con documentación incluida", "Señalética homologada incluida", "Acceso restringido por roles (presidente, administrador)"],
+  },
+];
+
+const WHAT_WE_DO = [
+  { icon: <Camera className="w-5 h-5" />, title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto, 360°, resistente al vandalismo." },
+  { icon: <Eye className="w-5 h-5" />, title: "Cámara Bullet", desc: "Larga distancia, hasta 60m. Ideal para entradas, vallas y accesos exteriores." },
+  { icon: <Wifi className="w-5 h-5" />, title: "Cámara PTZ", desc: "Motorizada con zoom óptico 20x. Control remoto de pan, tilt y zoom." },
+  { icon: <Sun className="w-5 h-5" />, title: "Visión Nocturna Color", desc: "Imagen en color incluso en oscuridad total gracias a infrarrojos avanzados." },
+  { icon: <HardDrive className="w-5 h-5" />, title: "Grabador NVR / DVR", desc: "Almacenamiento local seguro de 1 a 16TB. Sin depender de la nube." },
+  { icon: <Smartphone className="w-5 h-5" />, title: "App Móvil", desc: "Visualización en tiempo real desde iOS y Android. Sin coste adicional." },
+  { icon: <Lock className="w-5 h-5" />, title: "Sin Cuotas Mensuales", desc: "Pago único, sin sorpresas. El sistema es tuyo para siempre." },
+  { icon: <Shield className="w-5 h-5" />, title: "Matrícula y Zona", desc: "Cámaras con lectura de matrículas y detección por zonas configurables." },
+];
+
 const BENEFITS = [
-  { icon: Shield, title: "Sin cuotas mensuales", desc: "Pago único, sin sorpresas ni permanencia" },
-  { icon: CheckCircle, title: "Instalación incluida", desc: "Instaladores certificados, sin obras" },
+  { icon: Shield, title: "Sin cuotas mensuales", desc: "Pago único, sin permanencia ni sorpresas" },
+  { icon: CheckCircle, title: "Instalación incluida", desc: "Técnicos certificados, sin obras ni roturas" },
   { icon: Clock, title: "Garantía de por vida", desc: "Soporte técnico y mantenimiento permanente" },
   { icon: Smartphone, title: "Respuesta en 24h", desc: "Presupuesto y visita en menos de un día" },
 ];
@@ -40,15 +73,27 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
   const defaultFaqs = [
     {
       q: `¿Cuánto cuesta instalar cámaras de seguridad en ${city}?`,
-      a: `El precio depende del número de cámaras y el tipo de instalación. En Premium Tech Security ofrecemos presupuesto gratuito sin compromiso. El precio base desde 299€ con instalación incluida y sin cuotas mensuales.`,
+      a: `El precio depende del número de cámaras, tipo y ubicación. En Premium Tech Security ofrecemos presupuesto gratuito sin compromiso. Consulta nuestros kits de instalación desde 449€ con instalación y grabador incluidos, sin cuotas mensuales.`,
     },
     {
       q: `¿Qué marcas de cámaras instaláis en ${city}?`,
-      a: "Trabajamos con las mejores marcas del mercado: Hikvision, Dahua y Ajax Systems. Todas nuestras cámaras son de resolución mínima 2K (4MPx), con visión nocturna en color y detección por IA.",
+      a: `Trabajamos con las mejores marcas del mercado: Hikvision y Dahua, líderes mundiales en videovigilancia. Todas nuestras cámaras son de resolución mínima 4MPx (2K), con visión nocturna en color y resistencia IP66 para exteriores.`,
+    },
+    {
+      q: `¿Las cámaras necesitan conexión a internet para funcionar?`,
+      a: `No es obligatorio. Instalamos grabadores NVR con disco duro local para que el sistema funcione sin internet y sin depender de la nube. La visualización remota desde el móvil sí requiere conexión, pero la grabación continúa aunque falle el internet.`,
+    },
+    {
+      q: `¿Cuántos días de grabación almacena el sistema?`,
+      a: `Depende del número de cámaras y la capacidad del disco. Un disco de 1TB con 2 cámaras graba aproximadamente 15-20 días continuos. Con discos de 4TB y 8 cámaras, entre 7 y 10 días en grabación continua 24/7.`,
     },
     {
       q: `¿Cuánto tarda la instalación en ${city}?`,
-      a: `La mayoría de instalaciones domésticas y de negocio se completan en un solo día. Para comunidades grandes puede requerir 2 días. Contacta con nosotros y te damos fecha concreta.`,
+      a: `La mayoría de instalaciones domésticas (2-4 cámaras) se completan en unas pocas horas en un solo día. Para negocios y comunidades con 8 o más cámaras puede requerir 1-2 días. Trabajamos de manera limpia y ordenada.`,
+    },
+    {
+      q: `¿Cumplen con el RGPD las cámaras de seguridad?`,
+      a: `Sí. Nos encargamos de toda la tramitación: señalética homologada, configuración correcta de ángulo de visión (solo zona privada), documentación RGPD y registro si procede. Para comunidades de vecinos incluimos la documentación completa para la junta.`,
     },
   ];
 
@@ -58,101 +103,143 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
       <AdvancedSEO
         title={seoTitle || `Instalación Cámaras de Seguridad en ${city} | Sin Cuotas | Premium Tech Security`}
-        description={seoDescription || `Instalamos cámaras de seguridad en ${city}. Hikvision, Dahua y Ajax. 4K HD. Sin cuotas mensuales. Presupuesto gratis en 24h. Llama al 638 10 99 47.`}
+        description={seoDescription || `Instalamos cámaras de seguridad en ${city}. Hikvision y Dahua. 4K HD. Sin cuotas mensuales. Presupuesto gratis en 24h. Llama al 638 10 99 47.`}
         keywords={`cámaras seguridad ${city}, instalación cámaras ${city}, videovigilancia ${city}, CCTV ${city}`}
         canonicalUrl={`https://alarmasenbarcelona.com${seoPath}`}
       />
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative w-full overflow-hidden pt-16 sm:pt-20" style={{ height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A" }}>
+      {/* ── HERO ── */}
+      <section style={{ position: "relative", width: "100%", overflow: "hidden", height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
         <img
-          src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1200&q=90"
+          src="/images/camaras-seguridad-hero.jpeg"
           alt={`Cámaras de seguridad en ${city}`}
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.35 }}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A1A] via-[#0A0A1A]/60 to-transparent" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 flex flex-col justify-center h-full text-center">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5" style={{ backgroundColor: "rgba(229,62,62,0.15)", color: "#E53E3E" }}>
-              <span className="w-2 h-2 bg-[#E53E3E] rounded-full animate-pulse" /> INSTALACIÓN PROFESIONAL EN {city.toUpperCase()}
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
-              Instalación de Cámaras de Seguridad en <span className="text-[#E53E3E]">{city}</span>
-            </h1>
-            <p className="text-white/80 text-base sm:text-lg max-w-2xl mx-auto mb-8">
-              {intro || "Videovigilancia HD para hogar, negocio y comunidades. Sin cuotas mensuales. Presupuesto gratis en 24h."}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <button
-                onClick={() => setShowModal(true)}
-                className="flex items-center gap-2 px-8 py-4 rounded-xl bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold text-base transition-colors duration-300"
-              >
-                Presupuesto →
-              </button>
-              <a href="tel:+34638109947" className="px-8 py-4 rounded-xl border-2 border-white/30 text-white font-bold text-base hover:bg-white/10 transition-colors duration-300 flex items-center gap-2">
-                📞 Llamar
-              </a>
-            </div>
-          </motion.div>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 20%, rgba(10,10,26,0.55) 60%, rgba(10,10,26,0.2) 100%)" }} />
+        <div style={{ position: "relative", zIndex: 10, maxWidth: 800, margin: "0 auto", padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%", paddingBottom: 48, paddingTop: 80 }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.35)", borderRadius: 20, padding: "5px 14px", color: "#E53E3E", fontSize: 11, fontWeight: 700, letterSpacing: 1, width: "fit-content", marginBottom: 16 }}>
+            <span style={{ width: 7, height: 7, backgroundColor: "#E53E3E", borderRadius: "50%", display: "inline-block" }} />
+            INSTALACIÓN PROFESIONAL EN {city.toUpperCase()}
+          </span>
+          <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 46px)", color: "#fff", lineHeight: 1.15, margin: "0 0 12px" }}>
+            Instalación de Cámaras de Seguridad en <span style={{ color: "#E53E3E" }}>{city}</span>
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.78)", fontSize: 16, lineHeight: 1.7, margin: "0 0 24px", maxWidth: 560 }}>
+            {intro || `Videovigilancia HD 4K para hogar, negocio y comunidades. Sin cuotas mensuales. Grabador local incluido. Presupuesto gratis en 24h.`}
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 380 }}>
+            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 24px", border: "none", cursor: "pointer" }}>
+              Solicitar presupuesto gratis →
+            </button>
+            <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "13px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+              📞 638 10 99 47
+            </a>
+          </div>
         </div>
       </section>
 
-      {/* Service Cards */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A1A] mb-4">Soluciones de Videovigilancia en {city}</h2>
-            <p className="text-gray-500 max-w-2xl mx-auto">Instalación profesional adaptada a tu espacio — hogar, negocio o comunidad</p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {SERVICES.map((s, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
-                className="rounded-2xl border border-gray-200 p-8 hover:border-[#E53E3E] hover:shadow-[0_8px_30px_rgba(229,62,62,0.15)] hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{s.icon}</div>
-                <h3 className="font-bold text-lg text-[#0A0A1A] mb-4">{s.title}</h3>
-                <ul className="space-y-2">
-                  {s.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
-                      <span className="text-[#E53E3E] font-bold mt-0.5">✓</span>
-                      <span>{f}</span>
+      {/* ── TODO LO QUE INSTALAMOS ── */}
+      <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Todo lo que instalamos</h2>
+          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Desde una cámara hasta instalaciones profesionales completas — con o sin grabador, con o sin internet</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {WHAT_WE_DO.map((s) => (
+              <div key={s.title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "18px 16px", border: "1px solid #E5E7EB" }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#E53E3E", marginBottom: 10 }}>
+                  {s.icon}
+                </div>
+                <h3 style={{ fontWeight: 800, fontSize: 13, color: "#0A0A1A", margin: "0 0 4px" }}>{s.title}</h3>
+                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── INTERIOR CAMERA IMAGE ── */}
+      <section style={{ backgroundColor: "#0A0A1A", padding: "40px 20px 0" }}>
+        <div className="max-w-4xl mx-auto">
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "5px 14px", color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1, width: "fit-content" }}>
+              INSTALACIÓN EN INTERIORES Y EXTERIORES
+            </span>
+            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#fff", margin: 0 }}>Vigilancia total, día y noche</h2>
+            <p style={{ color: "#94A3B8", fontSize: 15, lineHeight: 1.7, margin: 0, maxWidth: 540 }}>
+              Cámaras domo de última generación con visión nocturna en color. Cobertura completa de portales, pasillos, ascensores, garajes y zonas comunes. Imagen nítida en cualquier condición de luz.
+            </p>
+          </div>
+          <img
+            src="/images/camara-domo-pasillo.jpeg"
+            alt="Cámara domo de seguridad instalada en pasillo de comunidad"
+            style={{ width: "100%", borderRadius: "20px 20px 0 0", marginTop: 24, display: "block", maxHeight: 320, objectFit: "cover", objectPosition: "center" }}
+          />
+        </div>
+      </section>
+
+      {/* ── SERVICE CARDS ── */}
+      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Soluciones de Videovigilancia en {city}</h2>
+          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Instalación profesional adaptada a tu espacio — hogar, negocio o comunidad</p>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {SERVICES.map((s) => (
+              <div key={s.num} style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 24, border: "1px solid #E5E7EB" }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: "#E53E3E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 13 }}>{s.num}</span>
+                </div>
+                <h3 style={{ fontWeight: 800, fontSize: 16, color: "#0A0A1A", margin: "0 0 8px" }}>{s.title}</h3>
+                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65, margin: "0 0 14px" }}>{s.desc}</p>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {s.features.map((f) => (
+                    <li key={f} style={{ fontSize: 12, color: "#374151", lineHeight: 2 }}>
+                      <span style={{ color: "#E53E3E", fontWeight: 700, marginRight: 6 }}>✓</span>{f}
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: 28 }}>
+            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
+              Ver precios y solicitar presupuesto →
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Why choose us */}
-      <section className="py-20 lg:py-28 bg-[#F8F9FA]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A1A] mb-4">¿Por qué elegirnos en {city}?</h2>
-          </motion.div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {BENEFITS.map((b, i) => (
-              <motion.div key={i} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center">
-                <div className="w-14 h-14 rounded-2xl bg-[#E53E3E]/10 flex items-center justify-center mx-auto mb-4">
-                  <b.icon className="w-7 h-7 text-[#E53E3E]" />
+      {/* ── PROMOTIONS ── */}
+      <PromoAccordion
+        bg="linear-gradient(135deg, #1a1a2e, #0A0A1A)"
+        title="Kits de Cámaras — Precios Especiales"
+        items={CAMERA_PROMOS}
+        footerText="Instalación incluida en todos los kits · Garantía de por vida en equipos"
+      />
+
+      {/* ── WHY US ── */}
+      <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 28px", textAlign: "center" }}>¿Por qué elegirnos en {city}?</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {BENEFITS.map((b) => (
+              <div key={b.title} style={{ textAlign: "center" }}>
+                <div style={{ width: 56, height: 56, borderRadius: 16, backgroundColor: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>
+                  <b.icon style={{ width: 28, height: 28, color: "#E53E3E" }} />
                 </div>
-                <h3 className="font-bold text-[#0A0A1A] mb-1">{b.title}</h3>
-                <p className="text-gray-500 text-sm">{b.desc}</p>
-              </motion.div>
+                <h3 style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A", margin: "0 0 4px" }}>{b.title}</h3>
+                <p style={{ fontSize: 12, color: "#6B7280", margin: 0 }}>{b.desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0A0A1A] mb-4">Preguntas Frecuentes — Cámaras en {city}</h2>
-          </motion.div>
+      {/* ── FAQ ── */}
+      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
+        <div className="max-w-3xl mx-auto">
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Preguntas Frecuentes — Cámaras en {city}</h2>
+          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Todo lo que necesitas saber antes de instalar cámaras</p>
           <Accordion type="single" collapsible className="space-y-2">
             {faqList.map((item, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-[#F8F9FA] rounded-xl border border-gray-200 px-5 overflow-hidden">
@@ -168,20 +255,17 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-20 lg:py-28" style={{ background: "linear-gradient(135deg, #E53E3E 0%, #C53030 100%)" }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">¿Necesitas Cámaras de Seguridad en {city}?</h2>
-          <p className="text-white/90 text-lg mb-8">Presupuesto gratuito · Sin compromiso · Instalación incluida</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button
-              onClick={() => setShowModal(true)}
-              className="flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-[#E53E3E] font-bold text-base hover:bg-gray-100 transition-colors duration-300"
-            >
-              Presupuesto →
+      {/* ── FINAL CTA ── */}
+      <section style={{ background: "linear-gradient(135deg, #E53E3E 0%, #C53030 100%)", padding: "48px 20px" }}>
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 8px" }}>¿Necesitas Cámaras de Seguridad en {city}?</h2>
+          <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 15, margin: "0 0 28px" }}>Presupuesto gratuito · Instalación incluida · Sin cuotas mensuales</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
+              Solicitar presupuesto gratis →
             </button>
-            <a href="tel:+34638109947" className="px-8 py-4 rounded-xl border-2 border-white/50 text-white font-bold text-base hover:bg-white/10 transition-colors duration-300 flex items-center gap-2">
-              📞 Llamar
+            <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
+              📞 638 10 99 47
             </a>
           </div>
         </div>
