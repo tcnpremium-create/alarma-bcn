@@ -3,7 +3,6 @@ import { Check, Phone, Camera, Eye, Moon, Cloud, Smartphone, Lock, ChevronDown, 
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
-import PromoAccordion from "../components/landing/PromoAccordion";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 
 const CAMERA_PROMOS = [
@@ -134,16 +133,44 @@ export default function Videovigilancia() {
       </section>
 
       {/* ── 2. PROMOCIONES — JUSTO DESPUÉS DEL HERO ── */}
-      <section style={{ background: "#0F1923", padding: "56px 24px" }}>
-        <div style={{ maxWidth: 820, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 36 }}>
+      <section style={{ background: "#0F1923", padding: "52px 24px" }}>
+        <div style={{ maxWidth: 860, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Oferta exclusiva · Plazas limitadas</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 8px", letterSpacing: "-0.02em" }}>
+            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 6px", letterSpacing: "-0.02em" }}>
               Kits de Cámaras con instalación incluida
             </h2>
             <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales.</p>
           </div>
-          <PromoAccordion items={CAMERA_PROMOS} />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: 14 }}>
+            {CAMERA_PROMOS.map((kit, i) => (
+              <div key={i} style={{ background: "rgba(255,255,255,0.06)", border: i === 1 ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "26px 22px", position: "relative" }}>
+                {kit.badge && (
+                  <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800, borderRadius: 100, padding: "3px 12px", whiteSpace: "nowrap" }}>
+                    {kit.badge}
+                  </div>
+                )}
+                <h3 style={{ color: "#fff", fontSize: 13, fontWeight: 800, marginBottom: 14, lineHeight: 1.35 }}>{kit.header}</h3>
+                <div style={{ marginBottom: 14 }}>
+                  <span style={{ color: "#6B7280", fontSize: 12, textDecoration: "line-through" }}>Antes {kit.oldPrice}</span>
+                  <div style={{ color: "#E53E3E", fontSize: 34, fontWeight: 900, lineHeight: 1.1 }}>{kit.price}</div>
+                  <span style={{ display: "inline-block", background: "rgba(34,197,94,0.15)", color: "#22C55E", fontSize: 11, fontWeight: 800, borderRadius: 6, padding: "2px 9px", marginTop: 4 }}>AHORRA {kit.savings}</span>
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 18px" }}>
+                  {kit.features.map((f, j) => (
+                    <li key={j} style={{ color: "#CBD5E0", fontSize: 12, lineHeight: 1.85, display: "flex", gap: 6, alignItems: "flex-start" }}>
+                      <span style={{ color: "#22C55E", flexShrink: 0, fontWeight: 700 }}>✓</span>{f}
+                    </li>
+                  ))}
+                </ul>
+                <p style={{ color: "#6B7280", fontSize: 10, margin: "0 0 10px" }}>* IVA no incluido</p>
+                <a href={kit.ctaHref} target="_blank" rel="noopener noreferrer"
+                  style={{ display: "block", textAlign: "center", background: "#25D366", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: "13px", textDecoration: "none" }}>
+                  WhatsApp — Reservar ahora
+                </a>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
