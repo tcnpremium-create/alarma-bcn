@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
 export default function Contact() {
