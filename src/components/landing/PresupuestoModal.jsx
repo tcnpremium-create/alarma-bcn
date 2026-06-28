@@ -20,7 +20,7 @@ export default function PresupuestoModal({ open, onClose }) {
   const [step, setStep] = useState(1);
   const [space, setSpace] = useState("");
   const [services, setServices] = useState([]);
-  const [form, setForm] = useState({ nombre: "", telefono: "", email: "", ciudad: "" });
+  const [form, setForm] = useState({ nombre: "", telefono: "", email: "", ciudad: "", descripcion: "" });
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
 
@@ -44,6 +44,7 @@ export default function PresupuestoModal({ open, onClose }) {
         zona: form.ciudad,
         servicio_interes: services.join(", "),
         tipo_cliente: space,
+        mensaje: form.descripcion,
         origen: "formulario_web",
         estado: "nuevo",
       })
@@ -56,7 +57,7 @@ export default function PresupuestoModal({ open, onClose }) {
     onClose();
     setTimeout(() => {
       setStep(1); setSpace(""); setServices([]);
-      setForm({ nombre: "", telefono: "", email: "", ciudad: "" });
+      setForm({ nombre: "", telefono: "", email: "", ciudad: "", descripcion: "" });
       setSuccess(false);
     }, 300);
   };
@@ -172,12 +173,20 @@ export default function PresupuestoModal({ open, onClose }) {
                     <div className="space-y-3">
                       <input type="text" placeholder="Tu nombre" value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
-                      <input type="tel" placeholder="Tu teléfono" required value={form.telefono} onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+                      <input type="tel" placeholder="Tu teléfono *" required value={form.telefono} onChange={(e) => setForm({ ...form, telefono: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
                       <input type="email" placeholder="Tu email (opcional)" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
-                      <input type="text" placeholder="Barcelona, Sabadell..." value={form.ciudad} onChange={(e) => setForm({ ...form, ciudad: e.target.value })}
+                      <input type="text" placeholder="Tu ciudad (Barcelona, Sabadell...)" value={form.ciudad} onChange={(e) => setForm({ ...form, ciudad: e.target.value })}
                         className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E]" />
+                      <textarea
+                        placeholder="¿Qué necesitas? Cuéntanos brevemente (opcional)"
+                        value={form.descripcion}
+                        onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
+                        rows={3}
+                        className="w-full border border-gray-300 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#E53E3E]/40 focus:border-[#E53E3E] resize-none"
+                        style={{ fontFamily: "inherit" }}
+                      />
                     </div>
                     <button type="submit" disabled={submitting}
                       className="w-full mt-5 py-4 rounded-full font-bold text-base text-white disabled:opacity-50"
