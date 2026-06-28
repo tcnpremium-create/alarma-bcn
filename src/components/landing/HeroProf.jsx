@@ -98,8 +98,8 @@ export default function HeroProf({ onOpenModal }) {
         </div>
       </div>
 
-      {/* Content */}
-      <div className="mx-auto px-4 py-8 relative z-10 max-w-7xl sm:px-6 lg:px-8 sm:py-20 lg:py-28 flex flex-col justify-center h-full">
+      {/* Content — pb-16 on mobile so Llamar button clears the WhatsApp bar */}
+      <div className="mx-auto px-4 py-8 relative z-10 max-w-7xl sm:px-6 lg:px-8 sm:py-20 lg:py-28 flex flex-col justify-center h-full pb-16 sm:pb-0">
         <div className="max-w-3xl">
           {/* Service Tabs */}
           <div className="flex gap-2 mb-5">
