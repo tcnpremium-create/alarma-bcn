@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { useHubSpotTracking } from "@/components/tracking/useHubSpotTracking";
 import MobileFloatingCTA from "@/components/landing/MobileFloatingCTA";
 import HeroContactModal from "@/components/landing/HeroContactModal";
