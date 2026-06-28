@@ -4,7 +4,7 @@ import { Check, X, Star, Phone, ArrowRight, Shield, Wifi, Battery, Smartphone, E
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet-async";
 import { Link } from 'react-router-dom';
 
 const brands = [
