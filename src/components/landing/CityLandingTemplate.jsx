@@ -1,20 +1,29 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { MapPin, Phone, MessageCircle, CheckCircle, Shield, Camera, Fingerprint, Wrench, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, ChevronRight } from "lucide-react";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
+import HeroContactModal from "./HeroContactModal";
 import { base44 } from "@/api/api";
 
 const SERVICES = [
-  { icon: Shield, title: "Alarmas inteligentes AJAX", desc: "Paneles, sensores inalámbricos, detectores de movimiento inmunes a mascotas, sirenas y notificaciones instantáneas." },
-  { icon: Camera, title: "Videovigilancia 4K Hikvision", desc: "Cámaras IP 4K con visión nocturna en color, grabación 30 días, detección IA de personas y vehículos." },
-  { icon: Fingerprint, title: "Control de accesos biométrico", desc: "Huella dactilar, tarjeta NFC, reconocimiento facial y código PIN con registro completo de entradas." },
-  { icon: Wrench, title: "Mantenimiento y soporte 24/7", desc: "Revisiones técnicas periódicas, soporte inmediato, actualizaciones de firmware y reemplazo de componentes." }
+  { Icon: Shield, title: "Alarmas inteligentes AJAX", desc: "Paneles de control, sensores inalámbricos, detectores de movimiento, sirenas y notificaciones instantáneas en el móvil." },
+  { Icon: Camera, title: "Videovigilancia 4K Hikvision", desc: "Cámaras IP 4K con visión nocturna en color, grabación local sin cuotas y control remoto desde cualquier dispositivo." },
+  { Icon: Fingerprint, title: "Control de accesos biométrico", desc: "Huella dactilar, tarjeta NFC, código PIN y registro completo de entradas y salidas. Sin llaves, sin duplicados." },
+  { Icon: Wrench, title: "Mantenimiento y soporte 24/7", desc: "Revisiones técnicas periódicas, soporte inmediato, actualizaciones de firmware y garantía de por vida en equipos." }
 ];
 
-export default function CityLandingTemplate({ city, seoPath, intro, zones, lat, lng }) {
+const WHY_US = [
+  "Más de 15 años de experiencia en Catalunya",
+  "Instalación en 24-48h sin obras ni roturas",
+  "Presupuesto gratuito y sin compromiso",
+  "Sin permanencia obligatoria",
+  "Tecnología AJAX + Hikvision certificada",
+  "Garantía de por vida en equipos"
+];
+
+export default function CityLandingTemplate({ city, seoPath, intro }) {
+  const [showModal, setShowModal] = useState(false);
   const [form, setForm] = useState({ nombre: "", telefono: "", ciudad: city, mensaje: "" });
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -36,158 +45,165 @@ export default function CityLandingTemplate({ city, seoPath, intro, zones, lat, 
   };
 
   return (
-    <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 70 }}>
       <CityLandingSEO path={seoPath} />
       <Navbar />
 
-      {/* Hero */}
-      <section className="pt-28 pb-16 sm:pt-32 sm:pb-20 bg-gradient-to-br from-[#0A1628] via-[#0A1628] to-[#1a2f4a] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5" style={{ backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 0)", backgroundSize: "32px 32px" }} />
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <div className="flex items-center gap-2 text-white/60 mb-4">
-              <MapPin className="w-4 h-4 text-[#E63946]" />
-              <span className="text-sm">Catalunya • {city}</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-5 leading-tight">
-              Instalación de Alarmas y Cámaras de Seguridad en {city}
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl leading-relaxed mb-8">
-              {intro}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="https://wa.me/34638109947" target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 py-4 rounded-xl font-bold text-base transition-all">
-                <MessageCircle className="w-5 h-5" /> WhatsApp
-              </a>
-              <a href="tel:+34638109947"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-6 py-4 rounded-xl font-bold text-base backdrop-blur-sm border border-white/30 transition-all">
-                <Phone className="w-5 h-5" /> Llamar
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0A1628] mb-10 text-center">
-            Servicios de seguridad en {city}
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-5 lg:gap-6">
-            {SERVICES.map((s, i) => (
-              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                className="bg-white border-2 border-slate-100 hover:border-[#E63946]/30 rounded-2xl p-6 sm:p-7 transition-all hover:shadow-lg">
-                <div className="bg-[#E63946]/10 p-3 rounded-xl w-fit mb-4">
-                  <s.icon className="w-7 h-7 text-[#E63946]" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-[#0A1628] mb-2">{s.title}</h3>
-                <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{s.desc}</p>
-              </motion.div>
-            ))}
+      {/* HERO */}
+      <section style={{ background: "linear-gradient(135deg, #0A0A1A 0%, #0F1923 60%, #1a2a3a 100%)", paddingTop: 112, paddingBottom: 64 }}>
+        <div className="max-w-5xl mx-auto" style={{ padding: "0 24px" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
+            <MapPin style={{ width: 13, height: 13, color: "#F87171" }} />
+            <span style={{ color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1 }}>Catalunya • {city}</span>
+          </div>
+          <h1 style={{ fontWeight: 900, fontSize: "clamp(28px, 5vw, 52px)", color: "#fff", lineHeight: 1.1, margin: "0 0 16px" }}>
+            Instalación de Alarmas y Cámaras de Seguridad en {city}
+          </h1>
+          <p style={{ color: "#94A3B8", fontSize: 16, lineHeight: 1.75, margin: "0 0 32px", maxWidth: 580 }}>
+            {intro}
+          </p>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <button
+              onClick={() => setShowModal(true)}
+              style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
+            >
+              Solicitar presupuesto gratis <ChevronRight style={{ width: 18, height: 18 }} />
+            </button>
+            <a
+              href="tel:+34638109947"
+              style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "14px 24px", textDecoration: "none", display: "flex", alignItems: "center", gap: 8 }}
+            >
+              <Phone style={{ width: 16, height: 16 }} />
+              Llamar
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Zones */}
-      <section className="py-14 sm:py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#0A1628] mb-8 text-center">
-            Zonas que cubrimos en {city}
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {zones.map((zone) => (
-              <div key={zone} className="flex items-center gap-2 bg-white rounded-xl p-3 sm:p-4 border border-slate-100">
-                <CheckCircle className="w-4 h-4 text-[#E63946] flex-shrink-0" />
-                <span className="text-sm font-medium text-slate-700">{zone}</span>
+      {/* SERVICES */}
+      <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
+        <div className="max-w-5xl mx-auto">
+          <span style={{ display: "inline-block", backgroundColor: "#E53E3E", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
+            SERVICIOS EN {city.toUpperCase()}
+          </span>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "0 0 32px" }}>Todo lo que instalamos</h2>
+          <div className="grid sm:grid-cols-2" style={{ gap: 20 }}>
+            {SERVICES.map(({ Icon, title, desc }) => (
+              <div key={title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "24px 20px", borderLeft: "3px solid #E53E3E", boxShadow: "0 1px 6px rgba(0,0,0,0.06)" }}>
+                <Icon style={{ width: 24, height: 24, color: "#E53E3E", marginBottom: 12 }} />
+                <h3 style={{ fontWeight: 800, fontSize: 16, color: "#0A0A1A", margin: "0 0 8px" }}>{title}</h3>
+                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Map + Form */}
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* Map */}
+      {/* WHY US */}
+      <section style={{ backgroundColor: "#0A0A1A", padding: "64px 24px" }}>
+        <div className="max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2" style={{ gap: 40, alignItems: "center" }}>
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#0A1628] mb-6">Nuestra cobertura en {city}</h2>
-              <div className="rounded-2xl overflow-hidden shadow-lg border border-slate-200">
-                <iframe
-                  title={`Mapa de cobertura en ${city}`}
-                  src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50000!2d${lng}!3d${lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses`}
-                  width="100%" height="400" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+              <span style={{ display: "inline-block", backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", color: "#F87171", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", letterSpacing: 1, marginBottom: 16 }}>
+                ¿POR QUÉ ELEGIRNOS?
+              </span>
+              <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 24px" }}>
+                La empresa de referencia en {city}
+              </h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {WHY_US.map(item => (
+                  <div key={item} style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                    <CheckCircle style={{ width: 18, height: 18, color: "#E53E3E", flexShrink: 0 }} />
+                    <span style={{ fontSize: 14, color: "#D1D5DB" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
+              {[["15+", "Años experiencia"], ["2.500+", "Sistemas activos"], ["24h", "Tiempo instalación"], ["24/7", "Soporte técnico"]].map(([num, label]) => (
+                <div key={label} style={{ backgroundColor: "rgba(255,255,255,0.05)", borderRadius: 12, padding: "20px 24px", flex: "1 1 120px", border: "1px solid rgba(255,255,255,0.08)", minWidth: 120 }}>
+                  <div style={{ fontSize: 28, fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{num}</div>
+                  <div style={{ fontSize: 12, color: "#6B7280", marginTop: 6 }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT FORM */}
+      <section style={{ backgroundColor: "#fff", padding: "64px 24px" }}>
+        <div className="max-w-lg mx-auto">
+          <span style={{ display: "inline-block", backgroundColor: "#E53E3E", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
+            PRESUPUESTO GRATUITO
+          </span>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "0 0 8px" }}>
+            Solicita tu presupuesto en {city}
+          </h2>
+          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Sin compromiso · Respuesta en menos de 24h</p>
+          {sent ? (
+            <div style={{ backgroundColor: "#F0FFF4", border: "2px solid #9AE6B4", borderRadius: 16, padding: 32, textAlign: "center" }}>
+              <CheckCircle style={{ width: 48, height: 48, color: "#38A169", margin: "0 auto 16px", display: "block" }} />
+              <h3 style={{ fontWeight: 800, fontSize: 20, color: "#276749", margin: "0 0 8px" }}>¡Solicitud enviada!</h3>
+              <p style={{ color: "#2F855A", marginBottom: 20 }}>Te contactaremos en menos de 24h con tu presupuesto personalizado.</p>
+              <a href="tel:+34638109947" style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, borderRadius: 50, padding: "12px 24px", textDecoration: "none" }}>
+                <Phone style={{ width: 16, height: 16 }} />
+                Llamar ahora
+              </a>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 28, border: "1px solid #E5E7EB", display: "flex", flexDirection: "column", gap: 16 }}>
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Nombre *</label>
+                <input
+                  type="text" required
+                  value={form.nombre}
+                  onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+                  placeholder="Tu nombre completo"
+                  style={{ width: "100%", padding: "12px 16px", borderRadius: 10, border: "1px solid #D1D5DB", fontSize: 14, outline: "none", boxSizing: "border-box", backgroundColor: "#fff" }}
                 />
               </div>
-              <div className="mt-6 bg-[#0A1628] text-white rounded-2xl p-6 sm:p-8">
-                <div className="flex items-center gap-3 mb-3">
-                  <Shield className="w-7 h-7 text-[#E63946]" />
-                  <h3 className="text-xl font-bold">¿Por qué elegirnos?</h3>
-                </div>
-                <ul className="space-y-2 text-white/80 text-sm">
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-[#E63946] mt-0.5 flex-shrink-0" /> Más de 15 años de experiencia en Catalunya</li>
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-[#E63946] mt-0.5 flex-shrink-0" /> Instalación en 24-48h sin obras</li>
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-[#E63946] mt-0.5 flex-shrink-0" /> Presupuesto gratuito y sin compromiso</li>
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-[#E63946] mt-0.5 flex-shrink-0" /> Sin permanencia obligatoria</li>
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-[#E63946] mt-0.5 flex-shrink-0" /> Tecnología AJAX + Hikvision certificada</li>
-                </ul>
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Teléfono *</label>
+                <input
+                  type="tel" required
+                  value={form.telefono}
+                  onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+                  placeholder="600 000 000"
+                  style={{ width: "100%", padding: "12px 16px", borderRadius: 10, border: "1px solid #D1D5DB", fontSize: 14, outline: "none", boxSizing: "border-box", backgroundColor: "#fff" }}
+                />
               </div>
-            </div>
-
-            {/* Contact Form */}
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-[#0A1628] mb-6">Solicita presupuesto gratis</h2>
-              {sent ? (
-                <div className="bg-green-50 border-2 border-green-200 rounded-2xl p-8 text-center">
-                  <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-green-800 mb-2">¡Solicitud enviada!</h3>
-                  <p className="text-green-700 mb-4">Te contactaremos en menos de 24h con tu presupuesto personalizado.</p>
-                  <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#E63946] text-white px-6 py-3 rounded-xl font-bold">
-                    <Phone className="w-4 h-4" /> Llamar
-                  </a>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="bg-slate-50 rounded-2xl p-6 sm:p-8 space-y-4 border border-slate-200">
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Nombre *</label>
-                    <input type="text" required value={form.nombre} onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 outline-none text-sm" placeholder="Tu nombre completo" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Teléfono *</label>
-                    <input type="tel" required value={form.telefono} onChange={(e) => setForm({ ...form, telefono: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 outline-none text-sm" placeholder="600 000 000" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Ciudad</label>
-                    <input type="text" value={form.ciudad} onChange={(e) => setForm({ ...form, ciudad: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 outline-none text-sm" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-1.5">Mensaje</label>
-                    <textarea value={form.mensaje} onChange={(e) => setForm({ ...form, mensaje: e.target.value })} rows={3}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-[#E63946] focus:ring-2 focus:ring-[#E63946]/20 outline-none text-sm resize-none" placeholder="Describe brevemente lo que necesitas..." />
-                  </div>
-                  <Button type="submit" disabled={sending}
-                    className="w-full bg-[#E63946] hover:bg-[#d32f3c] text-white py-6 rounded-xl font-bold text-base">
-                    {sending ? "Enviando..." : "Presupuesto →"}
-                    {!sending && <ArrowRight className="w-5 h-5 ml-2" />}
-                  </Button>
-                  <p className="text-xs text-slate-500 text-center">Sin compromiso · Respuesta en menos de 24h</p>
-                </form>
-              )}
-              <a href="https://wa.me/34638109947" target="_blank" rel="noopener noreferrer"
-                className="mt-4 w-full inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 py-4 rounded-xl font-bold text-base transition-all">
-                <MessageCircle className="w-5 h-5" /> WhatsApp
-              </a>
-            </div>
-          </div>
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Mensaje (opcional)</label>
+                <textarea
+                  value={form.mensaje}
+                  onChange={(e) => setForm({ ...form, mensaje: e.target.value })}
+                  rows={3}
+                  placeholder="Describe brevemente lo que necesitas..."
+                  style={{ width: "100%", padding: "12px 16px", borderRadius: 10, border: "1px solid #D1D5DB", fontSize: 14, outline: "none", boxSizing: "border-box", resize: "none", backgroundColor: "#fff" }}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={sending}
+                style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 0", border: "none", cursor: sending ? "not-allowed" : "pointer", opacity: sending ? 0.7 : 1 }}
+              >
+                {sending ? "Enviando..." : "Solicitar presupuesto →"}
+              </button>
+              <p style={{ fontSize: 12, color: "#9CA3AF", textAlign: "center", margin: 0 }}>Sin compromiso · Respuesta en menos de 24h</p>
+            </form>
+          )}
         </div>
       </section>
 
       <FooterSection />
+
+      {showModal && (
+        <HeroContactModal
+          defaultServicio={`Seguridad en ${city}`}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 }
