@@ -165,10 +165,10 @@ export default function SistemasAlarma() {
                   ))}
                 </ul>
                 <p style={{ color: "#6B7280", fontSize: 10, margin: "0 0 10px" }}>* IVA no incluido</p>
-                <a href={kit.ctaHref} target="_blank" rel="noopener noreferrer"
-                  style={{ display: "block", textAlign: "center", background: "#25D366", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: "13px", textDecoration: "none" }}>
-                  WhatsApp — Reservar ahora
-                </a>
+                <button onClick={() => setModalOpen(true)}
+                  style={{ display: "block", width: "100%", background: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: "13px 0", border: "none", cursor: "pointer", textAlign: "center" }}>
+                  Solicitar presupuesto gratis
+                </button>
               </div>
             ))}
           </div>
