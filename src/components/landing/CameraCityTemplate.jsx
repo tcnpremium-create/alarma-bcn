@@ -133,7 +133,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
               Solicitar presupuesto gratis →
             </button>
             <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "13px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-              📞 638 10 99 47
+              📞 Llamar
             </a>
           </div>
         </div>
@@ -144,14 +144,14 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         <div className="max-w-4xl mx-auto">
           <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Todo lo que instalamos</h2>
           <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Desde una cámara hasta instalaciones profesionales completas — con o sin grabador, con o sin internet</p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {WHAT_WE_DO.map((s) => (
-              <div key={s.title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "18px 16px", border: "1px solid #E5E7EB" }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#E53E3E", marginBottom: 10 }}>
-                  {s.icon}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 32px" }} className="sm:grid-cols-2">
+            {WHAT_WE_DO.map((s, idx) => (
+              <div key={s.title} style={{ display: "flex", gap: 14, padding: "20px 0", borderBottom: "1px solid #F3F4F6", alignItems: "flex-start" }}>
+                <div style={{ color: "#E53E3E", flexShrink: 0, marginTop: 1 }}>{s.icon}</div>
+                <div>
+                  <h3 style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A", margin: "0 0 4px" }}>{s.title}</h3>
+                  <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
                 </div>
-                <h3 style={{ fontWeight: 800, fontSize: 13, color: "#0A0A1A", margin: "0 0 4px" }}>{s.title}</h3>
-                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -265,7 +265,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
               Solicitar presupuesto gratis →
             </button>
             <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
-              📞 638 10 99 47
+              📞 Llamar
             </a>
           </div>
         </div>
