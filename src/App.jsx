@@ -22,6 +22,9 @@ import CamarasGirona from './pages/CamarasGirona';
 import CamarasTarragona from './pages/CamarasTarragona';
 import CamarasLleida from './pages/CamarasLleida';
 import Videoporteros from './pages/Videoporteros';
+import SistemasAlarma from './pages/SistemasAlarma';
+import Videovigilancia from './pages/Videovigilancia';
+import ControlAccesos from './pages/ControlAccesos';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
@@ -94,6 +97,10 @@ const AuthenticatedApp = () => {
       <Route path="/camaras-tarragona" element={<LayoutWrapper currentPageName="CamarasTarragona"><CamarasTarragona /></LayoutWrapper>} />
       <Route path="/camaras-lleida" element={<LayoutWrapper currentPageName="CamarasLleida"><CamarasLleida /></LayoutWrapper>} />
       <Route path="/videoporteros" element={<LayoutWrapper currentPageName="Videoporteros"><Videoporteros /></LayoutWrapper>} />
+      {/* Kebab-case aliases — misma página, canónica en la URL PascalCase hasta migración completa */}
+      <Route path="/sistemas-alarma" element={<LayoutWrapper currentPageName="SistemasAlarma"><SistemasAlarma /></LayoutWrapper>} />
+      <Route path="/videovigilancia" element={<LayoutWrapper currentPageName="Videovigilancia"><Videovigilancia /></LayoutWrapper>} />
+      <Route path="/control-accesos" element={<LayoutWrapper currentPageName="ControlAccesos"><ControlAccesos /></LayoutWrapper>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
