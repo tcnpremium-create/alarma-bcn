@@ -20,7 +20,7 @@ export default function CookieBanner() {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between gap-4 px-4 py-3 sm:px-6 border-t border-slate-800"
+      className="fixed bottom-0 left-0 right-0 z-[10000] flex items-center justify-between gap-4 px-4 py-3 sm:px-6 border-t border-slate-800"
       style={{ backdropFilter: "blur(12px)", background: "rgba(15, 23, 42, 0.9)" }}
     >
       <p className="text-sm text-slate-300 flex-1">
