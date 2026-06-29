@@ -71,16 +71,11 @@ export default function Home() {
       <main>
         <HeroProf onOpenModal={() => setModalOpen(true)} />
 
+        {/* Cameras block — first section after hero */}
+        <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
+
         {/* Section A — Services Grid */}
         <HomeServicesGrid />
-
-        {/* Cameras feature image + CTA */}
-        <div style={{ padding: "0 20px" }}>
-          <div className="max-w-2xl mx-auto">
-            <img src="https://media.base44.com/images/public/6995a701232755a2d5e24b39/95a4d8b80_IMG_8649.png" alt="Cámaras de seguridad con app móvil" className="w-full h-60 object-cover rounded-2xl" />
-          </div>
-        </div>
-        <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
         <PromoAccordion bg="linear-gradient(135deg, #1a1a2e, #0A0A1A)" title="Promociones en Cámaras de Seguridad" urgencyLine1="OFERTA ESTA SEMANA — ÚLTIMAS PLAZAS" urgencyLine2="Promociones a punto de caducar · Instalación garantizada" items={CAMERA_PROMOS} footerText="Oferta válida hasta el domingo · Plazas limitadas" />
 
         <GoogleReviews />
