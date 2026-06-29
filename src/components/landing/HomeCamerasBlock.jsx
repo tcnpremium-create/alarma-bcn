@@ -64,6 +64,20 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             Llamar
           </a>
         </div>
+
+        <div style={{ marginTop: 28 }}>
+          <p style={{ fontSize: 12, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 10 }}>
+            ▶ Ve tu hogar protegido en tiempo real
+          </p>
+          <video
+            controls
+            playsInline
+            preload="metadata"
+            style={{ width: "100%", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)", backgroundColor: "#000" }}
+          >
+            <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </section>
   );
