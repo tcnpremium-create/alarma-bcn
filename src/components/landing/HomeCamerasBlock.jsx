@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Phone, Eye, Camera, Moon, Smartphone, Shield } from "lucide-react";
 
 const FEATURES = [
@@ -10,6 +10,19 @@ const FEATURES = [
 ];
 
 export default function HomeCamerasBlock({ onOpenModal }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) video.play().catch(() => {}); },
+      { threshold: 0.25 }
+    );
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section style={{ backgroundColor: "#FFFFFF", padding: "40px 20px" }}>
       <div style={{ height: 4, backgroundColor: "#E53E3E", width: "100%", marginBottom: 24 }} />
@@ -70,7 +83,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             ▶ Ve tu hogar protegido en tiempo real
           </p>
           <video
-            autoPlay
+            ref={videoRef}
             muted
             loop
             playsInline
