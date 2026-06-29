@@ -92,7 +92,7 @@ export default function HeroProf({ onOpenModal }) {
             style={{
               objectFit: "cover",
               objectPosition: "center center",
-              opacity: activeTab === idx ? 0.45 : 0,
+              opacity: activeTab === idx ? 1 : 0,
               transition: "opacity 800ms ease-in-out",
             }}
           />
