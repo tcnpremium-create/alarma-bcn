@@ -83,7 +83,7 @@ export default function GoogleReviews() {
 
         <div className="text-center mt-8">
           <a
-            href="https://www.google.com/maps/search/Premium+Tech+Security+Barcelona"
+            href="https://share.google/trjJFOqRhcldWdEbg"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 border-2 border-[#E53E3E] text-[#E53E3E] rounded-full font-bold text-sm hover:bg-[#E53E3E] hover:text-white transition-colors"
