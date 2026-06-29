@@ -77,13 +77,13 @@ export default function HeroProf({ onOpenModal }) {
 
           {/* Headline */}
           <h1 className="text-[30px] leading-[1.1] sm:text-5xl lg:text-[3.5rem] font-black text-white mb-5 tracking-tight">
-            Tu Hogar Blindado<br />
+            Tu Hogar o Negocio Blindado<br />
             <span className="text-[#E53E3E]">Sin Cuotas Mensuales</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-[15px] leading-[1.7] sm:text-lg text-white/90 mb-6 max-w-xl font-medium">
-            Seguridad activa con cámaras 4K e Inteligencia Artificial. Recibe alertas en tu móvil antes de que toquen tu puerta, sin facturas eternas.
+            Seguridad activa con cámaras 4K e Inteligencia Artificial para viviendas y comercios. Recibe alertas en tu móvil antes de que toquen tu puerta, sin facturas eternas.
           </p>
 
           {/* Metrics */}
