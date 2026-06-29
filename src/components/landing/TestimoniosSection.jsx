@@ -67,7 +67,7 @@ export default function TestimoniosSection() {
 
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }} className="text-center mt-12">
           <a
-            href="https://share.google/trjJFOqRhcldWdEbg"
+            href="https://share.google/qLHzQDlIaunfZJUQf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/30 text-white font-bold text-sm hover:bg-white/10 transition-colors duration-300"
