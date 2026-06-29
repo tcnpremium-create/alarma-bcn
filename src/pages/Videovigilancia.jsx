@@ -188,13 +188,13 @@ export default function Videovigilancia() {
             </div>
 
             <h1 style={{ fontSize: "clamp(1.9rem, 5vw, 3.2rem)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.1, maxWidth: 660, margin: "0 0 14px", letterSpacing: "-0.02em" }}>
-              Cámaras de Seguridad<br /><span style={{ color: "#E53E3E" }}>Activas 24h.</span>
+              Tu Hogar o Negocio Blindado<br /><span style={{ color: "#E53E3E" }}>Sin Cuotas Mensuales</span>
             </h1>
             <p style={{ fontSize: "clamp(1rem, 2.2vw, 1.15rem)", color: "#E2E8F0", maxWidth: 460, lineHeight: 1.55, margin: "0 0 8px", fontWeight: 600 }}>
-              Protección continua conectada a CRA.
+              Videovigilancia 4K con IA para viviendas y comercios en Barcelona.
             </p>
             <p style={{ fontSize: "clamp(0.85rem, 1.8vw, 0.97rem)", color: "#94A3B8", maxWidth: 460, lineHeight: 1.65, margin: "0 0 32px" }}>
-              Videovigilancia Hikvision y Dahua en Barcelona. Grabación 4K con IA, visión nocturna en color y acceso desde el móvil. Sin cuotas mensuales.
+              Cámaras Hikvision y Dahua. Visión nocturna en color, detección IA y acceso desde el móvil. Sin facturas mensuales.
             </p>
 
             {/* Stats */}
@@ -208,7 +208,7 @@ export default function Videovigilancia() {
             </div>
 
             {/* CTAs */}
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
               <button onClick={() => setModalOpen(true)} style={{ background: "#E53E3E", color: "#fff", border: "none", borderRadius: 8, padding: "14px 30px", fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
                 Solicitar presupuesto gratis
               </button>
@@ -216,6 +216,17 @@ export default function Videovigilancia() {
                 <Phone size={16} /> Llamar ahora
               </a>
             </div>
+            {/* Google reviews */}
+            <a
+              href="https://share.google/trjJFOqRhcldWdEbg"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.08)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 100, padding: "8px 18px", textDecoration: "none" }}
+            >
+              <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ 4.8</span>
+              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 12 }}>13 opiniones verificadas en Google</span>
+              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Ver →</span>
+            </a>
           </div>
         </div>
 
