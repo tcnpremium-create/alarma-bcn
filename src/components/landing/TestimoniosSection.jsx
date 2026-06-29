@@ -34,7 +34,7 @@ export default function TestimoniosSection() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-14">
           <div className="text-2xl mb-3">⭐⭐⭐⭐⭐</div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">Lo que Dicen Nuestros Clientes</h2>
-          <p className="text-gray-400 text-base sm:text-lg">Más de 13 reseñas verificadas en Google · Valoración media 4.8/5</p>
+          <p className="text-gray-400 text-base sm:text-lg">Valoración media 4.8/5 en Google</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 overflow-x-auto md:overflow-visible">
