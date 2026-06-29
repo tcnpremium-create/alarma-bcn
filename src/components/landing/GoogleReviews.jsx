@@ -49,7 +49,7 @@ export default function GoogleReviews() {
             ⭐⭐⭐⭐⭐ Nuestros clientes opinan
           </h2>
           <p className="text-gray-500 mt-2 text-sm">
-            4.8/5 · Más de 13 reseñas verificadas en Google
+            4.8/5 en Google
           </p>
         </div>
 
