@@ -224,7 +224,7 @@ export default function Videovigilancia() {
               style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.08)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 100, padding: "8px 18px", textDecoration: "none" }}
             >
               <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ 4.8</span>
-              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 12 }}>13 opiniones verificadas en Google</span>
+              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 12 }}>Reseñas verificadas en Google</span>
               <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 12 }}>Ver →</span>
             </a>
           </div>
