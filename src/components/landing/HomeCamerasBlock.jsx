@@ -70,10 +70,12 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             ▶ Ve tu hogar protegido en tiempo real
           </p>
           <video
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
-            preload="metadata"
-            style={{ width: "100%", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)", backgroundColor: "#000" }}
+            preload="auto"
+            style={{ width: "100%", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)" }}
           >
             <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
           </video>
