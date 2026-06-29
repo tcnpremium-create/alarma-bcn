@@ -117,6 +117,7 @@ export default function Videovigilancia() {
           loop
           muted
           playsInline
+          preload="auto"
           poster="/images/camaras-seguridad-hero.jpeg"
           style={{
             position: "absolute",
@@ -124,14 +125,15 @@ export default function Videovigilancia() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.52,
+            opacity: 0.65,
+            zIndex: 1,
           }}
         >
           <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient overlay — dark left for text, lighter right to reveal video */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, rgba(10,15,26,0.92) 50%, rgba(10,15,26,0.38) 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "linear-gradient(110deg, rgba(10,15,26,0.85) 45%, rgba(10,15,26,0.20) 100%)" }} />
 
         {/* ZONA PERIMETRAL PROTEGIDA — pulsing badge anchored top-left */}
         <div
@@ -169,7 +171,7 @@ export default function Videovigilancia() {
         {/* Main content */}
         <div
           className="vid-hero-content"
-          style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "150px 24px 72px" }}
+          style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "150px 24px 72px" }}
         >
           <div style={{ maxWidth: 640 }}>
             {/* Brand badge */}
