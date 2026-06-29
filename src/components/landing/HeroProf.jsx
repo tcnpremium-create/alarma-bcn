@@ -63,6 +63,7 @@ export default function HeroProf({ onOpenModal }) {
         loop
         muted
         playsInline
+        preload="auto"
         aria-hidden="true"
         style={{
           position: "absolute",
@@ -70,15 +71,15 @@ export default function HeroProf({ onOpenModal }) {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          opacity: 0.55,
-          zIndex: 0,
+          opacity: 0.65,
+          zIndex: 1,
         }}
       >
         <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
       </video>
 
       {/* Background images with crossfade — layered over video */}
-      <div className="absolute inset-0" aria-hidden="true" style={{ zIndex: 1 }}>
+      <div className="absolute inset-0" aria-hidden="true" style={{ zIndex: 2 }}>
         {TABS.map((t, idx) => (
           <img
             key={t.id}
@@ -98,10 +99,10 @@ export default function HeroProf({ onOpenModal }) {
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E]/80 via-[#1A1A2E]/50 to-transparent" style={{ zIndex: 2 }} />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E]/80 via-[#1A1A2E]/50 to-transparent" style={{ zIndex: 3 }} />
 
       {/* Radar animation */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true" style={{ zIndex: 3 }}>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true" style={{ zIndex: 4 }}>
         <div className="relative">
           <div className="w-2 h-2 bg-[#E53E3E] rounded-full relative z-10" />
           {[0, 1, 2].map((i) => (
