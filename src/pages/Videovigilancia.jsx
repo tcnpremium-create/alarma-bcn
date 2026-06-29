@@ -127,7 +127,7 @@ export default function Videovigilancia() {
             opacity: 0.52,
           }}
         >
-          <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3FACr2HGpVxM6nKku5UN9ydSkzE/hf_20260629_102951_f961864d-76a4-4567-ba09-20c9da631ccb.mp4" type="video/mp4" />
+          <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
         </video>
 
         {/* Gradient overlay — dark left for text, lighter right to reveal video */}
