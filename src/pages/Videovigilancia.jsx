@@ -93,41 +93,155 @@ export default function Videovigilancia() {
 
       <Navbar />
 
-      {/* ── 1. HERO ── */}
-      <section style={{ position: "relative", background: "#0A0F1A", overflow: "hidden", minHeight: 520, paddingTop: 80 }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "url('/images/camaras-seguridad-hero.jpeg')", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.28 }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(105deg, #0A0F1A 58%, transparent 100%)" }} />
+      {/* ── 1. HERO (VIDEO BG) ── */}
+      <style>{`
+        @keyframes zone-pulse {
+          0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(229,62,62,0.55); }
+          50% { opacity: 0.8; box-shadow: 0 0 0 10px rgba(229,62,62,0); }
+        }
+        @keyframes dot-blink {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.5); opacity: 0.55; }
+        }
+        @media (max-width: 640px) {
+          .vid-badge-zone { top: 80px !important; left: 12px !important; }
+          .vid-badge-zone span:last-child { font-size: 9px !important; letter-spacing: 0.08em !important; }
+          .vid-badge-active { display: none !important; }
+          .vid-hero-content { padding: 128px 16px 60px !important; }
+        }
+      `}</style>
+      <section style={{ position: "relative", background: "#0A0F1A", overflow: "hidden", minHeight: 600 }}>
+        {/* Video background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            opacity: 0.52,
+          }}
+        >
+          <source src="/videos/casa-protegida.mp4" type="video/mp4" />
+        </video>
 
-        <div style={{ position: "relative", maxWidth: 1200, margin: "0 auto", padding: "60px 24px 64px" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.4)", borderRadius: 100, padding: "6px 16px", marginBottom: 22 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#E53E3E" }} />
-            <span style={{ color: "#FC8181", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Hikvision · Dahua · Certificados · Barcelona</span>
+        {/* Gradient overlay — dark left for text, lighter right to reveal video */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg, rgba(10,15,26,0.92) 50%, rgba(10,15,26,0.38) 100%)" }} />
+
+        {/* ZONA PERIMETRAL PROTEGIDA — pulsing badge anchored top-left */}
+        <div
+          className="vid-badge-zone"
+          style={{
+            position: "absolute",
+            top: 92,
+            left: 24,
+            zIndex: 4,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            background: "rgba(229,62,62,0.18)",
+            border: "1px solid rgba(229,62,62,0.55)",
+            borderRadius: 100,
+            padding: "7px 16px",
+            animation: "zone-pulse 2.5s ease-in-out infinite",
+            backdropFilter: "blur(6px)",
+          }}
+        >
+          <span style={{
+            display: "inline-block",
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            background: "#E53E3E",
+            animation: "dot-blink 2.5s ease-in-out infinite",
+            flexShrink: 0,
+          }} />
+          <span style={{ color: "#FC8181", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
+            🔴 Zona Perimetral Protegida
+          </span>
+        </div>
+
+        {/* Main content */}
+        <div
+          className="vid-hero-content"
+          style={{ position: "relative", zIndex: 2, maxWidth: 1200, margin: "0 auto", padding: "150px 24px 72px" }}
+        >
+          <div style={{ maxWidth: 640 }}>
+            {/* Brand badge */}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.4)", borderRadius: 100, padding: "6px 16px", marginBottom: 22 }}>
+              <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#E53E3E" }} />
+              <span style={{ color: "#FC8181", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase" }}>Hikvision · Dahua · Certificados · Barcelona</span>
+            </div>
+
+            <h1 style={{ fontSize: "clamp(1.9rem, 5vw, 3.2rem)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.1, maxWidth: 660, margin: "0 0 14px", letterSpacing: "-0.02em" }}>
+              Cámaras de Seguridad<br /><span style={{ color: "#E53E3E" }}>Activas 24h.</span>
+            </h1>
+            <p style={{ fontSize: "clamp(1rem, 2.2vw, 1.15rem)", color: "#E2E8F0", maxWidth: 460, lineHeight: 1.55, margin: "0 0 8px", fontWeight: 600 }}>
+              Protección continua conectada a CRA.
+            </p>
+            <p style={{ fontSize: "clamp(0.85rem, 1.8vw, 0.97rem)", color: "#94A3B8", maxWidth: 460, lineHeight: 1.65, margin: "0 0 32px" }}>
+              Videovigilancia Hikvision y Dahua en Barcelona. Grabación 4K con IA, visión nocturna en color y acceso desde el móvil. Sin cuotas mensuales.
+            </p>
+
+            {/* Stats */}
+            <div style={{ display: "flex", gap: 30, marginBottom: 36, flexWrap: "wrap" }}>
+              {[{ val: "4K", label: "Ultra HD" }, { val: "50m", label: "Visión nocturna" }, { val: "30d", label: "Retención" }, { val: "IA", label: "Detección activa" }].map(s => (
+                <div key={s.val}>
+                  <div style={{ fontSize: "clamp(1.3rem, 3vw, 1.9rem)", fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{s.val}</div>
+                  <div style={{ fontSize: 11, color: "#718096", marginTop: 3, fontWeight: 500 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTAs */}
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <button onClick={() => setModalOpen(true)} style={{ background: "#E53E3E", color: "#fff", border: "none", borderRadius: 8, padding: "14px 30px", fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
+                Solicitar presupuesto gratis
+              </button>
+              <a href="tel:+34638109947" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#fff", border: "2px solid rgba(255,255,255,0.25)", borderRadius: 8, padding: "14px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
+                <Phone size={16} /> Llamar ahora
+              </a>
+            </div>
           </div>
+        </div>
 
-          <h1 style={{ fontSize: "clamp(1.9rem, 5vw, 3.2rem)", fontWeight: 900, color: "#FFFFFF", lineHeight: 1.1, maxWidth: 660, margin: "0 0 16px", letterSpacing: "-0.02em" }}>
-            Cámaras de Seguridad<br /><span style={{ color: "#E53E3E" }}>4K Profesionales.</span>
-          </h1>
-          <p style={{ fontSize: "clamp(0.9rem, 2vw, 1.1rem)", color: "#CBD5E0", maxWidth: 480, lineHeight: 1.65, margin: "0 0 32px" }}>
-            Videovigilancia Hikvision y Dahua en Barcelona. Grabación 4K con IA, visión nocturna en color y acceso desde el móvil. Sin cuotas mensuales.
-          </p>
-
-          <div style={{ display: "flex", gap: 30, marginBottom: 36, flexWrap: "wrap" }}>
-            {[{ val: "4K", label: "Ultra HD" }, { val: "50m", label: "Visión nocturna" }, { val: "30d", label: "Retención" }, { val: "IA", label: "Detección activa" }].map(s => (
-              <div key={s.val}>
-                <div style={{ fontSize: "clamp(1.3rem, 3vw, 1.9rem)", fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{s.val}</div>
-                <div style={{ fontSize: 11, color: "#718096", marginTop: 3, fontWeight: 500 }}>{s.label}</div>
-              </div>
-            ))}
+        {/* Cámaras Activas 24h — floating status card bottom-right */}
+        <div
+          className="vid-badge-active"
+          style={{
+            position: "absolute",
+            bottom: 28,
+            right: 28,
+            zIndex: 4,
+            background: "rgba(10,15,26,0.82)",
+            border: "1px solid rgba(229,62,62,0.35)",
+            borderRadius: 14,
+            padding: "16px 22px",
+            backdropFilter: "blur(10px)",
+            maxWidth: 240,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+            <span style={{
+              display: "inline-block",
+              width: 8,
+              height: 8,
+              borderRadius: "50%",
+              background: "#22C55E",
+              animation: "dot-blink 2s ease-in-out infinite",
+              flexShrink: 0,
+            }} />
+            <span style={{ color: "#22C55E", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Sistema Activo</span>
           </div>
-
-          {/* BOTONES CTA */}
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-            <button onClick={() => setModalOpen(true)} style={{ background: "#E53E3E", color: "#fff", border: "none", borderRadius: 8, padding: "14px 30px", fontSize: 15, fontWeight: 700, cursor: "pointer" }}>
-              Solicitar presupuesto gratis
-            </button>
-            <a href="tel:+34638109947" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#fff", border: "2px solid rgba(255,255,255,0.25)", borderRadius: 8, padding: "14px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}>
-              <Phone size={16} /> Llamar ahora
-            </a>
+          <div style={{ color: "#fff", fontSize: 15, fontWeight: 800, lineHeight: 1.3, marginBottom: 5 }}>
+            Cámaras de Seguridad<br />Activas 24h
+          </div>
+          <div style={{ color: "#94A3B8", fontSize: 11, lineHeight: 1.55 }}>
+            Protección continua<br />conectada a CRA
           </div>
         </div>
       </section>
