@@ -57,8 +57,28 @@ export default function HeroProf({ onOpenModal }) {
       className="relative w-full bg-[#1A1A2E] overflow-hidden pt-16 sm:pt-20"
       style={{ height: "90vh", maxHeight: "90vh" }}
     >
-      {/* Background images with crossfade */}
-      <div className="absolute inset-0" aria-hidden="true">
+      {/* Video background base layer */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          inset: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          opacity: 0.55,
+          zIndex: 0,
+        }}
+      >
+        <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
+      </video>
+
+      {/* Background images with crossfade — layered over video */}
+      <div className="absolute inset-0" aria-hidden="true" style={{ zIndex: 1 }}>
         {TABS.map((t, idx) => (
           <img
             key={t.id}
@@ -71,17 +91,17 @@ export default function HeroProf({ onOpenModal }) {
             style={{
               objectFit: "cover",
               objectPosition: "center center",
-              opacity: activeTab === idx ? 1 : 0,
+              opacity: activeTab === idx ? 0.45 : 0,
               transition: "opacity 800ms ease-in-out",
             }}
           />
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E]/80 via-[#1A1A2E]/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E]/80 via-[#1A1A2E]/50 to-transparent" style={{ zIndex: 2 }} />
 
       {/* Radar animation */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true" style={{ zIndex: 3 }}>
         <div className="relative">
           <div className="w-2 h-2 bg-[#E53E3E] rounded-full relative z-10" />
           {[0, 1, 2].map((i) => (
@@ -99,7 +119,7 @@ export default function HeroProf({ onOpenModal }) {
       </div>
 
       {/* Content — pb-16 on mobile so Llamar button clears the WhatsApp bar */}
-      <div className="mx-auto px-4 py-8 relative z-10 max-w-7xl sm:px-6 lg:px-8 sm:py-20 lg:py-28 flex flex-col justify-center h-full pb-16 sm:pb-0">
+      <div className="mx-auto px-4 py-8 relative max-w-7xl sm:px-6 lg:px-8 sm:py-20 lg:py-28 flex flex-col justify-center h-full pb-16 sm:pb-0" style={{ zIndex: 10 }}>
         <div className="max-w-3xl">
           {/* Service Tabs */}
           <div className="flex gap-2 mb-5">
