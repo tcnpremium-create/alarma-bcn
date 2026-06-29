@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { Phone, Eye, Camera, Moon, Smartphone, Shield } from "lucide-react";
 
 const FEATURES = [
@@ -10,19 +10,6 @@ const FEATURES = [
 ];
 
 export default function HomeCamerasBlock({ onOpenModal }) {
-  const videoRef = useRef(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) video.play().catch(() => {}); },
-      { threshold: 0.25 }
-    );
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section style={{ backgroundColor: "#FFFFFF", padding: "40px 20px" }}>
       <div style={{ height: 4, backgroundColor: "#E53E3E", width: "100%", marginBottom: 24 }} />
@@ -83,13 +70,12 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             ▶ Ve tu hogar protegido en tiempo real
           </p>
           <video
-            ref={videoRef}
-            muted
-            loop
+            controls
             playsInline
-            preload="auto"
             webkit-playsinline="true"
-            style={{ width: "100%", height: 220, objectFit: "cover", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)", backgroundColor: "#111" }}
+            preload="metadata"
+            poster="/images/camara-domo.jpeg"
+            style={{ width: "100%", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)" }}
           >
             <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
           </video>
