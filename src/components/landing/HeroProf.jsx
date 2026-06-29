@@ -62,7 +62,7 @@ export default function HeroProf({ onOpenModal }) {
 
       {/* Content */}
       <div
-        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col justify-center h-full pb-16 sm:pb-0"
+        className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl flex flex-col justify-center h-full pb-16 sm:pb-0 pt-12 sm:pt-0"
         style={{ position: "relative", zIndex: 10 }}
       >
         <div className="max-w-2xl">
