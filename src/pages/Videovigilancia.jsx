@@ -110,8 +110,15 @@ export default function Videovigilancia() {
           .vid-hero-content { padding: 128px 16px 60px !important; }
         }
       `}</style>
-      <section style={{ position: "relative", background: "#0A0F1A", overflow: "hidden", minHeight: 600 }}>
-        {/* Video background — poster shows static fallback until/if mp4 loads */}
+      <section style={{
+        position: "relative",
+        overflow: "hidden",
+        minHeight: 600,
+        backgroundImage: "url('/images/camaras-seguridad-hero.jpeg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}>
+        {/* Video — plays on top of the poster bg-image; same image used as poster attr */}
         <video
           autoPlay
           loop
@@ -121,19 +128,19 @@ export default function Videovigilancia() {
           poster="/images/camaras-seguridad-hero.jpeg"
           style={{
             position: "absolute",
-            inset: 0,
+            top: 0, right: 0, bottom: 0, left: 0,
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            opacity: 0.65,
+            opacity: 0.9,
             zIndex: 1,
           }}
         >
           <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
         </video>
 
-        {/* Gradient overlay — dark left for text, lighter right to reveal video */}
-        <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "linear-gradient(110deg, rgba(10,15,26,0.85) 45%, rgba(10,15,26,0.20) 100%)" }} />
+        {/* Subtle gradient — only left-side darkening for text contrast */}
+        <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, left: 0, zIndex: 2, background: "linear-gradient(105deg, rgba(10,15,26,0.72) 0%, rgba(10,15,26,0.52) 40%, rgba(10,15,26,0.08) 100%)" }} />
 
         {/* ZONA PERIMETRAL PROTEGIDA — pulsing badge anchored top-left */}
         <div
