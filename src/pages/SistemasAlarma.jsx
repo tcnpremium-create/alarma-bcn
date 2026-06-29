@@ -294,24 +294,15 @@ export default function SistemasAlarma() {
             </div>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.5)" }}>
-              <img
-                src="/images/ajax-componentes.jpeg"
-                alt="Componentes sistema alarma Ajax: Hub 2, MotionProtect, DoorProtect, MotionCam"
-                style={{ width: "100%", display: "block", background: "#000" }}
-              />
-              <div style={{ position: "absolute", bottom: 12, left: 12, background: "#E53E3E", borderRadius: 8, padding: "10px 14px", boxShadow: "0 4px 16px rgba(229,62,62,0.5)" }}>
-                <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", lineHeight: 1 }}>15s</div>
-                <div style={{ fontSize: 10, color: "rgba(255,255,255,0.85)", marginTop: 2 }}>Respuesta CRA</div>
-              </div>
-            </div>
-            <div style={{ borderRadius: 12, overflow: "hidden", boxShadow: "0 12px 32px rgba(0,0,0,0.4)" }}>
-              <img
-                src="/images/ajax-sistema-alarma.jpeg"
-                alt="Sistema de alarma Ajax instalado en vivienda en Barcelona"
-                style={{ width: "100%", display: "block", aspectRatio: "16/9", objectFit: "cover" }}
-              />
+          <div style={{ position: "relative", borderRadius: 12, overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.5)" }}>
+            <img
+              src="/images/ajax-componentes.jpeg"
+              alt="Componentes sistema alarma Ajax: Hub 2, MotionProtect, DoorProtect, MotionCam"
+              style={{ width: "100%", display: "block", background: "#000" }}
+            />
+            <div style={{ position: "absolute", bottom: 12, left: 12, background: "#E53E3E", borderRadius: 8, padding: "10px 14px", boxShadow: "0 4px 16px rgba(229,62,62,0.5)" }}>
+              <div style={{ fontSize: 18, fontWeight: 900, color: "#fff", lineHeight: 1 }}>15s</div>
+              <div style={{ fontSize: 10, color: "rgba(255,255,255,0.85)", marginTop: 2 }}>Respuesta CRA</div>
             </div>
           </div>
         </div>
