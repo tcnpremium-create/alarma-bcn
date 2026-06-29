@@ -28,6 +28,7 @@ import ControlAccesos from './pages/ControlAccesos';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import CookieBanner from '@/components/CookieBanner';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -117,6 +118,7 @@ function App() {
           <AuthenticatedApp />
         </Router>
         <Toaster />
+        <CookieBanner />
       </QueryClientProvider>
     </AuthProvider>
   )
