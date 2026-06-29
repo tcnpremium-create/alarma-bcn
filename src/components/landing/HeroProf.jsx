@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Phone, Star } from "lucide-react";
+import { Phone } from "lucide-react";
 import HeroContactModal from "./HeroContactModal";
 
 export default function HeroProf({ onOpenModal }) {
@@ -12,7 +12,7 @@ export default function HeroProf({ onOpenModal }) {
         height: "90vh",
         maxHeight: "90vh",
         backgroundColor: "#0a0f1a",
-        backgroundImage: "url('/images/hero-intruder.png')",
+        backgroundImage: "url('/images/hero-intruder.jpg')",
         backgroundSize: "cover",
         backgroundPosition: "center center",
       }}
@@ -121,19 +121,6 @@ export default function HeroProf({ onOpenModal }) {
             </a>
           </div>
 
-          {/* Google Maps reviews badge */}
-          <a
-            href="https://share.google/trjJFOqRhcldWdEbg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 px-4 py-2.5 rounded-full border border-white/20 transition-all duration-200 group"
-          >
-            <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 shrink-0" />
-            <span className="text-yellow-400 font-bold text-sm">4.8</span>
-            <span className="text-white/50 text-xs">|</span>
-            <span className="text-white/80 text-xs">13 opiniones verificadas de vecinos de Barcelona</span>
-            <span className="text-white/50 text-xs group-hover:text-white/80 transition-colors ml-1">Ver en Google →</span>
-          </a>
         </div>
       </div>
 
