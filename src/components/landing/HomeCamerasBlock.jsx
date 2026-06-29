@@ -75,7 +75,8 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             loop
             playsInline
             preload="auto"
-            style={{ width: "100%", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)" }}
+            webkit-playsinline="true"
+            style={{ width: "100%", height: 220, objectFit: "cover", borderRadius: 16, display: "block", boxShadow: "0 4px 24px rgba(0,0,0,0.12)", backgroundColor: "#111" }}
           >
             <source src="https://pub-c09bc177726a4cf0b240409a82635955.r2.dev/casa-protegida.mp4" type="video/mp4" />
           </video>
