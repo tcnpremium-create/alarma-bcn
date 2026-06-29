@@ -111,12 +111,13 @@ export default function Videovigilancia() {
         }
       `}</style>
       <section style={{ position: "relative", background: "#0A0F1A", overflow: "hidden", minHeight: 600 }}>
-        {/* Video background */}
+        {/* Video background — poster shows static fallback until/if mp4 loads */}
         <video
           autoPlay
           loop
           muted
           playsInline
+          poster="/images/camaras-seguridad-hero.jpeg"
           style={{
             position: "absolute",
             inset: 0,
