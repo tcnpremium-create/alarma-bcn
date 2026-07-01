@@ -91,7 +91,7 @@ export default function Videoporteros() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
+    <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
         title="Instalación Videoporteros Barcelona | Fermax, Bticino, Golmar | Premium Tech Security"
         description="Instalamos videoporteros IP, control de accesos biométrico y reconocimiento facial en Barcelona y toda Catalunya. Fermax, Bticino, Golmar. Presupuesto gratis 638 10 99 47."
@@ -148,73 +148,73 @@ export default function Videoporteros() {
       </section>
 
       {/* ── BRANDS ── */}
-      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
+      <section style={{ background: "#0a1120", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: 0 }}>Marcas Oficiales que Instalamos</h2>
-            <p style={{ color: "#6B7280", fontSize: 14, marginTop: 8 }}>Distribuidores oficiales de las mejores marcas europeas de videoporteros</p>
+            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#FFFFFF", margin: 0 }}>Marcas Oficiales que Instalamos</h2>
+            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 8 }}>Distribuidores oficiales de las mejores marcas europeas de videoporteros</p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
 
             {/* FERMAX */}
-            <div style={{ backgroundColor: "#F8F9FA", borderRadius: 20, overflow: "hidden", border: "1px solid #E5E7EB" }}>
+            <div style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ backgroundColor: "#1B4F8A", padding: "24px 20px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 100 }}>
                 <img src="/images/logo-fermax.png" alt="Fermax videoporteros" style={{ height: 52, width: "auto", objectFit: "contain", display: "block" }} />
               </div>
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: 0.5 }}>Líder en España desde 1956</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Líder en España desde 1956</span>
                 </div>
-                <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, margin: 0 }}>
-                  Fermax nació en Valencia y es hoy uno de los mayores fabricantes de videoporteros del mundo. Su gama <strong>DUOX Plus</strong> moderniza instalaciones de 2 hilos existentes sin obra, añadiendo imagen HD y la app <strong>MEET</strong> para apertura remota. La serie <strong>VEO</strong> incorpora pantalla táctil de 7&quot; con visión nocturna automática. ISO 9001 · Presencia en más de 70 países.
+                <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
+                  Fermax nació en Valencia y es hoy uno de los mayores fabricantes de videoporteros del mundo. Su gama <strong style={{ color: "#fff" }}>DUOX Plus</strong> moderniza instalaciones de 2 hilos existentes sin obra, añadiendo imagen HD y la app <strong style={{ color: "#fff" }}>MEET</strong> para apertura remota. La serie <strong style={{ color: "#fff" }}>VEO</strong> incorpora pantalla táctil de 7&quot; con visión nocturna automática. ISO 9001 · Presencia en más de 70 países.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {["DUOX Plus 2 hilos", "VEO 7\" táctil", "App MEET", "Sistema IP"].map(tag => (
-                    <span key={tag} style={{ fontSize: 11, backgroundColor: "#EFF6FF", color: "#1B4F8A", borderRadius: 20, padding: "3px 10px", fontWeight: 600 }}>{tag}</span>
+                    <span key={tag} style={{ fontSize: 11, backgroundColor: "rgba(27,79,138,0.25)", color: "#93C5FD", borderRadius: 20, padding: "3px 10px", fontWeight: 600 }}>{tag}</span>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* BTICINO */}
-            <div style={{ backgroundColor: "#F8F9FA", borderRadius: 20, overflow: "hidden", border: "1px solid #E5E7EB" }}>
+            <div style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ backgroundColor: "#0A0A1A", minHeight: 100, overflow: "hidden" }}>
                 <img src="/images/bticino-videoportero.jpeg" alt="BTicino Classe 300" style={{ width: "100%", height: 140, objectFit: "cover", objectPosition: "top", display: "block" }} />
               </div>
               <div style={{ padding: "20px 20px 24px" }}>
-                <div style={{ fontWeight: 900, fontSize: 16, color: "#0A0A1A", marginBottom: 6 }}>BTicino · Classe 300</div>
+                <div style={{ fontWeight: 900, fontSize: 16, color: "#FFFFFF", marginBottom: 6 }}>BTicino · Classe 300</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: 0.5 }}>Diseño italiano · Grupo Legrand</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Diseño italiano · Grupo Legrand</span>
                 </div>
-                <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, margin: 0 }}>
-                  BTicino pertenece al Grupo Legrand y es sinónimo de diseño italiano de alta gama. El <strong>Classe 300 X13E</strong> incorpora pantalla táctil vertical de <strong>7 pulgadas</strong>, cámara de <strong>5MP</strong> con ángulo de 150° y tecnología WDR. La app <strong>Home+ Door</strong> gestiona la puerta de forma remota e incluye llaveros RFID para apertura sin manos.
+                <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
+                  BTicino pertenece al Grupo Legrand y es sinónimo de diseño italiano de alta gama. El <strong style={{ color: "#fff" }}>Classe 300 X13E</strong> incorpora pantalla táctil vertical de <strong style={{ color: "#fff" }}>7 pulgadas</strong>, cámara de <strong style={{ color: "#fff" }}>5MP</strong> con ángulo de 150° y tecnología WDR. La app <strong style={{ color: "#fff" }}>Home+ Door</strong> gestiona la puerta de forma remota e incluye llaveros RFID para apertura sin manos.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {["Classe 300 X13E", "Cámara 5MP", "App Home+", "RFID incluido"].map(tag => (
-                    <span key={tag} style={{ fontSize: 11, backgroundColor: "#F3F4F6", color: "#374151", borderRadius: 20, padding: "3px 10px", fontWeight: 600 }}>{tag}</span>
+                    <span key={tag} style={{ fontSize: 11, backgroundColor: "rgba(255,255,255,0.06)", color: "#CBD5E0", borderRadius: 20, padding: "3px 10px", fontWeight: 600 }}>{tag}</span>
                   ))}
                 </div>
               </div>
             </div>
 
             {/* GOLMAR */}
-            <div style={{ backgroundColor: "#F8F9FA", borderRadius: 20, overflow: "hidden", border: "1px solid #E5E7EB" }}>
+            <div style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ backgroundColor: "#E87722", padding: "24px 20px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 100 }}>
                 <img src="/images/logo-golmar.png" alt="Golmar videoporteros" style={{ height: 60, width: "auto", objectFit: "contain", display: "block" }} />
               </div>
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#6B7280", textTransform: "uppercase", letterSpacing: 0.5 }}>Made in Spain · Desde 1971</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Made in Spain · Desde 1971</span>
                 </div>
-                <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, margin: 0 }}>
-                  Golmar es una marca española fundada en 1971, con sede en Barcelona, especializada en comunidades de vecinos. Su gama <strong>Sixty5</strong> incorpora pantalla táctil de 5&quot;, protocolo SIP y tecnología de cámara <strong>WDR</strong> para visión perfecta incluso con fuerte contraluz. La app <strong>G2Call</strong> permite contestar al portero desde el smartphone. Ideal para grandes comunidades.
+                <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
+                  Golmar es una marca española fundada en 1971, con sede en Barcelona, especializada en comunidades de vecinos. Su gama <strong style={{ color: "#fff" }}>Sixty5</strong> incorpora pantalla táctil de 5&quot;, protocolo SIP y tecnología de cámara <strong style={{ color: "#fff" }}>WDR</strong> para visión perfecta incluso con fuerte contraluz. La app <strong style={{ color: "#fff" }}>G2Call</strong> permite contestar al portero desde el smartphone. Ideal para grandes comunidades.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {["Gama Sixty5", "Cámara WDR", "App G2Call", "Protocolo SIP"].map(tag => (
-                    <span key={tag} style={{ fontSize: 11, backgroundColor: "#FFF7ED", color: "#C2410C", borderRadius: 20, padding: "3px 10px", fontWeight: 600 }}>{tag}</span>
+                    <span key={tag} style={{ fontSize: 11, backgroundColor: "rgba(232,119,34,0.15)", color: "#FCA47A", borderRadius: 20, padding: "3px 10px", fontWeight: 600 }}>{tag}</span>
                   ))}
                 </div>
               </div>
@@ -293,20 +293,20 @@ export default function Videoporteros() {
       </section>
 
       {/* ── TODO LO QUE HACEMOS ── */}
-      <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
+      <section style={{ background: "#060e1a", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
           <div style={{ marginBottom: 32 }}>
-            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: 0 }}>Todo lo que incluye nuestro servicio</h2>
-            <p style={{ color: "#6B7280", fontSize: 14, marginTop: 8 }}>Desde la instalación básica hasta el sistema de seguridad más avanzado — lo hacemos todo</p>
+            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#FFFFFF", margin: 0 }}>Todo lo que incluye nuestro servicio</h2>
+            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 8 }}>Desde la instalación básica hasta el sistema de seguridad más avanzado — lo hacemos todo</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {ALL_SERVICES.map((s) => (
-              <div key={s.title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "18px 16px", border: "1px solid #E5E7EB", display: "flex", flexDirection: "column", gap: 8 }}>
+              <div key={s.title} style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 14, padding: "18px 16px", border: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column", gap: 8 }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, backgroundColor: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center", color: "#E53E3E", flexShrink: 0 }}>
                   {s.icon}
                 </div>
-                <h3 style={{ fontWeight: 800, fontSize: 13, color: "#0A0A1A", margin: 0 }}>{s.title}</h3>
-                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
+                <h3 style={{ fontWeight: 800, fontSize: 13, color: "#FFFFFF", margin: 0 }}>{s.title}</h3>
+                <p style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
               </div>
             ))}
           </div>
@@ -314,24 +314,24 @@ export default function Videoporteros() {
       </section>
 
       {/* ── SOLUTIONS ── */}
-      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
+      <section style={{ background: "#0a1120", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
-          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", marginBottom: 8 }}>Solución para Cada Espacio</h2>
-          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Adaptamos el sistema exacto a tus necesidades y presupuesto</p>
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#FFFFFF", marginBottom: 8 }}>Solución para Cada Espacio</h2>
+          <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 28 }}>Adaptamos el sistema exacto a tus necesidades y presupuesto</p>
           <div className="grid sm:grid-cols-3 gap-5">
             {SOLUTIONS.map((s) => (
-              <div key={s.title} style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 24, border: "1px solid #E5E7EB", display: "flex", flexDirection: "column" }}>
+              <div key={s.title} style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 16, padding: 24, border: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column" }}>
                 <div style={{ fontSize: 28, marginBottom: 10 }}>{s.icon}</div>
-                <h3 style={{ fontWeight: 800, fontSize: 17, color: "#0A0A1A", marginBottom: 6, marginTop: 0 }}>{s.title}</h3>
-                <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 12, marginTop: 0 }}>{s.desc}</p>
+                <h3 style={{ fontWeight: 800, fontSize: 17, color: "#FFFFFF", marginBottom: 6, marginTop: 0 }}>{s.title}</h3>
+                <p style={{ fontSize: 13, color: "#94A3B8", marginBottom: 12, marginTop: 0 }}>{s.desc}</p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, flex: 1 }}>
                   {s.features.map((f) => (
-                    <li key={f} style={{ fontSize: 12, color: "#374151", lineHeight: 2 }}>
+                    <li key={f} style={{ fontSize: 12, color: "#CBD5E0", lineHeight: 2 }}>
                       <span style={{ color: "#E53E3E", fontWeight: 700, marginRight: 6 }}>✓</span>{f}
                     </li>
                   ))}
                 </ul>
-                <div style={{ marginTop: 16, padding: "10px 0", borderTop: "1px solid #E5E7EB", fontSize: 13, fontWeight: 700, color: "#E53E3E" }}>{s.price}</div>
+                <div style={{ marginTop: 16, padding: "10px 0", borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 13, fontWeight: 700, color: "#E53E3E" }}>{s.price}</div>
                 <button onClick={() => setShowModal(true)} style={{ display: "block", width: "100%", backgroundColor: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: 13, textAlign: "center", marginTop: 10, boxSizing: "border-box", border: "none", cursor: "pointer" }}>
                   Solicitar presupuesto →
                 </button>
@@ -359,17 +359,17 @@ export default function Videoporteros() {
       </section>
 
       {/* ── FAQ ── */}
-      <section style={{ backgroundColor: "#FFFFFF", padding: "56px 20px" }}>
+      <section style={{ background: "#060e1a", padding: "56px 20px" }}>
         <div className="max-w-3xl mx-auto">
-          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", marginBottom: 8 }}>Preguntas Frecuentes</h2>
-          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Resolvemos las dudas más habituales sobre videoporteros y control de accesos</p>
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#FFFFFF", marginBottom: 8 }}>Preguntas Frecuentes</h2>
+          <p style={{ color: "#94A3B8", fontSize: 14, marginBottom: 28 }}>Resolvemos las dudas más habituales sobre videoporteros y control de accesos</p>
           <Accordion type="single" collapsible className="space-y-2">
             {FAQS.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-[#F8F9FA] rounded-xl border border-gray-200 px-5 overflow-hidden">
-                <AccordionTrigger className="text-left text-[15px] font-semibold text-[#0A0A1A] hover:text-[#E53E3E] transition-colors duration-300 py-5">
+              <AccordionItem key={i} value={`faq-${i}`} className="bg-[#0d1b2a] rounded-xl border border-[rgba(255,255,255,0.08)] px-5 overflow-hidden">
+                <AccordionTrigger className="text-left text-[15px] font-semibold text-white hover:text-[#E53E3E] transition-colors duration-300 py-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 text-sm leading-relaxed pb-5">
+                <AccordionContent className="text-[#94A3B8] text-sm leading-relaxed pb-5">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
