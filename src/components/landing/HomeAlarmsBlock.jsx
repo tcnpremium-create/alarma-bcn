@@ -1,52 +1,52 @@
 import React from "react";
 
 const laserCss = `
-  @keyframes alarms-laser-v {
-    0%   { transform: translateY(-100%); }
-    100% { transform: translateY(200%); }
-  }
-  @keyframes alarms-laser-h {
-    0%   { transform: translateX(-120%) skewX(-22deg); }
-    100% { transform: translateX(220%) skewX(-22deg); }
+  @keyframes h-perimeter-scan {
+    0%   { top: -2px; }
+    100% { top: 100%; }
   }
 `;
 
 export default function HomeAlarmsBlock({ onOpenModal }) {
   return (
-    <section style={{ backgroundColor: "#0A0A1A", padding: "40px 20px", position: "relative", overflow: "hidden" }}>
+    <section style={{ backgroundColor: "#0A0A1A", padding: "0 0 40px", position: "relative", overflow: "hidden" }}>
       <style>{laserCss}</style>
 
-      {/* Red laser beams */}
-      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }} aria-hidden="true">
-        {/* Vertical beam 1 */}
+      {/* Horizontal laser beam — sweeps top → bottom and bounces */}
+      <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, pointerEvents: "none", zIndex: 2 }}>
         <div style={{
-          position: "absolute", top: 0, left: "15%",
-          width: 1, height: "100%",
-          background: "linear-gradient(to bottom, transparent, rgba(239,68,68,0.5), transparent)",
+          position: "absolute",
+          left: 0,
+          right: 0,
+          height: 2,
+          background: "linear-gradient(to right, transparent 0%, rgba(239,68,68,0.15) 10%, rgba(239,68,68,0.45) 35%, rgba(239,68,68,0.7) 50%, rgba(239,68,68,0.45) 65%, rgba(239,68,68,0.15) 90%, transparent 100%)",
           filter: "blur(1px)",
-          boxShadow: "0 0 8px rgba(239,68,68,0.3)",
-          animation: "alarms-laser-v 10s linear infinite",
-        }} />
-        {/* Vertical beam 2 */}
-        <div style={{
-          position: "absolute", top: 0, left: "80%",
-          width: 2, height: "100%",
-          background: "linear-gradient(to bottom, transparent, rgba(239,68,68,0.35), transparent)",
-          filter: "blur(0.5px)",
-          animation: "alarms-laser-v 16s 5s linear infinite",
-        }} />
-        {/* Diagonal sweep */}
-        <div style={{
-          position: "absolute", top: "25%", left: 0,
-          width: 2, height: "200%",
-          background: "linear-gradient(to bottom, transparent, rgba(239,68,68,0.3), transparent)",
-          filter: "blur(1.5px)",
-          animation: "alarms-laser-h 20s 7s linear infinite",
-          transformOrigin: "top left",
+          boxShadow: "0 0 8px 2px rgba(239,68,68,0.3)",
+          animation: "h-perimeter-scan 5s ease-in-out infinite alternate",
         }} />
       </div>
 
-      <div className="max-w-2xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
+      {/* Ajax product image — top of section */}
+      <div style={{ width: "100%", maxHeight: 260, overflow: "hidden", position: "relative" }}>
+        <img
+          src="/images/ajax-alarm-hero.jpeg"
+          alt="Sistema de alarma Ajax con Hub, cámara PIR y teclado"
+          style={{
+            width: "100%",
+            height: 260,
+            objectFit: "cover",
+            objectPosition: "center 30%",
+            display: "block",
+          }}
+        />
+        {/* Dark gradient fade into section */}
+        <div style={{
+          position: "absolute", bottom: 0, left: 0, right: 0, height: 80,
+          background: "linear-gradient(to bottom, transparent, #0A0A1A)",
+        }} />
+      </div>
+
+      <div className="max-w-2xl mx-auto" style={{ position: "relative", zIndex: 1, padding: "24px 20px 0" }}>
         <span
           style={{
             display: "inline-block",
