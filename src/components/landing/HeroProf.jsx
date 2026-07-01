@@ -3,20 +3,20 @@ import { Phone } from "lucide-react";
 
 const SLIDES = [
   {
-    img: "/images/hero-intruder.jpeg",
-    pos: "65% center",
-    badge: "Sistema Activo · Barcelona y Área Metropolitana",
-    h1a: "Tu Hogar o Negocio",
-    h1b: "Blindado Sin Cuotas",
-    sub: "Cámaras 4K con IA y alarmas Ajax que detectan intrusos antes de que actúen. Alertas en tiempo real en tu móvil. Sin permanencia.",
-  },
-  {
     img: "/images/hero-cameras.jpeg",
     pos: "center center",
     badge: "Videovigilancia 4K · IA Avanzada",
     h1a: "Vigilancia Total",
     h1b: "Sin Puntos Ciegos",
     sub: "Cámaras 4K Hikvision con detección inteligente de personas y vehículos. Visión nocturna en color 30m. Control desde tu móvil.",
+  },
+  {
+    img: "/images/hero-intruder.jpeg",
+    pos: "65% center",
+    badge: "Sistema Activo · Barcelona y Área Metropolitana",
+    h1a: "Tu Hogar o Negocio",
+    h1b: "Blindado Sin Cuotas",
+    sub: "Cámaras 4K con IA y alarmas Ajax que detectan intrusos antes de que actúen. Alertas en tiempo real en tu móvil. Sin permanencia.",
   },
   {
     img: "/images/hero-ajax.jpeg",
@@ -28,72 +28,67 @@ const SLIDES = [
   },
 ];
 
-function SecurityParticles() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    let animId;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const count = 55;
-    const dots = Array.from({ length: count }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 2 + 1,
-    }));
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const d of dots) {
-        d.x += d.vx;
-        d.y += d.vy;
-        if (d.x < 0 || d.x > canvas.width) d.vx *= -1;
-        if (d.y < 0 || d.y > canvas.height) d.vy *= -1;
-        ctx.beginPath();
-        ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(0,210,255,0.55)";
-        ctx.fill();
-      }
-      for (let i = 0; i < dots.length; i++) {
-        for (let j = i + 1; j < dots.length; j++) {
-          const dx = dots[i].x - dots[j].x;
-          const dy = dots[i].y - dots[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(dots[i].x, dots[i].y);
-            ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.strokeStyle = `rgba(0,210,255,${0.12 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-          }
-        }
-      }
-      animId = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
+function RedLaserEffect() {
   return (
-    <canvas
-      ref={canvasRef}
-      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", zIndex: 3, pointerEvents: "none" }}
-    />
+    <div
+      style={{
+        position: "absolute", inset: 0, zIndex: 3, pointerEvents: "none", overflow: "hidden",
+      }}
+      aria-hidden="true"
+    >
+      <style>{`
+        @keyframes laser-v-sweep {
+          0%   { transform: translateY(-100vh); }
+          100% { transform: translateY(200vh); }
+        }
+        @keyframes laser-h-sweep {
+          0%   { transform: translateX(-200vw) skewX(-18deg); }
+          100% { transform: translateX(200vw) skewX(-18deg); }
+        }
+        @keyframes laser-v2-sweep {
+          0%   { transform: translateY(-100vh); }
+          100% { transform: translateY(200vh); }
+        }
+      `}</style>
+
+      {/* Vertical scanner beam 1 — slow, wide glow */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0, left: "23%",
+          width: 2, height: "100vh",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(239,68,68,0.55) 25%, rgba(239,68,68,0.1) 50%, rgba(239,68,68,0.55) 75%, transparent 100%)",
+          filter: "blur(1.5px)",
+          boxShadow: "0 0 12px 2px rgba(239,68,68,0.25)",
+          animation: "laser-v-sweep 13s linear infinite",
+        }}
+      />
+
+      {/* Vertical scanner beam 2 — faster, thinner */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0, left: "68%",
+          width: 1, height: "100vh",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(239,68,68,0.4) 30%, rgba(239,68,68,0.06) 50%, rgba(239,68,68,0.4) 70%, transparent 100%)",
+          filter: "blur(0.8px)",
+          animation: "laser-v2-sweep 19s 6s linear infinite",
+        }}
+      />
+
+      {/* Diagonal sweep beam */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0, left: 0,
+          width: 3, height: "200vh",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(239,68,68,0.35) 20%, rgba(239,68,68,0.08) 50%, rgba(239,68,68,0.35) 80%, transparent 100%)",
+          filter: "blur(2px)",
+          animation: "laser-h-sweep 28s 11s linear infinite",
+          transformOrigin: "top left",
+        }}
+      />
+    </div>
   );
 }
 
@@ -154,10 +149,10 @@ export default function HeroProf({ onOpenModal }) {
       }} />
 
       {/* Radial glow */}
-      <div style={{ position: "absolute", top: "20%", left: "8%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(0,210,255,0.06) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: "20%", left: "8%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(239,68,68,0.05) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
 
-      {/* Particle canvas */}
-      <SecurityParticles />
+      {/* Red laser effect — replaces blue particles */}
+      <RedLaserEffect />
 
       {/* Content */}
       <div
@@ -240,7 +235,7 @@ export default function HeroProf({ onOpenModal }) {
               Presupuesto gratis →
             </button>
             <a
-              href="tel:+34638109947"
+              href="tel:+34615774532"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
@@ -248,7 +243,7 @@ export default function HeroProf({ onOpenModal }) {
                 background: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)",
               }}
             >
-              <Phone size={16} /> 638 10 99 47
+              <Phone size={16} /> Llamar ahora
             </a>
           </div>
 
