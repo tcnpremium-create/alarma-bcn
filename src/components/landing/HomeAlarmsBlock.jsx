@@ -1,52 +1,126 @@
 import React from "react";
 
 const laserCss = `
-  @keyframes h-perimeter-scan {
-    0%   { top: -2px; }
-    100% { top: 100%; }
+  @keyframes beam-flicker {
+    0%, 92%, 100% { opacity: 1; }
+    93%            { opacity: 0.55; }
+    95%            { opacity: 1; }
+    97%            { opacity: 0.7; }
+  }
+  @keyframes emitter-pulse {
+    0%, 100% { box-shadow: 0 0 5px 2px rgba(239,68,68,0.9), 0 0 12px 4px rgba(239,68,68,0.4); }
+    50%       { box-shadow: 0 0 3px 1px rgba(239,68,68,0.7), 0 0 6px 2px rgba(239,68,68,0.2); }
+  }
+  @keyframes scan-sweep {
+    0%   { top: 4%; }
+    100% { top: 94%; }
+  }
+  @keyframes corner-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
   }
 `;
 
+const BEAMS = [
+  { top: "22%", delay: "0s",    width: "72%", opacity: 0.75 },
+  { top: "50%", delay: "0.4s",  width: "88%", opacity: 0.65 },
+  { top: "76%", delay: "0.8s",  width: "60%", opacity: 0.70 },
+];
+
 export default function HomeAlarmsBlock({ onOpenModal }) {
   return (
-    <section style={{ backgroundColor: "#0A0A1A", padding: "0 0 40px", position: "relative", overflow: "hidden" }}>
+    <section
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        padding: "44px 20px 40px",
+        backgroundImage: "url('/images/ajax-alarm-hero.jpeg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center 30%",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <style>{laserCss}</style>
 
-      {/* Horizontal laser beam — sweeps top → bottom and bounces */}
-      <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, pointerEvents: "none", zIndex: 2 }}>
+      {/* Dark overlay — keeps text legible over the space image */}
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(160deg, rgba(4,6,18,0.88) 0%, rgba(8,4,16,0.80) 50%, rgba(4,6,18,0.90) 100%)", zIndex: 0 }} />
+
+      {/* ── PERIMETER LASER EFFECT ── */}
+      <div aria-hidden="true" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 1 }}>
+
+        {/* Horizontal tripwire beams */}
+        {BEAMS.map((b, i) => (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              top: b.top,
+              left: 0,
+              right: 0,
+              display: "flex",
+              alignItems: "center",
+              animation: `beam-flicker ${7 + i * 3}s ${b.delay} ease-in-out infinite`,
+              opacity: b.opacity,
+            }}
+          >
+            {/* Left emitter */}
+            <div style={{
+              width: 6, height: 6, borderRadius: "50%",
+              backgroundColor: "#ef4444",
+              flexShrink: 0,
+              marginLeft: "4%",
+              animation: `emitter-pulse ${1.8 + i * 0.4}s ease-in-out infinite`,
+            }} />
+            {/* Laser beam */}
+            <div style={{
+              width: b.width,
+              height: 1.5,
+              background: "linear-gradient(to right, rgba(239,68,68,0.95) 0%, rgba(239,68,68,0.6) 60%, rgba(239,68,68,0.2) 85%, transparent 100%)",
+              boxShadow: "0 0 4px 1px rgba(239,68,68,0.5), 0 0 10px 2px rgba(239,68,68,0.2)",
+              flexShrink: 0,
+            }} />
+            {/* Right receiver dot */}
+            <div style={{
+              width: 4, height: 4, borderRadius: "50%",
+              backgroundColor: "rgba(239,68,68,0.5)",
+              flexShrink: 0,
+              marginLeft: 4,
+              animation: `corner-blink ${2 + i * 0.5}s ease-in-out infinite`,
+            }} />
+          </div>
+        ))}
+
+        {/* Slow vertical scanning beam — sweeps section top → bottom → top */}
         <div style={{
           position: "absolute",
           left: 0,
           right: 0,
           height: 2,
-          background: "linear-gradient(to right, transparent 0%, rgba(239,68,68,0.15) 10%, rgba(239,68,68,0.45) 35%, rgba(239,68,68,0.7) 50%, rgba(239,68,68,0.45) 65%, rgba(239,68,68,0.15) 90%, transparent 100%)",
-          filter: "blur(1px)",
-          boxShadow: "0 0 8px 2px rgba(239,68,68,0.3)",
-          animation: "h-perimeter-scan 5s ease-in-out infinite alternate",
+          background: "linear-gradient(to right, transparent 0%, rgba(239,68,68,0.1) 8%, rgba(239,68,68,0.35) 30%, rgba(239,68,68,0.55) 50%, rgba(239,68,68,0.35) 70%, rgba(239,68,68,0.1) 92%, transparent 100%)",
+          filter: "blur(1.5px)",
+          boxShadow: "0 0 12px 3px rgba(239,68,68,0.25)",
+          animation: "scan-sweep 6s ease-in-out infinite alternate",
         }} />
+
+        {/* Corner emitter indicators — top-left & top-right */}
+        {[{ top: 10, left: 10 }, { top: 10, right: 10 }, { bottom: 10, left: 10 }, { bottom: 10, right: 10 }].map((pos, i) => (
+          <div key={i} style={{
+            position: "absolute", ...pos,
+            width: 8, height: 8, borderRadius: "50%",
+            border: "1.5px solid rgba(239,68,68,0.7)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+          }}>
+            <div style={{
+              width: 3, height: 3, borderRadius: "50%",
+              backgroundColor: "#ef4444",
+              animation: `emitter-pulse ${1.5 + i * 0.3}s ${i * 0.4}s ease-in-out infinite`,
+            }} />
+          </div>
+        ))}
       </div>
 
-      {/* Ajax product image — top of section */}
-      <div style={{ width: "100%", maxHeight: 260, overflow: "hidden", position: "relative" }}>
-        <img
-          src="/images/ajax-alarm-hero.jpeg"
-          alt="Sistema de alarma Ajax con Hub, cámara PIR y teclado"
-          style={{
-            width: "100%",
-            height: 260,
-            objectFit: "cover",
-            objectPosition: "center 30%",
-            display: "block",
-          }}
-        />
-        {/* Dark gradient fade into section */}
-        <div style={{
-          position: "absolute", bottom: 0, left: 0, right: 0, height: 80,
-          background: "linear-gradient(to bottom, transparent, #0A0A1A)",
-        }} />
-      </div>
-
-      <div className="max-w-2xl mx-auto" style={{ position: "relative", zIndex: 1, padding: "24px 20px 0" }}>
+      {/* ── CONTENT ── */}
+      <div className="max-w-2xl mx-auto" style={{ position: "relative", zIndex: 2 }}>
         <span
           style={{
             display: "inline-block",
@@ -80,6 +154,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
             display: "flex",
             alignItems: "center",
             gap: 16,
+            backdropFilter: "blur(6px)",
           }}
         >
           <div
@@ -112,6 +187,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
               key={p}
               style={{
                 backgroundColor: "rgba(255,255,255,0.08)",
+                backdropFilter: "blur(4px)",
                 color: "#fff",
                 borderRadius: 10,
                 padding: "6px 12px",
@@ -137,6 +213,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
               padding: 18,
               border: "none",
               cursor: "pointer",
+              boxShadow: "0 0 20px rgba(229,62,62,0.4)",
             }}
           >
             Blindar mi propiedad ahora →
@@ -145,13 +222,14 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
             href="tel:+34615774532"
             style={{
               width: "100%",
-              backgroundColor: "rgba(255,255,255,0.15)",
+              backgroundColor: "rgba(255,255,255,0.10)",
+              backdropFilter: "blur(6px)",
               color: "#fff",
               fontWeight: 800,
               fontSize: 16,
               borderRadius: 50,
               padding: 18,
-              border: "none",
+              border: "1px solid rgba(255,255,255,0.18)",
               textAlign: "center",
               textDecoration: "none",
               display: "flex",
