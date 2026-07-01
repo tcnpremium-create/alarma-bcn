@@ -64,7 +64,7 @@ export default function Videovigilancia() {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#fff", paddingBottom: 70 }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
         title="Cámaras Videovigilancia 4K Barcelona | Hikvision y Dahua | Premium Tech Security"
         description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía de por vida. Sin cuotas. Tel: 638 10 99 47"
@@ -310,20 +310,20 @@ export default function Videovigilancia() {
       </section>
 
       {/* ── 3. FEATURES ── */}
-      <section style={{ background: "#FFFFFF", padding: "72px 24px" }}>
+      <section style={{ background: "#060e1a", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Prestaciones</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Características de nuestras cámaras</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Características de nuestras cámaras</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
             {FEATURES.map(f => (
-              <div key={f.title} style={{ background: "#F8FAFC", borderRadius: 11, padding: "26px 22px", border: "1px solid #E2E8F0" }}>
-                <div style={{ width: 42, height: 42, background: "#FFF1F1", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+              <div key={f.title} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 11, padding: "26px 22px", border: "1px solid rgba(255,255,255,0.08)" }}>
+                <div style={{ width: 42, height: 42, background: "rgba(229,62,62,0.12)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
                   <f.icon size={21} color="#E53E3E" />
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0A0F1A", margin: "0 0 7px" }}>{f.title}</h3>
-                <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
+                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", margin: "0 0 7px" }}>{f.title}</h3>
+                <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -359,22 +359,22 @@ export default function Videovigilancia() {
       </section>
 
       {/* ── 5. FAQ ── */}
-      <section style={{ background: "#F8FAFC", padding: "72px 24px" }}>
+      <section style={{ background: "#0a1120", padding: "72px 24px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>FAQ</span>
-            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Preguntas frecuentes sobre cámaras de seguridad</h2>
+            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Preguntas frecuentes sobre cámaras de seguridad</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {FAQS.map((faq, idx) => (
-              <div key={idx} style={{ background: "#FFFFFF", borderRadius: 9, border: "1px solid #E2E8F0", overflow: "hidden" }}>
+              <div key={idx} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 9, border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
                 <button onClick={() => setOpenFaq(openFaq === idx ? null : idx)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 22px", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#0A0F1A", paddingRight: 14, lineHeight: 1.4 }}>{faq.q}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", paddingRight: 14, lineHeight: 1.4 }}>{faq.q}</span>
                   {openFaq === idx ? <ChevronUp size={17} color="#E53E3E" style={{ flexShrink: 0 }} /> : <ChevronDown size={17} color="#94A3B8" style={{ flexShrink: 0 }} />}
                 </button>
                 {openFaq === idx && (
-                  <div style={{ padding: "0 22px 18px", borderTop: "1px solid #F1F5F9" }}>
-                    <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.75, margin: "14px 0 0" }}>{faq.a}</p>
+                  <div style={{ padding: "0 22px 18px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.75, margin: "14px 0 0" }}>{faq.a}</p>
                   </div>
                 )}
               </div>
