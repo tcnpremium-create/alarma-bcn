@@ -1,17 +1,13 @@
 import React from "react";
 
 const cctvCss = `
-  @keyframes cctv-scan {
-    0%   { background-position: 0 0; }
-    100% { background-position: 0 100%; }
-  }
   @keyframes rec-blink {
     0%, 49% { opacity: 1; }
     50%, 100% { opacity: 0; }
   }
-  @keyframes cam-laser-v {
-    0%   { transform: translateY(-100%); }
-    100% { transform: translateY(200%); }
+  @keyframes cam-h-scan {
+    0%   { top: -2px; }
+    100% { top: 100%; }
   }
 `;
 
@@ -30,23 +26,25 @@ export default function HomeCamerasBlock({ onOpenModal }) {
         }}
       />
 
-      {/* Red laser beam for cameras section */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute", top: 0, left: "60%",
-          width: 1, height: "100%", pointerEvents: "none", zIndex: 0,
-          background: "linear-gradient(to bottom, transparent, rgba(239,68,68,0.4), transparent)",
+      {/* Horizontal laser beam — sweeps top → bottom and bounces */}
+      <div aria-hidden="true" style={{ position: "absolute", left: 0, right: 0, pointerEvents: "none", zIndex: 1 }}>
+        <div style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          height: 2,
+          background: "linear-gradient(to right, transparent 0%, rgba(239,68,68,0.15) 10%, rgba(239,68,68,0.45) 35%, rgba(239,68,68,0.7) 50%, rgba(239,68,68,0.45) 65%, rgba(239,68,68,0.15) 90%, transparent 100%)",
           filter: "blur(1px)",
-          animation: "cam-laser-v 14s 3s linear infinite",
-        }}
-      />
+          boxShadow: "0 0 8px 2px rgba(239,68,68,0.3)",
+          animation: "cam-h-scan 4s ease-in-out infinite alternate",
+        }} />
+      </div>
 
-      {/* • REC badge */}
+      {/* REC badge */}
       <div
         aria-hidden="true"
         style={{
-          position: "absolute", top: 14, right: 16, zIndex: 2,
+          position: "absolute", top: 14, right: 16, zIndex: 3,
           display: "flex", alignItems: "center", gap: 5,
           background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)",
           border: "1px solid rgba(239,68,68,0.5)", borderRadius: 6,
@@ -57,7 +55,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
         <span style={{ color: "#fff", fontSize: 10, fontWeight: 800, letterSpacing: "0.12em" }}>REC</span>
       </div>
 
-      <div className="max-w-2xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
+      <div className="max-w-2xl mx-auto" style={{ position: "relative", zIndex: 2 }}>
         <div style={{ height: 4, backgroundColor: "#E53E3E", width: "100%", marginBottom: 24, boxShadow: "0 0 10px rgba(239,68,68,0.6)" }} />
 
         <span
