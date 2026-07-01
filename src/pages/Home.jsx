@@ -3,15 +3,16 @@ import Navbar from "../components/landing/Navbar";
 import HeroProf from "../components/landing/HeroProf";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
-import HomeServicesGrid from "../components/landing/HomeServicesGrid";
+import BentoServiciosGrid from "../components/landing/BentoServiciosGrid";
 import HomeCamerasBlock from "../components/landing/HomeCamerasBlock";
 import HomeAlarmsBlock from "../components/landing/HomeAlarmsBlock";
 import HomeAccessBlock from "../components/landing/HomeAccessBlock";
 import HomeSeoLocal from "../components/landing/HomeSeoLocal";
 import PromoAccordion from "../components/landing/PromoAccordion";
-import GoogleReviews from "../components/landing/GoogleReviews";
+import MarqueeSocial from "../components/landing/MarqueeSocial";
 import HomeVideoporterosTeaser from "../components/landing/HomeVideoporterosTeaser";
 import HomeTrustSection from "../components/landing/HomeTrustSection";
+import AnimatedSecurityBeam from "../components/landing/AnimatedSecurityBeam";
 import PresupuestoModal from "../components/landing/PresupuestoModal";
 
 const CAMERA_PROMOS = [
@@ -71,19 +72,19 @@ export default function Home() {
       <main>
         <HeroProf onOpenModal={() => setModalOpen(true)} />
 
-        {/* Cameras block — first section after hero */}
         <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
 
-        {/* Section A — Services Grid */}
-        <HomeServicesGrid />
+        <AnimatedSecurityBeam />
+
+        <BentoServiciosGrid />
+
         <PromoAccordion bg="linear-gradient(135deg, #1a1a2e, #0A0A1A)" title="Promociones en Cámaras de Seguridad" urgencyLine1="OFERTA ESTA SEMANA — ÚLTIMAS PLAZAS" urgencyLine2="Promociones a punto de caducar · Instalación garantizada" items={CAMERA_PROMOS} footerText="Oferta válida hasta el domingo · Plazas limitadas" />
 
-        <GoogleReviews />
+        <MarqueeSocial />
 
         <HomeAlarmsBlock onOpenModal={() => setModalOpen(true)} />
         <PromoAccordion bg="#111827" title="Promociones en Sistemas de Alarma" urgencyLine1="PROMOCIONES EN ALARMAS — ESTA SEMANA" urgencyLine2="Oferta exclusiva · Stock limitado · Instalación inmediata" items={ALARM_PROMOS} footerText="Oferta válida esta semana · Instalación garantizada en 48h" />
 
-        {/* Trust Section */}
         <HomeTrustSection />
 
         <HomeVideoporterosTeaser />
