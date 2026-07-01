@@ -96,7 +96,7 @@ export default function SistemasAlarma() {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#fff" }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060e1a" }}>
       <AdvancedSEO
         title="Alarmas Ajax Barcelona | Instalación Profesional | Premium Tech Security"
         description="Sistemas de alarma Ajax en Barcelona y Catalunya. Respuesta certificada en 15 segundos. 100% inalámbrico sin obras. Partner oficial Ajax. Desde 349€ instalado. Tel: 638 10 99 47"
@@ -247,21 +247,21 @@ export default function SistemasAlarma() {
       </section>
 
       {/* ── 3. CÓMO FUNCIONA ── */}
-      <section style={{ background: "#FFFFFF", padding: "72px 24px" }}>
+      <section style={{ background: "#060e1a", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Proceso</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>¿Cómo funciona el sistema Ajax?</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 0", letterSpacing: "-0.02em" }}>¿Cómo funciona el sistema Ajax?</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 2 }}>
             {HOW_IT_WORKS.map((step, idx) => (
-              <div key={step.step} style={{ padding: "36px 28px", background: idx % 2 === 0 ? "#F8FAFC" : "#FFFFFF", borderTop: "3px solid " + (idx === 0 ? "#E53E3E" : "#E2E8F0") }}>
-                <div style={{ fontSize: "3rem", fontWeight: 900, color: "#E8ECF0", lineHeight: 1, marginBottom: 14 }}>{step.step}</div>
-                <div style={{ width: 40, height: 40, background: "#FFF1F1", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+              <div key={step.step} style={{ padding: "36px 28px", background: idx % 2 === 0 ? "rgba(255,255,255,0.04)" : "rgba(255,255,255,0.02)", borderTop: "3px solid " + (idx === 0 ? "#E53E3E" : "rgba(255,255,255,0.08)") }}>
+                <div style={{ fontSize: "3rem", fontWeight: 900, color: "rgba(255,255,255,0.08)", lineHeight: 1, marginBottom: 14 }}>{step.step}</div>
+                <div style={{ width: 40, height: 40, background: "rgba(229,62,62,0.12)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
                   <step.icon size={20} color="#E53E3E" />
                 </div>
-                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0A0F1A", margin: "0 0 8px" }}>{step.title}</h3>
-                <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
+                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#FFFFFF", margin: "0 0 8px" }}>{step.title}</h3>
+                <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
             ))}
           </div>
@@ -309,24 +309,24 @@ export default function SistemasAlarma() {
       </section>
 
       {/* ── 5. COMPONENTES AJAX ── */}
-      <section style={{ background: "#F8FAFC", padding: "72px 24px" }}>
+      <section style={{ background: "#060e1a", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Dispositivos del ecosistema</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 10px", letterSpacing: "-0.02em" }}>Componentes del sistema Ajax</h2>
-            <p style={{ fontSize: 13, color: "#64748B", maxWidth: 500, margin: "0 auto" }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Una instalación adapta los componentes a la geometría exacta del espacio.</p>
+            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 10px", letterSpacing: "-0.02em" }}>Componentes del sistema Ajax</h2>
+            <p style={{ fontSize: 13, color: "#94A3B8", maxWidth: 500, margin: "0 auto" }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Una instalación adapta los componentes a la geometría exacta del espacio.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 12 }}>
             {AJAX_COMPONENTS.map(c => (
-              <div key={c.name} style={{ background: "#FFFFFF", borderRadius: 11, padding: "24px 20px", border: "1px solid #E2E8F0", transition: "box-shadow 0.2s" }}>
+              <div key={c.name} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 11, padding: "24px 20px", border: "1px solid rgba(255,255,255,0.08)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
-                  <div style={{ width: 44, height: 44, background: "#0A0F1A", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  <div style={{ width: 44, height: 44, background: "rgba(229,62,62,0.12)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <Shield size={20} color="#E53E3E" />
                   </div>
-                  <span style={{ fontSize: 10, fontWeight: 700, color: "#E53E3E", background: "#FFF1F1", borderRadius: 100, padding: "2px 9px", letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.tag}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: "#E53E3E", background: "rgba(229,62,62,0.12)", borderRadius: 100, padding: "2px 9px", letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.tag}</span>
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0A0F1A", margin: "0 0 6px" }}>{c.name}</h3>
-                <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
+                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", margin: "0 0 6px" }}>{c.name}</h3>
+                <p style={{ fontSize: 12, color: "#94A3B8", lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
               </div>
             ))}
           </div>
@@ -334,15 +334,15 @@ export default function SistemasAlarma() {
       </section>
 
       {/* ── 6. CARACTERÍSTICAS TÉCNICAS ── */}
-      <section style={{ background: "#FFFFFF", padding: "72px 24px" }}>
+      <section style={{ background: "#0a1120", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 56, alignItems: "center" }}>
             <div>
               <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Por qué Ajax</span>
-              <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#0A0F1A", margin: "10px 0 16px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#FFFFFF", margin: "10px 0 16px", letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                 Tecnología que elimina los puntos de fallo
               </h2>
-              <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.75, marginBottom: 22 }}>
+              <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.75, marginBottom: 22 }}>
                 Protocolo propietario, cifrado end-to-end, redundancia de comunicaciones y antimanipulación en cada dispositivo. Sin vulnerabilidades conocidas en el mercado de alarmas profesionales.
               </p>
               {[
@@ -355,18 +355,18 @@ export default function SistemasAlarma() {
                   <div style={{ width: 18, height: 18, borderRadius: "50%", background: "#E53E3E", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: 2 }}>
                     <Check size={10} color="#fff" strokeWidth={3} />
                   </div>
-                  <span style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{item}</span>
+                  <span style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.5 }}>{item}</span>
                 </div>
               ))}
             </div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               {TECH_FEATURES.map(f => (
-                <div key={f.title} style={{ background: "#F8FAFC", borderRadius: 10, padding: "20px 16px", border: "1px solid #E2E8F0" }}>
-                  <div style={{ width: 36, height: 36, background: "#FFF1F1", borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                <div key={f.title} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "20px 16px", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div style={{ width: 36, height: 36, background: "rgba(229,62,62,0.12)", borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
                     <f.icon size={18} color="#E53E3E" />
                   </div>
-                  <h4 style={{ fontSize: 12, fontWeight: 800, color: "#0A0F1A", margin: "0 0 4px" }}>{f.title}</h4>
-                  <p style={{ fontSize: 11, color: "#64748B", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+                  <h4 style={{ fontSize: 12, fontWeight: 800, color: "#FFFFFF", margin: "0 0 4px" }}>{f.title}</h4>
+                  <p style={{ fontSize: 11, color: "#94A3B8", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -375,28 +375,28 @@ export default function SistemasAlarma() {
       </section>
 
       {/* ── 7. FAQ ── */}
-      <section style={{ background: "#F8FAFC", padding: "72px 24px" }}>
+      <section style={{ background: "#060e1a", padding: "72px 24px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>FAQ</span>
-            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Preguntas frecuentes sobre alarmas Ajax</h2>
+            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Preguntas frecuentes sobre alarmas Ajax</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {FAQS.map((faq, idx) => (
-              <div key={idx} style={{ background: "#FFFFFF", borderRadius: 9, border: "1px solid #E2E8F0", overflow: "hidden" }}>
+              <div key={idx} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 9, border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
                 <button
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
                   style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 22px", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}
                 >
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#0A0F1A", paddingRight: 14, lineHeight: 1.4 }}>{faq.q}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", paddingRight: 14, lineHeight: 1.4 }}>{faq.q}</span>
                   {openFaq === idx
                     ? <ChevronUp size={17} color="#E53E3E" style={{ flexShrink: 0 }} />
                     : <ChevronDown size={17} color="#94A3B8" style={{ flexShrink: 0 }} />
                   }
                 </button>
                 {openFaq === idx && (
-                  <div style={{ padding: "0 22px 18px", borderTop: "1px solid #F1F5F9" }}>
-                    <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.75, margin: "14px 0 0" }}>{faq.a}</p>
+                  <div style={{ padding: "0 22px 18px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+                    <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.75, margin: "14px 0 0" }}>{faq.a}</p>
                   </div>
                 )}
               </div>
