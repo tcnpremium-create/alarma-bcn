@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 
 const NAV_LINKS = [
   { label: "Inicio", href: "/" },
-  { label: "Cámaras", href: "/videovigilancia" },
-  { label: "Alarmas", href: "/sistemas-alarma" },
-  { label: "Control Accesos", href: "/control-accesos" },
+  { label: "Cámaras", href: "/camaras-barcelona" },
+  { label: "Alarmas", href: "/alarmas-barcelona" },
+  { label: "Control Accesos", href: "/ControlAccesos" },
   { label: "Videoporteros", href: "/videoporteros" },
   { label: "Tecnología", href: "/tecnologia" },
   { label: "Blog", href: "/Blog" },
@@ -66,7 +66,7 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-              <a href="tel:+34638109947" aria-label="Llamar" className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${scrolled ? "text-[#0A1628]" : "text-white"}`}>
+              <a href="tel:+34615774532" aria-label="Llamar" className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${scrolled ? "text-[#0A1628]" : "text-white"}`}>
                 <Phone className="w-4 h-4 text-[#E63946]" />
                 Llamar
               </a>
@@ -109,7 +109,7 @@ export default function Navbar() {
                   </li>
                 ))}
                 <li className="pt-4 border-t border-gray-100 mt-2">
-                  <a href="tel:+34638109947" className="flex items-center gap-2 text-[#0A1628] font-semibold py-3 px-2">
+                  <a href="tel:+34615774532" className="flex items-center gap-2 text-[#0A1628] font-semibold py-3 px-2">
                     <Phone className="w-4 h-4 text-[#E63946]" />
                     Llamar
                   </a>
