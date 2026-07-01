@@ -171,7 +171,7 @@ export default function SistemasAlarma() {
                 Solicitar presupuesto gratis
               </button>
               <a
-                href="tel:+34638109947"
+                href="tel:+34615774532"
                 style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#fff", border: "2px solid rgba(255,255,255,0.25)", borderRadius: 8, padding: "14px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}
               >
                 <Phone size={16} /> Llamar ahora
@@ -422,7 +422,7 @@ export default function SistemasAlarma() {
               Solicitar presupuesto gratis
             </button>
             <a
-              href="tel:+34638109947"
+              href="tel:+34615774532"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#fff", border: "2px solid rgba(255,255,255,0.25)", borderRadius: 8, padding: "14px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none" }}
             >
               <Phone size={16} /> Llamar ahora
