@@ -40,28 +40,6 @@ const css = `
 
 const KITS = [
   {
-    id: "basico",
-    badge: "ENTRADA",
-    popular: false,
-    title: "Kit Básico",
-    cameras: "2 Cámaras",
-    price: "699 €",
-    priceNote: "* IVA no incluido",
-    color: "rgba(100,116,139,.25)",
-    borderColor: "rgba(100,116,139,.3)",
-    items: [
-      "2 cámaras 2K",
-      "Grabador NVR",
-      "Disco duro 1TB",
-      "Detección IA de personas y vehículos",
-      "Visión nocturna en color",
-      "Instalación profesional incluida",
-      "Certificado de instalación homologado",
-      "Placas disuasorias incluidas",
-    ],
-    ideal: "Pisos, garajes y locales pequeños",
-  },
-  {
     id: "profesional",
     badge: "MÁS VENDIDO",
     popular: true,
@@ -72,15 +50,11 @@ const KITS = [
     color: "rgba(220,38,38,.12)",
     borderColor: "rgba(220,38,38,.45)",
     items: [
-      "4 cámaras HD 4MPX",
-      "Grabador NVR",
-      "Disco duro 1TB",
-      "Detección IA de personas y vehículos",
-      "Visión nocturna en color",
-      "Alertas push en tiempo real",
-      "Instalación y configuración completa",
-      "Certificado de instalación homologado",
-      "Placas disuasorias incluidas",
+      "4 cámaras Alta Definición 4MPX",
+      "Grabador NVR profesional con disco duro 2TB",
+      "Detección inteligente por Inteligencia Artificial",
+      "Visión nocturna optimizada",
+      "Instalación y configuración certificada incluida",
     ],
     ideal: "Casas, negocios y comunidades medianas",
   },
@@ -95,27 +69,14 @@ const KITS = [
     color: "rgba(109,40,217,.12)",
     borderColor: "rgba(139,92,246,.3)",
     items: [
-      "8 cámaras 2K Ultra HD",
-      "Grabador NVR o DVR 8 canales",
-      "Disco duro 2TB",
-      "Detección IA avanzada de personas y vehículos",
-      "Visión nocturna full-color",
-      "Alertas por email, push y SMS",
-      "Instalación y configuración completa",
-      "Certificado de instalación homologado",
-      "Placas disuasorias incluidas",
+      "8 cámaras profesionales 4K Ultra HD",
+      "Grabador NVR 8 canales con disco duro 4TB",
+      "Detección por IA avanzada de personas y vehículos",
+      "Visión nocturna de largo alcance",
+      "Instalación completa incluida",
     ],
     ideal: "Empresas, polígonos, comunidades grandes y fincas",
   },
-];
-
-const FEATURES = [
-  { icon: "📹", label: "Resolución 4K" },
-  { icon: "🌙", label: "Color Nocturno" },
-  { icon: "🤖", label: "IA Integrada" },
-  { icon: "📱", label: "App 24/7" },
-  { icon: "🛡️", label: "Sin cuotas" },
-  { icon: "⚡", label: "Alertas Instant." },
 ];
 
 export default function HomeCamerasBlock({ onOpenModal }) {
@@ -156,28 +117,37 @@ export default function HomeCamerasBlock({ onOpenModal }) {
 
         {/* Badge + Title */}
         <span style={{ display:"inline-block",backgroundColor:"#dc2626",color:"#fff",borderRadius:20,fontSize:11,fontWeight:800,padding:"6px 14px",letterSpacing:".05em",marginBottom:12 }}>
-          📹 CÁMARAS DE SEGURIDAD · BARCELONA
+          CÁMARAS DE SEGURIDAD · BARCELONA
         </span>
         <h2 style={{ fontWeight:900,fontSize:28,color:"#FFFFFF",lineHeight:1.12,margin:0 }}>
           Vigila todo en 4K. Detecta intrusos con Inteligencia Artificial.
         </h2>
         <p style={{ color:"#94A3B8",fontSize:15,lineHeight:1.72,marginTop:12 }}>
-          Instalamos cámaras Hikvision 4K con IA que detectan personas y vehículos en tiempo real. Visión nocturna en color, grabación continua y alertas instantáneas en tu móvil. Instalación profesional certificada, sin cuotas mensuales.
+          Instalamos cámaras 4K con IA que detectan personas y vehículos en tiempo real. Visión nocturna en color, grabación continua y alertas instantáneas en tu móvil. Instalación profesional certificada, sin cuotas mensuales.
         </p>
 
-        {/* Feature pills */}
-        <div style={{ display:"flex",gap:8,marginTop:16,flexWrap:"wrap" }}>
-          {FEATURES.map((f)=>(
-            <span key={f.label} style={{ display:"inline-flex",alignItems:"center",gap:6,backgroundColor:"rgba(255,255,255,.07)",border:"1px solid rgba(239,68,68,.25)",color:"#E2E8F0",borderRadius:20,padding:"7px 13px",fontSize:12,fontWeight:700,backdropFilter:"blur(4px)" }}>
-              {f.icon} {f.label}
-            </span>
-          ))}
+        {/* CTAs */}
+        <div style={{ display:"flex",flexDirection:"column",gap:12,marginTop:24 }}>
+          <button
+            onClick={() => onOpenModal && onOpenModal("Cámaras de seguridad")}
+            className="c-cta-primary"
+            style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer",boxShadow:"0 0 24px rgba(239,68,68,.45)" }}
+          >
+            Solicitar presupuesto gratis →
+          </button>
+          <a
+            href="tel:+34638109947"
+            className="c-cta-sec"
+            style={{ width:"100%",backgroundColor:"rgba(255,255,255,.08)",backdropFilter:"blur(8px)",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"1px solid rgba(255,255,255,.16)",textAlign:"center",textDecoration:"none",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxSizing:"border-box" }}
+          >
+            Llamar ahora
+          </a>
         </div>
 
         {/* ── KIT CARDS ── */}
-        <div style={{ marginTop:28 }}>
+        <div style={{ marginTop:32 }}>
           <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>
-            🎁 Kits de Videovigilancia — Precios Transparentes
+            Kits Profesionales de Videovigilancia — Precios Transparentes
           </p>
           <div style={{ display:"flex",flexDirection:"column",gap:10 }}>
             {KITS.map((kit)=>{
@@ -237,23 +207,6 @@ export default function HomeCamerasBlock({ onOpenModal }) {
           </div>
         </div>
 
-        {/* CTAs */}
-        <div style={{ display:"flex",flexDirection:"column",gap:12,marginTop:28 }}>
-          <button
-            onClick={() => onOpenModal && onOpenModal("Cámaras de seguridad")}
-            className="c-cta-primary"
-            style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer",boxShadow:"0 0 24px rgba(239,68,68,.45)" }}
-          >
-            Solicitar presupuesto gratis →
-          </button>
-          <a
-            href="tel:+34638109947"
-            className="c-cta-sec"
-            style={{ width:"100%",backgroundColor:"rgba(255,255,255,.08)",backdropFilter:"blur(8px)",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"1px solid rgba(255,255,255,.16)",textAlign:"center",textDecoration:"none",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxSizing:"border-box" }}
-          >
-            📞 Llamar ahora
-          </a>
-        </div>
       </div>
     </section>
   );
