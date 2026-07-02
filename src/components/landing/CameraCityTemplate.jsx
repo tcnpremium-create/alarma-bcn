@@ -3,28 +3,55 @@ import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
 import HeroContactModal from "./HeroContactModal";
-import PromoAccordion from "./PromoAccordion";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
 
-const CAMERA_PROMOS = [
+const CAMERA_KITS = [
   {
-    header: "Kit Básico — 2 Cámaras · Ideal Hogar",
-    oldPrice: "690€", price: "449€", savings: "241€",
-    features: ["2 Cámaras HD 4MPx (2K) exterior/interior", "Grabador NVR local con disco 1TB", "Visión nocturna en color", "App móvil iOS/Android incluida", "Instalación profesional incluida", "Garantía de por vida", "Sin cuotas mensuales"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%202%20Cámaras%20por%20449€",
+    id: "basico",
+    badge: null,
+    title: "Kit Básico",
+    cameras: "2 Cámaras",
+    price: "699 €",
+    items: [
+      "2 cámaras de alta definición 2K",
+      "Grabador NVR profesional con disco local",
+      "Instalación certificada incluida",
+      "Certificado de seguridad homologado",
+      "Placas disuasorias para exterior incluidas",
+      "Sin cuotas mensuales",
+    ],
+    ideal: "Viviendas y pequeños comercios",
   },
   {
-    header: "Kit Profesional — 4 Cámaras · Más Vendido", badge: "MÁS VENDIDO",
-    oldPrice: "1.190€", price: "699€", savings: "491€",
-    features: ["4 Cámaras HD 4MPx (2K) exterior/interior", "Grabador NVR 4 canales con disco 2TB", "Detección de movimiento avanzada", "Visión nocturna en color 30m", "App móvil iOS/Android incluida", "Instalación profesional en 1 día", "Garantía de por vida", "Sin cuotas mensuales"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%204%20Cámaras%20por%20699€",
+    id: "profesional",
+    badge: "MÁS VENDIDO",
+    title: "Kit Profesional",
+    cameras: "4 Cámaras",
+    price: "890 €",
+    items: [
+      "4 cámaras Alta Definición 4MPX",
+      "Grabador NVR profesional con disco duro 2TB",
+      "Detección inteligente por Inteligencia Artificial",
+      "Visión nocturna optimizada",
+      "Instalación y configuración certificada incluida",
+    ],
+    ideal: "Casas, negocios y comunidades medianas",
   },
   {
-    header: "Kit Empresarial — 8 Cámaras · Negocio y Comunidades",
-    oldPrice: "1.990€", price: "1.199€", savings: "791€",
-    features: ["8 Cámaras 4K Ultra HD exterior/interior", "Grabador NVR 8 canales con disco 4TB", "Detección de movimiento y zona perimetral", "Reconocimiento de matrículas opcional", "Visión nocturna en color 40m", "App móvil multiusuario", "Instalación profesional 1-2 días", "Garantía de por vida", "Sin cuotas mensuales"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%208%20Cámaras%20por%201.199€",
+    id: "empresarial",
+    badge: "MÁXIMA COBERTURA",
+    title: "Kit Empresarial",
+    cameras: "8 Cámaras",
+    price: "1.500 €",
+    items: [
+      "8 cámaras profesionales 4K Ultra HD",
+      "Grabador NVR 8 canales con disco duro 4TB",
+      "Detección por IA avanzada de personas y vehículos",
+      "Visión nocturna de largo alcance",
+      "Instalación completa incluida",
+    ],
+    ideal: "Empresas, polígonos, comunidades grandes y fincas",
   },
 ];
 
@@ -73,7 +100,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
   const defaultFaqs = [
     {
       q: `¿Cuánto cuesta instalar cámaras de seguridad en ${city}?`,
-      a: `El precio depende del número de cámaras, tipo y ubicación. En Premium Tech Security ofrecemos presupuesto gratuito sin compromiso. Consulta nuestros kits de instalación desde 449€ con instalación y grabador incluidos, sin cuotas mensuales.`,
+      a: `El precio depende del número de cámaras, tipo y ubicación. En Premium Tech Security ofrecemos presupuesto gratuito sin compromiso. Consulta nuestros kits de instalación desde 699€ (IVA no incluido) con instalación y grabador incluidos, sin cuotas mensuales.`,
     },
     {
       q: `¿Qué marcas de cámaras instaláis en ${city}?`,
@@ -209,13 +236,94 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         </div>
       </section>
 
-      {/* ── PROMOTIONS ── */}
-      <PromoAccordion
-        bg="linear-gradient(135deg, #1a1a2e, #0A0A1A)"
-        title="Kits de Cámaras — Precios Especiales"
-        items={CAMERA_PROMOS}
-        footerText="Instalación incluida en todos los kits · Garantía de por vida en equipos"
-      />
+      {/* ── KITS DE CÁMARAS ── */}
+      <section style={{ background: "#0A1120", padding: "64px 20px" }}>
+        <div className="max-w-4xl mx-auto">
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <div style={{
+              display: "inline-block",
+              background: "rgba(229,62,62,0.1)", border: "1px solid rgba(229,62,62,0.3)",
+              borderRadius: 100, padding: "5px 18px", marginBottom: 16
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+                Kits Profesionales de Videovigilancia — Precios Transparentes
+              </span>
+            </div>
+            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 10px", letterSpacing: "-0.025em" }}>
+              Kits de Cámaras con instalación incluida en {city}
+            </h2>
+            <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales.</p>
+          </div>
+
+          <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
+            {CAMERA_KITS.map((kit, i) => {
+              const isHighlighted = i === 1;
+              return (
+                <div key={kit.id} className="kit-card" style={{
+                  background: isHighlighted ? "rgba(229,62,62,0.06)" : "rgba(255,255,255,0.03)",
+                  border: isHighlighted ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 16, padding: "32px 26px",
+                  position: "relative", display: "flex", flexDirection: "column",
+                  boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
+                  transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
+                }}>
+                  {kit.badge && (
+                    <div style={{
+                      position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
+                      background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800,
+                      borderRadius: 100, padding: "4px 14px", whiteSpace: "nowrap", letterSpacing: "0.08em"
+                    }}>
+                      {kit.badge}
+                    </div>
+                  )}
+
+                  <div style={{ marginBottom: 4 }}>
+                    <span style={{ color: "#F1F5F9", fontSize: 16, fontWeight: 800 }}>{kit.title}</span>
+                    <span style={{ color: "#E53E3E", fontSize: 15, fontWeight: 800, marginLeft: 8 }}>— {kit.cameras}</span>
+                  </div>
+                  <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 2, marginBottom: 20 }}>Ideal: {kit.ideal}</div>
+
+                  <div style={{ marginBottom: 20 }}>
+                    <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price}</div>
+                    <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>* IVA no incluido</span>
+                  </div>
+
+                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", flex: 1 }}>
+                    {kit.items.map((item) => (
+                      <li key={item} style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.9, display: "flex", gap: 10, alignItems: "flex-start" }}>
+                        <span style={{ color: "#E53E3E", flexShrink: 0, fontWeight: 900, fontSize: 14, lineHeight: 1.9 }}>✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button onClick={() => setShowModal(true)} style={{
+                    display: "block", width: "100%",
+                    background: isHighlighted ? "#E53E3E" : "rgba(229,62,62,0.15)",
+                    color: "#fff", fontWeight: 700, fontSize: 14,
+                    borderRadius: 50, padding: "14px 0",
+                    border: isHighlighted ? "none" : "1px solid rgba(229,62,62,0.4)",
+                    cursor: "pointer", textAlign: "center"
+                  }}>
+                    Solicitar presupuesto gratis
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Hover + responsive stacking */}
+          <style>{`
+            .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
+            @media (max-width: 720px) {
+              .kits-grid { grid-template-columns: 1fr !important; }
+            }
+            @media (max-width: 1024px) and (min-width: 721px) {
+              .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            }
+          `}</style>
+        </div>
+      </section>
 
       {/* ── WHY US ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>

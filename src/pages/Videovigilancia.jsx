@@ -271,16 +271,17 @@ export default function Videovigilancia() {
             <p style={{ fontSize: 14, color: "#475569", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales.</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
+          <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
             {CAMERA_KITS.map((kit, i) => {
               const isHighlighted = i === 1;
               return (
-                <div key={kit.id} style={{
+                <div key={kit.id} className="kit-card" style={{
                   background: isHighlighted ? "rgba(229,62,62,0.06)" : "rgba(255,255,255,0.03)",
                   border: isHighlighted ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.08)",
                   borderRadius: 16, padding: "32px 26px",
                   position: "relative", display: "flex", flexDirection: "column",
-                  boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none"
+                  boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
+                  transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
                 }}>
                   {kit.badge && (
                     <div style={{
@@ -326,6 +327,17 @@ export default function Videovigilancia() {
               );
             })}
           </div>
+
+          {/* Hover + responsive stacking */}
+          <style>{`
+            .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
+            @media (max-width: 720px) {
+              .kits-grid { grid-template-columns: 1fr !important; }
+            }
+            @media (max-width: 1024px) and (min-width: 721px) {
+              .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+            }
+          `}</style>
         </div>
       </section>
 

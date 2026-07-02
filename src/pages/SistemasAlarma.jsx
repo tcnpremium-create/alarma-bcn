@@ -129,98 +129,89 @@ export default function SistemasAlarma() {
 
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section style={{ background: "#060B14", overflow: "hidden" }}>
-        <div style={{
-          maxWidth: 1200, margin: "0 auto",
-          padding: "80px 24px 72px",
-          display: "flex", flexWrap: "wrap", gap: 56, alignItems: "center"
-        }}>
-          {/* Left: text */}
-          <div style={{ flex: "1 1 340px", minWidth: 0 }}>
-            <div style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(229,62,62,0.12)",
-              border: "1px solid rgba(229,62,62,0.35)",
-              borderRadius: 100, padding: "6px 16px", marginBottom: 28
-            }}>
-              <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E" }} />
-              <span style={{ color: "#FC8181", fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Ajax Systems · Partner Oficial · Barcelona</span>
-            </div>
+      {/* ── HERO (full-width imagen) ── */}
+      <section style={{
+        position: "relative", overflow: "hidden",
+        minHeight: 620,
+        backgroundImage: "url('/images/ajax-hero-dispositivos.jpeg')",
+        backgroundSize: "cover", backgroundPosition: "center",
+      }}>
+        {/* Darkening gradient for text contrast */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0.75) 55%, #060B14 100%)" }} />
 
-            <h1 style={{
-              fontSize: "clamp(2.1rem, 5vw, 3.6rem)", fontWeight: 900,
-              color: "#FFFFFF", lineHeight: 1.08, maxWidth: 600,
-              margin: "0 0 20px", letterSpacing: "-0.03em"
-            }}>
-              Sistemas de Alarma<br />
-              <span style={{ color: "#E53E3E" }}>Profesionales Ajax.</span>
-            </h1>
-            <p style={{
-              fontSize: "clamp(0.95rem, 2vw, 1.1rem)", color: "#94A3B8",
-              maxWidth: 480, lineHeight: 1.7, margin: "0 0 40px"
-            }}>
-              La tecnología de alarma inalámbrica más avanzada del mercado. Respuesta certificada en menos de 15 segundos. Sin obras ni canaletas.
-            </p>
-
-            {/* Stats row */}
-            <div style={{ display: "flex", gap: 36, marginBottom: 44, flexWrap: "wrap" }}>
-              {[
-                { val: "15s",     label: "Respuesta CRA" },
-                { val: "2000m",   label: "Alcance señal" },
-                { val: "7 años",  label: "Batería sensores" },
-                { val: "AES-128", label: "Cifrado militar" },
-              ].map(s => (
-                <div key={s.val}>
-                  <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{s.val}</div>
-                  <div style={{ fontSize: 11, color: "#475569", marginTop: 4, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* CTAs */}
-            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button
-                onClick={() => setModalOpen(true)}
-                style={{
-                  background: "#E53E3E", color: "#fff", border: "none",
-                  borderRadius: 9, padding: "15px 32px", fontSize: 15, fontWeight: 700, cursor: "pointer",
-                  boxShadow: "0 0 32px rgba(229,62,62,0.35)"
-                }}
-              >
-                Solicitar presupuesto gratis
-              </button>
-              <a
-                href="tel:+34638109947"
-                style={{
-                  display: "inline-flex", alignItems: "center", gap: 8,
-                  color: "#CBD5E0", border: "1px solid rgba(255,255,255,0.18)",
-                  borderRadius: 9, padding: "15px 26px", fontSize: 15, fontWeight: 600, textDecoration: "none",
-                  background: "rgba(255,255,255,0.04)"
-                }}
-              >
-                <Phone size={16} /> Llamar ahora
-              </a>
-            </div>
+        <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "72px 24px 64px", textAlign: "center" }}>
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: "rgba(229,62,62,0.15)",
+            border: "1px solid rgba(229,62,62,0.4)",
+            borderRadius: 100, padding: "6px 16px", marginBottom: 26
+          }}>
+            <div style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E" }} />
+            <span style={{ color: "#FC8181", fontSize: 11, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase" }}>Ajax Systems · Partner Oficial · Barcelona</span>
           </div>
 
-          {/* Right: image */}
-          <div style={{ flex: "1 1 380px", minWidth: 0 }}>
-            <div style={{ position: "relative" }}>
-              <img
-                src="/images/ajax-hero-dispositivos.jpeg"
-                alt="Sistema de alarma Ajax — Hub 2, MotionProtect, DoorProtect, KeyPad Touch y StreetSiren"
-                style={{ width: "100%", borderRadius: 18, display: "block", boxShadow: "0 40px 100px rgba(0,0,0,0.7)" }}
-              />
-              <div style={{
-                position: "absolute", bottom: 22, left: 22,
-                background: "rgba(6,11,20,0.88)", backdropFilter: "blur(10px)",
-                border: "1px solid rgba(229,62,62,0.35)", borderRadius: 12, padding: "14px 18px"
-              }}>
-                <div style={{ fontSize: 10, color: "#FC8181", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 3 }}>Partner Oficial</div>
-                <div style={{ fontSize: 14, color: "#fff", fontWeight: 800 }}>Ajax Systems · Catalunya</div>
+          <h1 style={{
+            fontSize: "clamp(2.1rem, 5vw, 3.6rem)", fontWeight: 900,
+            color: "#FFFFFF", lineHeight: 1.08,
+            margin: "0 auto 20px", letterSpacing: "-0.03em", maxWidth: 780
+          }}>
+            Sistemas de Alarma<br />
+            <span style={{ color: "#E53E3E" }}>Profesionales Ajax.</span>
+          </h1>
+          <p style={{
+            fontSize: "clamp(0.95rem, 2vw, 1.1rem)", color: "#CBD5E0",
+            maxWidth: 560, lineHeight: 1.7, margin: "0 auto 40px"
+          }}>
+            La tecnología de alarma inalámbrica más avanzada del mercado. Respuesta certificada en menos de 15 segundos. Sin obras ni canaletas.
+          </p>
+
+          {/* Stats row */}
+          <div style={{ display: "flex", gap: 36, marginBottom: 40, flexWrap: "wrap", justifyContent: "center" }}>
+            {[
+              { val: "15s",     label: "Respuesta CRA" },
+              { val: "2000m",   label: "Alcance señal" },
+              { val: "7 años",  label: "Batería sensores" },
+              { val: "AES-128", label: "Cifrado militar" },
+            ].map(s => (
+              <div key={s.val}>
+                <div style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{s.val}</div>
+                <div style={{ fontSize: 11, color: "#94A3B8", marginTop: 4, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{s.label}</div>
               </div>
-            </div>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
+            <button
+              onClick={() => setModalOpen(true)}
+              style={{
+                background: "#E53E3E", color: "#fff", border: "none",
+                borderRadius: 9, padding: "15px 32px", fontSize: 15, fontWeight: 700, cursor: "pointer",
+                boxShadow: "0 0 32px rgba(229,62,62,0.35)"
+              }}
+            >
+              Solicitar presupuesto gratis
+            </button>
+            <a
+              href="tel:+34638109947"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                color: "#CBD5E0", border: "1px solid rgba(255,255,255,0.25)",
+                borderRadius: 9, padding: "15px 26px", fontSize: 15, fontWeight: 600, textDecoration: "none",
+                background: "rgba(255,255,255,0.06)"
+              }}
+            >
+              <Phone size={16} /> Llamar ahora
+            </a>
+          </div>
+
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8, marginTop: 34,
+            background: "rgba(6,11,20,0.6)", backdropFilter: "blur(10px)",
+            border: "1px solid rgba(229,62,62,0.3)", borderRadius: 100, padding: "8px 18px"
+          }}>
+            <span style={{ fontSize: 11, color: "#FC8181", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Partner Oficial</span>
+            <span style={{ fontSize: 12, color: "#94A3B8" }}>Ajax Systems · Catalunya</span>
           </div>
         </div>
       </section>
@@ -244,16 +235,17 @@ export default function SistemasAlarma() {
             <p style={{ fontSize: 14, color: "#475569", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales obligatorias.</p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
+          <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
             {ALARM_KITS.map((kit, i) => {
               const isHighlighted = i === 1;
               return (
-                <div key={kit.id} style={{
+                <div key={kit.id} className="kit-card" style={{
                   background: isHighlighted ? "rgba(229,62,62,0.06)" : "rgba(255,255,255,0.03)",
                   border: isHighlighted ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.08)",
                   borderRadius: 16, padding: "32px 26px",
                   position: "relative", display: "flex", flexDirection: "column",
-                  boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none"
+                  boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
+                  transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
                 }}>
                   {kit.badge && (
                     <div style={{
@@ -300,13 +292,14 @@ export default function SistemasAlarma() {
             })}
           </div>
 
-          {/* Mobile: stacked note */}
+          {/* Hover + responsive stacking */}
           <style>{`
+            .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
             @media (max-width: 720px) {
-              .alarm-kits-grid { grid-template-columns: 1fr !important; }
+              .kits-grid { grid-template-columns: 1fr !important; }
             }
             @media (max-width: 1024px) and (min-width: 721px) {
-              .alarm-kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+              .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
             }
           `}</style>
         </div>

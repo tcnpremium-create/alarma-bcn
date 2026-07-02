@@ -116,7 +116,7 @@ export default function PresupuestoModal({ open, onClose }) {
                         <button
                           key={s.id}
                           onClick={() => setSpace(s.id)}
-                          style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px 4px", borderBottom: "1px solid #F3F4F6", background: "none", cursor: "pointer", border: "none", borderBottom: "1px solid #F3F4F6", outline: "none" }}
+                          style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px 4px", background: "none", cursor: "pointer", border: "none", borderBottom: "1px solid #F3F4F6", outline: "none" }}
                         >
                           <div style={{
                             width: 22, height: 22, borderRadius: "50%", flexShrink: 0,
@@ -144,7 +144,7 @@ export default function PresupuestoModal({ open, onClose }) {
                         <button
                           key={s.id}
                           onClick={() => toggleService(s.id)}
-                          style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px 4px", borderBottom: "1px solid #F3F4F6", background: "none", cursor: "pointer", border: "none", borderBottom: "1px solid #F3F4F6", outline: "none" }}
+                          style={{ width: "100%", display: "flex", alignItems: "center", gap: 16, padding: "16px 4px", background: "none", cursor: "pointer", border: "none", borderBottom: "1px solid #F3F4F6", outline: "none" }}
                         >
                           <div style={{
                             width: 22, height: 22, borderRadius: 6, flexShrink: 0,
