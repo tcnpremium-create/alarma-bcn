@@ -11,7 +11,6 @@ import MarqueeSocial from "../components/landing/MarqueeSocial";
 import HomeVideoporterosTeaser from "../components/landing/HomeVideoporterosTeaser";
 import HomeTrustSection from "../components/landing/HomeTrustSection";
 import AnimatedSecurityBeam from "../components/landing/AnimatedSecurityBeam";
-import NewsletterSection from "../components/landing/NewsletterSection";
 import PresupuestoModal from "../components/landing/PresupuestoModal";
 
 export default function Home() {
@@ -43,7 +42,6 @@ export default function Home() {
 
         <HomeVideoporterosTeaser />
         <HomeSeoLocal />
-        <NewsletterSection />
       </main>
       <FooterSection />
       <PresupuestoModal open={modalOpen} onClose={() => setModalOpen(false)} />

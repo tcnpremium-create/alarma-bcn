@@ -28,19 +28,6 @@ export const LeadAPI = {
   }
 };
 
-export const NewsletterAPI = {
-  async subscribe({ nombre, email, aceptaPrivacidad }) {
-    const res = await fetch('/api/newsletter', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nombre, email, aceptaPrivacidad })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.error || 'Error al suscribirse');
-    return data;
-  }
-};
-
 // Compatibilidad con base44.entities.Lead
 export const base44 = {
   entities: {
