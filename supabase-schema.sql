@@ -44,3 +44,24 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER leads_updated_at
   BEFORE UPDATE ON leads
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+-- Tabla de suscriptores a la newsletter
+CREATE TABLE IF NOT EXISTS newsletter_subscribers (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  nombre TEXT DEFAULT '',
+  email TEXT NOT NULL UNIQUE,
+  acepta_privacidad BOOLEAN NOT NULL DEFAULT FALSE,
+  origen TEXT DEFAULT 'home'
+);
+
+CREATE INDEX IF NOT EXISTS newsletter_subscribers_created_at_idx ON newsletter_subscribers(created_at DESC);
+
+ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Service role full access" ON newsletter_subscribers
+  FOR ALL USING (auth.role() = 'service_role');
+
+-- Política: anon puede insertar suscripciones (desde el formulario web)
+CREATE POLICY "Anon can insert newsletter subscribers" ON newsletter_subscribers
+  FOR INSERT WITH CHECK (true);
