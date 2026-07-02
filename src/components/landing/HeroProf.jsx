@@ -235,7 +235,7 @@ export default function HeroProf({ onOpenModal }) {
               Presupuesto gratis →
             </button>
             <a
-              href="tel:+34615774532"
+              href="tel:+34638109947"
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
