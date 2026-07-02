@@ -118,6 +118,9 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         </div>
       </section>
 
+      {/* ── KITS DE CÁMARAS ── */}
+      <CameraKitsGrid city={city} onRequestQuote={() => setShowModal(true)} />
+
       {/* ── TODO LO QUE INSTALAMOS ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
@@ -187,9 +190,6 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </div>
         </div>
       </section>
-
-      {/* ── KITS DE CÁMARAS ── */}
-      <CameraKitsGrid city={city} onRequestQuote={() => setShowModal(true)} />
 
       {/* ── WHY US ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
