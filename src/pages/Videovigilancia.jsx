@@ -5,24 +5,52 @@ import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 
-const CAMERA_PROMOS = [
+const CAMERA_KITS = [
   {
-    header: "Kit Básico — 2 Cámaras · Ideal Hogar",
-    oldPrice: "690€", price: "449€", savings: "241€",
-    features: ["2 Cámaras Hikvision 4MPx (2K) exterior/interior", "Grabador NVR local con disco 1TB", "Visión nocturna en color hasta 30m", "App móvil iOS/Android incluida", "Instalación profesional incluida", "Garantía de por vida en equipos", "Sin cuotas mensuales"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%202%20Cámaras%20por%20449€",
+    id: "basico",
+    badge: null,
+    title: "Kit Básico",
+    cameras: "2 Cámaras",
+    price: "699 €",
+    items: [
+      "2 cámaras de alta definición 2K",
+      "Grabador NVR profesional con disco local",
+      "Instalación certificada incluida",
+      "Certificado de seguridad homologado",
+      "Placas disuasorias para exterior incluidas",
+      "Sin cuotas mensuales",
+    ],
+    ideal: "Viviendas y pequeños comercios",
   },
   {
-    header: "Kit Profesional — 4 Cámaras · Más Vendido", badge: "MÁS VENDIDO",
-    oldPrice: "1.190€", price: "699€", savings: "491€",
-    features: ["4 Cámaras Hikvision 4MPx (2K) exterior/interior", "Grabador NVR 4 canales con disco 2TB", "Detección IA de personas y vehículos", "Visión nocturna en color 30m", "App móvil iOS/Android incluida", "Instalación profesional en 1 día", "Garantía de por vida en equipos", "Sin cuotas mensuales"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%204%20Cámaras%20por%20699€",
+    id: "profesional",
+    badge: "MÁS VENDIDO",
+    title: "Kit Profesional",
+    cameras: "4 Cámaras",
+    price: "890 €",
+    items: [
+      "4 cámaras Alta Definición 4MPX",
+      "Grabador NVR profesional con disco duro 2TB",
+      "Detección inteligente por Inteligencia Artificial",
+      "Visión nocturna optimizada",
+      "Instalación y configuración certificada incluida",
+    ],
+    ideal: "Casas, negocios y comunidades medianas",
   },
   {
-    header: "Kit Empresarial — 8 Cámaras · Negocio y Comunidades",
-    oldPrice: "1.990€", price: "1.199€", savings: "791€",
-    features: ["8 Cámaras 4K Ultra HD exterior/interior", "Grabador NVR 8 canales con disco 4TB", "IA detección avanzada de intrusos y matrículas", "Visión nocturna en color 40m", "App móvil multiusuario", "Instalación profesional 1-2 días", "Garantía de por vida en equipos", "Sin cuotas mensuales"],
-    ctaText: "WhatsApp", ctaHref: "https://wa.me/34638109947?text=Hola,%20quiero%20reservar%20el%20Kit%208%20Cámaras%20por%201.199€",
+    id: "empresarial",
+    badge: "MÁXIMA COBERTURA",
+    title: "Kit Empresarial",
+    cameras: "8 Cámaras",
+    price: "1.500 €",
+    items: [
+      "8 cámaras profesionales 4K Ultra HD",
+      "Grabador NVR 8 canales con disco duro 4TB",
+      "Detección por IA avanzada de personas y vehículos",
+      "Visión nocturna de largo alcance",
+      "Instalación completa incluida",
+    ],
+    ideal: "Empresas, polígonos, comunidades grandes y fincas",
   },
 ];
 
@@ -64,7 +92,7 @@ export default function Videovigilancia() {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060e1a", paddingBottom: 70 }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#fff", paddingBottom: 70 }}>
       <AdvancedSEO
         title="Cámaras Videovigilancia 4K Barcelona | Hikvision y Dahua | Premium Tech Security"
         description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía de por vida. Sin cuotas. Tel: 638 10 99 47"
@@ -81,7 +109,7 @@ export default function Videovigilancia() {
               "description": "Instalación de cámaras de seguridad 4K Hikvision y Dahua en Barcelona y Catalunya. IA integrada, visión nocturna, app móvil.",
               "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947" },
               "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Catalunya"],
-              "offers": { "@type": "AggregateOffer", "lowPrice": "449", "highPrice": "1199", "priceCurrency": "EUR", "offerCount": "3" }
+              "offers": { "@type": "AggregateOffer", "lowPrice": "699", "highPrice": "1500", "priceCurrency": "EUR", "offerCount": "3" }
             },
             {
               "@type": "FAQPage",
@@ -171,7 +199,7 @@ export default function Videovigilancia() {
             flexShrink: 0,
           }} />
           <span style={{ color: "#FC8181", fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", whiteSpace: "nowrap" }}>
-            🔴 Zona Perimetral Protegida
+            Zona Perimetral Protegida
           </span>
         </div>
 
@@ -267,38 +295,45 @@ export default function Videovigilancia() {
         </div>
       </section>
 
-      {/* ── 2. PROMOCIONES — JUSTO DESPUÉS DEL HERO ── */}
+      {/* ── 2. KITS DE CÁMARAS — JUSTO DESPUÉS DEL HERO ── */}
       <section style={{ background: "#0F1923", padding: "52px 24px" }}>
         <div style={{ maxWidth: 860, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 32 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Oferta exclusiva · Plazas limitadas</span>
+            <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Kits Profesionales de Videovigilancia — Precios Transparentes</span>
             <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 6px", letterSpacing: "-0.02em" }}>
               Kits de Cámaras con instalación incluida
             </h2>
             <p style={{ fontSize: 13, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales.</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: 14 }}>
-            {CAMERA_PROMOS.map((kit, i) => (
-              <div key={i} style={{ background: "rgba(255,255,255,0.06)", border: i === 1 ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "26px 22px", position: "relative" }}>
+            {CAMERA_KITS.map((kit, i) => (
+              <div key={kit.id} style={{
+                background: "rgba(255,255,255,0.05)",
+                border: i === 1 ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.1)",
+                borderRadius: 14, padding: "26px 22px", position: "relative",
+                display: "flex", flexDirection: "column"
+              }}>
                 {kit.badge && (
                   <div style={{ position: "absolute", top: -11, left: "50%", transform: "translateX(-50%)", background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800, borderRadius: 100, padding: "3px 12px", whiteSpace: "nowrap" }}>
                     {kit.badge}
                   </div>
                 )}
-                <h3 style={{ color: "#fff", fontSize: 13, fontWeight: 800, marginBottom: 14, lineHeight: 1.35 }}>{kit.header}</h3>
-                <div style={{ marginBottom: 14 }}>
-                  <span style={{ color: "#6B7280", fontSize: 12, textDecoration: "line-through" }}>Antes {kit.oldPrice}</span>
-                  <div style={{ color: "#E53E3E", fontSize: 34, fontWeight: 900, lineHeight: 1.1 }}>{kit.price}</div>
-                  <span style={{ display: "inline-block", background: "rgba(34,197,94,0.15)", color: "#22C55E", fontSize: 11, fontWeight: 800, borderRadius: 6, padding: "2px 9px", marginTop: 4 }}>AHORRA {kit.savings}</span>
+                <div>
+                  <span style={{ color: "#fff", fontSize: 15, fontWeight: 800 }}>{kit.title}</span>
+                  <span style={{ color: "#ef4444", fontSize: 15, fontWeight: 800, marginLeft: 8 }}>— {kit.cameras}</span>
                 </div>
-                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 18px" }}>
-                  {kit.features.map((f, j) => (
-                    <li key={j} style={{ color: "#CBD5E0", fontSize: 12, lineHeight: 1.85, display: "flex", gap: 6, alignItems: "flex-start" }}>
-                      <span style={{ color: "#22C55E", flexShrink: 0, fontWeight: 700 }}>✓</span>{f}
+                <div style={{ color: "#64748B", fontSize: 11, marginTop: 2, marginBottom: 16 }}>Ideal: {kit.ideal}</div>
+                <div style={{ marginBottom: 16 }}>
+                  <div style={{ color: "#E53E3E", fontSize: 36, fontWeight: 900, lineHeight: 1 }}>{kit.price}</div>
+                  <span style={{ color: "#64748B", fontSize: 10 }}>* IVA no incluido</span>
+                </div>
+                <ul style={{ listStyle: "none", padding: 0, margin: "0 0 20px", flex: 1 }}>
+                  {kit.items.map((item) => (
+                    <li key={item} style={{ color: "#CBD5E0", fontSize: 12, lineHeight: 1.85, display: "flex", gap: 8, alignItems: "flex-start" }}>
+                      <span style={{ color: "#E53E3E", flexShrink: 0, fontWeight: 900 }}>✓</span>{item}
                     </li>
                   ))}
                 </ul>
-                <p style={{ color: "#6B7280", fontSize: 10, margin: "0 0 10px" }}>* IVA no incluido</p>
                 <button onClick={() => setModalOpen(true)}
                   style={{ display: "block", width: "100%", background: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: "13px 0", border: "none", cursor: "pointer", textAlign: "center" }}>
                   Solicitar presupuesto gratis
@@ -310,20 +345,20 @@ export default function Videovigilancia() {
       </section>
 
       {/* ── 3. FEATURES ── */}
-      <section style={{ background: "#060e1a", padding: "72px 24px" }}>
+      <section style={{ background: "#FFFFFF", padding: "72px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>Prestaciones</span>
-            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Características de nuestras cámaras</h2>
+            <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.1rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Características de nuestras cámaras</h2>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
             {FEATURES.map(f => (
-              <div key={f.title} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 11, padding: "26px 22px", border: "1px solid rgba(255,255,255,0.08)" }}>
-                <div style={{ width: 42, height: 42, background: "rgba(229,62,62,0.12)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+              <div key={f.title} style={{ background: "#F8FAFC", borderRadius: 11, padding: "26px 22px", border: "1px solid #E2E8F0" }}>
+                <div style={{ width: 42, height: 42, background: "#FFF1F1", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
                   <f.icon size={21} color="#E53E3E" />
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#FFFFFF", margin: "0 0 7px" }}>{f.title}</h3>
-                <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
+                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0A0F1A", margin: "0 0 7px" }}>{f.title}</h3>
+                <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.65, margin: 0 }}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -359,22 +394,22 @@ export default function Videovigilancia() {
       </section>
 
       {/* ── 5. FAQ ── */}
-      <section style={{ background: "#0a1120", padding: "72px 24px" }}>
+      <section style={{ background: "#F8FAFC", padding: "72px 24px" }}>
         <div style={{ maxWidth: 720, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.12em", textTransform: "uppercase" }}>FAQ</span>
-            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#FFFFFF", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Preguntas frecuentes sobre cámaras de seguridad</h2>
+            <h2 style={{ fontSize: "clamp(1.4rem, 3vw, 2rem)", fontWeight: 900, color: "#0A0F1A", margin: "8px 0 0", letterSpacing: "-0.02em" }}>Preguntas frecuentes sobre cámaras de seguridad</h2>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {FAQS.map((faq, idx) => (
-              <div key={idx} style={{ background: "rgba(255,255,255,0.04)", borderRadius: 9, border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden" }}>
+              <div key={idx} style={{ background: "#FFFFFF", borderRadius: 9, border: "1px solid #E2E8F0", overflow: "hidden" }}>
                 <button onClick={() => setOpenFaq(openFaq === idx ? null : idx)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "18px 22px", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#FFFFFF", paddingRight: 14, lineHeight: 1.4 }}>{faq.q}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: "#0A0F1A", paddingRight: 14, lineHeight: 1.4 }}>{faq.q}</span>
                   {openFaq === idx ? <ChevronUp size={17} color="#E53E3E" style={{ flexShrink: 0 }} /> : <ChevronDown size={17} color="#94A3B8" style={{ flexShrink: 0 }} />}
                 </button>
                 {openFaq === idx && (
-                  <div style={{ padding: "0 22px 18px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                    <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.75, margin: "14px 0 0" }}>{faq.a}</p>
+                  <div style={{ padding: "0 22px 18px", borderTop: "1px solid #F1F5F9" }}>
+                    <p style={{ fontSize: 13, color: "#64748B", lineHeight: 1.75, margin: "14px 0 0" }}>{faq.a}</p>
                   </div>
                 )}
               </div>
