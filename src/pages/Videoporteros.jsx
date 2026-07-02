@@ -101,48 +101,50 @@ export default function Videoporteros() {
       />
       <Navbar />
 
-      {/* ── HERO ── */}
-      <section style={{ background: "linear-gradient(135deg, #0F1923 0%, #1a2a3a 60%, #0A0A1A 100%)", minHeight: "70vh", paddingTop: 100, paddingBottom: 48, overflow: "hidden", position: "relative" }}>
-        <div style={{ position: "absolute", top: "10%", right: "-5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.12) 0%, transparent 70%)", pointerEvents: "none" }} />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+      {/* ── HERO (imagen real de instalación de fondo) ── */}
+      <section style={{
+        position: "relative", overflow: "hidden", minHeight: "72vh",
+        backgroundImage: "url('/images/bticino-videoportero.jpeg')",
+        backgroundSize: "cover", backgroundPosition: "center 20%",
+        paddingTop: 100, paddingBottom: 64,
+      }}>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(115deg, rgba(6,14,26,0.94) 0%, rgba(6,14,26,0.82) 42%, rgba(6,14,26,0.35) 100%)" }} />
+        <div style={{ position: "absolute", top: "10%", right: "-5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.14) 0%, transparent 70%)", pointerEvents: "none" }} />
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "6px 14px", marginBottom: 24 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E53E3E", boxShadow: "0 0 8px #E53E3E" }} />
             <span style={{ color: "#F87171", fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>VIDEOPORTEROS · CONTROL DE ACCESOS · BARCELONA</span>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-8 items-center">
-            <div>
-              <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 44px)", color: "#fff", lineHeight: 1.15, margin: 0 }}>
-                Videoporteros Inteligentes.<br />
-                <span style={{ color: "#E53E3E" }}>Ve quién llama</span> desde cualquier lugar.
-              </h1>
-              <p style={{ color: "#94A3B8", fontSize: 16, lineHeight: 1.75, marginTop: 14 }}>
-                Instalamos videoporteros IP de última generación con control de accesos biométrico, reconocimiento facial y apertura remota desde el móvil. Para hogares, comunidades y empresas en Barcelona y toda Catalunya.
-              </p>
-              <div style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, paddingBottom: 20, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-                <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>+2500</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>Instalaciones</div></div>
-                <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>15+</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>Años experiencia</div></div>
-                <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>3 años</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.5)", marginTop: 3 }}>Garantía</div></div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 16 }}>
-                <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: "16px 24px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                  Solicitar presupuesto gratis <ChevronRight className="w-5 h-5" />
-                </button>
-                <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "14px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
-                  📞 638 10 99 47
-                </a>
-              </div>
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <div style={{ position: "relative" }}>
-                <div style={{ position: "absolute", inset: -20, borderRadius: 32, background: "radial-gradient(circle, rgba(229,62,62,0.15) 0%, transparent 70%)" }} />
-                <img
-                  src="/images/bticino-videoportero.jpeg"
-                  alt="Videoportero BTicino Classe 300 con monitor y placa exterior"
-                  style={{ width: "100%", maxWidth: 380, borderRadius: 24, boxShadow: "0 32px 80px rgba(0,0,0,0.5)", display: "block", position: "relative" }}
-                />
-              </div>
-            </div>
+          <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 44px)", color: "#fff", lineHeight: 1.15, margin: 0, maxWidth: 640 }}>
+            Videoporteros Inteligentes.<br />
+            <span style={{ color: "#E53E3E" }}>Ve quién llama</span> desde cualquier lugar.
+          </h1>
+          <p style={{ color: "#CBD5E0", fontSize: 16, lineHeight: 1.75, marginTop: 14, maxWidth: 560 }}>
+            Instalamos videoporteros IP de última generación con control de accesos biométrico, reconocimiento facial y apertura remota desde el móvil. Para hogares, comunidades y empresas en Barcelona y toda Catalunya.
+          </p>
+          <div style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, paddingBottom: 20, borderTop: "1px solid rgba(255,255,255,0.15)", flexWrap: "wrap" }}>
+            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>+2500</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Instalaciones</div></div>
+            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>15+</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Años experiencia</div></div>
+            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>3 años</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Garantía</div></div>
+          </div>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 16 }}>
+            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: "16px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+              Solicitar presupuesto gratis <ChevronRight className="w-5 h-5" />
+            </button>
+            <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "14px 26px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+              📞 638 10 99 47
+            </a>
+          </div>
+
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8, marginTop: 32,
+            background: "rgba(6,14,26,0.6)", backdropFilter: "blur(10px)",
+            border: "1px solid rgba(229,62,62,0.3)", borderRadius: 100, padding: "8px 18px"
+          }}>
+            <span style={{ fontSize: 11, color: "#FC8181", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Instalación real</span>
+            <span style={{ fontSize: 12, color: "#94A3B8" }}>BTicino Classe 300 · Barcelona</span>
           </div>
         </div>
       </section>

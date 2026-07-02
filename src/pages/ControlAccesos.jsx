@@ -82,11 +82,12 @@ export default function ControlAccesos() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl">
+            <div style={{ borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 24px 60px rgba(0,0,0,0.45)" }}>
               <img
-                src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&q=90"
-                alt="Control de accesos biométrico facial"
+                src="/images/control-accesos-biometrico.webp"
+                alt="Lector biométrico de huella dactilar para control de accesos en Barcelona"
                 className="w-full h-full object-cover"
+                style={{ display: "block" }}
               />
             </div>
           </div>
@@ -100,13 +101,13 @@ export default function ControlAccesos() {
               {features.map((feature, idx) => (
                 <div
                   key={idx}
+                  className="magic-card"
                   style={{
                     background: "rgba(255,255,255,0.04)",
                     border: "1px solid rgba(255,255,255,0.08)",
                     borderRadius: 16,
                     padding: 32,
-                    borderLeft: "3px solid #E53E3E",
-                    transition: "all 0.2s ease",
+                    transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
                   }}
                 >
                   <div style={{ fontSize: 36, marginBottom: 16 }}>{feature.icon}</div>
@@ -131,11 +132,13 @@ export default function ControlAccesos() {
               ].map((caso, idx) => (
                 <div
                   key={idx}
+                  className="magic-card"
                   style={{
                     background: "rgba(255,255,255,0.04)",
                     border: "1px solid rgba(255,255,255,0.08)",
                     borderRadius: 12,
                     padding: 24,
+                    transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
                   }}
                 >
                   <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>{caso.title}</h3>
@@ -144,6 +147,10 @@ export default function ControlAccesos() {
               ))}
             </div>
           </div>
+
+          <style>{`
+            .magic-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
+          `}</style>
 
           {/* CTA — red gradient kept as-is */}
           <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
