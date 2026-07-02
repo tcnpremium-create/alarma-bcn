@@ -159,7 +159,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
 
         {/* Badge + Heading */}
         <span style={{ display:"inline-block",backgroundColor:"#dc2626",color:"#fff",borderRadius:20,fontSize:11,fontWeight:800,padding:"6px 14px",letterSpacing:"0.05em" }}>
-          🔔 ALARMAS AJAX · BARCELONA
+          ALARMAS AJAX · BARCELONA
         </span>
         <h2 style={{ color:"#fff",fontWeight:900,fontSize:28,lineHeight:1.12,marginTop:12,marginBottom:0 }}>
           Instalación de Alarmas de Alta Seguridad en Barcelona
@@ -226,7 +226,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                       ))}
                     </ul>
                     <div style={{ marginTop:14,padding:"10px 14px",background:"rgba(239,68,68,.08)",borderRadius:8,border:"1px solid rgba(239,68,68,.2)" }}>
-                      <span style={{ color:"#f87171",fontSize:11,fontWeight:700 }}>⚙ ESPECIFICACIONES TÉCNICAS: </span>
+                      <span style={{ color:"#f87171",fontSize:11,fontWeight:700 }}>ESPECIFICACIONES TÉCNICAS: </span>
                       <span style={{ color:"#94A3B8",fontSize:11 }}>{kit.tech}</span>
                     </div>
                     <button
@@ -293,7 +293,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
             className="a-cta-sec"
             style={{ width:"100%",backgroundColor:"rgba(255,255,255,.08)",backdropFilter:"blur(8px)",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"1px solid rgba(255,255,255,.16)",textAlign:"center",textDecoration:"none",display:"flex",alignItems:"center",justifyContent:"center",gap:8,boxSizing:"border-box" }}
           >
-            📞 Llamar ahora
+            Llamar ahora
           </a>
         </div>
       </div>
