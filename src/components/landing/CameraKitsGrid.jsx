@@ -5,7 +5,7 @@ export const CAMERA_KITS = [
   {
     id: "basico",
     badge: null,
-    title: "Kit Básico",
+    title: "Plan Visión Hogar",
     cameras: "2 Cámaras",
     price: "699 €",
     items: [
@@ -21,7 +21,7 @@ export const CAMERA_KITS = [
   {
     id: "profesional",
     badge: "MÁS VENDIDO",
-    title: "Kit Profesional",
+    title: "Plan Visión Negocio 360°",
     cameras: "4 Cámaras",
     price: "890 €",
     items: [
@@ -36,7 +36,7 @@ export const CAMERA_KITS = [
   {
     id: "empresarial",
     badge: "MÁXIMA COBERTURA",
-    title: "Kit Empresarial",
+    title: "Plan Visión Corporativa Total",
     cameras: "8 Cámaras",
     price: "1.500 €",
     items: [

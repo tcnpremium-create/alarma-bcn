@@ -11,10 +11,13 @@ import MarqueeSocial from "../components/landing/MarqueeSocial";
 import HomeVideoporterosTeaser from "../components/landing/HomeVideoporterosTeaser";
 import HomeTrustSection from "../components/landing/HomeTrustSection";
 import AnimatedSecurityBeam from "../components/landing/AnimatedSecurityBeam";
+import ComparisonTable from "../components/landing/ComparisonTable";
 import PresupuestoModal from "../components/landing/PresupuestoModal";
+import SecurityQuizModal from "../components/landing/SecurityQuizModal";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [quizOpen, setQuizOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
@@ -26,13 +29,15 @@ export default function Home() {
       />
       <Navbar />
       <main>
-        <HeroProf onOpenModal={() => setModalOpen(true)} />
+        <HeroProf onOpenModal={() => setModalOpen(true)} onOpenQuiz={() => setQuizOpen(true)} />
 
         <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
 
         <AnimatedSecurityBeam />
 
         <BentoServiciosGrid />
+
+        <ComparisonTable />
 
         <MarqueeSocial />
 
@@ -45,6 +50,7 @@ export default function Home() {
       </main>
       <FooterSection />
       <PresupuestoModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <SecurityQuizModal open={quizOpen} onClose={() => setQuizOpen(false)} />
     </div>
   );
 }

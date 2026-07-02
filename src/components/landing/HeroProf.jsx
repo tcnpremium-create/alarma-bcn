@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Phone } from "lucide-react";
+import { Phone, ShieldCheck } from "lucide-react";
 
 const SLIDES = [
   {
@@ -92,7 +92,7 @@ function RedLaserEffect() {
   );
 }
 
-export default function HeroProf({ onOpenModal }) {
+export default function HeroProf({ onOpenModal, onOpenQuiz }) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -112,6 +112,15 @@ export default function HeroProf({ onOpenModal }) {
           50%       { box-shadow: 0 0 0 8px rgba(0,210,255,0); }
         }
         .hero-dot-btn { transition: all 0.3s ease; }
+        .hero-cta-glow { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .hero-cta-glow:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(229,62,62,0.55); }
+        .hero-cta-glow::after {
+          content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
+          background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+          transform: skewX(-20deg);
+        }
+        .hero-cta-glow:hover::after { animation: hero-shine 0.9s ease; }
+        @keyframes hero-shine { from { left: -75%; } to { left: 125%; } }
         @media (max-width: 640px) {
           .hero-content-inner { padding: 100px 16px 80px !important; }
         }
@@ -207,6 +216,19 @@ export default function HeroProf({ onOpenModal }) {
             {SLIDES[active].sub}
           </p>
 
+          {/* Authority tag */}
+          <div style={{
+            display: "inline-flex", alignItems: "center", gap: 8,
+            background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)",
+            borderRadius: 10, padding: "10px 14px", marginBottom: 28, maxWidth: 480,
+            animation: "hero-fade-in 0.8s ease 0.25s both",
+          }}>
+            <ShieldCheck size={16} color="#00D4FF" style={{ flexShrink: 0 }} />
+            <span style={{ color: "#CBD5E0", fontSize: 12.5, fontWeight: 600, lineHeight: 1.5 }}>
+              Instaladores Homologados en Barcelona y Área Metropolitana — Respuesta e instalación técnica en 24/48h
+            </span>
+          </div>
+
           {/* Stats */}
           <div style={{ display: "flex", gap: 28, marginBottom: 40, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
             {[
@@ -225,14 +247,16 @@ export default function HeroProf({ onOpenModal }) {
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
             <button
-              onClick={onOpenModal}
+              onClick={onOpenQuiz}
+              className="hero-cta-glow"
               style={{
                 background: "#E53E3E", color: "#fff", border: "none",
                 borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
                 boxShadow: "0 0 20px rgba(229,62,62,0.35)",
+                position: "relative", overflow: "hidden",
               }}
             >
-              Presupuesto gratis →
+              Calcular Coste de mi Instalación en 1 Minuto →
             </button>
             <a
               href="tel:+34638109947"

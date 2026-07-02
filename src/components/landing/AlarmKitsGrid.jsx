@@ -5,8 +5,8 @@ export const ALARM_KITS = [
   {
     id: "hogar",
     badge: "MÁS POPULAR",
-    title: "Kit Alarma Hogar",
-    subtitle: "Protección completa para viviendas",
+    title: "Plan Protección Piso Estándar",
+    subtitle: "Ideal para pisos y áticos con un único acceso principal",
     price: "399 €",
     items: [
       "Hub Ajax (central de control)",
@@ -22,8 +22,8 @@ export const ALARM_KITS = [
   {
     id: "negocio",
     badge: "RECOMENDADO",
-    title: "Kit Alarma Negocio",
-    subtitle: "Seguridad profesional para locales y oficinas",
+    title: "Plan Protección Negocio Activo",
+    subtitle: "Para locales y oficinas con horario de apertura al público",
     price: "699 €",
     items: [
       "Hub Ajax (central de control)",
@@ -38,8 +38,8 @@ export const ALARM_KITS = [
   {
     id: "comunidad",
     badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Comunidad",
-    subtitle: "Para casas unifamiliares o naves industriales",
+    title: "Plan Protección Perimetral Total",
+    subtitle: "Para chalets, áticos/bajos y naves con protección perimetral e inmunidad a mascotas",
     price: "1.300 €",
     items: [
       "Hub+ Ajax (hasta 200 dispositivos)",

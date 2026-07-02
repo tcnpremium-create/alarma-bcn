@@ -4,8 +4,9 @@ const REVIEWS = [
   { stars: 5, text: "Instalaron 4 cámaras HD en nuestra comunidad en un solo día. Todo perfecto, app configurada y precio cerrado desde el principio.", name: "Adam H.", location: "Sants, Barcelona" },
   { stars: 5, text: "Necesitaba cámaras para mi local sin cuotas mensuales. Vinieron el mismo día, en 2 horas funcionando desde el móvil.", name: "Carlos R.", location: "Eixample, Barcelona" },
   { stars: 5, text: "Buscaba instalador en Hospitalet y vinieron el mismo día. Presupuesto sin sorpresas, instalación impecable.", name: "Camila Y.", location: "Hospitalet" },
-  { stars: 5, text: "Alarma Ajax en mi negocio. Profesionales, rápidos y sin letra pequeña. La app funciona perfectamente.", name: "Lorena M.", location: "Barcelona" },
-  { stars: 5, text: "Cámaras para el portal y azotea de nuestra comunidad. RGPD gestionado por ellos. Muy recomendables.", name: "Oier K.", location: "Barcelona" },
+  { stars: 5, text: "Alarma Ajax en mi negocio de Sabadell. Profesionales, rápidos y sin letra pequeña. La app funciona perfectamente.", name: "Lorena M.", location: "Sabadell" },
+  { stars: 5, text: "Cámaras para el portal y azotea de nuestra comunidad en Poblenou. RGPD gestionado por ellos. Muy recomendables.", name: "Oier K.", location: "Poblenou, Barcelona" },
+  { stars: 5, text: "Vivimos en un ático en Sarrià con terraza y patio trasero. Nos protegieron los puntos débiles sin obras y sin cuotas.", name: "Marta S.", location: "Sarrià, Barcelona" },
 ];
 
 const ZONES = ["Eixample", "Gràcia", "Sarrià-Sant Gervasi", "Sants-Montjuïc", "Les Corts", "Hospitalet", "Badalona", "Sant Cugat", "Terrassa", "Sabadell", "Cornellà", "Esplugues", "Gavà", "Castelldefels"];
