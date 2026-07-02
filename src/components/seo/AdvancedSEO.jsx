@@ -72,8 +72,8 @@ export default function AdvancedSEO({
         ],
         "aggregateRating": {
           "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "reviewCount": "247",
+          "ratingValue": "4.8",
+          "reviewCount": "13",
           "bestRating": "5",
           "worstRating": "1"
         },

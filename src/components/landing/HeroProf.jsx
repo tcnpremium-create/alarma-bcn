@@ -22,8 +22,8 @@ const SLIDES = [
     img: "/images/hero-ajax.jpeg",
     pos: "center center",
     badge: "Alarmas Ajax · Grado 2 Certificado",
-    h1a: "La Tecnología",
-    h1b: "Que te Protege",
+    h1a: "Sistemas de Alarma en Barcelona",
+    h1b: "Alta Seguridad AJAX",
     sub: "Ecosistema Ajax: la alarma más avanzada del mundo instalada en tu hogar o negocio. Respuesta garantizada en 15 segundos.",
   },
 ];

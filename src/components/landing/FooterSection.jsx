@@ -7,7 +7,7 @@ const SERVICIOS = [
   { label: "Cámaras", href: "/camaras-barcelona" },
   { label: "Alarmas", href: "/alarmas-barcelona" },
   { label: "Videoporteros", href: "/videoporteros" },
-  { label: "Control Accesos", href: "/ControlAccesos" },
+  { label: "Control Accesos", href: "/control-accesos" },
   { label: "Tecnología", href: "/tecnologia" },
 ];
 

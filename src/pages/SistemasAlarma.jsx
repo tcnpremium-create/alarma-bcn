@@ -103,8 +103,8 @@ export default function SistemasAlarma() {
             color: "#FFFFFF", lineHeight: 1.08,
             margin: "0 auto 20px", letterSpacing: "-0.03em", maxWidth: 780
           }}>
-            Sistemas de Alarma<br />
-            <span style={{ color: "#E53E3E" }}>Profesionales Ajax.</span>
+            Instalación de Alarmas<br />
+            <span style={{ color: "#E53E3E" }}>de Seguridad en Barcelona.</span>
           </h1>
           <p style={{
             fontSize: "clamp(0.95rem, 2vw, 1.1rem)", color: "#CBD5E0",

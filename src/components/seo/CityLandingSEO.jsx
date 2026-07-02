@@ -2,12 +2,6 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 
 const SEO_DATA = {
-  "/": {
-    title: "Instalación Alarmas y Cámaras de Seguridad Barcelona | Premium Tech Security",
-    description: "Instaladores certificados de alarmas AJAX, cámaras Hikvision 4K y control de acceso en Barcelona y toda Catalunya. Presupuesto gratis en 24h. ☎ 638 109 947",
-    keywords: "instalacion alarmas Barcelona, camaras seguridad Barcelona, instaladores seguridad Barcelona, sistemas alarma Barcelona, videovigilancia Barcelona, control acceso Barcelona",
-    canonical: "https://alarmasenbarcelona.com"
-  },
   "/alarmas-barcelona": {
     title: "Alarmas y Cámaras Seguridad Barcelona | Instalación Profesional | Premium Tech",
     description: "Alarmas de seguridad en Barcelona sin cuotas. Ajax, Hikvision. Respuesta en 15 segundos. Instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
