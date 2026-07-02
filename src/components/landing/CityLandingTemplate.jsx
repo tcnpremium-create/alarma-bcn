@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
 import HeroContactModal from "./HeroContactModal";
+import AlarmKitsGrid from "./AlarmKitsGrid";
 import { base44 } from "@/api/api";
 
 const SERVICES = [
@@ -20,59 +21,6 @@ const WHY_US = [
   "Sin permanencia obligatoria",
   "Tecnología AJAX + Hikvision certificada",
   "Garantía de por vida en equipos"
-];
-
-const ALARM_KITS = [
-  {
-    id: "hogar",
-    badge: "MÁS POPULAR",
-    title: "Kit Alarma Hogar",
-    subtitle: "Protección completa para viviendas",
-    price: "399 €",
-    items: [
-      "Hub Ajax (central de control)",
-      "1 detector de movimiento (sin cámara)",
-      "1 detector magnético para puerta principal",
-      "1 mando a distancia",
-      "Sirena interior HomeSiren",
-      "App Ajax gratuita · iOS y Android",
-      "Instalación certificada incluida",
-      "Sin cuotas mensuales · Grado 2",
-    ],
-  },
-  {
-    id: "negocio",
-    badge: "RECOMENDADO",
-    title: "Kit Alarma Negocio",
-    subtitle: "Seguridad profesional para locales y oficinas",
-    price: "699 €",
-    items: [
-      "Hub Ajax (central de control)",
-      "2 detectores de movimiento sin cámara",
-      "2 detectores magnéticos (puertas/ventanas)",
-      "Sirena interior HomeSiren",
-      "Central Receptora activa 24/7",
-      "Instalación certificada incluida",
-      "Grado 2 · Conexión cifrada",
-    ],
-  },
-  {
-    id: "comunidad",
-    badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Comunidad",
-    subtitle: "Para casas unifamiliares o naves industriales",
-    price: "1.300 €",
-    items: [
-      "Hub+ Ajax (hasta 200 dispositivos)",
-      "4 detectores de movimiento MotionCam",
-      "2 detectores magnéticos perimetrales",
-      "1 teclado KeyPad en zona de acceso",
-      "Sirena exterior de alta potencia",
-      "Sirenas interiores incluidas",
-      "Aviso directo a Policía verificado",
-      "Instalación y configuración completa incluida",
-    ],
-  },
 ];
 
 export default function CityLandingTemplate({ city, seoPath, intro }) {
@@ -115,7 +63,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
             <span style={{ color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1 }}>Catalunya • {city}</span>
           </div>
           <h1 style={{ fontWeight: 900, fontSize: "clamp(28px, 5vw, 52px)", color: "#fff", lineHeight: 1.1, margin: "0 0 16px" }}>
-            Instalación de Alarmas y Cámaras de Seguridad en {city}
+            Instalación de Alarmas de Seguridad en {city}
           </h1>
           <p style={{ color: "#CBD5E0", fontSize: 16, lineHeight: 1.75, margin: "0 0 32px", maxWidth: 580 }}>
             {intro}
@@ -139,92 +87,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       </section>
 
       {/* KITS DE ALARMA AJAX */}
-      <section style={{ background: "#0A0A1A", padding: "64px 24px" }}>
-        <div className="max-w-5xl mx-auto">
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <div style={{
-              display: "inline-block",
-              background: "rgba(229,62,62,0.1)", border: "1px solid rgba(229,62,62,0.3)",
-              borderRadius: 100, padding: "5px 18px", marginBottom: 16
-            }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-                Kits de Alarmas Ajax — Precios Transparentes
-              </span>
-            </div>
-            <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 10px", letterSpacing: "-0.025em" }}>
-              Kits de Alarma Ajax con instalación incluida en {city}
-            </h2>
-            <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales obligatorias.</p>
-          </div>
-
-          <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
-            {ALARM_KITS.map((kit, i) => {
-              const isHighlighted = i === 1;
-              return (
-                <div key={kit.id} className="kit-card" style={{
-                  background: isHighlighted ? "rgba(229,62,62,0.06)" : "rgba(255,255,255,0.03)",
-                  border: isHighlighted ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 16, padding: "32px 26px",
-                  position: "relative", display: "flex", flexDirection: "column",
-                  boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
-                  transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
-                }}>
-                  {kit.badge && (
-                    <div style={{
-                      position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
-                      background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800,
-                      borderRadius: 100, padding: "4px 14px", whiteSpace: "nowrap", letterSpacing: "0.08em"
-                    }}>
-                      {kit.badge}
-                    </div>
-                  )}
-
-                  <h3 style={{ color: "#F1F5F9", fontSize: 16, fontWeight: 800, margin: "0 0 4px", lineHeight: 1.3 }}>{kit.title}</h3>
-                  <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 20px", lineHeight: 1.5 }}>{kit.subtitle}</p>
-
-                  <div style={{ marginBottom: 20 }}>
-                    <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price}</div>
-                    <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>* IVA no incluido</span>
-                  </div>
-
-                  <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", flex: 1 }}>
-                    {kit.items.map((item) => (
-                      <li key={item} style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.9, display: "flex", gap: 10, alignItems: "flex-start" }}>
-                        <span style={{ color: "#E53E3E", flexShrink: 0, fontWeight: 900, fontSize: 14, lineHeight: 1.9 }}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <button
-                    onClick={() => setShowModal(true)}
-                    style={{
-                      display: "block", width: "100%",
-                      background: isHighlighted ? "#E53E3E" : "rgba(229,62,62,0.15)",
-                      color: "#fff", fontWeight: 700, fontSize: 14,
-                      borderRadius: 50, padding: "14px 0", border: isHighlighted ? "none" : "1px solid rgba(229,62,62,0.4)",
-                      cursor: "pointer", textAlign: "center"
-                    }}
-                  >
-                    Solicitar presupuesto gratis
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Hover + responsive stacking */}
-          <style>{`
-            .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
-            @media (max-width: 720px) {
-              .kits-grid { grid-template-columns: 1fr !important; }
-            }
-            @media (max-width: 1024px) and (min-width: 721px) {
-              .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            }
-          `}</style>
-        </div>
-      </section>
+      <AlarmKitsGrid city={city} onRequestQuote={() => setShowModal(true)} />
 
       {/* SERVICES */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
