@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Shield, Wifi, Clock, Smartphone, AlertTriangle, Eye, Lock, Radio, ChevronDown, ChevronUp, Check, Zap, MapPin, Phone } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import HeroContactModal from "../components/landing/HeroContactModal";
+import SecurityQuizModal from "../components/landing/SecurityQuizModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import AlarmKitsGrid from "../components/landing/AlarmKitsGrid";
 
@@ -48,7 +48,7 @@ export default function SistemasAlarma() {
   const [openFaq, setOpenFaq] = useState(null);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060B14" }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060B14", paddingBottom: 70 }}>
       <AdvancedSEO
         title="Alarmas Ajax Barcelona | Instalación Profesional | Premium Tech Security"
         description="Sistemas de alarma Ajax en Barcelona y Catalunya. Respuesta certificada en 15 segundos. 100% inalámbrico sin obras. Partner oficial Ajax. Tel: 638 10 99 47"
@@ -388,7 +388,7 @@ export default function SistemasAlarma() {
       </section>
 
       <FooterSection />
-      {modalOpen && <HeroContactModal onClose={() => setModalOpen(false)} defaultServicio="Alarmas Ajax" />}
+      <SecurityQuizModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }

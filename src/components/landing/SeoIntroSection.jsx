@@ -9,7 +9,7 @@ export default function SeoIntroSection() {
         </h1>
         <p className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
           En Premium Tech Security somos especialistas en instalación de cámaras de seguridad en Barcelona y toda Cataluña. 
-          Sistemas de videovigilancia HD para hogares, negocios y comunidades de vecinos. Sin cuotas mensuales, instalación incluida y garantía de por vida.
+          Sistemas de videovigilancia HD para hogares, negocios y comunidades de vecinos. Sin cuotas mensuales, instalación incluida y garantía de 3 años en todos los productos.
         </p>
       </div>
     </section>

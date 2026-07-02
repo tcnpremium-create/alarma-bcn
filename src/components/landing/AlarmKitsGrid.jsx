@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  ChevronDown, Cpu, Radio, DoorClosed, Smartphone, Bell, Shield,
+  KeyRound, ShieldCheck, PhoneCall, BadgeCheck, Wifi,
+} from "lucide-react";
+import { AnimatedGradientText } from "../magicui/animated-gradient-text";
+import { Marquee } from "../magicui/marquee";
+import { ShinyButton } from "../magicui/shiny-button";
 
 export const ALARM_KITS = [
   {
@@ -54,13 +61,57 @@ export const ALARM_KITS = [
   },
 ];
 
+const CERTIFICATIONS = [
+  { label: "Grado 2 · EN 50131", icon: ShieldCheck },
+  { label: "Ajax Certified Partner", icon: BadgeCheck },
+  { label: "CRA Homologada 24/7", icon: PhoneCall },
+  { label: "Cifrado AES-128", icon: Wifi },
+  { label: "Instaladores Homologados", icon: Shield },
+];
+
+function itemIcon(text) {
+  const t = text.toLowerCase();
+  if (t.includes("hub")) return Cpu;
+  if (t.includes("detector") || t.includes("motioncam")) return Radio;
+  if (t.includes("magnético") || t.includes("puerta")) return DoorClosed;
+  if (t.includes("mando")) return Smartphone;
+  if (t.includes("sirena")) return Bell;
+  if (t.includes("teclado") || t.includes("keypad")) return KeyRound;
+  if (t.includes("receptora") || t.includes("policía") || t.includes("24/7")) return PhoneCall;
+  if (t.includes("app")) return Smartphone;
+  return ShieldCheck;
+}
+
+function KitItemBento({ item }) {
+  const Icon = itemIcon(item);
+  return (
+    <motion.div
+      whileHover={{ scale: 1.04, y: -3 }}
+      transition={{ type: "spring", stiffness: 350, damping: 22 }}
+      style={{
+        display: "flex", flexDirection: "column", gap: 8,
+        background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: 12, padding: "14px 12px", cursor: "default",
+      }}
+    >
+      <div style={{
+        width: 30, height: 30, borderRadius: 8, background: "rgba(229,62,62,0.12)",
+        border: "1px solid rgba(229,62,62,0.25)", display: "flex", alignItems: "center", justifyContent: "center",
+      }}>
+        <Icon size={15} color="#E53E3E" />
+      </div>
+      <span style={{ color: "#CBD5E0", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{item}</span>
+    </motion.div>
+  );
+}
+
 export default function AlarmKitsGrid({ city, onRequestQuote }) {
   const [openId, setOpenId] = useState(null);
 
   return (
     <section style={{ background: "#0A1120", padding: "64px 24px" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
           <div style={{
             display: "inline-block",
             background: "rgba(229,62,62,0.1)", border: "1px solid rgba(229,62,62,0.3)",
@@ -70,10 +121,31 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
               Kits de Alarmas Ajax — Precios Transparentes
             </span>
           </div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 10px", letterSpacing: "-0.025em" }}>
-            Kits de Alarma Ajax con instalación incluida{city ? ` en ${city}` : ""}
+          <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.025em" }}>
+            <AnimatedGradientText>
+              Kits de Alarma Ajax con instalación incluida{city ? ` en ${city}` : ""}
+            </AnimatedGradientText>
           </h2>
           <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales obligatorias.</p>
+        </div>
+
+        {/* Certifications marquee */}
+        <div style={{ marginBottom: 40 }}>
+          <Marquee speed={26}>
+            {CERTIFICATIONS.map((c) => (
+              <div
+                key={c.label}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: 8,
+                  background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: 100, padding: "8px 18px", whiteSpace: "nowrap",
+                }}
+              >
+                <c.icon size={14} color="#E53E3E" />
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#CBD5E0", letterSpacing: "0.02em" }}>{c.label}</span>
+              </div>
+            ))}
+          </Marquee>
         </div>
 
         <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
@@ -125,32 +197,18 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
                 </button>
 
                 <div style={{
-                  maxHeight: isOpen ? 400 : 0, overflow: "hidden",
-                  transition: "max-height 0.3s ease, margin-bottom 0.3s ease",
+                  maxHeight: isOpen ? 600 : 0, overflow: "hidden",
+                  transition: "max-height 0.35s ease, margin-bottom 0.3s ease",
                   marginBottom: isOpen ? 20 : 0
                 }}>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                    {kit.items.map((item) => (
-                      <li key={item} style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.9, display: "flex", gap: 10, alignItems: "flex-start" }}>
-                        <span style={{ color: "#E53E3E", flexShrink: 0, fontWeight: 900, fontSize: 14, lineHeight: 1.9 }}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
+                    {kit.items.map((item) => <KitItemBento key={item} item={item} />)}
+                  </div>
                 </div>
 
-                <button
-                  onClick={onRequestQuote}
-                  style={{
-                    display: "block", width: "100%", marginTop: "auto",
-                    background: isHighlighted ? "#E53E3E" : "rgba(229,62,62,0.15)",
-                    color: "#fff", fontWeight: 700, fontSize: 14,
-                    borderRadius: 50, padding: "14px 0", border: isHighlighted ? "none" : "1px solid rgba(229,62,62,0.4)",
-                    cursor: "pointer", textAlign: "center"
-                  }}
-                >
+                <ShinyButton onClick={onRequestQuote} style={{ width: "100%", marginTop: "auto", padding: "14px 0", fontSize: 14 }}>
                   Solicitar presupuesto gratis
-                </button>
+                </ShinyButton>
               </div>
             );
           })}

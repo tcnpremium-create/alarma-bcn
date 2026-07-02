@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronDown, Camera, HardDrive, ShieldCheck, Moon, Cpu, Radio } from "lucide-react";
+import { AnimatedGradientText } from "../magicui/animated-gradient-text";
+import { ShinyButton } from "../magicui/shiny-button";
 
 export const CAMERA_KITS = [
   {
@@ -50,6 +53,39 @@ export const CAMERA_KITS = [
   },
 ];
 
+function itemIcon(text) {
+  const t = text.toLowerCase();
+  if (t.includes("cámara")) return Camera;
+  if (t.includes("nvr") || t.includes("disco")) return HardDrive;
+  if (t.includes("ia") || t.includes("inteligencia") || t.includes("detección")) return Cpu;
+  if (t.includes("nocturna")) return Moon;
+  if (t.includes("certificad") || t.includes("homologad") || t.includes("placas")) return ShieldCheck;
+  return Radio;
+}
+
+function KitItemBento({ item }) {
+  const Icon = itemIcon(item);
+  return (
+    <motion.div
+      whileHover={{ scale: 1.04, y: -3 }}
+      transition={{ type: "spring", stiffness: 350, damping: 22 }}
+      style={{
+        display: "flex", flexDirection: "column", gap: 8,
+        background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: 12, padding: "14px 12px", cursor: "default",
+      }}
+    >
+      <div style={{
+        width: 30, height: 30, borderRadius: 8, background: "rgba(229,62,62,0.12)",
+        border: "1px solid rgba(229,62,62,0.25)", display: "flex", alignItems: "center", justifyContent: "center",
+      }}>
+        <Icon size={15} color="#E53E3E" />
+      </div>
+      <span style={{ color: "#CBD5E0", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{item}</span>
+    </motion.div>
+  );
+}
+
 export default function CameraKitsGrid({ city, onRequestQuote }) {
   const [openId, setOpenId] = useState(null);
 
@@ -66,8 +102,10 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
               Kits Profesionales de Videovigilancia — Precios Transparentes
             </span>
           </div>
-          <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 10px", letterSpacing: "-0.025em" }}>
-            Kits de Cámaras con instalación incluida{city ? ` en ${city}` : ""}
+          <h2 style={{ fontSize: "clamp(1.6rem, 3vw, 2.3rem)", fontWeight: 900, margin: "0 0 10px", letterSpacing: "-0.025em" }}>
+            <AnimatedGradientText>
+              Kits de Cámaras con instalación incluida{city ? ` en ${city}` : ""}
+            </AnimatedGradientText>
           </h2>
           <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales.</p>
         </div>
@@ -123,33 +161,18 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                 </button>
 
                 <div style={{
-                  maxHeight: isOpen ? 400 : 0, overflow: "hidden",
-                  transition: "max-height 0.3s ease, margin-bottom 0.3s ease",
+                  maxHeight: isOpen ? 500 : 0, overflow: "hidden",
+                  transition: "max-height 0.35s ease, margin-bottom 0.3s ease",
                   marginBottom: isOpen ? 20 : 0
                 }}>
-                  <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                    {kit.items.map((item) => (
-                      <li key={item} style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.9, display: "flex", gap: 10, alignItems: "flex-start" }}>
-                        <span style={{ color: "#E53E3E", flexShrink: 0, fontWeight: 900, fontSize: 14, lineHeight: 1.9 }}>✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
+                    {kit.items.map((item) => <KitItemBento key={item} item={item} />)}
+                  </div>
                 </div>
 
-                <button
-                  onClick={onRequestQuote}
-                  style={{
-                    display: "block", width: "100%", marginTop: "auto",
-                    background: isHighlighted ? "#E53E3E" : "rgba(229,62,62,0.15)",
-                    color: "#fff", fontWeight: 700, fontSize: 14,
-                    borderRadius: 50, padding: "14px 0",
-                    border: isHighlighted ? "none" : "1px solid rgba(229,62,62,0.4)",
-                    cursor: "pointer", textAlign: "center"
-                  }}
-                >
+                <ShinyButton onClick={onRequestQuote} style={{ width: "100%", marginTop: "auto", padding: "14px 0", fontSize: 14 }}>
                   Solicitar presupuesto gratis
-                </button>
+                </ShinyButton>
               </div>
             );
           })}

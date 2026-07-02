@@ -3,7 +3,7 @@ import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, Chevro
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
-import HeroContactModal from "./HeroContactModal";
+import SecurityQuizModal from "./SecurityQuizModal";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { base44 } from "@/api/api";
 
@@ -11,7 +11,7 @@ const SERVICES = [
   { Icon: Shield, title: "Alarmas inteligentes AJAX", desc: "Paneles de control, sensores inalámbricos, detectores de movimiento, sirenas y notificaciones instantáneas en el móvil." },
   { Icon: Camera, title: "Videovigilancia 4K Hikvision", desc: "Cámaras IP 4K con visión nocturna en color, grabación local sin cuotas y control remoto desde cualquier dispositivo." },
   { Icon: Fingerprint, title: "Control de accesos biométrico", desc: "Huella dactilar, tarjeta NFC, código PIN y registro completo de entradas y salidas. Sin llaves, sin duplicados." },
-  { Icon: Wrench, title: "Mantenimiento y soporte 24/7", desc: "Revisiones técnicas periódicas, soporte inmediato, actualizaciones de firmware y garantía de por vida en equipos." }
+  { Icon: Wrench, title: "Mantenimiento y soporte 24/7", desc: "Revisiones técnicas periódicas, soporte inmediato, actualizaciones de firmware y garantía de 3 años en todos los productos." }
 ];
 
 const WHY_US = [
@@ -20,7 +20,7 @@ const WHY_US = [
   "Presupuesto gratuito y sin compromiso",
   "Sin permanencia obligatoria",
   "Tecnología AJAX + Hikvision certificada",
-  "Garantía de por vida en equipos"
+  "Garantía de 3 años en todos los productos"
 ];
 
 export default function CityLandingTemplate({ city, seoPath, intro }) {
@@ -207,12 +207,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
 
       <FooterSection />
 
-      {showModal && (
-        <HeroContactModal
-          defaultServicio={`Seguridad en ${city}`}
-          onClose={() => setShowModal(false)}
-        />
-      )}
+      <SecurityQuizModal open={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ const SECTORS = [
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=90",
     icon: "🏠",
     title: "Hogar y Vivienda",
-    features: ["Cámaras HD exteriores e interiores", "App móvil iOS y Android", "Sin cuotas mensuales", "Instalación en 1 día", "Garantía de por vida"],
+    features: ["Cámaras HD exteriores e interiores", "App móvil iOS y Android", "Sin cuotas mensuales", "Instalación en 1 día", "Garantía 3 años"],
   },
   {
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=90",

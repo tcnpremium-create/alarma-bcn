@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
-import HeroContactModal from "./HeroContactModal";
+import SecurityQuizModal from "./SecurityQuizModal";
 import CameraKitsGrid from "./CameraKitsGrid";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
@@ -42,12 +43,13 @@ const WHAT_WE_DO = [
 const BENEFITS = [
   { icon: Shield, title: "Sin cuotas mensuales", desc: "Pago único, sin permanencia ni sorpresas" },
   { icon: CheckCircle, title: "Instalación incluida", desc: "Técnicos certificados, sin obras ni roturas" },
-  { icon: Clock, title: "Garantía de por vida", desc: "Soporte técnico y mantenimiento permanente" },
+  { icon: Clock, title: "Garantía 3 años", desc: "Garantía de 3 años en todos los productos, con soporte técnico incluido" },
   { icon: Smartphone, title: "Respuesta en 24h", desc: "Presupuesto y visita en menos de un día" },
 ];
 
 export default function CameraCityTemplate({ city, seoTitle, seoDescription, seoPath, intro, faqs }) {
   const [showModal, setShowModal] = useState(false);
+  const [activeTab, setActiveTab] = useState(0);
 
   const defaultFaqs = [
     {
@@ -160,29 +162,65 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         </div>
       </section>
 
-      {/* ── SERVICE CARDS ── */}
+      {/* ── SERVICE CARDS (Animated Tabs) ── */}
       <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
           <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Soluciones de Videovigilancia en {city}</h2>
           <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Instalación profesional adaptada a tu espacio — hogar, negocio o comunidad</p>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {SERVICES.map((s) => (
-              <div key={s.num} style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 24, border: "1px solid #E5E7EB" }}>
-                <div style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: "#E53E3E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
-                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 13 }}>{s.num}</span>
-                </div>
-                <h3 style={{ fontWeight: 800, fontSize: 16, color: "#0A0A1A", margin: "0 0 8px" }}>{s.title}</h3>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65, margin: "0 0 14px" }}>{s.desc}</p>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                  {s.features.map((f) => (
-                    <li key={f} style={{ fontSize: 12, color: "#374151", lineHeight: 2 }}>
-                      <span style={{ color: "#E53E3E", fontWeight: 700, marginRight: 6 }}>✓</span>{f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+
+          {/* Tab bar */}
+          <div style={{ display: "flex", gap: 4, background: "#F1F5F9", borderRadius: 100, padding: 5, marginBottom: 28, position: "relative" }}>
+            {SERVICES.map((s, idx) => (
+              <button
+                key={s.num}
+                onClick={() => setActiveTab(idx)}
+                style={{
+                  position: "relative", flex: 1, padding: "11px 12px", border: "none",
+                  background: "transparent", cursor: "pointer", borderRadius: 100,
+                  fontSize: 13, fontWeight: 700, zIndex: 2,
+                  color: activeTab === idx ? "#fff" : "#475569",
+                  transition: "color 0.25s ease",
+                }}
+              >
+                {activeTab === idx && (
+                  <motion.div
+                    layoutId="camera-tab-pill"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    style={{ position: "absolute", inset: 0, background: "#E53E3E", borderRadius: 100, zIndex: -1 }}
+                  />
+                )}
+                {s.title}
+              </button>
             ))}
           </div>
+
+          {/* Animated tab content */}
+          <div style={{ minHeight: 260 }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.25 }}
+                style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 28, border: "1px solid #E5E7EB" }}
+              >
+                <div style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: "#E53E3E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                  <span style={{ color: "#fff", fontWeight: 900, fontSize: 13 }}>{SERVICES[activeTab].num}</span>
+                </div>
+                <h3 style={{ fontWeight: 800, fontSize: 18, color: "#0A0A1A", margin: "0 0 10px" }}>{SERVICES[activeTab].title}</h3>
+                <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.7, margin: "0 0 16px" }}>{SERVICES[activeTab].desc}</p>
+                <div className="grid sm:grid-cols-2 gap-2">
+                  {SERVICES[activeTab].features.map((f) => (
+                    <div key={f} style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, display: "flex", gap: 8, alignItems: "flex-start" }}>
+                      <span style={{ color: "#E53E3E", fontWeight: 700, flexShrink: 0 }}>✓</span>{f}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
           <div style={{ textAlign: "center", marginTop: 28 }}>
             <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
               Ver precios y solicitar presupuesto →
@@ -246,7 +284,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       </section>
 
       <FooterSection />
-      <HeroContactModal open={showModal} onClose={() => setShowModal(false)} />
+      <SecurityQuizModal open={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }

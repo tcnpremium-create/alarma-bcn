@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Check, Phone, Camera, Eye, Moon, Cloud, Smartphone, Lock, ChevronDown, ChevronUp, Shield } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import HeroContactModal from "../components/landing/HeroContactModal";
+import SecurityQuizModal from "../components/landing/SecurityQuizModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import CameraKitsGrid from "../components/landing/CameraKitsGrid";
+import { NeonGradientCard } from "../components/magicui/neon-gradient-card";
 
 const FEATURES = [
   { icon: Camera,     title: "Grabación 4K Ultra HD",     desc: "8 megapíxeles. Captura matrículas, rostros y detalles a distancia con claridad total." },
@@ -47,7 +48,7 @@ export default function Videovigilancia() {
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#060B14", paddingBottom: 70 }}>
       <AdvancedSEO
         title="Cámaras Videovigilancia 4K Barcelona | Hikvision y Dahua | Premium Tech Security"
-        description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía de por vida. Sin cuotas. Tel: 638 10 99 47"
+        description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía 3 años. Sin cuotas. Tel: 638 10 99 47"
         keywords="cámaras videovigilancia Barcelona, cámaras seguridad 4K Barcelona, Hikvision Barcelona, Dahua Barcelona, instalación CCTV Barcelona, videovigilancia hogar empresa comunidad"
         canonicalUrl="https://alarmasenbarcelona.com/videovigilancia"
         ogImage="https://alarmasenbarcelona.com/images/camaras-seguridad-hero.jpeg"
@@ -219,21 +220,45 @@ export default function Videovigilancia() {
       {/* ── FEATURES ── */}
       <section style={{ background: "#060B14", padding: "80px 24px" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 52 }}>
+          <div style={{ textAlign: "center", marginBottom: 32 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Prestaciones</span>
             <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "#FFFFFF", margin: "10px 0 0", letterSpacing: "-0.025em" }}>Características de nuestras cámaras</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
+
+          {/* Live camera simulated badge */}
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 44 }}>
+            <div style={{
+              display: "inline-flex", alignItems: "center", gap: 10,
+              background: "rgba(0,0,0,0.5)", border: "1px solid rgba(229,62,62,0.35)",
+              borderRadius: 100, padding: "10px 20px", backdropFilter: "blur(6px)",
+            }}>
+              <span className="live-led" style={{ width: 9, height: 9, borderRadius: "50%", background: "#EF4444", display: "inline-block", flexShrink: 0 }} />
+              <span style={{ color: "#F87171", fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                ● Cámara en Vivo 4K
+              </span>
+              <span style={{ width: 1, height: 14, background: "rgba(255,255,255,0.15)" }} />
+              <span style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700 }}>IA Activa</span>
+            </div>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {FEATURES.map(f => (
-              <div key={f.title} style={{ background: "rgba(255,255,255,0.03)", borderRadius: 12, padding: "28px 24px", border: "1px solid rgba(255,255,255,0.07)" }}>
-                <div style={{ width: 44, height: 44, background: "rgba(229,62,62,0.1)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16, border: "1px solid rgba(229,62,62,0.2)" }}>
-                  <f.icon size={21} color="#E53E3E" />
+              <NeonGradientCard key={f.title}>
+                <div style={{ padding: "28px 24px" }}>
+                  <div style={{ width: 44, height: 44, background: "rgba(229,62,62,0.1)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16, border: "1px solid rgba(229,62,62,0.2)" }}>
+                    <f.icon size={21} color="#E53E3E" />
+                  </div>
+                  <h3 style={{ fontSize: 15, fontWeight: 800, color: "#F1F5F9", margin: "0 0 8px" }}>{f.title}</h3>
+                  <p style={{ fontSize: 13, color: "#94A3B8", lineHeight: 1.7, margin: 0 }}>{f.desc}</p>
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#F1F5F9", margin: "0 0 8px" }}>{f.title}</h3>
-                <p style={{ fontSize: 13, color: "#475569", lineHeight: 1.7, margin: 0 }}>{f.desc}</p>
-              </div>
+              </NeonGradientCard>
             ))}
           </div>
+
+          <style>{`
+            @keyframes live-led-blink { 0%, 100% { opacity: 1; box-shadow: 0 0 8px 2px rgba(239,68,68,0.7); } 50% { opacity: 0.35; box-shadow: 0 0 2px 0 rgba(239,68,68,0.3); } }
+            .live-led { animation: live-led-blink 1.4s ease-in-out infinite; }
+          `}</style>
         </div>
       </section>
 
@@ -301,7 +326,7 @@ export default function Videovigilancia() {
             <Camera size={24} color="#E53E3E" />
           </div>
           <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)", fontWeight: 900, color: "#FFFFFF", margin: "0 0 14px", letterSpacing: "-0.025em" }}>Instala cámaras 4K hoy mismo</h2>
-          <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.75, margin: "0 0 36px" }}>Presupuesto gratuito en 24h. Instalación certificada. Garantía de por vida. Sin cuotas mensuales.</p>
+          <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.75, margin: "0 0 36px" }}>Presupuesto gratuito en 24h. Instalación certificada. Garantía 3 años. Sin cuotas mensuales.</p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
             <button onClick={() => setModalOpen(true)} style={{
               background: "#E53E3E", color: "#fff", border: "none",
@@ -323,7 +348,7 @@ export default function Videovigilancia() {
       </section>
 
       <FooterSection />
-      {modalOpen && <HeroContactModal onClose={() => setModalOpen(false)} defaultServicio="Videovigilancia" />}
+      <SecurityQuizModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }

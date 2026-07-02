@@ -4,7 +4,7 @@ import { ShieldCheck, Zap, Wrench, Star } from "lucide-react";
 const TRUST = [
   { Icon: ShieldCheck, title: "Sin cuotas mensuales", text: "Pago único, sin sorpresas. Tu sistema es tuyo para siempre." },
   { Icon: Zap, title: "Instalación en 24-48h", text: "Desde que pides presupuesto hasta que tu sistema funciona." },
-  { Icon: Wrench, title: "Garantía de por vida", text: "Todos nuestros equipos e instalaciones con garantía total permanente." },
+  { Icon: Wrench, title: "Garantía 3 años", text: "Garantía de 3 años en todos los productos e instalaciones." },
   { Icon: Star, title: "4.8/5 en Google", text: "Más de 13 reseñas verificadas de clientes reales en Barcelona." },
 ];
 

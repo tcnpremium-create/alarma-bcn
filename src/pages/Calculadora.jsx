@@ -202,7 +202,8 @@ export default function Calculadora() {
               <div className="rounded-3xl p-8 text-center text-white" style={{ background: "linear-gradient(135deg, #E53E3E, #C53030)" }}>
                 <p className="text-sm font-semibold opacity-80 mb-2">Tu presupuesto estimado</p>
                 <p className="text-5xl font-black mb-1">DESDE {estimate}</p>
-                <p className="text-sm opacity-80 mt-4">Instalación incluida · Sin cuotas · Garantía de por vida</p>
+                <p className="text-xs opacity-70 mb-3">* IVA no incluido</p>
+                <p className="text-sm opacity-80 mt-1">Instalación incluida · Sin cuotas · Garantía 3 años</p>
               </div>
 
               <div className="mt-6 space-y-3">

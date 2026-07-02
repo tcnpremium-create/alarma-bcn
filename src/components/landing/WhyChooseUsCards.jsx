@@ -14,8 +14,8 @@ const CARDS = [
   },
   {
     icon: ShieldCheck,
-    title: "Garantía de por vida",
-    description: "Todos nuestros equipos con garantía extendida y soporte técnico permanente.",
+    title: "Garantía 3 años",
+    description: "Garantía de 3 años en todos los productos, con soporte técnico incluido.",
   },
   {
     icon: Smartphone,
