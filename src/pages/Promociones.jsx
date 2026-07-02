@@ -1,503 +1,752 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import { motion } from "framer-motion";
-import { Tag, Shield, Camera, Fingerprint, CheckCircle, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
-const HERO_SLIDES = [
+const ALARM_KITS = [
   {
-    src: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/8aa6e0d97_IMG_8651.jpeg",
-    title: "Protege lo que más importa. Ojos que nunca duermen.",
-  },
-  {
-    src: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/4e899e1fb_IMG_8650.jpeg",
-    title: "Seguridad inteligente para tu negocio. Vigilancia sin límites.",
-  },
-];
-
-
-const cameraKits = [
-  {
-    name: "Kit 2 Cámaras",
-    price: "680€",
-    features: [
-      "1 Grabador Full HD con grabación de imágenes",
-      "1 Disco duro de capacidad 27 días",
-      "2 Cámaras Full HD grabación día y noche",
-      "Instalación del equipo incluida"
-    ]
-  },
-  {
-    name: "Kit 4 Cámaras",
-    price: "880€",
-    features: [
-      "1 Grabador Full HD con grabación de imágenes",
-      "1 Disco duro de capacidad 27 días",
-      "4 Cámaras Full HD grabación día y noche",
-      "Instalación del equipo incluida"
+    id: "hogar",
+    badge: "MÁS POPULAR",
+    title: "Kit Alarma Hogar",
+    subtitle: "Protección completa para viviendas",
+    price: "399 €",
+    items: [
+      "Hub Ajax (central de control)",
+      "1 detector de movimiento (sin cámara)",
+      "1 detector magnético para puerta principal",
+      "1 mando a distancia",
+      "Sirena interior HomeSiren",
+      "App Ajax gratuita · iOS y Android",
+      "Instalación certificada incluida",
+      "Sin cuotas mensuales · Grado 2",
     ],
-    popular: true
   },
   {
-    name: "Kit 8 Cámaras",
-    price: "1480€",
-    features: [
-      "1 Grabador Full HD con grabación de imágenes",
-      "1 Disco duro de capacidad 27 días",
-      "8 Cámaras Full HD grabación día y noche",
-      "Instalación del equipo incluida",
-      "10m de DVR a cámara"
-    ]
-  }
+    id: "negocio",
+    badge: "RECOMENDADO",
+    title: "Kit Alarma Negocio",
+    subtitle: "Seguridad profesional para locales y oficinas",
+    price: "699 €",
+    items: [
+      "Hub Ajax (central de control)",
+      "2 detectores de movimiento sin cámara",
+      "2 detectores magnéticos (puertas/ventanas)",
+      "Sirena interior HomeSiren",
+      "Central Receptora activa 24/7",
+      "Instalación certificada incluida",
+      "Grado 2 · Conexión cifrada",
+    ],
+  },
+  {
+    id: "comunidad",
+    badge: "GRAN INSTALACIÓN",
+    title: "Kit Alarma Comunidad",
+    subtitle: "Para casas unifamiliares o naves industriales",
+    price: "1.300 €",
+    items: [
+      "Hub+ Ajax (hasta 200 dispositivos)",
+      "4 detectores de movimiento MotionCam",
+      "2 detectores magnéticos perimetrales",
+      "1 teclado KeyPad en zona de acceso",
+      "Sirena exterior de alta potencia",
+      "Sirenas interiores incluidas",
+      "Aviso directo a Policía verificado",
+      "Instalación y configuración completa incluida",
+    ],
+  },
 ];
 
-const alarmKits = [
+const CAMERA_KITS = [
   {
-    name: "Kit Inicial",
-    description: "Protección básica para pisos pequeños. Detector de movimiento y sensor de apertura con notificaciones al móvil.",
-    pvp: "550€",
-    promo: "400€",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/8f0bb1f1c_KITINICIAL.png"
+    id: "basico",
+    badge: null,
+    title: "Kit Básico",
+    cameras: "2 Cámaras",
+    price: "699 €",
+    items: [
+      "2 cámaras de alta definición 2K",
+      "Grabador NVR profesional con disco local",
+      "Instalación certificada incluida",
+      "Certificado de seguridad homologado",
+      "Placas disuasorias para exterior incluidas",
+      "Sin cuotas mensuales",
+    ],
+    ideal: "Viviendas y pequeños comercios",
   },
   {
-    name: "Kit Standard",
-    description: "Solución completa con 3 detectores PIR inmunes a mascotas. Perfecto para hogares medianos.",
-    pvp: "700€",
-    promo: "500€",
-    popular: true,
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/771cbf78d_kitstandard.jpg"
+    id: "profesional",
+    badge: "MÁS VENDIDO",
+    title: "Kit Profesional",
+    cameras: "4 Cámaras",
+    price: "890 €",
+    items: [
+      "4 cámaras Alta Definición 4MPX",
+      "Grabador NVR profesional con disco duro 2TB",
+      "Detección inteligente por Inteligencia Artificial",
+      "Visión nocturna optimizada",
+      "Instalación y configuración certificada incluida",
+    ],
+    ideal: "Casas, negocios y comunidades medianas",
   },
   {
-    name: "Kit Superior",
-    description: "Máxima seguridad con HUB 2 y cámaras MotionCam que envían fotos instantáneas al móvil.",
-    pvp: "850€",
-    promo: "600€",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/bcf002abb_kitsuperior.jpg"
-  }
+    id: "empresarial",
+    badge: "MÁXIMA COBERTURA",
+    title: "Kit Empresarial",
+    cameras: "8 Cámaras",
+    price: "1.500 €",
+    items: [
+      "8 cámaras profesionales 4K Ultra HD",
+      "Grabador NVR 8 canales con disco duro 4TB",
+      "Detección por IA avanzada de personas y vehículos",
+      "Visión nocturna de largo alcance",
+      "Instalación completa incluida",
+    ],
+    ideal: "Empresas, polígonos, comunidades grandes y fincas",
+  },
 ];
 
 const promoSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Promociones en Sistemas de Seguridad Barcelona - Premium Tech Security",
-  "description": "Ofertas y kits de alarmas AJAX y cámaras Hikvision con instalación incluida en Barcelona y Catalunya.",
-  "url": "https://www.premiumtechsecurity.es/Promociones",
+  "name": "Kits de Seguridad Barcelona - Alarmas y Cámaras | Alarmas BCN",
+  "description": "Kits de alarmas Ajax y videovigilancia profesional con instalación incluida en Barcelona.",
+  "url": "https://www.alarmasenbarcleona.com/Promociones",
   "itemListElement": [
-    ...alarmKits.map((kit, i) => ({
+    ...ALARM_KITS.map((kit, i) => ({
       "@type": "ListItem",
       "position": i + 1,
       "item": {
         "@type": "Product",
-        "name": kit.name,
-        "description": kit.description,
+        "name": kit.title,
+        "description": kit.subtitle,
         "offers": {
           "@type": "Offer",
-          "price": kit.promo.replace("€", ""),
+          "price": kit.price.replace(" €", "").replace(".", ""),
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "seller": { "@type": "Organization", "name": "Premium Tech Security" }
-        }
-      }
+          "seller": { "@type": "Organization", "name": "Alarmas BCN" },
+        },
+      },
     })),
-    ...cameraKits.map((kit, i) => ({
+    ...CAMERA_KITS.map((kit, i) => ({
       "@type": "ListItem",
-      "position": alarmKits.length + i + 1,
+      "position": ALARM_KITS.length + i + 1,
       "item": {
         "@type": "Product",
-        "name": kit.name,
+        "name": `${kit.title} — ${kit.cameras}`,
         "offers": {
           "@type": "Offer",
-          "price": kit.price.replace("€", ""),
+          "price": kit.price.replace(" €", "").replace(".", ""),
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "seller": { "@type": "Organization", "name": "Premium Tech Security" }
-        }
-      }
-    }))
-  ]
+          "seller": { "@type": "Organization", "name": "Alarmas BCN" },
+        },
+      },
+    })),
+  ],
 };
 
+const BG = "#060B14";
+const BG2 = "#0A1120";
+const RED = "#E53E3E";
+const RED_DIM = "rgba(229,62,62,0.15)";
+const BORDER = "rgba(255,255,255,0.07)";
+const TEXT = "#E2E8F0";
+const TEXT_DIM = "#94A3B8";
+
 export default function Promociones() {
-  const [activeTab, setActiveTab] = useState("camaras");
-  const [heroSlide, setHeroSlide] = useState(0);
-  const [heroPaused, setHeroPaused] = useState(false);
-
-  useEffect(() => {
-    if (heroPaused) return;
-    const timer = setInterval(() => {
-      setHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [heroPaused]);
-
-  const handleContactClick = () => {
-    window.location.href = "/#contacto";
-  };
+  const [activeTab, setActiveTab] = useState("alarmas");
 
   return (
-    <div className="min-h-screen bg-white">
+    <div style={{ minHeight: "100vh", background: BG, color: TEXT }}>
       <Helmet>
-        <title>Ofertas en Alarmas y Cámaras de Seguridad Barcelona | Premium Tech Security</title>
-        <meta name="description" content="Kits de alarmas AJAX desde 400€ y videovigilancia Hikvision desde 680€ con instalación incluida en Barcelona. Ofertas exclusivas en seguridad para hogar y negocio." />
-        <link rel="canonical" href="https://www.premiumtechsecurity.es/Promociones" />
+        <title>Kits de Alarmas y Cámaras de Seguridad Barcelona | Alarmas BCN</title>
+        <meta
+          name="description"
+          content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 699€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
+        />
+        <link rel="canonical" href="https://www.alarmasenbarcelona.com/Promociones" />
         <script type="application/ld+json">{JSON.stringify(promoSchema)}</script>
       </Helmet>
+
       <Navbar />
-      
-      {/* Hero Carousel */}
+
+      {/* Hero */}
       <section
-        className="relative w-full min-h-[420px] sm:min-h-[500px] lg:min-h-[560px] overflow-hidden pt-16 sm:pt-20"
-        onMouseEnter={() => setHeroPaused(true)}
-        onMouseLeave={() => setHeroPaused(false)}
+        style={{
+          background: `linear-gradient(135deg, ${BG} 0%, ${BG2} 60%, #0F1A2E 100%)`,
+          borderBottom: `1px solid ${BORDER}`,
+          paddingTop: 96,
+          paddingBottom: 64,
+        }}
       >
-        <div className="absolute inset-0" aria-hidden="true">
-          {HERO_SLIDES.map((slide, idx) => (
-            <img
-              key={idx}
-              src={slide.src}
-              alt=""
-              loading={idx === 0 ? "eager" : "lazy"}
-              className="absolute inset-0 w-full h-full object-cover"
-              style={{
-                opacity: heroSlide === idx ? 1 : 0,
-                transition: "opacity 800ms ease-in-out",
-              }}
-            />
-          ))}
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/30"></div>
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 sm:py-28 lg:py-32 flex flex-col justify-center">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-[#E63946]/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-white/10">
-              <Tag className="w-5 h-5 text-[#E63946]" />
-              <span className="text-white text-sm font-semibold">Ofertas Limitadas</span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
-              {HERO_SLIDES[heroSlide].title}
-            </h1>
-            <p className="text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed mb-8">
-              Aprovecha nuestras ofertas exclusivas en sistemas de alarmas y videovigilancia profesional. Instalación incluida y garantía de por vida.
-            </p>
-            <Button
-              onClick={handleContactClick}
-              className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-6 rounded-xl font-bold text-lg shadow-2xl hover:shadow-red-600/40 transition-all hover:scale-[1.02] flex items-center gap-2 group"
-            >
-              Solicitar presupuesto
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+        <div style={{ maxWidth: 900, margin: "0 auto", padding: "0 24px", textAlign: "center" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              background: RED_DIM,
+              border: `1px solid rgba(229,62,62,0.3)`,
+              borderRadius: 9999,
+              padding: "6px 18px",
+              marginBottom: 28,
+            }}
+          >
+            <Shield size={16} color={RED} />
+            <span style={{ color: RED, fontSize: 13, fontWeight: 700, letterSpacing: "0.06em" }}>
+              INSTALACIÓN CERTIFICADA · BARCELONA
+            </span>
           </div>
-        </div>
 
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2.5 z-10">
-          {HERO_SLIDES.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setHeroSlide(idx)}
-              aria-label={`Slide ${idx + 1}`}
-              className="w-2.5 h-2.5 rounded-full transition-all duration-300"
-              style={{
-                backgroundColor: heroSlide === idx ? "#E63946" : "rgba(255,255,255,0.4)",
-                transform: heroSlide === idx ? "scale(1.3)" : "scale(1)",
-              }}
-            />
-          ))}
+          <h1
+            style={{
+              fontSize: "clamp(32px, 5vw, 56px)",
+              fontWeight: 900,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+              margin: "0 0 20px",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Kits de Seguridad Profesional
+          </h1>
+          <p
+            style={{
+              fontSize: 18,
+              color: TEXT_DIM,
+              maxWidth: 580,
+              margin: "0 auto 36px",
+              lineHeight: 1.65,
+            }}
+          >
+            Alarmas Ajax y videovigilancia con instalación incluida. Sin cuotas mensuales. Presupuesto gratuito en 24h.
+          </p>
+
+          <a
+            href="tel:+34638109947"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 10,
+              background: RED,
+              color: "#fff",
+              fontWeight: 700,
+              fontSize: 16,
+              padding: "14px 32px",
+              borderRadius: 12,
+              textDecoration: "none",
+              letterSpacing: "0.02em",
+            }}
+          >
+            <Phone size={18} />
+            Llamar ahora
+          </a>
         </div>
       </section>
 
-      {/* Tabs de Navegación */}
-      <section className="py-6 sm:py-8 border-b border-gray-200 sticky top-16 bg-white z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-            <button
-              onClick={() => setActiveTab("alarmas")}
-              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold text-xs sm:text-base transition-all ${
-                activeTab === "alarmas"
-                  ? "bg-[#E63946] text-white shadow-lg"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">ALARMAS</span>
-              <span className="sm:hidden">Alarmas</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("camaras")}
-              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold text-xs sm:text-base transition-all ${
-                activeTab === "camaras"
-                  ? "bg-[#E63946] text-white shadow-lg"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <Camera className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden sm:inline">CÁMARAS</span>
-              <span className="sm:hidden">Cámaras</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("controles")}
-              className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold text-xs sm:text-base transition-all ${
-                activeTab === "controles"
-                  ? "bg-[#E63946] text-white shadow-lg"
-                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <Fingerprint className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="hidden lg:inline">CONTROLES DE ACCESO</span>
-              <span className="lg:hidden">Controles</span>
-            </button>
-          </div>
+      {/* Tabs */}
+      <section
+        style={{
+          background: BG2,
+          borderBottom: `1px solid ${BORDER}`,
+          position: "sticky",
+          top: 64,
+          zIndex: 40,
+          padding: "16px 24px",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 900,
+            margin: "0 auto",
+            display: "flex",
+            gap: 10,
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          {[
+            { key: "alarmas", label: "ALARMAS", icon: <Shield size={17} /> },
+            { key: "camaras", label: "CÁMARAS", icon: <Camera size={17} /> },
+            { key: "controles", label: "CONTROLES DE ACCESO", icon: <Fingerprint size={17} /> },
+          ].map((tab) => {
+            const active = activeTab === tab.key;
+            return (
+              <button
+                key={tab.key}
+                onClick={() => setActiveTab(tab.key)}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 7,
+                  padding: "10px 22px",
+                  borderRadius: 9999,
+                  border: active ? `1px solid ${RED}` : `1px solid ${BORDER}`,
+                  background: active ? RED : "transparent",
+                  color: active ? "#fff" : TEXT_DIM,
+                  fontWeight: 700,
+                  fontSize: 13,
+                  cursor: "pointer",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {tab.icon}
+                {tab.label}
+              </button>
+            );
+          })}
         </div>
       </section>
 
-      {/* Contenido según tab activo */}
+      {/* ALARMAS tab */}
       {activeTab === "alarmas" && (
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl font-bold text-[#0A1628] mb-4">Kits de Alarmas AJAX</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Sistemas inalámbricos de última generación con notificaciones en tiempo real
+        <section style={{ background: BG, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <h2
+                style={{
+                  fontSize: "clamp(26px, 4vw, 38px)",
+                  fontWeight: 900,
+                  color: "#fff",
+                  margin: "0 0 12px",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Sistemas de Alarma Ajax
+              </h2>
+              <p style={{ color: TEXT_DIM, fontSize: 16, maxWidth: 520, margin: "0 auto" }}>
+                Instalación certificada · Sin cuotas mensuales · Grado 2
               </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {alarmKits.map((kit, index) => (
-                <motion.div
-                  key={kit.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative bg-white rounded-2xl border-2 p-6 hover:shadow-2xl transition-all ${
-                    kit.popular ? "border-[#E63946] shadow-xl" : "border-gray-200"
-                  }`}
-                >
-                  {kit.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#E63946] text-white px-4 py-1 rounded-full text-sm font-bold">
-                      MÁS VENDIDO
-                    </div>
-                  )}
-                  
-                  <div className="w-full h-48 bg-gray-50 rounded-xl flex items-center justify-center mb-6 p-4">
-                    <img 
-                      src={kit.image} 
-                      alt={kit.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-[#0A1628] mb-3">{kit.name}</h3>
-                  <p className="text-sm text-gray-600 mb-6 leading-relaxed">{kit.description}</p>
-                  
-                  <div className="flex items-center gap-3 mb-1">
-                    <span className="text-lg text-gray-400 line-through">{kit.pvp}</span>
-                    <span className="text-4xl font-bold text-[#E63946]">{kit.promo}</span>
-                  </div>
-                  <p className="text-xs text-gray-400 mb-5">* IVA no incluido</p>
-                  
-                  <Button
-                    onClick={handleContactClick}
-                    className={`w-full rounded-full font-semibold ${
-                      kit.popular
-                        ? "bg-[#E63946] hover:bg-[#d32f3c] text-white"
-                        : "bg-gray-100 hover:bg-gray-200 text-[#0A1628]"
-                    }`}
-                  >
-                    Solicitar Presupuesto
-                  </Button>
-                </motion.div>
-              ))}
             </div>
 
-            {/* Video Ajax */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="mt-20"
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 18,
+              }}
             >
-              <h3 className="text-3xl font-bold text-[#0A1628] text-center mb-8">
-                Descubre la Tecnología AJAX
-              </h3>
-              <div className="max-w-4xl mx-auto">
-                <div className="rounded-2xl overflow-hidden shadow-2xl aspect-video">
-                  <iframe
-                    className="w-full h-full"
-                    src="https://www.youtube.com/embed/SfR5fydWE9s"
-                    title="Sistemas de Alarmas Ajax"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      )}
-
-      {activeTab === "camaras" && (
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-4xl font-bold text-[#0A1628] mb-4">Kits de Videovigilancia</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Sistemas de cámaras Full HD con grabación 24/7 y visión nocturna
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {cameraKits.map((kit, index) => (
-                <motion.div
-                  key={kit.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`relative bg-white rounded-2xl border-2 p-6 hover:shadow-2xl transition-all ${
-                    kit.popular ? "border-[#E63946] shadow-xl" : "border-gray-200"
-                  }`}
-                >
-                  {kit.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#E63946] text-white px-4 py-1 rounded-full text-sm font-bold">
-                      MÁS POPULAR
-                    </div>
-                  )}
-                  
-                  <h3 className="text-2xl font-bold text-[#0A1628] mb-2">{kit.name}</h3>
-                  <div className="text-4xl font-bold text-[#E63946] mb-1">{kit.price}</div>
-                  <p className="text-xs text-gray-400 mb-5">* IVA no incluido</p>
-                  
-                  <div className="space-y-3 mb-8">
-                    {kit.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-sm text-gray-600">{feature}</span>
+              {ALARM_KITS.map((kit, i) => {
+                const highlighted = i === 1;
+                return (
+                  <div
+                    key={kit.id}
+                    style={{
+                      background: BG2,
+                      borderRadius: 20,
+                      border: highlighted ? `2px solid ${RED}` : `1px solid ${BORDER}`,
+                      boxShadow: highlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
+                      padding: "28px 24px 32px",
+                      display: "flex",
+                      flexDirection: "column",
+                      position: "relative",
+                    }}
+                  >
+                    {kit.badge && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: -14,
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          background: RED,
+                          color: "#fff",
+                          fontSize: 11,
+                          fontWeight: 800,
+                          letterSpacing: "0.08em",
+                          padding: "5px 16px",
+                          borderRadius: 9999,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {kit.badge}
                       </div>
-                    ))}
+                    )}
+
+                    <div style={{ marginTop: kit.badge ? 12 : 0 }}>
+                      <p style={{ color: RED, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", margin: "0 0 6px", textTransform: "uppercase" }}>
+                        Alarma Ajax
+                      </p>
+                      <h3 style={{ color: "#fff", fontSize: 20, fontWeight: 800, margin: "0 0 4px" }}>
+                        {kit.title}
+                      </h3>
+                      <p style={{ color: TEXT_DIM, fontSize: 13, margin: "0 0 20px", lineHeight: 1.5 }}>
+                        {kit.subtitle}
+                      </p>
+                    </div>
+
+                    <div style={{ marginBottom: 4 }}>
+                      <span
+                        style={{
+                          fontSize: 42,
+                          fontWeight: 900,
+                          color: RED,
+                          lineHeight: 1,
+                          letterSpacing: "-0.02em",
+                        }}
+                      >
+                        {kit.price}
+                      </span>
+                    </div>
+                    <p style={{ color: TEXT_DIM, fontSize: 11, margin: "0 0 20px" }}>
+                      * IVA no incluido
+                    </p>
+
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+                      {kit.items.map((item, idx) => (
+                        <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                          <CheckCircle size={15} color="#22C55E" style={{ flexShrink: 0, marginTop: 2 }} />
+                          <span style={{ color: TEXT, fontSize: 13, lineHeight: 1.5 }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      href="tel:+34638109947"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 8,
+                        background: highlighted ? RED : "rgba(255,255,255,0.06)",
+                        border: highlighted ? "none" : `1px solid ${BORDER}`,
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: 14,
+                        padding: "13px 0",
+                        borderRadius: 10,
+                        textDecoration: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <Phone size={15} />
+                      Llamar ahora
+                    </a>
                   </div>
-                  
-                  <Button
-                    onClick={handleContactClick}
-                    className={`w-full rounded-full font-semibold ${
-                      kit.popular
-                        ? "bg-[#E63946] hover:bg-[#d32f3c] text-white"
-                        : "bg-gray-100 hover:bg-gray-200 text-[#0A1628]"
-                    }`}
-                  >
-                    Solicitar Presupuesto
-                  </Button>
-                </motion.div>
-              ))}
+                );
+              })}
+            </div>
+
+            {/* Ajax video */}
+            <div style={{ marginTop: 64, textAlign: "center" }}>
+              <h3 style={{ color: "#fff", fontWeight: 800, fontSize: 24, marginBottom: 28 }}>
+                Tecnología Ajax — Cómo funciona
+              </h3>
+              <div
+                style={{
+                  maxWidth: 800,
+                  margin: "0 auto",
+                  borderRadius: 16,
+                  overflow: "hidden",
+                  border: `1px solid ${BORDER}`,
+                  aspectRatio: "16/9",
+                }}
+              >
+                <iframe
+                  style={{ width: "100%", height: "100%", display: "block" }}
+                  src="https://www.youtube.com/embed/SfR5fydWE9s"
+                  title="Sistemas de Alarmas Ajax"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </div>
         </section>
       )}
 
+      {/* CÁMARAS tab */}
+      {activeTab === "camaras" && (
+        <section style={{ background: BG, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+            <div style={{ textAlign: "center", marginBottom: 52 }}>
+              <h2
+                style={{
+                  fontSize: "clamp(26px, 4vw, 38px)",
+                  fontWeight: 900,
+                  color: "#fff",
+                  margin: "0 0 12px",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                Sistemas de Videovigilancia
+              </h2>
+              <p style={{ color: TEXT_DIM, fontSize: 16, maxWidth: 520, margin: "0 auto" }}>
+                Grabación 24/7 · Inteligencia Artificial · Sin cuotas mensuales
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(3, 1fr)",
+                gap: 18,
+              }}
+            >
+              {CAMERA_KITS.map((kit, i) => {
+                const highlighted = i === 1;
+                return (
+                  <div
+                    key={kit.id}
+                    style={{
+                      background: BG2,
+                      borderRadius: 20,
+                      border: highlighted ? `2px solid ${RED}` : `1px solid ${BORDER}`,
+                      boxShadow: highlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
+                      padding: "28px 24px 32px",
+                      display: "flex",
+                      flexDirection: "column",
+                      position: "relative",
+                    }}
+                  >
+                    {kit.badge && (
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: -14,
+                          left: "50%",
+                          transform: "translateX(-50%)",
+                          background: RED,
+                          color: "#fff",
+                          fontSize: 11,
+                          fontWeight: 800,
+                          letterSpacing: "0.08em",
+                          padding: "5px 16px",
+                          borderRadius: 9999,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {kit.badge}
+                      </div>
+                    )}
+
+                    <div style={{ marginTop: kit.badge ? 12 : 0 }}>
+                      <p style={{ color: RED, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", margin: "0 0 6px", textTransform: "uppercase" }}>
+                        {kit.cameras}
+                      </p>
+                      <h3 style={{ color: "#fff", fontSize: 20, fontWeight: 800, margin: "0 0 4px" }}>
+                        {kit.title}
+                      </h3>
+                      <p style={{ color: TEXT_DIM, fontSize: 13, margin: "0 0 20px", lineHeight: 1.5 }}>
+                        Ideal para {kit.ideal}
+                      </p>
+                    </div>
+
+                    <div style={{ marginBottom: 4 }}>
+                      <span
+                        style={{
+                          fontSize: 42,
+                          fontWeight: 900,
+                          color: RED,
+                          lineHeight: 1,
+                          letterSpacing: "-0.02em",
+                        }}
+                      >
+                        {kit.price}
+                      </span>
+                    </div>
+                    <p style={{ color: TEXT_DIM, fontSize: 11, margin: "0 0 20px" }}>
+                      * IVA no incluido
+                    </p>
+
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
+                      {kit.items.map((item, idx) => (
+                        <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
+                          <CheckCircle size={15} color="#22C55E" style={{ flexShrink: 0, marginTop: 2 }} />
+                          <span style={{ color: TEXT, fontSize: 13, lineHeight: 1.5 }}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      href="tel:+34638109947"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 8,
+                        background: highlighted ? RED : "rgba(255,255,255,0.06)",
+                        border: highlighted ? "none" : `1px solid ${BORDER}`,
+                        color: "#fff",
+                        fontWeight: 700,
+                        fontSize: 14,
+                        padding: "13px 0",
+                        borderRadius: 10,
+                        textDecoration: "none",
+                        cursor: "pointer",
+                      }}
+                    >
+                      <Phone size={15} />
+                      Llamar ahora
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* CONTROLES tab */}
       {activeTab === "controles" && (
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="grid lg:grid-cols-2 gap-12 items-center"
+        <section style={{ background: BG, padding: "72px 24px" }}>
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 48,
+                alignItems: "center",
+              }}
             >
               <div>
-                <h2 className="text-4xl font-bold text-[#0A1628] mb-6">Control de Acceso</h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                  <strong>Instalación de sistema de control de acceso</strong> a través de lector de tarjetas de proximidad, 
-                  destrabador eléctrico, lector dactilar, lector facial, teclera de códigos, etc.
+                <h2 style={{ color: "#fff", fontWeight: 900, fontSize: 36, margin: "0 0 20px", letterSpacing: "-0.01em" }}>
+                  Control de Acceso Profesional
+                </h2>
+                <p style={{ color: TEXT_DIM, fontSize: 16, lineHeight: 1.7, margin: "0 0 16px" }}>
+                  Instalación de sistemas de control de acceso mediante lector de tarjetas de proximidad, destrabador eléctrico, lector dactilar, reconocimiento facial y tecleras de código.
                 </p>
-                <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                  Nuestros sistemas de control de accesos pueden funcionar con <strong>respaldo computacional</strong> y 
-                  registro de cada entrada o también de <strong>manera local</strong> realizando aperturas de puntos específicos.
+                <p style={{ color: TEXT_DIM, fontSize: 16, lineHeight: 1.7, margin: "0 0 28px" }}>
+                  Funcionamiento con respaldo computacional y registro de entradas, o de manera local para aperturas de puntos específicos.
                 </p>
-                
-                <div className="bg-gray-50 rounded-2xl p-6 mb-8">
-                  <h3 className="text-lg font-bold text-[#0A1628] mb-4">Métodos de Identificación:</h3>
-                  <div className="space-y-3">
+
+                <div
+                  style={{
+                    background: BG2,
+                    border: `1px solid ${BORDER}`,
+                    borderRadius: 16,
+                    padding: "24px",
+                    marginBottom: 28,
+                  }}
+                >
+                  <h3 style={{ color: "#fff", fontWeight: 700, fontSize: 15, margin: "0 0 16px" }}>
+                    Métodos de identificación
+                  </h3>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
                     {[
                       "Tarjetas de proximidad RFID",
                       "Lector de huella dactilar",
                       "Reconocimiento facial avanzado",
                       "Teclera con códigos PIN",
                       "Combinación de múltiples métodos",
-                      "Control remoto desde app móvil"
-                    ].map((metodo, idx) => (
-                      <div key={idx} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-[#E63946] flex-shrink-0" />
-                        <span className="text-gray-700">{metodo}</span>
+                      "Control remoto desde app móvil",
+                    ].map((m, idx) => (
+                      <div key={idx} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <CheckCircle size={15} color={RED} style={{ flexShrink: 0 }} />
+                        <span style={{ color: TEXT, fontSize: 14 }}>{m}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button
-                    onClick={handleContactClick}
-                    className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-8 py-6 font-semibold"
+                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <a
+                    href="tel:+34638109947"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: RED,
+                      color: "#fff",
+                      fontWeight: 700,
+                      fontSize: 15,
+                      padding: "13px 28px",
+                      borderRadius: 10,
+                      textDecoration: "none",
+                    }}
                   >
-                    Solicitar Presupuesto Personalizado
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-2 border-[#0A1628] text-[#0A1628] hover:bg-[#0A1628] hover:text-white rounded-full px-8 py-6 font-semibold"
+                    <Phone size={16} />
+                    Llamar ahora
+                  </a>
+                  <a
+                    href="/#contacto"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: "rgba(255,255,255,0.06)",
+                      border: `1px solid ${BORDER}`,
+                      color: "#fff",
+                      fontWeight: 700,
+                      fontSize: 15,
+                      padding: "13px 28px",
+                      borderRadius: 10,
+                      textDecoration: "none",
+                    }}
                   >
-                    <a href="tel:+34638109947">Llamar Ahora</a>
-                  </Button>
+                    Solicitar presupuesto
+                  </a>
                 </div>
               </div>
 
               <div>
                 <img
                   src="https://media.base44.com/images/public/6995a701232755a2d5e24b39/1d629183e_IMG_8285.png"
-                  alt="Sistema de Control de Acceso"
-                  className="rounded-2xl shadow-2xl w-full"
+                  alt="Control de acceso profesional"
+                  style={{ width: "100%", borderRadius: 16, border: `1px solid ${BORDER}` }}
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       )}
 
-      {/* CTA Section */}
-      <section className="py-16 bg-[#0A1628]">
-        <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
-              ¿Listo para Proteger tu Propiedad?
-            </h2>
-            <p className="text-xl text-white/70 mb-8">
-              Contacta con nosotros y te asesoraremos sin compromiso
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:+34638109947"
-                className="inline-flex items-center justify-center bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-full font-semibold text-lg transition-all"
-              >
-                Llamar Ahora: 638 10 99 47
-              </a>
-              <a
-                href="/#contacto"
-                className="inline-flex items-center justify-center bg-white hover:bg-gray-100 text-[#0A1628] px-8 py-4 rounded-full font-semibold text-lg transition-all"
-              >
-                Solicitar Presupuesto
-              </a>
-            </div>
-          </motion.div>
+      {/* CTA */}
+      <section
+        style={{
+          background: BG2,
+          borderTop: `1px solid ${BORDER}`,
+          padding: "64px 24px",
+          textAlign: "center",
+        }}
+      >
+        <div style={{ maxWidth: 640, margin: "0 auto" }}>
+          <h2 style={{ color: "#fff", fontWeight: 900, fontSize: 32, margin: "0 0 14px", letterSpacing: "-0.01em" }}>
+            Protege tu propiedad hoy mismo
+          </h2>
+          <p style={{ color: TEXT_DIM, fontSize: 16, margin: "0 0 32px", lineHeight: 1.65 }}>
+            Contacta con nosotros y te asesoraremos sin compromiso
+          </p>
+          <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+            <a
+              href="tel:+34638109947"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                background: RED,
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: 16,
+                padding: "15px 32px",
+                borderRadius: 12,
+                textDecoration: "none",
+              }}
+            >
+              <Phone size={18} />
+              Llamar ahora
+            </a>
+            <a
+              href="/#contacto"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                background: "rgba(255,255,255,0.06)",
+                border: `1px solid ${BORDER}`,
+                color: "#fff",
+                fontWeight: 700,
+                fontSize: 16,
+                padding: "15px 32px",
+                borderRadius: 12,
+                textDecoration: "none",
+              }}
+            >
+              Solicitar presupuesto
+            </a>
+          </div>
         </div>
       </section>
 
