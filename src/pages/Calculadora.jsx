@@ -29,9 +29,9 @@ function getEstimate(services, cameraCount) {
   if (hasCam && hasAlarm) return "699€";
   if (hasAlarm && !hasCam) return "349€";
   if (hasCam) {
-    if (cameraCount <= 2) return "449€";
-    if (cameraCount <= 4) return "699€";
-    return "1.199€";
+    if (cameraCount <= 2) return "699€";
+    if (cameraCount <= 4) return "890€";
+    return "1.500€";
   }
   if (hasAccess) return "499€";
   return "349€";
