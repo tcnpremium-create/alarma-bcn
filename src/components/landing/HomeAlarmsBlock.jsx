@@ -100,10 +100,10 @@ const KITS = [
 ];
 
 const TECH_SPECS = [
-  { label: "Antiinhibición", desc: "Detecta y bloquea intentos de interferencia de señal RF", icon: "🛡️" },
-  { label: "Grado 2 Certificado", desc: "Máximo nivel de seguridad reconocido por aseguradoras en España", icon: "🏆" },
-  { label: "Verificación en 15s", desc: "La Central Receptora confirma la intrusión y avisa a la Policía", icon: "⚡" },
-  { label: "Cifrado de Datos", desc: "Comunicación 100% cifrada entre dispositivos y central", icon: "🔐" },
+  { label: "Antiinhibición", desc: "Detecta y bloquea intentos de interferencia de señal RF" },
+  { label: "Grado 2 Certificado", desc: "Máximo nivel de seguridad reconocido por aseguradoras en España" },
+  { label: "Verificación en 15s", desc: "La Central Receptora confirma la intrusión y avisa a la Policía" },
+  { label: "Cifrado de Datos", desc: "Comunicación 100% cifrada entre dispositivos y central" },
 ];
 
 export default function HomeAlarmsBlock({ onOpenModal }) {
@@ -171,7 +171,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
         {/* ② Promo kit cards — accordion */}
         <div style={{ marginTop:24,display:"flex",flexDirection:"column",gap:10 }}>
           <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",margin:"0 0 4px" }}>
-            🎁 Promociones en Sistemas de Alarma
+            Kits de Alarmas Ajax — Precios Transparentes
           </p>
           {KITS.map((kit) => {
             const isOpen = open === kit.id;
@@ -259,11 +259,10 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
 
         {/* ④ Technical Ajax deep-dive */}
         <div style={{ marginTop:24 }}>
-          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>⚙ Tecnología Ajax — Grado Militar</p>
+          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>Tecnología Ajax — Grado Militar</p>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:10 }}>
             {TECH_SPECS.map((s)=>(
               <div key={s.label} style={{ background:"rgba(255,255,255,.05)",backdropFilter:"blur(6px)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"12px 14px" }}>
-                <div style={{ fontSize:20,marginBottom:5 }}>{s.icon}</div>
                 <p style={{ color:"#fff",fontWeight:700,fontSize:13,margin:"0 0 3px" }}>{s.label}</p>
                 <p style={{ color:"#64748B",fontSize:11,margin:0,lineHeight:1.5 }}>{s.desc}</p>
               </div>
