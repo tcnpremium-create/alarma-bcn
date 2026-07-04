@@ -1,6 +1,5 @@
 import React from "react";
 import { Check, X } from "lucide-react";
-import { BorderBeam } from "../magicui/border-beam";
 
 const ROWS = [
   { label: "Cuota Mensual", us: "0€/mes (Propiedad del equipo)*", them: "45€ - 60€/mes (Alquiler eterno)*" },
@@ -62,14 +61,6 @@ export default function ComparisonTable() {
                   </div>
                 </React.Fragment>
               ))}
-            </div>
-
-            {/* Animated border beam highlighting the whole Premium column — positioned independently of the grid */}
-            <div
-              aria-hidden="true"
-              style={{ position: "absolute", top: 0, bottom: 0, left: "33.3333%", width: "33.3333%", pointerEvents: "none", zIndex: 5 }}
-            >
-              <BorderBeam colorFrom="#E53E3E" colorTo="#FF8A65" duration={6} borderWidth={2} />
             </div>
           </div>
         </div>
