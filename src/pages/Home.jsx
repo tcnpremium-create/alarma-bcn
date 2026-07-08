@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/landing/Navbar";
 import HeroProf from "../components/landing/HeroProf";
+import HeroLeadForm from "../components/landing/HeroLeadForm";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import BentoServiciosGrid from "../components/landing/BentoServiciosGrid";
@@ -13,14 +14,12 @@ import HomeTrustSection from "../components/landing/HomeTrustSection";
 import AnimatedSecurityBeam from "../components/landing/AnimatedSecurityBeam";
 import ComparisonTable from "../components/landing/ComparisonTable";
 import PresupuestoModal from "../components/landing/PresupuestoModal";
-import SecurityQuizModal from "../components/landing/SecurityQuizModal";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [quizOpen, setQuizOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
+    <div className="min-h-screen bg-white pb-32">
       <AdvancedSEO
         title="Alarmas en Barcelona | Instalación AJAX | Premium Tech Security"
         description="Especialistas en alarmas en Barcelona y toda Catalunya. Sistemas AJAX, cámaras Hikvision y Dahua 4K. Sin cuotas. Presupuesto gratis 638 10 99 47."
@@ -29,7 +28,9 @@ export default function Home() {
       />
       <Navbar />
       <main>
-        <HeroProf onOpenModal={() => setModalOpen(true)} onOpenQuiz={() => setQuizOpen(true)} />
+        <HeroProf />
+
+        <HeroLeadForm />
 
         <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
 
@@ -50,7 +51,6 @@ export default function Home() {
       </main>
       <FooterSection />
       <PresupuestoModal open={modalOpen} onClose={() => setModalOpen(false)} />
-      <SecurityQuizModal open={quizOpen} onClose={() => setQuizOpen(false)} />
     </div>
   );
 }

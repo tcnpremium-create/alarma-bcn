@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
-import SecurityQuizModal from "./SecurityQuizModal";
+import HeroContactModal from "./HeroContactModal";
 import CameraKitsGrid from "./CameraKitsGrid";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
@@ -81,7 +81,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
   const faqList = faqs || defaultFaqs;
 
   return (
-    <div className="min-h-screen bg-white" style={{ paddingBottom: 70 }}>
+    <div className="min-h-screen bg-white pb-32">
       <AdvancedSEO
         title={seoTitle || `Instalación Cámaras de Seguridad en ${city} | Sin Cuotas | Premium Tech Security`}
         description={seoDescription || `Instalamos cámaras de seguridad en ${city}. Hikvision y Dahua. 4K HD. Sin cuotas mensuales. Presupuesto gratis en 24h. Llama al 638 10 99 47.`}
@@ -284,7 +284,11 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       </section>
 
       <FooterSection />
-      <SecurityQuizModal open={showModal} onClose={() => setShowModal(false)} />
+      <HeroContactModal
+        open={showModal}
+        defaultServicio={`Cámaras en ${city}`}
+        onClose={() => setShowModal(false)}
+      />
     </div>
   );
 }

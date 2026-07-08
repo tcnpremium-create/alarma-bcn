@@ -3,7 +3,7 @@ import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, Chevro
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
-import SecurityQuizModal from "./SecurityQuizModal";
+import HeroContactModal from "./HeroContactModal";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { base44 } from "@/api/api";
 
@@ -46,7 +46,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 70 }}>
+    <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 128 }}>
       <CityLandingSEO path={seoPath} />
       <Navbar />
 
@@ -207,7 +207,11 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
 
       <FooterSection />
 
-      <SecurityQuizModal open={showModal} onClose={() => setShowModal(false)} />
+      <HeroContactModal
+        open={showModal}
+        defaultServicio={`Seguridad en ${city}`}
+        onClose={() => setShowModal(false)}
+      />
     </div>
   );
 }

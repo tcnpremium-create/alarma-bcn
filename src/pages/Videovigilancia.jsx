@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Check, Phone, Camera, Eye, Moon, Cloud, Smartphone, Lock, ChevronDown, ChevronUp, Shield } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import SecurityQuizModal from "../components/landing/SecurityQuizModal";
+import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import CameraKitsGrid from "../components/landing/CameraKitsGrid";
 import { NeonGradientCard } from "../components/magicui/neon-gradient-card";
@@ -45,7 +45,7 @@ export default function Videovigilancia() {
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, []);
 
   return (
-    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060B14", paddingBottom: 70 }}>
+    <div style={{ fontFamily: "'Inter', sans-serif", background: "#060B14", paddingBottom: 128 }}>
       <AdvancedSEO
         title="Cámaras Videovigilancia 4K Barcelona | Hikvision y Dahua | Premium Tech Security"
         description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía 3 años. Sin cuotas. Tel: 638 10 99 47"
@@ -348,7 +348,7 @@ export default function Videovigilancia() {
       </section>
 
       <FooterSection />
-      <SecurityQuizModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <HeroContactModal open={modalOpen} onClose={() => setModalOpen(false)} defaultServicio="Videovigilancia" />
     </div>
   );
 }
