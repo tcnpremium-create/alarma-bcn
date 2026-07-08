@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/landing/Navbar";
 import HeroProf from "../components/landing/HeroProf";
-import HeroLeadForm from "../components/landing/HeroLeadForm";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import BentoServiciosGrid from "../components/landing/BentoServiciosGrid";
@@ -29,8 +28,6 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroProf />
-
-        <HeroLeadForm />
 
         <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
 
