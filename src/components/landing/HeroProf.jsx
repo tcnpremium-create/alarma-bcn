@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Phone, ShieldCheck } from "lucide-react";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 const SLIDES = [
   {
@@ -30,6 +31,7 @@ const SLIDES = [
 
 export default function HeroProf() {
   const [active, setActive] = useState(0);
+  const { openDrawer } = useLeadDrawer();
 
   useEffect(() => {
     const id = setInterval(() => setActive(i => (i + 1) % SLIDES.length), 5500);
@@ -179,18 +181,18 @@ export default function HeroProf() {
 
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
-            <a
-              href="#solicitar-presupuesto"
+            <button
+              onClick={openDrawer}
               className="hero-cta-glow"
               style={{
                 background: "#E53E3E", color: "#fff", border: "none",
                 borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
                 boxShadow: "0 0 20px rgba(229,62,62,0.35)",
-                position: "relative", overflow: "hidden", textDecoration: "none", display: "inline-block",
+                position: "relative", overflow: "hidden", display: "inline-block",
               }}
             >
               Solicitar presupuesto gratis →
-            </a>
+            </button>
             <a
               href="tel:+34638109947"
               style={{

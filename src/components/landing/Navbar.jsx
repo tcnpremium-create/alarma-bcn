@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 const NAV_LINKS = [
   { label: "Inicio", href: "/" },
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const mobileMenuRef = useRef(null);
+  const { openDrawer } = useLeadDrawer();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -70,9 +72,9 @@ export default function Navbar() {
                 <Phone className="w-4 h-4 text-[#E63946]" />
                 Llamar
               </a>
-              <Link to="/Contact" className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
+              <button onClick={openDrawer} className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
                 Presupuesto →
-              </Link>
+              </button>
             </div>
 
             {/* Mobile hamburger */}
@@ -115,9 +117,12 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <Link to="/Contact" onClick={() => setMobileOpen(false)} className="block w-full bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full font-bold py-3 text-base transition-colors text-center">
+                  <button
+                    onClick={() => { setMobileOpen(false); openDrawer(); }}
+                    className="block w-full bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
+                  >
                     Presupuesto →
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </nav>

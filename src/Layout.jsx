@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useHubSpotTracking } from "@/components/tracking/useHubSpotTracking";
 import MobileFloatingCTA from "@/components/landing/MobileFloatingCTA";
-import HeroContactModal from "@/components/landing/HeroContactModal";
+import LeadFormDrawer from "@/components/landing/LeadFormDrawer";
+import { LeadDrawerProvider, useLeadDrawer } from "@/context/LeadDrawerContext";
 
-export default function Layout({ children }) {
+function LayoutInner({ children }) {
   const location = useLocation();
-  const [modalOpen, setModalOpen] = useState(false);
+  const { open, closeDrawer } = useLeadDrawer();
   useHubSpotTracking();
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export default function Layout({ children }) {
   }, [location.pathname]);
 
   const hiddenPaths = ["/AdminLeads", "/AreaClientes"];
-  const showFloatingCTA = !hiddenPaths.includes(location.pathname);
+  const showFloatingCTA = !hiddenPaths.includes(location.pathname) && !open;
 
   return (
     <div className="min-h-screen">
@@ -34,8 +35,16 @@ export default function Layout({ children }) {
         ::-webkit-scrollbar-thumb:hover { background: #a1a1a1; }
       `}</style>
       {children}
-      {showFloatingCTA && <MobileFloatingCTA onOpenModal={() => setModalOpen(true)} />}
-      {modalOpen && <HeroContactModal onClose={() => setModalOpen(false)} />}
+      {showFloatingCTA && <MobileFloatingCTA />}
+      <LeadFormDrawer open={open} onClose={closeDrawer} />
     </div>
+  );
+}
+
+export default function Layout({ children }) {
+  return (
+    <LeadDrawerProvider>
+      <LayoutInner>{children}</LayoutInner>
+    </LeadDrawerProvider>
   );
 }
