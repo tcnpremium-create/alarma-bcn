@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../components/landing/Navbar";
 import HeroProf from "../components/landing/HeroProf";
 import FooterSection from "../components/landing/FooterSection";
@@ -12,10 +12,10 @@ import HomeVideoporterosTeaser from "../components/landing/HomeVideoporterosTeas
 import HomeTrustSection from "../components/landing/HomeTrustSection";
 import AnimatedSecurityBeam from "../components/landing/AnimatedSecurityBeam";
 import ComparisonTable from "../components/landing/ComparisonTable";
-import PresupuestoModal from "../components/landing/PresupuestoModal";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const { openDrawer } = useLeadDrawer();
 
   return (
     <div className="min-h-screen bg-white pb-32">
@@ -29,7 +29,7 @@ export default function Home() {
       <main>
         <HeroProf />
 
-        <HomeCamerasBlock onOpenModal={() => setModalOpen(true)} />
+        <HomeCamerasBlock onOpenModal={openDrawer} />
 
         <AnimatedSecurityBeam />
 
@@ -39,7 +39,7 @@ export default function Home() {
 
         <MarqueeSocial />
 
-        <HomeAlarmsBlock onOpenModal={() => setModalOpen(true)} />
+        <HomeAlarmsBlock onOpenModal={openDrawer} />
 
         <HomeTrustSection />
 
@@ -47,7 +47,6 @@ export default function Home() {
         <HomeSeoLocal />
       </main>
       <FooterSection />
-      <PresupuestoModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 }
