@@ -53,7 +53,7 @@ export default function SistemasAlarma() {
         title="Alarmas Ajax Barcelona | Instalación Profesional | Premium Tech Security"
         description="Sistemas de alarma Ajax en Barcelona y Catalunya. Respuesta certificada en 15 segundos. 100% inalámbrico sin obras. Partner oficial Ajax. Tel: 638 10 99 47"
         keywords="alarmas Ajax Barcelona, sistema alarma inalámbrico Barcelona, instalación alarma Barcelona, Central Receptora alarmas, Ajax Hub Barcelona, alarma sin cuotas Catalunya"
-        canonicalUrl="/sistemas-alarma"
+        canonicalUrl="https://alarmasenbarcelona.com/sistemas-alarma"
         ogImage="/images/ajax-hero-dispositivos.jpeg"
         schema={{
           "@context": "https://schema.org",
