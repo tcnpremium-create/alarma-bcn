@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { base44 } from "@/api/api";
 
 const PAGE_NAMES = {
   "/": "Inicio",
@@ -67,12 +66,17 @@ export function useHubSpotTracking() {
     }
     if (!pageName) pageName = prevPath;
 
-    base44.functions.invoke("trackPageVisit", {
-      phone,
-      pageName,
-      timeSpentSeconds,
-      pageUrl: `https://www.premiumtechsecurity.es${prevPath}`
-    }).catch(() => {}); // Silent fail — never block UX
+    // base44.functions no existe tras la migración: enviamos el beacon directo al
+    // endpoint (si no está desplegado, sendBeacon falla en silencio sin romper la SPA)
+    try {
+      const payload = JSON.stringify({
+        phone,
+        pageName,
+        timeSpentSeconds,
+        pageUrl: `https://alarmasenbarcelona.com${prevPath}`,
+      });
+      navigator.sendBeacon?.("/api/functions/trackPageVisit", payload);
+    } catch { /* nunca bloquear la navegación por tracking */ }
 
   }, [location.pathname]);
 
@@ -93,7 +97,7 @@ export function useHubSpotTracking() {
       if (!pageName) pageName = path;
 
       // Use sendBeacon for reliable delivery on unload
-      const payload = JSON.stringify({ phone, pageName, timeSpentSeconds, pageUrl: `https://www.premiumtechsecurity.es${path}` });
+      const payload = JSON.stringify({ phone, pageName, timeSpentSeconds, pageUrl: `https://alarmasenbarcelona.com${path}` });
       navigator.sendBeacon?.(`/api/functions/trackPageVisit`, payload);
     };
 
