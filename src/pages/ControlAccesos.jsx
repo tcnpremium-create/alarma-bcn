@@ -28,7 +28,7 @@ export default function ControlAccesos() {
   };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
+    <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 128 }}>
       <AdvancedSEO
         title="Control de Accesos Biométrico Barcelona | Huella Dactilar y Facial"
         description="Control de accesos en Barcelona. Videoporteros, cerraduras inteligentes y lectores biométricos. Apertura remota desde móvil. Presupuesto gratis. Tel: 638 10 99 47"

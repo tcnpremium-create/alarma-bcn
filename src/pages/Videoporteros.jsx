@@ -91,7 +91,7 @@ export default function Videoporteros() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
+    <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 128 }}>
       <AdvancedSEO
         title="Instalación Videoporteros Barcelona | Fermax, Bticino, Golmar | Premium Tech Security"
         description="Instalamos videoporteros IP, control de accesos biométrico y reconocimiento facial en Barcelona y toda Catalunya. Fermax, Bticino, Golmar. Presupuesto gratis 638 10 99 47."
