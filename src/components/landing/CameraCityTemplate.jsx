@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
@@ -80,6 +81,16 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
 
   const faqList = faqs || defaultFaqs;
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqList.map((f) => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-white pb-32">
       <AdvancedSEO
@@ -88,6 +99,9 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         keywords={`cámaras seguridad ${city}, instalación cámaras ${city}, videovigilancia ${city}, CCTV ${city}`}
         canonicalUrl={`https://alarmasenbarcelona.com${seoPath}`}
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
       <Navbar />
 
       {/* ── HERO ── */}

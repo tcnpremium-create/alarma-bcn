@@ -32,6 +32,7 @@ export default function MantenimientoSoporte() {
       <AdvancedSEO 
         title="Mantenimiento Sistemas Seguridad 24/7 Barcelona | Soporte Técnico"
         description="Servicio de mantenimiento y soporte técnico 24/7 para sistemas de seguridad en Barcelona. Alarmas, cámaras, control de accesos. Respuesta inmediata certificada."
+        canonicalUrl="https://alarmasenbarcelona.com/MantenimientoSoporte"
         keywords="mantenimiento alarmas Barcelona, soporte técnico seguridad, reparación cámaras, mantenimiento sistemas seguridad, servicio técnico 24/7, revisión alarmas"
         schema={{
           "@type": "Service",

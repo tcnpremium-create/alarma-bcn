@@ -8,8 +8,13 @@ export default function LeadFormDrawer({ open, onClose }) {
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prevOverflow; };
-  }, [open]);
+    const onKeyDown = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open, onClose]);
 
   return (
     <AnimatePresence>
@@ -25,6 +30,9 @@ export default function LeadFormDrawer({ open, onClose }) {
           />
           <motion.div
             data-testid="lead-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Solicitar presupuesto gratis"
             initial={{ y: "100%", opacity: 0.6 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0.6 }}
