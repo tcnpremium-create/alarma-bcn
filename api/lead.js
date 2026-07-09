@@ -8,7 +8,10 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const resend = new Resend('re_E4tE5cMB_4mpUbRzaSf6xujq15454JsQw');
+// La key vive en Vercel > Settings > Environment Variables (RESEND_API_KEY).
+// La key anterior estaba hardcodeada aquí y quedó expuesta en el historial de
+// git: hay que ROTARLA en resend.com/api-keys además de configurar la nueva.
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 function buildNotifEmail(formData, phoneClean) {
   return `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
