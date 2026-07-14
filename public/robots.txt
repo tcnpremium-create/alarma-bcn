@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /AdminLeads
+Disallow: /AreaClientes
 Sitemap: https://alarmasenbarcelona.com/sitemap.xml
