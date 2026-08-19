@@ -3,7 +3,7 @@ import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
 import NavigationTracker from '@/lib/NavigationTracker'
 import { pagesConfig } from './pages.config'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import BlogArticle from './pages/BlogArticle';
 import ComparativaAlarmas from './pages/ComparativaAlarmas';
 import MapaRiesgo from './pages/MapaRiesgo';
@@ -102,6 +102,10 @@ const AuthenticatedApp = () => {
       <Route path="/sistemas-alarma" element={<LayoutWrapper currentPageName="SistemasAlarma"><SistemasAlarma /></LayoutWrapper>} />
       <Route path="/videovigilancia" element={<LayoutWrapper currentPageName="Videovigilancia"><Videovigilancia /></LayoutWrapper>} />
       <Route path="/control-accesos" element={<LayoutWrapper currentPageName="ControlAccesos"><ControlAccesos /></LayoutWrapper>} />
+      {/* Redirects: rutas descontinuadas de SEO/campañas que apuntaban a la página de mantenimiento */}
+      <Route path="/sin-cuotas-mensuales" element={<Navigate to="/alarmas-barcelona" replace />} />
+      <Route path="/comparativa-verisure" element={<Navigate to="/alarmas-barcelona" replace />} />
+      <Route path="/alarmas-sin-permanencia" element={<Navigate to="/alarmas-barcelona" replace />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
