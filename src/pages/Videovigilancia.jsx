@@ -48,7 +48,7 @@ export default function Videovigilancia() {
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#060B14", paddingBottom: 128 }}>
       <AdvancedSEO
         title="Cámaras Videovigilancia 4K Barcelona | Hikvision y Dahua | Premium Tech Security"
-        description="Instalación de cámaras de videovigilancia 4K en Barcelona y Catalunya. Hikvision, Dahua. IA integrada, visión nocturna, garantía 3 años. Sin cuotas. Tel: 638 10 99 47"
+        description="Instalación de sistemas de videovigilancia en Barcelona. Cámaras HD, CCTV profesional para hogar, negocio y comunidades. Sin cuotas. Presupuesto gratis 638 10 99 47."
         keywords="cámaras videovigilancia Barcelona, cámaras seguridad 4K Barcelona, Hikvision Barcelona, Dahua Barcelona, instalación CCTV Barcelona, videovigilancia hogar empresa comunidad"
         canonicalUrl="https://alarmasenbarcelona.com/videovigilancia"
         ogImage="https://alarmasenbarcelona.com/images/camaras-seguridad-hero.jpeg"

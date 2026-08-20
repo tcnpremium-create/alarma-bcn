@@ -34,10 +34,10 @@ export default function AdvancedSEO({
         "paymentAccepted": "Efectivo, Tarjeta, Transferencia",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Coll i Vehi, 141",
+          "streetAddress": "Carrer de Coll i Vehí, 141",
           "addressLocality": "Barcelona",
           "addressRegion": "Catalunya",
-          "postalCode": "08001",
+          "postalCode": "08020",
           "addressCountry": "ES"
         },
         "geo": {

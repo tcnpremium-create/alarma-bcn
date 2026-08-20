@@ -214,7 +214,7 @@ export default function Blog() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Blog de Seguridad y Alarmas en Barcelona | Premium Tech Security</title>
-        <meta name="description" content="Blog de seguridad — Guías sobre cámaras, alarmas, videoporteros y control de accesos en Barcelona. Consejos de expertos de Premium Tech Security." />
+        <meta name="description" content="Blog de seguridad Premium Tech Security. Guías sobre cámaras, alarmas y videoporteros en Barcelona. Consejos de instalación y normativa RGPD." />
         <meta property="og:title" content="Blog de Seguridad y Alarmas en Barcelona | Premium Tech Security" />
         <meta property="og:description" content="Guías, comparativas y consejos expertos sobre sistemas de alarma, videovigilancia y seguridad para hogares y negocios en Barcelona." />
         <link rel="canonical" href="https://www.premiumtechsecurity.es/Blog" />

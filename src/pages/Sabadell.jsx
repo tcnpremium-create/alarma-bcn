@@ -15,7 +15,7 @@ export default function Sabadell() {
       <LocalitySEO
         city="Sabadell"
         title="Alarmas en Sabadell | Instalación Sistemas Seguridad Profesional 24/7"
-        description="Instalación de alarmas en Sabadell. Sistemas AJAX inalámbricos, videovigilancia Hikvision 4K, control de accesos. Cobertura toda Sabadell ☎ 638 10 99 47."
+        description="Instalación de alarmas y cámaras de seguridad en Sabadell. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Sabadell, instalación alarmas Sabadell, sistemas seguridad Sabadell, cámaras Sabadell, videovigilancia Sabadell, alarma negocio Sabadell"
         canonicalUrl="https://alarmasenbarcelona.com/Sabadell"
         lat={41.5432}

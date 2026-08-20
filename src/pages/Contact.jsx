@@ -10,7 +10,7 @@ export default function Contact() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Contacto | Premium Tech Security - Alarmas Barcelona</title>
-        <meta name="description" content="Contacta con Premium Tech Security para un presupuesto gratuito de alarmas y seguridad en Barcelona. Teléfono: 638 10 99 47. Email: tcnpremium@gmail.com." />
+        <meta name="description" content="Contacta con Premium Tech Security. Instaladores de alarmas y cámaras en Barcelona. Presupuesto gratis en 24h. Tel: 638 10 99 47. Carrer de Coll i Vehí, 141, Barcelona." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Contact" />
       </Helmet>
       <Navbar />
