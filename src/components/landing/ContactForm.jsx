@@ -18,9 +18,11 @@ export default function ContactForm() {
   });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (!formData.nombre.trim() || formData.nombre.length < 2) {
       alert("Por favor, ingresa un nombre válido");
@@ -38,28 +40,34 @@ export default function ContactForm() {
     }
 
     setLoading(true);
-    const lead = await base44.entities.Lead.create({
-      ...formData,
-      urgencia: "media",
-      origen: "formulario_web"
-    });
+    try {
+      const lead = await base44.entities.Lead.create({
+        ...formData,
+        urgencia: "media",
+        origen: "formulario_web"
+      });
 
-    // Sync to HubSpot CRM
-    base44.functions.invoke('syncToHubspot', {
-      leadData: { ...formData, urgencia: "media", origen: "formulario_web" },
-      dealStage: 'nuevo'
-    }).catch(e => console.warn('HubSpot sync error:', e));
+      // Sync to HubSpot CRM
+      base44.functions.invoke('syncToHubspot', {
+        leadData: { ...formData, urgencia: "media", origen: "formulario_web" },
+        dealStage: 'nuevo'
+      }).catch(e => console.warn('HubSpot sync error:', e));
 
-    base44.analytics.track({
-      eventName: "lead_form_submitted",
-      properties: { tipo_cliente: formData.tipo_cliente, zona: formData.zona, leadId: lead.id }
-    });
+      base44.analytics.track({
+        eventName: "lead_form_submitted",
+        properties: { tipo_cliente: formData.tipo_cliente, zona: formData.zona, leadId: lead.id }
+      });
 
-    registerPhoneForTracking(formData.telefono);
-    setSuccess(true);
-    setLoading(false);
-    setFormData({ nombre: "", email: "", telefono: "", tipo_cliente: "hogar", zona: "", servicio_interes: "", mensaje: "" });
-    setTimeout(() => setSuccess(false), 6000);
+      registerPhoneForTracking(formData.telefono);
+      setSuccess(true);
+      setFormData({ nombre: "", email: "", telefono: "", tipo_cliente: "hogar", zona: "", servicio_interes: "", mensaje: "" });
+      setTimeout(() => setSuccess(false), 6000);
+    } catch (err) {
+      console.error("Error enviando formulario de contacto:", err);
+      setError("No hemos podido enviar tu solicitud. Llámanos o inténtalo de nuevo.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (success) {
@@ -203,6 +211,8 @@ export default function ContactForm() {
           className="px-4 py-3 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
         />
       </div>
+
+      {error && <p className="text-sm text-red-600 text-center">{error}</p>}
 
       <Button
         type="submit"

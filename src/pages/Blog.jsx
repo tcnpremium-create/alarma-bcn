@@ -146,7 +146,7 @@ const blogSchema = {
   "publisher": {
     "@type": "Organization",
     "name": "Premium Tech Security",
-    "logo": { "@type": "ImageObject", "url": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/c939af4e3_logonegro.png" }
+    "logo": { "@type": "ImageObject", "url": "https://alarmasenbarcelona.com/images/logo-premium-negro.png" }
   },
   "blogPost": allArticles.map(a => ({
     "@type": "BlogPosting",

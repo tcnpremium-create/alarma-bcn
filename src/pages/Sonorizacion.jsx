@@ -1,20 +1,18 @@
 import React, { useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, Phone, ArrowRight, Store, UtensilsCrossed, Building2, Building, Users, PartyPopper, Factory, Volume2, SlidersHorizontal, Layers, Mic, Radio, Settings2, PanelTop, PanelLeft, Bluetooth, Waves, Grid3x3, Smartphone, MonitorSmartphone, Home, ChefHat, Bath, Dumbbell, BedDouble } from "lucide-react";
+import { Phone, ArrowRight, Volume2, SlidersHorizontal, Layers, Mic, Radio, Settings2, PanelTop, PanelLeft, Bluetooth, Waves, Grid3x3, Smartphone, MonitorSmartphone, Home, ChefHat, Bath, Dumbbell, BedDouble, UtensilsCrossed, Store, Building2, Building, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ChatWidget from "../components/chatbot/ChatWidget";
-import ContactForm from "../components/landing/ContactForm";
+import SonorizacionLeadForm from "../components/landing/SonorizacionLeadForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
-import { createPageUrl } from "@/utils";
+
+const WHATSAPP_SONORIZACION = "https://wa.me/34638109947?text=" + encodeURIComponent("Hola, necesito un presupuesto de sonorización.");
 
 export default function Sonorizacion() {
   useEffect(() => {
     if (window.location.hash) {
-      // Espera a que el layout (imágenes, tarjetas) se asiente antes de saltar al ancla,
-      // si no el salto se calcula con el documento aún más corto de lo que será.
       const id = setTimeout(() => {
         document.querySelector(window.location.hash)?.scrollIntoView({ behavior: 'instant' });
       }, 100);
@@ -23,22 +21,16 @@ export default function Sonorizacion() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
-  const necesidades = [
-    { Icon: Store, title: "Negocio", desc: "Ambientación sonora para tiendas y comercios" },
-    { Icon: UtensilsCrossed, title: "Restaurante", desc: "Sonido ambiental discreto en sala y terraza" },
-    { Icon: Building2, title: "Oficina", desc: "Megafonía y sonido para espacios de trabajo" },
-    { Icon: Users, title: "Comunidad", desc: "Sonorización de zonas comunes y exteriores" },
-    { Icon: PartyPopper, title: "Evento", desc: "Sistemas de sonido para actos y celebraciones" },
-    { Icon: Factory, title: "Nave / Empresa", desc: "Megafonía industrial y sistemas multizona" },
-  ];
-
-  const componentes = [
-    { Icon: Volume2, title: "Altavoces", desc: "De techo, de pared, profesionales, para interior y exterior" },
-    { Icon: SlidersHorizontal, title: "Amplificadores", desc: "De instalación, multizona y para sistemas distribuidos" },
-    { Icon: Layers, title: "Mezcladores", desc: "Para gestionar varias fuentes de audio en un mismo sistema" },
-    { Icon: Mic, title: "Micrófonos", desc: "Para megafonía, avisos y locución en directo" },
-    { Icon: Radio, title: "Sistemas multizona", desc: "Control de volumen y fuente independiente por zona" },
-    { Icon: Settings2, title: "Controladores", desc: "Gestión centralizada del sistema de sonido instalado" },
+  const categorias = [
+    { Icon: PanelTop, title: "Altavoces de techo" },
+    { Icon: PanelLeft, title: "Altavoces empotrados" },
+    { Icon: Bluetooth, title: "Altavoces Bluetooth" },
+    { Icon: SlidersHorizontal, title: "Amplificadores" },
+    { Icon: Layers, title: "Mezcladores" },
+    { Icon: Mic, title: "Micrófonos" },
+    { Icon: Grid3x3, title: "Sistemas multizona" },
+    { Icon: Radio, title: "Megafonía" },
+    { Icon: Waves, title: "Sonido ambiental" },
   ];
 
   const altavocesFeatures = [
@@ -63,9 +55,25 @@ export default function Sonorizacion() {
     { Icon: Building, title: "Locales" },
   ];
 
+  const espacios = [
+    { title: "Restaurantes", img: "/images/sonorizacion-espacio-restaurante.webp", alt: "Interior de restaurante moderno preparado para sonorización ambiental" },
+    { title: "Comercios", img: "/images/sonorizacion-espacio-comercio.webp", alt: "Interior de tienda moderna con ambiente sonoro" },
+    { title: "Oficinas", img: "/images/sonorizacion-espacio-oficina.webp", alt: "Oficina moderna preparada para megafonía y sonido ambiental" },
+  ];
+  const espaciosTexto = ["Viviendas", "Comunidades", "Naves", "Eventos"];
+
+  const multizonaAplicaciones = ["Restaurantes", "Comercios", "Oficinas", "Hoteles", "Viviendas", "Comunidades"];
+
+  const amplificacionItems = [
+    { Icon: SlidersHorizontal, title: "Amplificadores", desc: "De instalación, multizona y para sistemas distribuidos" },
+    { Icon: Layers, title: "Mezcladores", desc: "Para gestionar varias fuentes de audio en un mismo sistema" },
+    { Icon: Settings2, title: "Controladores", desc: "Gestión centralizada del sistema de sonido instalado" },
+    { Icon: Radio, title: "Racks", desc: "Instalación ordenada de toda la electrónica del sistema" },
+  ];
+
   const proceso = [
     { num: "01", title: "Estudio del espacio", desc: "Analizamos las dimensiones, acústica y uso real del local o zona a sonorizar." },
-    { num: "02", title: "Diseño del sistema", desc: "Planteamos la distribución de altavoces y equipos según el espacio y el objetivo sonoro." },
+    { num: "02", title: "Diseño", desc: "Planteamos la distribución de altavoces y equipos según el espacio y el objetivo sonoro." },
     { num: "03", title: "Selección de equipos", desc: "Elegimos los altavoces, amplificadores y controladores adecuados a cada proyecto." },
     { num: "04", title: "Instalación", desc: "Montaje profesional del cableado, altavoces y electrónica del sistema." },
     { num: "05", title: "Configuración", desc: "Ajuste de zonas, volúmenes y fuentes de audio del sistema instalado." },
@@ -79,10 +87,10 @@ export default function Sonorizacion() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Sonorización Profesional y Altavoces Empotrados en Barcelona | Premium Tech Security"
-        description="Instalación de sistemas de sonido profesional para negocios, locales, comunidades y eventos en Barcelona. Altavoces empotrados en techo y pared con Bluetooth, amplificadores y sistemas multizona. Presupuesto gratis 638 10 99 47."
+        title="Sonorización Profesional Barcelona | Altavoces Empotrados y de Techo | Premium Tech Security"
+        description="Sonorización profesional en Barcelona: instalación de altavoces empotrados y de techo con Bluetooth, amplificadores y sistemas multizona para restaurantes, comercios, oficinas y viviendas. Presupuesto gratis 638 10 99 47."
         canonicalUrl="https://alarmasenbarcelona.com/sonorizacion"
-        keywords="sonorización Barcelona, instalación de sonido Barcelona, sonorización profesional, altavoces empotrados Bluetooth, altavoces de techo Bluetooth, altavoces empotrables Bluetooth, instalación altavoces empotrados Barcelona, instalación altavoces techo Barcelona, sonido ambiental Barcelona, megafonía Barcelona"
+        keywords="sonorización Barcelona, sonorización profesional Barcelona, instalación de altavoces Barcelona, instalación altavoces techo Barcelona, altavoces empotrados Barcelona, altavoces empotrados Bluetooth Barcelona, altavoces de techo Bluetooth Barcelona, sonido ambiental Barcelona, sonorización restaurantes Barcelona, sonorización locales Barcelona, instalación sonido negocios Barcelona"
         schema={{
           "@type": "Service",
           "name": "Sonorización Profesional",
@@ -93,60 +101,68 @@ export default function Sonorizacion() {
       />
       <Navbar />
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-[#0A1628] to-[#1a2a3a] text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
-            <ArrowLeft className="w-4 h-4" />
-            Volver a inicio
-          </Link>
+      {/* HERO */}
+      <section style={{ position: "relative", overflow: "hidden", minHeight: "78vh", display: "flex", alignItems: "flex-end" }}>
+        <img
+          src="/images/sonorizacion-hero-restaurante.webp"
+          alt="Instalación de sonorización profesional en restaurante moderno"
+          loading="eager"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%" }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.55) 40%, rgba(6,14,26,0.96) 100%)" }} />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8" style={{ position: "relative", zIndex: 2, paddingTop: 140, paddingBottom: 56, width: "100%" }}>
           <div className="mb-6">
             <Breadcrumbs items={[{ label: "Servicios" }, { label: "Sonorización" }]} />
           </div>
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6">Sonorización Profesional en Barcelona</h1>
-          <p className="text-xl text-gray-300 max-w-2xl">Instalación de sistemas de sonido para negocios, locales, eventos, comunidades y espacios profesionales.</p>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.35)", borderRadius: 20, padding: "6px 16px", color: "#F87171", fontSize: 11, fontWeight: 800, letterSpacing: 1, marginBottom: 20 }}>
+            <Volume2 size={14} />
+            INSTALACIÓN PROFESIONAL DE SONIDO
+          </span>
+          <h1 className="text-5xl lg:text-6xl font-black text-white mb-6" style={{ lineHeight: 1.08, letterSpacing: "-0.02em" }}>
+            Sonorización Profesional
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mb-10">
+            Diseñamos e instalamos sistemas de sonido para viviendas, negocios, restaurantes, oficinas, comunidades y espacios profesionales.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={scrollToContact}
+              className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
+            >
+              Solicitar presupuesto
+              <ArrowRight className="w-5 h-5" />
+            </button>
+            <a
+              href={WHATSAPP_SONORIZACION}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white/25 bg-white/5 hover:bg-white/10 text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
+            >
+              <MessageCircle className="w-5 h-5" />
+              Hablar por WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
-      <section style={{ padding: "80px 0 112px", background: "#060e1a" }}>
+      <section style={{ padding: "72px 0 112px", background: "#060e1a" }}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-          {/* ¿Qué necesitas sonorizar? */}
+          {/* Categorías de sonido */}
           <div style={{ marginBottom: 80 }}>
-            <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 48, textAlign: "center" }}>
-              ¿Qué necesitas sonorizar?
-            </h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {necesidades.map((n, idx) => (
-                <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 32, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>
-                  <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
-                    <n.Icon size={24} color="#E63946" />
-                  </div>
-                  <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>{n.title}</h3>
-                  <p style={{ color: "#94A3B8" }}>{n.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Componentes */}
-          <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 48, marginBottom: 80 }}>
-            <h2 style={{ fontSize: "1.875rem", fontWeight: 800, color: "#FFFFFF", marginBottom: 16, textAlign: "center" }}>
-              Componentes del sistema
+            <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 16, textAlign: "center" }}>
+              Todo lo que instalamos
             </h2>
             <p style={{ color: "#94A3B8", textAlign: "center", maxWidth: 640, margin: "0 auto 48px", lineHeight: 1.7 }}>
-              Diseñamos e instalamos el sistema de sonido con los equipos adecuados a cada espacio: altavoces de techo o pared, amplificación de instalación o multizona, mezcladores y controladores.
+              Diseñamos e instalamos el sistema de sonido con los equipos adecuados a cada espacio.
             </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {componentes.map((c, idx) => (
-                <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+            <div className="grid sm:grid-cols-3 gap-6">
+              {categorias.map((c, idx) => (
+                <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 24, display: "flex", alignItems: "center", gap: 14, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                     <c.Icon size={20} color="#E63946" />
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{c.title}</h3>
-                    <p style={{ color: "#94A3B8", fontSize: 14 }}>{c.desc}</p>
-                  </div>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", margin: 0 }}>{c.title}</h3>
                 </div>
               ))}
             </div>
@@ -160,12 +176,13 @@ export default function Sonorizacion() {
                   Altavoces Empotrados con Bluetooth
                 </h2>
                 <p style={{ color: "#94A3B8", fontSize: "1.05rem", lineHeight: 1.75 }}>
-                  Disfruta de música y sonido ambiental sin ocupar espacio, con altavoces integrados en techo o pared y opciones de conectividad Bluetooth para controlar tu música cómodamente.
+                  Disfruta de un sistema de sonido integrado en techo o pared, con conectividad Bluetooth y control sencillo desde dispositivos compatibles.
                 </p>
               </div>
               <img
                 src="/images/altavoces-empotrados-techo.webp"
                 alt="Altavoces empotrados en techo con conectividad Bluetooth"
+                loading="lazy"
                 style={{ width: "100%", borderRadius: 16, display: "block", background: "#fff" }}
               />
             </div>
@@ -195,27 +212,109 @@ export default function Sonorizacion() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
+              <button
                 onClick={scrollToContact}
-                className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+                className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
               >
                 Quiero instalar altavoces empotrados
                 <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button
-                onClick={scrollToContact}
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
-              >
-                Solicitar presupuesto
-              </Button>
+              </button>
+            </div>
+          </div>
+
+          {/* Sonorizamos todo tipo de espacios */}
+          <div style={{ marginBottom: 80 }}>
+            <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 16, textAlign: "center" }}>
+              Sonorizamos todo tipo de espacios
+            </h2>
+            <p style={{ color: "#94A3B8", textAlign: "center", maxWidth: 640, margin: "0 auto 48px", lineHeight: 1.7 }}>
+              Cada espacio tiene sus propias necesidades acústicas. Diseñamos el sistema en función de tu proyecto.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-6" style={{ marginBottom: 24 }}>
+              {espacios.map((e, idx) => (
+                <div key={idx} style={{ borderRadius: 16, overflow: "hidden", position: "relative", background: "#0A0A1A", boxShadow: "0 8px 24px rgba(0,0,0,0.3)" }}>
+                  <img src={e.img} alt={e.alt} loading="lazy" style={{ width: "100%", height: 220, objectFit: "cover", display: "block" }} />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,26,0.88) 0%, transparent 55%)" }} />
+                  <h3 style={{ position: "absolute", left: 18, bottom: 16, color: "#fff", fontSize: 17, fontWeight: 800, margin: 0 }}>{e.title}</h3>
+                </div>
+              ))}
+            </div>
+            <div style={{ textAlign: "center" }}>
+              <span style={{ color: "#64748B", fontSize: 13, fontWeight: 600, marginRight: 10 }}>También sonorizamos:</span>
+              {espaciosTexto.map((t) => (
+                <span key={t} style={{ display: "inline-block", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 20, padding: "6px 14px", color: "#CBD5E0", fontSize: 12.5, fontWeight: 600, margin: "4px 4px" }}>
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Sonido multizona */}
+          <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 48, marginBottom: 80 }}>
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}>
+                  <Grid3x3 size={24} color="#E63946" />
+                </div>
+                <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>
+                  Sonido multizona
+                </h2>
+                <p style={{ color: "#94A3B8", fontSize: "1.05rem", lineHeight: 1.75 }}>
+                  Controla diferentes zonas de sonido de forma independiente según las necesidades de tu espacio.
+                </p>
+              </div>
+              <div>
+                <p style={{ color: "#64748B", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
+                  Aplicaciones
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+                  {multizonaAplicaciones.map((a) => (
+                    <span key={a} style={{ display: "inline-block", background: "rgba(229,62,62,0.08)", border: "1px solid rgba(229,62,62,0.2)", borderRadius: 20, padding: "8px 16px", color: "#F87171", fontSize: 13, fontWeight: 700 }}>
+                      {a}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Amplificación y control */}
+          <div style={{ marginBottom: 80 }}>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <img
+                src="/images/sonorizacion-amplificacion-rack.webp"
+                alt="Rack de amplificación y control de sonido profesional"
+                loading="lazy"
+                style={{ width: "100%", borderRadius: 16, display: "block", objectFit: "cover", maxHeight: 360 }}
+              />
+              <div>
+                <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 16 }}>
+                  Amplificación y control
+                </h2>
+                <p style={{ color: "#94A3B8", fontSize: "1.05rem", lineHeight: 1.75, marginBottom: 28 }}>
+                  Diseñamos el sistema de amplificación y control en función del espacio y las necesidades de cada proyecto.
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {amplificacionItems.map((a, idx) => (
+                    <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                      <div style={{ width: 36, height: 36, borderRadius: 10, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <a.Icon size={17} color="#E63946" />
+                      </div>
+                      <div>
+                        <h3 style={{ fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 2 }}>{a.title}</h3>
+                        <p style={{ color: "#94A3B8", fontSize: 12.5 }}>{a.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Proceso */}
           <div style={{ marginBottom: 80 }}>
             <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 16, textAlign: "center" }}>
-              Diseñamos e instalamos tu sistema
+              Así diseñamos tu sistema
             </h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ marginTop: 48 }}>
               {proceso.map((p, idx) => (
@@ -250,16 +349,16 @@ export default function Sonorizacion() {
               Consulta gratuita sin compromiso. Diseñamos el sistema de sonido adecuado a tu local, negocio o comunidad.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
+              <button
                 onClick={scrollToContact}
-                className="bg-white text-[#E63946] hover:bg-gray-100 px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+                className="bg-white text-[#E63946] hover:bg-gray-100 px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
               >
                 Solicitar presupuesto de sonorización
                 <ArrowRight className="w-5 h-5" />
-              </Button>
+              </button>
               <a
                 href="tel:+34638109947"
-                className="bg-white/20 hover:bg-white/30 text-white px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+                className="bg-white/20 hover:bg-white/30 text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2"
               >
                 <Phone className="w-5 h-5" />
                 Llamar
@@ -279,7 +378,7 @@ export default function Sonorizacion() {
               Cuéntanos tu proyecto y te diseñaremos la mejor solución de sonido. Presupuesto personalizado sin compromiso.
             </p>
           </div>
-          <ContactForm />
+          <SonorizacionLeadForm />
         </div>
       </div>
 

@@ -1,12 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Volume2, Fingerprint, Bell, ArrowRight } from "lucide-react";
+import { Fingerprint, Bell, ArrowRight } from "lucide-react";
 
-// Cerraduras y Redes tienen fotografía profesional real (composición principal +
-// detalle). El resto de líneas sigue con tarjeta de icono hasta que haya
-// fotografía propia — mismo alto de "zona de medios" para que la cuadrícula
-// se lea como un solo sistema visual, no como una mezcla de plantillas.
+// Sonorización, Redes y Cerraduras tienen fotografía profesional real
+// (composición principal + detalle). El resto de líneas sigue con tarjeta
+// de icono hasta que haya fotografía propia — mismo alto de "zona de
+// medios" para que la cuadrícula se lea como un solo sistema visual, no
+// como una mezcla de plantillas.
 const PHOTO_CARDS = [
+  {
+    href: "/sonorizacion",
+    title: "SONORIZACIÓN PROFESIONAL",
+    desc: "Diseño e instalación de sistemas de sonido para negocios, restaurantes, oficinas y viviendas.",
+    mainImg: "/images/sonorizacion-hero-restaurante.webp",
+    mainAlt: "Instalación de sonorización profesional en restaurante moderno",
+    detailImg: "/images/altavoces-empotrados-techo.webp",
+    detailAlt: "Altavoces empotrados en techo con conectividad Bluetooth",
+  },
   {
     href: "/redes-informaticas",
     title: "REDES INFORMÁTICAS",
@@ -28,7 +38,6 @@ const PHOTO_CARDS = [
 ];
 
 const ICON_CARDS = [
-  { Icon: Volume2, title: "Sonorización", desc: "Sonido profesional y altavoces empotrados con Bluetooth", href: "/sonorizacion#altavoces-empotrados" },
   { Icon: Fingerprint, title: "Control de accesos", desc: "Lectores biométricos, tarjetas y códigos", href: "/control-accesos" },
   { Icon: Bell, title: "Videoporteros", desc: "Videoporteros IP para hogares y comunidades", href: "/videoporteros" },
 ];
@@ -104,11 +113,11 @@ export default function HomeMoreServices() {
           Además de cámaras y alarmas, somos integradores de seguridad y tecnología
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5" style={{ marginBottom: 20 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ marginBottom: 20 }}>
           {PHOTO_CARDS.map((c) => <PhotoCard key={c.href} {...c} />)}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {ICON_CARDS.map((c) => <IconCard key={c.href} {...c} />)}
         </div>
       </div>

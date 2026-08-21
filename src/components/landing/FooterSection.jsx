@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LOGO_BLANCO = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/1bda847fb_logoblanco.png";
+const LOGO_BLANCO = "/images/logo-premium-blanco.webp";
 
 const SEGURIDAD = [
   { label: "Cámaras de seguridad", href: "/camaras-barcelona" },

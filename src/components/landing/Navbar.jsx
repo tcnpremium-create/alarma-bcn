@@ -36,8 +36,8 @@ const NAV_LINKS = [
   { label: "Contacto", href: "/Contact" },
 ];
 
-const LOGO_BLANCO = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/1bda847fb_logoblanco.png";
-const LOGO_NEGRO = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/c939af4e3_logonegro.png";
+const LOGO_BLANCO = "/images/logo-premium-blanco.webp";
+const LOGO_NEGRO = "/images/logo-premium-negro.webp";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

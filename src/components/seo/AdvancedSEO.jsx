@@ -3,7 +3,10 @@ import { Helmet } from "react-helmet-async";
 import { businessStats } from "@/lib/businessStats";
 
 const SITE_URL = "https://alarmasenbarcelona.com";
-const LOGO_URL = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/c939af4e3_logonegro.png";
+// Logo alojado localmente (antes en Supabase Storage externo — se traía
+// con cache-control: no-cache, por lo que cada carga dependía de una
+// petición cross-origin nueva; alojarlo en el propio dominio la elimina).
+const LOGO_URL = `${SITE_URL}/images/logo-premium-negro.png`;
 const OG_IMAGE = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png";
 
 export default function AdvancedSEO({ 
