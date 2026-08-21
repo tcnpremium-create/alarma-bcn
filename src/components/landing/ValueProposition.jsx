@@ -1,5 +1,6 @@
 import React from "react";
 import { Clock, Shield, Award, HeadphonesIcon } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 export default function ValueProposition() {
   const features = [
@@ -18,8 +19,8 @@ export default function ValueProposition() {
   {
     icon: Award,
     title: "Instalación profesional",
-    desc: "Técnicos certificados con más de 15 años de experiencia en seguridad",
-    highlight: "15+ años"
+    desc: `Técnicos certificados con ${businessStats.experienceText.toLowerCase()}`,
+    highlight: "Certificados"
   },
   {
     icon: HeadphonesIcon,
@@ -80,20 +81,20 @@ export default function ValueProposition() {
         {/* Trust indicators similar to Sector Alarm */}
         <div className="mt-12 flex flex-wrap justify-center items-center gap-8 pt-8 border-t border-gray-100">
           <div className="text-center">
-            <p className="text-3xl font-black text-[#0A1628]">2.500+</p>
-            <p className="text-sm text-gray-600 mt-1">Clientes activos</p>
+            <p className="text-3xl font-black text-[#0A1628]">{businessStats.installTimeframe}</p>
+            <p className="text-sm text-gray-600 mt-1">Instalación</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-black text-[#0A1628]">4.9/5</p>
-            <p className="text-sm text-gray-600 mt-1">Valoración media</p>
+            <p className="text-3xl font-black text-[#0A1628]">{businessStats.googleRating}/5</p>
+            <p className="text-sm text-gray-600 mt-1">Valoración media en Google</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-black text-[#0A1628]">&lt;30min</p>
+            <p className="text-3xl font-black text-[#0A1628]">&lt;{businessStats.incidentResponseTime}</p>
             <p className="text-sm text-gray-600 mt-1">Tiempo respuesta</p>
           </div>
           <div className="text-center">
-            <p className="text-3xl font-black text-[#0A1628]">98%</p>
-            <p className="text-sm text-gray-600 mt-1">Clientes satisfechos</p>
+            <p className="text-3xl font-black text-[#0A1628]">{businessStats.warrantyYears} años</p>
+            <p className="text-sm text-gray-600 mt-1">Garantía en equipos</p>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { businessStats } from "@/lib/businessStats";
 
 const REVIEWS = [
   { stars: 5, text: "Instalaron 4 cámaras HD en nuestra comunidad en un solo día. Todo perfecto, app configurada y precio cerrado desde el principio.", name: "Adam H.", location: "Sants, Barcelona" },
@@ -83,7 +84,7 @@ export default function MarqueeSocial() {
           <span style={{ color: "rgba(255,255,255,0.35)", fontSize: 14 }}>/ 5 en Google</span>
         </div>
         <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 13, margin: 0 }}>
-          Más de 200 instalaciones en Barcelona y área metropolitana
+          {businessStats.installationsText}
         </p>
       </div>
 

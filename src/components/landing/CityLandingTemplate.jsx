@@ -6,6 +6,7 @@ import CityLandingSEO from "../seo/CityLandingSEO";
 import HeroContactModal from "./HeroContactModal";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { base44 } from "@/api/api";
+import { businessStats } from "@/lib/businessStats";
 
 const SERVICES = [
   { Icon: Shield, title: "Alarmas inteligentes AJAX", desc: "Paneles de control, sensores inalámbricos, detectores de movimiento, sirenas y notificaciones instantáneas en el móvil." },
@@ -15,12 +16,12 @@ const SERVICES = [
 ];
 
 const WHY_US = [
-  "Más de 15 años de experiencia en Catalunya",
-  "Instalación en 24-48h sin obras ni roturas",
+  `${businessStats.experienceText} en Catalunya`,
+  `Instalación en ${businessStats.installTimeframe} sin obras ni roturas`,
   "Presupuesto gratuito y sin compromiso",
   "Sin permanencia obligatoria",
   "Tecnología AJAX + Hikvision certificada",
-  "Garantía de 3 años en todos los productos"
+  `Garantía de ${businessStats.warrantyYears} años en todos los productos`
 ];
 
 export default function CityLandingTemplate({ city, seoPath, intro }) {
@@ -129,7 +130,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
               </div>
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
-              {[["15+", "Años experiencia"], ["2.500+", "Sistemas activos"], ["24h", "Tiempo instalación"], ["24/7", "Soporte técnico"]].map(([num, label]) => (
+              {[[`★ ${businessStats.googleRating}`, "Valoración Google"], [businessStats.installTimeframe, "Tiempo instalación"], [`${businessStats.warrantyYears} años`, "Garantía"], ["24/7", "Soporte técnico"]].map(([num, label]) => (
                 <div key={label} style={{ backgroundColor: "rgba(255,255,255,0.05)", borderRadius: 12, padding: "20px 24px", flex: "1 1 120px", border: "1px solid rgba(255,255,255,0.08)", minWidth: 120 }}>
                   <div style={{ fontSize: 28, fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{num}</div>
                   <div style={{ fontSize: 12, color: "#6B7280", marginTop: 6 }}>{label}</div>

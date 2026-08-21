@@ -1,5 +1,6 @@
 import React from "react";
 import { Ban, Wrench, ShieldCheck, Smartphone } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 const CARDS = [
   {
@@ -32,7 +33,7 @@ export default function WhyChooseUsCards() {
           ¿Por qué elegirnos?
         </h2>
         <p className="text-white/60 text-center mb-12 text-lg max-w-2xl mx-auto">
-          Más de 2.500 clientes confían en nosotros para proteger lo que más importa
+          {businessStats.installationsText}
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {CARDS.map((card) => (

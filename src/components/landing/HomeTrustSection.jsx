@@ -1,11 +1,12 @@
 import React from "react";
 import { ShieldCheck, Zap, Wrench, Star } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 const TRUST = [
   { Icon: ShieldCheck, title: "Sin cuotas mensuales", text: "Pago único, sin sorpresas. Tu sistema es tuyo para siempre." },
-  { Icon: Zap, title: "Instalación en 24-48h", text: "Desde que pides presupuesto hasta que tu sistema funciona." },
-  { Icon: Wrench, title: "Garantía 3 años", text: "Garantía de 3 años en todos los productos e instalaciones." },
-  { Icon: Star, title: "4.8/5 en Google", text: "Más de 13 reseñas verificadas de clientes reales en Barcelona." },
+  { Icon: Zap, title: `Instalación en ${businessStats.installTimeframe}`, text: "Desde que pides presupuesto hasta que tu sistema funciona." },
+  { Icon: Wrench, title: `Garantía ${businessStats.warrantyYears} años`, text: `Garantía de ${businessStats.warrantyYears} años en todos los productos e instalaciones.` },
+  { Icon: Star, title: `${businessStats.googleRating}/5 en Google`, text: `Más de ${businessStats.googleReviewCount} reseñas verificadas de clientes reales en Barcelona.` },
 ];
 
 export default function HomeTrustSection() {
@@ -16,7 +17,7 @@ export default function HomeTrustSection() {
           ¿Por qué elegir Premium Tech Security?
         </h2>
         <p style={{ color: "#6B7280", fontSize: 16, textAlign: "center", marginTop: 8, marginBottom: 32 }}>
-          Más de 15 años protegiendo hogares y negocios en Catalunya
+          {businessStats.experienceText}, protegiendo hogares y negocios en Catalunya
         </p>
         <div className="grid grid-cols-2 gap-4">
           {TRUST.map(({ Icon, title, text }) => (

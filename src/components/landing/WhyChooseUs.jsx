@@ -1,12 +1,13 @@
 import React from "react";
 import { Users, Shield, Zap, Award, Clock, Headphones } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 export default function WhyChooseUs() {
   const benefits = [
     {
       icon: Users,
       title: "Instaladores Profesionales",
-      description: "Equipo técnico certificado con más de 15 años de experiencia en instalaciones de sistemas de seguridad."
+      description: `Equipo técnico certificado con ${businessStats.experienceText.toLowerCase()} en instalaciones de sistemas de seguridad.`
     },
     {
       icon: Shield,
@@ -16,7 +17,7 @@ export default function WhyChooseUs() {
     {
       icon: Zap,
       title: "Respuesta Ultrarrápida",
-      description: "Centro de monitoreo 24/7 con respuesta en menos de 5 minutos ante cualquier alerta."
+      description: `Centro de monitoreo 24/7 con respuesta en menos de ${businessStats.incidentResponseTime} ante cualquier alerta.`
     },
     {
       icon: Award,
@@ -43,7 +44,7 @@ export default function WhyChooseUs() {
             Por qué confían en nosotros
           </h2>
           <p className="text-xl text-gray-600">
-            Más de 2.500 clientes en Catalunya nos han elegido por nuestra profesionalidad, transparencia y calidad.
+            {businessStats.installationsText}, gracias a nuestra profesionalidad, transparencia y calidad.
           </p>
         </div>
 
@@ -65,33 +66,33 @@ export default function WhyChooseUs() {
           })}
         </div>
 
-        {/* Certificaciones */}
+        {/* Marcas con las que trabajamos */}
         <div className="mt-16 pt-16 border-t border-gray-200">
-          <p className="text-center text-gray-600 mb-8 font-semibold">Certificaciones y reconocimientos</p>
+          <p className="text-center text-gray-600 mb-8 font-semibold">Instalamos equipos de marcas líderes</p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center">
             <div className="text-center">
               <div className="bg-white border border-gray-200 rounded-lg p-4 inline-block">
                 <Shield className="w-8 h-8 text-[#E63946]" />
               </div>
-              <p className="mt-2 text-sm font-semibold text-gray-700">ISO 9001</p>
+              <p className="mt-2 text-sm font-semibold text-gray-700">Hikvision</p>
             </div>
             <div className="text-center">
               <div className="bg-white border border-gray-200 rounded-lg p-4 inline-block">
                 <Award className="w-8 h-8 text-[#E63946]" />
               </div>
-              <p className="mt-2 text-sm font-semibold text-gray-700">Certificado CCN</p>
+              <p className="mt-2 text-sm font-semibold text-gray-700">Dahua</p>
             </div>
             <div className="text-center">
               <div className="bg-white border border-gray-200 rounded-lg p-4 inline-block">
                 <Zap className="w-8 h-8 text-[#E63946]" />
               </div>
-              <p className="mt-2 text-sm font-semibold text-gray-700">Expert AJAX</p>
+              <p className="mt-2 text-sm font-semibold text-gray-700">AJAX Systems</p>
             </div>
             <div className="text-center">
               <div className="bg-white border border-gray-200 rounded-lg p-4 inline-block">
                 <Users className="w-8 h-8 text-[#E63946]" />
               </div>
-              <p className="mt-2 text-sm font-semibold text-gray-700">Partner Hikvision</p>
+              <p className="mt-2 text-sm font-semibold text-gray-700">DSC</p>
             </div>
           </div>
         </div>

@@ -7,16 +7,16 @@ import { Shield, Award, Users, MapPin, CheckCircle, Phone, Mail } from "lucide-r
 import { Helmet } from "react-helmet-async";
 import AdSenseDisplay from "../components/ads/AdSenseDisplay";
 import AdSenseInFeed from "../components/ads/AdSenseInFeed";
+import { businessStats } from "@/lib/businessStats";
 
 const sobreSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Premium Tech Security",
-  "description": "Empresa especializada en instalación de sistemas de seguridad en Barcelona y Catalunya. Más de 30 años de experiencia en alarmas, cámaras, videoporteros y control de accesos.",
+  "description": `Empresa especializada en instalación de sistemas de seguridad en Barcelona y Catalunya. ${businessStats.experienceText} en alarmas, cámaras, videoporteros y control de accesos.`,
   "url": "https://alarmasenbarcelona.com/SobreNosotros",
   "telephone": "+34638109947",
   "email": "tcnpremium@gmail.com",
-  "foundingDate": "1994",
   "areaServed": "Barcelona, Catalunya",
   "priceRange": "€€",
   "address": {
@@ -86,8 +86,8 @@ export default function SobreNosotros() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Sobre Nosotros | Premium Tech Security - Empresa de Seguridad en Barcelona</title>
-        <meta name="description" content="Premium Tech Security — Instaladores certificados de alarmas y cámaras en Barcelona con más de 15 años de experiencia. Sin cuotas mensuales. Tel: 638 10 99 47." />
-        <link rel="canonical" href="https://www.premiumtechsecurity.es/SobreNosotros" />
+        <meta name="description" content={`Premium Tech Security — Instaladores certificados de alarmas y cámaras en Barcelona con ${businessStats.experienceText.toLowerCase()}. Sin cuotas mensuales. Tel: 638 10 99 47.`} />
+        <link rel="canonical" href="https://alarmasenbarcelona.com/SobreNosotros" />
         <script type="application/ld+json">{JSON.stringify(sobreSchema)}</script>
       </Helmet>
       <Navbar />
@@ -105,7 +105,7 @@ export default function SobreNosotros() {
               Sobre Premium Tech Security: Tu Empresa de Seguridad en Barcelona
             </h1>
             <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
-              Más de 30 años instalando sistemas de seguridad profesionales para hogares, negocios e industrias en Barcelona y Catalunya
+              {businessStats.experienceText} instalando sistemas de seguridad profesionales para hogares, negocios e industrias en Barcelona y Catalunya
             </p>
           </motion.div>
         </div>
@@ -122,7 +122,7 @@ export default function SobreNosotros() {
             >
               <div className="inline-flex items-center gap-2 bg-[#E63946]/10 rounded-full px-4 py-2 mb-6">
                 <Award className="w-4 h-4 text-[#E63946]" />
-                <span className="text-[#E63946] text-sm font-semibold">Más de 30 años de experiencia</span>
+                <span className="text-[#E63946] text-sm font-semibold">{businessStats.experienceText}</span>
               </div>
               <h2 className="text-4xl font-bold text-[#0A1628] mb-6">
                 Nuestra Misión
@@ -131,7 +131,7 @@ export default function SobreNosotros() {
                 En <strong>Premium Tech Security</strong>, somos expertos en instalaciones avanzadas de seguridad para hogares, negocios e industrias.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Con más de <strong>30 años de experiencia en el sector</strong>, nos especializamos en la instalación de videoporteros, cámaras de seguridad, alarmas y sistemas de control de accesos en Barcelona y toda su área metropolitana.
+                Con <strong>{businessStats.experienceText.toLowerCase()}</strong>, nos especializamos en la instalación de videoporteros, cámaras de seguridad, alarmas y sistemas de control de accesos en Barcelona y toda su área metropolitana.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Nuestra misión es proporcionar <strong>tranquilidad y protección</strong> mediante sistemas de seguridad de última generación, fiables y fáciles de usar. Nos adaptamos a las necesidades particulares de cada cliente, ofreciendo soluciones personalizadas que superan las expectativas.

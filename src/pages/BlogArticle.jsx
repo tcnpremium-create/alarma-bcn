@@ -10,6 +10,7 @@ import { originalArticlesData } from '@/components/blog/originalArticlesData';
 import { articleSEOData } from '@/components/blog/articleSEOData';
 import AdSenseInArticle from '@/components/ads/AdSenseInArticle';
 import AdSenseDisplay from '@/components/ads/AdSenseDisplay';
+import { businessStats } from '@/lib/businessStats';
 
 const allArticles = { ...originalArticlesData, ...newArticlesData };
 
@@ -65,7 +66,7 @@ function buildSchema(slug, article, seoData) {
       '@type': 'LocalBusiness',
       '@id': `${SITE_URL}#localbusiness`,
       'name': 'Premium Tech Security Barcelona',
-      'description': 'Empresa instaladora de alarmas, videovigilancia y control de accesos en Barcelona. +800 instalaciones. Técnicos certificados AJAX e Hikvision.',
+      'description': `Empresa instaladora de alarmas, videovigilancia y control de accesos en Barcelona. ${businessStats.experienceText}. Técnicos certificados AJAX e Hikvision.`,
       'url': SITE_URL,
       'telephone': '+34638109947',
       'email': 'tcnpremium@gmail.com',
@@ -372,7 +373,7 @@ export default function BlogArticle() {
               <div className="mt-12 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a] rounded-2xl p-8 sm:p-12 text-center">
                 <div className="inline-flex items-center gap-2 bg-[#E63946]/20 text-[#E63946] font-semibold px-4 py-2 rounded-full text-sm mb-4">
                   <CheckCircle className="w-4 h-4" />
-                  +800 instalaciones en Barcelona · 4.9/5 valoración
+                  {businessStats.googleRating}/5 en Google · {businessStats.googleReviewCount} reseñas
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
                   Instala tu alarma en Barcelona con nosotros
@@ -457,7 +458,7 @@ export default function BlogArticle() {
                   <h3 className="font-bold text-[#0A1628] text-sm mb-4">¿Por qué elegirnos?</h3>
                   <ul className="space-y-2.5">
                     {[
-                      '+800 instalaciones en Barcelona',
+                      `${businessStats.googleRating}/5 en Google (${businessStats.googleReviewCount} reseñas)`,
                       'Técnicos certificados AJAX',
                       'Sin permanencias ni contratos',
                       'El equipo es tuyo desde día 1',

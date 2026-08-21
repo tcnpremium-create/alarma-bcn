@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { businessStats } from "@/lib/businessStats";
 
 const SITE_URL = "https://alarmasenbarcelona.com";
 const LOGO_URL = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/c939af4e3_logonegro.png";
@@ -23,7 +24,7 @@ export default function AdvancedSEO({
         "@id": `${SITE_URL}/#business`,
         "name": "Premium Tech Security",
         "alternateName": "Alarmas Barcelona - Premium Tech Security",
-        "description": "Empresa especializada en la instalación profesional de alarmas, cámaras de seguridad, videoporteros y control de accesos en Barcelona y toda Catalunya. Más de 15 años de experiencia. 2500+ sistemas activos. Técnicos certificados AJAX e Hikvision.",
+        "description": `Empresa especializada en la instalación profesional de alarmas, cámaras de seguridad, videoporteros y control de accesos en Barcelona y toda Catalunya. ${businessStats.experienceText}. Técnicos certificados AJAX e Hikvision.`,
         "image": ogImage,
         "logo": LOGO_URL,
         "url": SITE_URL,

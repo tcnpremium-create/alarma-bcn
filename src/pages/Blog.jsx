@@ -143,7 +143,7 @@ const blogSchema = {
   "@type": "Blog",
   "name": "Blog de Seguridad y Alarmas - Premium Tech Security",
   "description": "Guías, consejos y últimas novedades en sistemas de seguridad, alarmas y videovigilancia para hogares y negocios en Barcelona y Catalunya.",
-  "url": "https://www.premiumtechsecurity.es/Blog",
+  "url": "https://alarmasenbarcelona.com/Blog",
   "publisher": {
     "@type": "Organization",
     "name": "Premium Tech Security",
@@ -155,7 +155,7 @@ const blogSchema = {
     "description": a.excerpt,
     "datePublished": a.date,
     "image": a.image,
-    "url": `https://www.premiumtechsecurity.es/BlogArticle/${a.slug}`,
+    "url": `https://alarmasenbarcelona.com/BlogArticle/${a.slug}`,
     "author": { "@type": "Organization", "name": "Premium Tech Security" }
   }))
 };
@@ -217,7 +217,7 @@ export default function Blog() {
         <meta name="description" content="Blog de seguridad Premium Tech Security. Guías sobre cámaras, alarmas y videoporteros en Barcelona. Consejos de instalación y normativa RGPD." />
         <meta property="og:title" content="Blog de Seguridad y Alarmas en Barcelona | Premium Tech Security" />
         <meta property="og:description" content="Guías, comparativas y consejos expertos sobre sistemas de alarma, videovigilancia y seguridad para hogares y negocios en Barcelona." />
-        <link rel="canonical" href="https://www.premiumtechsecurity.es/Blog" />
+        <link rel="canonical" href="https://alarmasenbarcelona.com/Blog" />
         <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
       </Helmet>
       <Navbar />

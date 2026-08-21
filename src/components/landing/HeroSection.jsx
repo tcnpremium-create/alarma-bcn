@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Shield, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { businessStats } from "@/lib/businessStats";
 
 export default function HeroSection() {
   return (
@@ -90,9 +91,9 @@ export default function HeroSection() {
             className="mt-14 flex items-center gap-8 flex-wrap">
 
             {[
-            { value: "500+", label: "Instalaciones" },
-            { value: "24h", label: "Respuesta" },
-            { value: "4.9★", label: "Valoración" }].
+            { value: businessStats.installTimeframe, label: "Instalación" },
+            { value: businessStats.warrantyYears + " años", label: "Garantía" },
+            { value: "★ " + businessStats.googleRating, label: "Valoración" }].
             map((stat) =>
             <div key={stat.label} className="flex flex-col">
                 <span className="text-2xl font-bold text-white">{stat.value}</span>

@@ -485,11 +485,11 @@ export const newArticlesDataA = {
     date: '5 Mar 2026',
     readTime: '8 min',
     image: 'https://media.base44.com/images/public/6995a701232755a2d5e24b39/e190957e0_IMG_8291.png',
-    excerpt: 'Tras instalar más de 800 sistemas en Barcelona, comparamos AJAX, Hikvision, Paradox, DSC y Ring. Ranking actualizado con precios reales.',
+    excerpt: 'Con experiencia real instalando en Barcelona, comparamos AJAX, Hikvision, Paradox, DSC y Ring. Ranking actualizado con precios reales.',
     content: `
 <!-- SLUG: mejores-alarmas-casa-barcelona -->
 <!-- TITLE SEO: Mejores Alarmas Casa Barcelona 2026: Top 5 Ranking -->
-<!-- META: Tras 800 instalaciones en Barcelona, comparamos AJAX, Hikvision, Paradox, DSC y Ring. Ranking actualizado con precios reales según tipo de vivienda. -->
+<!-- META: Con experiencia real instalando en Barcelona, comparamos AJAX, Hikvision, Paradox, DSC y Ring. Ranking actualizado con precios reales según tipo de vivienda. -->
 
 <script type="application/ld+json">
 {
@@ -498,7 +498,7 @@ export const newArticlesDataA = {
     {
       "@type": "Article",
       "headline": "Las Mejores Alarmas para Casa en Barcelona 2026",
-      "description": "Tras 800 instalaciones en Barcelona, comparamos AJAX, Hikvision, Paradox, DSC y Ring.",
+      "description": "Con experiencia real instalando en Barcelona, comparamos AJAX, Hikvision, Paradox, DSC y Ring.",
       "datePublished": "2026-03-05",
       "author": { "@type": "Organization", "name": "Premium Tech Security" },
       "publisher": { "@type": "Organization", "name": "Premium Tech Security", "logo": { "@type": "ImageObject", "url": "https://alarmasenbarcelona.com/logo.png" } },
@@ -530,7 +530,7 @@ export const newArticlesDataA = {
 
 <h1>Las Mejores Alarmas para Casa en Barcelona 2026</h1>
 
-<p>Después de instalar más de <strong>800 sistemas de alarma en Barcelona</strong> y área metropolitana, hemos comparado todas las marcas y tecnologías disponibles en el mercado español.</p>
+<p>Con experiencia real instalando <strong>sistemas de alarma en Barcelona</strong> y área metropolitana, hemos comparado todas las marcas y tecnologías disponibles en el mercado español.</p>
 
 <p>Esta guía recoge las mejores opciones para cada tipo de hogar y presupuesto, con datos reales de rendimiento y precios actualizados a 2026.</p>
 

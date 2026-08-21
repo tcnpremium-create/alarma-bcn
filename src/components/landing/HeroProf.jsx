@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Phone, ShieldCheck } from "lucide-react";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
+import { businessStats } from "@/lib/businessStats";
 
 const SLIDES = [
   {
@@ -167,10 +168,10 @@ export default function HeroProf() {
           {/* Stats */}
           <div style={{ display: "flex", gap: 28, marginBottom: 40, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
             {[
-              { val: "+200", label: "Instalaciones BCN" },
+              { val: businessStats.installTimeframe, label: "Instalación" },
               { val: "4K", label: "Ultra HD" },
               { val: "15s", label: "Respuesta Ajax" },
-              { val: "★ 4.8", label: "Google Reviews" },
+              { val: `★ ${businessStats.googleRating}`, label: "Google Reviews" },
             ].map(s => (
               <div key={s.val}>
                 <div style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)", fontWeight: 900, color: "#00D4FF", lineHeight: 1 }}>{s.val}</div>
@@ -218,7 +219,7 @@ export default function HeroProf() {
               textDecoration: "none", animation: "hero-fade-in 0.8s ease 0.5s both",
             }}
           >
-            <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ 4.8</span>
+            <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ {businessStats.googleRating}</span>
             <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 12 }}>Reseñas verificadas en Google</span>
             <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12 }}>Ver →</span>
           </a>

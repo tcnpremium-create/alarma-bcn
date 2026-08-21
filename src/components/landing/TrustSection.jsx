@@ -1,5 +1,6 @@
 import React from "react";
 import { Award, Users, Zap, Globe } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 export default function TrustSection() {
   const pillars = [
@@ -12,14 +13,14 @@ export default function TrustSection() {
     {
       icon: Users,
       title: "Equipo profesional",
-      desc: "Técnicos especializados con más de 15 años de experiencia. Formación continua en nuevas tecnologías.",
-      points: ["15+ años exp.", "Certificados", "Formación continua", "Equipo 24/7"]
+      desc: `Técnicos especializados con ${businessStats.experienceText.toLowerCase()}. Formación continua en nuevas tecnologías.`,
+      points: ["Técnicos certificados", "Certificados", "Formación continua", "Equipo 24/7"]
     },
     {
       icon: Zap,
       title: "Respuesta garantizada",
-      desc: "Central de monitoreo 24/7, intervención en menos de 30 minutos ante cualquier incidente.",
-      points: ["Monitoreo 24/7", "Respuesta <30min", "Protocolo certificado", "Disponibilidad total"]
+      desc: `Central de monitoreo 24/7, intervención en menos de ${businessStats.incidentResponseTime} ante cualquier incidente.`,
+      points: ["Monitoreo 24/7", `Respuesta <${businessStats.incidentResponseTime}`, "Protocolo certificado", "Disponibilidad total"]
     },
     {
       icon: Globe,

@@ -5,6 +5,7 @@ import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import AlarmKitsGrid from "../components/landing/AlarmKitsGrid";
+import { businessStats } from "@/lib/businessStats";
 
 const HOW_IT_WORKS = [
   { step: "01", title: "Detección", desc: "Los sensores Ajax detectan movimiento, apertura o vibración en milisegundos con tecnología PIR dual y antienmascaramiento.", icon: Eye },
@@ -215,7 +216,7 @@ export default function SistemasAlarma() {
               El <strong style={{ color: "#94A3B8" }}>MotionCam</strong> fotografia al intruso en el momento exacto del disparo para verificación visual inmediata en la CRA.
             </p>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-              {["Partner oficial Ajax Systems en Catalunya", "Técnicos certificados Ajax grado 2", "+500 sistemas Ajax activos instalados", "Soporte técnico en español 24/7"].map(item => (
+              {["Instaladores certificados Ajax grado 2", `${businessStats.installationsText}`, "Soporte técnico en español 24/7"].map(item => (
                 <div key={item} style={{ display: "flex", gap: 12, alignItems: "center" }}>
                   <div style={{
                     width: 20, height: 20, borderRadius: "50%", background: "#E53E3E",

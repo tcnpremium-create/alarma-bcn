@@ -71,7 +71,7 @@ export function useHubSpotTracking() {
       phone,
       pageName,
       timeSpentSeconds,
-      pageUrl: `https://www.premiumtechsecurity.es${prevPath}`
+      pageUrl: `https://alarmasenbarcelona.com${prevPath}`
     }).catch(() => {}); // Silent fail — never block UX
 
   }, [location.pathname]);
@@ -93,7 +93,7 @@ export function useHubSpotTracking() {
       if (!pageName) pageName = path;
 
       // Use sendBeacon for reliable delivery on unload
-      const payload = JSON.stringify({ phone, pageName, timeSpentSeconds, pageUrl: `https://www.premiumtechsecurity.es${path}` });
+      const payload = JSON.stringify({ phone, pageName, timeSpentSeconds, pageUrl: `https://alarmasenbarcelona.com${path}` });
       navigator.sendBeacon?.(`/api/functions/trackPageVisit`, payload);
     };
 

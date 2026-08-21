@@ -177,7 +177,7 @@ export default function MapaRiesgo() {
       <Helmet>
         <title>Mapa de Riesgo de Robos en Barcelona por Barrios 2026 | Alarmas Barcelona</title>
         <meta name="description" content="Descubre el nivel de riesgo de robo de tu barrio en Barcelona. Estadísticas actualizadas 2026 por distrito: Eixample, Gràcia, Nou Barris y más." />
-        <link rel="canonical" href="https://www.premiumtechsecurity.es/MapaRiesgo" />
+        <link rel="canonical" href="https://alarmasenbarcelona.com/MapaRiesgo" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <Navbar />

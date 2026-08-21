@@ -8,6 +8,7 @@ import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import LocalitySEO from "../components/seo/LocalitySEO";
 import GoogleMapEmbed from "../components/landing/GoogleMapEmbed";
+import { businessStats } from "@/lib/businessStats";
 
 export default function Sabadell() {
   return (
@@ -57,7 +58,7 @@ export default function Sabadell() {
             </p>
 
             <p className="text-gray-600 leading-relaxed mb-6">
-              En <strong>Premium Tech Security</strong> llevamos más de 10 años instalando <strong>alarmas en Sabadell</strong>, protegiendo casas unifamiliares, pisos, naves industriales y todo tipo de negocios. Conocemos las particularidades de cada zona y ofrecemos soluciones de seguridad personalizadas adaptadas a las necesidades reales de cada cliente.
+              En <strong>Premium Tech Security</strong> tenemos {businessStats.experienceText.toLowerCase()} instalando <strong>alarmas en Sabadell</strong>, protegiendo casas unifamiliares, pisos, naves industriales y todo tipo de negocios. Conocemos las particularidades de cada zona y ofrecemos soluciones de seguridad personalizadas adaptadas a las necesidades reales de cada cliente.
             </p>
 
             <h3 className="text-2xl font-bold text-[#0A1628] mt-10 mb-4">

@@ -1,3 +1,5 @@
+import { businessStats } from '@/lib/businessStats';
+
 export const newArticlesDataC = {
   'alarmas-chalets': {
     title: 'Alarmas para Chalets y Casas Unifamiliares en Barcelona 2026',
@@ -247,7 +249,7 @@ export const newArticlesDataC = {
 
 <h2>¿Buscas un instalador de confianza en Barcelona?</h2>
 
-<p>Somos instaladores certificados AJAX e Hikvision con más de 800 instalaciones en Barcelona. Sin permanencias, equipo en propiedad y visita técnica gratuita.</p>
+<p>Somos instaladores certificados AJAX e Hikvision, con ${businessStats.experienceText.toLowerCase()}. Sin permanencias, equipo en propiedad y visita técnica gratuita.</p>
 
 <p><strong><a href="tel:+34638109947">638 10 99 47</a></strong></p>
     `
