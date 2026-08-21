@@ -282,8 +282,8 @@ export const articleSEOData = {
       { src: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&q=80', alt: 'Smartphone con app AJAX Security System para control remoto de alarma desde Barcelona', caption: 'App AJAX Security System: 4.8/5 en App Store. Arma, desarma y recibe alertas en tiempo real desde cualquier lugar del mundo.' },
     ],
     faqs: [
-      { q: '¿Puedo armar la alarma desde el móvil estando fuera de Barcelona?', a: 'Sí. Con sistemas como AJAX controlas tu alarma desde cualquier lugar del mundo con conexión a internet. Armas, desarmas, ves el estado de cada sensor y recibes notificaciones push en menos de 3 segundos desde la activación.' },
-      { q: '¿Es seguro controlar la alarma desde el móvil?', a: 'Sí, si el sistema usa cifrado end-to-end (AES-128 mínimo) y autenticación en dos factores (2FA). AJAX usa cifrado de grado militar y 2FA obligatorio. Activa siempre el 2FA y usa contraseñas únicas para la app de tu alarma.' },
+      { q: '¿Puedo armar la alarma desde el móvil estando fuera de Barcelona?', a: 'Sí. Con sistemas como AJAX controlas tu alarma desde cualquier lugar del mundo con conexión a internet. Armas, desarmas, ves el estado de cada sensor y recibes notificaciones push en tiempo real desde la activación.' },
+      { q: '¿Es seguro controlar la alarma desde el móvil?', a: 'Sí, si el sistema usa cifrado end-to-end (AES-128 mínimo) y autenticación en dos factores (2FA). AJAX usa cifrado AES-128 y 2FA obligatorio. Activa siempre el 2FA y usa contraseñas únicas para la app de tu alarma.' },
     ],
   },
 

@@ -29,7 +29,7 @@ const HOW_IT_WORKS = [
   { step: "01", title: "Detección", desc: "Los sensores Ajax detectan movimiento, apertura o vibración en milisegundos con tecnología PIR dual y antienmascaramiento.", icon: Eye },
   { step: "02", title: "Señal cifrada", desc: "La alerta viaja cifrada AES-128 por protocolo radio Jeweller hasta la central Hub. Sin cables, sin interferencias.", icon: Radio },
   { step: "03", title: "Verificación CRA", desc: "La Central Receptora de Alarmas verifica visualmente mediante MotionCam y activa el protocolo en menos de 15 segundos.", icon: Shield },
-  { step: "04", title: "Respuesta", desc: "Guardia de seguridad o Policía Nacional en tu domicilio. Actuación real, documentada y certificada.", icon: AlertTriangle },
+  { step: "04", title: "Respuesta", desc: "Aviso a guardia de seguridad o a la Policía según el protocolo activado por la Central Receptora. Actuación documentada y certificada.", icon: AlertTriangle },
 ];
 
 const AJAX_COMPONENTS = [

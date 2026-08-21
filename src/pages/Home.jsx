@@ -3,16 +3,16 @@ import Navbar from "../components/landing/Navbar";
 import HeroProf from "../components/landing/HeroProf";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
-import BentoServiciosGrid from "../components/landing/BentoServiciosGrid";
 import HomeCamerasBlock from "../components/landing/HomeCamerasBlock";
 import HomeAlarmsBlock from "../components/landing/HomeAlarmsBlock";
 import HomeSeoLocal from "../components/landing/HomeSeoLocal";
 import MarqueeSocial from "../components/landing/MarqueeSocial";
-import HomeVideoporterosTeaser from "../components/landing/HomeVideoporterosTeaser";
 import HomeMoreServices from "../components/landing/HomeMoreServices";
 import HomeTrustSection from "../components/landing/HomeTrustSection";
 import AnimatedSecurityBeam from "../components/landing/AnimatedSecurityBeam";
 import ComparisonTable from "../components/landing/ComparisonTable";
+import ProcessSection from "../components/landing/ProcessSection";
+import FinalCTA from "../components/landing/FinalCTA";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 export default function Home() {
@@ -28,25 +28,32 @@ export default function Home() {
       />
       <Navbar />
       <main>
+        {/* HERO */}
         <HeroProf />
 
+        {/* CÁMARAS — protagonista #1 */}
         <HomeCamerasBlock onOpenModal={openDrawer} />
 
+        {/* ALARMAS — protagonista #2 */}
         <AnimatedSecurityBeam />
-
-        <BentoServiciosGrid />
-
-        <ComparisonTable />
-
-        <MarqueeSocial />
-
         <HomeAlarmsBlock onOpenModal={openDrawer} />
 
-        <HomeTrustSection />
-
-        <HomeVideoporterosTeaser />
+        {/* MÁS SOLUCIONES */}
         <HomeMoreServices />
+
+        {/* CONFIANZA */}
+        <HomeTrustSection />
+        <MarqueeSocial />
+        <ComparisonTable />
+
+        {/* PROCESO */}
+        <ProcessSection />
+
+        {/* COBERTURA LOCAL */}
         <HomeSeoLocal />
+
+        {/* CTA FINAL */}
+        <FinalCTA onOpenModal={openDrawer} />
       </main>
       <FooterSection />
     </div>

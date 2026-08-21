@@ -6,7 +6,7 @@ const TRUST = [
   { Icon: ShieldCheck, title: "Sin cuotas mensuales", text: "Pago único, sin sorpresas. Tu sistema es tuyo para siempre." },
   { Icon: Zap, title: `Instalación en ${businessStats.installTimeframe}`, text: "Desde que pides presupuesto hasta que tu sistema funciona." },
   { Icon: Wrench, title: `Garantía ${businessStats.warrantyYears} años`, text: `Garantía de ${businessStats.warrantyYears} años en todos los productos e instalaciones.` },
-  { Icon: Star, title: `${businessStats.googleRating}/5 en Google`, text: `Más de ${businessStats.googleReviewCount} reseñas verificadas de clientes reales en Barcelona.` },
+  { Icon: Star, title: `${businessStats.googleRating}/5 en Google`, text: `Más de ${businessStats.googleReviewCount} reseñas de clientes en Google, en Barcelona y Catalunya.` },
 ];
 
 export default function HomeTrustSection() {

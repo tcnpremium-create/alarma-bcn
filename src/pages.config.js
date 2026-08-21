@@ -70,18 +70,14 @@ const ControlAccesos = lazy(() => import('./pages/ControlAccesos'));
 const Cookies = lazy(() => import('./pages/Cookies'));
 const Cornella = lazy(() => import('./pages/Cornella'));
 const ElPrat = lazy(() => import('./pages/ElPrat'));
-const Girona = lazy(() => import('./pages/Girona'));
 const Hospitalet = lazy(() => import('./pages/Hospitalet'));
-const Lleida = lazy(() => import('./pages/Lleida'));
 const MantenimientoSoporte = lazy(() => import('./pages/MantenimientoSoporte'));
 const Mataro = lazy(() => import('./pages/Mataro'));
 const Privacidad = lazy(() => import('./pages/Privacidad'));
 const Promociones = lazy(() => import('./pages/Promociones'));
-const Sabadell = lazy(() => import('./pages/Sabadell'));
 const SantCugat = lazy(() => import('./pages/SantCugat'));
 const Servicios = lazy(() => import('./pages/Servicios'));
 const SobreNosotros = lazy(() => import('./pages/SobreNosotros'));
-const Tarragona = lazy(() => import('./pages/Tarragona'));
 const Terrassa = lazy(() => import('./pages/Terrassa'));
 const Viladecans = lazy(() => import('./pages/Viladecans'));
 
@@ -100,19 +96,15 @@ export const PAGES = {
     "Cookies": Cookies,
     "Cornella": Cornella,
     "ElPrat": ElPrat,
-    "Girona": Girona,
     "Home": Home,
     "Hospitalet": Hospitalet,
-    "Lleida": Lleida,
     "MantenimientoSoporte": MantenimientoSoporte,
     "Mataro": Mataro,
     "Privacidad": Privacidad,
     "Promociones": Promociones,
-    "Sabadell": Sabadell,
     "SantCugat": SantCugat,
     "Servicios": Servicios,
     "SobreNosotros": SobreNosotros,
-    "Tarragona": Tarragona,
     "Terrassa": Terrassa,
     "Viladecans": Viladecans,
 }

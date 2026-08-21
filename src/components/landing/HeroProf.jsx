@@ -26,7 +26,7 @@ const SLIDES = [
     badge: "Alarmas Ajax · Grado 2 Certificado",
     h1a: "Sistemas de Alarma en Barcelona",
     h1b: "Alta Seguridad AJAX",
-    sub: "Ecosistema Ajax: la alarma más avanzada del mundo instalada en tu hogar o negocio. Respuesta garantizada en 15 segundos.",
+    sub: "Ecosistema Ajax: tecnología avanzada de detección, cifrado end-to-end y verificación en la Central Receptora en menos de 15 segundos.",
   },
 ];
 
@@ -170,7 +170,7 @@ export default function HeroProf() {
             {[
               { val: businessStats.installTimeframe, label: "Instalación" },
               { val: "4K", label: "Ultra HD" },
-              { val: "15s", label: "Respuesta Ajax" },
+              { val: "15s", label: "Transmisión Ajax" },
               { val: `★ ${businessStats.googleRating}`, label: "Google Reviews" },
             ].map(s => (
               <div key={s.val}>
@@ -220,7 +220,7 @@ export default function HeroProf() {
             }}
           >
             <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ {businessStats.googleRating}</span>
-            <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 12 }}>Reseñas verificadas en Google</span>
+            <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 12 }}>Reseñas en Google</span>
             <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12 }}>Ver →</span>
           </a>
         </div>

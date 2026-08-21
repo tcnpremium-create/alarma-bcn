@@ -4,7 +4,6 @@ import FooterSection from "../components/landing/FooterSection";
 import TecnologiaSection from "../components/landing/TecnologiaSection";
 import MarcasSection from "../components/landing/MarcasSection";
 import LegalRGPDSection from "../components/landing/LegalRGPDSection";
-import TestimoniosSection from "../components/landing/TestimoniosSection";
 import SectoresSection from "../components/landing/SectoresSection";
 import FinalCTABanner from "../components/landing/FinalCTABanner";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
@@ -23,7 +22,6 @@ export default function TecnologiaGuia() {
         <TecnologiaSection />
         <MarcasSection />
         <LegalRGPDSection />
-        <TestimoniosSection />
         <SectoresSection />
         <FinalCTABanner />
       </main>

@@ -41,8 +41,8 @@ const ALARM_KITS = [
   {
     id: "comunidad",
     badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Comunidad",
-    subtitle: "Para casas unifamiliares o naves industriales",
+    title: "Kit Alarma Gran Instalación",
+    subtitle: "Para viviendas grandes, comunidades y naves industriales",
     price: "1.300 €",
     items: [
       "Hub+ Ajax (hasta 200 dispositivos)",
@@ -51,7 +51,7 @@ const ALARM_KITS = [
       "1 teclado KeyPad en zona de acceso",
       "Sirena exterior de alta potencia",
       "Sirenas interiores incluidas",
-      "Aviso directo a Policía verificado",
+      "Protocolo de aviso a la Policía activado desde la CRA",
       "Instalación y configuración completa incluida",
     ],
   },

@@ -9,7 +9,7 @@ const NODES = [
 
 const STEPS = [
   "Sensor detecta movimiento",
-  "Alerta en 15 segundos",
+  "Transmisión de la alerta en segundos",
   "Notificación en tu móvil",
 ];
 
@@ -40,7 +40,7 @@ export default function AnimatedSecurityBeam() {
             Así protegemos tu hogar en tiempo real
           </h2>
           <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, marginTop: 10 }}>
-            Detección instantánea · Alerta en 15 segundos · Control desde tu móvil
+            Detección instantánea · Transmisión de la alerta en segundos · Control desde tu móvil
           </p>
         </div>
 

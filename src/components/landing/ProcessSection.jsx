@@ -43,7 +43,7 @@ export default function ProcessSection() {
             Cómo trabajamos
           </h2>
           <p className="text-xl text-gray-600">
-            Proceso simple y transparent, de principio a fin.
+            Proceso simple y transparente, de principio a fin.
           </p>
         </div>
 

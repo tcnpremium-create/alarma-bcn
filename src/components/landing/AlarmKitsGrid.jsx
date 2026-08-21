@@ -55,7 +55,7 @@ export const ALARM_KITS = [
       "1 teclado KeyPad en zona de acceso",
       "Sirena exterior de alta potencia",
       "Sirenas interiores incluidas",
-      "Aviso directo a Policía verificado",
+      "Protocolo de aviso a la Policía activado desde la CRA",
       "Instalación y configuración completa incluida",
     ],
   },

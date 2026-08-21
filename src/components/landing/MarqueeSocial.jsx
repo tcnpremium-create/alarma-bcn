@@ -10,8 +10,6 @@ const REVIEWS = [
   { stars: 5, text: "Vivimos en un ático en Sarrià con terraza y patio trasero. Nos protegieron los puntos débiles sin obras y sin cuotas.", name: "Marta S.", location: "Sarrià, Barcelona" },
 ];
 
-const ZONES = ["Eixample", "Gràcia", "Sarrià-Sant Gervasi", "Sants-Montjuïc", "Les Corts", "Hospitalet", "Badalona", "Sant Cugat", "Terrassa", "Sabadell", "Cornellà", "Esplugues", "Gavà", "Castelldefels"];
-
 function Stars({ count }) {
   return (
     <div style={{ display: "flex", gap: 2, marginBottom: 10 }}>
@@ -64,23 +62,20 @@ function ReviewCard({ stars, text, name, location }) {
 
 export default function MarqueeSocial() {
   const doubled = [...REVIEWS, ...REVIEWS];
-  const quadZones = [...ZONES, ...ZONES, ...ZONES, ...ZONES];
 
   return (
     <section style={{ background: "#060e1a", padding: "64px 0", overflow: "hidden" }}>
       <style>{`
         @keyframes mq-fwd  { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        @keyframes mq-rev  { from { transform: translateX(-50%); } to { transform: translateX(0); } }
         .mq-reviews { animation: mq-fwd 30s linear infinite; }
         .mq-reviews:hover { animation-play-state: paused; }
-        .mq-zones   { animation: mq-rev 22s linear infinite; }
       `}</style>
 
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: 36, padding: "0 20px" }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
           <span style={{ color: "#F59E0B", fontSize: 18, letterSpacing: 2 }}>★★★★★</span>
-          <span style={{ color: "#fff", fontWeight: 900, fontSize: 22 }}>4.8</span>
+          <span style={{ color: "#fff", fontWeight: 900, fontSize: 22 }}>{businessStats.googleRating}</span>
           <span style={{ color: "rgba(255,255,255,0.35)", fontSize: 14 }}>/ 5 en Google</span>
         </div>
         <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 13, margin: 0 }}>
@@ -89,26 +84,9 @@ export default function MarqueeSocial() {
       </div>
 
       {/* Reviews track */}
-      <div style={{ overflow: "hidden", marginBottom: 14 }}>
+      <div style={{ overflow: "hidden", marginBottom: 36 }}>
         <div className="mq-reviews" style={{ display: "flex", width: "max-content", padding: "4px 0" }}>
           {doubled.map((r, i) => <ReviewCard key={i} {...r} />)}
-        </div>
-      </div>
-
-      {/* Zone badges track (reverse) */}
-      <div style={{ overflow: "hidden", marginBottom: 36 }}>
-        <div className="mq-zones" style={{ display: "flex", gap: 10, width: "max-content", padding: "4px 0" }}>
-          {quadZones.map((zone, i) => (
-            <span key={i} style={{
-              display: "inline-flex", alignItems: "center", gap: 6,
-              background: "rgba(0,210,255,0.05)", border: "1px solid rgba(0,210,255,0.15)",
-              borderRadius: 20, padding: "6px 16px",
-              color: "rgba(0,210,255,0.65)", fontSize: 12, fontWeight: 700, whiteSpace: "nowrap",
-            }}>
-              <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#00D4FF", display: "inline-block" }} />
-              {zone}
-            </span>
-          ))}
         </div>
       </div>
 

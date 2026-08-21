@@ -124,6 +124,12 @@ const AuthenticatedApp = () => {
         {/* Redirect: Sistemas de Alarma se fusionó con Alarmas Barcelona por el mismo motivo (mismo H1, mismo AlarmKitsGrid, keywords solapadas) */}
         <Route path="/sistemas-alarma" element={<Navigate to="/alarmas-barcelona" replace />} />
         <Route path="/SistemasAlarma" element={<Navigate to="/alarmas-barcelona" replace />} />
+        {/* Redirect: páginas de ciudad antiguas (Girona/Sabadell/Tarragona/Lleida) se fusionaron con las páginas
+            alarmas-X, con las que competían por las mismas keywords (mismo título "Alarmas en [ciudad]...") */}
+        <Route path="/Girona" element={<Navigate to="/alarmas-girona" replace />} />
+        <Route path="/Sabadell" element={<Navigate to="/alarmas-sabadell" replace />} />
+        <Route path="/Tarragona" element={<Navigate to="/alarmas-tarragona" replace />} />
+        <Route path="/Lleida" element={<Navigate to="/alarmas-lleida" replace />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>

@@ -81,8 +81,8 @@ const KITS = [
   {
     id: "comunidad",
     badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Comunidad",
-    subtitle: "Para casas unifamiliares o naves industriales",
+    title: "Kit Alarma Gran Instalación",
+    subtitle: "Para viviendas grandes, comunidades y naves industriales",
     price: "1.300 €",
     ivaNote: true,
     items: [
@@ -92,7 +92,7 @@ const KITS = [
       "1 teclado KeyPad en zona de acceso",
       "Sirena exterior de alta potencia",
       "1 sirena interior incluida",
-      "Aviso directo a Policía verificado",
+      "Protocolo de aviso a la Policía activado desde la CRA",
       "Instalación y configuración completa incluida",
     ],
     tech: "Grado 2 · Canal de backup GSM + Ethernet · Batería 80h",
@@ -102,7 +102,7 @@ const KITS = [
 const TECH_SPECS = [
   { label: "Antiinhibición", desc: "Detecta y bloquea intentos de interferencia de señal RF" },
   { label: "Grado 2 Certificado", desc: "Máximo nivel de seguridad reconocido por aseguradoras en España" },
-  { label: "Verificación en 15s", desc: "La Central Receptora confirma la intrusión y avisa a la Policía" },
+  { label: "Verificación en 15s", desc: "La Central Receptora confirma la intrusión y activa el protocolo de aviso a la Policía" },
   { label: "Cifrado de Datos", desc: "Comunicación 100% cifrada entre dispositivos y central" },
 ];
 
@@ -165,7 +165,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
           Instalación de Alarmas de Alta Seguridad en Barcelona
         </h2>
         <p style={{ color:"#CBD5E1",fontSize:15,lineHeight:1.72,marginTop:12,marginBottom:0 }}>
-          Protegemos hogares, negocios y comunidades con el ecosistema Ajax — la alarma Grado 2 más avanzada del mundo. Detección verificada en 15 segundos, cámaras integradas al sistema y aviso inmediato a la Policía. Sin cuotas, sin permanencia.
+          Protegemos hogares, negocios y comunidades con el ecosistema Ajax — alarmas Grado 2 certificado. Tecnología de detección avanzada, cámaras integradas al sistema y verificación en la Central Receptora en menos de 15 segundos. Sin cuotas, sin permanencia.
         </p>
 
         {/* ② Promo kit cards — accordion */}
@@ -252,14 +252,14 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
           </div>
           <div>
             <p style={{ color:"#EF4444",fontWeight:900,fontSize:34,lineHeight:1,margin:0,textShadow:"0 0 20px rgba(239,68,68,.5)" }}>15s</p>
-            <p style={{ color:"#fff",fontWeight:800,fontSize:16,margin:0 }}>Respuesta garantizada</p>
-            <p style={{ color:"#94A3B8",fontSize:12,margin:0 }}>Central Receptora activa · Aviso inmediato a Policía</p>
+            <p style={{ color:"#fff",fontWeight:800,fontSize:16,margin:0 }}>Verificación en la Central Receptora</p>
+            <p style={{ color:"#94A3B8",fontSize:12,margin:0 }}>Central Receptora activa 24/7 · Protocolo de aviso a la Policía</p>
           </div>
         </div>
 
         {/* ④ Technical Ajax deep-dive */}
         <div style={{ marginTop:24 }}>
-          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>Tecnología Ajax — Grado Militar</p>
+          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>Tecnología Ajax — Grado 2 Certificado</p>
           <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:10 }}>
             {TECH_SPECS.map((s)=>(
               <div key={s.label} style={{ background:"rgba(255,255,255,.05)",backdropFilter:"blur(6px)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"12px 14px" }}>
