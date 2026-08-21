@@ -3,7 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import InteractiveMap from "../components/landing/InteractiveMap";
 import { motion } from "framer-motion";
-import { Shield, Award, Users, MapPin, CheckCircle, Phone, Mail } from "lucide-react";
+import { Shield, Award, MapPin, CheckCircle, Phone, Mail } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import AdSenseDisplay from "../components/ads/AdSenseDisplay";
 import AdSenseInFeed from "../components/ads/AdSenseInFeed";

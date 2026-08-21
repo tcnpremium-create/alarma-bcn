@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, Phone, Video, MapPin, CheckCircle, X, Loader2 } from "lucide-react";
+import { Phone, MapPin, CheckCircle, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/api";
 

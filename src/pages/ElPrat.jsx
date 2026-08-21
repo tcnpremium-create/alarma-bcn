@@ -3,7 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
-import { Shield, MapPin, Phone, CheckCircle } from "lucide-react";
+import { Shield, MapPin, Phone } from "lucide-react";
 import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function ElPratPage() {

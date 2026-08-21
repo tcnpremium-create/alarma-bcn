@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, X, Star, Phone, ArrowRight, Shield, Wifi, Battery, Smartphone, Eye } from 'lucide-react';
+import { Check, X, Star, Phone, ArrowRight, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';

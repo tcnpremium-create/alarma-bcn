@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { base44 } from '@/api/api';
-import { CheckCircle, ChevronRight, Loader2 } from 'lucide-react';
+import { ChevronRight, Loader2 } from 'lucide-react';
 import { registerPhoneForTracking } from '@/components/tracking/useHubSpotTracking';
 
 export default function LeadQualification({ onComplete }) {

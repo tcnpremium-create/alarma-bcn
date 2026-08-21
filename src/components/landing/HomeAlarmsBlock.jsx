@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ALARM_KITS as KITS } from "@/data/alarmKits";
 
 const css = `
   .alarms-bg-scanlines::before {
@@ -39,65 +40,6 @@ const css = `
   .a-accordion-btn { transition: background .2s }
   .a-accordion-btn:hover { background:rgba(239,68,68,.08)!important }
 `;
-
-const KITS = [
-  {
-    id: "hogar",
-    badge: "MÁS POPULAR",
-    title: "Kit Alarma Hogar",
-    subtitle: "Protección completa para viviendas",
-    price: "399 €",
-    ivaNote: true,
-    items: [
-      "Hub Ajax (central de control)",
-      "1 detector de movimiento (sin cámara)",
-      "1 detector magnético para puerta principal",
-      "1 mando a distancia",
-      "Sirena interior HomeSiren",
-      "App Ajax gratuita · iOS y Android",
-      "Instalación certificada incluida",
-      "Sin cuotas mensuales · Grado 2",
-    ],
-    tech: "Grado 2 · Antiinhibición 3G/4G · Batería de respaldo 38h",
-  },
-  {
-    id: "negocio",
-    badge: "RECOMENDADO",
-    title: "Kit Alarma Negocio",
-    subtitle: "Seguridad profesional para locales y oficinas",
-    price: "699 €",
-    ivaNote: true,
-    items: [
-      "Hub Ajax (central de control)",
-      "2 detectores de movimiento sin cámara",
-      "2 detectores magnéticos (puertas/ventanas)",
-      "Sirena interior HomeSiren",
-      "Central Receptora activa 24/7",
-      "Instalación certificada incluida",
-      "Grado 2 · Conexión cifrada",
-    ],
-    tech: "Grado 2 · Antiinhibición · Verificación en 15s · Comunicación cifrada",
-  },
-  {
-    id: "comunidad",
-    badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Gran Instalación",
-    subtitle: "Para viviendas grandes, comunidades y naves industriales",
-    price: "1.300 €",
-    ivaNote: true,
-    items: [
-      "Hub+ Ajax (hasta 200 dispositivos)",
-      "4 detectores de movimiento MotionCam",
-      "2 detectores magnéticos perimetrales",
-      "1 teclado KeyPad en zona de acceso",
-      "Sirena exterior de alta potencia",
-      "1 sirena interior incluida",
-      "Protocolo de aviso a la Policía activado desde la CRA",
-      "Instalación y configuración completa incluida",
-    ],
-    tech: "Grado 2 · Canal de backup GSM + Ethernet · Batería 80h",
-  },
-];
 
 const TECH_SPECS = [
   { label: "Antiinhibición", desc: "Detecta y bloquea intentos de interferencia de señal RF" },

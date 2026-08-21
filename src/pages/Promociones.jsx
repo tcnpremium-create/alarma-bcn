@@ -3,59 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
-
-const ALARM_KITS = [
-  {
-    id: "hogar",
-    badge: "MÁS POPULAR",
-    title: "Kit Alarma Hogar",
-    subtitle: "Protección completa para viviendas",
-    price: "399 €",
-    items: [
-      "Hub Ajax (central de control)",
-      "1 detector de movimiento (sin cámara)",
-      "1 detector magnético para puerta principal",
-      "1 mando a distancia",
-      "Sirena interior HomeSiren",
-      "App Ajax gratuita · iOS y Android",
-      "Instalación certificada incluida",
-      "Sin cuotas mensuales · Grado 2",
-    ],
-  },
-  {
-    id: "negocio",
-    badge: "RECOMENDADO",
-    title: "Kit Alarma Negocio",
-    subtitle: "Seguridad profesional para locales y oficinas",
-    price: "699 €",
-    items: [
-      "Hub Ajax (central de control)",
-      "2 detectores de movimiento sin cámara",
-      "2 detectores magnéticos (puertas/ventanas)",
-      "Sirena interior HomeSiren",
-      "Central Receptora activa 24/7",
-      "Instalación certificada incluida",
-      "Grado 2 · Conexión cifrada",
-    ],
-  },
-  {
-    id: "comunidad",
-    badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Gran Instalación",
-    subtitle: "Para viviendas grandes, comunidades y naves industriales",
-    price: "1.300 €",
-    items: [
-      "Hub+ Ajax (hasta 200 dispositivos)",
-      "4 detectores de movimiento MotionCam",
-      "2 detectores magnéticos perimetrales",
-      "1 teclado KeyPad en zona de acceso",
-      "Sirena exterior de alta potencia",
-      "Sirenas interiores incluidas",
-      "Protocolo de aviso a la Policía activado desde la CRA",
-      "Instalación y configuración completa incluida",
-    ],
-  },
-];
+import { ALARM_KITS } from "@/data/alarmKits";
 
 const CAMERA_KITS = [
   {

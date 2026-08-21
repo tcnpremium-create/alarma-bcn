@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Phone, ShieldCheck } from "lucide-react";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { businessStats } from "@/lib/businessStats";

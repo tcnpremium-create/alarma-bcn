@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import SEOHead from "../components/seo/SEOHead";
 import { motion } from "framer-motion";
-import { Shield, Camera, Fingerprint, MonitorPlay, Bell, Home, Building2, Factory, CheckCircle, Phone, Mail, ArrowRight } from "lucide-react";
+import { Shield, Camera, Fingerprint, MonitorPlay, Bell, Home, Building2, CheckCircle, Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 

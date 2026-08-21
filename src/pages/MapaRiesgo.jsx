@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AlertTriangle, Shield, MapPin, TrendingUp, Phone, ChevronDown, BarChart2 } from 'lucide-react';
+import { AlertTriangle, Shield, ChevronDown, BarChart2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';

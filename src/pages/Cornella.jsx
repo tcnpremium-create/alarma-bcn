@@ -3,7 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
-import { Shield, Clock, MapPin, Phone, Mail, CheckCircle } from "lucide-react";
+import { Shield, Clock, MapPin, Phone, CheckCircle } from "lucide-react";
 import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function CornellaPage() {

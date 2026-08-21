@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function PromoSection() {
   const handleContactClick = () => {

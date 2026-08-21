@@ -7,59 +7,7 @@ import {
 import { AnimatedGradientText } from "../magicui/animated-gradient-text";
 import { Marquee } from "../magicui/marquee";
 import { ShinyButton } from "../magicui/shiny-button";
-
-export const ALARM_KITS = [
-  {
-    id: "hogar",
-    badge: "MÁS POPULAR",
-    title: "Plan Protección Piso Estándar",
-    subtitle: "Ideal para pisos y áticos con un único acceso principal",
-    price: "399 €",
-    items: [
-      "Hub Ajax (central de control)",
-      "1 detector de movimiento (sin cámara)",
-      "1 detector magnético para puerta principal",
-      "1 mando a distancia",
-      "Sirena interior HomeSiren",
-      "App Ajax gratuita · iOS y Android",
-      "Instalación certificada incluida",
-      "Sin cuotas mensuales · Grado 2",
-    ],
-  },
-  {
-    id: "negocio",
-    badge: "RECOMENDADO",
-    title: "Plan Protección Negocio Activo",
-    subtitle: "Para locales y oficinas con horario de apertura al público",
-    price: "699 €",
-    items: [
-      "Hub Ajax (central de control)",
-      "2 detectores de movimiento sin cámara",
-      "2 detectores magnéticos (puertas/ventanas)",
-      "Sirena interior HomeSiren",
-      "Central Receptora activa 24/7",
-      "Instalación certificada incluida",
-      "Grado 2 · Conexión cifrada",
-    ],
-  },
-  {
-    id: "comunidad",
-    badge: "GRAN INSTALACIÓN",
-    title: "Plan Protección Perimetral Total",
-    subtitle: "Para chalets, áticos/bajos y naves con protección perimetral e inmunidad a mascotas",
-    price: "1.300 €",
-    items: [
-      "Hub+ Ajax (hasta 200 dispositivos)",
-      "4 detectores de movimiento MotionCam",
-      "2 detectores magnéticos perimetrales",
-      "1 teclado KeyPad en zona de acceso",
-      "Sirena exterior de alta potencia",
-      "Sirenas interiores incluidas",
-      "Protocolo de aviso a la Policía activado desde la CRA",
-      "Instalación y configuración completa incluida",
-    ],
-  },
-];
+import { ALARM_KITS } from "@/data/alarmKits";
 
 const CERTIFICATIONS = [
   { label: "Grado 2 · EN 50131", icon: ShieldCheck },

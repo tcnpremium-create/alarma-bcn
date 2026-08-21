@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { base44 } from '@/api/api';
-import { FileText, Filter, Phone, Mail, MapPin, Clock, CheckCircle, XCircle, Calendar, User } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { FileText, Filter, Phone, Mail, MapPin, Calendar, User } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';

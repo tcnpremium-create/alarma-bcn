@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, MapPin, Phone, Mail, AlertCircle } from 'lucide-react';
-import { base44 } from '@/api/api';
+import { Calendar, Clock, MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function CitasTab({ userEmail }) {

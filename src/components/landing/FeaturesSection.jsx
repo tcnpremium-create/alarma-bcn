@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Shield, Camera, Lock, Smartphone, AlertTriangle, Wifi } from "lucide-react";
 import { motion } from "framer-motion";
 

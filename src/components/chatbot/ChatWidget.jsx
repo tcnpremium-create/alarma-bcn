@@ -45,7 +45,7 @@ const ChatWidget = () => {
     if (isOpen && !conversation) {
       initConversation();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [isOpen, conversation]);
 
   useEffect(() => {
