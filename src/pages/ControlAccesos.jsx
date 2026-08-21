@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Check, Phone, ArrowRight } from "lucide-react";
+import { ArrowLeft, Check, Phone, ArrowRight, Hash, Fingerprint, CreditCard, ClipboardList, Clock, BarChart3 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -16,12 +16,12 @@ export default function ControlAccesos() {
   }, []);
 
   const features = [
-    { icon: "🔐", title: "Acceso por código PIN", desc: "Códigos personalizados para cada usuario" },
-    { icon: "👆", title: "Huella dactilar", desc: "Identificación biométrica rápida y segura" },
-    { icon: "🎫", title: "Tarjetas RFID", desc: "Control con tarjetas inteligentes sin contacto" },
-    { icon: "📋", title: "Registro de entradas", desc: "Historial completo de accesos y usuarios" },
-    { icon: "⏰", title: "Horarios programables", desc: "Control de acceso por franjas horarias" },
-    { icon: "📊", title: "Reportes en tiempo real", desc: "Estadísticas y análisis de accesos" }
+    { Icon: Hash, title: "Acceso por código PIN", desc: "Códigos personalizados para cada usuario" },
+    { Icon: Fingerprint, title: "Huella dactilar", desc: "Identificación biométrica rápida y segura" },
+    { Icon: CreditCard, title: "Tarjetas RFID", desc: "Control con tarjetas inteligentes sin contacto" },
+    { Icon: ClipboardList, title: "Registro de entradas", desc: "Historial completo de accesos y usuarios" },
+    { Icon: Clock, title: "Horarios programables", desc: "Control de acceso por franjas horarias" },
+    { Icon: BarChart3, title: "Reportes en tiempo real", desc: "Estadísticas y análisis de accesos" }
   ];
 
   const scrollToContact = () => {
@@ -115,7 +115,9 @@ export default function ControlAccesos() {
                     transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease",
                   }}
                 >
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{feature.icon}</div>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                    <feature.Icon size={24} color="#E63946" />
+                  </div>
                   <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>{feature.title}</h3>
                   <p style={{ color: "#94A3B8" }}>{feature.desc}</p>
                 </div>
@@ -166,7 +168,10 @@ export default function ControlAccesos() {
 
           {/* CTA — red gradient kept as-is */}
           <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">🔐 Control de accesos biométrico profesional</h2>
+            <h2 className="text-3xl lg:text-4xl font-black mb-4 flex items-center justify-center gap-3">
+              <Fingerprint className="w-8 h-8" />
+              Control de accesos biométrico profesional
+            </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Consulta gratuita sin compromiso. Diseñamos el sistema perfecto para tu empresa u oficina.
             </p>

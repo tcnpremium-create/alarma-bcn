@@ -6,11 +6,11 @@ import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Smartphone, Eye, Wifi, Shield, Star, ChevronRight, Bell, Key, Clock, Camera, Users, Building2, Lock } from "lucide-react";
+import { Smartphone, Eye, Wifi, Shield, Star, ChevronRight, Bell, Key, Clock, Camera, Users, Building2, Lock, Home, ScanFace, Fingerprint, CreditCard, Hash, PackageCheck, ClipboardList } from "lucide-react";
 
 const SOLUTIONS = [
   {
-    icon: "🏠",
+    icon: <Home className="w-7 h-7" style={{ color: "#E53E3E" }} />,
     title: "Vivienda Unifamiliar",
     desc: "La solución perfecta para chalet o casa. Cámara HD con visión nocturna, app móvil y apertura desde cualquier lugar.",
     features: [
@@ -24,7 +24,7 @@ const SOLUTIONS = [
     price: "Desde 299€ instalado",
   },
   {
-    icon: "🏘️",
+    icon: <Users className="w-7 h-7" style={{ color: "#E53E3E" }} />,
     title: "Comunidad de Vecinos",
     desc: "Sistema profesional para edificios y comunidades. Compatible con cableado 2 hilos existente, sin obras.",
     features: [
@@ -40,7 +40,7 @@ const SOLUTIONS = [
     price: "Desde 599€ instalado",
   },
   {
-    icon: "🏢",
+    icon: <Building2 className="w-7 h-7" style={{ color: "#E53E3E" }} />,
     title: "Empresa / Oficina",
     desc: "Seguridad de nivel corporativo. Control de accesos biométrico, registro de entradas y gestión desde panel web.",
     features: [
@@ -282,15 +282,15 @@ export default function Videoporteros() {
           {/* Features grid */}
           <div className="grid sm:grid-cols-3 gap-4">
             {[
-              { icon: "👁️", title: "Reconocimiento Facial", desc: "Identifica y da acceso automático a empleados y residentes autorizados en menos de 0,3 segundos." },
-              { icon: "🖐️", title: "Huella Dactilar", desc: "Lector biométrico de última generación. Acceso intransferible, sin tarjetas que perder ni pines que olvidar." },
-              { icon: "💳", title: "Tarjeta RFID / NFC", desc: "Tarjetas de proximidad y llaveros NFC para comunidades y empresas con mucho personal rotativo." },
-              { icon: "🔢", title: "Teclado PIN", desc: "Acceso con código numérico como método secundario o para zonas de menor seguridad." },
-              { icon: "📦", title: "Acceso Temporal", desc: "Código QR o PIN de un solo uso para repartidores, técnicos o visitas puntuales. Caduca automáticamente." },
-              { icon: "📋", title: "Registro Completo", desc: "Log detallado de cada acceso: foto, hora, identidad y método de apertura. Exportable para auditorías." },
+              { Icon: ScanFace, title: "Reconocimiento Facial", desc: "Identifica y da acceso automático a empleados y residentes autorizados en menos de 0,3 segundos." },
+              { Icon: Fingerprint, title: "Huella Dactilar", desc: "Lector biométrico de última generación. Acceso intransferible, sin tarjetas que perder ni pines que olvidar." },
+              { Icon: CreditCard, title: "Tarjeta RFID / NFC", desc: "Tarjetas de proximidad y llaveros NFC para comunidades y empresas con mucho personal rotativo." },
+              { Icon: Hash, title: "Teclado PIN", desc: "Acceso con código numérico como método secundario o para zonas de menor seguridad." },
+              { Icon: PackageCheck, title: "Acceso Temporal", desc: "Código QR o PIN de un solo uso para repartidores, técnicos o visitas puntuales. Caduca automáticamente." },
+              { Icon: ClipboardList, title: "Registro Completo", desc: "Log detallado de cada acceso: foto, hora, identidad y método de apertura. Exportable para auditorías." },
             ].map(f => (
               <div key={f.title} style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "20px 18px" }}>
-                <div style={{ fontSize: 26, marginBottom: 8 }}>{f.icon}</div>
+                <div style={{ marginBottom: 8 }}><f.Icon size={24} color="#E53E3E" /></div>
                 <h3 style={{ fontWeight: 800, fontSize: 14, color: "#fff", marginBottom: 6, marginTop: 0 }}>{f.title}</h3>
                 <p style={{ fontSize: 12, color: "#64748B", lineHeight: 1.6, margin: 0 }}>{f.desc}</p>
               </div>
@@ -328,7 +328,7 @@ export default function Videoporteros() {
           <div className="grid sm:grid-cols-3 gap-5">
             {SOLUTIONS.map((s) => (
               <div key={s.title} style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 16, padding: 24, border: "1px solid rgba(255,255,255,0.08)", display: "flex", flexDirection: "column" }}>
-                <div style={{ fontSize: 28, marginBottom: 10 }}>{s.icon}</div>
+                <div style={{ marginBottom: 10 }}>{s.icon}</div>
                 <h3 style={{ fontWeight: 800, fontSize: 17, color: "#FFFFFF", marginBottom: 6, marginTop: 0 }}>{s.title}</h3>
                 <p style={{ fontSize: 13, color: "#94A3B8", marginBottom: 12, marginTop: 0 }}>{s.desc}</p>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0, flex: 1 }}>

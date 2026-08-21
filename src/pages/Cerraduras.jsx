@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Phone, ArrowRight } from "lucide-react";
+import { ArrowLeft, Phone, ArrowRight, KeyRound, Plug, ShieldCheck, BatteryCharging, Smartphone, Building2, LockKeyhole } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -16,12 +16,12 @@ export default function Cerraduras() {
   }, []);
 
   const tipos = [
-    { icon: "🔑", title: "Cerraduras inteligentes", desc: "Sistemas de apertura electrónica para vivienda y negocio" },
-    { icon: "🔌", title: "Cerraduras electrónicas", desc: "Cerraduras con apertura eléctrica para puertas de viviendas y negocios" },
-    { icon: "🛡️", title: "Cilindros de seguridad", desc: "Cilindros de alta seguridad para puertas de acceso" },
-    { icon: "🔋", title: "Cilindros electrónicos", desc: "Apertura electrónica sin necesidad de llave física" },
-    { icon: "📱", title: "Apertura mediante móvil", desc: "Abre tu puerta desde el smartphone, sin llave física" },
-    { icon: "🏢", title: "Soluciones para negocios", desc: "Sistemas de cierre para locales, oficinas y comunidades" },
+    { Icon: KeyRound, title: "Cerraduras inteligentes", desc: "Sistemas de apertura electrónica para vivienda y negocio" },
+    { Icon: Plug, title: "Cerraduras electrónicas", desc: "Cerraduras con apertura eléctrica para puertas de viviendas y negocios" },
+    { Icon: ShieldCheck, title: "Cilindros de seguridad", desc: "Cilindros de alta seguridad para puertas de acceso" },
+    { Icon: BatteryCharging, title: "Cilindros electrónicos", desc: "Apertura electrónica sin necesidad de llave física" },
+    { Icon: Smartphone, title: "Apertura mediante móvil", desc: "Abre tu puerta desde el smartphone, sin llave física" },
+    { Icon: Building2, title: "Soluciones para negocios", desc: "Sistemas de cierre para locales, oficinas y comunidades" },
   ];
 
   const espacios = [
@@ -52,8 +52,14 @@ export default function Cerraduras() {
       />
       <Navbar />
 
-      <section className="bg-gradient-to-br from-[#0A1628] to-[#1a2a3a] text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section style={{ position: "relative", overflow: "hidden" }} className="text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
+        <img
+          src="/images/cerradura-inteligente.webp"
+          alt="Cerradura inteligente con lector de huella instalada en puerta"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.4 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(26,42,58,0.88) 100%)" }} />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8" style={{ position: "relative", zIndex: 2 }}>
           <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
@@ -76,7 +82,9 @@ export default function Cerraduras() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {tipos.map((t, idx) => (
                 <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 32, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{t.icon}</div>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                    <t.Icon size={24} color="#E63946" />
+                  </div>
                   <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>{t.title}</h3>
                   <p style={{ color: "#94A3B8" }}>{t.desc}</p>
                 </div>
@@ -110,7 +118,10 @@ export default function Cerraduras() {
           `}</style>
 
           <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">🔐 Cerraduras inteligentes para tu vivienda o negocio</h2>
+            <h2 className="text-3xl lg:text-4xl font-black mb-4 flex items-center justify-center gap-3">
+              <LockKeyhole className="w-8 h-8" />
+              Cerraduras inteligentes para tu vivienda o negocio
+            </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Consulta gratuita sin compromiso. Te ayudamos a elegir la solución de cierre adecuada.
             </p>

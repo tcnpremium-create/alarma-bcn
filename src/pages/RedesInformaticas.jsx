@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Phone, ArrowRight } from "lucide-react";
+import { ArrowLeft, Phone, ArrowRight, Building2, Briefcase, Store, Home, Wifi, Cable, Server, Router, Settings2, TrendingUp, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -16,19 +16,19 @@ export default function RedesInformaticas() {
   }, []);
 
   const soluciones = [
-    { icon: "🏢", title: "Redes para empresas", desc: "Infraestructura de red completa para oficinas y empresas" },
-    { icon: "🗄️", title: "Redes para oficinas", desc: "Cableado y conectividad para espacios de trabajo" },
-    { icon: "🏪", title: "Redes para negocios", desc: "Conectividad fiable para comercios y locales" },
-    { icon: "🏠", title: "Redes para viviendas", desc: "Cableado y WiFi profesional para el hogar" },
+    { Icon: Building2, title: "Redes para empresas", desc: "Infraestructura de red completa para oficinas y empresas" },
+    { Icon: Briefcase, title: "Redes para oficinas", desc: "Cableado y conectividad para espacios de trabajo" },
+    { Icon: Store, title: "Redes para negocios", desc: "Conectividad fiable para comercios y locales" },
+    { Icon: Home, title: "Redes para viviendas", desc: "Cableado y WiFi profesional para el hogar" },
   ];
 
   const componentes = [
-    { icon: "📶", title: "WiFi profesional", desc: "Puntos de acceso de uso profesional con cobertura completa del espacio" },
-    { icon: "🔌", title: "Cableado estructurado", desc: "Instalación de cableado Ethernet normalizado y ordenado" },
-    { icon: "🗃️", title: "Racks y electrónica de red", desc: "Armarios rack, switches y routers correctamente instalados" },
-    { icon: "🔗", title: "Puntos de acceso", desc: "Distribución de puntos de red y WiFi según las necesidades del espacio" },
-    { icon: "⚙️", title: "Configuración de red", desc: "Puesta en marcha y configuración de todos los equipos instalados" },
-    { icon: "📈", title: "Ampliación de redes", desc: "Ampliamos redes existentes sin necesidad de rehacer la instalación" },
+    { Icon: Wifi, title: "WiFi profesional", desc: "Puntos de acceso de uso profesional con cobertura completa del espacio" },
+    { Icon: Cable, title: "Cableado estructurado", desc: "Instalación de cableado Ethernet normalizado y ordenado" },
+    { Icon: Server, title: "Racks y electrónica de red", desc: "Armarios rack, switches y routers correctamente instalados" },
+    { Icon: Router, title: "Puntos de acceso", desc: "Distribución de puntos de red y WiFi según las necesidades del espacio" },
+    { Icon: Settings2, title: "Configuración de red", desc: "Puesta en marcha y configuración de todos los equipos instalados" },
+    { Icon: TrendingUp, title: "Ampliación de redes", desc: "Ampliamos redes existentes sin necesidad de rehacer la instalación" },
   ];
 
   const scrollToContact = () => {
@@ -52,8 +52,14 @@ export default function RedesInformaticas() {
       />
       <Navbar />
 
-      <section className="bg-gradient-to-br from-[#0A1628] to-[#1a2a3a] text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section style={{ position: "relative", overflow: "hidden" }} className="text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
+        <img
+          src="/images/redes-rack.webp"
+          alt="Rack de red profesional instalado"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.35 }}
+        />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(26,42,58,0.88) 100%)" }} />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8" style={{ position: "relative", zIndex: 2 }}>
           <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
@@ -76,7 +82,9 @@ export default function RedesInformaticas() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {soluciones.map((s, idx) => (
                 <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 28, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>
-                  <div style={{ fontSize: 32, marginBottom: 14 }}>{s.icon}</div>
+                  <div style={{ width: 48, height: 48, borderRadius: 13, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                    <s.Icon size={22} color="#E63946" />
+                  </div>
                   <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>{s.title}</h3>
                   <p style={{ color: "#94A3B8", fontSize: 14 }}>{s.desc}</p>
                 </div>
@@ -88,13 +96,20 @@ export default function RedesInformaticas() {
             <h2 style={{ fontSize: "1.875rem", fontWeight: 800, color: "#FFFFFF", marginBottom: 16, textAlign: "center" }}>
               Infraestructura de red profesional
             </h2>
-            <p style={{ color: "#94A3B8", textAlign: "center", maxWidth: 680, margin: "0 auto 48px", lineHeight: 1.7 }}>
+            <p style={{ color: "#94A3B8", textAlign: "center", maxWidth: 680, margin: "0 auto 32px", lineHeight: 1.7 }}>
               Diseñamos e instalamos la infraestructura de red necesaria para que tu empresa, oficina o vivienda tenga conectividad estable y ordenada, con cableado normalizado y equipos correctamente configurados.
             </p>
+            <img
+              src="/images/redes-switch-cableado.webp"
+              alt="Cableado estructurado conectado a switch de red profesional"
+              style={{ width: "100%", maxHeight: 280, objectFit: "cover", borderRadius: 14, display: "block", marginBottom: 40 }}
+            />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {componentes.map((c, idx) => (
                 <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-                  <span style={{ fontSize: 28, flexShrink: 0 }}>{c.icon}</span>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <c.Icon size={20} color="#E63946" />
+                  </div>
                   <div>
                     <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{c.title}</h3>
                     <p style={{ color: "#94A3B8", fontSize: 14 }}>{c.desc}</p>
@@ -116,7 +131,10 @@ export default function RedesInformaticas() {
           `}</style>
 
           <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">🌐 Infraestructura de red profesional</h2>
+            <h2 className="text-3xl lg:text-4xl font-black mb-4 flex items-center justify-center gap-3">
+              <Network className="w-8 h-8" />
+              Infraestructura de red profesional
+            </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Consulta gratuita sin compromiso. Diseñamos la red adecuada para tu empresa, oficina o vivienda.
             </p>

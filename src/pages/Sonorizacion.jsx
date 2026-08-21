@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Phone, ArrowRight } from "lucide-react";
+import { ArrowLeft, Phone, ArrowRight, Store, UtensilsCrossed, Building2, Users, PartyPopper, Factory, Volume2, SlidersHorizontal, Layers, Mic, Radio, Settings2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -16,21 +16,21 @@ export default function Sonorizacion() {
   }, []);
 
   const necesidades = [
-    { icon: "🏪", title: "Negocio", desc: "Ambientación sonora para tiendas y comercios" },
-    { icon: "🍽️", title: "Restaurante", desc: "Sonido ambiental discreto en sala y terraza" },
-    { icon: "🏢", title: "Oficina", desc: "Megafonía y sonido para espacios de trabajo" },
-    { icon: "🏘️", title: "Comunidad", desc: "Sonorización de zonas comunes y exteriores" },
-    { icon: "🎉", title: "Evento", desc: "Sistemas de sonido para actos y celebraciones" },
-    { icon: "🏭", title: "Nave / Empresa", desc: "Megafonía industrial y sistemas multizona" },
+    { Icon: Store, title: "Negocio", desc: "Ambientación sonora para tiendas y comercios" },
+    { Icon: UtensilsCrossed, title: "Restaurante", desc: "Sonido ambiental discreto en sala y terraza" },
+    { Icon: Building2, title: "Oficina", desc: "Megafonía y sonido para espacios de trabajo" },
+    { Icon: Users, title: "Comunidad", desc: "Sonorización de zonas comunes y exteriores" },
+    { Icon: PartyPopper, title: "Evento", desc: "Sistemas de sonido para actos y celebraciones" },
+    { Icon: Factory, title: "Nave / Empresa", desc: "Megafonía industrial y sistemas multizona" },
   ];
 
   const componentes = [
-    { icon: "🔊", title: "Altavoces", desc: "De techo, de pared, profesionales, para interior y exterior" },
-    { icon: "🎚️", title: "Amplificadores", desc: "De instalación, multizona y para sistemas distribuidos" },
-    { icon: "🎛️", title: "Mezcladores", desc: "Para gestionar varias fuentes de audio en un mismo sistema" },
-    { icon: "🎤", title: "Micrófonos", desc: "Para megafonía, avisos y locución en directo" },
-    { icon: "📡", title: "Sistemas multizona", desc: "Control de volumen y fuente independiente por zona" },
-    { icon: "⚙️", title: "Controladores", desc: "Gestión centralizada del sistema de sonido instalado" },
+    { Icon: Volume2, title: "Altavoces", desc: "De techo, de pared, profesionales, para interior y exterior" },
+    { Icon: SlidersHorizontal, title: "Amplificadores", desc: "De instalación, multizona y para sistemas distribuidos" },
+    { Icon: Layers, title: "Mezcladores", desc: "Para gestionar varias fuentes de audio en un mismo sistema" },
+    { Icon: Mic, title: "Micrófonos", desc: "Para megafonía, avisos y locución en directo" },
+    { Icon: Radio, title: "Sistemas multizona", desc: "Control de volumen y fuente independiente por zona" },
+    { Icon: Settings2, title: "Controladores", desc: "Gestión centralizada del sistema de sonido instalado" },
   ];
 
   const proceso = [
@@ -89,7 +89,9 @@ export default function Sonorizacion() {
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {necesidades.map((n, idx) => (
                 <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 32, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{n.icon}</div>
+                  <div style={{ width: 52, height: 52, borderRadius: 14, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 16 }}>
+                    <n.Icon size={24} color="#E63946" />
+                  </div>
                   <h3 style={{ fontSize: "1.2rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 8 }}>{n.title}</h3>
                   <p style={{ color: "#94A3B8" }}>{n.desc}</p>
                 </div>
@@ -108,7 +110,9 @@ export default function Sonorizacion() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {componentes.map((c, idx) => (
                 <div key={idx} style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
-                  <span style={{ fontSize: 28, flexShrink: 0 }}>{c.icon}</span>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                    <c.Icon size={20} color="#E63946" />
+                  </div>
                   <div>
                     <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 4 }}>{c.title}</h3>
                     <p style={{ color: "#94A3B8", fontSize: 14 }}>{c.desc}</p>
@@ -148,7 +152,10 @@ export default function Sonorizacion() {
 
           {/* CTA */}
           <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
-            <h2 className="text-3xl lg:text-4xl font-black mb-4">🔊 Sonorización profesional para tu espacio</h2>
+            <h2 className="text-3xl lg:text-4xl font-black mb-4 flex items-center justify-center gap-3">
+              <Volume2 className="w-8 h-8" />
+              Sonorización profesional para tu espacio
+            </h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
               Consulta gratuita sin compromiso. Diseñamos el sistema de sonido adecuado a tu local, negocio o comunidad.
             </p>
