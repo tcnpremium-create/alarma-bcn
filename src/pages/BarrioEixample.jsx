@@ -4,10 +4,21 @@ import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function BarrioEixample() {
   return (
     <div className="min-h-screen bg-white">
+      <LocalitySEO
+        city="Eixample"
+        title="Alarmas en el Eixample (Barcelona) | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en el barrio del Eixample, Barcelona. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Eixample, instalación alarmas Eixample Barcelona, sistemas seguridad Eixample, cámaras Eixample, videovigilancia Eixample"
+        canonicalUrl="https://alarmasenbarcelona.com/BarrioEixample"
+        lat={41.3888}
+        lng={2.1590}
+        pageUrl="https://alarmasenbarcelona.com/BarrioEixample"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">

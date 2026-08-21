@@ -4,10 +4,21 @@ import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, MapPin, Phone, CheckCircle } from "lucide-react";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function ElPratPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <LocalitySEO
+        city="El Prat de Llobregat"
+        title="Alarmas en El Prat de Llobregat | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en El Prat de Llobregat. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas El Prat de Llobregat, instalación alarmas El Prat, sistemas seguridad El Prat, cámaras El Prat, videovigilancia El Prat"
+        canonicalUrl="https://alarmasenbarcelona.com/ElPrat"
+        lat={41.3253}
+        lng={2.0958}
+        pageUrl="https://alarmasenbarcelona.com/ElPrat"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2642] relative overflow-hidden">

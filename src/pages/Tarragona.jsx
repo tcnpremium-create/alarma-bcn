@@ -4,10 +4,21 @@ import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function Tarragona() {
   return (
     <div className="min-h-screen bg-white">
+      <LocalitySEO
+        city="Tarragona"
+        title="Alarmas en Tarragona | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en Tarragona. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Tarragona, instalación alarmas Tarragona, sistemas seguridad Tarragona, cámaras Tarragona, videovigilancia Tarragona, alarma negocio Tarragona"
+        canonicalUrl="https://alarmasenbarcelona.com/Tarragona"
+        lat={41.1189}
+        lng={1.2445}
+        pageUrl="https://alarmasenbarcelona.com/Tarragona"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">

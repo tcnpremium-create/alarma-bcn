@@ -4,10 +4,21 @@ import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, MapPin, Phone } from "lucide-react";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function ViladecansPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <LocalitySEO
+        city="Viladecans"
+        title="Alarmas en Viladecans | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en Viladecans. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Viladecans, instalación alarmas Viladecans, sistemas seguridad Viladecans, cámaras Viladecans, videovigilancia Viladecans"
+        canonicalUrl="https://alarmasenbarcelona.com/Viladecans"
+        lat={41.3153}
+        lng={2.0192}
+        pageUrl="https://alarmasenbarcelona.com/Viladecans"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2642]">

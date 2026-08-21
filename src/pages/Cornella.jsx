@@ -1,17 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, Clock, MapPin, Phone, Mail, CheckCircle } from "lucide-react";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function CornellaPage() {
-  useEffect(() => {
-    document.title = "Alarmas en Cornellà de Llobregat | Instalación Profesional 24/7";
-  }, []);
-
   return (
     <div className="min-h-screen bg-gray-50">
+        <LocalitySEO
+          city="Cornellà de Llobregat"
+          title="Alarmas en Cornellà de Llobregat | Instalación Profesional 24/7"
+          description="Instalación de alarmas y cámaras de seguridad en Cornellà de Llobregat. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+          keywords="alarmas Cornellà, instalación alarmas Cornellà de Llobregat, sistemas seguridad Cornellà, cámaras Cornellà, videovigilancia Cornellà"
+          canonicalUrl="https://alarmasenbarcelona.com/Cornella"
+          lat={41.3564}
+          lng={2.0700}
+          pageUrl="https://alarmasenbarcelona.com/Cornella"
+        />
         <Navbar />
         
         {/* Hero Local */}

@@ -4,10 +4,21 @@ import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, MapPin, Phone } from "lucide-react";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function CastelldefelsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <LocalitySEO
+        city="Castelldefels"
+        title="Alarmas en Castelldefels | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en Castelldefels. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Castelldefels, instalación alarmas Castelldefels, sistemas seguridad Castelldefels, cámaras Castelldefels, videovigilancia Castelldefels"
+        canonicalUrl="https://alarmasenbarcelona.com/Castelldefels"
+        lat={41.2833}
+        lng={1.9750}
+        pageUrl="https://alarmasenbarcelona.com/Castelldefels"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2642]">

@@ -4,10 +4,21 @@ import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function Girona() {
   return (
     <div className="min-h-screen bg-white">
+      <LocalitySEO
+        city="Girona"
+        title="Alarmas en Girona | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en Girona. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Girona, instalación alarmas Girona, sistemas seguridad Girona, cámaras Girona, videovigilancia Girona, alarma negocio Girona"
+        canonicalUrl="https://alarmasenbarcelona.com/Girona"
+        lat={41.9794}
+        lng={2.8214}
+        pageUrl="https://alarmasenbarcelona.com/Girona"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">

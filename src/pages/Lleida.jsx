@@ -4,10 +4,21 @@ import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function Lleida() {
   return (
     <div className="min-h-screen bg-white">
+      <LocalitySEO
+        city="Lleida"
+        title="Alarmas en Lleida | Instalación Sistemas Seguridad Profesional 24/7"
+        description="Instalación de alarmas y cámaras de seguridad en Lleida. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Lleida, instalación alarmas Lleida, sistemas seguridad Lleida, cámaras Lleida, videovigilancia Lleida, alarma negocio Lleida"
+        canonicalUrl="https://alarmasenbarcelona.com/Lleida"
+        lat={41.6176}
+        lng={0.6200}
+        pageUrl="https://alarmasenbarcelona.com/Lleida"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">
