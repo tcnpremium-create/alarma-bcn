@@ -80,7 +80,6 @@ const Promociones = lazy(() => import('./pages/Promociones'));
 const Sabadell = lazy(() => import('./pages/Sabadell'));
 const SantCugat = lazy(() => import('./pages/SantCugat'));
 const Servicios = lazy(() => import('./pages/Servicios'));
-const SistemasAlarma = lazy(() => import('./pages/SistemasAlarma'));
 const SobreNosotros = lazy(() => import('./pages/SobreNosotros'));
 const Tarragona = lazy(() => import('./pages/Tarragona'));
 const Terrassa = lazy(() => import('./pages/Terrassa'));
@@ -112,7 +111,6 @@ export const PAGES = {
     "Sabadell": Sabadell,
     "SantCugat": SantCugat,
     "Servicios": Servicios,
-    "SistemasAlarma": SistemasAlarma,
     "SobreNosotros": SobreNosotros,
     "Tarragona": Tarragona,
     "Terrassa": Terrassa,

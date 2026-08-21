@@ -215,7 +215,7 @@ const ChatWidget = () => {
     {
       icon: BookOpen,
       label: "Ver Catálogo",
-      action: () => { window.location.href = "/SistemasAlarma"; },
+      action: () => { window.location.href = "/alarmas-barcelona"; },
       type: "action",
     },
     {

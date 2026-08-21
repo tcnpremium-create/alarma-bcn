@@ -12,7 +12,7 @@ const ARTICLES = [
     title: "Alarmas sin cuotas mensuales en Barcelona: ¿Es posible?",
     category: "Alarmas · 4 min lectura",
     excerpt: "Te explicamos cómo funcionan los sistemas de alarma sin permanencia y sin cuotas mensuales que instalamos en Premium Tech Security.",
-    link: "/SistemasAlarma",
+    link: "/alarmas-barcelona",
   },
   {
     title: "Las mejores cámaras de seguridad para comunidades de vecinos en 2026",

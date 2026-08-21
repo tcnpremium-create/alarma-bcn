@@ -31,7 +31,6 @@ const CamarasGirona = lazy(() => import('./pages/CamarasGirona'));
 const CamarasTarragona = lazy(() => import('./pages/CamarasTarragona'));
 const CamarasLleida = lazy(() => import('./pages/CamarasLleida'));
 const Videoporteros = lazy(() => import('./pages/Videoporteros'));
-const SistemasAlarma = lazy(() => import('./pages/SistemasAlarma'));
 const ControlAccesos = lazy(() => import('./pages/ControlAccesos'));
 const Sonorizacion = lazy(() => import('./pages/Sonorizacion'));
 const RedesInformaticas = lazy(() => import('./pages/RedesInformaticas'));
@@ -111,7 +110,6 @@ const AuthenticatedApp = () => {
         <Route path="/camaras-lleida" element={<LayoutWrapper currentPageName="CamarasLleida"><CamarasLleida /></LayoutWrapper>} />
         <Route path="/videoporteros" element={<LayoutWrapper currentPageName="Videoporteros"><Videoporteros /></LayoutWrapper>} />
         {/* Kebab-case aliases — misma página, canónica en la URL PascalCase hasta migración completa */}
-        <Route path="/sistemas-alarma" element={<LayoutWrapper currentPageName="SistemasAlarma"><SistemasAlarma /></LayoutWrapper>} />
         <Route path="/control-accesos" element={<LayoutWrapper currentPageName="ControlAccesos"><ControlAccesos /></LayoutWrapper>} />
         <Route path="/sonorizacion" element={<LayoutWrapper currentPageName="Sonorizacion"><Sonorizacion /></LayoutWrapper>} />
         <Route path="/redes-informaticas" element={<LayoutWrapper currentPageName="RedesInformaticas"><RedesInformaticas /></LayoutWrapper>} />
@@ -123,6 +121,9 @@ const AuthenticatedApp = () => {
         {/* Redirect: Videovigilancia se fusionó con Cámaras de Seguridad para evitar contenido duplicado (misma intención de búsqueda) */}
         <Route path="/videovigilancia" element={<Navigate to="/camaras-barcelona" replace />} />
         <Route path="/Videovigilancia" element={<Navigate to="/camaras-barcelona" replace />} />
+        {/* Redirect: Sistemas de Alarma se fusionó con Alarmas Barcelona por el mismo motivo (mismo H1, mismo AlarmKitsGrid, keywords solapadas) */}
+        <Route path="/sistemas-alarma" element={<Navigate to="/alarmas-barcelona" replace />} />
+        <Route path="/SistemasAlarma" element={<Navigate to="/alarmas-barcelona" replace />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Suspense>

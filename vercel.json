@@ -18,6 +18,16 @@
       "source": "/Videovigilancia",
       "destination": "/camaras-barcelona",
       "permanent": true
+    },
+    {
+      "source": "/sistemas-alarma",
+      "destination": "/alarmas-barcelona",
+      "permanent": true
+    },
+    {
+      "source": "/SistemasAlarma",
+      "destination": "/alarmas-barcelona",
+      "permanent": true
     }
   ],
   "rewrites": [

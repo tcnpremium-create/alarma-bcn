@@ -25,9 +25,7 @@ const PAGE_NAMES = {
   "/ElPrat": "Servicios El Prat",
   "/Viladecans": "Servicios Viladecans",
   "/ControlAccesos": "Control de Accesos",
-  "/Videovigilancia": "Videovigilancia",
   "/MantenimientoSoporte": "Mantenimiento y Soporte",
-  "/SistemasAlarma": "Sistemas de Alarma",
 };
 
 const STORAGE_KEY = "pts_tracked_phone";
