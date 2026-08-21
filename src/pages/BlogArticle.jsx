@@ -13,7 +13,7 @@ import AdSenseDisplay from '@/components/ads/AdSenseDisplay';
 
 const allArticles = { ...originalArticlesData, ...newArticlesData };
 
-const SITE_URL = 'https://www.alarmasenbarcelona.com';
+const SITE_URL = 'https://alarmasenbarcelona.com';
 const LOGO_URL = 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/b61d56d39_UNETEALIMPERIO.png';
 
 function buildSchema(slug, article, seoData) {

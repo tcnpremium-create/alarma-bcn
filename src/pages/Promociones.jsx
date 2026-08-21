@@ -166,7 +166,7 @@ export default function Promociones() {
           name="description"
           content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 699€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
         />
-        <link rel="canonical" href="https://www.alarmasenbarcelona.com/Promociones" />
+        <link rel="canonical" href="https://alarmasenbarcelona.com/Promociones" />
         <script type="application/ld+json">{JSON.stringify(promoSchema)}</script>
       </Helmet>
 
