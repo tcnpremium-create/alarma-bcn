@@ -85,8 +85,8 @@ function buildSchema(slug, article, seoData) {
       ],
       'aggregateRating': {
         '@type': 'AggregateRating',
-        'ratingValue': '4.9',
-        'reviewCount': '127',
+        'ratingValue': '4.8',
+        'reviewCount': '19',
         'bestRating': '5',
       },
     },

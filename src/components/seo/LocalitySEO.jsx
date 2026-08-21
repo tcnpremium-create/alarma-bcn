@@ -34,7 +34,7 @@ export default function LocalitySEO({
       "@type": "PostalAddress",
       "streetAddress": "Carrer de Coll i Vehí, 141",
       "addressLocality": "Barcelona",
-      "postalCode": "08020",
+      "postalCode": "08026",
       "addressRegion": province,
       "addressCountry": "ES"
     },
@@ -73,8 +73,8 @@ export default function LocalitySEO({
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "127",
+      "ratingValue": "4.8",
+      "reviewCount": "19",
       "bestRating": "5",
       "worstRating": "1"
     },

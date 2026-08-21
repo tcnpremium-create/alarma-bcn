@@ -23,7 +23,7 @@ const sobreSchema = {
     "@type": "PostalAddress",
     "streetAddress": "Carrer de Coll i Vehí, 141",
     "addressLocality": "Barcelona",
-    "postalCode": "08020",
+    "postalCode": "08026",
     "addressRegion": "Catalunya",
     "addressCountry": "ES"
   },
