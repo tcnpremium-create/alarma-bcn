@@ -6,10 +6,21 @@ import { createPageUrl } from "../utils";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
+import LocalitySEO from "../components/seo/LocalitySEO";
 
 export default function Mataro() {
   return (
     <div className="min-h-screen bg-white">
+      <LocalitySEO
+        city="Mataró"
+        title="Alarmas y Cámaras de Seguridad en Mataró | Premium Tech Security"
+        description="Instalación de alarmas y cámaras de seguridad en Mataró. Sin cuotas. Instalación incluida. Presupuesto gratis 638 10 99 47."
+        keywords="alarmas Mataró, instalación alarmas Mataró, cámaras seguridad Mataró, videovigilancia Mataró, sistemas seguridad Mataró"
+        canonicalUrl="https://alarmasenbarcelona.com/Mataro"
+        lat={41.5381}
+        lng={2.4445}
+        pageUrl="https://alarmasenbarcelona.com/Mataro"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">

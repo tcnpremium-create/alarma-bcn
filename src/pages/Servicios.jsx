@@ -235,8 +235,8 @@ export default function Servicios() {
               "@type": "PostalAddress",
               "addressLocality": "Barcelona",
               "addressRegion": "Catalunya",
-              "postalCode": "08001",
-              "streetAddress": "Coll i Vehi, 141"
+              "postalCode": "08020",
+              "streetAddress": "Carrer de Coll i Vehí, 141"
             }
           }
         }
@@ -246,9 +246,9 @@ export default function Servicios() {
     "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Coll i Vehi, 141",
+      "streetAddress": "Carrer de Coll i Vehí, 141",
       "addressLocality": "Barcelona",
-      "postalCode": "08001",
+      "postalCode": "08020",
       "addressCountry": "ES"
     }
   };

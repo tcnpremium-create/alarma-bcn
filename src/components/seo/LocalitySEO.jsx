@@ -32,9 +32,9 @@ export default function LocalitySEO({
     "priceRange": "400€ - 3000€",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Coll i Vehi, 141",
+      "streetAddress": "Carrer de Coll i Vehí, 141",
       "addressLocality": "Barcelona",
-      "postalCode": "08001",
+      "postalCode": "08020",
       "addressRegion": province,
       "addressCountry": "ES"
     },

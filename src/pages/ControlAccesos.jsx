@@ -31,7 +31,8 @@ export default function ControlAccesos() {
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
         title="Control de Accesos Biométrico Barcelona | Huella Dactilar y Facial"
-        description="Control de accesos en Barcelona. Videoporteros, cerraduras inteligentes y lectores biométricos. Apertura remota desde móvil. Presupuesto gratis. Tel: 638 10 99 47"
+        description="Control de accesos en Barcelona. Videoporteros, cerraduras inteligentes y lectores biométricos. Apertura remota desde móvil. Presupuesto gratis 638 10 99 47."
+        canonicalUrl="https://alarmasenbarcelona.com/control-accesos"
         keywords="control accesos Barcelona, control biométrico, huella dactilar, reconocimiento facial, tarjetas RFID, control accesos oficinas, seguridad empresas Barcelona"
         ogImage="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0654e8483_ChatGPTImage26feb202612_37_13.png"
         schema={{

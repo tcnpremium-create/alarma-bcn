@@ -13,7 +13,7 @@ const sobreSchema = {
   "@type": "LocalBusiness",
   "name": "Premium Tech Security",
   "description": "Empresa especializada en instalación de sistemas de seguridad en Barcelona y Catalunya. Más de 30 años de experiencia en alarmas, cámaras, videoporteros y control de accesos.",
-  "url": "https://www.premiumtechsecurity.es/SobreNosotros",
+  "url": "https://alarmasenbarcelona.com/SobreNosotros",
   "telephone": "+34638109947",
   "email": "tcnpremium@gmail.com",
   "foundingDate": "1994",
@@ -21,7 +21,9 @@ const sobreSchema = {
   "priceRange": "€€",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Carrer de Coll i Vehí, 141",
     "addressLocality": "Barcelona",
+    "postalCode": "08020",
     "addressRegion": "Catalunya",
     "addressCountry": "ES"
   },
@@ -84,7 +86,7 @@ export default function SobreNosotros() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Sobre Nosotros | Premium Tech Security - Empresa de Seguridad en Barcelona</title>
-        <meta name="description" content="Premium Tech Security — Instaladores de alarmas y cámaras de seguridad en Barcelona con 15+ años de experiencia. Sin cuotas. Tel: 638 10 99 47" />
+        <meta name="description" content="Premium Tech Security — Instaladores certificados de alarmas y cámaras en Barcelona con más de 15 años de experiencia. Sin cuotas mensuales. Tel: 638 10 99 47." />
         <link rel="canonical" href="https://www.premiumtechsecurity.es/SobreNosotros" />
         <script type="application/ld+json">{JSON.stringify(sobreSchema)}</script>
       </Helmet>

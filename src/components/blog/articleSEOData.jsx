@@ -286,4 +286,10 @@ export const articleSEOData = {
       { q: '¿Es seguro controlar la alarma desde el móvil?', a: 'Sí, si el sistema usa cifrado end-to-end (AES-128 mínimo) y autenticación en dos factores (2FA). AJAX usa cifrado de grado militar y 2FA obligatorio. Activa siempre el 2FA y usa contraseñas únicas para la app de tu alarma.' },
     ],
   },
+
+  'comparativa-ajax-hikvision': {
+    seoTitle: 'Comparativa Ajax vs Hikvision 2026 | Premium Tech Security',
+    metaDescription: 'Comparativa Ajax vs Hikvision 2026. Diferencias entre sistemas de alarma y cámaras de seguridad. Cuál es mejor para hogar y negocio en Barcelona.',
+    keywords: ['Ajax vs Hikvision', 'comparativa Ajax Hikvision', 'mejor alarma Barcelona 2026', 'Ajax Systems Barcelona', 'Hikvision Barcelona', 'alarmas y cámaras Barcelona'],
+  },
 };

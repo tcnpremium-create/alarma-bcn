@@ -202,7 +202,7 @@ export default function ComparativaAlarmas() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Comparativa de Alarmas en Barcelona 2026 | Premium Tech Security</title>
-        <meta name="description" content="Compara AJAX, Hikvision, Verisure y Paradox: precios, características, app y contratos. Elige la mejor alarma para tu hogar o negocio en Barcelona." />
+        <meta name="description" content="Comparativa de sistemas de alarma en Barcelona 2026. Ajax vs Hikvision vs Verisure. Sin cuotas mensuales. Instalación incluida. Presupuesto gratis." />
         <link rel="canonical" href="https://www.premiumtechsecurity.es/ComparativaAlarmas" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>

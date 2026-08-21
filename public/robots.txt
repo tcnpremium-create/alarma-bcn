@@ -4,4 +4,7 @@ Disallow: /admin
 Disallow: /AdminLeads
 Disallow: /AreaClientes
 Disallow: /api/
+Disallow: /descargas
+Disallow: /descargas/
+Disallow: /inicio
 Sitemap: https://alarmasenbarcelona.com/sitemap.xml
