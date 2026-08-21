@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
-import HeroContactModal from "./HeroContactModal";
 import CameraKitsGrid from "./CameraKitsGrid";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
 
@@ -63,8 +63,9 @@ const BENEFITS = [
 ];
 
 export default function CameraCityTemplate({ city, seoTitle, seoDescription, seoPath, intro, faqs }) {
-  const [showModal, setShowModal] = useState(false);
+  const { openDrawer } = useLeadDrawer();
   const [activeTab, setActiveTab] = useState(0);
+  const openQuote = () => openDrawer(`Cámaras de seguridad en ${city}`);
 
   const defaultFaqs = [
     {
@@ -133,7 +134,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
             {intro || `Videovigilancia HD 4K para hogar, negocio y comunidades. Sin cuotas mensuales. Grabador local incluido. Presupuesto gratis en 24h.`}
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 380 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 24px", border: "none", cursor: "pointer" }}>
+            <button onClick={() => openQuote()} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 24px", border: "none", cursor: "pointer" }}>
               Solicitar presupuesto de cámaras →
             </button>
             <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "13px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
@@ -144,7 +145,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       </section>
 
       {/* ── KITS DE CÁMARAS ── */}
-      <CameraKitsGrid city={city} onRequestQuote={() => setShowModal(true)} />
+      <CameraKitsGrid city={city} onRequestQuote={() => openQuote()} />
 
       {/* ── TODO LO QUE INSTALAMOS ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
@@ -268,7 +269,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </div>
 
           <div style={{ textAlign: "center", marginTop: 28 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
+            <button onClick={() => openQuote()} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
               Ver precios y solicitar presupuesto →
             </button>
           </div>
@@ -319,7 +320,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 8px" }}>¿Necesitas Cámaras de Seguridad en {city}?</h2>
           <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 15, margin: "0 0 28px" }}>Presupuesto gratuito · Instalación incluida · Sin cuotas mensuales</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
+            <button onClick={() => openQuote()} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
               Solicitar presupuesto de cámaras →
             </button>
             <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
@@ -330,11 +331,6 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       </section>
 
       <FooterSection />
-      <HeroContactModal
-        open={showModal}
-        defaultServicio={`Cámaras en ${city}`}
-        onClose={() => setShowModal(false)}
-      />
     </div>
   );
 }

@@ -53,7 +53,11 @@ function PhotoCard({ title, desc, href, mainImg, mainAlt, detailImg, detailAlt }
         transition: "box-shadow 0.25s ease, transform 0.25s ease",
       }}
     >
-      <div style={{ position: "relative", height: 200, overflow: "hidden", background: "#0A0A1A", borderRadius: "20px 20px 0 0" }}>
+      {/* Zona de imagen: la foto de detalle vive DENTRO de este contenedor
+          recortado, como chip anclado a la esquina de la foto principal —
+          nunca puede colarse sobre el título/descripción de abajo, a
+          cualquier ancho de pantalla. */}
+      <div style={{ position: "relative", height: 168, overflow: "hidden", background: "#0A0A1A", borderRadius: "20px 20px 0 0" }}>
         <img
           src={mainImg}
           alt={mainAlt}
@@ -65,18 +69,17 @@ function PhotoCard({ title, desc, href, mainImg, mainAlt, detailImg, detailAlt }
           className="group-hover:scale-105"
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(10,10,26,0.45) 0%, transparent 45%)" }} />
+        <div style={{
+          position: "absolute", right: 10, bottom: 10,
+          width: 56, height: 56, borderRadius: 12, overflow: "hidden",
+          border: "2.5px solid #fff", boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+        }}>
+          <img src={detailImg} alt={detailAlt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
       </div>
-      {/* Imagen de detalle superpuesta — fuera del contenedor recortado para que no se corte */}
-      <div style={{
-        position: "absolute", left: 16, top: 172,
-        width: 80, height: 80, borderRadius: 14, overflow: "hidden",
-        border: "3px solid #fff", boxShadow: "0 6px 16px rgba(0,0,0,0.22)",
-      }}>
-        <img src={detailImg} alt={detailAlt} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-      </div>
-      <div style={{ padding: "40px 20px 22px", borderRadius: "0 0 20px 20px", overflow: "hidden" }}>
-        <h3 style={{ fontWeight: 900, fontSize: 15, letterSpacing: "0.03em", color: "#0A0A1A", marginBottom: 8 }}>{title}</h3>
-        <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.55, margin: "0 0 14px", minHeight: 40 }}>{desc}</p>
+      <div style={{ padding: "16px 18px 18px", borderRadius: "0 0 20px 20px", overflow: "hidden" }}>
+        <h3 style={{ fontWeight: 900, fontSize: 15, letterSpacing: "0.03em", color: "#0A0A1A", marginBottom: 6 }}>{title}</h3>
+        <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.5, margin: "0 0 12px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{desc}</p>
         <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 800, color: "#E53E3E" }}>
           Ver soluciones
           <ArrowRight size={14} className="group-hover:translate-x-1" style={{ transition: "transform 0.2s ease" }} />

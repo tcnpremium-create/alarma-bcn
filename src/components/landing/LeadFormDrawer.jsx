@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import LeadCaptureForm from "./LeadCaptureForm";
 
-export default function LeadFormDrawer({ open, onClose }) {
+export default function LeadFormDrawer({ open, service, onClose }) {
   useEffect(() => {
     if (!open) return;
     const prevOverflow = document.body.style.overflow;
@@ -29,8 +29,8 @@ export default function LeadFormDrawer({ open, onClose }) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0.6 }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            className="relative w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl max-h-[92vh] overflow-y-auto pb-10 sm:pb-8"
-            style={{ background: "#0A1120", border: "1px solid rgba(255,255,255,0.08)" }}
+            className="relative w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl max-h-[92vh] overflow-y-auto"
+            style={{ background: "#0A1120", border: "1px solid rgba(255,255,255,0.08)", paddingBottom: "calc(32px + env(safe-area-inset-bottom, 0px))" }}
           >
             <div className="sm:hidden flex justify-center pt-3 pb-1">
               <div style={{ width: 40, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.2)" }} />
@@ -51,7 +51,7 @@ export default function LeadFormDrawer({ open, onClose }) {
               <p style={{ fontSize: 13.5, color: "#94A3B8", margin: "0 0 24px", textAlign: "center" }}>
                 Sin compromiso. Te contactamos en menos de 24h.
               </p>
-              <LeadCaptureForm onSuccess={() => setTimeout(onClose, 2200)} />
+              <LeadCaptureForm service={service} onSuccess={() => setTimeout(onClose, 2200)} />
             </div>
           </motion.div>
         </div>

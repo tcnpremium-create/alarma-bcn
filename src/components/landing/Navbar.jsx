@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
+import { getServiceForPath } from "@/lib/serviceByPath";
 
 const SERVICE_GROUPS = [
   {
@@ -47,6 +48,22 @@ export default function Navbar() {
   const mobileMenuRef = useRef(null);
   const servicesRef = useRef(null);
   const { openDrawer } = useLeadDrawer();
+  const { pathname } = useLocation();
+  const currentService = getServiceForPath(pathname);
+
+  // Único destino de "Presupuesto" en toda la web: si la página ya tiene su
+  // propio formulario embebido (id="contacto" — Sonorización, Redes,
+  // Cerraduras, páginas de ciudad...) el CTA global desplaza hasta ahí en
+  // vez de abrir un segundo formulario distinto encima. Solo abre el drawer
+  // en páginas que no tienen formulario propio (Home, Videoporteros...).
+  const handlePresupuesto = () => {
+    const contactSection = document.getElementById("contacto");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      openDrawer(currentService);
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -146,11 +163,11 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-              <a href="tel:+34615774532" aria-label="Llamar" className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${scrolled ? "text-[#0A1628]" : "text-white"}`}>
+              <a href="tel:+34638109947" aria-label="Llamar" className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${scrolled ? "text-[#0A1628]" : "text-white"}`}>
                 <Phone className="w-4 h-4 text-[#E63946]" />
                 Llamar
               </a>
-              <button onClick={openDrawer} className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
+              <button onClick={handlePresupuesto} className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
                 Presupuesto →
               </button>
             </div>
@@ -232,14 +249,14 @@ export default function Navbar() {
                   </li>
                 ))}
                 <li className="pt-4 border-t border-gray-100 mt-2">
-                  <a href="tel:+34615774532" className="flex items-center gap-2 text-[#0A1628] font-semibold py-3 px-2">
+                  <a href="tel:+34638109947" className="flex items-center gap-2 text-[#0A1628] font-semibold py-3 px-2">
                     <Phone className="w-4 h-4 text-[#E63946]" />
                     Llamar
                   </a>
                 </li>
                 <li>
                   <button
-                    onClick={() => { setMobileOpen(false); openDrawer(); }}
+                    onClick={() => { setMobileOpen(false); handlePresupuesto(); }}
                     className="block w-full bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
                   >
                     Presupuesto →

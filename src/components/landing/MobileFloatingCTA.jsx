@@ -1,31 +1,23 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-
-// Mensaje de WhatsApp contextual según el servicio de la página activa,
-// para que el usuario no tenga que reescribir lo que ya nos está pidiendo.
-function getContextualMessage(pathname) {
-  const path = pathname.toLowerCase();
-  if (path.startsWith("/camaras-")) return "Hola, estoy interesado en instalar cámaras de seguridad.";
-  if (path.startsWith("/alarmas-")) return "Hola, estoy interesado en instalar una alarma.";
-  if (path.startsWith("/sonorizacion")) return "Hola, necesito un presupuesto de sonorización.";
-  if (path.startsWith("/redes-informaticas")) return "Hola, necesito una instalación de red.";
-  if (path.startsWith("/cerraduras")) return "Hola, estoy interesado en una cerradura inteligente.";
-  if (path.startsWith("/videoporteros")) return "Hola, estoy interesado en un videoportero.";
-  if (path.startsWith("/control-accesos")) return "Hola, estoy interesado en un sistema de control de accesos.";
-  return "Hola, me gustaría recibir información sobre vuestros servicios.";
-}
+import { getWhatsappMessage } from "@/lib/serviceByPath";
 
 export default function MobileFloatingCTA() {
   const { pathname } = useLocation();
-  const href = `https://wa.me/34638109947?text=${encodeURIComponent(getContextualMessage(pathname))}`;
+  const href = `https://wa.me/34638109947?text=${encodeURIComponent(getWhatsappMessage(pathname))}`;
 
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center justify-center gap-2 py-3.5 text-white font-bold text-base"
-      style={{ backgroundColor: "#25D366", boxShadow: "0 -2px 12px rgba(0,0,0,0.15)" }}
+      className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center justify-center gap-2 text-white font-bold text-base"
+      style={{
+        backgroundColor: "#25D366",
+        boxShadow: "0 -2px 12px rgba(0,0,0,0.15)",
+        paddingTop: 14,
+        paddingBottom: "calc(14px + env(safe-area-inset-bottom, 0px))",
+      }}
       aria-label="WhatsApp"
     >
       <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white">

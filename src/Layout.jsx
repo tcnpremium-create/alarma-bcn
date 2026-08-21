@@ -8,7 +8,7 @@ import { LeadDrawerProvider, useLeadDrawer } from "@/context/LeadDrawerContext";
 
 function LayoutInner({ children }) {
   const location = useLocation();
-  const { open, closeDrawer } = useLeadDrawer();
+  const { open, service, closeDrawer } = useLeadDrawer();
   useHubSpotTracking();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function LayoutInner({ children }) {
       `}</style>
       {children}
       {showFloatingCTA && <MobileFloatingCTA />}
-      <LeadFormDrawer open={open} onClose={closeDrawer} />
+      <LeadFormDrawer open={open} service={service} onClose={closeDrawer} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ChatWidget from "../components/chatbot/ChatWidget";
-import ContactForm from "../components/landing/ContactForm";
+import LeadCaptureForm from "../components/landing/LeadCaptureForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { createPageUrl } from "@/utils";
@@ -166,28 +166,28 @@ export default function ControlAccesos() {
             .magic-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
           `}</style>
 
-          {/* CTA — red gradient kept as-is */}
-          <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
-            <h2 className="text-3xl lg:text-4xl font-black mb-4 flex items-center justify-center gap-3">
-              <Fingerprint className="w-8 h-8" />
+          {/* CTA — compacto: rojo como acento de acción, no como bloque que ocupa la pantalla */}
+          <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-6 sm:p-10 shadow-xl">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+              <Fingerprint className="w-6 h-6 flex-shrink-0" />
               Control de accesos biométrico profesional
             </h2>
-            <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-white/90 mb-5 max-w-xl mx-auto">
               Consulta gratuita sin compromiso. Diseñamos el sistema perfecto para tu empresa u oficina.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 onClick={scrollToContact}
-                className="bg-white text-[#E63946] hover:bg-gray-100 px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+                className="bg-white text-[#E63946] hover:bg-gray-100 px-6 py-3 h-auto rounded-lg font-bold text-sm sm:text-base flex items-center justify-center gap-2"
               >
-                Solicitar presupuesto gratis
-                <ArrowRight className="w-5 h-5" />
+                Solicitar presupuesto
+                <ArrowRight className="w-4 h-4" />
               </Button>
               <a
                 href="tel:+34638109947"
-                className="bg-white/20 hover:bg-white/30 text-white px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+                className="bg-white/20 hover:bg-white/30 text-white px-6 py-3 rounded-lg font-bold text-sm sm:text-base flex items-center justify-center gap-2"
               >
-                <Phone className="w-5 h-5" />
+                <Phone className="w-4 h-4" />
                 Llamar
               </a>
             </div>
@@ -206,7 +206,9 @@ export default function ControlAccesos() {
               Cuéntanos tu proyecto y te diseñaremos la mejor solución. Presupuesto personalizado sin compromiso.
             </p>
           </div>
-          <ContactForm />
+          <div className="max-w-lg mx-auto">
+            <LeadCaptureForm service="Control de accesos" />
+          </div>
         </div>
       </div>
 

@@ -13,10 +13,6 @@ const css = `
     z-index: 1;
   }
   @keyframes c-rec-blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
-  @keyframes c-scan {
-    0%   { top: 0%; }
-    100% { top: 100%; }
-  }
   @keyframes c-emitter {
     0%,100%{ box-shadow:0 0 6px 2px rgba(239,68,68,.9),0 0 14px 4px rgba(239,68,68,.4) }
     50%    { box-shadow:0 0 3px 1px rgba(239,68,68,.5),0 0 7px 2px rgba(239,68,68,.2) }
@@ -91,12 +87,6 @@ export default function HomeCamerasBlock({ onOpenModal }) {
 
       {/* Subtle dark grid */}
       <div style={{ position:"absolute",inset:0,zIndex:0,pointerEvents:"none",backgroundImage:"linear-gradient(rgba(239,68,68,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(239,68,68,0.025) 1px,transparent 1px)",backgroundSize:"48px 48px" }} />
-
-      {/* ── LASER SCANNER ── */}
-      <div aria-hidden="true" style={{ position:"absolute",inset:0,pointerEvents:"none",zIndex:2 }}>
-        <div style={{ position:"absolute",left:0,right:0,height:3,background:"linear-gradient(to right,transparent 0%,rgba(239,68,68,.18) 5%,rgba(239,68,68,.60) 25%,rgba(239,68,68,.90) 50%,rgba(239,68,68,.60) 75%,rgba(239,68,68,.18) 95%,transparent 100%)",filter:"blur(1px)",boxShadow:"0 0 20px 5px rgba(239,68,68,.35),0 0 45px 10px rgba(239,68,68,.12)",animation:"c-scan 4.5s ease-in-out infinite alternate" }} />
-        <div style={{ position:"absolute",left:0,right:0,height:10,background:"linear-gradient(to right,transparent 5%,rgba(239,68,68,.04) 20%,rgba(239,68,68,.11) 50%,rgba(239,68,68,.04) 80%,transparent 95%)",filter:"blur(5px)",animation:"c-scan 4.5s ease-in-out infinite alternate" }} />
-      </div>
 
       {/* REC badge */}
       <div aria-hidden="true" style={{ position:"absolute",top:14,right:16,zIndex:5,display:"flex",alignItems:"center",gap:5,background:"rgba(0,0,0,.65)",backdropFilter:"blur(6px)",border:"1px solid rgba(239,68,68,.45)",borderRadius:6,padding:"4px 10px" }}>

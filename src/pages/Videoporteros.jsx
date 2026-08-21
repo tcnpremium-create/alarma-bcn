@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import HeroContactModal from "../components/landing/HeroContactModal";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -90,7 +90,8 @@ const FAQS = [
 ];
 
 export default function Videoporteros() {
-  const [showModal, setShowModal] = useState(false);
+  const { openDrawer } = useLeadDrawer();
+  const openQuote = () => openDrawer("Videoportero");
 
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
@@ -135,7 +136,7 @@ export default function Videoporteros() {
             <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>3 años</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Garantía</div></div>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 16 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: "16px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+            <button onClick={openQuote} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: "16px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
               Solicitar presupuesto gratis <ChevronRight className="w-5 h-5" />
             </button>
             <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "14px 26px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
@@ -229,7 +230,7 @@ export default function Videoporteros() {
 
           </div>
           <div style={{ textAlign: "center", marginTop: 32 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
+            <button onClick={openQuote} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
               ¿No sabes qué marca necesitas? Te asesoramos gratis →
             </button>
           </div>
@@ -339,7 +340,7 @@ export default function Videoporteros() {
                   ))}
                 </ul>
                 <div style={{ marginTop: 16, padding: "10px 0", borderTop: "1px solid rgba(255,255,255,0.08)", fontSize: 13, fontWeight: 700, color: "#E53E3E" }}>{s.price}</div>
-                <button onClick={() => setShowModal(true)} style={{ display: "block", width: "100%", backgroundColor: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: 13, textAlign: "center", marginTop: 10, boxSizing: "border-box", border: "none", cursor: "pointer" }}>
+                <button onClick={openQuote} style={{ display: "block", width: "100%", backgroundColor: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 14, borderRadius: 50, padding: 13, textAlign: "center", marginTop: 10, boxSizing: "border-box", border: "none", cursor: "pointer" }}>
                   Solicitar presupuesto →
                 </button>
               </div>
@@ -400,7 +401,7 @@ export default function Videoporteros() {
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", marginBottom: 8 }}>¿Necesitas Videoportero o Control de Accesos en Barcelona?</h2>
           <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, marginBottom: 28 }}>Presupuesto gratuito · Instalación en 1 día · Garantía 3 años</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
+            <button onClick={openQuote} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
               Solicitar presupuesto gratis →
             </button>
             <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
@@ -411,7 +412,6 @@ export default function Videoporteros() {
       </section>
 
       <FooterSection />
-      <HeroContactModal open={showModal} onClose={() => setShowModal(false)} defaultServicio="Videoportero" />
     </div>
   );
 }
