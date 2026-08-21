@@ -80,7 +80,7 @@ export default function LocalitySEO({
     },
     "sameAs": [
       "https://www.instagram.com/premiumtechsecurity",
-      "https://www.facebook.com/premiumtechsecurity"
+      "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
     ]
   };
 
