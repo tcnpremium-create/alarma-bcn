@@ -61,7 +61,7 @@ export default function LocalitySEO({
         "closes": "14:00"
       }
     ],
-    "hasMap": `https://maps.google.com/?q=alarmas+seguridad+${encodeURIComponent(city)}`,
+    "hasMap": "https://maps.google.com/maps?cid=5715602764533889179",
     "serviceArea": {
       "@type": "GeoCircle",
       "geoMidpoint": lat && lng ? {
