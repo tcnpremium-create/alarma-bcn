@@ -73,7 +73,7 @@ export default function ControlAccesos() {
                 Control de Accesos Profesional con Tecnología Biométrica
               </h2>
               <p style={{ fontSize: "1.125rem", color: "#94A3B8", marginBottom: 16, lineHeight: 1.7 }}>
-                Instala sistemas profesionales de control de accesos que te permiten controlar quién entra, cuándo y a qué áreas de tu propiedad. Tecnología biométrica y electrónica de última generación: reconocimiento de huella dactilar, facial, códigos PIN y tarjetas RFID. Elimina las llaves perdidas y gestiona todos los accesos de forma centralizada desde un solo sistema de seguridad.
+                Instalamos sistemas de control electrónico de puertas para gestionar el control de entradas y salidas de tu propiedad: quién entra, cuándo y a qué áreas. Lectores biométricos y electrónicos de última generación: huella dactilar, reconocimiento facial, códigos PIN y tarjetas RFID. Elimina las llaves perdidas y gestiona todos los accesos de forma centralizada desde un solo sistema de seguridad.
               </p>
               <p style={{ fontSize: "1.125rem", color: "#94A3B8", marginBottom: 24, lineHeight: 1.7 }}>
                 Soluciones de control de accesos perfectas para todo tipo de instalaciones en Barcelona: oficinas corporativas, edificios de viviendas, comercios, centros comerciales, aparcamientos, naves industriales, fábricas, hospitales, clínicas y cualquier espacio donde necesites controlar y registrar quién entra y sale con máxima seguridad.

@@ -8,6 +8,16 @@
       "has": [{ "type": "host", "value": "www.alarmasenbarcelona.com" }],
       "destination": "https://alarmasenbarcelona.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/videovigilancia",
+      "destination": "/camaras-barcelona",
+      "permanent": true
+    },
+    {
+      "source": "/Videovigilancia",
+      "destination": "/camaras-barcelona",
+      "permanent": true
     }
   ],
   "rewrites": [

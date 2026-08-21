@@ -24,7 +24,7 @@ const ARTICLES = [
     title: "Cómo proteger tu negocio en Barcelona con videovigilancia 4K",
     category: "Negocios · 5 min lectura",
     excerpt: "Descubre los sistemas de videovigilancia profesional con IA que instalamos en comercios, oficinas y naves industriales de Barcelona.",
-    link: "/Videovigilancia",
+    link: "/camaras-barcelona",
   },
   {
     title: "Guía completa de alarmas para el hogar en Barcelona 2026",

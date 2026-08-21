@@ -17,10 +17,10 @@ export default function Cerraduras() {
 
   const tipos = [
     { icon: "🔑", title: "Cerraduras inteligentes", desc: "Sistemas de apertura electrónica para vivienda y negocio" },
+    { icon: "🔌", title: "Cerraduras electrónicas", desc: "Cerraduras con apertura eléctrica para puertas de viviendas y negocios" },
     { icon: "🛡️", title: "Cilindros de seguridad", desc: "Cilindros de alta seguridad para puertas de acceso" },
     { icon: "🔋", title: "Cilindros electrónicos", desc: "Apertura electrónica sin necesidad de llave física" },
-    { icon: "🚪", title: "Control de acceso", desc: "Integración con sistemas de control de accesos" },
-    { icon: "📱", title: "Apertura mediante móvil", desc: "Control de acceso desde el smartphone cuando el sistema lo permite" },
+    { icon: "📱", title: "Apertura mediante móvil", desc: "Abre tu puerta desde el smartphone, sin llave física" },
     { icon: "🏢", title: "Soluciones para negocios", desc: "Sistemas de cierre para locales, oficinas y comunidades" },
   ];
 
@@ -100,7 +100,7 @@ export default function Cerraduras() {
 
           <div style={{ marginBottom: 80, textAlign: "center" }}>
             <p style={{ color: "#94A3B8", fontSize: 14 }}>
-              ¿Quieres integrar tu cerradura con un sistema completo? Consulta también nuestra página de{" "}
+              ¿Necesitas gestionar el acceso de varias personas con tarjetas, códigos o lectores biométricos? Eso lo resuelve nuestra página de{" "}
               <Link to="/control-accesos" style={{ color: "#E63946", fontWeight: 700 }}>control de accesos</Link>.
             </p>
           </div>

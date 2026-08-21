@@ -84,7 +84,6 @@ const SistemasAlarma = lazy(() => import('./pages/SistemasAlarma'));
 const SobreNosotros = lazy(() => import('./pages/SobreNosotros'));
 const Tarragona = lazy(() => import('./pages/Tarragona'));
 const Terrassa = lazy(() => import('./pages/Terrassa'));
-const Videovigilancia = lazy(() => import('./pages/Videovigilancia'));
 const Viladecans = lazy(() => import('./pages/Viladecans'));
 
 
@@ -117,7 +116,6 @@ export const PAGES = {
     "SobreNosotros": SobreNosotros,
     "Tarragona": Tarragona,
     "Terrassa": Terrassa,
-    "Videovigilancia": Videovigilancia,
     "Viladecans": Viladecans,
 }
 

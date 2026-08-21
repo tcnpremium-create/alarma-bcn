@@ -10,10 +10,9 @@ const SERVICE_GROUPS = [
     links: [
       { label: "Cámaras de seguridad", href: "/camaras-barcelona" },
       { label: "Alarmas", href: "/alarmas-barcelona" },
-      { label: "Videovigilancia / CCTV", href: "/videovigilancia" },
       { label: "Videoporteros", href: "/videoporteros" },
       { label: "Control de accesos", href: "/control-accesos" },
-      { label: "Cerraduras", href: "/cerraduras" },
+      { label: "Cerraduras inteligentes", href: "/cerraduras" },
     ],
   },
   {

@@ -17,8 +17,8 @@ const SERVICES = [
   },
   {
     num: "02",
-    title: "Cámaras para Negocio",
-    desc: "Instalaciones profesionales para tiendas, oficinas y locales comerciales. Grabación continua 24/7, acceso multiusuario y alta resolución para identificar detalles con claridad.",
+    title: "Cámaras para Negocio y Empresa",
+    desc: "Instalaciones profesionales para tiendas, oficinas, empresas y locales comerciales. Grabación continua 24/7, acceso multiusuario y alta resolución para identificar detalles con claridad.",
     features: ["Resolución 4K Ultra HD para identificación de detalles", "Grabación continua 24/7 con grabador profesional", "Cámaras PTZ motorizadas con zoom óptico", "Acceso remoto multiusuario desde cualquier dispositivo", "Compatible con central receptora de alarmas", "Cumplimiento normativa RGPD incluido"],
   },
   {
@@ -35,9 +35,24 @@ const WHAT_WE_DO = [
   { icon: <Wifi className="w-5 h-5" />, title: "Cámara PTZ", desc: "Motorizada con zoom óptico 20x. Control remoto de pan, tilt y zoom." },
   { icon: <Sun className="w-5 h-5" />, title: "Visión Nocturna Color", desc: "Imagen en color incluso en oscuridad total gracias a infrarrojos avanzados." },
   { icon: <HardDrive className="w-5 h-5" />, title: "Grabador NVR / DVR", desc: "Almacenamiento local seguro de 1 a 16TB. Sin depender de la nube." },
-  { icon: <Smartphone className="w-5 h-5" />, title: "App Móvil", desc: "Visualización en tiempo real desde iOS y Android. Sin coste adicional." },
+  { icon: <Smartphone className="w-5 h-5" />, title: "App Móvil / Acceso Remoto", desc: "Visualización en tiempo real desde iOS y Android, desde cualquier lugar. Sin coste adicional." },
   { icon: <Lock className="w-5 h-5" />, title: "Sin Cuotas Mensuales", desc: "Pago único, sin sorpresas. El sistema es tuyo para siempre." },
   { icon: <Shield className="w-5 h-5" />, title: "Matrícula y Zona", desc: "Cámaras con lectura de matrículas y detección por zonas configurables." },
+  { icon: <Eye className="w-5 h-5" />, title: "Detección por IA", desc: "Reconocimiento inteligente de personas y vehículos. Menos falsas alarmas por animales o lluvia." },
+  { icon: <Camera className="w-5 h-5" />, title: "Cámaras IP y Analógicas HD", desc: "Instalamos cámaras IP o analógicas HD según las necesidades y el presupuesto de cada proyecto." },
+];
+
+const BRANDS = [
+  {
+    name: "HIKVISION",
+    desc: "La marca nº1 en videovigilancia mundial. Cámaras con IA integrada, grabación 4K y compresión H.265+.",
+    specs: ["Resolución 4K Ultra HD – 8MP", "Compresión inteligente H.265+", "Análisis de comportamiento IA", "App iVMS-4500 profesional"],
+  },
+  {
+    name: "DAHUA",
+    desc: "Tecnología de alta gama con IA avanzada. Reconocimiento facial, detección perimetral y full-color nocturno.",
+    specs: ["Reconocimiento facial IA", "Detección perimetral activa", "Visión nocturna Full Color", "App DMSS multidispositivo"],
+  },
 ];
 
 const BENEFITS = [
@@ -75,6 +90,14 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     {
       q: `¿Cumplen con el RGPD las cámaras de seguridad?`,
       a: `Sí. Nos encargamos de toda la tramitación: señalética homologada, configuración correcta de ángulo de visión (solo zona privada), documentación RGPD y registro si procede. Para comunidades de vecinos incluimos la documentación completa para la junta.`,
+    },
+    {
+      q: `¿Puedo ver las cámaras desde el móvil en tiempo real?`,
+      a: `Sí. Instalamos la app correspondiente a la marca (iVMS-4500 para Hikvision, DMSS para Dahua) con acceso remoto desde cualquier lugar. Streaming en tiempo real, reproducción de grabaciones y alertas push incluidas, sin coste adicional.`,
+    },
+    {
+      q: `¿Necesito hacer obras para instalar las cámaras?`,
+      a: `Las cámaras exteriores requieren soporte y cable de red (PoE) para máxima fiabilidad. Para interiores también disponemos de cámaras IP por WiFi que no requieren obra ni cableado.`,
     },
   ];
 
@@ -135,6 +158,29 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
                 <div>
                   <h3 style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A", margin: "0 0 4px" }}>{s.title}</h3>
                   <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── MARCAS ── */}
+      <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Marcas que instalamos en {city}</h2>
+          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Trabajamos solo con líderes mundiales en videovigilancia IP</p>
+          <div className="grid sm:grid-cols-2 gap-6">
+            {BRANDS.map((b) => (
+              <div key={b.name} style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: 16, padding: 28 }}>
+                <h3 style={{ fontWeight: 900, fontSize: 18, color: "#E53E3E", letterSpacing: 1, margin: "0 0 10px" }}>{b.name}</h3>
+                <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6, margin: "0 0 16px" }}>{b.desc}</p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                  {b.specs.map((s) => (
+                    <div key={s} style={{ fontSize: 13, color: "#374151", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                      <span style={{ color: "#E53E3E", fontWeight: 700, flexShrink: 0 }}>✓</span>{s}
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
