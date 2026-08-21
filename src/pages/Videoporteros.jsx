@@ -4,6 +4,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Smartphone, Eye, Wifi, Shield, Star, ChevronRight, Bell, Key, Clock, Camera, Users, Building2, Lock } from "lucide-react";
 
@@ -113,6 +114,9 @@ export default function Videoporteros() {
         <div style={{ position: "absolute", top: "10%", right: "-5%", width: 400, height: 400, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.14) 0%, transparent 70%)", pointerEvents: "none" }} />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6" style={{ position: "relative", zIndex: 2 }}>
+          <div style={{ marginBottom: 20 }}>
+            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Videoporteros" }]} />
+          </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "6px 14px", marginBottom: 24 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E53E3E", boxShadow: "0 0 8px #E53E3E" }} />
             <span style={{ color: "#F87171", fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>VIDEOPORTEROS · CONTROL DE ACCESOS · BARCELONA</span>

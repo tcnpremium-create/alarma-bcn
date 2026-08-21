@@ -4,6 +4,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import AlarmKitsGrid from "../components/landing/AlarmKitsGrid";
 import { businessStats } from "@/lib/businessStats";
 
@@ -89,6 +90,9 @@ export default function SistemasAlarma() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0.75) 55%, #060B14 100%)" }} />
 
         <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "72px 24px 64px", textAlign: "center" }}>
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 18 }}>
+            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Alarmas" }]} />
+          </div>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             background: "rgba(229,62,62,0.15)",

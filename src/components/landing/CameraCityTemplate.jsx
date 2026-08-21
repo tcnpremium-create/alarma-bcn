@@ -93,8 +93,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       {/* ── HERO ── */}
       <section style={{ position: "relative", width: "100%", overflow: "hidden", height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
         <img
-          src="/images/camaras-seguridad-hero.jpeg"
-          alt={`Cámaras de seguridad en ${city}`}
+          src="/images/camaras-hero-dome.webp"
+          alt={`Cámara de seguridad domo instalada en ${city}`}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 20%, rgba(10,10,26,0.55) 60%, rgba(10,10,26,0.2) 100%)" }} />
@@ -111,7 +111,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 380 }}>
             <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 24px", border: "none", cursor: "pointer" }}>
-              Solicitar presupuesto gratis →
+              Solicitar presupuesto de cámaras →
             </button>
             <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "13px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
               📞 Llamar
@@ -274,7 +274,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 15, margin: "0 0 28px" }}>Presupuesto gratuito · Instalación incluida · Sin cuotas mensuales</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <button onClick={() => setShowModal(true)} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
-              Solicitar presupuesto gratis →
+              Solicitar presupuesto de cámaras →
             </button>
             <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>
               📞 Llamar

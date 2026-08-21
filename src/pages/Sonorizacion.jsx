@@ -7,6 +7,7 @@ import FooterSection from "../components/landing/FooterSection";
 import ChatWidget from "../components/chatbot/ChatWidget";
 import ContactForm from "../components/landing/ContactForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { createPageUrl } from "@/utils";
 
 export default function Sonorizacion() {
@@ -69,6 +70,9 @@ export default function Sonorizacion() {
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
           </Link>
+          <div className="mb-6">
+            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Sonorización" }]} />
+          </div>
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Sonorización Profesional en Barcelona</h1>
           <p className="text-xl text-gray-300 max-w-2xl">Instalación de sistemas de sonido para negocios, locales, eventos, comunidades y espacios profesionales.</p>
         </div>

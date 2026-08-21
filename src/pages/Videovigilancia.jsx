@@ -4,6 +4,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import CameraKitsGrid from "../components/landing/CameraKitsGrid";
 import { NeonGradientCard } from "../components/magicui/neon-gradient-card";
 
@@ -51,7 +52,7 @@ export default function Videovigilancia() {
         description="Instalación de sistemas de videovigilancia en Barcelona. Cámaras HD, CCTV profesional para hogar, negocio y comunidades. Sin cuotas. Presupuesto gratis 638 10 99 47."
         keywords="cámaras videovigilancia Barcelona, cámaras seguridad 4K Barcelona, Hikvision Barcelona, Dahua Barcelona, instalación CCTV Barcelona, videovigilancia hogar empresa comunidad"
         canonicalUrl="https://alarmasenbarcelona.com/videovigilancia"
-        ogImage="https://alarmasenbarcelona.com/images/camaras-seguridad-hero.jpeg"
+        ogImage="https://alarmasenbarcelona.com/images/camaras-hero-dome.webp"
         schema={{
           "@context": "https://schema.org",
           "@graph": [
@@ -79,7 +80,7 @@ export default function Videovigilancia() {
         position: "relative",
         overflow: "hidden",
         minHeight: 600,
-        backgroundImage: "url('/images/camaras-seguridad-hero.jpeg')",
+        backgroundImage: "url('/images/camaras-hero-dome.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}>
@@ -89,7 +90,7 @@ export default function Videovigilancia() {
           muted
           playsInline
           preload="auto"
-          poster="/images/camaras-seguridad-hero.jpeg"
+          poster="/images/camaras-hero-dome.webp"
           style={{
             position: "absolute",
             top: 0, right: 0, bottom: 0, left: 0,
@@ -125,6 +126,9 @@ export default function Videovigilancia() {
         {/* Main content */}
         <div style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "150px 24px 72px" }}>
           <div style={{ maxWidth: 640 }}>
+            <div style={{ marginBottom: 18 }}>
+              <Breadcrumbs items={[{ label: "Servicios" }, { label: "Cámaras de Seguridad" }]} />
+            </div>
             {/* Brand badge */}
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.4)", borderRadius: 100, padding: "6px 16px", marginBottom: 22 }}>
               <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#E53E3E" }} />

@@ -74,7 +74,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
               onClick={() => setShowModal(true)}
               style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
             >
-              Solicitar presupuesto gratis <ChevronRight style={{ width: 18, height: 18 }} />
+              Solicitar presupuesto de alarma <ChevronRight style={{ width: 18, height: 18 }} />
             </button>
             <a
               href="tel:+34638109947"
@@ -198,7 +198,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
                 disabled={sending}
                 style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 0", border: "none", cursor: sending ? "not-allowed" : "pointer", opacity: sending ? 0.7 : 1 }}
               >
-                {sending ? "Enviando..." : "Solicitar presupuesto →"}
+                {sending ? "Enviando..." : "Solicitar presupuesto de alarma →"}
               </button>
               <p style={{ fontSize: 12, color: "#9CA3AF", textAlign: "center", margin: 0 }}>Sin compromiso · Respuesta en menos de 24h</p>
             </form>

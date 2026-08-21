@@ -5,7 +5,7 @@ import { businessStats } from "@/lib/businessStats";
 
 const SLIDES = [
   {
-    img: "/images/hero-cameras.jpeg",
+    img: "/images/camaras-hero-dome.webp",
     pos: "center center",
     badge: "Videovigilancia 4K · IA Avanzada",
     h1a: "Vigilancia Total",

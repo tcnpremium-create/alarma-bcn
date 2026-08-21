@@ -7,6 +7,7 @@ import FooterSection from "../components/landing/FooterSection";
 import ChatWidget from "../components/chatbot/ChatWidget";
 import ContactForm from "../components/landing/ContactForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { createPageUrl } from "@/utils";
 
 export default function RedesInformaticas() {
@@ -57,6 +58,9 @@ export default function RedesInformaticas() {
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
           </Link>
+          <div className="mb-6">
+            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Redes Informáticas" }]} />
+          </div>
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Redes Informáticas en Barcelona</h1>
           <p className="text-xl text-gray-300 max-w-2xl">Instalación de redes, cableado estructurado y WiFi profesional para empresas, oficinas, negocios y viviendas.</p>
         </div>
