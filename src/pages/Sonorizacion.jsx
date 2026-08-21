@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Phone, ArrowRight, Store, UtensilsCrossed, Building2, Users, PartyPopper, Factory, Volume2, SlidersHorizontal, Layers, Mic, Radio, Settings2 } from "lucide-react";
+import { ArrowLeft, Phone, ArrowRight, Store, UtensilsCrossed, Building2, Building, Users, PartyPopper, Factory, Volume2, SlidersHorizontal, Layers, Mic, Radio, Settings2, PanelTop, PanelLeft, Bluetooth, Waves, Grid3x3, Smartphone, MonitorSmartphone, Home, ChefHat, Bath, Dumbbell, BedDouble } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -12,6 +12,14 @@ import { createPageUrl } from "@/utils";
 
 export default function Sonorizacion() {
   useEffect(() => {
+    if (window.location.hash) {
+      // Espera a que el layout (imágenes, tarjetas) se asiente antes de saltar al ancla,
+      // si no el salto se calcula con el documento aún más corto de lo que será.
+      const id = setTimeout(() => {
+        document.querySelector(window.location.hash)?.scrollIntoView({ behavior: 'instant' });
+      }, 100);
+      return () => clearTimeout(id);
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
@@ -33,6 +41,28 @@ export default function Sonorizacion() {
     { Icon: Settings2, title: "Controladores", desc: "Gestión centralizada del sistema de sonido instalado" },
   ];
 
+  const altavocesFeatures = [
+    { Icon: PanelTop, title: "Empotrados en techo", desc: "Integrados en el techo, sin ocupar espacio visible en la estancia." },
+    { Icon: PanelLeft, title: "Empotrados en pared", desc: "Instalación en pared para espacios donde el techo no es una opción." },
+    { Icon: Bluetooth, title: "Conectividad Bluetooth", desc: "Reproduce música desde el móvil sin cables ni instalaciones adicionales." },
+    { Icon: Waves, title: "Sonido ambiental", desc: "Cobertura uniforme pensada para crear ambiente sonoro en todo el espacio." },
+    { Icon: Grid3x3, title: "Sistemas multizona", desc: "Control independiente de volumen y fuente por zona, cuando el proyecto lo requiere." },
+    { Icon: Smartphone, title: "Control desde el móvil", desc: "Gestiona la reproducción desde tu smartphone cuando el modelo sea compatible." },
+    { Icon: MonitorSmartphone, title: "Panel de control opcional", desc: "Algunos modelos incluyen panel con pantalla táctil para gestionar la reproducción directamente desde el equipo." },
+  ];
+
+  const altavocesAplicaciones = [
+    { Icon: Home, title: "Viviendas" },
+    { Icon: ChefHat, title: "Cocinas" },
+    { Icon: Bath, title: "Baños" },
+    { Icon: UtensilsCrossed, title: "Restaurantes" },
+    { Icon: Store, title: "Comercios" },
+    { Icon: Building2, title: "Oficinas" },
+    { Icon: Dumbbell, title: "Gimnasios" },
+    { Icon: BedDouble, title: "Apartamentos turísticos" },
+    { Icon: Building, title: "Locales" },
+  ];
+
   const proceso = [
     { num: "01", title: "Estudio del espacio", desc: "Analizamos las dimensiones, acústica y uso real del local o zona a sonorizar." },
     { num: "02", title: "Diseño del sistema", desc: "Planteamos la distribución de altavoces y equipos según el espacio y el objetivo sonoro." },
@@ -49,14 +79,14 @@ export default function Sonorizacion() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Sonorización Profesional en Barcelona | Instalación de Sonido | Premium Tech Security"
-        description="Instalación de sistemas de sonido profesional para negocios, locales, comunidades y eventos en Barcelona. Altavoces, amplificadores y sistemas multizona. Presupuesto gratis 638 10 99 47."
+        title="Sonorización Profesional y Altavoces Empotrados en Barcelona | Premium Tech Security"
+        description="Instalación de sistemas de sonido profesional para negocios, locales, comunidades y eventos en Barcelona. Altavoces empotrados en techo y pared con Bluetooth, amplificadores y sistemas multizona. Presupuesto gratis 638 10 99 47."
         canonicalUrl="https://alarmasenbarcelona.com/sonorizacion"
-        keywords="sonorización Barcelona, instalación de sonido Barcelona, sonorización profesional, altavoces techo Barcelona, megafonía Barcelona, sonido ambiental negocios"
+        keywords="sonorización Barcelona, instalación de sonido Barcelona, sonorización profesional, altavoces empotrados Bluetooth, altavoces de techo Bluetooth, altavoces empotrables Bluetooth, instalación altavoces empotrados Barcelona, instalación altavoces techo Barcelona, sonido ambiental Barcelona, megafonía Barcelona"
         schema={{
           "@type": "Service",
           "name": "Sonorización Profesional",
-          "serviceType": "Instalación de sistemas de sonido para negocios, comunidades y eventos",
+          "serviceType": "Instalación de sistemas de sonido, altavoces empotrados en techo y pared con Bluetooth para negocios, comunidades y eventos",
           "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security" },
           "areaServed": "Barcelona, Catalunya"
         }}
@@ -119,6 +149,66 @@ export default function Sonorizacion() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Altavoces Empotrados con Bluetooth */}
+          <div id="altavoces-empotrados" style={{ marginBottom: 80, scrollMarginTop: 100 }}>
+            <div className="grid lg:grid-cols-2 gap-12 items-center" style={{ marginBottom: 56 }}>
+              <div>
+                <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 20 }}>
+                  Altavoces Empotrados con Bluetooth
+                </h2>
+                <p style={{ color: "#94A3B8", fontSize: "1.05rem", lineHeight: 1.75 }}>
+                  Disfruta de música y sonido ambiental sin ocupar espacio, con altavoces integrados en techo o pared y opciones de conectividad Bluetooth para controlar tu música cómodamente.
+                </p>
+              </div>
+              <img
+                src="/images/altavoces-empotrados-techo.webp"
+                alt="Altavoces empotrados en techo con conectividad Bluetooth"
+                style={{ width: "100%", borderRadius: 16, display: "block", background: "#fff" }}
+              />
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ marginBottom: 56 }}>
+              {altavocesFeatures.map((f, idx) => (
+                <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 24, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(229,62,62,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                    <f.Icon size={20} color="#E63946" />
+                  </div>
+                  <h3 style={{ fontSize: "1rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 6 }}>{f.title}</h3>
+                  <p style={{ color: "#94A3B8", fontSize: 13, lineHeight: 1.6 }}>{f.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#FFFFFF", marginBottom: 24, textAlign: "center" }}>
+              Ideal para
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4" style={{ marginBottom: 40 }}>
+              {altavocesAplicaciones.map((a, idx) => (
+                <div key={idx} style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 14, padding: "20px 12px", textAlign: "center" }}>
+                  <a.Icon size={22} color="#E63946" style={{ margin: "0 auto 8px" }} />
+                  <p style={{ color: "#CBD5E0", fontSize: 12.5, fontWeight: 600, margin: 0 }}>{a.title}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
+                onClick={scrollToContact}
+                className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+              >
+                Quiero instalar altavoces empotrados
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+              <Button
+                onClick={scrollToContact}
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10 px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
+              >
+                Solicitar presupuesto
+              </Button>
             </div>
           </div>
 

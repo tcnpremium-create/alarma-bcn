@@ -116,8 +116,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       {/* ── HERO ── */}
       <section style={{ position: "relative", width: "100%", overflow: "hidden", height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
         <img
-          src="/images/camaras-hero-dome.webp"
-          alt={`Cámara de seguridad domo instalada en ${city}`}
+          src="/images/camaras-variedad-interior.webp"
+          alt={`Cámaras de seguridad profesionales instaladas en ${city}`}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 20%, rgba(10,10,26,0.55) 60%, rgba(10,10,26,0.2) 100%)" }} />

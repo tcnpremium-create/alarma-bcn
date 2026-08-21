@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Volume2, Network, KeyRound, Fingerprint, Bell } from "lucide-react";
 
 const SERVICES = [
-  { Icon: Volume2, title: "Sonorización", desc: "Sistemas de sonido profesional para negocios y comunidades", href: "/sonorizacion" },
+  { Icon: Volume2, title: "Sonorización", desc: "Sonido profesional y altavoces empotrados con Bluetooth", href: "/sonorizacion#altavoces-empotrados" },
   { Icon: Network, title: "Redes informáticas", desc: "Cableado estructurado y WiFi profesional", href: "/redes-informaticas" },
   { Icon: KeyRound, title: "Cerraduras", desc: "Cerraduras inteligentes y cilindros de seguridad", href: "/cerraduras" },
   { Icon: Fingerprint, title: "Control de accesos", desc: "Lectores biométricos, tarjetas y códigos", href: "/control-accesos" },
