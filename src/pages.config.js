@@ -1,29 +1,29 @@
 /**
  * pages.config.js - Page routing configuration
- * 
+ *
  * This file is AUTO-GENERATED. Do not add imports or modify PAGES manually.
  * Pages are auto-registered when you create files in the ./pages/ folder.
- * 
+ *
  * THE ONLY EDITABLE VALUE: mainPage
  * This controls which page is the landing page (shown when users visit the app).
- * 
+ *
  * Example file structure:
- * 
+ *
  *   import HomePage from './pages/HomePage';
  *   import Dashboard from './pages/Dashboard';
  *   import Settings from './pages/Settings';
- *   
+ *
  *   export const PAGES = {
  *       "HomePage": HomePage,
  *       "Dashboard": Dashboard,
  *       "Settings": Settings,
  *   }
- *   
+ *
  *   export const pagesConfig = {
  *       mainPage: "HomePage",
  *       Pages: PAGES,
  *   };
- * 
+ *
  * Example with Layout (wraps all pages):
  *
  *   import Home from './pages/Home';
@@ -46,38 +46,46 @@
  *   New: mainPage: "Dashboard",
  *
  * The mainPage value must match a key in the PAGES object exactly.
+ *
+ * PERFORMANCE NOTE: every page below except "Home" (the landing page, kept
+ * eager so the first paint has no extra network round-trip) is loaded with
+ * React.lazy so each route ships only its own JS instead of one bundle with
+ * all 30 pages. Requires the <Routes> that render these to be wrapped in a
+ * <Suspense> boundary (already done in App.jsx).
  */
-import AdminLeads from './pages/AdminLeads';
-import AreaClientes from './pages/AreaClientes';
-import AvisoLegal from './pages/AvisoLegal';
-import Badalona from './pages/Badalona';
-import BarrioEixample from './pages/BarrioEixample';
-import Blog from './pages/Blog';
-import BlogArticle from './pages/BlogArticle';
-import Calculadora from './pages/Calculadora';
-import Castelldefels from './pages/Castelldefels';
-import ControlAccesos from './pages/ControlAccesos';
-import Cookies from './pages/Cookies';
-import Cornella from './pages/Cornella';
-import ElPrat from './pages/ElPrat';
-import Girona from './pages/Girona';
+import { lazy } from 'react';
 import Home from './pages/Home';
-import Hospitalet from './pages/Hospitalet';
-import Lleida from './pages/Lleida';
-import MantenimientoSoporte from './pages/MantenimientoSoporte';
-import Mataro from './pages/Mataro';
-import Privacidad from './pages/Privacidad';
-import Promociones from './pages/Promociones';
-import Sabadell from './pages/Sabadell';
-import SantCugat from './pages/SantCugat';
-import Servicios from './pages/Servicios';
-import SistemasAlarma from './pages/SistemasAlarma';
-import SobreNosotros from './pages/SobreNosotros';
-import Tarragona from './pages/Tarragona';
-import Terrassa from './pages/Terrassa';
-import Videovigilancia from './pages/Videovigilancia';
-import Viladecans from './pages/Viladecans';
 import __Layout from './Layout.jsx';
+
+const AdminLeads = lazy(() => import('./pages/AdminLeads'));
+const AreaClientes = lazy(() => import('./pages/AreaClientes'));
+const AvisoLegal = lazy(() => import('./pages/AvisoLegal'));
+const Badalona = lazy(() => import('./pages/Badalona'));
+const BarrioEixample = lazy(() => import('./pages/BarrioEixample'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogArticle = lazy(() => import('./pages/BlogArticle'));
+const Calculadora = lazy(() => import('./pages/Calculadora'));
+const Castelldefels = lazy(() => import('./pages/Castelldefels'));
+const ControlAccesos = lazy(() => import('./pages/ControlAccesos'));
+const Cookies = lazy(() => import('./pages/Cookies'));
+const Cornella = lazy(() => import('./pages/Cornella'));
+const ElPrat = lazy(() => import('./pages/ElPrat'));
+const Girona = lazy(() => import('./pages/Girona'));
+const Hospitalet = lazy(() => import('./pages/Hospitalet'));
+const Lleida = lazy(() => import('./pages/Lleida'));
+const MantenimientoSoporte = lazy(() => import('./pages/MantenimientoSoporte'));
+const Mataro = lazy(() => import('./pages/Mataro'));
+const Privacidad = lazy(() => import('./pages/Privacidad'));
+const Promociones = lazy(() => import('./pages/Promociones'));
+const Sabadell = lazy(() => import('./pages/Sabadell'));
+const SantCugat = lazy(() => import('./pages/SantCugat'));
+const Servicios = lazy(() => import('./pages/Servicios'));
+const SistemasAlarma = lazy(() => import('./pages/SistemasAlarma'));
+const SobreNosotros = lazy(() => import('./pages/SobreNosotros'));
+const Tarragona = lazy(() => import('./pages/Tarragona'));
+const Terrassa = lazy(() => import('./pages/Terrassa'));
+const Videovigilancia = lazy(() => import('./pages/Videovigilancia'));
+const Viladecans = lazy(() => import('./pages/Viladecans'));
 
 
 export const PAGES = {
