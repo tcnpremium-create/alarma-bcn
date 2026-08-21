@@ -34,6 +34,9 @@ const Videoporteros = lazy(() => import('./pages/Videoporteros'));
 const SistemasAlarma = lazy(() => import('./pages/SistemasAlarma'));
 const Videovigilancia = lazy(() => import('./pages/Videovigilancia'));
 const ControlAccesos = lazy(() => import('./pages/ControlAccesos'));
+const Sonorizacion = lazy(() => import('./pages/Sonorizacion'));
+const RedesInformaticas = lazy(() => import('./pages/RedesInformaticas'));
+const Cerraduras = lazy(() => import('./pages/Cerraduras'));
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -112,6 +115,9 @@ const AuthenticatedApp = () => {
         <Route path="/sistemas-alarma" element={<LayoutWrapper currentPageName="SistemasAlarma"><SistemasAlarma /></LayoutWrapper>} />
         <Route path="/videovigilancia" element={<LayoutWrapper currentPageName="Videovigilancia"><Videovigilancia /></LayoutWrapper>} />
         <Route path="/control-accesos" element={<LayoutWrapper currentPageName="ControlAccesos"><ControlAccesos /></LayoutWrapper>} />
+        <Route path="/sonorizacion" element={<LayoutWrapper currentPageName="Sonorizacion"><Sonorizacion /></LayoutWrapper>} />
+        <Route path="/redes-informaticas" element={<LayoutWrapper currentPageName="RedesInformaticas"><RedesInformaticas /></LayoutWrapper>} />
+        <Route path="/cerraduras" element={<LayoutWrapper currentPageName="Cerraduras"><Cerraduras /></LayoutWrapper>} />
         {/* Redirects: rutas descontinuadas de SEO/campañas que apuntaban a la página de mantenimiento */}
         <Route path="/sin-cuotas-mensuales" element={<Navigate to="/alarmas-barcelona" replace />} />
         <Route path="/comparativa-verisure" element={<Navigate to="/alarmas-barcelona" replace />} />

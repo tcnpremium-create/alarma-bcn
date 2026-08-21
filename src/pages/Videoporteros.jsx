@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import HeroContactModal from "../components/landing/HeroContactModal";
@@ -379,6 +380,15 @@ export default function Videoporteros() {
           </Accordion>
         </div>
       </section>
+
+      {/* Relacionados */}
+      <div style={{ textAlign: "center", padding: "0 20px 32px" }}>
+        <p style={{ color: "#94A3B8", fontSize: 14 }}>
+          Combina tu videoportero con un sistema de{" "}
+          <Link to="/control-accesos" style={{ color: "#E63946", fontWeight: 700 }}>control de accesos</Link>{" "}
+          para gestionar quién entra y sale de tu edificio.
+        </p>
+      </div>
 
       {/* ── FINAL CTA ── */}
       <section style={{ background: "linear-gradient(135deg, #E53E3E, #C53030)", padding: "48px 20px" }}>

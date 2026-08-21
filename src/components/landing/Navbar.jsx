@@ -1,15 +1,37 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
+const SERVICE_GROUPS = [
+  {
+    label: "Seguridad",
+    links: [
+      { label: "Cámaras de seguridad", href: "/camaras-barcelona" },
+      { label: "Alarmas", href: "/alarmas-barcelona" },
+      { label: "Videovigilancia / CCTV", href: "/videovigilancia" },
+      { label: "Videoporteros", href: "/videoporteros" },
+      { label: "Control de accesos", href: "/control-accesos" },
+      { label: "Cerraduras", href: "/cerraduras" },
+    ],
+  },
+  {
+    label: "Redes",
+    links: [
+      { label: "Redes informáticas", href: "/redes-informaticas" },
+    ],
+  },
+  {
+    label: "Sonido",
+    links: [
+      { label: "Sonorización profesional", href: "/sonorizacion" },
+    ],
+  },
+];
+
 const NAV_LINKS = [
   { label: "Inicio", href: "/" },
-  { label: "Cámaras", href: "/camaras-barcelona" },
-  { label: "Alarmas", href: "/alarmas-barcelona" },
-  { label: "Control Accesos", href: "/control-accesos" },
-  { label: "Videoporteros", href: "/videoporteros" },
   { label: "Tecnología", href: "/tecnologia" },
   { label: "Blog", href: "/Blog" },
   { label: "Contacto", href: "/Contact" },
@@ -21,7 +43,10 @@ const LOGO_NEGRO = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/p
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const mobileMenuRef = useRef(null);
+  const servicesRef = useRef(null);
   const { openDrawer } = useLeadDrawer();
 
   useEffect(() => {
@@ -39,6 +64,15 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", onClick);
   }, [mobileOpen]);
 
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const onClick = (e) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target)) setServicesOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    return () => document.removeEventListener("mousedown", onClick);
+  }, [servicesOpen]);
+
   const linkClass = `text-[13px] xl:text-sm font-medium transition-colors duration-300 hover:text-[#E63946] px-2 xl:px-3 py-1 whitespace-nowrap ${scrolled ? "text-gray-700" : "text-white/90"}`;
 
   return (
@@ -53,14 +87,59 @@ export default function Navbar() {
           <div className="flex items-center justify-between" style={{ height: scrolled ? 64 : 80, transition: "height 0.5s ease" }}>
             {/* Logo */}
             <a href="/" aria-label="Premium Tech Security – Volver al inicio" className="flex-shrink-0" style={{ display: "block", width: "clamp(130px, 22vw, 260px)", height: scrolled ? 64 : 80, transition: "height 0.5s ease", position: "relative" }}>
-              <img src={LOGO_BLANCO} alt="Premium Tech Security" width={1240} height={744} fetchpriority="high" decoding="async" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left center", opacity: scrolled ? 0 : 1, transition: "opacity 0.4s ease", pointerEvents: "none" }} />
+              <img src={LOGO_BLANCO} alt="Premium Tech Security" width={1240} height={744} fetchPriority="high" decoding="async" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left center", opacity: scrolled ? 0 : 1, transition: "opacity 0.4s ease", pointerEvents: "none" }} />
               <img src={LOGO_NEGRO} alt="" aria-hidden="true" width={440} height={144} decoding="async" style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left center", opacity: scrolled ? 1 : 0, transition: "opacity 0.4s ease", pointerEvents: "none" }} />
             </a>
 
             {/* Desktop Nav */}
             <nav aria-label="Menú principal" className="hidden lg:flex flex-1 justify-center">
               <ul className="flex items-center gap-0.5 xl:gap-1" role="list">
-                {NAV_LINKS.map((link) => (
+                <li key="/">
+                  <Link to="/" className={linkClass}>Inicio</Link>
+                </li>
+                <li ref={servicesRef} className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setServicesOpen((v) => !v)}
+                    aria-expanded={servicesOpen}
+                    className={`${linkClass} inline-flex items-center gap-1`}
+                  >
+                    Servicios
+                    <ChevronDown className={`w-3.5 h-3.5 transition-transform ${servicesOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  <AnimatePresence>
+                    {servicesOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -6 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -6 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute left-1/2 -translate-x-1/2 top-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 flex gap-8"
+                        style={{ minWidth: 480 }}
+                      >
+                        {SERVICE_GROUPS.map((group) => (
+                          <div key={group.label} className="min-w-[150px]">
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] mb-2">{group.label}</p>
+                            <ul className="space-y-1.5">
+                              {group.links.map((l) => (
+                                <li key={l.href}>
+                                  <Link
+                                    to={l.href}
+                                    onClick={() => setServicesOpen(false)}
+                                    className="text-[13px] text-gray-700 hover:text-[#E63946] transition-colors whitespace-nowrap block"
+                                  >
+                                    {l.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
+                {NAV_LINKS.filter((l) => l.href !== "/").map((link) => (
                   <li key={link.href}><Link to={link.href} className={linkClass}>{link.label}</Link></li>
                 ))}
               </ul>
@@ -103,7 +182,50 @@ export default function Navbar() {
           >
             <nav>
               <ul className="px-4 py-5 space-y-1">
-                {NAV_LINKS.map((link) => (
+                <li>
+                  <Link to="/" onClick={() => setMobileOpen(false)} className="block text-[#0A1628] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-base">
+                    Inicio
+                  </Link>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={() => setMobileServicesOpen((v) => !v)}
+                    aria-expanded={mobileServicesOpen}
+                    className="w-full flex items-center justify-between text-[#0A1628] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-base"
+                  >
+                    Servicios
+                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileServicesOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden pl-3"
+                      >
+                        {SERVICE_GROUPS.map((group) => (
+                          <div key={group.label} className="py-2">
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] px-2 mb-1">{group.label}</p>
+                            {group.links.map((l) => (
+                              <Link
+                                key={l.href}
+                                to={l.href}
+                                onClick={() => { setMobileOpen(false); setMobileServicesOpen(false); }}
+                                className="block text-[#0A1628] py-2 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-[15px]"
+                              >
+                                {l.label}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </li>
+                {NAV_LINKS.filter((l) => l.href !== "/").map((link) => (
                   <li key={link.href}>
                     <Link to={link.href} onClick={() => setMobileOpen(false)} className="block text-[#0A1628] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-base">
                       {link.label}

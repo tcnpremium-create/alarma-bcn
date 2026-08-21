@@ -149,6 +149,13 @@ export default function ControlAccesos() {
             </div>
           </div>
 
+          {/* Relacionados */}
+          <div style={{ marginBottom: 48, textAlign: "center" }}>
+            <p style={{ color: "#94A3B8", fontSize: 14 }}>
+              ¿Buscas también renovar la <Link to="/cerraduras" style={{ color: "#E63946", fontWeight: 700 }}>cerradura</Link> de tu puerta de acceso? Consulta nuestra página de cerraduras inteligentes y electrónicas.
+            </p>
+          </div>
+
           <style>{`
             .magic-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
           `}</style>
