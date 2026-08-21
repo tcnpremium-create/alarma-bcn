@@ -54,8 +54,9 @@ export default function Cerraduras() {
 
       <section style={{ position: "relative", overflow: "hidden" }} className="text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
         <img
-          src="/images/cerradura-inteligente.webp"
-          alt="Cerradura inteligente con lector de huella instalada en puerta"
+          src="/images/cerradura-inteligente-puerta.webp"
+          alt="Cerradura inteligente instalada en puerta"
+          loading="eager"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.4 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(26,42,58,0.88) 100%)" }} />
@@ -93,9 +94,15 @@ export default function Cerraduras() {
           </div>
 
           <div style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 16, padding: 48, marginBottom: 80 }}>
-            <h2 style={{ fontSize: "1.875rem", fontWeight: 800, color: "#FFFFFF", marginBottom: 48, textAlign: "center" }}>
+            <h2 style={{ fontSize: "1.875rem", fontWeight: 800, color: "#FFFFFF", marginBottom: 32, textAlign: "center" }}>
               Soluciones según tu espacio
             </h2>
+            <img
+              src="/images/cerradura-electronica-control-acceso.webp"
+              alt="Solución de cerradura electrónica para control de acceso"
+              loading="lazy"
+              style={{ width: "100%", maxHeight: 280, objectFit: "cover", objectPosition: "center", borderRadius: 14, display: "block", marginBottom: 40 }}
+            />
             <div className="grid md:grid-cols-2 gap-8">
               {espacios.map((e, idx) => (
                 <div key={idx} className="magic-card" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, padding: 24, transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease" }}>

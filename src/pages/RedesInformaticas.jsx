@@ -54,8 +54,9 @@ export default function RedesInformaticas() {
 
       <section style={{ position: "relative", overflow: "hidden" }} className="text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
         <img
-          src="/images/redes-rack.webp"
-          alt="Rack de red profesional instalado"
+          src="/images/redes-rack-cableado-estructurado.webp"
+          alt="Rack de comunicaciones con cableado estructurado"
+          loading="eager"
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.35 }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(26,42,58,0.88) 100%)" }} />
@@ -100,9 +101,10 @@ export default function RedesInformaticas() {
               Diseñamos e instalamos la infraestructura de red necesaria para que tu empresa, oficina o vivienda tenga conectividad estable y ordenada, con cableado normalizado y equipos correctamente configurados.
             </p>
             <img
-              src="/images/redes-switch-cableado.webp"
-              alt="Cableado estructurado conectado a switch de red profesional"
-              style={{ width: "100%", maxHeight: 280, objectFit: "cover", borderRadius: 14, display: "block", marginBottom: 40 }}
+              src="/images/redes-switch-profesional.webp"
+              alt="Instalación profesional de red informática y cableado"
+              loading="lazy"
+              style={{ width: "100%", maxHeight: 280, objectFit: "cover", objectPosition: "center", borderRadius: 14, display: "block", marginBottom: 40 }}
             />
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {componentes.map((c, idx) => (
