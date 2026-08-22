@@ -3,55 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronDown, Camera, HardDrive, ShieldCheck, Moon, Cpu, Radio } from "lucide-react";
 import { AnimatedGradientText } from "../magicui/animated-gradient-text";
 import { ShinyButton } from "../magicui/shiny-button";
-
-export const CAMERA_KITS = [
-  {
-    id: "basico",
-    badge: null,
-    title: "Plan Visión Hogar",
-    cameras: "2 Cámaras",
-    price: "699 €",
-    items: [
-      "2 cámaras de alta definición 2K",
-      "Grabador NVR profesional con disco local",
-      "Instalación certificada incluida",
-      "Certificado de seguridad homologado",
-      "Placas disuasorias para exterior incluidas",
-      "Sin cuotas mensuales",
-    ],
-    ideal: "Viviendas y pequeños comercios",
-  },
-  {
-    id: "profesional",
-    badge: "MÁS VENDIDO",
-    title: "Plan Visión Negocio 360°",
-    cameras: "4 Cámaras",
-    price: "890 €",
-    items: [
-      "4 cámaras Alta Definición 4MPX",
-      "Grabador NVR profesional con disco duro 2TB",
-      "Detección inteligente por Inteligencia Artificial",
-      "Visión nocturna optimizada",
-      "Instalación y configuración certificada incluida",
-    ],
-    ideal: "Casas, negocios y comunidades medianas",
-  },
-  {
-    id: "empresarial",
-    badge: "MÁXIMA COBERTURA",
-    title: "Plan Visión Corporativa Total",
-    cameras: "8 Cámaras",
-    price: "1.500 €",
-    items: [
-      "8 cámaras profesionales 4K Ultra HD",
-      "Grabador NVR 8 canales con disco duro 4TB",
-      "Detección por IA avanzada de personas y vehículos",
-      "Visión nocturna de largo alcance",
-      "Instalación completa incluida",
-    ],
-    ideal: "Empresas, polígonos, comunidades grandes y fincas",
-  },
-];
+import { CAMERA_KITS } from "@/data/cameraKits";
 
 function itemIcon(text) {
   const t = text.toLowerCase();
@@ -107,7 +59,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
               Kits de Cámaras con instalación incluida{city ? ` en ${city}` : ""}
             </AnimatedGradientText>
           </h2>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales.</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precios claros. Sin sorpresas. Sin cuotas mensuales.</p>
         </div>
 
         <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
@@ -140,8 +92,13 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                 <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 2, marginBottom: 20 }}>Ideal: {kit.ideal}</div>
 
                 <div style={{ marginBottom: 20 }}>
-                  <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price}</div>
-                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>* IVA no incluido</span>
+                  {kit.isFrom && (
+                    <span style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", display: "block", marginBottom: 2 }}>
+                      Desde
+                    </span>
+                  )}
+                  <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price} €</div>
+                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
                 </div>
 
                 <button
@@ -168,6 +125,11 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
                     {kit.items.map((item) => <KitItemBento key={item} item={item} />)}
                   </div>
+                  {kit.storageNote && (
+                    <p style={{ color: "#64748B", fontSize: 11.5, marginTop: 10, marginBottom: 0, lineHeight: 1.5 }}>
+                      {kit.storageNote}
+                    </p>
+                  )}
                 </div>
 
                 <ShinyButton onClick={onRequestQuote} style={{ width: "100%", marginTop: "auto", padding: "14px 0", fontSize: 14 }}>

@@ -110,8 +110,9 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                     <span style={{ color:"#94A3B8",fontSize:12,marginLeft:8 }}>{kit.subtitle}</span>
                   </div>
                   <div style={{ textAlign:"right",marginLeft:12,flexShrink:0 }}>
-                    <div style={{ color:"#ef4444",fontSize:17,fontWeight:900,lineHeight:1 }}>{kit.price}</div>
-                    {kit.ivaNote && <div style={{ color:"#64748B",fontSize:9,marginTop:1 }}>* IVA no incluido</div>}
+                    {kit.isFrom && <div style={{ color:"#94A3B8",fontSize:9,fontWeight:700,letterSpacing:".04em",textTransform:"uppercase" }}>Desde</div>}
+                    <div style={{ color:"#ef4444",fontSize:17,fontWeight:900,lineHeight:1 }}>{kit.price} €</div>
+                    {kit.ivaNote && <div style={{ color:"#64748B",fontSize:9,marginTop:1 }}>+ IVA</div>}
                     <div style={{ color:"rgba(255,255,255,.35)",fontSize:18,marginTop:4,transition:"transform .25s",transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}>▾</div>
                   </div>
                 </button>

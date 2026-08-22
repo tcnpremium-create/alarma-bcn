@@ -20,6 +20,11 @@ const SERVICE_OPTIONS = [
 
 const CITY_OPTIONS = ["Barcelona", "Sabadell", "Girona", "Tarragona", "Lleida", "Otra"];
 
+// Umbrales alineados con los precios reales de src/data/alarmKits.js y
+// src/data/cameraKits.js — antes esta función tenía sus propios importes
+// hardcodeados que habían quedado desincronizados (349€ aquí vs 399€ en
+// el Kit Alarma Hogar real; 890€/1.500€ aquí vs los precios "Desde"
+// actualizados de los kits de cámaras).
 function getEstimate(services, cameraCount) {
   const hasCam = services.includes("camaras");
   const hasAlarm = services.includes("alarma");
@@ -27,14 +32,14 @@ function getEstimate(services, cameraCount) {
 
   if (hasCam && hasAlarm && hasAccess) return "999€";
   if (hasCam && hasAlarm) return "699€";
-  if (hasAlarm && !hasCam) return "349€";
+  if (hasAlarm && !hasCam) return "399€";
   if (hasCam) {
     if (cameraCount <= 2) return "699€";
-    if (cameraCount <= 4) return "890€";
-    return "1.500€";
+    if (cameraCount <= 4) return "989€";
+    return "1.699€";
   }
   if (hasAccess) return "499€";
-  return "349€";
+  return "399€";
 }
 
 export default function Calculadora() {

@@ -74,7 +74,7 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
               Kits de Alarma Ajax con instalación incluida{city ? ` en ${city}` : ""}
             </AnimatedGradientText>
           </h2>
-          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precio cerrado. Sin sorpresas. Sin cuotas mensuales obligatorias.</p>
+          <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precios claros. Sin sorpresas. Sin cuotas mensuales obligatorias.</p>
         </div>
 
         {/* Certifications marquee */}
@@ -96,7 +96,7 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
           </Marquee>
         </div>
 
-        <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
+        <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 18 }}>
           {ALARM_KITS.map((kit, i) => {
             const isHighlighted = i === 1;
             const isOpen = openId === kit.id;
@@ -124,8 +124,13 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
                 <p style={{ color: "#94A3B8", fontSize: 12, margin: "0 0 20px", lineHeight: 1.5 }}>{kit.subtitle}</p>
 
                 <div style={{ marginBottom: 20 }}>
-                  <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price}</div>
-                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>* IVA no incluido</span>
+                  {kit.isFrom && (
+                    <span style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", display: "block", marginBottom: 2 }}>
+                      Desde
+                    </span>
+                  )}
+                  <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price} €</div>
+                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
                 </div>
 
                 <button
@@ -167,9 +172,6 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
           .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
           @media (max-width: 720px) {
             .kits-grid { grid-template-columns: 1fr !important; }
-          }
-          @media (max-width: 1024px) and (min-width: 721px) {
-            .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
           }
         `}</style>
       </div>

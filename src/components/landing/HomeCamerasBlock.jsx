@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Cpu, Moon, HardDrive, Smartphone } from "lucide-react";
+import { CAMERA_KITS } from "@/data/cameraKits";
 
 const BENEFITS = [
   { Icon: Cpu, text: "IA: detecta personas y vehículos" },
@@ -17,46 +18,10 @@ const css = `
   .c-kit-card:hover { border-color: rgba(255,255,255,.22)!important; }
 `;
 
-const KITS = [
-  {
-    id: "profesional",
-    badge: "MÁS VENDIDO",
-    popular: true,
-    title: "Kit Profesional",
-    cameras: "4 Cámaras",
-    price: "890 €",
-    priceNote: "* IVA no incluido",
-    color: "rgba(220,38,38,.12)",
-    borderColor: "rgba(220,38,38,.45)",
-    items: [
-      "4 cámaras Alta Definición 4MPX",
-      "Grabador NVR profesional con disco duro 2TB",
-      "Detección inteligente por Inteligencia Artificial",
-      "Visión nocturna optimizada",
-      "Instalación y configuración certificada incluida",
-    ],
-    ideal: "Casas, negocios y comunidades medianas",
-  },
-  {
-    id: "empresarial",
-    badge: "MÁXIMA COBERTURA",
-    popular: false,
-    title: "Kit Empresarial",
-    cameras: "8 Cámaras",
-    price: "1.500 €",
-    priceNote: "* IVA no incluido",
-    color: "rgba(109,40,217,.12)",
-    borderColor: "rgba(139,92,246,.3)",
-    items: [
-      "8 cámaras profesionales 4K Ultra HD",
-      "Grabador NVR 8 canales con disco duro 4TB",
-      "Detección por IA avanzada de personas y vehículos",
-      "Visión nocturna de largo alcance",
-      "Instalación completa incluida",
-    ],
-    ideal: "Empresas, polígonos, comunidades grandes y fincas",
-  },
-];
+// Home solo muestra los kits Profesional y Empresarial (nunca mostró el
+// Kit Básico de 2 cámaras) — se filtran del array centralizado en vez de
+// mantener una copia propia de los datos.
+const KITS = CAMERA_KITS.filter((k) => k.id === "profesional" || k.id === "empresarial");
 
 export default function HomeCamerasBlock({ onOpenModal }) {
   const [open, setOpen] = useState(null);
@@ -147,13 +112,14 @@ export default function HomeCamerasBlock({ onOpenModal }) {
           <div style={{ display:"flex",flexDirection:"column",gap:10 }}>
             {KITS.map((kit)=>{
               const isOpen = open === kit.id;
+              const popular = kit.badge === "MÁS VENDIDO";
               return (
                 <div
                   key={kit.id}
                   className="c-kit-card"
                   style={{ background:"rgba(255,255,255,.03)",border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.08)"}`,borderRadius:14,overflow:"hidden",position:"relative" }}
                 >
-                  {kit.popular && (
+                  {popular && (
                     <div style={{ position:"absolute",top:0,left:0,right:0,height:2,background:"linear-gradient(to right,transparent,#ef4444 30%,#ef4444 70%,transparent)",borderRadius:"14px 14px 0 0" }} />
                   )}
                   <button
@@ -162,7 +128,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                   >
                     <div style={{ flex:1 }}>
                       <div style={{ display:"flex",alignItems:"center",gap:7,marginBottom:3 }}>
-                        <span style={{ fontSize:9,fontWeight:800,letterSpacing:".1em",backgroundColor: kit.popular ? "rgba(220,38,38,.3)" : "rgba(100,116,139,.2)",color: kit.popular ? "#f87171" : "#94A3B8",borderRadius:4,padding:"2px 7px" }}>{kit.badge}</span>
+                        <span style={{ fontSize:9,fontWeight:800,letterSpacing:".1em",backgroundColor: popular ? "rgba(220,38,38,.3)" : "rgba(100,116,139,.2)",color: popular ? "#f87171" : "#94A3B8",borderRadius:4,padding:"2px 7px" }}>{kit.badge}</span>
                       </div>
                       <div>
                         <span style={{ color:"#fff",fontSize:16,fontWeight:800 }}>{kit.title}</span>
@@ -171,8 +137,9 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                       <div style={{ color:"#64748B",fontSize:11,marginTop:2 }}>Ideal: {kit.ideal}</div>
                     </div>
                     <div style={{ textAlign:"right",marginLeft:12,flexShrink:0 }}>
-                      <div style={{ color:"#ef4444",fontSize:17,fontWeight:900,lineHeight:1 }}>{kit.price}</div>
-                      <div style={{ color:"#64748B",fontSize:10 }}>{kit.priceNote}</div>
+                      {kit.isFrom && <div style={{ color:"#94A3B8",fontSize:9,fontWeight:700,letterSpacing:".04em",textTransform:"uppercase" }}>Desde</div>}
+                      <div style={{ color:"#ef4444",fontSize:17,fontWeight:900,lineHeight:1 }}>{kit.price} €</div>
+                      <div style={{ color:"#64748B",fontSize:10 }}>+ IVA</div>
                       <div style={{ color:"rgba(255,255,255,.35)",fontSize:18,marginTop:4,transition:"transform .25s",transform:isOpen ? "rotate(180deg)" : "rotate(0)" }}>▾</div>
                     </div>
                   </button>
@@ -187,6 +154,9 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                           </li>
                         ))}
                       </ul>
+                      {kit.storageNote && (
+                        <p style={{ color:"#64748B",fontSize:11.5,marginTop:10,marginBottom:0,lineHeight:1.5 }}>{kit.storageNote}</p>
+                      )}
                       <button
                         onClick={() => onOpenModal && onOpenModal(kit.title)}
                         className="c-cta-primary"

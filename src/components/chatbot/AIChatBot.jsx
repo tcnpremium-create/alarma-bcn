@@ -45,14 +45,14 @@ export default function AIChatBot() {
     if (id === "camaras") {
       addUser("📹 Quiero cámaras");
       setTimeout(() => {
-        addBot("¡Perfecto! Tenemos kits desde 449€ con instalación incluida. ¿Para qué tipo de espacio?");
+        addBot("¡Perfecto! Tenemos kits desde 699€ con instalación incluida. ¿Para qué tipo de espacio?");
         setStep("camaras_space");
       }, 400);
     }
     if (id === "alarma") {
       addUser("🔔 Quiero alarma");
       setTimeout(() => {
-        addBot("Nuestras alarmas Ajax parten desde 349€ con instalación incluida y sin cuotas. ¿Cuántos m² tiene tu propiedad aproximadamente?");
+        addBot("Nuestras alarmas Ajax parten desde 399€ con instalación incluida y sin cuotas. ¿Cuántos m² tiene tu propiedad aproximadamente?");
         setStep("alarma_input");
       }, 400);
     }
@@ -61,7 +61,7 @@ export default function AIChatBot() {
   const handleSpace = (item) => {
     addUser(`${item.emoji} ${item.label}`);
     setTimeout(() => {
-      addBot(`Genial, para ${item.label.toLowerCase()} tenemos soluciones desde 449€. Déjanos tu teléfono y un técnico te llamará en menos de 24h con un presupuesto personalizado.`);
+      addBot(`Genial, para ${item.label.toLowerCase()} tenemos soluciones desde 699€. Déjanos tu teléfono y un técnico te llamará en menos de 24h con un presupuesto personalizado.`);
       setStep("collect_phone");
     }, 400);
   };

@@ -4,55 +4,7 @@ import FooterSection from "../components/landing/FooterSection";
 import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ALARM_KITS } from "@/data/alarmKits";
-
-const CAMERA_KITS = [
-  {
-    id: "basico",
-    badge: null,
-    title: "Kit Básico",
-    cameras: "2 Cámaras",
-    price: "699 €",
-    items: [
-      "2 cámaras de alta definición 2K",
-      "Grabador NVR profesional con disco local",
-      "Instalación certificada incluida",
-      "Certificado de seguridad homologado",
-      "Placas disuasorias para exterior incluidas",
-      "Sin cuotas mensuales",
-    ],
-    ideal: "Viviendas y pequeños comercios",
-  },
-  {
-    id: "profesional",
-    badge: "MÁS VENDIDO",
-    title: "Kit Profesional",
-    cameras: "4 Cámaras",
-    price: "890 €",
-    items: [
-      "4 cámaras Alta Definición 4MPX",
-      "Grabador NVR profesional con disco duro 2TB",
-      "Detección inteligente por Inteligencia Artificial",
-      "Visión nocturna optimizada",
-      "Instalación y configuración certificada incluida",
-    ],
-    ideal: "Casas, negocios y comunidades medianas",
-  },
-  {
-    id: "empresarial",
-    badge: "MÁXIMA COBERTURA",
-    title: "Kit Empresarial",
-    cameras: "8 Cámaras",
-    price: "1.500 €",
-    items: [
-      "8 cámaras profesionales 4K Ultra HD",
-      "Grabador NVR 8 canales con disco duro 4TB",
-      "Detección por IA avanzada de personas y vehículos",
-      "Visión nocturna de largo alcance",
-      "Instalación completa incluida",
-    ],
-    ideal: "Empresas, polígonos, comunidades grandes y fincas",
-  },
-];
+import { CAMERA_KITS } from "@/data/cameraKits";
 
 const promoSchema = {
   "@context": "https://schema.org",
@@ -70,7 +22,7 @@ const promoSchema = {
         "description": kit.subtitle,
         "offers": {
           "@type": "Offer",
-          "price": kit.price.replace(" €", "").replace(".", ""),
+          "price": kit.price.replace(".", ""),
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "seller": { "@type": "Organization", "name": "Alarmas BCN" },
@@ -85,7 +37,7 @@ const promoSchema = {
         "name": `${kit.title} — ${kit.cameras}`,
         "offers": {
           "@type": "Offer",
-          "price": kit.price.replace(" €", "").replace(".", ""),
+          "price": kit.price.replace(".", ""),
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
           "seller": { "@type": "Organization", "name": "Alarmas BCN" },
@@ -270,9 +222,10 @@ export default function Promociones() {
             </div>
 
             <div
+              className="promo-kits-grid promo-kits-grid-2"
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(3, 1fr)",
+                gridTemplateColumns: "repeat(2, 1fr)",
                 gap: 18,
               }}
             >
@@ -326,6 +279,11 @@ export default function Promociones() {
                     </div>
 
                     <div style={{ marginBottom: 4 }}>
+                      {kit.isFrom && (
+                        <span style={{ display: "block", color: TEXT_DIM, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>
+                          Desde
+                        </span>
+                      )}
                       <span
                         style={{
                           fontSize: 42,
@@ -335,11 +293,11 @@ export default function Promociones() {
                           letterSpacing: "-0.02em",
                         }}
                       >
-                        {kit.price}
+                        {kit.price} €
                       </span>
                     </div>
                     <p style={{ color: TEXT_DIM, fontSize: 11, margin: "0 0 20px" }}>
-                      * IVA no incluido
+                      + IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}
                     </p>
 
                     <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
@@ -428,6 +386,7 @@ export default function Promociones() {
             </div>
 
             <div
+              className="promo-kits-grid promo-kits-grid-3"
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(3, 1fr)",
@@ -484,6 +443,11 @@ export default function Promociones() {
                     </div>
 
                     <div style={{ marginBottom: 4 }}>
+                      {kit.isFrom && (
+                        <span style={{ display: "block", color: TEXT_DIM, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>
+                          Desde
+                        </span>
+                      )}
                       <span
                         style={{
                           fontSize: 42,
@@ -493,11 +457,11 @@ export default function Promociones() {
                           letterSpacing: "-0.02em",
                         }}
                       >
-                        {kit.price}
+                        {kit.price} €
                       </span>
                     </div>
                     <p style={{ color: TEXT_DIM, fontSize: 11, margin: "0 0 20px" }}>
-                      * IVA no incluido
+                      + IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}
                     </p>
 
                     <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8, marginBottom: 24 }}>
@@ -507,6 +471,9 @@ export default function Promociones() {
                           <span style={{ color: TEXT, fontSize: 13, lineHeight: 1.5 }}>{item}</span>
                         </div>
                       ))}
+                      {kit.storageNote && (
+                        <p style={{ color: TEXT_DIM, fontSize: 11.5, margin: "4px 0 0", lineHeight: 1.5 }}>{kit.storageNote}</p>
+                      )}
                     </div>
 
                     <a
@@ -697,6 +664,18 @@ export default function Promociones() {
           </div>
         </div>
       </section>
+
+      {/* Responsive stacking para las rejillas de kits — antes fijas a
+          repeat(3,1fr)/repeat(2,1fr) sin ningún @media, así que se
+          desbordaban en móvil. */}
+      <style>{`
+        @media (max-width: 720px) {
+          .promo-kits-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 1024px) and (min-width: 721px) {
+          .promo-kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+      `}</style>
 
       <FooterSection />
     </div>
