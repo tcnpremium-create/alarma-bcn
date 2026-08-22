@@ -35,8 +35,11 @@ export default function Home() {
         <HomeCamerasBlock onOpenModal={openDrawer} />
 
         {/* ALARMAS — protagonista #2 */}
-        <AnimatedSecurityBeam />
         <HomeAlarmsBlock onOpenModal={openDrawer} />
+
+        {/* CÓMO FUNCIONA — pertenece a ambos protagonistas por igual, no
+            solo a Alarmas, así que va después de los dos en vez de partirlos */}
+        <AnimatedSecurityBeam />
 
         {/* MÁS SOLUCIONES */}
         <HomeMoreServices />

@@ -77,6 +77,10 @@ const KITS = [
 
 export default function HomeCamerasBlock({ onOpenModal }) {
   const [open, setOpen] = useState(null);
+  // El CTA de esta sección es contextual: en vez de abrir el mismo drawer
+  // genérico que ya ofrece el hero justo encima, lleva a los kits (con
+  // precio y contenido concretos) que están a un scroll de distancia.
+  const scrollToKits = () => document.getElementById("camaras-kits")?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
     <section
@@ -119,11 +123,11 @@ export default function HomeCamerasBlock({ onOpenModal }) {
         {/* CTAs */}
         <div style={{ display:"flex",flexDirection:"column",gap:12,marginTop:24 }}>
           <button
-            onClick={() => onOpenModal && onOpenModal("Cámaras de seguridad")}
+            onClick={scrollToKits}
             className="c-cta-primary"
             style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer",boxShadow:"0 0 24px rgba(239,68,68,.45)" }}
           >
-            Solicitar presupuesto gratis →
+            Ver kits y precios ↓
           </button>
           <a
             href="tel:+34638109947"
@@ -135,7 +139,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
         </div>
 
         {/* ── KIT CARDS ── */}
-        <div style={{ marginTop:32 }}>
+        <div id="camaras-kits" style={{ marginTop:32, scrollMarginTop: 90 }}>
           <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>
             Kits Profesionales de Videovigilancia — Precios Transparentes
           </p>
