@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
-import SEOHead from "../components/seo/SEOHead";
+import AdvancedSEO from "../components/seo/AdvancedSEO";
+import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Shield, Camera, Fingerprint, MonitorPlay, Bell, Home, Building2, CheckCircle, Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -37,7 +38,7 @@ const servicios = [
   ],
   tecnologia: "AJAX Systems, DSC, Paradox",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/809d1e8d7_IMG_8315.jpeg",
-  precio: "Desde 400€"
+  precio: "Desde 399€"
 },
 {
   icon: Camera,
@@ -63,7 +64,7 @@ const servicios = [
   ],
   tecnologia: "HIKVISION, DAHUA, AJAX",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/38f56c395_IMG_8316.jpeg",
-  precio: "Desde 680€"
+  precio: null
 },
 {
   icon: MonitorPlay,
@@ -89,7 +90,7 @@ const servicios = [
   ],
   tecnologia: "FERMAX, TEGUI, COMELIT",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/7ec95bf45_IMG_8318.jpeg",
-  precio: "Desde 450€"
+  precio: null
 },
 {
   icon: Fingerprint,
@@ -115,7 +116,7 @@ const servicios = [
   ],
   tecnologia: "ZKTeco, HIKVISION, FERMAX",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/118acf3ea_IMG_8317.jpeg",
-  precio: "Desde 350€"
+  precio: null
 },
 {
   icon: Bell,
@@ -141,7 +142,7 @@ const servicios = [
   ],
   tecnologia: "AJAX, OPTEX, HIKVISION",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/185a69b5e_IMG_8319.jpeg",
-  precio: "Desde 850€"
+  precio: null
 },
 {
   icon: Home,
@@ -167,7 +168,7 @@ const servicios = [
   ],
   tecnologia: "KNX, AJAX, SHELLY, SONOFF",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/db886e567_IMG_8320.png",
-  precio: "Desde 1.200€"
+  precio: null
 },
 {
   icon: Building2,
@@ -193,7 +194,7 @@ const servicios = [
   ],
   tecnologia: "FERMAX, HIKVISION, CAME",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/a23233802_IMG_8321.jpeg",
-  precio: "Desde 3.500€"
+  precio: null
 }];
 
 
@@ -255,12 +256,19 @@ export default function Servicios() {
 
   return (
     <div className="min-h-screen bg-white">
-      <SEOHead 
+      <AdvancedSEO
         title="Servicios de Seguridad en Barcelona | Premium Tech Security"
         description="Instalación profesional de alarmas AJAX, cámaras Hikvision, control de accesos y videoporteros en Barcelona y Catalunya. Tecnología de última generación con respuesta inmediata 24/7. Presupuesto gratis."
         keywords="alarmas Barcelona, cámaras seguridad Barcelona, control accesos Barcelona, videoporteros Barcelona, seguridad Catalunya, AJAX alarmas, Hikvision, instalación seguridad"
-        schema={schemaData}
+        canonicalUrl="https://alarmasenbarcelona.com/Servicios"
       />
+      {/* Schema propio de este catálogo de servicios — AdvancedSEO ya aporta
+          el LocalBusiness/WebSite/Organization/Breadcrumb comunes; Helmet
+          combina los <script> de ambos sin duplicar nada porque cada uno
+          añade nodos distintos, no reescribe los mismos. */}
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+      </Helmet>
       <Navbar />
       
       {/* Hero Section */}
@@ -322,7 +330,9 @@ export default function Servicios() {
                           <p className="text-white text-sm font-semibold mb-2">Tecnología Premium</p>
                           <p className="text-white/90 text-sm mb-3">{servicio.tecnologia}</p>
                           <div className="flex items-center justify-between">
-                            <span className="text-2xl font-bold text-white">{servicio.precio}</span>
+                            <span className="text-2xl font-bold text-white">
+                              {servicio.precio || "Presupuesto personalizado"}
+                            </span>
                             <span className="text-xs text-white/70">Instalación incluida</span>
                           </div>
                         </div>

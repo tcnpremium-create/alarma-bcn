@@ -29,10 +29,11 @@ export default function MantenimientoSoporte() {
 
   return (
     <div className="min-h-screen bg-white">
-      <AdvancedSEO 
+      <AdvancedSEO
         title="Mantenimiento Sistemas Seguridad 24/7 Barcelona | Soporte Técnico"
         description="Servicio de mantenimiento y soporte técnico 24/7 para sistemas de seguridad en Barcelona. Alarmas, cámaras, control de accesos. Respuesta inmediata certificada."
         keywords="mantenimiento alarmas Barcelona, soporte técnico seguridad, reparación cámaras, mantenimiento sistemas seguridad, servicio técnico 24/7, revisión alarmas"
+        canonicalUrl="https://alarmasenbarcelona.com/MantenimientoSoporte"
         schema={{
           "@type": "Service",
           "name": "Mantenimiento y Soporte Técnico 24/7",
@@ -107,14 +108,14 @@ export default function MantenimientoSoporte() {
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0A1628] mb-12 text-center">Planes de mantenimiento</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: "Básico", price: "desde 29€/mes", features: ["Soporte telefónico", "Actualizaciones", "Pruebas trimestrales"] },
-                { name: "Profesional", price: "desde 59€/mes", features: ["Soporte 24/7", "Mantenimiento mensual", "Reparaciones incluidas", "Piezas de repuesto"], popular: true },
-                { name: "Premium", price: "desde 99€/mes", features: ["Todo incluido", "Visitas mensuales", "Ampliación de sistema", "Asesoramiento continuo"] }
+                { name: "Básico", price: "Presupuesto personalizado", features: ["Soporte telefónico", "Actualizaciones", "Pruebas trimestrales"] },
+                { name: "Profesional", price: "Presupuesto personalizado", features: ["Soporte 24/7", "Mantenimiento mensual", "Reparaciones incluidas", "Piezas de repuesto"], popular: true },
+                { name: "Premium", price: "Presupuesto personalizado", features: ["Todo incluido", "Visitas mensuales", "Ampliación de sistema", "Asesoramiento continuo"] }
               ].map((plan, idx) => (
                 <div key={idx} className={`rounded-xl p-8 ${plan.popular ? 'bg-gradient-to-br from-[#E63946] to-[#d32f3c] text-white shadow-2xl scale-105' : 'bg-gray-50 border border-gray-200'}`}>
                   {plan.popular && <div className="text-sm font-bold bg-white text-[#E63946] px-3 py-1 rounded-full w-fit mb-4">MÁS POPULAR</div>}
                   <h3 className={`text-2xl font-bold mb-2 ${plan.popular ? 'text-white' : 'text-[#0A1628]'}`}>{plan.name}</h3>
-                  <div className={`text-3xl font-bold mb-6 ${plan.popular ? 'text-white' : 'text-[#E63946]'}`}>{plan.price}</div>
+                  <div className={`text-xl font-bold mb-6 ${plan.popular ? 'text-white' : 'text-[#E63946]'}`}>{plan.price}</div>
                   <ul className="space-y-3">
                     {plan.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-center gap-2">
@@ -139,7 +140,7 @@ export default function MantenimientoSoporte() {
                 onClick={scrollToContact}
                 className="bg-white text-[#E63946] hover:bg-gray-100 px-8 py-6 rounded-lg font-bold flex items-center justify-center gap-2"
               >
-                Contratar plan ahora
+                Solicitar presupuesto personalizado
                 <ArrowRight className="w-5 h-5" />
               </Button>
               <a

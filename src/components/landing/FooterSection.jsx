@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { openCookiePreferences } from "@/components/CookieBanner";
 
 const LOGO_BLANCO = "/images/logo-premium-blanco.webp";
 
@@ -96,6 +97,13 @@ export default function FooterSection() {
               <Link to="/AvisoLegal" className="hover:text-white transition-colors">Aviso Legal</Link>
               <Link to="/Privacidad" className="hover:text-white transition-colors">Privacidad</Link>
               <Link to="/Cookies" className="hover:text-white transition-colors">Cookies</Link>
+              <button
+                type="button"
+                onClick={() => openCookiePreferences()}
+                className="hover:text-white transition-colors underline-offset-2"
+              >
+                Preferencias de cookies
+              </button>
             </div>
           </div>
         </div>

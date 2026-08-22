@@ -70,7 +70,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
   const defaultFaqs = [
     {
       q: `¿Cuánto cuesta instalar cámaras de seguridad en ${city}?`,
-      a: `El precio depende del número de cámaras, tipo y ubicación. En Premium Tech Security ofrecemos presupuesto gratuito sin compromiso. Consulta nuestros kits de instalación desde 699€ (IVA no incluido) con instalación y grabador incluidos, sin cuotas mensuales.`,
+      a: `El precio depende del número de cámaras, tipo y ubicación. En Premium Tech Security ofrecemos presupuesto gratuito sin compromiso. Consulta nuestros kits de instalación desde 689€ (IVA no incluido) con instalación y grabador incluidos, sin cuotas mensuales.`,
     },
     {
       q: `¿Qué marcas de cámaras instaláis en ${city}?`,

@@ -14,14 +14,22 @@ const css = `
   .c-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
   .c-cta-sec { transition: background .2s, border-color .2s; }
   .c-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
-  .c-kit-card { transition: border-color .2s ease, background .2s ease; }
+  .c-kit-card { transition: border-color .2s ease, background .2s ease, box-shadow .3s ease; }
   .c-kit-card:hover { border-color: rgba(255,255,255,.22)!important; }
+  /* Glow sutil y constante en la tarjeta protagonista — no es una
+     animación en bucle, es un box-shadow fijo con transición suave al
+     entrar en pantalla y al hacer hover. Respeta prefers-reduced-motion:
+     con la preferencia activada solo cambia el borde, sin transición. */
+  .c-kit-card--highlight { box-shadow: 0 0 0 1px rgba(229,62,62,.35), 0 8px 32px rgba(229,62,62,.16); }
+  .c-kit-card--highlight:hover { box-shadow: 0 0 0 1px rgba(229,62,62,.55), 0 10px 40px rgba(229,62,62,.26); }
+  @media (prefers-reduced-motion: reduce) {
+    .c-kit-card, .c-kit-card:hover, .c-cta-primary, .c-cta-primary:hover { transition: none; transform: none; }
+  }
 `;
 
-// Home solo muestra los kits Profesional y Empresarial (nunca mostró el
-// Kit Básico de 2 cámaras) — se filtran del array centralizado en vez de
-// mantener una copia propia de los datos.
-const KITS = CAMERA_KITS.filter((k) => k.id === "profesional" || k.id === "empresarial");
+// Kits en orden comercial: promoción de entrada → recomendado (protagonista)
+// → profesional. El orden ya viene así en el array centralizado.
+const KITS = CAMERA_KITS;
 
 export default function HomeCamerasBlock({ onOpenModal }) {
   const [open, setOpen] = useState(null);
@@ -70,7 +78,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
           Cámaras de seguridad · Barcelona
         </span>
         <h2 style={{ fontWeight:900,fontSize:30,color:"#FFFFFF",lineHeight:1.15,margin:0 }}>
-          Vigilancia 4K con Inteligencia Artificial
+          Vigilancia profesional con Inteligencia Artificial
         </h2>
         <p style={{ color:"#94A3B8",fontSize:15.5,lineHeight:1.75,marginTop:14,maxWidth:480 }}>
           Detectan personas y vehículos en tiempo real, ven de noche en color y graban sin depender de la nube. Instalación certificada, sin cuotas mensuales.
@@ -112,12 +120,12 @@ export default function HomeCamerasBlock({ onOpenModal }) {
           <div style={{ display:"flex",flexDirection:"column",gap:10 }}>
             {KITS.map((kit)=>{
               const isOpen = open === kit.id;
-              const popular = kit.badge === "MÁS VENDIDO";
+              const popular = kit.highlight;
               return (
                 <div
                   key={kit.id}
-                  className="c-kit-card"
-                  style={{ background:"rgba(255,255,255,.03)",border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.08)"}`,borderRadius:14,overflow:"hidden",position:"relative" }}
+                  className={`c-kit-card${popular ? " c-kit-card--highlight" : ""}`}
+                  style={{ background:"rgba(255,255,255,.03)",border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : popular ? "rgba(229,62,62,.35)" : "rgba(255,255,255,.08)"}`,borderRadius:14,overflow:"hidden",position:"relative" }}
                 >
                   {popular && (
                     <div style={{ position:"absolute",top:0,left:0,right:0,height:2,background:"linear-gradient(to right,transparent,#ef4444 30%,#ef4444 70%,transparent)",borderRadius:"14px 14px 0 0" }} />
@@ -134,7 +142,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                         <span style={{ color:"#fff",fontSize:16,fontWeight:800 }}>{kit.title}</span>
                         <span style={{ color:"#ef4444",fontSize:16,fontWeight:800,marginLeft:8 }}>— {kit.cameras}</span>
                       </div>
-                      <div style={{ color:"#64748B",fontSize:11,marginTop:2 }}>Ideal: {kit.ideal}</div>
+                      <div style={{ color:"#64748B",fontSize:11.5,marginTop:3,lineHeight:1.4,maxWidth:"90%" }}>{kit.description}</div>
                     </div>
                     <div style={{ textAlign:"right",marginLeft:12,flexShrink:0 }}>
                       {kit.isFrom && <div style={{ color:"#94A3B8",fontSize:9,fontWeight:700,letterSpacing:".04em",textTransform:"uppercase" }}>Desde</div>}
@@ -162,7 +170,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                         className="c-cta-primary"
                         style={{ width:"100%",marginTop:16,color:"#fff",fontWeight:800,fontSize:15,borderRadius:50,padding:"14px 0",border:"none",cursor:"pointer" }}
                       >
-                        Solicitar presupuesto — {kit.cameras} →
+                        {kit.ctaLabel || "Solicitar presupuesto"} →
                       </button>
                     </div>
                   )}

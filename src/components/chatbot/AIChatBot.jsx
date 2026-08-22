@@ -45,7 +45,7 @@ export default function AIChatBot() {
     if (id === "camaras") {
       addUser("📹 Quiero cámaras");
       setTimeout(() => {
-        addBot("¡Perfecto! Tenemos kits desde 699€ con instalación incluida. ¿Para qué tipo de espacio?");
+        addBot("¡Perfecto! Tenemos kits desde 689€ con instalación incluida. ¿Para qué tipo de espacio?");
         setStep("camaras_space");
       }, 400);
     }
@@ -61,7 +61,7 @@ export default function AIChatBot() {
   const handleSpace = (item) => {
     addUser(`${item.emoji} ${item.label}`);
     setTimeout(() => {
-      addBot(`Genial, para ${item.label.toLowerCase()} tenemos soluciones desde 699€. Déjanos tu teléfono y un técnico te llamará en menos de 24h con un presupuesto personalizado.`);
+      addBot(`Genial, para ${item.label.toLowerCase()} tenemos soluciones desde 689€. Déjanos tu teléfono y un técnico te llamará en menos de 24h con un presupuesto personalizado.`);
       setStep("collect_phone");
     }, 400);
   };

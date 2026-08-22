@@ -1,11 +1,17 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import AdvancedSEO from "../components/seo/AdvancedSEO";
 import { motion } from "framer-motion";
 
 export default function Cookies() {
   return (
     <div className="min-h-screen bg-white">
+      <AdvancedSEO
+        title="Política de Cookies | Premium Tech Security"
+        description="Qué cookies utiliza alarmasenbarcelona.com, para qué sirven y cómo puedes aceptarlas, rechazarlas o configurarlas."
+        canonicalUrl="https://alarmasenbarcelona.com/Cookies"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20">
@@ -68,7 +74,7 @@ export default function Cookies() {
 
               <h2 className="text-2xl font-bold text-[#0A1628] mt-8 mb-4">4. Consentimiento</h2>
               <p className="text-gray-600 mb-6">
-                Al navegar y continuar en nuestro sitio web estará consintiendo el uso de las cookies antes enunciadas, por los plazos señalados y en las condiciones contenidas en la presente Política de Cookies. Si no consiente el uso de cookies, deberá configurar su navegador para que las rechace o abandonar el uso de este sitio web.
+                Las cookies técnicas necesarias para el funcionamiento del sitio se instalan siempre. Las cookies de análisis (Google Analytics, HubSpot) y de publicidad (Google AdSense) solo se instalan si usted da su consentimiento expreso a través del banner de cookies que aparece en su primera visita, donde puede <strong>Aceptar</strong> todas, <strong>Rechazar</strong> las no esenciales, o <strong>Configurar</strong> individualmente cada categoría. Puede cambiar su decisión en cualquier momento desde el enlace "Preferencias de cookies" disponible en el pie de página.
               </p>
 
               <h2 className="text-2xl font-bold text-[#0A1628] mt-8 mb-4">5. Cómo Gestionar las Cookies</h2>

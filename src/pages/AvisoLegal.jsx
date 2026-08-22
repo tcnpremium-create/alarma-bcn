@@ -1,11 +1,17 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import AdvancedSEO from "../components/seo/AdvancedSEO";
 import { motion } from "framer-motion";
 
 export default function AvisoLegal() {
   return (
     <div className="min-h-screen bg-white">
+      <AdvancedSEO
+        title="Aviso Legal | Premium Tech Security"
+        description="Aviso legal de Premium Tech Security: datos identificativos, condiciones de uso y responsabilidades del sitio alarmasenbarcelona.com."
+        canonicalUrl="https://alarmasenbarcelona.com/AvisoLegal"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20">

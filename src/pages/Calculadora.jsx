@@ -22,21 +22,26 @@ const CITY_OPTIONS = ["Barcelona", "Sabadell", "Girona", "Tarragona", "Lleida", 
 
 // Umbrales alineados con los precios reales de src/data/alarmKits.js y
 // src/data/cameraKits.js — antes esta función tenía sus propios importes
-// hardcodeados que habían quedado desincronizados (349€ aquí vs 399€ en
-// el Kit Alarma Hogar real; 890€/1.500€ aquí vs los precios "Desde"
-// actualizados de los kits de cámaras).
+// hardcodeados que habían quedado desincronizados. Actualizado tras la
+// revisión "producto gancho" de cámaras: Kit Esencial (2 cámaras) 689€,
+// Kit Protección (4 cámaras) 899€, Kit Profesional (8 cámaras) 1.499€
+// (ver informe entregado). El importe combinado cámaras+alarma se
+// mantiene anclado al precio de entrada de cámaras, mismo criterio que
+// ya usaba esta función antes de esta revisión — no es una suma real,
+// es solo la cifra "desde" más baja para no sobreestimar antes del
+// presupuesto real.
 function getEstimate(services, cameraCount) {
   const hasCam = services.includes("camaras");
   const hasAlarm = services.includes("alarma");
   const hasAccess = services.includes("accesos");
 
   if (hasCam && hasAlarm && hasAccess) return "999€";
-  if (hasCam && hasAlarm) return "699€";
+  if (hasCam && hasAlarm) return "689€";
   if (hasAlarm && !hasCam) return "399€";
   if (hasCam) {
-    if (cameraCount <= 2) return "699€";
-    if (cameraCount <= 4) return "989€";
-    return "1.699€";
+    if (cameraCount <= 2) return "689€";
+    if (cameraCount <= 4) return "899€";
+    return "1.499€";
   }
   if (hasAccess) return "499€";
   return "399€";
@@ -98,6 +103,7 @@ export default function Calculadora() {
       <Helmet>
         <title>Calculadora de Presupuesto | Premium Tech Security</title>
         <meta name="description" content="Calcula el precio de tu sistema de seguridad en Barcelona. Presupuesto online gratuito para cámaras, alarmas y videoporteros. Sin compromiso." />
+        <link rel="canonical" href="https://alarmasenbarcelona.com/Calculadora" />
       </Helmet>
       <Navbar />
 

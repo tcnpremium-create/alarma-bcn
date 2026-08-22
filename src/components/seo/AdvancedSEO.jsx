@@ -9,15 +9,23 @@ const SITE_URL = "https://alarmasenbarcelona.com";
 const LOGO_URL = `${SITE_URL}/images/logo-premium-negro.png`;
 const OG_IMAGE = "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png";
 
-export default function AdvancedSEO({ 
+export default function AdvancedSEO({
   title = "Alarmas Barcelona | Instalación Sistemas Seguridad Catalunya",
   description = "Empresa líder en instalación de alarmas en Barcelona y Catalunya. Sistemas AJAX, cámaras 4K Hikvision, respuesta 24/7. Presupuesto gratis. Llama al 638 10 99 47.",
   keywords = "alarmas Barcelona, sistemas seguridad Barcelona, alarmas hogar, alarmas negocios, AJAX alarmas, cámaras seguridad, instalación alarmas Catalunya, videovigilancia Barcelona",
   ogImage = OG_IMAGE,
   canonicalUrl,
-  type = "website"
+  type = "website",
+  // Nodo(s) schema.org extra específicos de la página (objeto o array),
+  // añadidos al mismo @graph. Varias páginas (Cerraduras, Sonorización,
+  // Redes, Control de Accesos, Mantenimiento) ya pasaban esta prop
+  // esperando que se usara — AdvancedSEO no la leía, así que ese schema
+  // específico de servicio se perdía en silencio y esas páginas solo
+  // emitían el LocalBusiness/WebSite/Organization genérico.
+  schema,
 }) {
   const canonical = canonicalUrl || SITE_URL;
+  const extraNodes = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -81,20 +89,6 @@ export default function AdvancedSEO({
           "bestRating": "5",
           "worstRating": "1"
         },
-        "review": [
-          {
-            "@type": "Review",
-            "author": { "@type": "Person", "name": "María G." },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-            "reviewBody": "Después de instalar AJAX en nuestra vivienda en Gràcia, dormimos mucho más tranquilos. La app es súper intuitiva y recibimos las alertas al instante."
-          },
-          {
-            "@type": "Review",
-            "author": { "@type": "Person", "name": "Josep T." },
-            "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-            "reviewBody": "Instalé 8 cámaras Hikvision en mi negocio y la calidad de imagen es impresionante, incluso de noche. Puedo ver todo desde el móvil en tiempo real."
-          }
-        ],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Servicios de Seguridad",
@@ -105,8 +99,7 @@ export default function AdvancedSEO({
                 "@type": "Service",
                 "name": "Instalación de Alarmas AJAX",
                 "description": "Sistemas de alarma inalámbricos AJAX con certificación Grado 2, detectores inmunes a mascotas y conexión a CRA 24/7"
-              },
-              "priceSpecification": { "@type": "PriceSpecification", "price": "400", "priceCurrency": "EUR", "description": "Desde 400€ con instalación incluida" }
+              }
             },
             {
               "@type": "Offer",
@@ -114,8 +107,7 @@ export default function AdvancedSEO({
                 "@type": "Service",
                 "name": "Videovigilancia Hikvision 4K",
                 "description": "Cámaras IP Full HD y 4K con visión nocturna ColorVu, IA y acceso remoto"
-              },
-              "priceSpecification": { "@type": "PriceSpecification", "price": "680", "priceCurrency": "EUR", "description": "Desde 680€ kit 2 cámaras con instalación" }
+              }
             },
             {
               "@type": "Offer",
@@ -123,8 +115,7 @@ export default function AdvancedSEO({
                 "@type": "Service",
                 "name": "Control de Accesos Biométrico",
                 "description": "Sistemas RFID, huella dactilar y reconocimiento facial para empresas y comunidades"
-              },
-              "priceSpecification": { "@type": "PriceSpecification", "price": "350", "priceCurrency": "EUR", "description": "Desde 350€" }
+              }
             },
             {
               "@type": "Offer",
@@ -132,8 +123,7 @@ export default function AdvancedSEO({
                 "@type": "Service",
                 "name": "Videoporteros IP",
                 "description": "Videoporteros con pantalla táctil 7 pulgadas, apertura remota desde smartphone"
-              },
-              "priceSpecification": { "@type": "PriceSpecification", "price": "450", "priceCurrency": "EUR", "description": "Desde 450€" }
+              }
             }
           ]
         },
@@ -185,7 +175,8 @@ export default function AdvancedSEO({
           "https://www.instagram.com/premiumtechsecurity",
           "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
         ]
-      }
+      },
+      ...extraNodes
     ]
   };
 

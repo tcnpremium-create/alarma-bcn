@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { getWhatsappMessage } from "@/lib/serviceByPath";
+import { markConverted as markExitIntentConverted } from "@/lib/exitIntent";
 
 export default function MobileFloatingCTA() {
   const { pathname } = useLocation();
@@ -11,6 +12,7 @@ export default function MobileFloatingCTA() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => markExitIntentConverted()}
       className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center justify-center gap-2 text-white font-bold text-base"
       style={{
         backgroundColor: "#25D366",

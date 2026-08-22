@@ -94,7 +94,7 @@ export default function CityLandingSEO({ path }) {
         "description": "Instalación de sistemas de alarma Ajax inalámbricos certificados. Respuesta CRA en 15 segundos.",
         "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947" },
         "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "Catalunya"],
-        "offers": { "@type": "AggregateOffer", "lowPrice": "399", "highPrice": "1300", "priceCurrency": "EUR", "offerCount": "3" }
+        "offers": { "@type": "AggregateOffer", "lowPrice": "399", "highPrice": "1099", "priceCurrency": "EUR", "offerCount": "3" }
       },
       {
         "@type": "FAQPage",

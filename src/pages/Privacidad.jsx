@@ -1,11 +1,17 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import AdvancedSEO from "../components/seo/AdvancedSEO";
 import { motion } from "framer-motion";
 
 export default function Privacidad() {
   return (
     <div className="min-h-screen bg-white">
+      <AdvancedSEO
+        title="Política de Privacidad | Premium Tech Security"
+        description="Cómo trata Premium Tech Security tus datos personales: finalidad, base legal, conservación y tus derechos de acceso, rectificación y supresión."
+        canonicalUrl="https://alarmasenbarcelona.com/Privacidad"
+      />
       <Navbar />
       
       <section className="pt-32 pb-20">

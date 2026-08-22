@@ -21,7 +21,7 @@ const SOLUTIONS = [
       "Historial de visitas con foto",
       "Instalación en 1 día",
     ],
-    price: "Desde 299€ instalado",
+    price: "Presupuesto personalizado",
   },
   {
     icon: <Users className="w-7 h-7" style={{ color: "#E53E3E" }} />,
@@ -37,7 +37,7 @@ const SOLUTIONS = [
       "Cumplimiento RGPD incluido",
       "Gestión centralizada",
     ],
-    price: "Desde 599€ instalado",
+    price: "Presupuesto personalizado",
   },
   {
     icon: <Building2 className="w-7 h-7" style={{ color: "#E53E3E" }} />,
@@ -81,7 +81,7 @@ const TECH = [
 
 const FAQS = [
   { q: "¿Puedo modernizar mi videoportero de 2 hilos sin cambiar el cableado?", a: "Sí. Instalamos módulos IP que convierten tu instalación de 2 hilos existente en un sistema inteligente con app, sin necesidad de cambiar el cableado. Es la solución más económica para comunidades que quieren modernizarse y permite mantener toda la infraestructura existente." },
-  { q: "¿Cuánto cuesta instalar un videoportero en una comunidad de vecinos?", a: "Depende del número de viviendas y del sistema actual. Para una comunidad de 10-20 vecinos, el precio parte desde 599€ con instalación incluida. Ofrecemos presupuesto gratuito sin compromiso y sin letra pequeña." },
+  { q: "¿Cuánto cuesta instalar un videoportero en una comunidad de vecinos?", a: "Depende del número de viviendas y del sistema actual. Ofrecemos presupuesto gratuito y personalizado sin compromiso y sin letra pequeña, adaptado al tamaño de tu comunidad." },
   { q: "¿El reconocimiento facial es legal en España? ¿Cumple el RGPD?", a: "Sí, es completamente legal si se implementa correctamente. Nosotros nos encargamos de todo: instalación de señalética informativa obligatoria, configuración de los plazos de retención de datos, y documentación RGPD lista para presentar a inspección. El sistema no comparte datos con terceros." },
   { q: "¿El videoportero se puede integrar con mis cámaras de seguridad?", a: "Sí, todos nuestros sistemas IP se integran nativamente con cámaras CCTV y sistemas de alarma, creando una plataforma de seguridad unificada gestionable desde una sola app." },
   { q: "¿Qué pasa si me llaman cuando estoy fuera?", a: "Con nuestros sistemas recibes una notificación instantánea en tu móvil, ves al visitante en tiempo real con vídeo HD y puedes abrir la puerta remotamente desde cualquier lugar del mundo." },

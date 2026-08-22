@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
+import { markConverted as markExitIntentConverted } from "@/lib/exitIntent";
 
 const LeadDrawerContext = createContext(null);
 
@@ -21,6 +22,10 @@ export function LeadDrawerProvider({ children }) {
   const openDrawer = useCallback((svc) => {
     setService(typeof svc === "string" ? svc : "");
     setOpen(true);
+    // La persona ya entró en el flujo de presupuesto — el modal de
+    // "antes de irte" no debe competir con un formulario que ya está en
+    // marcha (ni volver a aparecer más tarde en la misma sesión).
+    markExitIntentConverted();
   }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 

@@ -6,101 +6,50 @@
     <link rel="icon" type="image/png" href="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/c939af4e3_logonegro.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="/manifest.json" />
-    <title>Instalación Cámaras de Seguridad y Alarmas Barcelona | Sin Cuotas | Premium Tech Security</title>
-    <meta name="description" content="Instalamos cámaras de seguridad y alarmas en Barcelona y toda Catalunya. Hikvision, Dahua, Ajax. Sin cuotas mensuales. Instalación incluida. Presupuesto gratis 638 10 99 47." />
-    <meta name="keywords" content="instalación cámaras seguridad Barcelona, alarmas Barcelona, videovigilancia Barcelona, cámaras 4K Barcelona, alarmas sin cuotas Barcelona" />
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <link rel="canonical" href="https://alarmasenbarcelona.com" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <!-- Verificación de propiedad del sitio para AdSense — metadato inerte,
+         no carga ningún script ni cookie por sí solo (el script real de
+         AdSense sigue condicionado al consentimiento, ver más abajo). -->
+    <meta name="google-adsense-account" content="ca-pub-9051549124466549" />
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Cámaras de Seguridad y Alarmas en Barcelona | Premium Tech Security" />
-    <meta property="og:description" content="Especialistas en instalación de cámaras de seguridad y alarmas en Barcelona. Sin cuotas. Presupuesto gratis en 24h. Tel: 638 10 99 47." />
-    <meta property="og:url" content="https://alarmasenbarcelona.com" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_ES" />
-    <meta property="og:site_name" content="Premium Tech Security - Alarmas Barcelona" />
+    <!--
+      IMPORTANTE — no añadir aquí <title>, <meta name="description">,
+      <link rel="canonical">, og:*, twitter:* ni geo:*.
 
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Alarmas Barcelona | Premium Tech Security" />
-    <meta name="twitter:description" content="Instaladores certificados de alarmas AJAX y cámaras Hikvision 4K en Barcelona y Catalunya." />
+      Esta es una SPA sin renderizado en servidor: cada ruta recibe este
+      mismo index.html sin JS ejecutado todavía. Si estos tags se
+      hardcodean aquí con los valores de Home, react-helmet-async los
+      AÑADE (no los sustituye) cuando cada página monta su propio
+      <AdvancedSEO>/<CityLandingSEO>/<LocalitySEO>, dejando 2 tags
+      duplicados en el DOM final — y el primero (el de Home, incorrecto)
+      es el que devuelven document.querySelector() y la mayoría de
+      herramientas de rastreo, apuntando el canonical de TODAS las
+      páginas a la home.
 
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="ES-CT" />
-    <meta name="geo.placename" content="Barcelona" />
-    <meta name="geo.position" content="41.3874;2.1686" />
-    <meta name="ICBM" content="41.3874, 2.1686" />
+      Cada página pública ya gestiona su propio <title>/description/
+      canonical/og/twitter/geo vía Helmet (AdvancedSEO, CityLandingSEO,
+      LocalitySEO o un <Helmet> propio) — ver informe de auditoría de
+      producción. Si en el futuro se detecta una ruta pública sin
+      cobertura, la solución es añadirle uno de esos componentes, nunca
+      volver a hardcodear valores aquí.
+    -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 
-    <!-- Google AdSense -->
-    <meta name="google-adsense-account" content="ca-pub-9051549124466549">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9051549124466549" crossorigin="anonymous"></script>
+    <!-- Schema LocalBusiness / FAQPage: gestionados por AdvancedSEO / CityLandingSEO
+         / LocalitySEO en cada página (ver comentario arriba) — no duplicar aquí. -->
 
-    <!-- Schema LocalBusiness -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://alarmasenbarcelona.com",
-      "name": "Premium Tech Security",
-      "description": "Empresa instaladora de alarmas, cámaras de seguridad y control de acceso en Barcelona y toda Catalunya",
-      "url": "https://alarmasenbarcelona.com",
-      "telephone": "+34638109947",
-      "email": "tcnpremium@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Carrer de Coll i Vehí, 141",
-        "addressLocality": "Barcelona",
-        "addressRegion": "Catalunya",
-        "postalCode": "08026",
-        "addressCountry": "ES"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "41.3874",
-        "longitude": "2.1686"
-      },
-      "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "L'Hospitalet", "Badalona", "Terrassa"],
-      "openingHours": "Mo-Sa 08:00-20:00",
-      "priceRange": "€€",
-      "hasMap": "https://maps.google.com/maps?cid=5715602764533889179",
-      "sameAs": [
-        "https://www.instagram.com/premiumtechsecurity",
-        "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
-      ]
-    }
-    </script>
-
-    <!-- Schema FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type": "Question", "name": "¿Cuánto cuesta instalar una alarma en Barcelona?", "acceptedAnswer": {"@type": "Answer", "text": "El precio de instalación de una alarma en Barcelona oscila entre 400€ y 1.500€ dependiendo del sistema y el número de sensores. Los sistemas AJAX básicos con instalación incluida parten desde 400€. Contacta con nosotros para un presupuesto gratuito adaptado a tu hogar o negocio."}},
-        {"@type": "Question", "name": "¿Qué cámaras de seguridad son mejores para una comunidad de vecinos en Barcelona?", "acceptedAnswer": {"@type": "Answer", "text": "Para comunidades de vecinos en Barcelona recomendamos cámaras Hikvision 4K con visión nocturna en color y análisis de IA. Un sistema completo para una comunidad incluye 4-8 cámaras + NVR + acceso remoto desde móvil, desde 680€ instalado con toda la normativa LOPD cumplida."}},
-        {"@type": "Question", "name": "¿Se puede instalar un control de acceso biométrico en un edificio en Barcelona?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, instalamos sistemas de control de acceso biométrico en edificios y comunidades de toda Barcelona y Catalunya. Los sistemas ZKTeco y Fermax permiten acceso por huella, tarjeta NFC y código PIN, con registro completo de entradas y salidas."}},
-        {"@type": "Question", "name": "¿Cuánto tiempo tarda la instalación de cámaras de seguridad?", "acceptedAnswer": {"@type": "Answer", "text": "Una instalación estándar de 4-8 cámaras de seguridad en Barcelona se realiza en 1 día. Sistemas más complejos con múltiples plantas o integraciones pueden requerir 2-3 días. Ofrecemos instalación en 24-48h desde la firma del presupuesto."}},
-        {"@type": "Question", "name": "¿Las cámaras de seguridad funcionan de noche?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, todas las cámaras Hikvision y Dahua que instalamos tienen visión nocturna infrarroja hasta 50 metros y visión nocturna en color (con poca luz ambiente). Las cámaras 4K incluyen análisis IA para detectar personas y vehículos incluso de noche."}},
-        {"@type": "Question", "name": "¿Hacen instalaciones de alarmas fuera de Barcelona?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, cubrimos toda Catalunya: Barcelona, Girona, Tarragona y Lleida. También Sabadell, Terrassa, L'Hospitalet, Badalona y todas las comarcas catalanas. Desplazamiento incluido en el presupuesto sin costes adicionales."}},
-        {"@type": "Question", "name": "¿Qué marca de alarma es mejor, AJAX o Hikvision?", "acceptedAnswer": {"@type": "Answer", "text": "AJAX es el sistema de alarma inalámbrico más avanzado del mercado, ideal para hogares y negocios. Hikvision es la marca líder mundial en videovigilancia CCTV. Instalamos ambas marcas y también sistemas combinados que integran alarma + cámaras en una sola app."}},
-        {"@type": "Question", "name": "¿Necesito licencia para instalar cámaras en mi comunidad de vecinos?", "acceptedAnswer": {"@type": "Answer", "text": "Las cámaras en zonas comunes de comunidades requieren aprobación en junta de propietarios y cumplir la normativa LOPD/RGPD. Nosotros nos encargamos de todo: la instalación técnica, los carteles informativos obligatorios y el asesoramiento legal para el registro en la AEPD."}}
-      ]
-    }
-    </script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKZQJRGRFR"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-TKZQJRGRFR');
-    </script>
+    <!--
+      Analítica y publicidad — carga condicionada al consentimiento de
+      cookies (ver src/lib/consent.js y src/components/CookieBanner.jsx).
+      Antes gtag/AdSense/HubSpot se cargaban aquí sin condición alguna,
+      ejecutándose antes de que el usuario pudiera aceptar o rechazar —
+      incumplimiento real de RGPD/LOPD-GDD. Ahora el bootstrap de
+      consentimiento vive en src/main.jsx y solo inyecta estos scripts
+      si ya hay consentimiento guardado (o en cuanto el usuario acepta).
+    -->
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <!-- HubSpot Tracking Code -->
-    <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/147919189.js"></script>
   </body>
 </html>

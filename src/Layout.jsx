@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useHubSpotTracking } from "@/components/tracking/useHubSpotTracking";
 import MobileFloatingCTA from "@/components/landing/MobileFloatingCTA";
 import LeadFormDrawer from "@/components/landing/LeadFormDrawer";
+import ExitIntentModal from "@/components/landing/ExitIntentModal";
 import { LeadDrawerProvider, useLeadDrawer } from "@/context/LeadDrawerContext";
 
 function LayoutInner({ children }) {
   const location = useLocation();
   const { open, service, closeDrawer } = useLeadDrawer();
+  const [exitIntentVisible, setExitIntentVisible] = useState(false);
   useHubSpotTracking();
 
   useEffect(() => {
@@ -16,14 +18,22 @@ function LayoutInner({ children }) {
   }, [location.pathname]);
 
   const hiddenPaths = ["/AdminLeads", "/AreaClientes"];
-  const showFloatingCTA = !hiddenPaths.includes(location.pathname) && !open;
+  // Se oculta también mientras el modal de recuperación de abandono está
+  // visible — dos elementos flotantes compitiendo por atención a la vez
+  // no es "elegante y sutil".
+  const showFloatingCTA = !hiddenPaths.includes(location.pathname) && !open && !exitIntentVisible;
 
   return (
     <div className="min-h-screen">
+      {/* El script de AdSense se cargaba aquí sin condición alguna, en cada
+          página, sin esperar consentimiento — duplicaba además el mismo
+          script que había en index.html. Ahora AdSense solo se carga desde
+          src/lib/consent.js cuando el usuario acepta la categoría
+          "publicidad" (ver CookieBanner). El meta de verificación de
+          propiedad se queda de forma estática en index.html (no ejecuta
+          nada ni instala cookies por sí solo). */}
       <Helmet>
         <meta name="trustpilot-one-time-domain-verification-id" content="3d8fb58e-64e5-4be5-b46c-6a6f60c20bc4"/>
-        <meta name="google-adsense-account" content="ca-pub-9051549124466549"/>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9051549124466549" crossOrigin="anonymous"></script>
       </Helmet>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -37,6 +47,7 @@ function LayoutInner({ children }) {
       {children}
       {showFloatingCTA && <MobileFloatingCTA />}
       <LeadFormDrawer open={open} service={service} onClose={closeDrawer} />
+      <ExitIntentModal onVisibleChange={setExitIntentVisible} />
     </div>
   );
 }

@@ -22,9 +22,9 @@ function Stars({ count }) {
   );
 }
 
-function ReviewCard({ stars, text, name, location }) {
+function ReviewCard({ stars, text, name, location, hidden }) {
   return (
-    <article style={{
+    <article aria-hidden={hidden || undefined} style={{
       minWidth: 272, maxWidth: 272, marginRight: 14,
       background: "linear-gradient(135deg, #0e1727 0%, #0a0f1a 100%)",
       border: "1px solid rgba(255,255,255,0.07)",
@@ -86,7 +86,7 @@ export default function MarqueeSocial() {
       {/* Reviews track */}
       <div style={{ overflow: "hidden", marginBottom: 36 }}>
         <div className="mq-reviews" style={{ display: "flex", width: "max-content", padding: "4px 0" }}>
-          {doubled.map((r, i) => <ReviewCard key={i} {...r} />)}
+          {doubled.map((r, i) => <ReviewCard key={i} {...r} hidden={i >= REVIEWS.length} />)}
         </div>
       </div>
 

@@ -28,6 +28,41 @@
       "source": "/SistemasAlarma",
       "destination": "/alarmas-barcelona",
       "permanent": true
+    },
+    {
+      "source": "/sin-cuotas-mensuales",
+      "destination": "/alarmas-barcelona",
+      "permanent": true
+    },
+    {
+      "source": "/comparativa-verisure",
+      "destination": "/alarmas-barcelona",
+      "permanent": true
+    },
+    {
+      "source": "/alarmas-sin-permanencia",
+      "destination": "/alarmas-barcelona",
+      "permanent": true
+    },
+    {
+      "source": "/Girona",
+      "destination": "/alarmas-girona",
+      "permanent": true
+    },
+    {
+      "source": "/Sabadell",
+      "destination": "/alarmas-sabadell",
+      "permanent": true
+    },
+    {
+      "source": "/Tarragona",
+      "destination": "/alarmas-tarragona",
+      "permanent": true
+    },
+    {
+      "source": "/Lleida",
+      "destination": "/alarmas-lleida",
+      "permanent": true
     }
   ],
   "rewrites": [

@@ -29,7 +29,7 @@ export default function LocalitySEO({
     "url": pageUrl || `https://alarmasenbarcelona.com/${city.toLowerCase()}`,
     "telephone": "+34638109947",
     "email": "tcnpremium@gmail.com",
-    "priceRange": "400€ - 3000€",
+    "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Carrer de Coll i Vehí, 141",

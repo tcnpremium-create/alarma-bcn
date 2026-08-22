@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ALARM_KITS } from "@/data/alarmKits";
 import { CAMERA_KITS } from "@/data/cameraKits";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
+
+const VALID_TABS = ["alarmas", "camaras", "controles"];
 
 const promoSchema = {
   "@context": "https://schema.org",
@@ -56,7 +60,14 @@ const TEXT = "#E2E8F0";
 const TEXT_DIM = "#94A3B8";
 
 export default function Promociones() {
-  const [activeTab, setActiveTab] = useState("alarmas");
+  const [searchParams] = useSearchParams();
+  // Permite enlazar directamente a una pestaña concreta (ej. desde el
+  // modal de exit-intent: /Promociones?tab=camaras) sin obligar a la
+  // persona a hacer clic en la pestaña manualmente.
+  const requestedTab = searchParams.get("tab");
+  const initialTab = VALID_TABS.includes(requestedTab) ? requestedTab : "alarmas";
+  const [activeTab, setActiveTab] = useState(initialTab);
+  const { openDrawer } = useLeadDrawer();
 
   return (
     <div style={{ minHeight: "100vh", background: BG, color: TEXT }}>
@@ -64,7 +75,7 @@ export default function Promociones() {
         <title>Kits de Alarmas y Cámaras de Seguridad Barcelona | Alarmas BCN</title>
         <meta
           name="description"
-          content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 699€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
+          content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
         />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Promociones" />
         <script type="application/ld+json">{JSON.stringify(promoSchema)}</script>
@@ -393,11 +404,12 @@ export default function Promociones() {
                 gap: 18,
               }}
             >
-              {CAMERA_KITS.map((kit, i) => {
-                const highlighted = i === 1;
+              {CAMERA_KITS.map((kit) => {
+                const highlighted = kit.highlight;
                 return (
                   <div
                     key={kit.id}
+                    className={highlighted ? "promo-kit-card--highlight" : undefined}
                     style={{
                       background: BG2,
                       borderRadius: 20,
@@ -407,6 +419,7 @@ export default function Promociones() {
                       display: "flex",
                       flexDirection: "column",
                       position: "relative",
+                      transition: "box-shadow 0.3s ease",
                     }}
                   >
                     {kit.badge && (
@@ -438,7 +451,7 @@ export default function Promociones() {
                         {kit.title}
                       </h3>
                       <p style={{ color: TEXT_DIM, fontSize: 13, margin: "0 0 20px", lineHeight: 1.5 }}>
-                        Ideal para {kit.ideal}
+                        {kit.description}
                       </p>
                     </div>
 
@@ -476,8 +489,8 @@ export default function Promociones() {
                       )}
                     </div>
 
-                    <a
-                      href="tel:+34638109947"
+                    <button
+                      onClick={() => openDrawer(kit.title)}
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -490,11 +503,29 @@ export default function Promociones() {
                         fontSize: 14,
                         padding: "13px 0",
                         borderRadius: 10,
-                        textDecoration: "none",
                         cursor: "pointer",
+                        width: "100%",
+                        marginBottom: 10,
                       }}
                     >
-                      <Phone size={15} />
+                      {kit.ctaLabel || "Solicitar presupuesto"}
+                    </button>
+                    <a
+                      href="tel:+34638109947"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 8,
+                        background: "transparent",
+                        color: TEXT_DIM,
+                        fontWeight: 600,
+                        fontSize: 13,
+                        padding: "8px 0",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Phone size={14} />
                       Llamar ahora
                     </a>
                   </div>
@@ -674,6 +705,10 @@ export default function Promociones() {
         }
         @media (max-width: 1024px) and (min-width: 721px) {
           .promo-kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        .promo-kit-card--highlight:hover { box-shadow: 0 24px 56px rgba(229,62,62,0.3) !important; }
+        @media (prefers-reduced-motion: reduce) {
+          .promo-kit-card--highlight { transition: none !important; }
         }
       `}</style>
 

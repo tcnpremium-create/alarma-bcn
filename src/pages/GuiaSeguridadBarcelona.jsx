@@ -38,7 +38,7 @@ export default function GuiaSeguridadBarcelona() {
 
             <h2 className="text-2xl font-bold text-[#0A1628] mt-10 mb-4">¿Cuánto cuesta instalar una alarma en Barcelona?</h2>
             <p>
-              Los precios varían según el tipo de sistema y la superficie a proteger. Un kit básico de alarma AJAX para un piso empieza desde los 400 euros con instalación incluida. Los kits de videovigilancia con 2 cámaras Full HD arrancan desde 680 euros, mientras que un sistema completo de seguridad para un negocio mediano puede oscilar entre 1.200 y 3.000 euros. Es fundamental elegir un instalador profesional que ofrezca garantía en equipos y mano de obra, sin permanencias ni contratos abusivos.
+              Los precios varían según el tipo de sistema y la superficie a proteger. Nuestro kit de alarma AJAX para vivienda parte de 399€ + IVA con instalación incluida, y nuestros kits de videovigilancia desde 689€ + IVA. Un sistema completo para un negocio o comunidad requiere una valoración personalizada del espacio. Es fundamental elegir un instalador profesional que ofrezca garantía en equipos y mano de obra, sin permanencias ni contratos abusivos. Solicita un presupuesto gratuito y sin compromiso para conocer el precio exacto de tu instalación.
             </p>
 
             <h2 className="text-2xl font-bold text-[#0A1628] mt-10 mb-4">Cómo elegir al mejor instalador de alarmas</h2>

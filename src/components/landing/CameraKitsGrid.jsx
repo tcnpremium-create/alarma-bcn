@@ -42,7 +42,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
   const [openId, setOpenId] = useState(null);
 
   return (
-    <section style={{ background: "#0A1120", padding: "64px 24px" }}>
+    <section id="camaras-kits" style={{ background: "#0A1120", padding: "64px 24px", scrollMarginTop: 90 }}>
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{
@@ -63,11 +63,11 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
         </div>
 
         <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
-          {CAMERA_KITS.map((kit, i) => {
-            const isHighlighted = i === 1;
+          {CAMERA_KITS.map((kit) => {
+            const isHighlighted = kit.highlight;
             const isOpen = openId === kit.id;
             return (
-              <div key={kit.id} className="kit-card" style={{
+              <div key={kit.id} className={`kit-card${isHighlighted ? " kit-card--highlight" : ""}`} style={{
                 background: isHighlighted ? "rgba(229,62,62,0.06)" : "rgba(255,255,255,0.03)",
                 border: isHighlighted ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.08)",
                 borderRadius: 16, padding: "32px 26px",
@@ -89,7 +89,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                   <span style={{ color: "#F1F5F9", fontSize: 16, fontWeight: 800 }}>{kit.title}</span>
                   <span style={{ color: "#E53E3E", fontSize: 15, fontWeight: 800, marginLeft: 8 }}>— {kit.cameras}</span>
                 </div>
-                <div style={{ color: "#94A3B8", fontSize: 12, marginTop: 2, marginBottom: 20 }}>Ideal: {kit.ideal}</div>
+                <div style={{ color: "#94A3B8", fontSize: 12.5, lineHeight: 1.5, marginTop: 6, marginBottom: 20 }}>{kit.description}</div>
 
                 <div style={{ marginBottom: 20 }}>
                   {kit.isFrom && (
@@ -133,7 +133,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                 </div>
 
                 <ShinyButton onClick={onRequestQuote} style={{ width: "100%", marginTop: "auto", padding: "14px 0", fontSize: 14 }}>
-                  Solicitar presupuesto gratis
+                  {kit.ctaLabel || "Solicitar presupuesto gratis"}
                 </ShinyButton>
               </div>
             );
@@ -143,11 +143,18 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
         {/* Hover + responsive stacking */}
         <style>{`
           .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
+          /* Glow rojo sutil y constante en la tarjeta protagonista (Kit
+             Recomendado) — un box-shadow fijo, no una animación en bucle.
+             Se intensifica un poco al hover, igual que las demás tarjetas. */
+          .kit-card--highlight:hover { box-shadow: 0 24px 56px rgba(229,62,62,0.3); }
           @media (max-width: 720px) {
             .kits-grid { grid-template-columns: 1fr !important; }
           }
           @media (max-width: 1024px) and (min-width: 721px) {
             .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .kit-card, .kit-card:hover { transition: none !important; transform: none !important; }
           }
         `}</style>
       </div>

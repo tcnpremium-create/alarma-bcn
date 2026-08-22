@@ -221,6 +221,10 @@ export default function ComparativaAlarmas() {
             <p className="text-xl text-white/70 max-w-2xl mx-auto mb-8">
               Comparamos las principales marcas con datos reales: precios, contratos, app, tecnología y qué incluye cada una.
             </p>
+            <p className="text-sm text-white/50 max-w-2xl mx-auto mb-8">
+              Los precios de esta comparativa son una referencia orientativa de mercado por marca, no la tarifa de Premium Tech Security. Consulta nuestros kits Ajax con precio actualizado en{" "}
+              <a href="/Promociones" className="underline hover:text-white">Promociones</a>.
+            </p>
             <div className="flex gap-3 justify-center">
               <button
                 onClick={() => setView('cards')}
