@@ -67,7 +67,6 @@ export default function HomeCamerasBlock({ onOpenModal }) {
 
   return (
     <section
-      className="cams-scanlines"
       style={{ position:"relative",overflow:"hidden",backgroundColor:"#0A0E17",padding:"72px 20px 64px" }}
     >
       <style>{css}</style>
@@ -75,14 +74,30 @@ export default function HomeCamerasBlock({ onOpenModal }) {
       {/* ── CONTENT ── */}
       <div className="max-w-2xl mx-auto" style={{ position:"relative",zIndex:3 }}>
 
-        {/* Fotografía grande — el producto habla antes que el texto */}
-        <div style={{ borderRadius:20, overflow:"hidden", marginBottom:28, boxShadow:"0 24px 60px rgba(0,0,0,.5)" }}>
+        {/* Fotografía grande — vivienda protegida con distintos modelos de
+            cámara, más el detalle de la variedad de modelos como inset,
+            anclado dentro del propio marco de la foto para que nunca
+            invada el título/texto de abajo (mismo patrón que las
+            tarjetas de "Más soluciones"). */}
+        <div style={{ position:"relative", borderRadius:20, overflow:"hidden", marginBottom:28, boxShadow:"0 24px 60px rgba(0,0,0,.5)" }}>
           <img
-            src="/images/camaras-hero-dome.webp"
-            alt="Cámara domo de seguridad instalada en techo interior"
+            src="/images/camaras-vivienda-exterior-piscina.jpg"
+            alt="Vivienda protegida con varios modelos de cámaras de seguridad Hikvision y Dahua"
             loading="lazy"
-            style={{ width:"100%", height:260, objectFit:"cover", objectPosition:"center 62%", display:"block" }}
+            style={{ width:"100%", height:260, objectFit:"cover", objectPosition:"center", display:"block" }}
           />
+          <div style={{
+            position:"absolute", right:12, bottom:12,
+            width:92, height:64, borderRadius:12, overflow:"hidden",
+            border:"2.5px solid #0A0E17", boxShadow:"0 6px 18px rgba(0,0,0,.4)",
+          }}>
+            <img
+              src="/images/camaras-variedad-modelos-interior.jpg"
+              alt="Variedad de modelos de cámara: domo, bala y antivandálica"
+              loading="lazy"
+              style={{ width:"100%", height:"100%", objectFit:"cover" }}
+            />
+          </div>
         </div>
 
         {/* Badge + Title */}
