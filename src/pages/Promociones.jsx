@@ -222,10 +222,10 @@ export default function Promociones() {
             </div>
 
             <div
-              className="promo-kits-grid promo-kits-grid-2"
+              className="promo-kits-grid promo-kits-grid-3"
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
+                gridTemplateColumns: "repeat(3, 1fr)",
                 gap: 18,
               }}
             >

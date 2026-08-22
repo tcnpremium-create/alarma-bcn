@@ -96,7 +96,7 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
           </Marquee>
         </div>
 
-        <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 18 }}>
+        <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
           {ALARM_KITS.map((kit, i) => {
             const isHighlighted = i === 1;
             const isOpen = openId === kit.id;
@@ -172,6 +172,9 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
           .kit-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }
           @media (max-width: 720px) {
             .kits-grid { grid-template-columns: 1fr !important; }
+          }
+          @media (max-width: 1024px) and (min-width: 721px) {
+            .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
           }
         `}</style>
       </div>

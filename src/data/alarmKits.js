@@ -16,7 +16,10 @@
  *
  * Revisión de precios: se añade el kit "empresa" (nuevo, no existía antes
  * como tarjeta propia) — ver informe de revisión comercial entregado.
- * Los kits Hogar, Negocio y Gran Instalación NO se han tocado.
+ * Los kits Hogar y Negocio NO se han tocado. El antiguo kit "Kit Alarma
+ * Gran Instalación" (comunidades/naves industriales) se ha retirado a
+ * petición del cliente — su hueco en el catálogo (proyectos grandes) lo
+ * cubre ahora el nuevo kit "empresa".
  *
  * IMPORTANTE sobre el kit "empresa": el coste estimado en el informe se
  * basa en precios públicos de referencia (Ajax MotionCam, KeyPad,
@@ -95,25 +98,5 @@ export const ALARM_KITS = [
       "Puesta en marcha",
     ],
     tech: "Grado 2 · Verificación fotográfica en Central Receptora",
-  },
-  {
-    id: "comunidad",
-    badge: "GRAN INSTALACIÓN",
-    title: "Kit Alarma Gran Instalación",
-    subtitle: "Para viviendas grandes, comunidades y naves industriales",
-    price: "1.300",
-    isFrom: false,
-    ivaNote: true,
-    items: [
-      "Hub+ Ajax (hasta 200 dispositivos)",
-      "4 detectores de movimiento MotionCam",
-      "2 detectores magnéticos perimetrales",
-      "1 teclado KeyPad en zona de acceso",
-      "Sirena exterior de alta potencia",
-      "Sirenas interiores incluidas",
-      "Protocolo de aviso a la Policía activado desde la CRA",
-      "Instalación y configuración completa incluida",
-    ],
-    tech: "Grado 2 · Canal de backup GSM + Ethernet · Batería 80h",
   },
 ];
