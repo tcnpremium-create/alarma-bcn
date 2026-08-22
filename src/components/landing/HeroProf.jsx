@@ -47,8 +47,8 @@ export default function HeroProf() {
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes badge-pulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(0,210,255,0.3); }
-          50%       { box-shadow: 0 0 0 8px rgba(0,210,255,0); }
+          0%, 100% { box-shadow: 0 0 0 0 rgba(229,62,62,0.3); }
+          50%       { box-shadow: 0 0 0 8px rgba(229,62,62,0); }
         }
         .hero-dot-btn { transition: all 0.3s ease; }
         .hero-cta-glow { transition: transform 0.2s ease, box-shadow 0.2s ease; }
@@ -89,15 +89,9 @@ export default function HeroProf() {
       {/* Bottom vignette */}
       <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "linear-gradient(to top, rgba(6,14,26,0.9) 0%, transparent 30%)" }} />
 
-      {/* Retro grid */}
-      <div style={{
-        position: "absolute", inset: 0, zIndex: 2, pointerEvents: "none",
-        backgroundImage: "linear-gradient(rgba(0,210,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,210,255,0.04) 1px, transparent 1px)",
-        backgroundSize: "50px 50px",
-      }} />
-
-      {/* Radial glow */}
-      <div style={{ position: "absolute", top: "20%", left: "8%", width: 500, height: 500, borderRadius: "50%", background: "radial-gradient(circle, rgba(239,68,68,0.05) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
+      {/* Glow sutil de marca — sin rejilla técnica ni patrones que compitan
+          con la fotografía */}
+      <div style={{ position: "absolute", top: "15%", left: "5%", width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.08) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
 
       {/* Content */}
       <div
@@ -110,13 +104,13 @@ export default function HeroProf() {
             key={`badge-${active}`}
             style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(0,210,255,0.1)", border: "1px solid rgba(0,210,255,0.35)",
+              background: "rgba(229,62,62,0.12)", border: "1px solid rgba(229,62,62,0.4)",
               borderRadius: 100, padding: "6px 16px", marginBottom: 24,
               animation: "badge-pulse 3s ease-in-out infinite, hero-fade-in 0.7s ease forwards",
             }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#00D4FF", display: "inline-block", flexShrink: 0 }} />
-            <span style={{ color: "#67E8F9", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ color: "#FCA5A5", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               {SLIDES[active].badge}
             </span>
           </div>
@@ -131,11 +125,7 @@ export default function HeroProf() {
             }}
           >
             <span style={{ color: "#FFFFFF", display: "block" }}>{SLIDES[active].h1a}</span>
-            <span style={{
-              display: "block",
-              background: "linear-gradient(90deg, #00D4FF 0%, #7C3AED 50%, #0080FF 100%)",
-              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-            }}>
+            <span style={{ display: "block", color: "#E53E3E" }}>
               {SLIDES[active].h1b}
             </span>
           </h1>
@@ -152,30 +142,28 @@ export default function HeroProf() {
             {SLIDES[active].sub}
           </p>
 
-          {/* Authority tag */}
+          {/* Confianza — texto plano, sin caja: instaladores homologados */}
           <div style={{
-            display: "inline-flex", alignItems: "center", gap: 8,
-            background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: 10, padding: "10px 14px", marginBottom: 28, maxWidth: 480,
+            display: "flex", alignItems: "flex-start", gap: 8,
+            marginBottom: 28, maxWidth: 460,
             animation: "hero-fade-in 0.8s ease 0.25s both",
           }}>
-            <ShieldCheck size={16} color="#00D4FF" style={{ flexShrink: 0 }} />
-            <span style={{ color: "#CBD5E0", fontSize: 12.5, fontWeight: 600, lineHeight: 1.5 }}>
-              Instaladores Homologados en Barcelona y Área Metropolitana — Respuesta e instalación técnica en 24/48h
+            <ShieldCheck size={16} color="#E53E3E" style={{ flexShrink: 0, marginTop: 2 }} />
+            <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500, lineHeight: 1.55 }}>
+              Instaladores homologados en Barcelona y área metropolitana. Respuesta en 24/48h.
             </span>
           </div>
 
-          {/* Stats */}
-          <div style={{ display: "flex", gap: 28, marginBottom: 40, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
+          {/* Cifras clave — solo las 3 que importan de un vistazo */}
+          <div style={{ display: "flex", gap: 32, marginBottom: 36, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
             {[
               { val: businessStats.installTimeframe, label: "Instalación" },
-              { val: "4K", label: "Ultra HD" },
-              { val: "15s", label: "Transmisión Ajax" },
-              { val: `★ ${businessStats.googleRating}`, label: "Google Reviews" },
+              { val: "4K", label: "Resolución" },
+              { val: `★ ${businessStats.googleRating}`, label: "En Google" },
             ].map(s => (
               <div key={s.val}>
-                <div style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)", fontWeight: 900, color: "#00D4FF", lineHeight: 1 }}>{s.val}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.35)", marginTop: 4, fontWeight: 500 }}>{s.label}</div>
+                <div style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)", fontWeight: 900, color: "#fff", lineHeight: 1 }}>{s.val}</div>
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 4, fontWeight: 500 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -239,7 +227,7 @@ export default function HeroProf() {
             aria-label={`Slide ${i + 1}`}
             style={{
               width: active === i ? 24 : 8, height: 8, borderRadius: 4,
-              background: active === i ? "#00D4FF" : "rgba(255,255,255,0.25)",
+              background: active === i ? "#E53E3E" : "rgba(255,255,255,0.25)",
               border: "none", cursor: "pointer", padding: 0,
             }}
           />

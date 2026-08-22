@@ -1,37 +1,20 @@
 import React, { useState } from "react";
+import { Cpu, Moon, HardDrive, Smartphone } from "lucide-react";
+
+const BENEFITS = [
+  { Icon: Cpu, text: "IA: detecta personas y vehículos" },
+  { Icon: Moon, text: "Visión nocturna en color" },
+  { Icon: HardDrive, text: "Grabación local, sin nube obligatoria" },
+  { Icon: Smartphone, text: "Acceso remoto desde el móvil" },
+];
 
 const css = `
-  .cams-scanlines::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      0deg, transparent, transparent 3px,
-      rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px
-    );
-    pointer-events: none;
-    z-index: 1;
-  }
-  @keyframes c-rec-blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
-  @keyframes c-emitter {
-    0%,100%{ box-shadow:0 0 6px 2px rgba(239,68,68,.9),0 0 14px 4px rgba(239,68,68,.4) }
-    50%    { box-shadow:0 0 3px 1px rgba(239,68,68,.5),0 0 7px 2px rgba(239,68,68,.2) }
-  }
-  @keyframes c-shimmer {
-    0%  { background-position:-200% center }
-    100%{ background-position:200% center }
-  }
-  .c-cta-primary {
-    background: linear-gradient(90deg,#b91c1c 0%,#ef4444 40%,#ff7070 50%,#ef4444 60%,#b91c1c 100%);
-    background-size: 200% auto;
-    animation: c-shimmer 3s linear infinite;
-    transition: box-shadow .3s ease;
-  }
-  .c-cta-primary:hover { box-shadow:0 0 32px rgba(239,68,68,.65),0 0 60px rgba(239,68,68,.25)!important }
-  .c-cta-sec { transition: background .3s, border-color .3s }
-  .c-cta-sec:hover { background:rgba(255,255,255,.14)!important; border-color:rgba(255,255,255,.32)!important }
-  .c-kit-card { transition: border-color .25s, box-shadow .25s }
-  .c-kit-card:hover { border-color:rgba(239,68,68,.50)!important; box-shadow:0 0 0 1px rgba(239,68,68,.2),0 0 20px rgba(239,68,68,.12)!important }
+  .c-cta-primary { background: #E53E3E; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
+  .c-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
+  .c-cta-sec { transition: background .2s, border-color .2s; }
+  .c-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
+  .c-kit-card { transition: border-color .2s ease, background .2s ease; }
+  .c-kit-card:hover { border-color: rgba(255,255,255,.22)!important; }
 `;
 
 const KITS = [
@@ -85,47 +68,50 @@ export default function HomeCamerasBlock({ onOpenModal }) {
   return (
     <section
       className="cams-scanlines"
-      style={{ position:"relative",overflow:"hidden",backgroundColor:"#060e1a",padding:"44px 20px 48px" }}
+      style={{ position:"relative",overflow:"hidden",backgroundColor:"#0A0E17",padding:"72px 20px 64px" }}
     >
       <style>{css}</style>
-
-      {/* Subtle dark grid */}
-      <div style={{ position:"absolute",inset:0,zIndex:0,pointerEvents:"none",backgroundImage:"linear-gradient(rgba(239,68,68,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(239,68,68,0.025) 1px,transparent 1px)",backgroundSize:"48px 48px" }} />
-
-      {/* REC badge */}
-      <div aria-hidden="true" style={{ position:"absolute",top:14,right:16,zIndex:5,display:"flex",alignItems:"center",gap:5,background:"rgba(0,0,0,.65)",backdropFilter:"blur(6px)",border:"1px solid rgba(239,68,68,.45)",borderRadius:6,padding:"4px 10px" }}>
-        <span style={{ width:7,height:7,borderRadius:"50%",backgroundColor:"#EF4444",display:"inline-block",animation:"c-rec-blink 1.2s step-start infinite" }} />
-        <span style={{ color:"#fff",fontSize:10,fontWeight:800,letterSpacing:"0.12em" }}>REC</span>
-      </div>
-      {[{top:10,left:10},{top:10,right:56},{bottom:10,left:10},{bottom:10,right:10}].map((pos,i)=>(
-        <div key={i} aria-hidden="true" style={{ position:"absolute",...pos,zIndex:4,width:8,height:8,borderRadius:"50%",border:"1.5px solid rgba(239,68,68,.55)",display:"flex",alignItems:"center",justifyContent:"center" }}>
-          <div style={{ width:3,height:3,borderRadius:"50%",backgroundColor:"#ef4444",animation:`c-emitter ${1.4+i*.35}s ${i*.4}s ease-in-out infinite` }} />
-        </div>
-      ))}
 
       {/* ── CONTENT ── */}
       <div className="max-w-2xl mx-auto" style={{ position:"relative",zIndex:3 }}>
 
-        {/* Red accent bar */}
-        <div style={{ height:4,backgroundColor:"#dc2626",width:"100%",marginBottom:22,boxShadow:"0 0 12px rgba(220,38,38,.6)",borderRadius:2 }} />
+        {/* Fotografía grande — el producto habla antes que el texto */}
+        <div style={{ borderRadius:20, overflow:"hidden", marginBottom:28, boxShadow:"0 24px 60px rgba(0,0,0,.5)" }}>
+          <img
+            src="/images/camaras-hero-dome.webp"
+            alt="Cámara domo de seguridad instalada en techo interior"
+            loading="lazy"
+            style={{ width:"100%", height:260, objectFit:"cover", objectPosition:"center 62%", display:"block" }}
+          />
+        </div>
 
         {/* Badge + Title */}
-        <span style={{ display:"inline-block",backgroundColor:"#dc2626",color:"#fff",borderRadius:20,fontSize:11,fontWeight:800,padding:"6px 14px",letterSpacing:".05em",marginBottom:12 }}>
-          CÁMARAS DE SEGURIDAD · BARCELONA
+        <span style={{ display:"inline-block",color:"#F87171",fontSize:12,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",marginBottom:10 }}>
+          Cámaras de seguridad · Barcelona
         </span>
-        <h2 style={{ fontWeight:900,fontSize:28,color:"#FFFFFF",lineHeight:1.12,margin:0 }}>
-          Vigila todo en 4K. Detecta intrusos con Inteligencia Artificial.
+        <h2 style={{ fontWeight:900,fontSize:30,color:"#FFFFFF",lineHeight:1.15,margin:0 }}>
+          Vigilancia 4K con Inteligencia Artificial
         </h2>
-        <p style={{ color:"#94A3B8",fontSize:15,lineHeight:1.72,marginTop:12 }}>
-          Instalamos cámaras 4K con IA que detectan personas y vehículos en tiempo real. Visión nocturna en color, grabación continua y alertas instantáneas en tu móvil. Instalación profesional certificada, sin cuotas mensuales.
+        <p style={{ color:"#94A3B8",fontSize:15.5,lineHeight:1.75,marginTop:14,maxWidth:480 }}>
+          Detectan personas y vehículos en tiempo real, ven de noche en color y graban sin depender de la nube. Instalación certificada, sin cuotas mensuales.
         </p>
+
+        {/* Beneficios — texto plano con icono, sin cajas */}
+        <div className="grid grid-cols-1 sm:grid-cols-2" style={{ gap:"14px 24px", marginTop:28 }}>
+          {BENEFITS.map(({ Icon, text }) => (
+            <div key={text} style={{ display:"flex", alignItems:"center", gap:10 }}>
+              <Icon size={17} color="#E53E3E" style={{ flexShrink:0 }} />
+              <span style={{ color:"#CBD5E0", fontSize:13.5, fontWeight:600 }}>{text}</span>
+            </div>
+          ))}
+        </div>
 
         {/* CTAs */}
         <div style={{ display:"flex",flexDirection:"column",gap:12,marginTop:24 }}>
           <button
             onClick={scrollToKits}
             className="c-cta-primary"
-            style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer",boxShadow:"0 0 24px rgba(239,68,68,.45)" }}
+            style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer" }}
           >
             Ver kits y precios ↓
           </button>
@@ -150,7 +136,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                 <div
                   key={kit.id}
                   className="c-kit-card"
-                  style={{ background:`${kit.color}`,backdropFilter:"blur(12px)",border:`1px solid ${isOpen ? kit.borderColor : kit.borderColor.replace(/\.[0-9.]+\)$/,".2)")}`,borderRadius:14,overflow:"hidden",boxShadow:isOpen ? `0 0 0 1px ${kit.borderColor.replace(/\.[0-9.]+\)$/,".15)")},0 0 24px rgba(239,68,68,.1)` : "none",position:"relative" }}
+                  style={{ background:"rgba(255,255,255,.03)",border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.08)"}`,borderRadius:14,overflow:"hidden",position:"relative" }}
                 >
                   {kit.popular && (
                     <div style={{ position:"absolute",top:0,left:0,right:0,height:2,background:"linear-gradient(to right,transparent,#ef4444 30%,#ef4444 70%,transparent)",borderRadius:"14px 14px 0 0" }} />
@@ -189,7 +175,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                       <button
                         onClick={() => onOpenModal && onOpenModal(kit.title)}
                         className="c-cta-primary"
-                        style={{ width:"100%",marginTop:16,color:"#fff",fontWeight:800,fontSize:15,borderRadius:50,padding:"14px 0",border:"none",cursor:"pointer",boxShadow:"0 0 20px rgba(239,68,68,.35)" }}
+                        style={{ width:"100%",marginTop:16,color:"#fff",fontWeight:800,fontSize:15,borderRadius:50,padding:"14px 0",border:"none",cursor:"pointer" }}
                       >
                         Solicitar presupuesto — {kit.cameras} →
                       </button>

@@ -2,46 +2,25 @@ import React, { useState } from "react";
 import { ALARM_KITS as KITS } from "@/data/alarmKits";
 
 const css = `
-  .alarms-bg-scanlines::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      0deg, transparent, transparent 3px,
-      rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px
-    );
-    pointer-events: none;
-    z-index: 1;
-  }
-  @keyframes a-rec-blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
-  @keyframes a-emitter {
-    0%,100%{ box-shadow:0 0 6px 2px rgba(239,68,68,.9),0 0 14px 4px rgba(239,68,68,.4) }
-    50%    { box-shadow:0 0 3px 1px rgba(239,68,68,.6),0 0 7px 2px rgba(239,68,68,.2) }
-  }
-  @keyframes a-shimmer {
-    0%  { background-position:-200% center }
-    100%{ background-position:200% center }
-  }
-  .a-cta-primary {
-    background: linear-gradient(90deg,#b91c1c 0%,#ef4444 40%,#ff7070 50%,#ef4444 60%,#b91c1c 100%);
-    background-size: 200% auto;
-    animation: a-shimmer 3s linear infinite;
-    transition: box-shadow .3s ease;
-  }
-  .a-cta-primary:hover { box-shadow:0 0 32px rgba(239,68,68,.65),0 0 60px rgba(239,68,68,.25)!important }
-  .a-cta-sec { transition: background .3s, border-color .3s }
-  .a-cta-sec:hover { background:rgba(255,255,255,.14)!important; border-color:rgba(255,255,255,.32)!important }
-  .a-kit-card { transition: border-color .25s, box-shadow .25s }
-  .a-kit-card:hover { border-color:rgba(239,68,68,.55)!important; box-shadow:0 0 0 1px rgba(239,68,68,.25),0 0 20px rgba(239,68,68,.15)!important }
-  .a-accordion-btn { transition: background .2s }
-  .a-accordion-btn:hover { background:rgba(239,68,68,.08)!important }
+  .a-cta-primary { background: #E53E3E; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
+  .a-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
+  .a-cta-sec { transition: background .2s, border-color .2s; }
+  .a-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
+  .a-kit-card { transition: border-color .2s ease; }
+  .a-kit-card:hover { border-color: rgba(255,255,255,.22)!important; }
+  .a-accordion-btn { transition: background .2s; }
+  .a-accordion-btn:hover { background: rgba(255,255,255,.04)!important; }
 `;
 
-const TECH_SPECS = [
-  { label: "Antiinhibición", desc: "Detecta y bloquea intentos de interferencia de señal RF" },
-  { label: "Grado 2 Certificado", desc: "Máximo nivel de seguridad reconocido por aseguradoras en España" },
-  { label: "Verificación en 15s", desc: "La Central Receptora confirma la intrusión y activa el protocolo de aviso a la Policía" },
-  { label: "Cifrado de Datos", desc: "Comunicación 100% cifrada entre dispositivos y central" },
+// Solo lo que realmente importa de un vistazo — el resto (specs completas,
+// FAQ técnicas) se explica en la página de cada kit, no aquí encima.
+const KEY_FACTS = [
+  "Ecosistema Ajax",
+  "Grado 2 certificado",
+  "Anti-inhibición de señal",
+  "Verificación en Central Receptora en 15s",
+  "App de control 24/7",
+  "Sin cuotas ni permanencia",
 ];
 
 export default function HomeAlarmsBlock({ onOpenModal }) {
@@ -49,9 +28,8 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
 
   return (
     <section
-      className="alarms-bg-scanlines"
       style={{
-        position: "relative", overflow: "hidden", padding: "0 0 48px",
+        position: "relative", overflow: "hidden", padding: "0 0 64px",
         backgroundImage: "url('/images/ajax-alarm-hero.jpeg')",
         backgroundSize: "cover", backgroundPosition: "center 28%", backgroundRepeat: "no-repeat",
       }}
@@ -61,44 +39,39 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
       {/* Dark overlay */}
       <div style={{ position:"absolute",inset:0,zIndex:0,background:"linear-gradient(170deg,rgba(4,5,16,.80) 0%,rgba(6,3,14,.70) 40%,rgba(4,5,16,.88) 100%)" }} />
       <div style={{ position:"absolute",bottom:0,left:0,right:0,height:120,zIndex:0,background:"linear-gradient(to bottom,transparent,rgba(4,5,16,.97))" }} />
-      {/* Red grid */}
-      <div style={{ position:"absolute",inset:0,zIndex:0,pointerEvents:"none",backgroundImage:"linear-gradient(rgba(239,68,68,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(239,68,68,0.03) 1px,transparent 1px)",backgroundSize:"48px 48px" }} />
-
-      {/* REC badge */}
-      <div aria-hidden="true" style={{ position:"absolute",top:14,right:16,zIndex:5,display:"flex",alignItems:"center",gap:5,background:"rgba(0,0,0,.65)",backdropFilter:"blur(6px)",border:"1px solid rgba(239,68,68,.45)",borderRadius:6,padding:"4px 10px" }}>
-        <span style={{ width:7,height:7,borderRadius:"50%",backgroundColor:"#EF4444",display:"inline-block",animation:"a-rec-blink 1.2s step-start infinite" }} />
-        <span style={{ color:"#fff",fontSize:10,fontWeight:800,letterSpacing:"0.12em" }}>REC</span>
-      </div>
-      {/* Corner sensors */}
-      {[{top:10,left:10},{top:10,right:10},{bottom:10,left:10},{bottom:10,right:10}].map((pos,i)=>(
-        <div key={i} aria-hidden="true" style={{ position:"absolute",...pos,zIndex:4,width:8,height:8,borderRadius:"50%",border:"1.5px solid rgba(239,68,68,.6)",display:"flex",alignItems:"center",justifyContent:"center" }}>
-          <div style={{ width:3,height:3,borderRadius:"50%",backgroundColor:"#ef4444",animation:`a-emitter ${1.4+i*.35}s ${i*.4}s ease-in-out infinite` }} />
-        </div>
-      ))}
 
       {/* ── CONTENT ── */}
-      <div className="max-w-2xl mx-auto" style={{ position:"relative",zIndex:3,padding:"0 20px" }}>
+      <div className="max-w-2xl mx-auto" style={{ position:"relative",zIndex:3,padding:"72px 20px 0" }}>
 
-        {/* ① Hero image — product kit at top */}
-        <div style={{ borderRadius:"0 0 20px 20px",overflow:"hidden",boxShadow:"0 12px 40px rgba(0,0,0,.7)",border:"1px solid rgba(239,68,68,.2)",borderTop:"none",marginBottom:32 }}>
+        {/* Fotografía grande — mismo tratamiento que la sección de Cámaras */}
+        <div style={{ borderRadius:20,overflow:"hidden",marginBottom:28,boxShadow:"0 24px 60px rgba(0,0,0,.5)" }}>
           <img
             src="/images/ajax-products-lineup.jpeg"
             alt="Kit de alarma Ajax: Hub, MotionCam, KeyPad y sirena"
-            style={{ width:"100%",display:"block",objectFit:"cover",height:170,objectPosition:"center" }}
+            style={{ width:"100%",display:"block",objectFit:"cover",height:260,objectPosition:"center" }}
           />
-          <div style={{ position:"absolute",inset:0,height:170,background:"linear-gradient(to bottom,transparent 60%,rgba(4,5,16,.9))",pointerEvents:"none" }} />
         </div>
 
         {/* Badge + Heading */}
-        <span style={{ display:"inline-block",backgroundColor:"#dc2626",color:"#fff",borderRadius:20,fontSize:11,fontWeight:800,padding:"6px 14px",letterSpacing:"0.05em" }}>
-          ALARMAS AJAX · BARCELONA
+        <span style={{ display:"inline-block",color:"#F87171",fontSize:12,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",marginBottom:10 }}>
+          Alarmas Ajax · Barcelona
         </span>
-        <h2 style={{ color:"#fff",fontWeight:900,fontSize:28,lineHeight:1.12,marginTop:12,marginBottom:0 }}>
-          Instalación de Alarmas de Alta Seguridad en Barcelona
+        <h2 style={{ color:"#fff",fontWeight:900,fontSize:30,lineHeight:1.15,margin:0 }}>
+          Alta seguridad con el ecosistema Ajax
         </h2>
-        <p style={{ color:"#CBD5E1",fontSize:15,lineHeight:1.72,marginTop:12,marginBottom:0 }}>
-          Protegemos hogares, negocios y comunidades con el ecosistema Ajax — alarmas Grado 2 certificado. Tecnología de detección avanzada, cámaras integradas al sistema y verificación en la Central Receptora en menos de 15 segundos. Sin cuotas, sin permanencia.
+        <p style={{ color:"#94A3B8",fontSize:15.5,lineHeight:1.75,marginTop:14,maxWidth:480 }}>
+          Protegemos hogares, negocios y comunidades con detección avanzada y verificación en la Central Receptora en menos de 15 segundos. Sin cuotas, sin permanencia.
         </p>
+
+        {/* Lo importante, de un vistazo — sin cajas ni chips */}
+        <div style={{ display:"flex", flexWrap:"wrap", gap:"8px 22px", marginTop:24 }}>
+          {KEY_FACTS.map((fact) => (
+            <span key={fact} style={{ display:"inline-flex", alignItems:"center", gap:7, color:"#CBD5E0", fontSize:13.5, fontWeight:600 }}>
+              <span style={{ width:4, height:4, borderRadius:"50%", background:"#E53E3E", flexShrink:0 }} />
+              {fact}
+            </span>
+          ))}
+        </div>
 
         {/* ② Promo kit cards — accordion */}
         <div style={{ marginTop:24,display:"flex",flexDirection:"column",gap:10 }}>
@@ -112,12 +85,10 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                 key={kit.id}
                 className="a-kit-card"
                 style={{
-                  background:"rgba(10,8,24,.70)",
-                  backdropFilter:"blur(12px)",
-                  border:`1px solid ${isOpen ? "rgba(239,68,68,.50)" : "rgba(239,68,68,.18)"}`,
+                  background:"rgba(255,255,255,.03)",
+                  border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.08)"}`,
                   borderRadius:14,
                   overflow:"hidden",
-                  boxShadow: isOpen ? "0 0 0 1px rgba(239,68,68,.2),0 0 24px rgba(239,68,68,.12)" : "none",
                 }}
               >
                 {/* Accordion header */}
@@ -164,7 +135,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                     <button
                       onClick={() => onOpenModal(`${kit.title}`)}
                       className="a-cta-primary"
-                      style={{ width:"100%",marginTop:14,color:"#fff",fontWeight:800,fontSize:15,borderRadius:50,padding:"14px 0",border:"none",cursor:"pointer",boxShadow:"0 0 20px rgba(239,68,68,.4)" }}
+                      style={{ width:"100%",marginTop:14,color:"#fff",fontWeight:800,fontSize:15,borderRadius:50,padding:"14px 0",border:"none",cursor:"pointer" }}
                     >
                       Solicitar este kit →
                     </button>
@@ -175,48 +146,12 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
           })}
         </div>
 
-        {/* ③ Impact stat */}
-        <div style={{ background:"rgba(220,38,38,.08)",backdropFilter:"blur(10px)",border:"1px solid rgba(220,38,38,.30)",borderRadius:16,padding:20,marginTop:24,display:"flex",alignItems:"center",gap:16 }}>
-          <div style={{ backgroundColor:"#dc2626",borderRadius:12,padding:14,flexShrink:0,display:"flex",alignItems:"center",justifyContent:"center",boxShadow:"0 0 20px rgba(220,38,38,.5)" }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <div>
-            <p style={{ color:"#EF4444",fontWeight:900,fontSize:34,lineHeight:1,margin:0,textShadow:"0 0 20px rgba(239,68,68,.5)" }}>15s</p>
-            <p style={{ color:"#fff",fontWeight:800,fontSize:16,margin:0 }}>Verificación en la Central Receptora</p>
-            <p style={{ color:"#94A3B8",fontSize:12,margin:0 }}>Central Receptora activa 24/7 · Protocolo de aviso a la Policía</p>
-          </div>
-        </div>
-
-        {/* ④ Technical Ajax deep-dive */}
-        <div style={{ marginTop:24 }}>
-          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>Tecnología Ajax — Grado 2 Certificado</p>
-          <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:10 }}>
-            {TECH_SPECS.map((s)=>(
-              <div key={s.label} style={{ background:"rgba(255,255,255,.05)",backdropFilter:"blur(6px)",border:"1px solid rgba(255,255,255,.08)",borderRadius:12,padding:"12px 14px" }}>
-                <p style={{ color:"#fff",fontWeight:700,fontSize:13,margin:"0 0 3px" }}>{s.label}</p>
-                <p style={{ color:"#64748B",fontSize:11,margin:0,lineHeight:1.5 }}>{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Trust pills */}
-        <div style={{ display:"flex",flexWrap:"wrap",gap:8,marginTop:20 }}>
-          {["✓ Sin permanencia","✓ Instalación incluida","✓ Sin cuotas","✓ Grado 2 Certificado"].map((p)=>(
-            <span key={p} style={{ backgroundColor:"rgba(255,255,255,.07)",backdropFilter:"blur(4px)",border:"1px solid rgba(255,255,255,.10)",color:"#E2E8F0",borderRadius:10,padding:"6px 12px",fontSize:12,fontWeight:600 }}>
-              {p}
-            </span>
-          ))}
-        </div>
-
         {/* CTAs */}
-        <div style={{ display:"flex",flexDirection:"column",gap:12,marginTop:24 }}>
+        <div style={{ display:"flex",flexDirection:"column",gap:12,marginTop:32 }}>
           <button
             onClick={() => onOpenModal("Sistema de alarma")}
             className="a-cta-primary"
-            style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer",boxShadow:"0 0 24px rgba(239,68,68,.45)" }}
+            style={{ width:"100%",color:"#fff",fontWeight:800,fontSize:16,borderRadius:50,padding:18,border:"none",cursor:"pointer" }}
           >
             Blindar mi propiedad ahora →
           </button>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 
 export default function FinalCTA({ onOpenModal }) {
   const handlePresupuesto = () => {
@@ -30,18 +30,8 @@ export default function FinalCTA({ onOpenModal }) {
             className="w-full sm:w-auto bg-white hover:bg-gray-100 active:bg-gray-200 text-[#E63946] px-8 sm:px-10 py-5 sm:py-6 rounded-xl font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 group"
             style={{ touchAction: "manipulation" }}
           >
-            Presupuesto →
+            Solicitar presupuesto →
           </Button>
-          <a
-            href="https://wa.me/34638109947?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20un%20presupuesto%20de%20seguridad."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-white/20 hover:bg-white/30 active:bg-white/40 text-white px-8 sm:px-10 py-5 sm:py-6 rounded-xl font-bold text-base border border-white/40 backdrop-blur-md transition-all flex items-center justify-center gap-2"
-            style={{ touchAction: "manipulation" }}
-          >
-            <MessageCircle className="w-5 h-5" />
-            WhatsApp
-          </a>
           <a
             href="tel:+34638109947"
             className="w-full sm:w-auto bg-white/20 hover:bg-white/30 active:bg-white/40 text-white px-8 sm:px-10 py-5 sm:py-6 rounded-xl font-bold text-base border border-white/40 backdrop-blur-md transition-all flex items-center justify-center gap-2"

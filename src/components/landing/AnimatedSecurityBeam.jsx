@@ -108,20 +108,15 @@ export default function AnimatedSecurityBeam() {
           </div>
         </div>
 
-        {/* Steps row */}
-        <div style={{ display: "flex", justifyContent: "space-between", padding: "16px 10% 0", gap: 8 }}>
+        {/* Steps row — texto plano, sin cajas */}
+        <div style={{ display: "flex", justifyContent: "space-between", padding: "18px 10% 0", gap: 8 }}>
           {STEPS.map((step, i) => (
-            <div key={i} style={{
+            <p key={i} style={{
               flex: 1, textAlign: "center",
-              padding: "8px 6px",
-              background: "rgba(255,255,255,0.03)",
-              border: "1px solid rgba(255,255,255,0.06)",
-              borderRadius: 8,
+              color: "rgba(255,255,255,0.45)", fontSize: 11.5, fontWeight: 600, margin: 0, lineHeight: 1.4,
             }}>
-              <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 11, fontWeight: 600, margin: 0, lineHeight: 1.4 }}>
-                {step}
-              </p>
-            </div>
+              {step}
+            </p>
           ))}
         </div>
       </div>
