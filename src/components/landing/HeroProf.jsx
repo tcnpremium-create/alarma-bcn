@@ -171,7 +171,7 @@ export default function HeroProf() {
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
             <button
-              onClick={openDrawer}
+              onClick={() => openDrawer()}
               className="hero-cta-glow"
               style={{
                 background: "#E53E3E", color: "#fff", border: "none",
