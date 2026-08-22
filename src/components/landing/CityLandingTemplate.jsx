@@ -7,6 +7,7 @@ import LeadCaptureForm from "./LeadCaptureForm";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { businessStats } from "@/lib/businessStats";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 const SERVICES = [
   { Icon: Shield, title: "Alarmas inteligentes AJAX", desc: "Paneles de control, sensores inalámbricos, detectores de movimiento, sirenas y notificaciones instantáneas en el móvil." },
@@ -62,12 +63,16 @@ const buildFaqs = (city) => [
 ];
 
 export default function CityLandingTemplate({ city, seoPath, intro }) {
-  // Único punto de contacto de la página: el CTA del hero y el de las
-  // tarjetas de kits llevan al mismo formulario de abajo, en vez de abrir
-  // un popup independiente con su propia lógica de envío.
+  // El CTA del hero sigue llevando al formulario genérico de abajo (no es
+  // específico de ningún kit). El CTA de cada tarjeta de kit, en cambio,
+  // abre el drawer global de presupuesto con el kit concreto preseleccionado
+  // (mismo sistema unificado que ya usan los kits de cámaras) — antes las
+  // 3 tarjetas de alarma llevaban todas al mismo formulario genérico
+  // "Alarma", sin identificar cuál de los 3 kits se había pedido.
   const scrollToContact = () => {
     document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
   };
+  const { openDrawer } = useLeadDrawer();
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 128 }}>
@@ -111,7 +116,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       </section>
 
       {/* KITS DE ALARMA AJAX */}
-      <AlarmKitsGrid city={city} onRequestQuote={scrollToContact} />
+      <AlarmKitsGrid city={city} onRequestQuote={(kit) => openDrawer(kit.title)} />
 
       {/* SERVICES */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>

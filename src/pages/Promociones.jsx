@@ -240,8 +240,8 @@ export default function Promociones() {
                 gap: 18,
               }}
             >
-              {ALARM_KITS.map((kit, i) => {
-                const highlighted = i === 1;
+              {ALARM_KITS.map((kit) => {
+                const highlighted = kit.highlight;
                 return (
                   <div
                     key={kit.id}
@@ -318,10 +318,13 @@ export default function Promociones() {
                           <span style={{ color: TEXT, fontSize: 13, lineHeight: 1.5 }}>{item}</span>
                         </div>
                       ))}
+                      {kit.expandNote && kit.expandNote.map((note) => (
+                        <p key={note} style={{ color: TEXT_DIM, fontSize: 11.5, margin: "4px 0 0", lineHeight: 1.5 }}>{note}</p>
+                      ))}
                     </div>
 
-                    <a
-                      href="tel:+34638109947"
+                    <button
+                      onClick={() => openDrawer(kit.title)}
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -334,11 +337,29 @@ export default function Promociones() {
                         fontSize: 14,
                         padding: "13px 0",
                         borderRadius: 10,
-                        textDecoration: "none",
                         cursor: "pointer",
+                        width: "100%",
+                        marginBottom: 10,
                       }}
                     >
-                      <Phone size={15} />
+                      Solicitar presupuesto
+                    </button>
+                    <a
+                      href="tel:+34638109947"
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: 8,
+                        background: "transparent",
+                        color: TEXT_DIM,
+                        fontWeight: 600,
+                        fontSize: 13,
+                        padding: "8px 0",
+                        textDecoration: "none",
+                      }}
+                    >
+                      <Phone size={14} />
                       Llamar ahora
                     </a>
                   </div>

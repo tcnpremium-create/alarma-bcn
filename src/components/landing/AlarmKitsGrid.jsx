@@ -97,8 +97,8 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
         </div>
 
         <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
-          {ALARM_KITS.map((kit, i) => {
-            const isHighlighted = i === 1;
+          {ALARM_KITS.map((kit) => {
+            const isHighlighted = kit.highlight;
             const isOpen = openId === kit.id;
             return (
               <div key={kit.id} className="kit-card" style={{
@@ -157,10 +157,15 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
                   <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 8 }}>
                     {kit.items.map((item) => <KitItemBento key={item} item={item} />)}
                   </div>
+                  {kit.expandNote && kit.expandNote.map((note) => (
+                    <p key={note} style={{ color: "#64748B", fontSize: 11.5, marginTop: 10, marginBottom: 0, lineHeight: 1.5 }}>
+                      {note}
+                    </p>
+                  ))}
                 </div>
 
-                <ShinyButton onClick={onRequestQuote} style={{ width: "100%", marginTop: "auto", padding: "14px 0", fontSize: 14 }}>
-                  Solicitar presupuesto gratis
+                <ShinyButton onClick={() => onRequestQuote(kit)} style={{ width: "100%", marginTop: "auto", padding: "14px 0", fontSize: 14 }}>
+                  Solicitar presupuesto
                 </ShinyButton>
               </div>
             );

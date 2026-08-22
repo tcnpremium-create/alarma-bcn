@@ -1,5 +1,13 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { ALARM_KITS } from "@/data/alarmKits";
+
+// lowPrice/highPrice del JSON-LD se calculan desde la fuente única de
+// datos en vez de hardcodearse aquí — así nunca vuelven a quedar
+// desincronizados de un cambio de precio en alarmKits.js.
+const ALARM_PRICES = ALARM_KITS.map((k) => Number(k.price.replace(".", "")));
+const ALARM_LOW_PRICE = String(Math.min(...ALARM_PRICES));
+const ALARM_HIGH_PRICE = String(Math.max(...ALARM_PRICES));
 
 const SEO_DATA = {
   "/alarmas-barcelona": {
@@ -94,7 +102,7 @@ export default function CityLandingSEO({ path }) {
         "description": "Instalación de sistemas de alarma Ajax inalámbricos certificados. Respuesta CRA en 15 segundos.",
         "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947" },
         "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "Catalunya"],
-        "offers": { "@type": "AggregateOffer", "lowPrice": "399", "highPrice": "1099", "priceCurrency": "EUR", "offerCount": "3" }
+        "offers": { "@type": "AggregateOffer", "lowPrice": ALARM_LOW_PRICE, "highPrice": ALARM_HIGH_PRICE, "priceCurrency": "EUR", "offerCount": String(ALARM_KITS.length) }
       },
       {
         "@type": "FAQPage",

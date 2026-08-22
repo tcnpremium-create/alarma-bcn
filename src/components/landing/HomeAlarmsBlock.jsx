@@ -133,12 +133,15 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                       <span style={{ color:"#f87171",fontSize:11,fontWeight:700 }}>ESPECIFICACIONES TÉCNICAS: </span>
                       <span style={{ color:"#94A3B8",fontSize:11 }}>{kit.tech}</span>
                     </div>
+                    {kit.expandNote && kit.expandNote.map((note) => (
+                      <p key={note} style={{ color:"#64748B",fontSize:11.5,marginTop:10,marginBottom:0,lineHeight:1.5 }}>{note}</p>
+                    ))}
                     <button
                       onClick={() => onOpenModal(`${kit.title}`)}
                       className="a-cta-primary"
                       style={{ width:"100%",marginTop:14,color:"#fff",fontWeight:800,fontSize:15,borderRadius:50,padding:"14px 0",border:"none",cursor:"pointer" }}
                     >
-                      Solicitar este kit →
+                      Solicitar presupuesto
                     </button>
                   </div>
                 )}
