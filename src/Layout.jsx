@@ -35,8 +35,12 @@ function LayoutInner({ children }) {
       <Helmet>
         <meta name="trustpilot-one-time-domain-verification-id" content="3d8fb58e-64e5-4be5-b46c-6a6f60c20bc4"/>
       </Helmet>
+      {/* La fuente Inter se carga con preconnect + <link rel="stylesheet"> en
+          el <head> de index.html. Antes se importaba aquí con @import dentro
+          de un <style> que React renderiza en el <body>: el navegador solo
+          descubría la petición de la fuente después de ejecutar el JS y
+          montar este componente, retrasando el render del texto (LCP). */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 6px; }

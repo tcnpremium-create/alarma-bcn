@@ -22,7 +22,7 @@ export default function AdvancedSEO({
   // esperando que se usara — AdvancedSEO no la leía, así que ese schema
   // específico de servicio se perdía en silencio y esas páginas solo
   // emitían el LocalBusiness/WebSite/Organization genérico.
-  schema,
+  schema = null,
 }) {
   const canonical = canonicalUrl || SITE_URL;
   const extraNodes = schema ? (Array.isArray(schema) ? schema : [schema]) : [];

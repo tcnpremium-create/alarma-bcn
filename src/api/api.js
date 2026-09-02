@@ -54,9 +54,11 @@ export const base44 = {
   // vuelven a fallar en silencio tal y como estaba previsto, sin bloquear
   // el flujo real (creación del lead vía LeadAPI, que sí funciona).
   functions: {
-    invoke: async () => null,
+    // Parámetros declarados aunque no se usen: los llamadores pasan
+    // (nombre, payload) y sin ellos TypeScript marca 'Expected 0 arguments'.
+    invoke: async (_functionName, _payload) => null,
   },
   analytics: {
-    track: () => {},
+    track: (_event) => {},
   },
 };

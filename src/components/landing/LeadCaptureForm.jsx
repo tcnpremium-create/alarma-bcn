@@ -28,7 +28,7 @@ function tipoClienteFor(espacio) {
 // volver a pedírselo al usuario) y solo Sonorización añade sus 3
 // preguntas de cualificación — el resto de servicios usan los mismos
 // campos comunes, sin inventar columnas nuevas en el backend.
-export default function LeadCaptureForm({ service = "", onSuccess }) {
+export default function LeadCaptureForm({ service = "", onSuccess = null }) {
   const isSonorizacion = service === "Sonorización";
   const [form, setForm] = useState({ nombre: "", email: "", telefono: "", zona: "", mensaje: "", espacio: "", tamano: "", necesidad: "" });
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
