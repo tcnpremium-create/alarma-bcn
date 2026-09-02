@@ -5,7 +5,12 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.alarmasenbarcelona.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.alarmasenbarcelona.com"
+        }
+      ],
       "destination": "https://alarmasenbarcelona.com/$1",
       "permanent": true
     },
@@ -66,20 +71,318 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/",
+      "destination": "/__prerendered__/home.html"
+    },
+    {
+      "source": "/About",
+      "destination": "/__prerendered__/About.html"
+    },
+    {
+      "source": "/AvisoLegal",
+      "destination": "/__prerendered__/AvisoLegal.html"
+    },
+    {
+      "source": "/Badalona",
+      "destination": "/__prerendered__/Badalona.html"
+    },
+    {
+      "source": "/BarrioEixample",
+      "destination": "/__prerendered__/BarrioEixample.html"
+    },
+    {
+      "source": "/Blog",
+      "destination": "/__prerendered__/Blog.html"
+    },
+    {
+      "source": "/BlogArticle/alarma-local-comercial",
+      "destination": "/__prerendered__/BlogArticle__alarma-local-comercial.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-app-movil",
+      "destination": "/__prerendered__/BlogArticle__alarmas-app-movil.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-aviso-policia",
+      "destination": "/__prerendered__/BlogArticle__alarmas-aviso-policia.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-camara-vs-sin-camara",
+      "destination": "/__prerendered__/BlogArticle__alarmas-camara-vs-sin-camara.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-chalets",
+      "destination": "/__prerendered__/BlogArticle__alarmas-chalets.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-comunidades-vecinos",
+      "destination": "/__prerendered__/BlogArticle__alarmas-comunidades-vecinos.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-garajes",
+      "destination": "/__prerendered__/BlogArticle__alarmas-garajes.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-negocios-barcelona",
+      "destination": "/__prerendered__/BlogArticle__alarmas-negocios-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-pisos-barcelona",
+      "destination": "/__prerendered__/BlogArticle__alarmas-pisos-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/alarmas-sin-cuota-mensual",
+      "destination": "/__prerendered__/BlogArticle__alarmas-sin-cuota-mensual.html"
+    },
+    {
+      "source": "/BlogArticle/camaras-ip-barcelona-2026",
+      "destination": "/__prerendered__/BlogArticle__camaras-ip-barcelona-2026.html"
+    },
+    {
+      "source": "/BlogArticle/comparativa-ajax-hikvision",
+      "destination": "/__prerendered__/BlogArticle__comparativa-ajax-hikvision.html"
+    },
+    {
+      "source": "/BlogArticle/comparativa-alarmas-espana-2026",
+      "destination": "/__prerendered__/BlogArticle__comparativa-alarmas-espana-2026.html"
+    },
+    {
+      "source": "/BlogArticle/consejos-elegir-alarma-perfecta",
+      "destination": "/__prerendered__/BlogArticle__consejos-elegir-alarma-perfecta.html"
+    },
+    {
+      "source": "/BlogArticle/control-accesos-biometrico-empresas",
+      "destination": "/__prerendered__/BlogArticle__control-accesos-biometrico-empresas.html"
+    },
+    {
+      "source": "/BlogArticle/cuanto-tarda-instalar-alarma",
+      "destination": "/__prerendered__/BlogArticle__cuanto-tarda-instalar-alarma.html"
+    },
+    {
+      "source": "/BlogArticle/domotica-seguridad-smart-home",
+      "destination": "/__prerendered__/BlogArticle__domotica-seguridad-smart-home.html"
+    },
+    {
+      "source": "/BlogArticle/elegir-alarma-hogar-barcelona",
+      "destination": "/__prerendered__/BlogArticle__elegir-alarma-hogar-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/empresas-alarmas-barcelona",
+      "destination": "/__prerendered__/BlogArticle__empresas-alarmas-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/mantenimiento-alarma",
+      "destination": "/__prerendered__/BlogArticle__mantenimiento-alarma.html"
+    },
+    {
+      "source": "/BlogArticle/mejores-alarmas-casa-barcelona",
+      "destination": "/__prerendered__/BlogArticle__mejores-alarmas-casa-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/normativa-videovigilancia-rgpd-catalunya",
+      "destination": "/__prerendered__/BlogArticle__normativa-videovigilancia-rgpd-catalunya.html"
+    },
+    {
+      "source": "/BlogArticle/precio-alarma-negocio-barcelona",
+      "destination": "/__prerendered__/BlogArticle__precio-alarma-negocio-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/precio-instalar-alarma-barcelona",
+      "destination": "/__prerendered__/BlogArticle__precio-instalar-alarma-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/proteger-negocio-robos-barcelona",
+      "destination": "/__prerendered__/BlogArticle__proteger-negocio-robos-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/seguridad-negocios-barcelona",
+      "destination": "/__prerendered__/BlogArticle__seguridad-negocios-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/sensores-movimiento-alarma",
+      "destination": "/__prerendered__/BlogArticle__sensores-movimiento-alarma.html"
+    },
+    {
+      "source": "/BlogArticle/videovigilancia-empresas-barcelona",
+      "destination": "/__prerendered__/BlogArticle__videovigilancia-empresas-barcelona.html"
+    },
+    {
+      "source": "/BlogArticle/videovigilancia-ia-barcelona-2026",
+      "destination": "/__prerendered__/BlogArticle__videovigilancia-ia-barcelona-2026.html"
+    },
+    {
+      "source": "/BlogArticle/zonas-riesgo-robo-barcelona-2026",
+      "destination": "/__prerendered__/BlogArticle__zonas-riesgo-robo-barcelona-2026.html"
+    },
+    {
+      "source": "/Calculadora",
+      "destination": "/__prerendered__/Calculadora.html"
+    },
+    {
+      "source": "/Castelldefels",
+      "destination": "/__prerendered__/Castelldefels.html"
+    },
+    {
+      "source": "/ComparativaAlarmas",
+      "destination": "/__prerendered__/ComparativaAlarmas.html"
+    },
+    {
+      "source": "/Contact",
+      "destination": "/__prerendered__/Contact.html"
+    },
+    {
+      "source": "/Cookies",
+      "destination": "/__prerendered__/Cookies.html"
+    },
+    {
+      "source": "/Cornella",
+      "destination": "/__prerendered__/Cornella.html"
+    },
+    {
+      "source": "/ElPrat",
+      "destination": "/__prerendered__/ElPrat.html"
+    },
+    {
+      "source": "/GuiaSeguridadBarcelona",
+      "destination": "/__prerendered__/GuiaSeguridadBarcelona.html"
+    },
+    {
+      "source": "/Hospitalet",
+      "destination": "/__prerendered__/Hospitalet.html"
+    },
+    {
+      "source": "/MantenimientoSoporte",
+      "destination": "/__prerendered__/MantenimientoSoporte.html"
+    },
+    {
+      "source": "/MapaRiesgo",
+      "destination": "/__prerendered__/MapaRiesgo.html"
+    },
+    {
+      "source": "/Mataro",
+      "destination": "/__prerendered__/Mataro.html"
+    },
+    {
+      "source": "/Privacidad",
+      "destination": "/__prerendered__/Privacidad.html"
+    },
+    {
+      "source": "/Promociones",
+      "destination": "/__prerendered__/Promociones.html"
+    },
+    {
+      "source": "/SantCugat",
+      "destination": "/__prerendered__/SantCugat.html"
+    },
+    {
+      "source": "/SobreNosotros",
+      "destination": "/__prerendered__/SobreNosotros.html"
+    },
+    {
+      "source": "/Terrassa",
+      "destination": "/__prerendered__/Terrassa.html"
+    },
+    {
+      "source": "/Viladecans",
+      "destination": "/__prerendered__/Viladecans.html"
+    },
+    {
+      "source": "/alarmas-barcelona",
+      "destination": "/__prerendered__/alarmas-barcelona.html"
+    },
+    {
+      "source": "/alarmas-girona",
+      "destination": "/__prerendered__/alarmas-girona.html"
+    },
+    {
+      "source": "/alarmas-lleida",
+      "destination": "/__prerendered__/alarmas-lleida.html"
+    },
+    {
+      "source": "/alarmas-sabadell",
+      "destination": "/__prerendered__/alarmas-sabadell.html"
+    },
+    {
+      "source": "/alarmas-tarragona",
+      "destination": "/__prerendered__/alarmas-tarragona.html"
+    },
+    {
+      "source": "/camaras-barcelona",
+      "destination": "/__prerendered__/camaras-barcelona.html"
+    },
+    {
+      "source": "/camaras-girona",
+      "destination": "/__prerendered__/camaras-girona.html"
+    },
+    {
+      "source": "/camaras-lleida",
+      "destination": "/__prerendered__/camaras-lleida.html"
+    },
+    {
+      "source": "/camaras-sabadell",
+      "destination": "/__prerendered__/camaras-sabadell.html"
+    },
+    {
+      "source": "/camaras-tarragona",
+      "destination": "/__prerendered__/camaras-tarragona.html"
+    },
+    {
+      "source": "/cerraduras",
+      "destination": "/__prerendered__/cerraduras.html"
+    },
+    {
+      "source": "/control-accesos",
+      "destination": "/__prerendered__/control-accesos.html"
+    },
+    {
+      "source": "/redes-informaticas",
+      "destination": "/__prerendered__/redes-informaticas.html"
+    },
+    {
+      "source": "/sonorizacion",
+      "destination": "/__prerendered__/sonorizacion.html"
+    },
+    {
+      "source": "/tecnologia",
+      "destination": "/__prerendered__/tecnologia.html"
+    },
+    {
+      "source": "/videoporteros",
+      "destination": "/__prerendered__/videoporteros.html"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/api/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,PATCH,OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET,POST,PATCH,OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type"
+        }
       ]
     }
   ],
   "crons": [
-    { "path": "/api/cron/keepalive", "schedule": "0 6 * * *" }
+    {
+      "path": "/api/cron/keepalive",
+      "schedule": "0 6 * * *"
+    }
   ]
 }

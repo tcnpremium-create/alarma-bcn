@@ -1,0 +1,352 @@
+[
+  {
+    "route": "/",
+    "file": "home.html",
+    "ok": true
+  },
+  {
+    "route": "/About",
+    "file": "About.html",
+    "ok": true
+  },
+  {
+    "route": "/AvisoLegal",
+    "file": "AvisoLegal.html",
+    "ok": true
+  },
+  {
+    "route": "/Badalona",
+    "file": "Badalona.html",
+    "ok": true
+  },
+  {
+    "route": "/BarrioEixample",
+    "file": "BarrioEixample.html",
+    "ok": true
+  },
+  {
+    "route": "/Blog",
+    "file": "Blog.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarma-local-comercial",
+    "file": "BlogArticle__alarma-local-comercial.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-app-movil",
+    "file": "BlogArticle__alarmas-app-movil.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-aviso-policia",
+    "file": "BlogArticle__alarmas-aviso-policia.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-camara-vs-sin-camara",
+    "file": "BlogArticle__alarmas-camara-vs-sin-camara.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-chalets",
+    "file": "BlogArticle__alarmas-chalets.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-comunidades-vecinos",
+    "file": "BlogArticle__alarmas-comunidades-vecinos.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-garajes",
+    "file": "BlogArticle__alarmas-garajes.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-negocios-barcelona",
+    "file": "BlogArticle__alarmas-negocios-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-pisos-barcelona",
+    "file": "BlogArticle__alarmas-pisos-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/alarmas-sin-cuota-mensual",
+    "file": "BlogArticle__alarmas-sin-cuota-mensual.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/camaras-ip-barcelona-2026",
+    "file": "BlogArticle__camaras-ip-barcelona-2026.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/comparativa-ajax-hikvision",
+    "file": "BlogArticle__comparativa-ajax-hikvision.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/comparativa-alarmas-espana-2026",
+    "file": "BlogArticle__comparativa-alarmas-espana-2026.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/consejos-elegir-alarma-perfecta",
+    "file": "BlogArticle__consejos-elegir-alarma-perfecta.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/control-accesos-biometrico-empresas",
+    "file": "BlogArticle__control-accesos-biometrico-empresas.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/cuanto-tarda-instalar-alarma",
+    "file": "BlogArticle__cuanto-tarda-instalar-alarma.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/domotica-seguridad-smart-home",
+    "file": "BlogArticle__domotica-seguridad-smart-home.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/elegir-alarma-hogar-barcelona",
+    "file": "BlogArticle__elegir-alarma-hogar-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/empresas-alarmas-barcelona",
+    "file": "BlogArticle__empresas-alarmas-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/mantenimiento-alarma",
+    "file": "BlogArticle__mantenimiento-alarma.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/mejores-alarmas-casa-barcelona",
+    "file": "BlogArticle__mejores-alarmas-casa-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/normativa-videovigilancia-rgpd-catalunya",
+    "file": "BlogArticle__normativa-videovigilancia-rgpd-catalunya.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/precio-alarma-negocio-barcelona",
+    "file": "BlogArticle__precio-alarma-negocio-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/precio-instalar-alarma-barcelona",
+    "file": "BlogArticle__precio-instalar-alarma-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/proteger-negocio-robos-barcelona",
+    "file": "BlogArticle__proteger-negocio-robos-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/seguridad-negocios-barcelona",
+    "file": "BlogArticle__seguridad-negocios-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/sensores-movimiento-alarma",
+    "file": "BlogArticle__sensores-movimiento-alarma.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/videovigilancia-empresas-barcelona",
+    "file": "BlogArticle__videovigilancia-empresas-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/videovigilancia-ia-barcelona-2026",
+    "file": "BlogArticle__videovigilancia-ia-barcelona-2026.html",
+    "ok": true
+  },
+  {
+    "route": "/BlogArticle/zonas-riesgo-robo-barcelona-2026",
+    "file": "BlogArticle__zonas-riesgo-robo-barcelona-2026.html",
+    "ok": true
+  },
+  {
+    "route": "/Calculadora",
+    "file": "Calculadora.html",
+    "ok": true
+  },
+  {
+    "route": "/Castelldefels",
+    "file": "Castelldefels.html",
+    "ok": true
+  },
+  {
+    "route": "/ComparativaAlarmas",
+    "file": "ComparativaAlarmas.html",
+    "ok": true
+  },
+  {
+    "route": "/Contact",
+    "file": "Contact.html",
+    "ok": true
+  },
+  {
+    "route": "/Cookies",
+    "file": "Cookies.html",
+    "ok": true
+  },
+  {
+    "route": "/Cornella",
+    "file": "Cornella.html",
+    "ok": true
+  },
+  {
+    "route": "/ElPrat",
+    "file": "ElPrat.html",
+    "ok": true
+  },
+  {
+    "route": "/GuiaSeguridadBarcelona",
+    "file": "GuiaSeguridadBarcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/Hospitalet",
+    "file": "Hospitalet.html",
+    "ok": true
+  },
+  {
+    "route": "/MantenimientoSoporte",
+    "file": "MantenimientoSoporte.html",
+    "ok": true
+  },
+  {
+    "route": "/MapaRiesgo",
+    "file": "MapaRiesgo.html",
+    "ok": true
+  },
+  {
+    "route": "/Mataro",
+    "file": "Mataro.html",
+    "ok": true
+  },
+  {
+    "route": "/Privacidad",
+    "file": "Privacidad.html",
+    "ok": true
+  },
+  {
+    "route": "/Promociones",
+    "file": "Promociones.html",
+    "ok": true
+  },
+  {
+    "route": "/SantCugat",
+    "file": "SantCugat.html",
+    "ok": true
+  },
+  {
+    "route": "/SobreNosotros",
+    "file": "SobreNosotros.html",
+    "ok": true
+  },
+  {
+    "route": "/Terrassa",
+    "file": "Terrassa.html",
+    "ok": true
+  },
+  {
+    "route": "/Viladecans",
+    "file": "Viladecans.html",
+    "ok": true
+  },
+  {
+    "route": "/alarmas-barcelona",
+    "file": "alarmas-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/alarmas-girona",
+    "file": "alarmas-girona.html",
+    "ok": true
+  },
+  {
+    "route": "/alarmas-lleida",
+    "file": "alarmas-lleida.html",
+    "ok": true
+  },
+  {
+    "route": "/alarmas-sabadell",
+    "file": "alarmas-sabadell.html",
+    "ok": true
+  },
+  {
+    "route": "/alarmas-tarragona",
+    "file": "alarmas-tarragona.html",
+    "ok": true
+  },
+  {
+    "route": "/camaras-barcelona",
+    "file": "camaras-barcelona.html",
+    "ok": true
+  },
+  {
+    "route": "/camaras-girona",
+    "file": "camaras-girona.html",
+    "ok": true
+  },
+  {
+    "route": "/camaras-lleida",
+    "file": "camaras-lleida.html",
+    "ok": true
+  },
+  {
+    "route": "/camaras-sabadell",
+    "file": "camaras-sabadell.html",
+    "ok": true
+  },
+  {
+    "route": "/camaras-tarragona",
+    "file": "camaras-tarragona.html",
+    "ok": true
+  },
+  {
+    "route": "/cerraduras",
+    "file": "cerraduras.html",
+    "ok": true
+  },
+  {
+    "route": "/control-accesos",
+    "file": "control-accesos.html",
+    "ok": true
+  },
+  {
+    "route": "/redes-informaticas",
+    "file": "redes-informaticas.html",
+    "ok": true
+  },
+  {
+    "route": "/sonorizacion",
+    "file": "sonorizacion.html",
+    "ok": true
+  },
+  {
+    "route": "/tecnologia",
+    "file": "tecnologia.html",
+    "ok": true
+  },
+  {
+    "route": "/videoporteros",
+    "file": "videoporteros.html",
+    "ok": true
+  }
+]
