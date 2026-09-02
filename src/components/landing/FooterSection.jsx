@@ -36,7 +36,7 @@ export default function FooterSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Column 1 - Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <img src={LOGO_BLANCO} alt="Premium Tech Security" className="h-12 mb-4" />
+            <img src={LOGO_BLANCO} alt="Premium Tech Security" loading="lazy" decoding="async" className="h-12 mb-4" />
             <p className="text-white/60 text-sm leading-relaxed">
               Instaladores certificados en Barcelona y Catalunya
             </p>

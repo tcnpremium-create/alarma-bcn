@@ -48,6 +48,8 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
           <img
             src="/images/ajax-products-lineup.jpeg"
             alt="Kit de alarma Ajax: Hub, MotionCam, KeyPad y sirena"
+            loading="lazy"
+            decoding="async"
             style={{ width:"100%",display:"block",objectFit:"cover",height:260,objectPosition:"center" }}
           />
         </div>

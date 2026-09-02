@@ -91,6 +91,8 @@ export default function ControlAccesos() {
               <img
                 src="/images/control-accesos-biometrico.webp"
                 alt="Lector biométrico de huella dactilar para control de accesos en Barcelona"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
                 style={{ display: "block" }}
               />

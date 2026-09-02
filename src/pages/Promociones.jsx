@@ -653,6 +653,8 @@ export default function Promociones() {
                 <img
                   src="https://media.base44.com/images/public/6995a701232755a2d5e24b39/1d629183e_IMG_8285.png"
                   alt="Control de acceso profesional"
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: "100%", borderRadius: 16, border: `1px solid ${BORDER}` }}
                 />
               </div>

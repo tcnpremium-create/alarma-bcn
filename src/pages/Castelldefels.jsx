@@ -76,6 +76,8 @@ export default function CastelldefelsPage() {
               <img
                 src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
                 alt="Seguridad Castelldefels"
+                loading="lazy"
+                decoding="async"
                 className="rounded-xl shadow-lg"
               />
             </div>

@@ -38,6 +38,8 @@ export default function WhyUsSection() {
               <img
                 src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
                 alt="Seguridad en el hogar"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-64 object-cover rounded-2xl"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent rounded-2xl" />

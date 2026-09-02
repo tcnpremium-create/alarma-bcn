@@ -84,6 +84,8 @@ export default function MantenimientoSoporte() {
               <img
                 src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=600&fit=crop"
                 alt="Servicio técnico profesional"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover"
               />
             </div>

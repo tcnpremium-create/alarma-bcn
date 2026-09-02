@@ -167,7 +167,7 @@ export default function Videoporteros() {
             {/* FERMAX */}
             <div style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ backgroundColor: "#1B4F8A", padding: "24px 20px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 100 }}>
-                <img src="/images/logo-fermax.png" alt="Fermax videoporteros" style={{ height: 52, width: "auto", objectFit: "contain", display: "block" }} />
+                <img src="/images/logo-fermax.png" alt="Fermax videoporteros" loading="lazy" decoding="async" style={{ height: 52, width: "auto", objectFit: "contain", display: "block" }} />
               </div>
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
@@ -188,7 +188,7 @@ export default function Videoporteros() {
             {/* BTICINO */}
             <div style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ backgroundColor: "#0A0A1A", minHeight: 100, overflow: "hidden" }}>
-                <img src="/images/bticino-videoportero.jpeg" alt="BTicino Classe 300" style={{ width: "100%", height: 140, objectFit: "cover", objectPosition: "top", display: "block" }} />
+                <img src="/images/bticino-videoportero.jpeg" alt="BTicino Classe 300" loading="lazy" decoding="async" style={{ width: "100%", height: 140, objectFit: "cover", objectPosition: "top", display: "block" }} />
               </div>
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ fontWeight: 900, fontSize: 16, color: "#FFFFFF", marginBottom: 6 }}>BTicino · Classe 300</div>
@@ -210,7 +210,7 @@ export default function Videoporteros() {
             {/* GOLMAR */}
             <div style={{ backgroundColor: "rgba(255,255,255,0.04)", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}>
               <div style={{ backgroundColor: "#E87722", padding: "24px 20px", display: "flex", alignItems: "center", justifyContent: "center", minHeight: 100 }}>
-                <img src="/images/logo-golmar.png" alt="Golmar videoporteros" style={{ height: 60, width: "auto", objectFit: "contain", display: "block" }} />
+                <img src="/images/logo-golmar.png" alt="Golmar videoporteros" loading="lazy" decoding="async" style={{ height: 60, width: "auto", objectFit: "contain", display: "block" }} />
               </div>
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
@@ -258,6 +258,8 @@ export default function Videoporteros() {
             <img
               src="/images/reconocimiento-facial.jpeg"
               alt="Sistema de reconocimiento facial para control de accesos en empresa"
+              loading="lazy"
+              decoding="async"
               style={{ width: "100%", height: "auto", maxHeight: 380, objectFit: "cover", objectPosition: "center", display: "block" }}
             />
           </div>
@@ -268,6 +270,8 @@ export default function Videoporteros() {
               <img
                 src="/images/control-accesos-biometrico.webp"
                 alt="Lector biométrico de huella dactilar para control de accesos"
+                loading="lazy"
+                decoding="async"
                 style={{ width: "100%", height: 240, objectFit: "cover", objectPosition: "center", display: "block" }}
               />
             </div>
@@ -275,6 +279,8 @@ export default function Videoporteros() {
               <img
                 src="/images/seguridad-digital.png"
                 alt="Seguridad digital y protección de datos biométricos"
+                loading="lazy"
+                decoding="async"
                 style={{ width: "100%", height: 240, objectFit: "cover", objectPosition: "center", display: "block" }}
               />
             </div>

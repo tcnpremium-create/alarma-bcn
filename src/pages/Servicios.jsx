@@ -322,6 +322,8 @@ export default function Servicios() {
                       <img
                         src={servicio.image}
                         alt={servicio.title}
+                        loading="lazy"
+                        decoding="async"
                         className={`w-full h-[450px] transition-transform duration-700 group-hover:scale-105 ${servicio.title === "Control de Accesos" ? "object-contain bg-slate-50 p-4" : "object-cover"}`} />
 
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-[#0A1628]/20 to-transparent" />

@@ -57,7 +57,7 @@ export default function TechnologySection() {
               className="group p-8 rounded-2xl border border-gray-100 bg-white hover:border-[#E63946]/20 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
             >
               <div className="h-16 flex items-center justify-center mb-4 opacity-70 group-hover:opacity-100 transition-opacity">
-                <img src={brand.logo} alt={brand.name} className="max-h-full max-w-full object-contain" />
+                <img src={brand.logo} alt={brand.name} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
               </div>
               <h3 className="font-semibold text-[#0A1628] text-sm">{brand.name}</h3>
               <p className="mt-2 text-xs text-gray-500">{brand.desc}</p>

@@ -70,7 +70,9 @@ export default function AreaClientes() {
         <div className="flex items-center justify-between">
           <img 
             src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/b61d56d39_UNETEALIMPERIO.png"
-            alt="Logo"
+            alt="Premium Tech Security"
+            loading="lazy"
+            decoding="async"
             className="h-8 object-contain"
           />
           <button 

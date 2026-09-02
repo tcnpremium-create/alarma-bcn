@@ -158,6 +158,8 @@ export default function CornellaPage() {
                 <img
                   src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
                   alt="Instalación de alarmas en Cornellà"
+                  loading="lazy"
+                  decoding="async"
                   className="rounded-xl w-full h-auto shadow-lg"
                 />
               </div>
