@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
 import CameraKitsGrid from "./CameraKitsGrid";
+import Breadcrumbs from "./Breadcrumbs";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
@@ -114,6 +115,13 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       />
       <Navbar />
 
+      {/* Breadcrumb fuera del hero de altura fija (70vh) para no arriesgar overflow */}
+      <div style={{ backgroundColor: "#0A0A1A", padding: "14px 20px 0" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <Breadcrumbs items={[{ label: "Cámaras", href: "/camaras-barcelona" }, { label: city }]} />
+        </div>
+      </div>
+
       {/* ── HERO ── */}
       <section style={{ position: "relative", width: "100%", overflow: "hidden", height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
         <img
@@ -204,6 +212,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           <img
             src="/images/camara-domo-pasillo.jpeg"
             alt="Cámara domo de seguridad instalada en pasillo de comunidad"
+            loading="lazy"
+            decoding="async"
             style={{ width: "100%", borderRadius: "20px 20px 0 0", marginTop: 24, display: "block", maxHeight: 320, objectFit: "cover", objectPosition: "center" }}
           />
         </div>

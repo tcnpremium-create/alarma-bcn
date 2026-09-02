@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import ContactForm from "../components/landing/ContactForm";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { Helmet } from "react-helmet-async";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 
@@ -17,6 +18,9 @@ export default function Contact() {
 
       <main className="pt-28 pb-20">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
+          <div className="mb-4">
+            <Breadcrumbs theme="light" items={[{ label: "Contacto" }]} />
+          </div>
           <h1 className="text-4xl lg:text-5xl font-bold text-[#0A1628] mb-4">
             Contacta con Nosotros
           </h1>

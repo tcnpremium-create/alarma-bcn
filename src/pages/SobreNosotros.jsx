@@ -7,6 +7,7 @@ import { Shield, Award, MapPin, CheckCircle, Phone, Mail } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import AdSenseDisplay from "../components/ads/AdSenseDisplay";
 import AdSenseInFeed from "../components/ads/AdSenseInFeed";
+import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { businessStats } from "@/lib/businessStats";
 
 const sobreSchema = {
@@ -101,6 +102,9 @@ export default function SobreNosotros() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
+            <div className="flex justify-center mb-6">
+              <Breadcrumbs items={[{ label: "Sobre Nosotros" }]} />
+            </div>
             <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
               Sobre Premium Tech Security: Tu Empresa de Seguridad en Barcelona
             </h1>
@@ -147,6 +151,8 @@ export default function SobreNosotros() {
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
                 alt="Equipo Premium Tech Security"
+                loading="lazy"
+                decoding="async"
                 className="rounded-2xl shadow-2xl"
               />
             </motion.div>

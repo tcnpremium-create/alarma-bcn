@@ -3,6 +3,7 @@ import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, Chevro
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
+import Breadcrumbs from "./Breadcrumbs";
 import LeadCaptureForm from "./LeadCaptureForm";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -87,6 +88,9 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       }}>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0.8) 60%, #0A0A1A 100%)" }} />
         <div className="max-w-5xl mx-auto" style={{ position: "relative", zIndex: 2, padding: "112px 24px 64px" }}>
+          <div style={{ marginBottom: 16 }}>
+            <Breadcrumbs items={[{ label: "Alarmas", href: "/alarmas-barcelona" }, { label: city }]} />
+          </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
             <MapPin style={{ width: 13, height: 13, color: "#F87171" }} />
             <span style={{ color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1 }}>Catalunya • {city}</span>
@@ -166,6 +170,8 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
           <img
             src="/images/ajax-componentes.jpeg"
             alt="Componentes sistema alarma Ajax: Hub 2, MotionProtect, DoorProtect, MotionCam"
+            loading="lazy"
+            decoding="async"
             style={{ width: "100%", maxHeight: 220, objectFit: "contain", background: "#000", borderRadius: 14, display: "block", marginBottom: 32 }}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 12 }}>
