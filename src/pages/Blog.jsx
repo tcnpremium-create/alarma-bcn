@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, Home, Building2, Cpu, Scale, Camera, Newspaper } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
@@ -169,7 +170,14 @@ const extraArticles = Object.entries(newArticlesData).map(([slug, a]) => ({
   slug
 }));
 
-const combinedStaticArticles = [...allArticles, ...extraArticles];
+// Deduplicado por slug: 3 artículos (precio-instalar-alarma-barcelona,
+// control-accesos-biometrico-empresas y zonas-riesgo-robo-barcelona-2026)
+// están tanto en allArticles como en newArticlesData, así que la lista
+// tenía 33 entradas para 30 artículos y esos 3 salían dos veces en la
+// cuadrícula. Gana la primera aparición (la de allArticles).
+const combinedStaticArticles = [...allArticles, ...extraArticles].filter(
+  (a, i, list) => list.findIndex((b) => b.slug === a.slug) === i
+);
 
 // Entity category filter labels
 const ENTITY_FILTERS = [
@@ -272,12 +280,14 @@ export default function Blog() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                className="group"
                 style={{ touchAction: 'manipulation' }}
-                onClick={() => window.location.href = `/BlogArticle/${article.slug}`}
-                role="link"
-                tabIndex={0}
               >
+                {/* Enlace real: antes la tarjeta navegaba con
+                    onClick={() => window.location.href = ...}, así que el
+                    HTML servido no contenía ningún <a> hacia los artículos
+                    y Google no podía descubrirlos sin ejecutar JS. */}
+                <Link to={`/BlogArticle/${article.slug}`} className="block cursor-pointer">
                 <div className="relative overflow-hidden rounded-2xl mb-4">
                   <img src={article.image} alt={article.alt || article.title} loading="lazy" width="800" height="450"
                     className="w-full h-52 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -291,9 +301,10 @@ export default function Blog() {
                 </div>
                 <h2 className="text-xl font-bold text-[#0A1628] mb-3 group-hover:text-[#E63946] transition-colors">{article.title}</h2>
                 <p className="text-gray-600 mb-4 line-clamp-2">{article.excerpt}</p>
-                <button className="flex items-center gap-2 text-[#E63946] font-semibold text-sm group-hover:gap-3 transition-all">
+                <span className="flex items-center gap-2 text-[#E63946] font-semibold text-sm group-hover:gap-3 transition-all">
                   Leer más <ArrowRight className="w-4 h-4" />
-                </button>
+                </span>
+                </Link>
               </motion.article>
             ))}
           </div>
@@ -311,6 +322,28 @@ export default function Blog() {
               ))}
             </div>
           )}
+
+          {/* Índice completo. La cuadrícula de arriba está paginada (9 por
+              página), así que sin esta lista el HTML servido solo contendría
+              enlaces a los 9 artículos de la página actual. Aquí están los
+              {combinedStaticArticles.length} enlazados siempre, lo que además
+              da al lector un índice del blog en una sola vista. */}
+          <nav aria-labelledby="indice-blog" className="mt-16 pt-10 border-t border-gray-200">
+            <h2 id="indice-blog" className="text-xl font-bold text-[#0A1628] mb-1">Todos los artículos</h2>
+            <p className="text-gray-500 text-sm mb-6">{combinedStaticArticles.length} guías sobre alarmas, cámaras y seguridad en Barcelona</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-1">
+              {combinedStaticArticles.map((a) => (
+                <li key={`idx-${a.slug}`}>
+                  <Link
+                    to={`/BlogArticle/${a.slug}`}
+                    className="block py-2 text-sm text-gray-600 hover:text-[#E63946] transition-colors border-b border-gray-100"
+                  >
+                    {a.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
 

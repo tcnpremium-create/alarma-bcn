@@ -120,6 +120,25 @@ function extractH2s(html) {
   return matches;
 }
 
+/**
+ * El HTML almacenado de cada artículo empieza con su propio <h1>, que
+ * repite literalmente article.title — y BlogArticle ya renderiza ese
+ * título como <h1> en la cabecera. Resultado: los 30 artículos servían
+ * dos H1 con el mismo texto.
+ *
+ * Se comprobó que en los 30 el texto del <h1> embebido coincide
+ * exactamente con article.title, así que quitarlo no pierde nada: el
+ * texto sigue en la página, en el H1 de la cabecera. Si algún artículo
+ * futuro trae un <h1> con texto distinto, se degrada a <h2> en vez de
+ * borrarlo, para no perder contenido.
+ */
+function dedupeH1(html, title) {
+  const norm = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+  return html.replace(/<h1([^>]*)>([\s\S]*?)<\/h1>/i, (match, attrs, content) =>
+    norm(content) === norm(title || '') ? '' : `<h2${attrs}>${content}</h2>`
+  );
+}
+
 function injectH2Ids(html) {
   return html.replace(/<h2([^>]*)>(.*?)<\/h2>/gi, (match, attrs, content) => {
     const text = content.replace(/<[^>]+>/g, '');
@@ -178,7 +197,10 @@ export default function BlogArticle() {
 
   const schema = useMemo(() => article ? buildSchema(slug, article, seoData) : null, [slug, article]);
   const tocItems = useMemo(() => article ? extractH2s(article.content) : [], [article]);
-  const processedContent = useMemo(() => article ? injectH2Ids(article.content) : '', [article]);
+  const processedContent = useMemo(
+    () => (article ? injectH2Ids(dedupeH1(article.content, article.title)) : ''),
+    [article]
+  );
 
   if (!article) {
     return (
