@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/inject-home-prerender.mjs",
+    "build": "node scripts/prerender-fingerprint.mjs --check && vite build && node scripts/inject-home-prerender.mjs",
     "lint": "eslint . --quiet",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p ./jsconfig.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prerender": "vite build && node scripts/prerender.mjs && node scripts/update-vercel-rewrites.mjs && vite build && node scripts/inject-home-prerender.mjs"
   },
   "dependencies": {
     "@base44/vite-plugin": "^1.0.23",

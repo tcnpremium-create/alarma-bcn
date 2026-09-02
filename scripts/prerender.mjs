@@ -157,6 +157,14 @@ async function main() {
   );
 
   if (bad.length > 0) process.exitCode = 1;
+
+  // Guarda la huella de las fuentes con las que se generaron estos
+  // snapshots, para que el build pueda detectar después si han quedado
+  // obsoletos (ver scripts/prerender-fingerprint.mjs).
+  if (bad.length === 0) {
+    const { execFileSync } = await import('node:child_process');
+    execFileSync(process.execPath, [path.join(ROOT, 'scripts/prerender-fingerprint.mjs'), '--write'], { stdio: 'inherit' });
+  }
 }
 
 main();
