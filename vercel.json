@@ -68,6 +68,21 @@
       "source": "/Lleida",
       "destination": "/alarmas-lleida",
       "permanent": true
+    },
+    {
+      "source": "/Home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ControlAccesos",
+      "destination": "/control-accesos",
+      "permanent": true
+    },
+    {
+      "source": "/BlogArticle",
+      "destination": "/Blog",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -348,12 +363,20 @@
       "destination": "/__prerendered__/videoporteros.html"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/AdminLeads",
+      "destination": "/index.html"
     },
     {
-      "source": "/(.*)",
+      "source": "/AreaClientes",
       "destination": "/index.html"
+    },
+    {
+      "source": "/Servicios",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     }
   ],
   "headers": [
@@ -380,5 +403,6 @@
       "path": "/api/cron/keepalive",
       "schedule": "0 6 * * *"
     }
-  ]
+  ],
+  "trailingSlash": false
 }
