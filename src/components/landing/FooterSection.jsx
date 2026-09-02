@@ -10,6 +10,8 @@ const SEGURIDAD = [
   { label: "Videoporteros", href: "/videoporteros" },
   { label: "Control de accesos", href: "/control-accesos" },
   { label: "Cerraduras", href: "/cerraduras" },
+  { label: "Kits y precios", href: "/Promociones" },
+  { label: "Mantenimiento y soporte", href: "/MantenimientoSoporte" },
 ];
 
 const TECNOLOGIA = [
@@ -20,13 +22,25 @@ const SONIDO = [
   { label: "Sonorización profesional", href: "/sonorizacion" },
 ];
 
-const ZONAS = [
-  { label: "Barcelona", href: "/camaras-barcelona" },
-  { label: "Sabadell", href: "/camaras-sabadell" },
-  { label: "Girona", href: "/camaras-girona" },
-  { label: "Tarragona", href: "/camaras-tarragona" },
-  { label: "Lleida", href: "/camaras-lleida" },
-  { label: "Hospitalet", href: "/Hospitalet" },
+// La columna "Zonas" enlazaba solo a las páginas de cámaras, y por eso las
+// 4 landings /alarmas-{ciudad} recibían un único enlace en todo el sitio
+// (desde la home) mientras las de cámaras tenían uno en cada página.
+// Ahora cada servicio tiene su columna de zonas.
+const ZONAS_ALARMAS = [
+  { label: "Alarmas en Barcelona", href: "/alarmas-barcelona" },
+  { label: "Alarmas en Sabadell", href: "/alarmas-sabadell" },
+  { label: "Alarmas en Girona", href: "/alarmas-girona" },
+  { label: "Alarmas en Tarragona", href: "/alarmas-tarragona" },
+  { label: "Alarmas en Lleida", href: "/alarmas-lleida" },
+];
+
+const ZONAS_CAMARAS = [
+  { label: "Cámaras en Barcelona", href: "/camaras-barcelona" },
+  { label: "Cámaras en Sabadell", href: "/camaras-sabadell" },
+  { label: "Cámaras en Girona", href: "/camaras-girona" },
+  { label: "Cámaras en Tarragona", href: "/camaras-tarragona" },
+  { label: "Cámaras en Lleida", href: "/camaras-lleida" },
+  { label: "L'Hospitalet", href: "/Hospitalet" },
 ];
 
 export default function FooterSection() {
@@ -74,11 +88,23 @@ export default function FooterSection() {
             </ul>
           </div>
 
-          {/* Column 4 - Zonas */}
+          {/* Column 4 - Alarmas por zona */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Zonas</h4>
+            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Alarmas por zona</h4>
             <ul className="space-y-2">
-              {ZONAS.map((z) => (
+              {ZONAS_ALARMAS.map((z) => (
+                <li key={z.href}>
+                  <Link to={z.href} className="text-white/60 hover:text-white text-sm transition-colors">{z.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 5 - Cámaras por zona */}
+          <div>
+            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Cámaras por zona</h4>
+            <ul className="space-y-2">
+              {ZONAS_CAMARAS.map((z) => (
                 <li key={z.href}>
                   <Link to={z.href} className="text-white/60 hover:text-white text-sm transition-colors">{z.label}</Link>
                 </li>

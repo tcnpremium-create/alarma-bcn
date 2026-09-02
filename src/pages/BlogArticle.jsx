@@ -11,6 +11,7 @@ import { articleSEOData } from '@/components/blog/articleSEOData';
 import AdSenseInArticle from '@/components/ads/AdSenseInArticle';
 import AdSenseDisplay from '@/components/ads/AdSenseDisplay';
 import { businessStats } from '@/lib/businessStats';
+import ArticleServiceLinks from '@/components/blog/articleServiceLinks';
 
 const allArticles = { ...originalArticlesData, ...newArticlesData };
 
@@ -390,6 +391,9 @@ export default function BlogArticle() {
                   </button>
                 </div>
               </div>
+
+              {/* Enlaces contextuales a servicios relacionados */}
+              <ArticleServiceLinks slug={slug} />
 
               {/* Final CTA */}
               <div className="mt-12 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a] rounded-2xl p-8 sm:p-12 text-center">
