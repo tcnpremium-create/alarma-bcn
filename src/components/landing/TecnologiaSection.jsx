@@ -45,7 +45,7 @@ export default function TecnologiaSection() {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-white" style={{ backgroundColor: "rgba(229,62,62,0.15)", color: "#E53E3E" }}>
             <span className="w-2 h-2 bg-[#E53E3E] rounded-full animate-pulse" /> TECNOLOGÍA PREMIUM
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-5 mb-4">Tecnología que Trabaja por Ti</h2>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-5 mb-4">Tecnología que Trabaja por Ti</h1>
           <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">Sistemas de última generación con Inteligencia Artificial integrada</p>
         </motion.div>
 
