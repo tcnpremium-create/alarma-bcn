@@ -21,10 +21,16 @@ const manifest = JSON.parse(readFileSync(path.join(ROOT, 'scripts/prerender-mani
 const vercelConfigPath = path.join(ROOT, 'vercel.json');
 const config = JSON.parse(readFileSync(vercelConfigPath, 'utf8'));
 
+// "/" queda fuera a propósito: Vercel resuelve la raíz directamente al
+// archivo estático dist/index.html como índice de directorio, ANTES de
+// evaluar rewrites (confirmado en producción) — un rewrite para "/" nunca
+// se llega a aplicar. La home se resuelve en su lugar inyectando el
+// contenido prerenderizado directamente en dist/index.html en cada build
+// (ver scripts/inject-home-prerender.mjs, enganchado en `npm run build`).
 const prerenderedRewrites = manifest
-  .filter((r) => r.ok)
+  .filter((r) => r.ok && r.route !== '/')
   .map((r) => ({
-    source: r.route === '/' ? '/' : r.route,
+    source: r.route,
     destination: `/__prerendered__/${r.file}`,
   }));
 

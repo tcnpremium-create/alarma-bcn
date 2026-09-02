@@ -72,10 +72,6 @@
   ],
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/__prerendered__/home.html"
-    },
-    {
       "source": "/About",
       "destination": "/__prerendered__/About.html"
     },
