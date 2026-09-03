@@ -4,6 +4,7 @@ import { AlertTriangle, Shield, ChevronDown, BarChart2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';
+import RelatedLinksSection from "@/components/landing/RelatedLinksSection";
 import { Helmet } from "react-helmet-async";
 
 const barrios = [
@@ -406,6 +407,37 @@ export default function MapaRiesgo() {
           </div>
         </motion.div>
       </div>
+
+            {/* Otro callejón sin salida: 30 enlaces entrantes desde el blog y
+          ninguno saliente. Quien acaba de ver que su barrio tiene riesgo alto
+          es exactamente quien está a un paso de contratar. */}
+      <RelatedLinksSection
+        heading="Tu zona tiene riesgo: qué puedes hacer"
+        groups={[
+          {
+            title: "Protección",
+            links: [
+              { to: "/alarmas-barcelona", label: "Instalación de alarmas en Barcelona" },
+              { to: "/camaras-barcelona", label: "Cámaras de videovigilancia" },
+              { to: "/BarrioEixample", label: "Alarmas en el Eixample" },
+            ],
+          },
+          {
+            title: "Precios",
+            links: [
+              { to: "/Promociones", label: "Kits de alarma y precios" },
+              { to: "/Calculadora", label: "Calcular tu presupuesto" },
+            ],
+          },
+          {
+            title: "Contexto",
+            links: [
+              { to: "/BlogArticle/zonas-riesgo-robo-barcelona-2026", label: "Análisis de zonas de riesgo por barrios" },
+              { to: "/GuiaSeguridadBarcelona", label: "Guía de seguridad de Barcelona" },
+            ],
+          },
+        ]}
+      />
 
       <FooterSection />
     </div>

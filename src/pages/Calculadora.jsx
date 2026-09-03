@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import FooterSection from "@/components/landing/FooterSection";
+import RelatedLinksSection from "@/components/landing/RelatedLinksSection";
 import { Helmet } from "react-helmet-async";
 
 const SPACE_OPTIONS = [
@@ -254,6 +255,36 @@ export default function Calculadora() {
           )}
         </div>
       </section>
+
+            {/* La calculadora recibía 47 enlaces internos —más que ninguna otra
+          página del sitio— y no salía ni uno: toda esa autoridad moría aquí,
+          y quien acababa de estimar su presupuesto no tenía a dónde ir. */}
+      <RelatedLinksSection
+        heading="Ya tienes una estimación: el siguiente paso"
+        groups={[
+          {
+            title: "Precios cerrados",
+            links: [
+              { to: "/Promociones", label: "Kits con precio e instalación incluida" },
+              { to: "/ComparativaAlarmas", label: "Comparativa de alarmas del mercado" },
+            ],
+          },
+          {
+            title: "Servicios",
+            links: [
+              { to: "/alarmas-barcelona", label: "Instalación de alarmas en Barcelona" },
+              { to: "/camaras-barcelona", label: "Instalación de cámaras de seguridad" },
+            ],
+          },
+          {
+            title: "Resolver dudas",
+            links: [
+              { to: "/BlogArticle/precio-instalar-alarma-barcelona", label: "Qué cuesta instalar una alarma" },
+              { to: "/Contact", label: "Pedir presupuesto en firme" },
+            ],
+          },
+        ]}
+      />
 
       <FooterSection />
     </div>
