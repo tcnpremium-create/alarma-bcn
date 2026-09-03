@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import RelatedLinksSection from "../components/landing/RelatedLinksSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -461,6 +462,41 @@ export default function Servicios() {
           </motion.div>
         </div>
       </section>
+
+            {/* La página que reúne toda la oferta no enlazaba a ninguna de las
+          páginas de servicio: las tarjetas son solo texto. Este bloque cierra
+          ese hueco sin tocar el diseño de las tarjetas. */}
+      <RelatedLinksSection
+        heading="Cada servicio, en detalle"
+        groups={[
+          {
+            title: "Protección y vigilancia",
+            links: [
+              { to: "/alarmas-barcelona", label: "Instalación de alarmas Ajax" },
+              { to: "/camaras-barcelona", label: "Cámaras de videovigilancia" },
+              { to: "/videoporteros", label: "Videoporteros" },
+              { to: "/control-accesos", label: "Control de accesos" },
+            ],
+          },
+          {
+            title: "Instalaciones complementarias",
+            links: [
+              { to: "/cerraduras", label: "Cerraduras inteligentes" },
+              { to: "/redes-informaticas", label: "Redes informáticas" },
+              { to: "/sonorizacion", label: "Sonorización profesional" },
+              { to: "/tecnologia", label: "Tecnología que instalamos" },
+            ],
+          },
+          {
+            title: "Presupuesto y soporte",
+            links: [
+              { to: "/Promociones", label: "Kits y precios" },
+              { to: "/Calculadora", label: "Calcular tu presupuesto" },
+              { to: "/MantenimientoSoporte", label: "Mantenimiento y soporte" },
+            ],
+          },
+        ]}
+      />
 
       <FooterSection />
     </div>);

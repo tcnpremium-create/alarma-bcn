@@ -47,6 +47,17 @@ const SERVICES = {
     href: "/Promociones",
     anchors: ["kits con precio cerrado", "kits de alarma y cámaras", "nuestros kits e instalación incluida"],
   },
+  guia: {
+    // /GuiaSeguridadBarcelona tenía UN solo enlace entrante en todo el sitio
+    // (desde /Blog) pese a ser una guía completa. Se enlaza solo desde los
+    // artículos centrados en Barcelona, donde de verdad continúa la lectura.
+    href: "/GuiaSeguridadBarcelona",
+    anchors: [
+      "guía de seguridad de Barcelona",
+      "nuestra guía de seguridad para Barcelona",
+      "cómo protegerse en Barcelona",
+    ],
+  },
   comparativa: {
     href: "/ComparativaAlarmas",
     anchors: ["comparativa de alarmas", "comparativa entre marcas", "qué alarma elegir"],
@@ -58,7 +69,7 @@ const ARTICLE_SERVICES = {
   "precio-instalar-alarma-barcelona": ["alarmas", "kits"],
   "mejores-alarmas-casa-barcelona": ["alarmas", "comparativa"],
   "alarmas-sin-cuota-mensual": ["alarmas", "kits"],
-  "empresas-alarmas-barcelona": ["alarmas", "comparativa"],
+  "empresas-alarmas-barcelona": ["alarmas", "comparativa", "guia"],
   "alarma-local-comercial": ["alarmas", "camaras"],
   "seguridad-negocios-barcelona": ["alarmas", "camaras", "accesos"],
   "videovigilancia-empresas-barcelona": ["camaras", "accesos"],
@@ -70,13 +81,13 @@ const ARTICLE_SERVICES = {
   "alarmas-chalets": ["alarmas", "camaras"],
   "alarmas-garajes": ["alarmas", "camaras", "accesos"],
   "alarmas-comunidades-vecinos": ["videoporteros", "accesos", "camaras"],
-  "zonas-riesgo-robo-barcelona-2026": ["alarmas", "camaras"],
+  "zonas-riesgo-robo-barcelona-2026": ["alarmas", "camaras", "guia"],
   "control-accesos-biometrico-empresas": ["accesos", "videoporteros"],
   "alarmas-camara-vs-sin-camara": ["alarmas", "camaras"],
   "cuanto-tarda-instalar-alarma": ["alarmas", "kits"],
   "mantenimiento-alarma": ["mantenimiento", "alarmas"],
   "alarmas-app-movil": ["alarmas", "mantenimiento"],
-  "elegir-alarma-hogar-barcelona": ["alarmas", "comparativa"],
+  "elegir-alarma-hogar-barcelona": ["alarmas", "comparativa", "guia"],
   "alarmas-negocios-barcelona": ["alarmas", "camaras"],
   "comparativa-ajax-hikvision": ["comparativa", "alarmas", "camaras"],
   "camaras-ip-barcelona-2026": ["camaras", "kits"],

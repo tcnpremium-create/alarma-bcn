@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import RelatedLinksSection from "../components/landing/RelatedLinksSection";
 import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ALARM_KITS } from "@/data/alarmKits";
@@ -734,6 +735,37 @@ export default function Promociones() {
           .promo-kit-card--highlight { transition: none !important; }
         }
       `}</style>
+
+            {/* Quien mira precios suele venir de un servicio concreto o quiere
+          seguir comparando: estos son los destinos reales desde aquí. */}
+      <RelatedLinksSection
+        heading="Antes de decidirte"
+        groups={[
+          {
+            title: "Servicios de estos kits",
+            links: [
+              { to: "/alarmas-barcelona", label: "Cómo instalamos las alarmas Ajax" },
+              { to: "/camaras-barcelona", label: "Instalación de cámaras" },
+              { to: "/MantenimientoSoporte", label: "Qué cubre el mantenimiento" },
+            ],
+          },
+          {
+            title: "Calcular y comparar",
+            links: [
+              { to: "/Calculadora", label: "Calculadora de presupuesto" },
+              { to: "/ComparativaAlarmas", label: "Comparativa de alarmas" },
+              { to: "/BlogArticle/precio-instalar-alarma-barcelona", label: "Qué cuesta instalar una alarma" },
+            ],
+          },
+          {
+            title: "Dudas frecuentes",
+            links: [
+              { to: "/BlogArticle/alarmas-sin-cuota-mensual", label: "Alarmas sin cuota mensual" },
+              { to: "/BlogArticle/cuanto-tarda-instalar-alarma", label: "Cuánto tarda la instalación" },
+            ],
+          },
+        ]}
+      />
 
       <FooterSection />
     </div>

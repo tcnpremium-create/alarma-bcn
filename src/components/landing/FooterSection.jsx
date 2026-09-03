@@ -5,6 +5,10 @@ import { openCookiePreferences } from "@/components/CookieBanner";
 const LOGO_BLANCO = "/images/logo-premium-blanco.webp";
 
 const SEGURIDAD = [
+  // /Servicios y /SobreNosotros no recibían NI UN enlace en todo el sitio: se
+  // llegaba a ellas solo por el sitemap, pese a ser la página que reúne toda
+  // la oferta y la de empresa.
+  { label: "Todos los servicios", href: "/Servicios" },
   { label: "Cámaras de seguridad", href: "/camaras-barcelona" },
   { label: "Alarmas", href: "/alarmas-barcelona" },
   { label: "Videoporteros", href: "/videoporteros" },
@@ -12,6 +16,7 @@ const SEGURIDAD = [
   { label: "Cerraduras", href: "/cerraduras" },
   { label: "Kits y precios", href: "/Promociones" },
   { label: "Mantenimiento y soporte", href: "/MantenimientoSoporte" },
+  { label: "Sobre nosotros", href: "/SobreNosotros" },
 ];
 
 const TECNOLOGIA = [
@@ -32,6 +37,7 @@ const ZONAS_ALARMAS = [
   { label: "Alarmas en Girona", href: "/alarmas-girona" },
   { label: "Alarmas en Tarragona", href: "/alarmas-tarragona" },
   { label: "Alarmas en Lleida", href: "/alarmas-lleida" },
+  { label: "Alarmas en L'Hospitalet", href: "/Hospitalet" },
 ];
 
 const ZONAS_CAMARAS = [
@@ -40,7 +46,6 @@ const ZONAS_CAMARAS = [
   { label: "Cámaras en Girona", href: "/camaras-girona" },
   { label: "Cámaras en Tarragona", href: "/camaras-tarragona" },
   { label: "Cámaras en Lleida", href: "/camaras-lleida" },
-  { label: "L'Hospitalet", href: "/Hospitalet" },
 ];
 
 export default function FooterSection() {

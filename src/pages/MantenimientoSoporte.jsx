@@ -4,6 +4,7 @@ import { ArrowLeft, Check, Phone, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import RelatedLinksSection from "../components/landing/RelatedLinksSection";
 import ChatWidget from "../components/chatbot/ChatWidget";
 import ContactForm from "../components/landing/ContactForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
@@ -170,6 +171,37 @@ export default function MantenimientoSoporte() {
           <ContactForm />
         </div>
       </div>
+
+            {/* El mantenimiento es la continuación de una instalación: desde aquí
+          se vuelve al servicio correspondiente o a la guía de averías. */}
+      <RelatedLinksSection
+        heading="Sistemas a los que damos soporte"
+        groups={[
+          {
+            title: "Instalaciones que mantenemos",
+            links: [
+              { to: "/alarmas-barcelona", label: "Alarmas Ajax" },
+              { to: "/camaras-barcelona", label: "Cámaras de videovigilancia" },
+              { to: "/control-accesos", label: "Control de accesos" },
+              { to: "/videoporteros", label: "Videoporteros" },
+            ],
+          },
+          {
+            title: "Guías de mantenimiento",
+            links: [
+              { to: "/BlogArticle/mantenimiento-alarma", label: "Mantenimiento de una alarma: qué revisar" },
+              { to: "/BlogArticle/sensores-movimiento-alarma", label: "Sensores de movimiento y falsas alarmas" },
+            ],
+          },
+          {
+            title: "Presupuesto",
+            links: [
+              { to: "/Promociones", label: "Kits y precios" },
+              { to: "/Contact", label: "Contactar con el servicio técnico" },
+            ],
+          },
+        ]}
+      />
 
       <FooterSection />
       <ChatWidget />
