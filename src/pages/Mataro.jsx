@@ -14,7 +14,7 @@ export default function Mataro() {
     <div className="min-h-screen bg-white">
       <LocalitySEO
         city="Mataró"
-        title="Alarmas y Cámaras de Seguridad en Mataró | Premium Tech Security"
+        title="Alarmas en Mataró | Instalación Profesional 24/7 | Premium Tech Security"
         description="Instalación de alarmas y cámaras de seguridad en Mataró. Sin cuotas. Instalación incluida. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Mataró, instalación alarmas Mataró, cámaras seguridad Mataró, videovigilancia Mataró, sistemas seguridad Mataró"
         canonicalUrl="https://alarmasenbarcelona.com/Mataro"

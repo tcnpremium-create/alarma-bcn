@@ -9,35 +9,38 @@ const ALARM_PRICES = ALARM_KITS.map((k) => Number(k.price.replace(".", "")));
 const ALARM_LOW_PRICE = String(Math.min(...ALARM_PRICES));
 const ALARM_HIGH_PRICE = String(Math.max(...ALARM_PRICES));
 
+// Los títulos NO deben mencionar cámaras ni videovigilancia: existe una
+// página /camaras-{ciudad} propia para esa intención y ambos títulos
+// competían por la misma consulta. Cada página, una intención.
 const SEO_DATA = {
   "/alarmas-barcelona": {
-    title: "Alarmas y Cámaras Seguridad Barcelona | Instalación Profesional | Premium Tech",
+    title: "Alarmas en Barcelona | Instalación sin Cuotas | Premium Tech Security",
     description: "Alarmas de seguridad en Barcelona sin cuotas. Ajax, Hikvision. Respuesta en 15 segundos. Instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
-    keywords: "alarmas Barcelona, cámaras seguridad Barcelona, instalación alarmas Barcelona, empresa seguridad Barcelona, AJAX Barcelona, Hikvision Barcelona",
+    keywords: "alarmas Barcelona, instalación alarmas Barcelona, empresa seguridad Barcelona, AJAX Barcelona, Hikvision Barcelona",
     canonical: "https://alarmasenbarcelona.com/alarmas-barcelona"
   },
   "/alarmas-girona": {
-    title: "Instalación Alarmas y Cámaras Seguridad Girona | Premium Tech Security",
+    title: "Alarmas en Girona | Instalación sin Cuotas | Premium Tech Security",
     description: "Alarmas de seguridad en Girona. Sin cuotas mensuales. Respuesta CRA en 15 segundos. Instalación profesional certificada. Tel: 638 10 99 47",
-    keywords: "alarmas Girona, cámaras seguridad Girona, instalación alarmas Girona, videovigilancia Girona, seguridad Costa Brava",
+    keywords: "alarmas Girona, instalación alarmas Girona, seguridad Costa Brava",
     canonical: "https://alarmasenbarcelona.com/alarmas-girona"
   },
   "/alarmas-tarragona": {
-    title: "Alarmas y Videovigilancia Tarragona | Instalación Profesional | Premium Tech",
+    title: "Alarmas en Tarragona | Instalación sin Cuotas | Premium Tech Security",
     description: "Instalación alarmas seguridad Tarragona. Ajax Systems. Sin cuotas. Central Receptora 24/7. Presupuesto gratis sin compromiso. Tel: 638 10 99 47",
-    keywords: "alarmas Tarragona, cámaras seguridad Tarragona, instalación alarmas Tarragona, videovigilancia Tarragona, seguridad Tarragona",
+    keywords: "alarmas Tarragona, instalación alarmas Tarragona, seguridad Tarragona",
     canonical: "https://alarmasenbarcelona.com/alarmas-tarragona"
   },
   "/alarmas-lleida": {
-    title: "Sistemas de Seguridad Lleida | Alarmas y Cámaras | Premium Tech Security",
+    title: "Alarmas en Lleida | Instalación sin Cuotas | Premium Tech Security",
     description: "Alarmas de seguridad en Lleida sin cuotas mensuales. Ajax Hub. Respuesta en 15 segundos. Instalación incluida. Presupuesto gratis. Tel: 638 10 99 47",
-    keywords: "alarmas Lleida, cámaras seguridad Lleida, instalación alarmas Lleida, videovigilancia Lleida, seguridad Lleida",
+    keywords: "alarmas Lleida, instalación alarmas Lleida, seguridad Lleida",
     canonical: "https://alarmasenbarcelona.com/alarmas-lleida"
   },
   "/alarmas-sabadell": {
-    title: "Alarmas y Cámaras Seguridad Sabadell | Premium Tech Security",
+    title: "Alarmas en Sabadell | Instalación sin Cuotas | Premium Tech Security",
     description: "Sistemas de alarma en Sabadell. Ajax Hub. Sin permanencia ni cuotas. Central Receptora 24/7. Instalación incluida. Tel: 638 10 99 47",
-    keywords: "alarmas Sabadell, cámaras seguridad Sabadell, instalación alarmas Sabadell, videovigilancia Sabadell, seguridad Vallès Occidental",
+    keywords: "alarmas Sabadell, instalación alarmas Sabadell, seguridad Vallès Occidental",
     canonical: "https://alarmasenbarcelona.com/alarmas-sabadell"
   }
 };
