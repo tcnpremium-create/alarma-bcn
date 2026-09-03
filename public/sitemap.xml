@@ -4,6 +4,9 @@
   <url><loc>https://alarmasenbarcelona.com/</loc><lastmod>2026-08-22</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
 
   <!-- Páginas de servicio principales -->
+  <!-- Catálogo de servicios: página pública real del router que se quedó fuera
+       del sitemap, así que no se prerenderizaba y servía el HTML de la home en crudo. -->
+  <url><loc>https://alarmasenbarcelona.com/Servicios</loc><lastmod>2026-09-02</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://alarmasenbarcelona.com/videoporteros</loc><lastmod>2026-08-22</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://alarmasenbarcelona.com/control-accesos</loc><lastmod>2026-08-22</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://alarmasenbarcelona.com/sonorizacion</loc><lastmod>2026-08-22</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>

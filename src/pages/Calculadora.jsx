@@ -104,6 +104,25 @@ export default function Calculadora() {
         <title>Calculadora de Presupuesto | Premium Tech Security</title>
         <meta name="description" content="Calcula el precio de tu sistema de seguridad en Barcelona. Presupuesto online gratuito para cámaras, alarmas y videoporteros. Sin compromiso." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Calculadora" />
+        {/* WebApplication: la página es una herramienta de estimación
+            gratuita, que es literalmente lo que hace y lo que dice su
+            propio texto. Sin precios ni valoraciones inventadas. */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Calculadora de Presupuesto",
+          "description": "Calcula el precio de tu sistema de seguridad en Barcelona. Presupuesto online gratuito para cámaras, alarmas y videoporteros. Sin compromiso.",
+          "url": "https://alarmasenbarcelona.com/Calculadora",
+          "applicationCategory": "BusinessApplication",
+          "browserRequirements": "Requiere JavaScript",
+          "isAccessibleForFree": true,
+          "inLanguage": "es-ES",
+          "provider": {
+            "@type": "Organization",
+            "name": "Premium Tech Security",
+            "url": "https://alarmasenbarcelona.com",
+          },
+        })}</script>
       </Helmet>
       <Navbar />
 

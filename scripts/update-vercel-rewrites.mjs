@@ -40,8 +40,11 @@ const ROOT = path.resolve(__dirname, '..');
  * Rutas que existen en el router pero no se prerenderizan ni se indexan:
  * se sirven con el shell de la SPA y React Router las resuelve en cliente.
  * /AdminLeads y /AreaClientes ya están bloqueadas en robots.txt.
+ * /Servicios salió de esta lista al entrar en el sitemap: ahora se
+ * prerenderiza como una ruta pública más, en vez de servir el HTML de la
+ * home mientras React resolvía la ruta en cliente.
  */
-const SPA_ONLY_ROUTES = ['/AdminLeads', '/AreaClientes', '/Servicios'];
+const SPA_ONLY_ROUTES = ['/AdminLeads', '/AreaClientes'];
 
 const manifest = JSON.parse(readFileSync(path.join(ROOT, 'scripts/prerender-manifest.json'), 'utf8'));
 const vercelConfigPath = path.join(ROOT, 'vercel.json');

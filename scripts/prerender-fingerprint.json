@@ -1,8 +1,8 @@
 {
- "combined": "8297d109a8833914",
+ "combined": "ac83a90f7fd69228",
  "files": {
   "index.html": "1ce74bc3a975a7a4",
-  "public/sitemap.xml": "bb0188bbd617a441",
+  "public/sitemap.xml": "ec84314a99f562b8",
   "src/App.jsx": "c9bdce7d8d4d5888",
   "src/Layout.jsx": "2381c33201b4161f",
   "src/api/api.js": "da21fc6659cf0c95",
@@ -185,7 +185,7 @@
   "src/pages/BarrioEixample.jsx": "802b74981286dd0a",
   "src/pages/Blog.jsx": "6ed28b5ea687f8b0",
   "src/pages/BlogArticle.jsx": "06d0e68212e744ed",
-  "src/pages/Calculadora.jsx": "cdfbf9c15433913f",
+  "src/pages/Calculadora.jsx": "b4b042b29997ae7d",
   "src/pages/CamarasBarcelona.jsx": "d8d8fea5e398b5e9",
   "src/pages/CamarasGirona.jsx": "0ec61c1e9beeabcd",
   "src/pages/CamarasLleida.jsx": "a9cf555d0e6f8d3a",
@@ -199,7 +199,7 @@
   "src/pages/Cookies.jsx": "885bca81922f6a68",
   "src/pages/Cornella.jsx": "7e28d3e3340d47c1",
   "src/pages/ElPrat.jsx": "0db0060a51ae06ca",
-  "src/pages/GuiaSeguridadBarcelona.jsx": "8499d0df8ef782e2",
+  "src/pages/GuiaSeguridadBarcelona.jsx": "c19aa84a6c8ddbe2",
   "src/pages/Home.jsx": "d52a11e6eea3de5c",
   "src/pages/Hospitalet.jsx": "96cd1608cf047500",
   "src/pages/MantenimientoSoporte.jsx": "3b26819b9b3104c5",

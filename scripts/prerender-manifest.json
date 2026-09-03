@@ -255,6 +255,11 @@
     "ok": true
   },
   {
+    "route": "/Servicios",
+    "file": "Servicios.html",
+    "ok": true
+  },
+  {
     "route": "/SobreNosotros",
     "file": "SobreNosotros.html",
     "ok": true

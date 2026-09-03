@@ -287,6 +287,10 @@
       "destination": "/__prerendered__/SantCugat.html"
     },
     {
+      "source": "/Servicios",
+      "destination": "/__prerendered__/Servicios.html"
+    },
+    {
       "source": "/SobreNosotros",
       "destination": "/__prerendered__/SobreNosotros.html"
     },
@@ -368,10 +372,6 @@
     },
     {
       "source": "/AreaClientes",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/Servicios",
       "destination": "/index.html"
     },
     {

@@ -12,6 +12,30 @@ export default function GuiaSeguridadBarcelona() {
         <title>Guía Completa de Seguridad para Hogares y Negocios en Barcelona 2026</title>
         <meta name="description" content="Todo lo que necesitas saber sobre sistemas de alarma, videovigilancia y control de accesos en Barcelona. Guía actualizada 2026 con precios, marcas y consejos de expertos." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/GuiaSeguridadBarcelona" />
+        {/* Article: refleja exactamente lo que hay visible en la página
+            (titular, entradilla y autoría). Sin datePublished porque no
+            existe una fecha real de publicación registrada para esta guía
+            y no se va a inventar. */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": "Guía Completa de Seguridad para Hogares y Negocios en Barcelona (2026)",
+          "description": "Todo lo que necesitas saber sobre sistemas de alarma, videovigilancia y control de accesos en Barcelona. Guía actualizada 2026 con precios, marcas y consejos de expertos.",
+          "url": "https://alarmasenbarcelona.com/GuiaSeguridadBarcelona",
+          "mainEntityOfPage": { "@type": "WebPage", "@id": "https://alarmasenbarcelona.com/GuiaSeguridadBarcelona" },
+          "inLanguage": "es-ES",
+          "author": { "@type": "Organization", "name": "Premium Tech Security" },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Premium Tech Security",
+            "url": "https://alarmasenbarcelona.com",
+          },
+          "about": [
+            { "@type": "Thing", "name": "Sistemas de alarma" },
+            { "@type": "Thing", "name": "Videovigilancia" },
+            { "@type": "Thing", "name": "Control de accesos" },
+          ],
+        })}</script>
       </Helmet>
       <Navbar />
 

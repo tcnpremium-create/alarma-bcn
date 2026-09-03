@@ -25,12 +25,15 @@
  *
  * Los snapshots quedan estáticos hasta que se regeneren a mano — no se
  * auto-actualizan en cada deploy. Cuando cambie contenido de forma
- * relevante, volver a correr:
- *   npm run build && node scripts/prerender.mjs && npm run build
- * (el primer build sirve las rutas para prerenderizar; el segundo empaqueta
- * los nuevos snapshots de public/__prerendered__ en dist/).
+ * relevante (el build lo detecta y avisa, ver prerender-fingerprint.mjs):
  *
- * Uso: node scripts/prerender.mjs   (requiere haber corrido `vite build` antes)
+ *   npm run prerender
+ *
+ * que encadena: build (para servir las rutas) -> crawl -> regeneración de
+ * los rewrites de vercel.json -> build (para empaquetar los snapshots
+ * nuevos de public/__prerendered__ en dist/) -> inyección de la home.
+ *
+ * Uso directo: node scripts/prerender.mjs (requiere `vite build` previo)
  */
 import { spawn } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
@@ -69,6 +72,13 @@ function waitForServer(url, tries = 60) {
   });
 }
 
+
+/** Mata el grupo de procesos del preview (npx + el vite real que cuelga de él). */
+function killPreview(child) {
+  try { process.kill(-child.pid, 'SIGKILL'); }
+  catch { try { child.kill('SIGKILL'); } catch { /* ya estaba muerto */ } }
+}
+
 async function main() {
   const pwModule = await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
   const chromium = pwModule.chromium || pwModule.default.chromium;
@@ -82,9 +92,15 @@ async function main() {
   const routes = loadRoutes();
   console.log(`Rutas a prerenderizar: ${routes.length}`);
 
+  // detached: el servidor de preview se lanza en su propio grupo de procesos.
+  // Con spawn normal, preview.kill() mata solo el envoltorio npx: el proceso
+  // real de vite sobrevive, mantiene abiertos los pipes de stdio del padre y
+  // este script nunca termina — dejando colgada toda la cadena de
+  // `npm run prerender`. Matando el GRUPO (-pid) se lleva también al hijo.
   const preview = spawn('npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], {
     cwd: ROOT,
     stdio: ['ignore', 'pipe', 'pipe'],
+    detached: true,
   });
   let previewLog = '';
   preview.stdout.on('data', (d) => (previewLog += d));
@@ -95,7 +111,7 @@ async function main() {
   } catch (e) {
     console.error('No se pudo levantar vite preview:', e.message);
     console.error(previewLog);
-    preview.kill();
+    killPreview(preview);
     process.exit(1);
   }
 
@@ -136,7 +152,7 @@ async function main() {
   }
 
   await browser.close();
-  preview.kill();
+  killPreview(preview);
 
   const ok = results.filter((r) => r.status === 'ok' && r.title && r.h1);
   const bad = results.filter((r) => !(r.status === 'ok' && r.title && r.h1));
