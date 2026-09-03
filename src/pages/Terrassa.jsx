@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import LocalLandingLinks from "../components/landing/LocalLandingLinks";
 import ContactForm from "../components/landing/ContactForm";
 import LocalitySEO from "../components/seo/LocalitySEO";
 import GoogleMapEmbed from "../components/landing/GoogleMapEmbed";
@@ -170,6 +171,7 @@ export default function Terrassa() {
         </div>
       </section>
 
+      <LocalLandingLinks city="Terrassa" page="Terrassa" />
       <FooterSection />
     </div>
   );

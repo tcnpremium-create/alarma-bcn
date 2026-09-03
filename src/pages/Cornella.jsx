@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import LocalLandingLinks from "../components/landing/LocalLandingLinks";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, Clock, MapPin, Phone, CheckCircle } from "lucide-react";
@@ -258,7 +259,8 @@ export default function CornellaPage() {
           </div>
         </section>
 
-        <FooterSection />
+        <LocalLandingLinks city="Cornellà de Llobregat" page="Cornella" />
+      <FooterSection />
       </div>
   );
 }

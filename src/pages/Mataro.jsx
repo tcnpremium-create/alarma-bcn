@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { createPageUrl } from "../utils";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import LocalLandingLinks from "../components/landing/LocalLandingLinks";
 import ContactForm from "../components/landing/ContactForm";
 import LocalitySEO from "../components/seo/LocalitySEO";
 
@@ -169,6 +170,7 @@ export default function Mataro() {
         </div>
       </section>
 
+      <LocalLandingLinks city="Mataró" page="Mataro" />
       <FooterSection />
     </div>
   );

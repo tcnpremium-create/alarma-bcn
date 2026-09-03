@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import LocalLandingLinks from "../components/landing/LocalLandingLinks";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { MapPin, Phone, CheckCircle } from "lucide-react";
@@ -107,6 +108,7 @@ export default function SantCugatPage() {
         </div>
       </section>
 
+      <LocalLandingLinks city="Sant Cugat del Vallès" page="SantCugat" />
       <FooterSection />
     </div>
   );

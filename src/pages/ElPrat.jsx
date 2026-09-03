@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
+import LocalLandingLinks from "../components/landing/LocalLandingLinks";
 import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, MapPin, Phone } from "lucide-react";
@@ -74,6 +75,7 @@ export default function ElPratPage() {
         </div>
       </section>
 
+      <LocalLandingLinks city="El Prat de Llobregat" page="ElPrat" />
       <FooterSection />
     </div>
   );
