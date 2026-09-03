@@ -10,15 +10,23 @@
  * prerenderizado.
  *
  * Este script corre DESPUÉS de `vite build` y ANTES de deploy: toma el
- * dist/index.html recién generado (con los hashes de assets correctos
- * de ESTE build) y le inyecta el <head> extra (title/meta/canonical/OG/
- * JSON-LD) + el <body> completo capturados en
- * public/__prerendered__/home.html — sin tocar los <script>/<link> de
- * assets, que siempre vienen del build actual, nunca del snapshot
- * versionado (así nunca hay riesgo de referenciar un JS/CSS con un hash
- * que ya no existe).
+ * dist/index.html recién generado y le inyecta el <head> extra
+ * (title/meta/canonical/OG/JSON-LD) + el <body> completo del snapshot de la
+ * home.
  *
- * Uso: node scripts/inject-home-prerender.mjs   (después de `vite build`)
+ * EL SNAPSHOT SE LEE DE dist/, NO DE public/. En este proyecto Vite emite el
+ * <script type="module"> y el <link rel="stylesheet"> de entrada AL FINAL DEL
+ * BODY, no en el <head>. Como aquí se sustituye el body entero por el del
+ * snapshot, esas dos etiquetas venían del snapshot versionado: bastaba con
+ * cambiar el CSS o el bundle de entrada para que la home (la página más
+ * importante del sitio) quedara apuntando a un /assets/index-HASH.css y un
+ * .js inexistentes — sin estilos y sin que React llegara a montar.
+ * scripts/sync-prerendered-assets.mjs, que corre justo antes en la cadena de
+ * build, ya deja dist/__prerendered__/home.html con las etiquetas del build
+ * actual; leyendo de ahí, la home hereda siempre los assets correctos.
+ *
+ * Uso: node scripts/inject-home-prerender.mjs
+ *      (después de `vite build` y de sync-prerendered-assets.mjs)
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
@@ -27,10 +35,10 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const DIST_INDEX = path.join(ROOT, 'dist/index.html');
-const SNAPSHOT = path.join(ROOT, 'public/__prerendered__/home.html');
+const SNAPSHOT = path.join(ROOT, 'dist/__prerendered__/home.html');
 
 if (!existsSync(DIST_INDEX) || !existsSync(SNAPSHOT)) {
-  console.error('Falta dist/index.html o public/__prerendered__/home.html — ¿corriste `vite build` y `prerender.mjs` antes?');
+  console.error('Falta dist/index.html o dist/__prerendered__/home.html — ¿corriste `vite build` (y antes `npm run prerender`) ?');
   process.exit(1);
 }
 
@@ -69,5 +77,17 @@ const snapshotBody = snapshotHtml.match(/<body>([\s\S]*)<\/body>/)[1];
 let out = baseHtml.replace('</head>', helmetTags.join('\n    ') + '\n  </head>');
 out = out.replace(/<body>[\s\S]*<\/body>/, `<body>${snapshotBody}</body>`);
 
+// Última red: ningún /assets/… referenciado por la home puede faltar del
+// build. Si falta, la home se serviría sin estilos y sin React, así que es
+// preferible romper el build aquí que desplegarlo.
+const missing = [...out.matchAll(/(?:href|src)="(\/assets\/[^"]+)"/g)]
+  .map((m) => m[1])
+  .filter((href) => !existsSync(path.join(ROOT, 'dist', href.replace(/^\//, ''))));
+if (missing.length) {
+  console.error('La home quedaría referenciando assets inexistentes:', missing.join(', '));
+  console.error('Abortando el build.');
+  process.exit(1);
+}
+
 writeFileSync(DIST_INDEX, out);
-console.log(`dist/index.html actualizado con ${helmetTags.length} tags SEO + body prerenderizado de la home.`);
+console.log(`dist/index.html actualizado con ${helmetTags.length} tags SEO + body prerenderizado de la home (assets verificados).`);
