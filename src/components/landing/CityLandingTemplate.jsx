@@ -8,6 +8,8 @@ import LeadCaptureForm from "./LeadCaptureForm";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { businessStats } from "@/lib/businessStats";
+import RelatedLinksSection from "./RelatedLinksSection";
+import { alarmCityGroups, alarmCityNearby } from "./cityRelatedLinks";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 const SERVICES = [
@@ -74,6 +76,11 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
     document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
   };
   const { openDrawer } = useLeadDrawer();
+  const nearby = alarmCityNearby(seoPath);
+  const nearbyHeading =
+    seoPath === "/alarmas-barcelona"
+      ? "Instalación de alarmas en la provincia de Barcelona"
+      : `Zonas cercanas a ${city}`;
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 128 }}>
@@ -259,6 +266,22 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
           </Accordion>
         </div>
       </section>
+
+      {/* ENLACES RELACIONADOS — continuación natural de la página: el resto de
+          servicios en la misma ciudad, precios/soporte y las guías del blog.
+          Antes de esto la landing no tenía ni un enlace contextual saliente. */}
+      <RelatedLinksSection
+        heading={`Más sobre seguridad en ${city}`}
+        groups={alarmCityGroups(city, seoPath)}
+      />
+
+      {nearby.length > 0 && (
+        <RelatedLinksSection
+          dark
+          heading={nearbyHeading}
+          groups={[{ title: "Zonas con página propia", links: nearby }]}
+        />
+      )}
 
       {/* CONTACTO — único formulario de la página; el hero y los kits de arriba
           desplazan hasta aquí en vez de abrir un popup independiente. */}

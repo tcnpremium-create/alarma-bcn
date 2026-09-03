@@ -5,6 +5,8 @@ import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
 import CameraKitsGrid from "./CameraKitsGrid";
 import Breadcrumbs from "./Breadcrumbs";
+import RelatedLinksSection from "./RelatedLinksSection";
+import { cameraCityGroups } from "./cityRelatedLinks";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
@@ -323,6 +325,15 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </Accordion>
         </div>
       </section>
+
+      {/* ── ENLACES RELACIONADOS ──
+          Cierra la cadena hacia la alarma de la misma ciudad, el mantenimiento
+          y las guías que responden a lo que se pregunta antes de instalar
+          cámaras (sobre todo la de normativa y RGPD). */}
+      <RelatedLinksSection
+        heading={`Videovigilancia en ${city}: siguiente paso`}
+        groups={cameraCityGroups(city, seoPath)}
+      />
 
       {/* ── FINAL CTA ── */}
       <section style={{ background: "linear-gradient(135deg, #E53E3E 0%, #C53030 100%)", padding: "48px 20px" }}>
