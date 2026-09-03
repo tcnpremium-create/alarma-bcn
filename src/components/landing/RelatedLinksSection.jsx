@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 export default function RelatedLinksSection({ heading, groups, dark = false }) {
   const visible = groups.filter((g) => g.links && g.links.length > 0);
   if (visible.length === 0) return null;
+  const single = visible.length === 1;
 
   const bg = dark ? "#0A0A1A" : "#F8F9FA";
   const titleColor = dark ? "#fff" : "#0A0A1A";
@@ -33,7 +34,7 @@ export default function RelatedLinksSection({ heading, groups, dark = false }) {
         <h2 style={{ fontWeight: 900, fontSize: 22, color: titleColor, margin: "0 0 28px" }}>
           {heading}
         </h2>
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className={single ? "" : "grid gap-8 md:grid-cols-3"}>
           {visible.map((group) => (
             <div key={group.title}>
               <h3
@@ -48,7 +49,13 @@ export default function RelatedLinksSection({ heading, groups, dark = false }) {
               >
                 {group.title}
               </h3>
-              <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {/* Con un solo grupo (las zonas de la provincia, que son diez)
+                  una única columna deja la banda medio vacía y muy alta: se
+                  reparten en varias columnas. */}
+              <ul
+                className={single ? "grid gap-x-8 sm:grid-cols-2 lg:grid-cols-4" : undefined}
+                style={{ listStyle: "none", margin: 0, padding: 0 }}
+              >
                 {group.links.map((link) => (
                   <li key={link.to} style={{ marginBottom: 8 }}>
                     <Link

@@ -1,5 +1,5 @@
 {
- "combined": "7a9e386f51266f76",
+ "combined": "74e86d301b203a89",
  "mode": "grafo-de-imports",
  "files": {
   "src/App.jsx": "c9bdce7d8d4d5888",
@@ -51,7 +51,7 @@
   "src/components/landing/MobileFloatingCTA.jsx": "cfb1beb06e2ef567",
   "src/components/landing/Navbar.jsx": "52cd75fbf5634b87",
   "src/components/landing/ProcessSection.jsx": "c65be4123dcdc43d",
-  "src/components/landing/RelatedLinksSection.jsx": "f2cb1be2f6ffc705",
+  "src/components/landing/RelatedLinksSection.jsx": "462d78476f3d57b1",
   "src/components/landing/SectoresSection.jsx": "e3ffa8877cad55c7",
   "src/components/landing/TecnologiaSection.jsx": "8b2aa53503db29e0",
   "src/components/landing/cityRelatedLinks.js": "d03f0188ba09c393",
