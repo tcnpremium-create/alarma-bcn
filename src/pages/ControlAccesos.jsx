@@ -8,7 +8,6 @@ import ChatWidget from "../components/chatbot/ChatWidget";
 import LeadCaptureForm from "../components/landing/LeadCaptureForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
-import { createPageUrl } from "@/utils";
 
 export default function ControlAccesos() {
   useEffect(() => {
@@ -52,7 +51,7 @@ export default function ControlAccesos() {
       {/* Hero — already dark, keep as-is */}
       <section className="bg-gradient-to-br from-[#0A1628] to-[#1a2a3a] text-white pt-28 pb-16 lg:pt-32 lg:pb-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
+          <Link to="/" className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
           </Link>

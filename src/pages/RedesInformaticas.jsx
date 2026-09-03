@@ -8,7 +8,6 @@ import ChatWidget from "../components/chatbot/ChatWidget";
 import LeadCaptureForm from "../components/landing/LeadCaptureForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
-import { createPageUrl } from "@/utils";
 
 export default function RedesInformaticas() {
   useEffect(() => {
@@ -61,7 +60,7 @@ export default function RedesInformaticas() {
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(10,22,40,0.92) 0%, rgba(26,42,58,0.88) 100%)" }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-8" style={{ position: "relative", zIndex: 2 }}>
-          <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
+          <Link to="/" className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
           </Link>

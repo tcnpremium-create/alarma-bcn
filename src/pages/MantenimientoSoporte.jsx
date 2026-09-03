@@ -7,7 +7,6 @@ import FooterSection from "../components/landing/FooterSection";
 import ChatWidget from "../components/chatbot/ChatWidget";
 import ContactForm from "../components/landing/ContactForm";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
-import { createPageUrl } from "@/utils";
 
 export default function MantenimientoSoporte() {
   useEffect(() => {
@@ -50,7 +49,7 @@ export default function MantenimientoSoporte() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#0A1628] to-[#1a2a3a] text-white py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <Link to={createPageUrl("Home")} className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
+          <Link to="/" className="inline-flex items-center gap-2 text-[#E63946] hover:text-[#d32f3c] mb-6 text-sm font-semibold">
             <ArrowLeft className="w-4 h-4" />
             Volver a inicio
           </Link>
