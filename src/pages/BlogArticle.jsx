@@ -11,7 +11,7 @@ import { articleSEOData } from '@/components/blog/articleSEOData';
 import AdSenseInArticle from '@/components/ads/AdSenseInArticle';
 import AdSenseDisplay from '@/components/ads/AdSenseDisplay';
 import { businessStats } from '@/lib/businessStats';
-import ArticleServiceLinks from '@/components/blog/articleServiceLinks';
+import ArticleServiceLinks, { articleTools } from "@/components/blog/articleServiceLinks";
 
 const allArticles = { ...originalArticlesData, ...newArticlesData };
 
@@ -499,21 +499,20 @@ export default function BlogArticle() {
                   </ul>
                 </div>
 
-                {/* Tools */}
-                <div className="bg-[#0A1628]/5 rounded-2xl p-5">
-                  <h3 className="font-bold text-[#0A1628] text-sm mb-3">Herramientas gratuitas</h3>
-                  <div className="space-y-2">
-                    {[
-                      { to: '/Calculadora', label: '🧮 Calculadora de presupuesto' },
-                      { to: '/MapaRiesgo', label: '🗺️ Mapa de riesgo por barrios' },
-                      { to: '/ComparativaAlarmas', label: '📊 Comparativa de alarmas' },
-                    ].map(l => (
-                      <Link key={l.to} to={l.to} className="block text-sm text-[#E63946] font-semibold hover:underline py-1">
-                        {l.label}
-                      </Link>
-                    ))}
+                {/* Tools — solo las que vienen a cuento en ESTE artículo
+                    (ver articleTools en components/blog/articleServiceLinks) */}
+                {articleTools(slug).length > 0 && (
+                  <div className="bg-[#0A1628]/5 rounded-2xl p-5">
+                    <h3 className="font-bold text-[#0A1628] text-sm mb-3">Herramientas gratuitas</h3>
+                    <div className="space-y-2">
+                      {articleTools(slug).map(l => (
+                        <Link key={l.to} to={l.to} className="block text-sm text-[#E63946] font-semibold hover:underline py-1">
+                          {l.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </aside>
           </div>

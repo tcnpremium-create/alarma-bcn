@@ -98,6 +98,63 @@ const ARTICLE_SERVICES = {
   "normativa-videovigilancia-rgpd-catalunya": ["camaras", "accesos"],
 };
 
+/**
+ * Herramientas de la barra lateral, por artículo.
+ *
+ * Los 30 artículos mostraban las MISMAS tres (calculadora, mapa de riesgo y
+ * comparativa), así que /Calculadora acumulaba 47 enlaces internos —más que
+ * ninguna otra página del sitio— y /MapaRiesgo 30, con independencia de que
+ * vinieran a cuento. Ahora cada artículo enseña solo las que responden a lo
+ * que su lector está haciendo:
+ *
+ *   - calculadora: artículos de precio, presupuesto o "qué necesito".
+ *   - mapa de riesgo: artículos sobre robos y zonas concretas de Barcelona.
+ *   - comparativa: artículos de elección entre marcas o sistemas.
+ */
+const TOOLS = {
+  calculadora: { to: "/Calculadora", label: "🧮 Calculadora de presupuesto" },
+  mapa: { to: "/MapaRiesgo", label: "🗺️ Mapa de riesgo por barrios" },
+  comparativa: { to: "/ComparativaAlarmas", label: "📊 Comparativa de alarmas" },
+};
+
+const ARTICLE_TOOLS = {
+  "precio-instalar-alarma-barcelona": ["calculadora"],
+  "precio-alarma-negocio-barcelona": ["calculadora"],
+  "alarmas-sin-cuota-mensual": ["calculadora", "comparativa"],
+  "cuanto-tarda-instalar-alarma": ["calculadora"],
+  "elegir-alarma-hogar-barcelona": ["comparativa", "calculadora"],
+  "consejos-elegir-alarma-perfecta": ["comparativa", "calculadora"],
+  "mejores-alarmas-casa-barcelona": ["comparativa"],
+  "empresas-alarmas-barcelona": ["comparativa"],
+  "comparativa-ajax-hikvision": ["comparativa"],
+  "comparativa-alarmas-espana-2026": ["comparativa"],
+  "alarmas-camara-vs-sin-camara": ["comparativa"],
+  "alarmas-app-movil": ["comparativa"],
+  "sensores-movimiento-alarma": ["comparativa"],
+  "zonas-riesgo-robo-barcelona-2026": ["mapa"],
+  "proteger-negocio-robos-barcelona": ["mapa", "calculadora"],
+  "alarmas-pisos-barcelona": ["mapa", "calculadora"],
+  "alarmas-chalets": ["mapa", "calculadora"],
+  "alarma-local-comercial": ["calculadora"],
+  "alarmas-negocios-barcelona": ["calculadora", "mapa"],
+  "seguridad-negocios-barcelona": ["calculadora"],
+  "alarmas-garajes": ["calculadora"],
+  "alarmas-comunidades-vecinos": ["calculadora"],
+  "camaras-ip-barcelona-2026": ["calculadora"],
+  "videovigilancia-empresas-barcelona": ["calculadora"],
+  "videovigilancia-ia-barcelona-2026": ["calculadora"],
+  "domotica-seguridad-smart-home": ["comparativa"],
+  "mantenimiento-alarma": ["calculadora"],
+  "alarmas-aviso-policia": ["comparativa"],
+  "normativa-videovigilancia-rgpd-catalunya": [],
+  "control-accesos-biometrico-empresas": [],
+};
+
+/** Herramientas que tienen sentido en un artículo concreto (0-2). */
+export function articleTools(slug) {
+  return (ARTICLE_TOOLS[slug] || []).map((k) => TOOLS[k]).filter(Boolean);
+}
+
 /** Reparte las variantes de anchor de forma estable por slug. */
 function pickAnchor(anchors, slug, index) {
   let h = 0;
