@@ -39,6 +39,70 @@ const SEO_DATA = {
     description: "Sistemas de alarma en Sabadell. Ajax Hub. Sin permanencia ni cuotas. Central Receptora 24/7. Instalación incluida. Tel: 638 10 99 47",
     keywords: "alarmas Sabadell, cámaras seguridad Sabadell, instalación alarmas Sabadell, videovigilancia Sabadell, seguridad Vallès Occidental",
     canonical: "https://alarmasenbarcelona.com/alarmas-sabadell"
+  },
+  // Migradas desde páginas de ciudad con HTML propio a CityLandingTemplate
+  // (ver Fase 4 de la auditoría) — title/description/keywords/canonical
+  // se conservan tal cual estaban en el <LocalitySEO> de cada página
+  // original, no se han reescrito.
+  "/Badalona": {
+    title: "Alarmas en Badalona | Instalación Profesional 24/7 | PremiumTechSecurity",
+    description: "Instalación de alarmas en Badalona. Sistemas AJAX, cámaras 4K, control de accesos para hogares y negocios. Presupuesto gratuito ☎ 638 10 99 47. Respuesta inmediata.",
+    keywords: "alarmas Badalona, instalación alarmas Badalona, sistemas seguridad Badalona, cámaras seguridad Badalona, videovigilancia Badalona, alarma hogar Badalona",
+    canonical: "https://alarmasenbarcelona.com/Badalona"
+  },
+  "/Cornella": {
+    title: "Alarmas en Cornellà de Llobregat | Instalación Profesional 24/7",
+    description: "Instalación de alarmas y cámaras de seguridad en Cornellà de Llobregat. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas Cornellà, instalación alarmas Cornellà de Llobregat, sistemas seguridad Cornellà, cámaras Cornellà, videovigilancia Cornellà",
+    canonical: "https://alarmasenbarcelona.com/Cornella"
+  },
+  "/ElPrat": {
+    title: "Alarmas en El Prat de Llobregat | Instalación Sistemas Seguridad Profesional 24/7",
+    description: "Instalación de alarmas y cámaras de seguridad en El Prat de Llobregat. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas El Prat de Llobregat, instalación alarmas El Prat, sistemas seguridad El Prat, cámaras El Prat, videovigilancia El Prat",
+    canonical: "https://alarmasenbarcelona.com/ElPrat"
+  },
+  "/Hospitalet": {
+    title: "Alarmas en L'Hospitalet de Llobregat | Seguridad Profesional 24/7",
+    description: "Instalación de alarmas en L'Hospitalet de Llobregat. Sistemas AJAX, videovigilancia 4K, control de accesos. Técnicos certificados. Presupuesto gratuito ☎ 638 10 99 47.",
+    keywords: "alarmas Hospitalet, instalación alarmas Hospitalet, sistemas seguridad Hospitalet, cámaras seguridad Hospitalet, videovigilancia Hospitalet Llobregat",
+    canonical: "https://alarmasenbarcelona.com/Hospitalet"
+  },
+  "/Mataro": {
+    title: "Alarmas y Cámaras de Seguridad en Mataró | Premium Tech Security",
+    description: "Instalación de alarmas y cámaras de seguridad en Mataró. Sin cuotas. Instalación incluida. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas Mataró, instalación alarmas Mataró, cámaras seguridad Mataró, videovigilancia Mataró, sistemas seguridad Mataró",
+    canonical: "https://alarmasenbarcelona.com/Mataro"
+  },
+  "/SantCugat": {
+    title: "Alarmas en Sant Cugat del Vallès | Instalación Sistemas Seguridad Profesional 24/7",
+    description: "Instalación de alarmas y cámaras de seguridad en Sant Cugat del Vallès. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas Sant Cugat, instalación alarmas Sant Cugat del Vallès, sistemas seguridad Sant Cugat, cámaras Sant Cugat, videovigilancia Sant Cugat",
+    canonical: "https://alarmasenbarcelona.com/SantCugat"
+  },
+  "/Terrassa": {
+    title: "Alarmas en Terrassa | Instalación Sistemas Seguridad Profesional 24/7",
+    description: "Instalación profesional de alarmas en Terrassa. Sistemas AJAX, cámaras Hikvision 4K, control de accesos para viviendas, naves y comercios. Presupuesto gratuito ☎ 638 10 99 47.",
+    keywords: "alarmas Terrassa, instalación alarmas Terrassa, sistemas seguridad Terrassa, cámaras seguridad Terrassa, videovigilancia Terrassa, alarma nave industrial Terrassa",
+    canonical: "https://alarmasenbarcelona.com/Terrassa"
+  },
+  "/Viladecans": {
+    title: "Alarmas en Viladecans | Instalación Sistemas Seguridad Profesional 24/7",
+    description: "Instalación de alarmas y cámaras de seguridad en Viladecans. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas Viladecans, instalación alarmas Viladecans, sistemas seguridad Viladecans, cámaras Viladecans, videovigilancia Viladecans",
+    canonical: "https://alarmasenbarcelona.com/Viladecans"
+  },
+  "/Castelldefels": {
+    title: "Alarmas en Castelldefels | Instalación Sistemas Seguridad Profesional 24/7",
+    description: "Instalación de alarmas y cámaras de seguridad en Castelldefels. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas Castelldefels, instalación alarmas Castelldefels, sistemas seguridad Castelldefels, cámaras Castelldefels, videovigilancia Castelldefels",
+    canonical: "https://alarmasenbarcelona.com/Castelldefels"
+  },
+  "/BarrioEixample": {
+    title: "Alarmas en el Eixample (Barcelona) | Instalación Sistemas Seguridad Profesional 24/7",
+    description: "Instalación de alarmas y cámaras de seguridad en el barrio del Eixample, Barcelona. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47.",
+    keywords: "alarmas Eixample, instalación alarmas Eixample Barcelona, sistemas seguridad Eixample, cámaras Eixample, videovigilancia Eixample",
+    canonical: "https://alarmasenbarcelona.com/BarrioEixample"
   }
 };
 
@@ -101,7 +165,7 @@ export default function CityLandingSEO({ path }) {
         "serviceType": "Instalación de Alarmas de Seguridad Profesional",
         "description": "Instalación de sistemas de alarma Ajax inalámbricos certificados. Respuesta CRA en 15 segundos.",
         "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947" },
-        "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "Catalunya"],
+        "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "Badalona", "Cornellà de Llobregat", "El Prat de Llobregat", "L'Hospitalet de Llobregat", "Mataró", "Sant Cugat del Vallès", "Terrassa", "Viladecans", "Castelldefels", "Eixample", "Catalunya"],
         "offers": { "@type": "AggregateOffer", "lowPrice": ALARM_LOW_PRICE, "highPrice": ALARM_HIGH_PRICE, "priceCurrency": "EUR", "offerCount": String(ALARM_KITS.length) }
       },
       {

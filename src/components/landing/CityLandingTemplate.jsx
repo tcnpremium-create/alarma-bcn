@@ -6,6 +6,7 @@ import CityLandingSEO from "../seo/CityLandingSEO";
 import Breadcrumbs from "./Breadcrumbs";
 import LeadCaptureForm from "./LeadCaptureForm";
 import AlarmKitsGrid from "./AlarmKitsGrid";
+import GoogleMapEmbed from "./GoogleMapEmbed";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { businessStats } from "@/lib/businessStats";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
@@ -63,7 +64,19 @@ const buildFaqs = (city) => [
   { q: "¿Son los sistemas Ajax compatibles con comunidades de vecinos?", a: "Sí. Ajax Hub 3 gestiona hasta 200 dispositivos en una sola instalación. Permite zonas independientes, administración multidispositivo y acceso diferenciado por usuario. Ideal para comunidades de vecinos y grandes empresas." },
 ];
 
-export default function CityLandingTemplate({ city, seoPath, intro }) {
+/**
+ * Plantilla compartida por todas las páginas "alarmas en {ciudad}". Antes
+ * solo la usaban 5 páginas (Barcelona/Girona/Tarragona/Lleida/Sabadell);
+ * las 10 páginas de ciudad que existían como HTML duplicado a mano
+ * (Badalona, Cornellà, El Prat, Hospitalet, Mataró, Sant Cugat, Terrassa,
+ * Viladecans, Castelldefels, Eixample) se migraron aquí — ver auditoría,
+ * Fase 4. Esas páginas tenían dos piezas que esta plantilla no cubría
+ * (zonas/barrios cubiertos y un mapa de cobertura), así que se añadieron
+ * como secciones opcionales en vez de forzar la migración perdiendo esas
+ * piezas. `zones`/`lat`/`lng` ya existían como props en las 5 páginas
+ * originales pero nunca se usaban dentro del componente — ahora sí.
+ */
+export default function CityLandingTemplate({ city, seoPath, intro, zones, lat, lng, mapQuery }) {
   // El CTA del hero sigue llevando al formulario genérico de abajo (no es
   // específico de ningún kit). El CTA de cada tarjeta de kit, en cambio,
   // abre el drawer global de presupuesto con el kit concreto preseleccionado
@@ -74,6 +87,8 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
     document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" });
   };
   const { openDrawer } = useLeadDrawer();
+
+  const resolvedMapQuery = mapQuery || (lat && lng ? `${lat},${lng}` : `${city}, Catalunya, España`);
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 128 }}>
@@ -86,12 +101,12 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
         backgroundImage: "url('/images/ajax-hero-dispositivos.jpeg')",
         backgroundSize: "cover", backgroundPosition: "center",
       }}>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0.8) 60%, #0A0A1A 100%)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0.8) 60%, hsl(var(--brand-navy)) 100%)" }} />
         <div className="max-w-5xl mx-auto" style={{ position: "relative", zIndex: 2, padding: "112px 24px 64px" }}>
           <div style={{ marginBottom: 16 }}>
             <Breadcrumbs items={[{ label: "Alarmas", href: "/alarmas-barcelona" }, { label: city }]} />
           </div>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "hsl(var(--primary) / 0.15)", border: "1px solid hsl(var(--primary) / 0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
             <MapPin style={{ width: 13, height: 13, color: "#F87171" }} />
             <span style={{ color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1 }}>Catalunya • {city}</span>
           </div>
@@ -104,7 +119,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
             <button
               onClick={scrollToContact}
-              style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
+              style={{ backgroundColor: "hsl(var(--primary))", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 8 }}
             >
               Solicitar presupuesto de alarma <ChevronRight style={{ width: 18, height: 18 }} />
             </button>
@@ -123,18 +138,18 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       <AlarmKitsGrid city={city} onRequestQuote={(kit) => openDrawer(kit.title)} />
 
       {/* SERVICES */}
-      <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
+      <section style={{ backgroundColor: "hsl(var(--brand-bg-light))", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
-          <span style={{ display: "inline-block", backgroundColor: "#E53E3E", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
+          <span style={{ display: "inline-block", backgroundColor: "hsl(var(--primary))", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
             SERVICIOS EN {city.toUpperCase()}
           </span>
-          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "0 0 32px" }}>Todo lo que instalamos</h2>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "hsl(var(--brand-navy))", margin: "0 0 32px" }}>Todo lo que instalamos</h2>
           <div className="grid sm:grid-cols-2" style={{ gap: 20 }}>
             {SERVICES.map(({ Icon, title, desc }) => (
-              <div key={title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "24px 20px", borderLeft: "3px solid #E53E3E", boxShadow: "0 1px 6px rgba(0,0,0,0.06)" }}>
-                <Icon style={{ width: 24, height: 24, color: "#E53E3E", marginBottom: 12 }} />
-                <h3 style={{ fontWeight: 800, fontSize: 16, color: "#0A0A1A", margin: "0 0 8px" }}>{title}</h3>
-                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{desc}</p>
+              <div key={title} style={{ backgroundColor: "#fff", borderRadius: 14, padding: "24px 20px", borderLeft: "3px solid hsl(var(--primary))", boxShadow: "0 1px 6px rgba(0,0,0,0.06)" }}>
+                <Icon style={{ width: 24, height: 24, color: "hsl(var(--primary))", marginBottom: 12 }} />
+                <h3 style={{ fontWeight: 800, fontSize: 16, color: "hsl(var(--brand-navy))", margin: "0 0 8px" }}>{title}</h3>
+                <p style={{ fontSize: 13, color: "hsl(var(--muted-foreground))", lineHeight: 1.65, margin: 0 }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -144,17 +159,17 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       {/* CÓMO FUNCIONA */}
       <section style={{ backgroundColor: "#fff", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Proceso</span>
-          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 32px" }}>¿Cómo funciona el sistema Ajax?</h2>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "hsl(var(--primary))", letterSpacing: "0.14em", textTransform: "uppercase" }}>Proceso</span>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "hsl(var(--brand-navy))", margin: "10px 0 32px" }}>¿Cómo funciona el sistema Ajax?</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 2 }}>
             {HOW_IT_WORKS.map((step, idx) => (
-              <div key={step.step} style={{ padding: "28px 22px", background: idx % 2 === 0 ? "#F8F9FA" : "#fff", borderTop: `3px solid ${idx === 0 ? "#E53E3E" : "#E5E7EB"}`, border: "1px solid #E5E7EB" }}>
+              <div key={step.step} style={{ padding: "28px 22px", background: idx % 2 === 0 ? "hsl(var(--brand-bg-light))" : "#fff", borderTop: `3px solid ${idx === 0 ? "hsl(var(--primary))" : "#E5E7EB"}`, border: "1px solid #E5E7EB" }}>
                 <div style={{ fontSize: "2.4rem", fontWeight: 900, color: "#E5E7EB", lineHeight: 1, marginBottom: 12 }}>{step.step}</div>
-                <div style={{ width: 38, height: 38, background: "rgba(229,62,62,0.1)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                  <step.icon size={18} color="#E53E3E" />
+                <div style={{ width: 38, height: 38, background: "hsl(var(--primary) / 0.1)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
+                  <step.icon size={18} color="hsl(var(--primary))" />
                 </div>
-                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0A0A1A", margin: "0 0 8px" }}>{step.title}</h3>
-                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
+                <h3 style={{ fontSize: 15, fontWeight: 800, color: "hsl(var(--brand-navy))", margin: "0 0 8px" }}>{step.title}</h3>
+                <p style={{ fontSize: 12, color: "hsl(var(--muted-foreground))", lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
               </div>
             ))}
           </div>
@@ -162,11 +177,11 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       </section>
 
       {/* COMPONENTES AJAX */}
-      <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
+      <section style={{ backgroundColor: "hsl(var(--brand-bg-light))", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Dispositivos del ecosistema</span>
-          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 8px" }}>Componentes del sistema Ajax</h2>
-          <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 560, margin: "0 0 24px" }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio en {city}.</p>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "hsl(var(--primary))", letterSpacing: "0.14em", textTransform: "uppercase" }}>Dispositivos del ecosistema</span>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "hsl(var(--brand-navy))", margin: "10px 0 8px" }}>Componentes del sistema Ajax</h2>
+          <p style={{ fontSize: 13, color: "hsl(var(--muted-foreground))", maxWidth: 560, margin: "0 0 24px" }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio en {city}.</p>
           <img
             src="/images/ajax-componentes.jpeg"
             alt="Componentes sistema alarma Ajax: Hub 2, MotionProtect, DoorProtect, MotionCam"
@@ -178,41 +193,41 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
             {AJAX_COMPONENTS.map((c) => (
               <div key={c.name} style={{ backgroundColor: "#fff", borderRadius: 12, padding: "20px 18px", border: "1px solid #E5E7EB" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ width: 36, height: 36, background: "rgba(229,62,62,0.1)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Shield size={16} color="#E53E3E" />
+                  <div style={{ width: 36, height: 36, background: "hsl(var(--primary) / 0.1)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <Shield size={16} color="hsl(var(--primary))" />
                   </div>
-                  <span style={{ fontSize: 9, fontWeight: 700, color: "#E53E3E", background: "rgba(229,62,62,0.1)", borderRadius: 100, padding: "3px 8px", letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.tag}</span>
+                  <span style={{ fontSize: 9, fontWeight: 700, color: "hsl(var(--primary))", background: "hsl(var(--primary) / 0.1)", borderRadius: 100, padding: "3px 8px", letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.tag}</span>
                 </div>
-                <h3 style={{ fontSize: 14, fontWeight: 800, color: "#0A0A1A", margin: "0 0 6px" }}>{c.name}</h3>
-                <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55, margin: 0 }}>{c.desc}</p>
+                <h3 style={{ fontSize: 14, fontWeight: 800, color: "hsl(var(--brand-navy))", margin: "0 0 6px" }}>{c.name}</h3>
+                <p style={{ fontSize: 11, color: "hsl(var(--muted-foreground))", lineHeight: 1.55, margin: 0 }}>{c.desc}</p>
               </div>
             ))}
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 10, marginTop: 32 }}>
             {TECH_FEATURES.map((f) => (
               <div key={f.title} style={{ backgroundColor: "#fff", borderRadius: 11, padding: "18px 16px", border: "1px solid #E5E7EB", display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <div style={{ width: 34, height: 34, background: "rgba(229,62,62,0.1)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <f.icon size={16} color="#E53E3E" />
+                <div style={{ width: 34, height: 34, background: "hsl(var(--primary) / 0.1)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <f.icon size={16} color="hsl(var(--primary))" />
                 </div>
                 <div>
-                  <h4 style={{ fontSize: 12, fontWeight: 800, color: "#0A0A1A", margin: "0 0 4px" }}>{f.title}</h4>
-                  <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5, margin: 0 }}>{f.desc}</p>
+                  <h4 style={{ fontSize: 12, fontWeight: 800, color: "hsl(var(--brand-navy))", margin: "0 0 4px" }}>{f.title}</h4>
+                  <p style={{ fontSize: 11, color: "hsl(var(--muted-foreground))", lineHeight: 1.5, margin: 0 }}>{f.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-          <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.8, marginTop: 28, maxWidth: 680 }}>
+          <p style={{ fontSize: 13, color: "hsl(var(--muted-foreground))", lineHeight: 1.8, marginTop: 28, maxWidth: 680 }}>
             El protocolo radio <strong style={{ color: "#374151" }}>Jeweller</strong> es propietario de doble vía con alcance de 2.000 metros y cifrado AES-128 end-to-end. Compatible con +50 CRA profesionales homologadas en España, integración nativa con Google Home y Amazon Alexa, y soporte técnico certificado en español disponible 24/7.
           </p>
         </div>
       </section>
 
       {/* WHY US */}
-      <section style={{ backgroundColor: "#0A0A1A", padding: "64px 24px" }}>
+      <section style={{ backgroundColor: "hsl(var(--brand-navy))", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
           <div className="grid sm:grid-cols-2" style={{ gap: 40, alignItems: "center" }}>
             <div>
-              <span style={{ display: "inline-block", backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", color: "#F87171", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", letterSpacing: 1, marginBottom: 16 }}>
+              <span style={{ display: "inline-block", backgroundColor: "hsl(var(--primary) / 0.15)", border: "1px solid hsl(var(--primary) / 0.3)", color: "#F87171", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", letterSpacing: 1, marginBottom: 16 }}>
                 ¿POR QUÉ ELEGIRNOS?
               </span>
               <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 24px" }}>
@@ -221,7 +236,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {WHY_US.map(item => (
                   <div key={item} style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <CheckCircle style={{ width: 18, height: 18, color: "#E53E3E", flexShrink: 0 }} />
+                    <CheckCircle style={{ width: 18, height: 18, color: "hsl(var(--primary))", flexShrink: 0 }} />
                     <span style={{ fontSize: 14, color: "#D1D5DB" }}>{item}</span>
                   </div>
                 ))}
@@ -230,8 +245,8 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
             <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
               {[[`★ ${businessStats.googleRating}`, "Valoración Google"], [businessStats.installTimeframe, "Tiempo instalación"], [`${businessStats.warrantyYears} años`, "Garantía"], ["24/7", "Soporte técnico"]].map(([num, label]) => (
                 <div key={label} style={{ backgroundColor: "rgba(255,255,255,0.05)", borderRadius: 12, padding: "20px 24px", flex: "1 1 120px", border: "1px solid rgba(255,255,255,0.08)", minWidth: 120 }}>
-                  <div style={{ fontSize: 28, fontWeight: 900, color: "#E53E3E", lineHeight: 1 }}>{num}</div>
-                  <div style={{ fontSize: 12, color: "#6B7280", marginTop: 6 }}>{label}</div>
+                  <div style={{ fontSize: 28, fontWeight: 900, color: "hsl(var(--primary))", lineHeight: 1 }}>{num}</div>
+                  <div style={{ fontSize: 12, color: "#94A3B8", marginTop: 6 }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -239,16 +254,50 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
         </div>
       </section>
 
+      {/* ZONAS Y COBERTURA — antes solo existía como HTML propio en algunas
+          páginas de ciudad (barrios cubiertos + mapa). `zones` y las
+          coordenadas ya se pasaban como prop a esta plantilla desde las 5
+          páginas originales pero nunca se usaban — ahora si hay `zones` se
+          muestra la lista, y el mapa de cobertura se muestra siempre. */}
+      {zones && zones.length > 0 && (
+        <section style={{ backgroundColor: "#fff", padding: "48px 24px 0" }}>
+          <div className="max-w-5xl mx-auto">
+            <h2 style={{ fontWeight: 900, fontSize: 22, color: "hsl(var(--brand-navy))", margin: "0 0 16px" }}>
+              Zonas que cubrimos en {city}
+            </h2>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {zones.map((zone) => (
+                <span
+                  key={zone}
+                  style={{
+                    display: "inline-block", backgroundColor: "hsl(var(--brand-bg-light))", border: "1px solid #E5E7EB",
+                    color: "hsl(var(--brand-navy))", borderRadius: 100, padding: "6px 14px", fontSize: 13, fontWeight: 600,
+                  }}
+                >
+                  {zone}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section style={{ backgroundColor: "#fff", padding: "32px 24px 64px" }}>
+        <div className="max-w-5xl mx-auto">
+          <GoogleMapEmbed city={city} query={resolvedMapQuery} height="360px" />
+        </div>
+      </section>
+
       {/* FAQ */}
-      <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
+      <section style={{ backgroundColor: "hsl(var(--brand-bg-light))", padding: "64px 24px" }}>
         <div className="max-w-3xl mx-auto">
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>FAQ</span>
-          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 8px" }}>Preguntas frecuentes sobre alarmas Ajax en {city}</h2>
-          <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 28 }}>Todo lo que necesitas saber antes de instalar tu sistema de alarma</p>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "hsl(var(--primary))", letterSpacing: "0.14em", textTransform: "uppercase" }}>FAQ</span>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "hsl(var(--brand-navy))", margin: "10px 0 8px" }}>Preguntas frecuentes sobre alarmas Ajax en {city}</h2>
+          <p style={{ fontSize: 13, color: "hsl(var(--muted-foreground))", marginBottom: 28 }}>Todo lo que necesitas saber antes de instalar tu sistema de alarma</p>
           <Accordion type="single" collapsible className="space-y-2">
             {buildFaqs(city).map((item, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-white rounded-xl border border-gray-200 px-5 overflow-hidden">
-                <AccordionTrigger className="text-left text-[15px] font-semibold text-[#0A0A1A] hover:text-[#E53E3E] transition-colors duration-300 py-5">
+                <AccordionTrigger className="text-left text-[15px] font-semibold text-[hsl(var(--brand-navy))] hover:text-[hsl(var(--primary))] transition-colors duration-300 py-5">
                   {item.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 text-sm leading-relaxed pb-5">
@@ -262,10 +311,10 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
 
       {/* CONTACTO — único formulario de la página; el hero y los kits de arriba
           desplazan hasta aquí en vez de abrir un popup independiente. */}
-      <section id="contacto" style={{ background: "#0a1120", padding: "64px 24px", scrollMarginTop: 90 }}>
+      <section id="contacto" style={{ background: "hsl(var(--brand-navy))", padding: "64px 24px", scrollMarginTop: 90 }}>
         <div className="max-w-lg mx-auto">
           <div className="text-center" style={{ marginBottom: 28 }}>
-            <span style={{ display: "inline-block", backgroundColor: "#E53E3E", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
+            <span style={{ display: "inline-block", backgroundColor: "hsl(var(--primary))", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
               PRESUPUESTO GRATUITO
             </span>
             <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 8px" }}>
