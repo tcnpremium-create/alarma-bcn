@@ -19,25 +19,46 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  // Errores de validación por campo — antes eran alert() del navegador,
+  // que bloquean el hilo y rompen el lenguaje visual del resto del
+  // formulario (loading/success/error de envío sí usan mensajes en línea).
+  // Ahora todos los errores, de validación o de envío, se muestran igual.
+  const [fieldErrors, setFieldErrors] = useState({ nombre: "", email: "", telefono: "" });
+
+  const validate = (data) => {
+    const errors = { nombre: "", email: "", telefono: "" };
+    if (!data.nombre.trim() || data.nombre.trim().length < 2) {
+      errors.nombre = "Ingresa un nombre válido (mínimo 2 caracteres)";
+    }
+    if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errors.email = "Ingresa un email válido";
+    }
+    if (!/^\d{9}$/.test(data.telefono.replace(/\s/g, ""))) {
+      errors.telefono = "Ingresa un teléfono válido (9 dígitos)";
+    }
+    return errors;
+  };
+
+  const updateField = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    // Limpia el error del campo en cuanto el usuario lo corrige, en vez de
+    // esperar al siguiente intento de envío.
+    if (fieldErrors[field]) {
+      setFieldErrors((prev) => ({ ...prev, [field]: "" }));
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
-    if (!formData.nombre.trim() || formData.nombre.length < 2) {
-      alert("Por favor, ingresa un nombre válido");
+    const errors = validate(formData);
+    if (errors.nombre || errors.email || errors.telefono) {
+      setFieldErrors(errors);
+      document.getElementById(errors.nombre ? "nombre" : errors.email ? "email" : "telefono")?.focus();
       return;
     }
-    if (formData.email) {
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-        alert("Por favor, ingresa un email válido");
-        return;
-      }
-    }
-    if (!/^\d{9}$/.test(formData.telefono.replace(/\s/g, ''))) {
-      alert("Por favor, ingresa un teléfono válido (9 dígitos)");
-      return;
-    }
+    setFieldErrors({ nombre: "", email: "", telefono: "" });
 
     setLoading(true);
     try {
@@ -110,12 +131,15 @@ export default function ContactForm() {
             autoComplete="name"
             placeholder="Tu nombre"
             value={formData.nombre}
-            onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
+            onChange={(e) => updateField("nombre", e.target.value)}
             required
             minLength={2}
+            aria-invalid={!!fieldErrors.nombre}
+            aria-describedby={fieldErrors.nombre ? "nombre-error" : undefined}
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
+            className={`h-12 px-4 rounded-xl bg-white border-2 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors ${fieldErrors.nombre ? "border-red-300 focus:border-red-500" : "border-gray-200 focus:border-[hsl(var(--primary))]"}`}
           />
+          {fieldErrors.nombre && <p id="nombre-error" className="text-xs text-red-600">{fieldErrors.nombre}</p>}
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="email" className="text-sm font-medium text-gray-700">Email <span className="text-gray-400">(opcional)</span></label>
@@ -126,10 +150,13 @@ export default function ContactForm() {
             autoComplete="email"
             placeholder="tu@email.com"
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) => updateField("email", e.target.value)}
+            aria-invalid={!!fieldErrors.email}
+            aria-describedby={fieldErrors.email ? "email-error" : undefined}
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
+            className={`h-12 px-4 rounded-xl bg-white border-2 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors ${fieldErrors.email ? "border-red-300 focus:border-red-500" : "border-gray-200 focus:border-[hsl(var(--primary))]"}`}
           />
+          {fieldErrors.email && <p id="email-error" className="text-xs text-red-600">{fieldErrors.email}</p>}
         </div>
       </div>
 
@@ -144,11 +171,14 @@ export default function ContactForm() {
             autoComplete="tel"
             placeholder="6XX XXX XXX"
             value={formData.telefono}
-            onChange={(e) => setFormData({ ...formData, telefono: e.target.value.replace(/\D/g, '').slice(0, 9) })}
+            onChange={(e) => updateField("telefono", e.target.value.replace(/\D/g, "").slice(0, 9))}
             required
+            aria-invalid={!!fieldErrors.telefono}
+            aria-describedby={fieldErrors.telefono ? "telefono-error" : undefined}
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
+            className={`h-12 px-4 rounded-xl bg-white border-2 text-gray-900 placeholder:text-gray-400 focus:outline-none transition-colors ${fieldErrors.telefono ? "border-red-300 focus:border-red-500" : "border-gray-200 focus:border-[hsl(var(--primary))]"}`}
           />
+          {fieldErrors.telefono && <p id="telefono-error" className="text-xs text-red-600">{fieldErrors.telefono}</p>}
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="tipo_cliente" className="text-sm font-medium text-gray-700">Tipo de propiedad</label>
