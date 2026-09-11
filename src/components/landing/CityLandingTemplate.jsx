@@ -76,7 +76,7 @@ const buildFaqs = (city) => [
  * piezas. `zones`/`lat`/`lng` ya existían como props en las 5 páginas
  * originales pero nunca se usaban dentro del componente — ahora sí.
  */
-export default function CityLandingTemplate({ city, seoPath, intro, zones, lat, lng, mapQuery }) {
+export default function CityLandingTemplate({ city, seoPath, intro, zones = [], lat, lng, mapQuery = null }) {
   // El CTA del hero sigue llevando al formulario genérico de abajo (no es
   // específico de ningún kit). El CTA de cada tarjeta de kit, en cambio,
   // abre el drawer global de presupuesto con el kit concreto preseleccionado
