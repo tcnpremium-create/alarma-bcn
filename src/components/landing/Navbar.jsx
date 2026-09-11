@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { getServiceForPath } from "@/lib/serviceByPath";
+import { Button } from "@/components/ui/button";
 
 const SERVICE_GROUPS = [
   {
@@ -167,9 +168,9 @@ export default function Navbar() {
                 <Phone className="w-4 h-4 text-[hsl(var(--primary))]" />
                 Llamar
               </a>
-              <button onClick={handlePresupuesto} className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--brand-red-hover))] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
+              <Button onClick={handlePresupuesto} variant="brand" className="btn-shine px-5 py-2.5 h-auto text-sm shadow-md whitespace-nowrap">
                 Presupuesto →
-              </button>
+              </Button>
             </div>
 
             {/* Mobile hamburger */}
@@ -255,12 +256,13 @@ export default function Navbar() {
                   </a>
                 </li>
                 <li>
-                  <button
+                  <Button
                     onClick={() => { setMobileOpen(false); handlePresupuesto(); }}
-                    className="block w-full bg-[hsl(var(--primary))] hover:bg-[hsl(var(--brand-red-hover))] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
+                    variant="brand"
+                    className="btn-shine block w-full py-3 h-auto text-base text-center"
                   >
                     Presupuesto →
-                  </button>
+                  </Button>
                 </li>
               </ul>
             </nav>

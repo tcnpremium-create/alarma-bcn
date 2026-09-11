@@ -19,11 +19,19 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // CTA de marca (Presupuesto, Solicitar presupuesto...). Antes vivía
+        // como <button> con estilos inline duplicados en HeroProf y Navbar
+        // — mismo rojo, pero cada uno con su propio glow/hover a mano. El
+        // brillo diagonal al hover se conserva vía la clase global
+        // .btn-shine (src/index.css) en vez de reimplementarlo aquí.
+        brand:
+          "rounded-full bg-primary text-primary-foreground font-extrabold shadow-[0_0_20px_hsl(var(--primary)/0.35)] hover:bg-brand-red-hover hover:shadow-[0_0_32px_hsl(var(--primary)/0.55)] hover:-translate-y-0.5 active:scale-[0.98] motion-reduce:transition-none motion-reduce:hover:translate-y-0",
       },
       size: {
         default: "h-9 px-4 py-2",
         sm: "h-8 rounded-md px-3 text-xs",
         lg: "h-10 rounded-md px-8",
+        xl: "h-[52px] px-8 text-[15px]",
         icon: "h-9 w-9",
       },
     },

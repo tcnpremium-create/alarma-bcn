@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Phone, ShieldCheck } from "lucide-react";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { businessStats } from "@/lib/businessStats";
+import { Button } from "@/components/ui/button";
 
 const SLIDES = [
   {
@@ -51,15 +52,6 @@ export default function HeroProf() {
           50%       { box-shadow: 0 0 0 8px hsl(var(--primary) / 0); }
         }
         .hero-dot-btn { transition: all 0.3s ease; }
-        .hero-cta-glow { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .hero-cta-glow:hover { transform: translateY(-2px); box-shadow: 0 0 32px hsl(var(--primary) / 0.55); }
-        .hero-cta-glow::after {
-          content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
-          background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
-          transform: skewX(-20deg);
-        }
-        .hero-cta-glow:hover::after { animation: hero-shine 0.9s ease; }
-        @keyframes hero-shine { from { left: -75%; } to { left: 125%; } }
         @media (max-width: 640px) {
           .hero-content-inner { padding: 100px 16px 80px !important; }
         }
@@ -170,18 +162,14 @@ export default function HeroProf() {
 
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
-            <button
+            <Button
               onClick={() => openDrawer()}
-              className="hero-cta-glow"
-              style={{
-                background: "hsl(var(--primary))", color: "#fff", border: "none",
-                borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
-                boxShadow: "0 0 20px hsl(var(--primary) / 0.35)",
-                position: "relative", overflow: "hidden", display: "inline-block",
-              }}
+              variant="brand"
+              size="xl"
+              className="btn-shine"
             >
               Solicitar presupuesto gratis →
-            </button>
+            </Button>
             <a
               href="tel:+34638109947"
               style={{

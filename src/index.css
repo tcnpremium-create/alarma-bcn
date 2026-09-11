@@ -104,6 +104,40 @@
 
 
 
+/* Brillo diagonal reutilizable para los CTA de marca (Button variant
+   "brand"). Antes existía por duplicado como estilo local en HeroProf con
+   su propio <style> — ahora es una única clase que cualquier CTA de marca
+   puede usar. Desactivado si el usuario pide reduced motion. */
+@layer utilities {
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+  .btn-shine:hover::after {
+    animation: btn-shine-sweep 0.9s ease;
+  }
+}
+@keyframes btn-shine-sweep {
+  from { left: -75%; }
+  to { left: 125%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine:hover::after {
+    animation: none;
+  }
+}
+
 @keyframes radarPulse {
   0% {
     transform: translate(-50%, -50%) scale(0.3);
