@@ -152,7 +152,7 @@ export default function Mataro() {
             </p>
           </div>
 
-          <div className="mt-16 bg-[#F8F9FC] rounded-2xl p-8">
+          <div id="contacto" className="mt-16 bg-[#F8F9FC] rounded-2xl p-8" style={{ scrollMarginTop: 90 }}>
             <div className="mb-6 p-6 bg-white rounded-xl border-l-4 border-[#E63946]">
               <p className="text-sm text-gray-500 mb-2">Opinión verificada</p>
               <p className="text-gray-700 italic mb-3">

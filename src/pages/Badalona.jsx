@@ -148,7 +148,7 @@ export default function Badalona() {
             </p>
           </div>
 
-          <div className="mt-16 bg-[#F8F9FC] rounded-2xl p-8">
+          <div id="contacto" className="mt-16 bg-[#F8F9FC] rounded-2xl p-8" style={{ scrollMarginTop: 90 }}>
             <h3 className="text-2xl font-bold text-[#0A1628] mb-6">Opiniones de Clientes en Badalona</h3>
             <div className="space-y-4 mb-8">
               <div className="p-6 bg-white rounded-xl border-l-4 border-[#E63946]">

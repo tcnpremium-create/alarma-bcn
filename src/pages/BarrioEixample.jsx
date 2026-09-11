@@ -151,7 +151,7 @@ export default function BarrioEixample() {
           </div>
 
           {/* CTA Form */}
-          <div className="mt-16 bg-[#F8F9FC] rounded-2xl p-8">
+          <div id="contacto" className="mt-16 bg-[#F8F9FC] rounded-2xl p-8" style={{ scrollMarginTop: 90 }}>
             <h3 className="text-2xl font-bold text-[#0A1628] mb-6 text-center">
               Solicita tu Presupuesto Gratis para el Eixample
             </h3>
