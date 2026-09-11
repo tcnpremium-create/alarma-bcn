@@ -89,7 +89,7 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", onClick);
   }, [servicesOpen]);
 
-  const linkClass = `text-[13px] xl:text-sm font-medium transition-colors duration-300 hover:text-[#E63946] px-2 xl:px-3 py-1 whitespace-nowrap ${scrolled ? "text-gray-700" : "text-white/90"}`;
+  const linkClass = `text-[13px] xl:text-sm font-medium transition-colors duration-300 hover:text-[hsl(var(--primary))] px-2 xl:px-3 py-1 whitespace-nowrap ${scrolled ? "text-gray-700" : "text-white/90"}`;
 
   return (
     <>
@@ -135,14 +135,14 @@ export default function Navbar() {
                       >
                         {SERVICE_GROUPS.map((group) => (
                           <div key={group.label} className="min-w-[150px]">
-                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] mb-2">{group.label}</p>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[hsl(var(--primary))] mb-2">{group.label}</p>
                             <ul className="space-y-1.5">
                               {group.links.map((l) => (
                                 <li key={l.href}>
                                   <Link
                                     to={l.href}
                                     onClick={() => setServicesOpen(false)}
-                                    className="text-[13px] text-gray-700 hover:text-[#E63946] transition-colors whitespace-nowrap block"
+                                    className="text-[13px] text-gray-700 hover:text-[hsl(var(--primary))] transition-colors whitespace-nowrap block"
                                   >
                                     {l.label}
                                   </Link>
@@ -163,18 +163,18 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
-              <a href="tel:+34638109947" aria-label="Llamar" className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${scrolled ? "text-[#0A1628]" : "text-white"}`}>
-                <Phone className="w-4 h-4 text-[#E63946]" />
+              <a href="tel:+34638109947" aria-label="Llamar" className={`flex items-center gap-2 text-sm font-semibold transition-colors duration-300 ${scrolled ? "text-[hsl(var(--brand-navy))]" : "text-white"}`}>
+                <Phone className="w-4 h-4 text-[hsl(var(--primary))]" />
                 Llamar
               </a>
-              <button onClick={handlePresupuesto} className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
+              <button onClick={handlePresupuesto} className="bg-[hsl(var(--primary))] hover:bg-[hsl(var(--brand-red-hover))] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
                 Presupuesto →
               </button>
             </div>
 
             {/* Mobile hamburger */}
             <button
-              className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-[#0A1628] hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
+              className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "text-[hsl(var(--brand-navy))] hover:bg-gray-100" : "text-white hover:bg-white/10"}`}
               onClick={() => setMobileOpen((v) => !v)}
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
@@ -199,7 +199,7 @@ export default function Navbar() {
             <nav>
               <ul className="px-4 py-5 space-y-1">
                 <li>
-                  <Link to="/" onClick={() => setMobileOpen(false)} className="block text-[#0A1628] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-base">
+                  <Link to="/" onClick={() => setMobileOpen(false)} className="block text-[hsl(var(--brand-navy))] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[hsl(var(--primary))] transition-colors text-base">
                     Inicio
                   </Link>
                 </li>
@@ -208,7 +208,7 @@ export default function Navbar() {
                     type="button"
                     onClick={() => setMobileServicesOpen((v) => !v)}
                     aria-expanded={mobileServicesOpen}
-                    className="w-full flex items-center justify-between text-[#0A1628] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-base"
+                    className="w-full flex items-center justify-between text-[hsl(var(--brand-navy))] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[hsl(var(--primary))] transition-colors text-base"
                   >
                     Servicios
                     <ChevronDown className={`w-4 h-4 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`} />
@@ -224,13 +224,13 @@ export default function Navbar() {
                       >
                         {SERVICE_GROUPS.map((group) => (
                           <div key={group.label} className="py-2">
-                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] px-2 mb-1">{group.label}</p>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[hsl(var(--primary))] px-2 mb-1">{group.label}</p>
                             {group.links.map((l) => (
                               <Link
                                 key={l.href}
                                 to={l.href}
                                 onClick={() => { setMobileOpen(false); setMobileServicesOpen(false); }}
-                                className="block text-[#0A1628] py-2 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-[15px]"
+                                className="block text-[hsl(var(--brand-navy))] py-2 px-2 rounded-lg hover:bg-gray-50 hover:text-[hsl(var(--primary))] transition-colors text-[15px]"
                               >
                                 {l.label}
                               </Link>
@@ -243,21 +243,21 @@ export default function Navbar() {
                 </li>
                 {NAV_LINKS.filter((l) => l.href !== "/").map((link) => (
                   <li key={link.href}>
-                    <Link to={link.href} onClick={() => setMobileOpen(false)} className="block text-[#0A1628] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[#E63946] transition-colors text-base">
+                    <Link to={link.href} onClick={() => setMobileOpen(false)} className="block text-[hsl(var(--brand-navy))] font-medium py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-[hsl(var(--primary))] transition-colors text-base">
                       {link.label}
                     </Link>
                   </li>
                 ))}
                 <li className="pt-4 border-t border-gray-100 mt-2">
-                  <a href="tel:+34638109947" className="flex items-center gap-2 text-[#0A1628] font-semibold py-3 px-2">
-                    <Phone className="w-4 h-4 text-[#E63946]" />
+                  <a href="tel:+34638109947" className="flex items-center gap-2 text-[hsl(var(--brand-navy))] font-semibold py-3 px-2">
+                    <Phone className="w-4 h-4 text-[hsl(var(--primary))]" />
                     Llamar
                   </a>
                 </li>
                 <li>
                   <button
                     onClick={() => { setMobileOpen(false); handlePresupuesto(); }}
-                    className="block w-full bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
+                    className="block w-full bg-[hsl(var(--primary))] hover:bg-[hsl(var(--brand-red-hover))] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
                   >
                     Presupuesto →
                   </button>

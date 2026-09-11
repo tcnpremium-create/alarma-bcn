@@ -88,9 +88,9 @@ export default function ContactForm() {
           Nos pondremos en contacto contigo en menos de 24 horas
         </p>
         <a href="tel:+34638109947" className="bg-white rounded-xl p-4 inline-flex items-center gap-2 active:bg-gray-50 transition-colors" style={{ touchAction: "manipulation" }}>
-          <Phone className="w-5 h-5 text-[#E63946]" />
+          <Phone className="w-5 h-5 text-[hsl(var(--primary))]" />
           <p className="text-sm text-gray-600">
-            ¿Urgente? Llámanos al <strong className="text-[#E63946]">638 10 99 47</strong>
+            ¿Urgente? Llámanos al <strong className="text-[hsl(var(--primary))]">638 10 99 47</strong>
           </p>
         </a>
       </motion.div>
@@ -114,7 +114,7 @@ export default function ContactForm() {
             required
             minLength={2}
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
+            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -128,7 +128,7 @@ export default function ContactForm() {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
+            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
           />
         </div>
       </div>
@@ -147,13 +147,13 @@ export default function ContactForm() {
             onChange={(e) => setFormData({ ...formData, telefono: e.target.value.replace(/\D/g, '').slice(0, 9) })}
             required
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
+            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
           />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="tipo_cliente" className="text-sm font-medium text-gray-700">Tipo de propiedad</label>
           <Select value={formData.tipo_cliente} onValueChange={(value) => setFormData({ ...formData, tipo_cliente: value })}>
-            <SelectTrigger id="tipo_cliente" style={{ fontSize: 16 }} className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 focus:border-[#E63946] transition-colors">
+            <SelectTrigger id="tipo_cliente" style={{ fontSize: 16 }} className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 focus:border-[hsl(var(--primary))] transition-colors">
               <SelectValue placeholder="Selecciona..." />
             </SelectTrigger>
             <SelectContent>
@@ -178,13 +178,13 @@ export default function ContactForm() {
             value={formData.zona}
             onChange={(e) => setFormData({ ...formData, zona: e.target.value })}
             style={{ fontSize: 16 }}
-            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
+            className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
           />
         </div>
         <div className="flex flex-col gap-1">
           <label htmlFor="servicio" className="text-sm font-medium text-gray-700">Servicio de interés</label>
           <Select value={formData.servicio_interes} onValueChange={(value) => setFormData({ ...formData, servicio_interes: value })}>
-            <SelectTrigger id="servicio" style={{ fontSize: 16 }} className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 focus:border-[#E63946] transition-colors">
+            <SelectTrigger id="servicio" style={{ fontSize: 16 }} className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 focus:border-[hsl(var(--primary))] transition-colors">
               <SelectValue placeholder="Selecciona servicio..." />
             </SelectTrigger>
             <SelectContent>
@@ -208,7 +208,7 @@ export default function ContactForm() {
           onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
           rows={3}
           style={{ fontSize: 16, resize: "none" }}
-          className="px-4 py-3 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
+          className="px-4 py-3 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[hsl(var(--primary))] focus:outline-none transition-colors"
         />
       </div>
 
@@ -218,7 +218,7 @@ export default function ContactForm() {
         type="submit"
         disabled={loading}
         style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
-        className="w-full bg-[#E63946] hover:bg-[#d32f3c] active:bg-[#c12f3a] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl h-14 sm:h-14 text-base font-bold shadow-lg hover:shadow-xl transition-all duration-200 active:scale-[0.98] min-h-[56px]"
+        className="w-full bg-[hsl(var(--primary))] hover:bg-[hsl(var(--brand-red-hover))] active:bg-[#c12f3a] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl h-14 sm:h-14 text-base font-bold shadow-lg hover:shadow-xl transition-all duration-200 active:scale-[0.98] min-h-[56px]"
       >
         {loading ? (
           <>

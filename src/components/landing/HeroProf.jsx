@@ -47,12 +47,12 @@ export default function HeroProf() {
           to   { opacity: 1; transform: translateY(0); }
         }
         @keyframes badge-pulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(229,62,62,0.3); }
-          50%       { box-shadow: 0 0 0 8px rgba(229,62,62,0); }
+          0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.3); }
+          50%       { box-shadow: 0 0 0 8px hsl(var(--primary) / 0); }
         }
         .hero-dot-btn { transition: all 0.3s ease; }
         .hero-cta-glow { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .hero-cta-glow:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(229,62,62,0.55); }
+        .hero-cta-glow:hover { transform: translateY(-2px); box-shadow: 0 0 32px hsl(var(--primary) / 0.55); }
         .hero-cta-glow::after {
           content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
           background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
@@ -91,7 +91,7 @@ export default function HeroProf() {
 
       {/* Glow sutil de marca — sin rejilla técnica ni patrones que compitan
           con la fotografía */}
-      <div style={{ position: "absolute", top: "15%", left: "5%", width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.08) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: "15%", left: "5%", width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, hsl(var(--primary) / 0.08) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
 
       {/* Content */}
       <div
@@ -104,12 +104,12 @@ export default function HeroProf() {
             key={`badge-${active}`}
             style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(229,62,62,0.12)", border: "1px solid rgba(229,62,62,0.4)",
+              background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.4)",
               borderRadius: 100, padding: "6px 16px", marginBottom: 24,
               animation: "badge-pulse 3s ease-in-out infinite, hero-fade-in 0.7s ease forwards",
             }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "hsl(var(--primary))", display: "inline-block", flexShrink: 0 }} />
             <span style={{ color: "#FCA5A5", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               {SLIDES[active].badge}
             </span>
@@ -125,7 +125,7 @@ export default function HeroProf() {
             }}
           >
             <span style={{ color: "#FFFFFF", display: "block" }}>{SLIDES[active].h1a}</span>
-            <span style={{ display: "block", color: "#E53E3E" }}>
+            <span style={{ display: "block", color: "hsl(var(--primary))" }}>
               {SLIDES[active].h1b}
             </span>
           </h1>
@@ -148,7 +148,7 @@ export default function HeroProf() {
             marginBottom: 28, maxWidth: 460,
             animation: "hero-fade-in 0.8s ease 0.25s both",
           }}>
-            <ShieldCheck size={16} color="#E53E3E" style={{ flexShrink: 0, marginTop: 2 }} />
+            <ShieldCheck size={16} color="hsl(var(--primary))" style={{ flexShrink: 0, marginTop: 2 }} />
             <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500, lineHeight: 1.55 }}>
               Instaladores homologados en Barcelona y área metropolitana. Respuesta en 24/48h.
             </span>
@@ -174,9 +174,9 @@ export default function HeroProf() {
               onClick={() => openDrawer()}
               className="hero-cta-glow"
               style={{
-                background: "#E53E3E", color: "#fff", border: "none",
+                background: "hsl(var(--primary))", color: "#fff", border: "none",
                 borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
-                boxShadow: "0 0 20px rgba(229,62,62,0.35)",
+                boxShadow: "0 0 20px hsl(var(--primary) / 0.35)",
                 position: "relative", overflow: "hidden", display: "inline-block",
               }}
             >
@@ -227,7 +227,7 @@ export default function HeroProf() {
             aria-label={`Slide ${i + 1}`}
             style={{
               width: active === i ? 24 : 8, height: 8, borderRadius: 4,
-              background: active === i ? "#E53E3E" : "rgba(255,255,255,0.25)",
+              background: active === i ? "hsl(var(--primary))" : "rgba(255,255,255,0.25)",
               border: "none", cursor: "pointer", padding: 0,
             }}
           />

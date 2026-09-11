@@ -59,6 +59,24 @@ module.exports = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
+  			},
+  			/* Alarma BCN — tokens de marca (ver src/index.css). `primary` ya
+  			   es el rojo de acción; estos son los que shadcn no trae por
+  			   defecto: navy de superficie, hover de marca, y los estados
+  			   semánticos (éxito/aviso) que antes no existían como token. */
+  			'brand-navy': {
+  				DEFAULT: 'hsl(var(--brand-navy))',
+  				light: 'hsl(var(--brand-navy-light))'
+  			},
+  			'brand-red-hover': 'hsl(var(--brand-red-hover))',
+  			'brand-bg-light': 'hsl(var(--brand-bg-light))',
+  			success: {
+  				DEFAULT: 'hsl(var(--success))',
+  				foreground: 'hsl(var(--success-foreground))'
+  			},
+  			warning: {
+  				DEFAULT: 'hsl(var(--warning))',
+  				foreground: 'hsl(var(--warning-foreground))'
   			}
   		},
   		keyframes: {

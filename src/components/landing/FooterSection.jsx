@@ -45,7 +45,7 @@ const ZONAS_CAMARAS = [
 
 export default function FooterSection() {
   return (
-    <footer className="bg-[#0A1628]" style={{ paddingBottom: 70 }}>
+    <footer className="bg-brand-navy" style={{ paddingBottom: 70 }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Column 1 - Brand */}

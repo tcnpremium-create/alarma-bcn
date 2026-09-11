@@ -55,7 +55,7 @@ export default function LeadFormDrawer({ open, service, onClose }) {
             exit={{ y: "100%", opacity: 0.6 }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
             className="relative w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl overflow-hidden flex flex-col"
-            style={{ background: "#0A1120", border: "1px solid rgba(255,255,255,0.08)", maxHeight: "88vh" }}
+            style={{ background: "hsl(var(--brand-navy))", border: "1px solid rgba(255,255,255,0.08)", maxHeight: "88vh" }}
           >
             {/* Cabecera sticky: nunca se va con el scroll del formulario */}
             <div

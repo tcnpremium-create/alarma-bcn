@@ -10,19 +10,19 @@
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 355 78% 56%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted-foreground: 220 9% 46%;
     --accent: 0 0% 96.1%;
     --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --ring: 355 78% 56%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -37,6 +37,24 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* ===== Alarma BCN brand tokens =====
+       Centraliza la identidad visual (antes hardcodeada en decenas de
+       componentes con hasta 4 variantes de rojo y 6 de navy distintas —
+       ver auditoría). --primary/--muted-foreground de arriba ya quedan
+       apuntando al rojo de marca y al gris de texto secundario reales;
+       estos son los tokens adicionales que shadcn no define por defecto
+       (navy de superficie, hover, estados semánticos). Los componentes
+       migran a estos tokens de forma progresiva, no con un
+       buscar-reemplazar global. */
+    --brand-navy: 216 60% 10%;        /* #0A1628 */
+    --brand-navy-light: 214 48% 20%;  /* #1A2F4A */
+    --brand-red-hover: 355 65% 51%;   /* #D32F3C */
+    --brand-bg-light: 225 40% 98%;    /* #F8F9FC */
+    --success: 142 71% 45%;           /* #22C55E */
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;            /* #F59E0B */
+    --warning-foreground: 0 0% 10%;
   }
 
   .dark {
@@ -46,19 +64,28 @@
     --card-foreground: 0 0% 98%;
     --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 355 78% 62%;
     --primary-foreground: 0 0% 9%;
     --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --muted-foreground: 220 9% 64%;
     --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --ring: 355 78% 62%;
+
+    --brand-navy: 216 60% 6%;
+    --brand-navy-light: 214 48% 16%;
+    --brand-red-hover: 355 70% 68%;
+    --brand-bg-light: 216 30% 12%;
+    --success: 142 60% 55%;
+    --success-foreground: 0 0% 9%;
+    --warning: 38 85% 60%;
+    --warning-foreground: 0 0% 9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
