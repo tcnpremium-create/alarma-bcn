@@ -256,7 +256,7 @@ export default function Videoporteros() {
           {/* Imagen facial recognition - grande */}
           <div style={{ borderRadius: 20, overflow: "hidden", marginBottom: 20, boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
             <img
-              src="/images/reconocimiento-facial.jpeg"
+              src="/images/reconocimiento-facial.webp"
               alt="Sistema de reconocimiento facial para control de accesos en empresa"
               loading="lazy"
               decoding="async"
@@ -277,7 +277,7 @@ export default function Videoporteros() {
             </div>
             <div style={{ borderRadius: 16, overflow: "hidden", boxShadow: "0 16px 40px rgba(0,0,0,0.4)" }}>
               <img
-                src="/images/seguridad-digital.png"
+                src="/images/seguridad-digital.webp"
                 alt="Seguridad digital y protección de datos biométricos"
                 loading="lazy"
                 decoding="async"
