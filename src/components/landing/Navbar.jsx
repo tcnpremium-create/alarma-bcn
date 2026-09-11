@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { getServiceForPath } from "@/lib/serviceByPath";
 import { Button } from "@/components/ui/button";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const SERVICE_GROUPS = [
   {
@@ -50,6 +51,7 @@ export default function Navbar() {
   const servicesRef = useRef(null);
   const { openDrawer } = useLeadDrawer();
   const { pathname } = useLocation();
+  const reducedMotion = usePrefersReducedMotion();
   const currentService = getServiceForPath(pathname);
 
   // Único destino de "Presupuesto" en toda la web: si la página ya tiene su
@@ -130,7 +132,7 @@ export default function Navbar() {
                         initial={{ opacity: 0, y: -6 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.15 }}
+                        transition={{ duration: reducedMotion ? 0 : 0.15 }}
                         className="absolute left-1/2 -translate-x-1/2 top-full mt-2 bg-white rounded-xl shadow-2xl border border-gray-100 p-5 flex gap-8"
                         style={{ minWidth: 480 }}
                       >
@@ -194,7 +196,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: reducedMotion ? 0 : 0.2 }}
             className="fixed inset-x-0 top-[64px] z-[999] bg-white border-b border-gray-100 shadow-2xl lg:hidden max-h-[calc(100vh-64px)] overflow-y-auto"
           >
             <nav>
@@ -220,7 +222,7 @@ export default function Navbar() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: reducedMotion ? 0 : 0.2 }}
                         className="overflow-hidden pl-3"
                       >
                         {SERVICE_GROUPS.map((group) => (

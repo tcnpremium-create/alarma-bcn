@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import LeadCaptureForm from "./LeadCaptureForm";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 // Drawer de presupuesto — único modal de captación del sitio.
 //
@@ -14,6 +15,7 @@ import LeadCaptureForm from "./LeadCaptureForm";
 // scroll — igual que el patrón de bottom-sheet nativo de iOS/Android.
 export default function LeadFormDrawer({ open, service, onClose }) {
   const closeBtnRef = useRef(null);
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     if (!open) return;
@@ -40,7 +42,7 @@ export default function LeadFormDrawer({ open, service, onClose }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: reducedMotion ? 0 : 0.25 }}
             onClick={onClose}
             aria-hidden="true"
             className="absolute inset-0 bg-black/65 backdrop-blur-sm"
@@ -50,10 +52,10 @@ export default function LeadFormDrawer({ open, service, onClose }) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="lead-drawer-title"
-            initial={{ y: "100%", opacity: 0.6 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: "100%", opacity: 0.6 }}
-            transition={{ type: "spring", damping: 32, stiffness: 320 }}
+            initial={reducedMotion ? { opacity: 0 } : { y: "100%", opacity: 0.6 }}
+            animate={reducedMotion ? { opacity: 1 } : { y: 0, opacity: 1 }}
+            exit={reducedMotion ? { opacity: 0 } : { y: "100%", opacity: 0.6 }}
+            transition={reducedMotion ? { duration: 0 } : { type: "spring", damping: 32, stiffness: 320 }}
             className="relative w-full sm:max-w-md rounded-t-3xl sm:rounded-3xl overflow-hidden flex flex-col"
             style={{ background: "hsl(var(--brand-navy))", border: "1px solid rgba(255,255,255,0.08)", maxHeight: "88vh" }}
           >

@@ -3,6 +3,7 @@ import { Phone, ShieldCheck } from "lucide-react";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { businessStats } from "@/lib/businessStats";
 import { Button } from "@/components/ui/button";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 const SLIDES = [
   {
@@ -34,11 +35,17 @@ const SLIDES = [
 export default function HeroProf() {
   const [active, setActive] = useState(0);
   const { openDrawer } = useLeadDrawer();
+  const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     const id = setInterval(() => setActive(i => (i + 1) % SLIDES.length), 5500);
     return () => clearInterval(id);
   }, []);
+
+  // El carrusel de fondo sigue rotando (es contenido, no decoración), pero
+  // con reduced-motion el cambio es instantáneo en vez de crossfade, y las
+  // entradas de texto/badge no se animan — solo aparecen.
+  const fadeIn = (delay) => (reducedMotion ? undefined : `hero-fade-in 0.8s ease ${delay} both`);
 
   return (
     <section style={{ position: "relative", overflow: "hidden", minHeight: "100vh", background: "#020609" }}>
@@ -63,7 +70,7 @@ export default function HeroProf() {
           key={i}
           style={{
             position: "absolute", inset: 0, zIndex: 1,
-            transition: "opacity 1.4s ease",
+            transition: reducedMotion ? "opacity 0s" : "opacity 1.4s ease",
             opacity: active === i ? 1 : 0,
           }}
         >
@@ -98,7 +105,7 @@ export default function HeroProf() {
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "hsl(var(--primary) / 0.12)", border: "1px solid hsl(var(--primary) / 0.4)",
               borderRadius: 100, padding: "6px 16px", marginBottom: 24,
-              animation: "badge-pulse 3s ease-in-out infinite, hero-fade-in 0.7s ease forwards",
+              animation: reducedMotion ? undefined : "badge-pulse 3s ease-in-out infinite, hero-fade-in 0.7s ease forwards",
             }}
           >
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "hsl(var(--primary))", display: "inline-block", flexShrink: 0 }} />
@@ -113,7 +120,7 @@ export default function HeroProf() {
             style={{
               fontWeight: 900, lineHeight: 1.08, margin: "0 0 18px",
               fontSize: "clamp(2rem, 6vw, 3.8rem)", letterSpacing: "-0.03em",
-              animation: "hero-fade-in 0.8s ease 0.1s both",
+              animation: fadeIn("0.1s"),
             }}
           >
             <span style={{ color: "#FFFFFF", display: "block" }}>{SLIDES[active].h1a}</span>
@@ -128,7 +135,7 @@ export default function HeroProf() {
             style={{
               color: "rgba(255,255,255,0.62)", fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
               lineHeight: 1.7, maxWidth: 480, margin: "0 0 36px",
-              animation: "hero-fade-in 0.8s ease 0.2s both",
+              animation: fadeIn("0.2s"),
             }}
           >
             {SLIDES[active].sub}
@@ -138,7 +145,7 @@ export default function HeroProf() {
           <div style={{
             display: "flex", alignItems: "flex-start", gap: 8,
             marginBottom: 28, maxWidth: 460,
-            animation: "hero-fade-in 0.8s ease 0.25s both",
+            animation: fadeIn("0.25s"),
           }}>
             <ShieldCheck size={16} color="hsl(var(--primary))" style={{ flexShrink: 0, marginTop: 2 }} />
             <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500, lineHeight: 1.55 }}>
@@ -147,7 +154,7 @@ export default function HeroProf() {
           </div>
 
           {/* Cifras clave — solo las 3 que importan de un vistazo */}
-          <div style={{ display: "flex", gap: 32, marginBottom: 36, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
+          <div style={{ display: "flex", gap: 32, marginBottom: 36, flexWrap: "wrap", animation: fadeIn("0.3s") }}>
             {[
               { val: businessStats.installTimeframe, label: "Instalación" },
               { val: "4K", label: "Resolución" },
@@ -155,13 +162,17 @@ export default function HeroProf() {
             ].map(s => (
               <div key={s.val}>
                 <div style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)", fontWeight: 900, color: "#fff", lineHeight: 1 }}>{s.val}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 4, fontWeight: 500 }}>{s.label}</div>
+                {/* Antes rgba(255,255,255,0.4) a 11px — por debajo del
+                    4.5:1 que exige WCAG AA para texto pequeño sobre este
+                    fondo casi negro. Sube a 0.72 + peso 600, mismo tamaño,
+                    misma estética sutil, contraste real. */}
+                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.72)", marginTop: 4, fontWeight: 600 }}>{s.label}</div>
               </div>
             ))}
           </div>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: fadeIn("0.4s") }}>
             <Button
               onClick={() => openDrawer()}
               variant="brand"
@@ -192,7 +203,7 @@ export default function HeroProf() {
               display: "inline-flex", alignItems: "center", gap: 8,
               background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)",
               border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: "8px 18px",
-              textDecoration: "none", animation: "hero-fade-in 0.8s ease 0.5s both",
+              textDecoration: "none", animation: fadeIn("0.5s"),
             }}
           >
             <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ {businessStats.googleRating}</span>

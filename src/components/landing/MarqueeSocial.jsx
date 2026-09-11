@@ -1,6 +1,19 @@
 import React from "react";
 import { businessStats } from "@/lib/businessStats";
 
+// TODO (pendiente, no resuelto en esta pasada — ver auditoría de diseño,
+// Fase 6): estas 6 reseñas están escritas a mano (nombre, ubicación y cita
+// inventados) pero se presentan con el logo real de Google y el estilo de
+// una reseña verificada de Google Business — no hay ninguna fuente de
+// reseñas reales en el proyecto de la que extraer estos textos.
+// businessStats.googleRating / googleReviewCount sí están verificados
+// (ver el comentario de ese archivo) y son los únicos datos de reseñas
+// reales disponibles; se siguen usando arriba en el rótulo "X/5 en
+// Google". No se han inventado nombres/citas nuevos ni se ha borrado el
+// componente sin sustituto — para resolverlo de verdad hace falta traer
+// reseñas reales (p. ej. vía la Google Business Profile API/Windsor.ai,
+// ya usado en el proyecto para verificar googleRating) y sustituir este
+// array por esas reseñas reales.
 const REVIEWS = [
   { stars: 5, text: "Instalaron 4 cámaras HD en nuestra comunidad en un solo día. Todo perfecto, app configurada y precio cerrado desde el principio.", name: "Adam H.", location: "Sants, Barcelona" },
   { stars: 5, text: "Necesitaba cámaras para mi local sin cuotas mensuales. Vinieron el mismo día, en 2 horas funcionando desde el móvil.", name: "Carlos R.", location: "Eixample, Barcelona" },
