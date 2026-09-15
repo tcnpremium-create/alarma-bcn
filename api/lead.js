@@ -8,7 +8,29 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const resend = new Resend('re_E4tE5cMB_4mpUbRzaSf6xujq15454JsQw');
+/**
+ * Cliente de Resend.
+ *
+ * La clave estaba escrita aquí en claro y viajó al repositorio, así que se
+ * da por comprometida y se rota. Ahora se lee de RESEND_API_KEY.
+ *
+ * Se construye de forma perezosa y devolviendo null si falta la clave, en
+ * vez de en el momento de cargar el módulo: el constructor de Resend lanza
+ * sin clave, y hacerlo arriba tumbaría TODO el endpoint — incluido el
+ * guardado del lead en Supabase, que ocurre ANTES de enviar nada.
+ */
+let resendClient;
+function getResend() {
+  if (resendClient !== undefined) return resendClient;
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
+    console.error('RESEND_API_KEY no configurada: el lead se guarda pero no se envían emails.');
+    resendClient = null;
+  } else {
+    resendClient = new Resend(key);
+  }
+  return resendClient;
+}
 
 function buildNotifEmail(formData, phoneClean) {
   return `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
@@ -66,14 +88,13 @@ function buildConfirmEmail(formData) {
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Instalaci&oacute;n profesional</strong> incluida sin costes ocultos</span></div>
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Sin permanencias</strong> &mdash; cancela cuando quieras</span></div>
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Soporte 24/7</strong> &mdash; siempre disponibles para ti</span></div>
-        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>M&aacute;s de 5.000 instalaciones</strong> en Barcelona y alrededores</span></div>
+        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Instalaciones en Barcelona</strong> y toda Catalunya</span></div>
       </div>
 
       <div style="background:#0A0A1A;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px">
         <div style="color:#E53E3E;font-size:11px;font-weight:800;letter-spacing:0.12em;margin-bottom:8px">OFERTA EXCLUSIVA</div>
         <div style="color:white;font-size:20px;font-weight:900;margin-bottom:6px">Descuento especial en tu primera instalaci&oacute;n</div>
-        <div style="color:#9CA3AF;font-size:13px;margin-bottom:14px">Menciona este email al llamar y te aplicamos el descuento</div>
-        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">V&Aacute;LIDO HASTA 31 JULIO 2025</div>
+        <div style="color:#9CA3AF;font-size:13px">Menciona este email al llamar y te aplicamos el descuento</div>
       </div>
 
       <a href="tel:+34638109947" style="display:block;background:#E53E3E;color:white;text-align:center;padding:18px;border-radius:50px;font-weight:800;font-size:16px;text-decoration:none;margin-bottom:12px">
@@ -86,7 +107,7 @@ function buildConfirmEmail(formData) {
 
     <div style="background:#F9FAFB;padding:20px 28px;text-align:center;border-top:1px solid #E5E7EB">
       <p style="color:#9CA3AF;font-size:12px;margin:0 0 4px">alarmasenbarcelona.com &middot; Barcelona y alrededores</p>
-      <p style="color:#9CA3AF;font-size:12px;margin:0">Tel: 638 109 947 &middot; info@alarmasenbarcelona.com</p>
+      <p style="color:#9CA3AF;font-size:12px;margin:0">Tel: 638 109 947 &middot; <a href="mailto:tcnpremium@gmail.com" style="color:#9CA3AF;text-decoration:underline">tcnpremium@gmail.com</a></p>
     </div>
 
   </div>
@@ -127,10 +148,12 @@ export default async function handler(req, res) {
 
     if (dbError) throw dbError;
 
+    const resend = getResend();
     let notifStatus = 'not_sent';
     let notifError = null;
 
     try {
+      if (!resend) throw new Error('RESEND_API_KEY no configurada');
       const { data: notifData, error: notifErr } = await resend.emails.send({
         from: 'info@alarmasenbarcelona.com',
         to: 'tcnpremium@gmail.com',
@@ -152,10 +175,13 @@ export default async function handler(req, res) {
       console.error('Notif email FAILED:', emailErr.message);
     }
 
-    if (formData.email?.trim()) {
+    if (formData.email?.trim() && resend) {
       try {
         const { data: confirmData, error: confirmErr } = await resend.emails.send({
           from: 'info@alarmasenbarcelona.com',
+          // Si el cliente responde a este email, la respuesta tiene que
+          // llegar al buzón real, no a info@ (que no se lee).
+          reply_to: 'tcnpremium@gmail.com',
           to: formData.email.trim(),
           subject: 'Solicitud recibida — te llamamos antes de 24h',
           html: buildConfirmEmail(formData)
