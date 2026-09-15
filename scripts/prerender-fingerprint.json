@@ -1,5 +1,5 @@
 {
- "combined": "d5bba6e4bd551039",
+ "combined": "44327f222428672d",
  "mode": "grafo-de-imports",
  "files": {
   "src/App.jsx": "c9bdce7d8d4d5888",
@@ -116,7 +116,7 @@
   "src/pages/MapaRiesgo.jsx": "ca39db968dcb724c",
   "src/pages/Mataro.jsx": "d7978da63d8e7762",
   "src/pages/Privacidad.jsx": "bf907a9f7870d78c",
-  "src/pages/Promociones.jsx": "aa87dbef32fd0493",
+  "src/pages/Promociones.jsx": "fffeea7e73baed18",
   "src/pages/RedesInformaticas.jsx": "95f9dee562ebacdf",
   "src/pages/SantCugat.jsx": "561be91fdaf5faae",
   "src/pages/Servicios.jsx": "18741f4079e3f00c",

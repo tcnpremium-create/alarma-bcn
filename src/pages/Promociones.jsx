@@ -16,7 +16,7 @@ const promoSchema = {
   "@type": "ItemList",
   "name": "Kits de Seguridad Barcelona - Alarmas y Cámaras | Alarmas BCN",
   "description": "Kits de alarmas Ajax y videovigilancia profesional con instalación incluida en Barcelona.",
-  "url": "https://www.alarmasenbarcleona.com/Promociones",
+  "url": "https://alarmasenbarcelona.com/Promociones",
   "itemListElement": [
     ...ALARM_KITS.map((kit, i) => ({
       "@type": "ListItem",
