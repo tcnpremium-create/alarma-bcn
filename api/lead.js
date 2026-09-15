@@ -8,7 +8,31 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_KEY
 );
 
-const resend = new Resend('re_E4tE5cMB_4mpUbRzaSf6xujq15454JsQw');
+/**
+ * Cliente de Resend.
+ *
+ * La clave estaba escrita en claro aquí y viajó al repositorio, así que hay
+ * que darla por comprometida y rotarla en Resend. Ahora se lee de la
+ * variable de entorno RESEND_API_KEY.
+ *
+ * Se construye de forma perezosa y devolviendo null si falta la clave, en
+ * vez de en el momento de cargar el módulo: el constructor de Resend lanza
+ * si no hay clave, y hacerlo arriba tumbaría TODO el endpoint — incluido el
+ * guardado del lead en Supabase, que ocurre antes de enviar nada. Sin clave
+ * se pierden los emails, pero no el cliente.
+ */
+let resendClient;
+function getResend() {
+  if (resendClient !== undefined) return resendClient;
+  const key = process.env.RESEND_API_KEY;
+  if (!key) {
+    console.error('RESEND_API_KEY no configurada: el lead se guarda pero no se envían emails.');
+    resendClient = null;
+  } else {
+    resendClient = new Resend(key);
+  }
+  return resendClient;
+}
 
 function buildNotifEmail(formData, phoneClean) {
   return `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
@@ -127,10 +151,12 @@ export default async function handler(req, res) {
 
     if (dbError) throw dbError;
 
+    const resend = getResend();
     let notifStatus = 'not_sent';
     let notifError = null;
 
     try {
+      if (!resend) throw new Error('RESEND_API_KEY no configurada');
       const { data: notifData, error: notifErr } = await resend.emails.send({
         from: 'info@alarmasenbarcelona.com',
         to: 'tcnpremium@gmail.com',
@@ -152,7 +178,7 @@ export default async function handler(req, res) {
       console.error('Notif email FAILED:', emailErr.message);
     }
 
-    if (formData.email?.trim()) {
+    if (formData.email?.trim() && resend) {
       try {
         const { data: confirmData, error: confirmErr } = await resend.emails.send({
           from: 'info@alarmasenbarcelona.com',
