@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { normalizarTelefonoES } from "@/lib/phone";
+import { normalizarTelefonoES, esTelefonoES, filtrarEntradaTelefono } from "@/lib/phone";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -30,6 +30,10 @@ export default function LeadQualification({ onComplete }) {
       alert('Por favor completa todos los campos obligatorios');
       return;
     }
+    if (step === 1 && !esTelefonoES(formData.telefono)) {
+      alert('Introduce un teléfono válido (9 dígitos, con o sin +34)');
+      return;
+    }
     if (step === 2 && (!formData.servicio_interes || !formData.tipo_cliente)) {
       alert('Por favor selecciona el servicio y tipo de propiedad');
       return;
@@ -43,10 +47,11 @@ export default function LeadQualification({ onComplete }) {
     setLoading(true);
 
     try {
+      const telefonoNormalizado = normalizarTelefonoES(formData.telefono);
       const leadData = {
         nombre: formData.nombre,
         email: formData.email || '',
-        telefono: formData.telefono,
+        telefono: telefonoNormalizado,
         tipo_cliente: formData.tipo_cliente,
         zona: formData.zona || '',
         servicio_interes: formData.servicio_interes,
@@ -57,12 +62,12 @@ export default function LeadQualification({ onComplete }) {
       };
 
       await base44.entities.Lead.create(leadData);
-      registerPhoneForTracking(formData.telefono);
+      registerPhoneForTracking(telefonoNormalizado);
 
       // Sync to HubSpot CRM
       base44.functions.invoke('syncToHubspot', { leadData, dealStage: 'nuevo' }).catch(e => console.warn('HubSpot sync error:', e));
 
-      await base44.integrations.Core.SendEmail({
+      await base44.integrations?.Core?.SendEmail?.({
         to: 'tcnpremium@gmail.com',
         subject: `🔔 Lead Chatbot - ${formData.nombre} (${formData.servicio_interes})`,
         body: `
@@ -89,7 +94,7 @@ ${formData.detalles || 'Sin detalles adicionales'}
 
 ⚡ ORIGEN: Chatbot web - Contactar en menos de 24h
         `
-      });
+      }).catch(e => console.warn('SendEmail (base44) no disponible:', e));
 
       base44.analytics.track({
         eventName: 'chatbot_lead_qualified',
@@ -146,9 +151,9 @@ ${formData.detalles || 'Sin detalles adicionales'}
               />
               <Input
                 type="tel"
-                placeholder="Teléfono (9 dígitos) *"
+                placeholder="+34 638 109 947"
                 value={formData.telefono}
-                onChange={(e) => setFormData({ ...formData, telefono: normalizarTelefonoES(e.target.value) })}
+                onChange={(e) => setFormData({ ...formData, telefono: filtrarEntradaTelefono(e.target.value) })}
                 className="h-10 text-sm"
                 required
               />

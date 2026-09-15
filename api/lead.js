@@ -74,13 +74,9 @@ function buildNotifEmail(formData, phoneClean) {
   </div>`;
 }
 
-// El badge de la oferta lleva un texto de urgencia FIJO, sin fecha
-// ("ÚLTIMA SEMANA PARA EL DESCUENTO"), a propósito: antes decía
-// "VÁLIDO HASTA 31 JULIO 2025" y se siguió enviando así más de un año
-// después de caducar (probado en producción: se cambió primero a una fecha
-// calculada a 30 días, y finalmente se decidió que un texto fijo sin fecha
-// es más simple y no puede volver a quedarse desactualizado). Si se vuelve
-// a poner una fecha, tiene que actualizarse sola — nunca a mano.
+// El badge de la oferta lleva un texto de urgencia fijo, sin fecha: así no
+// puede volver a quedarse desactualizado. Si se vuelve a poner una fecha,
+// tiene que calcularse sola — nunca escribirse a mano.
 function buildConfirmEmail(formData) {
   const nombre = formData.nombre.trim();
   const servicio = formData.servicio_interes?.trim() || 'sistema de seguridad';

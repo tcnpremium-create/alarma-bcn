@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { normalizarTelefonoES, esTelefonoES } from "@/lib/phone";
+import { normalizarTelefonoES, esTelefonoES, filtrarEntradaTelefono } from "@/lib/phone";
 import {
   Home, Building2, Store, Warehouse, DoorOpen, Trees, AppWindow, Package,
   ShieldCheck, Camera, Bell, Fingerprint, Rocket, CalendarClock, CalendarSearch,
@@ -301,7 +301,7 @@ export default function SecurityQuizModal({ open, onClose }) {
                     {MUNICIPIOS.map((m) => <option key={m} value={m} style={{ color: "#000" }}>{m}</option>)}
                   </select>
                 </div>
-                <FieldWithIcon icon={Phone} type="tel" placeholder="Teléfono de contacto" value={form.telefono} onChange={(v) => setForm((f) => ({ ...f, telefono: v }))} />
+                <FieldWithIcon icon={Phone} type="tel" placeholder="+34 638 109 947" value={form.telefono} onChange={(v) => setForm((f) => ({ ...f, telefono: filtrarEntradaTelefono(v) }))} />
                 <FieldWithIcon icon={Mail} type="email" placeholder="Email" value={form.email} onChange={(v) => setForm((f) => ({ ...f, email: v }))} />
               </div>
 

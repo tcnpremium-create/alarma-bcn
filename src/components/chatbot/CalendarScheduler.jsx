@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Phone, MapPin, CheckCircle, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { base44 } from "@/api/api";
+import { normalizarTelefonoES, esTelefonoES, filtrarEntradaTelefono } from "@/lib/phone";
 
 const timeSlots = {
   morning: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"],
@@ -47,7 +48,7 @@ export default function CalendarScheduler({ onSchedule, onClose }) {
     return `${days[date.getDay()]} ${date.getDate()} ${months[date.getMonth()]}`;
   };
 
-  const validatePhone = (phone) => /^\d{9,}$/.test(phone.replace(/\s/g, ''));
+  const validatePhone = (phone) => esTelefonoES(phone);
   const validateName = (name) => name.trim().length >= 2;
 
   const handleSchedule = async () => {
@@ -61,12 +62,13 @@ export default function CalendarScheduler({ onSchedule, onClose }) {
 
     setLoading(true);
     try {
+      const telefonoNormalizado = normalizarTelefonoES(userData.telefono);
       const appointmentData = {
         serviceType,
         date: selectedDate.toISOString().split('T')[0],
         time: selectedTime,
         nombre: userData.nombre,
-        telefono: userData.telefono,
+        telefono: telefonoNormalizado,
         direccion: userData.direccion || '',
         email: userData.email || ''
       };
@@ -114,7 +116,7 @@ ${calendarResult.success ? `✅ Evento añadido a Google Calendar` : `⚠️ No 
       // Sync to HubSpot CRM
       const hubspotLead = {
         nombre: userData.nombre,
-        telefono: userData.telefono,
+        telefono: telefonoNormalizado,
         email: userData.email || '',
         zona: '',
         urgencia: 'alta',
@@ -310,10 +312,10 @@ ${calendarResult.success ? `✅ Evento añadido a Google Calendar` : `⚠️ No 
           <div>
             <input
               type="tel"
-              placeholder="Teléfono * (9 dígitos)"
+              placeholder="+34 638 109 947"
               value={userData.telefono}
               onChange={(e) => {
-                setUserData({ ...userData, telefono: e.target.value });
+                setUserData({ ...userData, telefono: filtrarEntradaTelefono(e.target.value) });
                 if (errors.telefono) setErrors({ ...errors, telefono: "" });
               }}
               className={`w-full px-4 py-2.5 sm:py-3 border-2 rounded-lg outline-none text-sm transition-colors ${

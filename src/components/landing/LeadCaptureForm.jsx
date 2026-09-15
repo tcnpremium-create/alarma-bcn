@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { normalizarTelefonoES, esTelefonoES } from "@/lib/phone";
+import { normalizarTelefonoES, esTelefonoES, filtrarEntradaTelefono } from "@/lib/phone";
 import { User, Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
 import { LeadAPI } from "@/api/api";
 
@@ -148,7 +148,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
           <label style={labelStyle} htmlFor="lcf-telefono">Teléfono *</label>
           <div style={{ position: "relative" }}>
             <Phone size={16} style={iconStyle} />
-            <input id="lcf-telefono" type="tel" inputMode="tel" autoComplete="tel" placeholder="6XX XXX XXX" required value={form.telefono} onChange={(e) => setForm((f) => ({ ...f, telefono: normalizarTelefonoES(e.target.value) }))} style={inputStyle} />
+            <input id="lcf-telefono" type="tel" inputMode="tel" autoComplete="tel" placeholder="+34 638 109 947" required value={form.telefono} onChange={(e) => setForm((f) => ({ ...f, telefono: filtrarEntradaTelefono(e.target.value) }))} style={inputStyle} />
           </div>
         </div>
         <div className="grid sm:grid-cols-2" style={{ gap: 14 }}>

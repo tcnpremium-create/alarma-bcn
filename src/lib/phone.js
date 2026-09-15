@@ -44,3 +44,31 @@ export function normalizarTelefonoES(valor) {
 export function esTelefonoES(valor) {
   return /^[6789]\d{8}$/.test(normalizarTelefonoES(valor));
 }
+
+/**
+ * Devuelve el número completo en formato internacional sin espacios
+ * ("+34638109947"), el que debe usarse para construir enlaces tel:/wa.me y
+ * para mostrar el número "completo" en informes. Vacío si no es válido.
+ */
+export function telefonoE164(valor) {
+  const digitos = normalizarTelefonoES(valor);
+  return esTelefonoES(digitos) ? `+34${digitos}` : '';
+}
+
+/**
+ * Filtro de escritura para el campo de teléfono: deja pasar dígitos, "+" y
+ * espacios tal cual el usuario los teclea (nunca recorta ni quita el "+34"
+ * mientras escribe), y descarta cualquier otro carácter.
+ *
+ * Antes los formularios normalizaban en cada pulsación
+ * (`normalizarTelefonoES(e.target.value)`), lo que era correcto para el
+ * valor final pero tenía un efecto secundario molesto: en cuanto el usuario
+ * tecleaba "+", el campo lo hacía desaparecer al instante (un solo "+" no es
+ * un teléfono válido, así que normalizarTelefonoES lo reducía a ""), dando
+ * la sensación de que el campo "no dejaba poner el +34". La normalización
+ * de verdad —a 9 dígitos nacionales— se sigue aplicando al validar y al
+ * construir lo que se envía, no al mostrar lo que se está escribiendo.
+ */
+export function filtrarEntradaTelefono(valor) {
+  return String(valor ?? '').replace(/[^\d+\s]/g, '');
+}

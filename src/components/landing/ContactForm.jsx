@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { normalizarTelefonoES, esTelefonoES } from "@/lib/phone";
+import { normalizarTelefonoES, esTelefonoES, filtrarEntradaTelefono } from "@/lib/phone";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -42,15 +42,17 @@ export default function ContactForm() {
 
     setLoading(true);
     try {
+      const telefonoNormalizado = normalizarTelefonoES(formData.telefono);
       const lead = await base44.entities.Lead.create({
         ...formData,
+        telefono: telefonoNormalizado,
         urgencia: "media",
         origen: "formulario_web"
       });
 
       // Sync to HubSpot CRM
       base44.functions.invoke('syncToHubspot', {
-        leadData: { ...formData, urgencia: "media", origen: "formulario_web" },
+        leadData: { ...formData, telefono: telefonoNormalizado, urgencia: "media", origen: "formulario_web" },
         dealStage: 'nuevo'
       }).catch(e => console.warn('HubSpot sync error:', e));
 
@@ -59,7 +61,7 @@ export default function ContactForm() {
         properties: { tipo_cliente: formData.tipo_cliente, zona: formData.zona, leadId: lead.id }
       });
 
-      registerPhoneForTracking(formData.telefono);
+      registerPhoneForTracking(telefonoNormalizado);
       setSuccess(true);
       setFormData({ nombre: "", email: "", telefono: "", tipo_cliente: "hogar", zona: "", servicio_interes: "", mensaje: "" });
       setTimeout(() => setSuccess(false), 6000);
@@ -143,9 +145,9 @@ export default function ContactForm() {
             type="tel"
             inputMode="tel"
             autoComplete="tel"
-            placeholder="6XX XXX XXX"
+            placeholder="+34 638 109 947"
             value={formData.telefono}
-            onChange={(e) => setFormData({ ...formData, telefono: normalizarTelefonoES(e.target.value) })}
+            onChange={(e) => setFormData({ ...formData, telefono: filtrarEntradaTelefono(e.target.value) })}
             required
             style={{ fontSize: 16 }}
             className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
