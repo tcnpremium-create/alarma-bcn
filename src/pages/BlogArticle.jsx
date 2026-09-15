@@ -46,13 +46,13 @@ function buildSchema(slug, article, seoData) {
       'image': [article.image, ...images.map(i => i.src)],
       'author': {
         '@type': 'Organization',
-        '@id': `${SITE_URL}#organization`,
-        'name': 'Premium Tech Security Barcelona',
+        '@id': `${SITE_URL}/#organization`,
+        'name': 'Premium Tech Security',
       },
       'publisher': {
         '@type': 'Organization',
-        '@id': `${SITE_URL}#organization`,
-        'name': 'Premium Tech Security Barcelona',
+        '@id': `${SITE_URL}/#organization`,
+        'name': 'Premium Tech Security',
         'logo': { '@type': 'ImageObject', 'url': LOGO_URL },
       },
       'mainEntityOfPage': { '@type': 'WebPage', '@id': url },
@@ -65,8 +65,10 @@ function buildSchema(slug, article, seoData) {
     },
     {
       '@type': 'LocalBusiness',
-      '@id': `${SITE_URL}#localbusiness`,
-      'name': 'Premium Tech Security Barcelona',
+      // Misma entidad que declara la home (#business). Antes era
+      // "#localbusiness", un nodo distinto con otro nombre: dos empresas.
+      '@id': `${SITE_URL}/#business`,
+      'name': 'Premium Tech Security',
       'description': `Empresa instaladora de alarmas, videovigilancia y control de accesos en Barcelona. ${businessStats.experienceText}. Técnicos certificados AJAX e Hikvision.`,
       'url': SITE_URL,
       'telephone': '+34638109947',
@@ -74,23 +76,29 @@ function buildSchema(slug, article, seoData) {
       'logo': LOGO_URL,
       'priceRange': '€€',
       'areaServed': ['Barcelona', 'Badalona', 'Hospitalet de Llobregat', 'Sabadell', 'Terrassa', 'Mataró', 'Sant Cugat del Vallès'],
+      // Esta dirección estaba sin calle ni código postal: en el HTML salía
+      // una PostalAddress prácticamente vacía, distinta de la que declaran
+      // las otras 40 páginas. Se completa con los MISMOS datos reales que ya
+      // usan AdvancedSEO, CityLandingSEO, LocalitySEO, Servicios y
+      // SobreNosotros. No se inventa nada.
       'address': {
         '@type': 'PostalAddress',
+        'streetAddress': 'Carrer de Coll i Vehí, 141',
         'addressLocality': 'Barcelona',
-        'addressRegion': 'Cataluña',
+        'postalCode': '08026',
+        'addressRegion': 'Catalunya',
         'addressCountry': 'ES',
       },
-      'geo': { '@type': 'GeoCoordinates', 'latitude': 41.3851, 'longitude': 2.1734 },
+      // Mismas coordenadas reales que declara AdvancedSEO — es la misma
+      // entidad (#business) y no puede tener dos ubicaciones distintas.
+      'geo': { '@type': 'GeoCoordinates', 'latitude': 41.416634, 'longitude': 2.184541 },
       'openingHoursSpecification': [
         { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday'], 'opens': '08:00', 'closes': '20:00' },
         { '@type': 'OpeningHoursSpecification', 'dayOfWeek': ['Saturday'], 'opens': '09:00', 'closes': '14:00' },
       ],
-      'aggregateRating': {
-        '@type': 'AggregateRating',
-        'ratingValue': '4.8',
-        'reviewCount': '19',
-        'bestRating': '5',
-      },
+      // SIN aggregateRating: ver el motivo en AdvancedSEO.jsx. Marcarlo en
+      // los 30 artículos del blog era además lo más difícil de justificar:
+      // un artículo sobre normativa RGPD no es el sitio de una valoración.
     },
   ];
 

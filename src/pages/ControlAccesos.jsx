@@ -41,7 +41,8 @@ export default function ControlAccesos() {
           "serviceType": "Sistemas de Control de Accesos para Empresas",
           "provider": {
             "@type": "LocalBusiness",
-            "name": "PremiumTechSecurity"
+            "@id": "https://alarmasenbarcelona.com/#business",
+            "name": "Premium Tech Security"
           },
           "areaServed": "Barcelona, Catalunya"
         }}

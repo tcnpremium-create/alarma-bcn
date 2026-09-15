@@ -207,7 +207,9 @@ export default function Servicios() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Premium Tech Security - Servicios de Seguridad",
+    // El nombre de la empresa es el mismo en todo el sitio; lo que
+    // describe esta página va en "description", no pegado al nombre.
+    "name": "Premium Tech Security",
     "description": "Instalación profesional de sistemas de seguridad en Barcelona y Catalunya. Alarmas, cámaras CCTV, control de accesos y videoporteros.",
     "url": window.location.href,
     "areaServed": [

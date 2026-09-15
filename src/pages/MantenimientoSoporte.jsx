@@ -40,7 +40,8 @@ export default function MantenimientoSoporte() {
           "serviceType": "Mantenimiento de Sistemas de Seguridad",
           "provider": {
             "@type": "LocalBusiness",
-            "name": "PremiumTechSecurity"
+            "@id": "https://alarmasenbarcelona.com/#business",
+            "name": "Premium Tech Security"
           },
           "areaServed": "Barcelona, Catalunya"
         }}

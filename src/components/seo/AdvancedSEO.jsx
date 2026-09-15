@@ -54,8 +54,19 @@ export default function AdvancedSEO({
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": 41.3851,
-          "longitude": 2.1734
+          // Coordenadas del portal real (Carrer de Coll i Vehí, 141, 08026).
+          // Las anteriores (41.3851, 2.1734) eran el centro de Barcelona:
+          // 3,6 km de error respecto a la sede, lo que para una ficha local
+          // es señalar un barrio equivocado.
+          //
+          // Origen: geocodificación en OpenStreetMap/Nominatim (2026-09-15),
+          // verificada en los dos sentidos. La búsqueda por calle+número+CP
+          // devuelve un nodo place=house con house_number "141-145" y
+          // postcode 08026, y la geocodificación inversa de estas mismas
+          // coordenadas devuelve esa misma dirección. No están inventadas.
+          // Conviene contrastarlas con el pin del perfil de Google Business.
+          "latitude": 41.416634,
+          "longitude": 2.184541
         },
         "openingHoursSpecification": [
           {
@@ -82,13 +93,13 @@ export default function AdvancedSEO({
           { "@type": "City", "name": "Cornellà de Llobregat" },
           { "@type": "AdministrativeArea", "name": "Catalunya" }
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "19",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
+        // SIN aggregateRating a propósito. La valoración 4,8/19 es del perfil
+        // de Google, no de reseñas recogidas por este sitio. Marcarla aquí es
+        // "self-serving review markup": va contra las directrices de datos
+        // estructurados de Google y es causa conocida de acción manual.
+        // La valoración SIGUE VISIBLE en la web, atribuida a Google, que es
+        // donde sí corresponde. Si algún día hay reseñas propias en el sitio,
+        // entonces sí podría marcarse — y solo en la página que las muestre.
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Servicios de Seguridad",
@@ -223,8 +234,8 @@ export default function AdvancedSEO({
       {/* Geo Tags */}
       <meta name="geo.region" content="ES-CT" />
       <meta name="geo.placename" content="Barcelona" />
-      <meta name="geo.position" content="41.3851;2.1734" />
-      <meta name="ICBM" content="41.3851, 2.1734" />
+      <meta name="geo.position" content="41.416634;2.184541" />
+      <meta name="ICBM" content="41.416634, 2.184541" />
       
       {/* Robots */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />

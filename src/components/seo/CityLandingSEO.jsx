@@ -14,30 +14,35 @@ const ALARM_HIGH_PRICE = String(Math.max(...ALARM_PRICES));
 // competían por la misma consulta. Cada página, una intención.
 const SEO_DATA = {
   "/alarmas-barcelona": {
+    city: "Barcelona",
     title: "Alarmas en Barcelona | Instalación sin Cuotas | Premium Tech Security",
     description: "Alarmas de seguridad en Barcelona sin cuotas. Ajax, Hikvision. Respuesta en 15 segundos. Instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
     keywords: "alarmas Barcelona, instalación alarmas Barcelona, empresa seguridad Barcelona, AJAX Barcelona, Hikvision Barcelona",
     canonical: "https://alarmasenbarcelona.com/alarmas-barcelona"
   },
   "/alarmas-girona": {
+    city: "Girona",
     title: "Alarmas en Girona | Instalación sin Cuotas | Premium Tech Security",
     description: "Alarmas de seguridad en Girona. Sin cuotas mensuales. Respuesta CRA en 15 segundos. Instalación profesional certificada. Tel: 638 10 99 47",
     keywords: "alarmas Girona, instalación alarmas Girona, seguridad Costa Brava",
     canonical: "https://alarmasenbarcelona.com/alarmas-girona"
   },
   "/alarmas-tarragona": {
+    city: "Tarragona",
     title: "Alarmas en Tarragona | Instalación sin Cuotas | Premium Tech Security",
     description: "Instalación alarmas seguridad Tarragona. Ajax Systems. Sin cuotas. Central Receptora 24/7. Presupuesto gratis sin compromiso. Tel: 638 10 99 47",
     keywords: "alarmas Tarragona, instalación alarmas Tarragona, seguridad Tarragona",
     canonical: "https://alarmasenbarcelona.com/alarmas-tarragona"
   },
   "/alarmas-lleida": {
+    city: "Lleida",
     title: "Alarmas en Lleida | Instalación sin Cuotas | Premium Tech Security",
     description: "Alarmas de seguridad en Lleida sin cuotas mensuales. Ajax Hub. Respuesta en 15 segundos. Instalación incluida. Presupuesto gratis. Tel: 638 10 99 47",
     keywords: "alarmas Lleida, instalación alarmas Lleida, seguridad Lleida",
     canonical: "https://alarmasenbarcelona.com/alarmas-lleida"
   },
   "/alarmas-sabadell": {
+    city: "Sabadell",
     title: "Alarmas en Sabadell | Instalación sin Cuotas | Premium Tech Security",
     description: "Sistemas de alarma en Sabadell. Ajax Hub. Sin permanencia ni cuotas. Central Receptora 24/7. Instalación incluida. Tel: 638 10 99 47",
     keywords: "alarmas Sabadell, instalación alarmas Sabadell, seguridad Vallès Occidental",
@@ -64,10 +69,15 @@ export default function CityLandingSEO({ path }) {
     "@graph": [
       {
         "@type": "LocalBusiness",
-        "@id": `${seo.canonical}#business`,
+        // Una sola entidad de negocio en todo el sitio. Antes cada landing
+        // declaraba su propio @id ("<url-de-la-pagina>#business"), así que
+        // Google veía una empresa distinta por ciudad — cinco negocios donde
+        // hay uno. Con el @id de la home todas las páginas describen LA MISMA
+        // entidad y Google las consolida.
+        "@id": "https://alarmasenbarcelona.com/#business",
         "name": "Premium Tech Security",
         "description": seo.description,
-        "url": seo.canonical,
+        "url": "https://alarmasenbarcelona.com",
         "telephone": "+34638109947",
         "email": "tcnpremium@gmail.com",
         "address": {
@@ -78,25 +88,26 @@ export default function CityLandingSEO({ path }) {
           "postalCode": "08026",
           "addressCountry": "ES"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "41.3874",
-          "longitude": "2.1686"
-        },
+        // Sin "geo": marca la ubicación del ESTABLECIMIENTO, y estas cinco
+        // páginas usaban las mismas coordenadas del centro de Barcelona — que
+        // además no coinciden con las que declara la home. Con un @id común,
+        // dos valores distintos de geo son una contradicción. La ubicación la
+        // aporta la ficha de la home; aquí basta con areaServed.
         "openingHours": "Mo-Sa 08:00-20:00",
         "priceRange": "€€",
         "hasMap": "https://maps.google.com/maps?cid=5715602764533889179",
+        // La ciudad de la página es ÁREA DE SERVICIO, no una sede. Antes esta
+        // señal venía de "geo", que decía lo contrario: que la empresa estaba
+        // allí.
+        "areaServed": [
+          { "@type": "City", "name": seo.city },
+          { "@type": "AdministrativeArea", "name": "Catalunya" }
+        ],
         "sameAs": [
           "https://www.instagram.com/premiumtechsecurity",
           "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "19",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
+        // SIN aggregateRating: ver el motivo en AdvancedSEO.jsx.
       },
       {
         "@type": "Service",
