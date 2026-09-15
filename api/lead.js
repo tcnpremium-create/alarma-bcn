@@ -132,7 +132,7 @@ function buildConfirmEmail(formData) {
 
     <div style="background:#F9FAFB;padding:20px 28px;text-align:center;border-top:1px solid #E5E7EB">
       <p style="color:#9CA3AF;font-size:12px;margin:0 0 4px">alarmasenbarcelona.com &middot; Barcelona y alrededores</p>
-      <p style="color:#9CA3AF;font-size:12px;margin:0">Tel: 638 109 947 &middot; info@alarmasenbarcelona.com</p>
+      <p style="color:#9CA3AF;font-size:12px;margin:0">Tel: 638 109 947 &middot; <a href="mailto:tcnpremium@gmail.com" style="color:#9CA3AF;text-decoration:underline">tcnpremium@gmail.com</a></p>
     </div>
 
   </div>
@@ -180,6 +180,10 @@ export default async function handler(req, res) {
     try {
       if (!resend) throw new Error('RESEND_API_KEY no configurada');
       const { data: notifData, error: notifErr } = await resend.emails.send({
+        // El remitente tiene que ser del dominio verificado en Resend: no se
+        // puede enviar desde una dirección @gmail.com. El buzón real de la
+        // empresa es tcnpremium@gmail.com y es el que va en to/reply_to y el
+        // que se muestra al cliente en el pie del email.
         from: 'info@alarmasenbarcelona.com',
         to: 'tcnpremium@gmail.com',
         reply_to: 'tcnpremium@gmail.com',
