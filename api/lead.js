@@ -94,7 +94,10 @@ function buildConfirmEmail(formData) {
       <div style="background:#0A0A1A;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px">
         <div style="color:#E53E3E;font-size:11px;font-weight:800;letter-spacing:0.12em;margin-bottom:8px">OFERTA EXCLUSIVA</div>
         <div style="color:white;font-size:20px;font-weight:900;margin-bottom:6px">Descuento especial en tu primera instalaci&oacute;n</div>
-        <div style="color:#9CA3AF;font-size:13px">Menciona este email al llamar y te aplicamos el descuento</div>
+        <div style="color:#9CA3AF;font-size:13px;margin-bottom:14px">Menciona este email al llamar y te aplicamos el descuento</div>
+        <!-- Texto de urgencia fijo, sin fecha: nunca puede quedar caducado
+             como pasaba con "VÁLIDO HASTA 31 JULIO 2025". -->
+        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">&Uacute;LTIMA SEMANA PARA EL DESCUENTO</div>
       </div>
 
       <a href="tel:+34638109947" style="display:block;background:#E53E3E;color:white;text-align:center;padding:18px;border-radius:50px;font-weight:800;font-size:16px;text-decoration:none;margin-bottom:12px">
