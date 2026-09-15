@@ -74,28 +74,13 @@ function buildNotifEmail(formData, phoneClean) {
   </div>`;
 }
 
-/**
- * Fecha de caducidad de la oferta del email de confirmación.
- *
- * Antes era el literal "31 JULIO 2025". El email se siguió enviando más de
- * un año después con la oferta caducada, que es peor que no ofrecer nada:
- * el cliente ve que le mandan una promoción vencida.
- *
- * Se calcula en el envío, 30 días por delante, así que nunca vuelve a
- * quedarse atrás. El nombre del mes va en una tabla en vez de por
- * toLocaleDateString para no depender de que el runtime lleve los datos de
- * idioma completos (con ICU reducido saldría en inglés).
- */
-const MESES = [
-  'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
-  'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE',
-];
-
-function ofertaValidaHasta(desde = new Date()) {
-  const hasta = new Date(desde.getTime() + 30 * 24 * 60 * 60 * 1000);
-  return `${hasta.getDate()} ${MESES[hasta.getMonth()]} ${hasta.getFullYear()}`;
-}
-
+// El badge de la oferta lleva un texto de urgencia FIJO, sin fecha
+// ("ÚLTIMA SEMANA PARA EL DESCUENTO"), a propósito: antes decía
+// "VÁLIDO HASTA 31 JULIO 2025" y se siguió enviando así más de un año
+// después de caducar (probado en producción: se cambió primero a una fecha
+// calculada a 30 días, y finalmente se decidió que un texto fijo sin fecha
+// es más simple y no puede volver a quedarse desactualizado). Si se vuelve
+// a poner una fecha, tiene que actualizarse sola — nunca a mano.
 function buildConfirmEmail(formData) {
   const nombre = formData.nombre.trim();
   const servicio = formData.servicio_interes?.trim() || 'sistema de seguridad';
@@ -139,7 +124,7 @@ function buildConfirmEmail(formData) {
         <div style="color:#E53E3E;font-size:11px;font-weight:800;letter-spacing:0.12em;margin-bottom:8px">OFERTA EXCLUSIVA</div>
         <div style="color:white;font-size:20px;font-weight:900;margin-bottom:6px">Descuento especial en tu primera instalaci&oacute;n</div>
         <div style="color:#9CA3AF;font-size:13px;margin-bottom:14px">Menciona este email al llamar y te aplicamos el descuento</div>
-        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">V&Aacute;LIDO HASTA ${ofertaValidaHasta()}</div>
+        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">&Uacute;LTIMA SEMANA PARA EL DESCUENTO</div>
       </div>
 
       <a href="tel:+34638109947" style="display:block;background:#E53E3E;color:white;text-align:center;padding:18px;border-radius:50px;font-weight:800;font-size:16px;text-decoration:none;margin-bottom:12px">
