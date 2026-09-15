@@ -34,6 +34,26 @@ function getResend() {
   return resendClient;
 }
 
+/**
+ * Normaliza un teléfono español a sus 9 dígitos nacionales.
+ *
+ * Duplicado a propósito de src/lib/phone.js: aquello se empaqueta con el
+ * bundle del navegador y esto es una función serverless: no comparten
+ * módulos. Son seis líneas; importar a través del límite entre los dos
+ * arriesga que el endpoint entero falle al desplegar, y aquí es donde se
+ * guarda el lead.
+ *
+ * Antes solo se quitaban los espacios, así que un "+34638109947" enviado
+ * por el cuestionario acababa generando el enlace "tel:+34+34638109947".
+ * Si cambia la lógica, cambiar los dos sitios.
+ */
+function normalizarTelefonoES(valor) {
+  let digitos = String(valor ?? '').replace(/\D/g, '');
+  if (digitos.startsWith('0034')) digitos = digitos.slice(4);
+  else if (digitos.startsWith('34') && digitos.length > 9) digitos = digitos.slice(2);
+  return digitos.slice(0, 9);
+}
+
 function buildNotifEmail(formData, phoneClean) {
   return `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;border:1px solid #eee;border-radius:8px;overflow:hidden">
     <div style="background:#E53E3E;padding:24px">
@@ -153,7 +173,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Nombre y telefono son obligatorios' });
     }
 
-    const phoneClean = formData.telefono.replace(/\s/g, '');
+    const phoneClean = normalizarTelefonoES(formData.telefono);
 
     const { data: lead, error: dbError } = await supabase
       .from('leads')

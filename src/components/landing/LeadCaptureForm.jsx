@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { normalizarTelefonoES, esTelefonoES } from "@/lib/phone";
 import { User, Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
 import { LeadAPI } from "@/api/api";
 
@@ -42,7 +43,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
       setError("Nombre y teléfono son obligatorios.");
       return;
     }
-    if (!/^\d{9}$/.test(form.telefono.replace(/\s/g, ""))) {
+    if (!esTelefonoES(form.telefono)) {
       setError("Indica un teléfono válido (9 dígitos).");
       return;
     }
@@ -60,7 +61,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
       await LeadAPI.create({
         nombre: form.nombre.trim(),
         email: form.email.trim(),
-        telefono: form.telefono.replace(/\s/g, ""),
+        telefono: normalizarTelefonoES(form.telefono),
         zona: form.zona.trim(),
         tipo_cliente: isSonorizacion ? tipoClienteFor(form.espacio) : "hogar",
         servicio_interes: service || "",
@@ -147,7 +148,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
           <label style={labelStyle} htmlFor="lcf-telefono">Teléfono *</label>
           <div style={{ position: "relative" }}>
             <Phone size={16} style={iconStyle} />
-            <input id="lcf-telefono" type="tel" inputMode="tel" autoComplete="tel" placeholder="6XX XXX XXX" required value={form.telefono} onChange={(e) => setForm((f) => ({ ...f, telefono: e.target.value.replace(/\D/g, "").slice(0, 9) }))} style={inputStyle} />
+            <input id="lcf-telefono" type="tel" inputMode="tel" autoComplete="tel" placeholder="6XX XXX XXX" required value={form.telefono} onChange={(e) => setForm((f) => ({ ...f, telefono: normalizarTelefonoES(e.target.value) }))} style={inputStyle} />
           </div>
         </div>
         <div className="grid sm:grid-cols-2" style={{ gap: 14 }}>

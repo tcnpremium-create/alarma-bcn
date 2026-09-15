@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { normalizarTelefonoES } from "@/lib/phone";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -147,10 +148,9 @@ ${formData.detalles || 'Sin detalles adicionales'}
                 type="tel"
                 placeholder="Teléfono (9 dígitos) *"
                 value={formData.telefono}
-                onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, telefono: normalizarTelefonoES(e.target.value) })}
                 className="h-10 text-sm"
                 required
-                maxLength={9}
               />
               <Input
                 type="email"

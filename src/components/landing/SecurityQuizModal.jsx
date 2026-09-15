@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { normalizarTelefonoES, esTelefonoES } from "@/lib/phone";
 import {
   Home, Building2, Store, Warehouse, DoorOpen, Trees, AppWindow, Package,
   ShieldCheck, Camera, Bell, Fingerprint, Rocket, CalendarClock, CalendarSearch,
@@ -157,8 +158,8 @@ export default function SecurityQuizModal({ open, onClose }) {
     e.preventDefault();
     if (!form.nombre.trim()) { setFormError("Indica tu nombre completo."); return; }
     if (!form.municipio) { setFormError("Selecciona el municipio de la instalación."); return; }
-    const phoneClean = form.telefono.replace(/\s/g, "");
-    if (!/^(\+?34)?[6789]\d{8}$/.test(phoneClean)) { setFormError("Introduce un teléfono válido (9 dígitos)."); return; }
+    const phoneClean = normalizarTelefonoES(form.telefono);
+    if (!esTelefonoES(phoneClean)) { setFormError("Introduce un teléfono válido (9 dígitos)."); return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) { setFormError("Introduce un email válido."); return; }
 
     setFormError("");

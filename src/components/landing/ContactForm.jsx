@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { normalizarTelefonoES, esTelefonoES } from "@/lib/phone";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -34,7 +35,7 @@ export default function ContactForm() {
         return;
       }
     }
-    if (!/^\d{9}$/.test(formData.telefono.replace(/\s/g, ''))) {
+    if (!esTelefonoES(formData.telefono)) {
       alert("Por favor, ingresa un teléfono válido (9 dígitos)");
       return;
     }
@@ -144,7 +145,7 @@ export default function ContactForm() {
             autoComplete="tel"
             placeholder="6XX XXX XXX"
             value={formData.telefono}
-            onChange={(e) => setFormData({ ...formData, telefono: e.target.value.replace(/\D/g, '').slice(0, 9) })}
+            onChange={(e) => setFormData({ ...formData, telefono: normalizarTelefonoES(e.target.value) })}
             required
             style={{ fontSize: 16 }}
             className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
