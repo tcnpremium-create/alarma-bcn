@@ -11,9 +11,9 @@ const supabase = createClient(
 /**
  * Cliente de Resend.
  *
- * La clave estaba escrita en claro aquí y viajó al repositorio, así que hay
- * que darla por comprometida y rotarla en Resend. Ahora se lee de la
- * variable de entorno RESEND_API_KEY.
+ * La clave estaba escrita aquí en claro y viajó al repositorio, así que hay
+ * que darla por comprometida y rotarla. Ahora se lee de la variable de
+ * entorno RESEND_API_KEY.
  *
  * Se construye de forma perezosa y devolviendo null si falta la clave, en
  * vez de en el momento de cargar el módulo: el constructor de Resend lanza
@@ -54,6 +54,28 @@ function buildNotifEmail(formData, phoneClean) {
   </div>`;
 }
 
+/**
+ * Fecha de caducidad de la oferta del email de confirmación.
+ *
+ * Antes era el literal "31 JULIO 2025". El email se siguió enviando más de
+ * un año después con la oferta caducada, que es peor que no ofrecer nada:
+ * el cliente ve que le mandan una promoción vencida.
+ *
+ * Se calcula en el envío, 30 días por delante, así que nunca vuelve a
+ * quedarse atrás. El nombre del mes va en una tabla en vez de por
+ * toLocaleDateString para no depender de que el runtime lleve los datos de
+ * idioma completos (con ICU reducido saldría en inglés).
+ */
+const MESES = [
+  'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
+  'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE',
+];
+
+function ofertaValidaHasta(desde = new Date()) {
+  const hasta = new Date(desde.getTime() + 30 * 24 * 60 * 60 * 1000);
+  return `${hasta.getDate()} ${MESES[hasta.getMonth()]} ${hasta.getFullYear()}`;
+}
+
 function buildConfirmEmail(formData) {
   const nombre = formData.nombre.trim();
   const servicio = formData.servicio_interes?.trim() || 'sistema de seguridad';
@@ -90,14 +112,14 @@ function buildConfirmEmail(formData) {
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Instalaci&oacute;n profesional</strong> incluida sin costes ocultos</span></div>
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Sin permanencias</strong> &mdash; cancela cuando quieras</span></div>
         <div style="margin-bottom:10px"><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Soporte 24/7</strong> &mdash; siempre disponibles para ti</span></div>
-        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>M&aacute;s de 5.000 instalaciones</strong> en Barcelona y alrededores</span></div>
+        <div><span style="color:#E53E3E;font-weight:900">&#10003;</span>&nbsp;&nbsp;<span style="color:#374151;font-size:14px"><strong>Instalaciones en Barcelona</strong> y toda Catalunya</span></div>
       </div>
 
       <div style="background:#0A0A1A;border-radius:12px;padding:24px;text-align:center;margin-bottom:24px">
         <div style="color:#E53E3E;font-size:11px;font-weight:800;letter-spacing:0.12em;margin-bottom:8px">OFERTA EXCLUSIVA</div>
         <div style="color:white;font-size:20px;font-weight:900;margin-bottom:6px">Descuento especial en tu primera instalaci&oacute;n</div>
         <div style="color:#9CA3AF;font-size:13px;margin-bottom:14px">Menciona este email al llamar y te aplicamos el descuento</div>
-        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">V&Aacute;LIDO HASTA 31 JULIO 2025</div>
+        <div style="display:inline-block;background:#E53E3E;color:white;padding:8px 20px;border-radius:50px;font-size:12px;font-weight:800">V&Aacute;LIDO HASTA ${ofertaValidaHasta()}</div>
       </div>
 
       <a href="tel:+34638109947" style="display:block;background:#E53E3E;color:white;text-align:center;padding:18px;border-radius:50px;font-weight:800;font-size:16px;text-decoration:none;margin-bottom:12px">
@@ -182,6 +204,10 @@ export default async function handler(req, res) {
       try {
         const { data: confirmData, error: confirmErr } = await resend.emails.send({
           from: 'info@alarmasenbarcelona.com',
+          // Si el cliente responde a este email, la respuesta tiene que
+          // llegar al buzón real. El de notificación ya lo hacía; este no,
+          // así que una respuesta acababa en info@ y podía perderse.
+          reply_to: 'tcnpremium@gmail.com',
           to: formData.email.trim(),
           subject: 'Solicitud recibida — te llamamos antes de 24h',
           html: buildConfirmEmail(formData)
