@@ -112,6 +112,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         description={seoDescription || `Instalamos cámaras de seguridad en ${city}. Hikvision y Dahua. 4K HD. Sin cuotas mensuales. Presupuesto gratis en 24h. Llama al 638 10 99 47.`}
         keywords={`cámaras seguridad ${city}, instalación cámaras ${city}, videovigilancia ${city}, CCTV ${city}`}
         canonicalUrl={`https://alarmasenbarcelona.com${seoPath}`}
+        includeLocalBusiness={city === "Barcelona"}
+        serviceArea={city}
       />
       <Navbar />
 
