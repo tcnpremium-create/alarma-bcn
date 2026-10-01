@@ -84,13 +84,6 @@ export default function AdvancedSEO({
           { "@type": "City", "name": "Cornellà de Llobregat" },
           { "@type": "AdministrativeArea", "name": "Catalunya" }
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "19",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Servicios de Seguridad",
