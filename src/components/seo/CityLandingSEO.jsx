@@ -109,7 +109,7 @@ export default function CityLandingSEO({ path }) {
         "name": "Instalación de Sistemas de Alarma Ajax",
         "serviceType": "Instalación de Alarmas de Seguridad Profesional",
         "description": "Instalación de sistemas de alarma Ajax inalámbricos certificados. Respuesta CRA en 15 segundos.",
-        "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947" },
+        "provider": { "@id": "https://alarmasenbarcelona.com/#organization" },
         "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "Catalunya"],
         "offers": { "@type": "AggregateOffer", "lowPrice": ALARM_LOW_PRICE, "highPrice": ALARM_HIGH_PRICE, "priceCurrency": "EUR", "offerCount": String(ALARM_KITS.length) }
       },
