@@ -54,12 +54,13 @@ const ALARM_FAQS = [
 
 export default function CityLandingSEO({ path }) {
   const seo = SEO_DATA[path];
+  const isBarcelona = path === "/alarmas-barcelona";
   if (!seo) return null;
 
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      {
+      ...(isBarcelona ? [{
         "@type": "LocalBusiness",
         "@id": `${seo.canonical}#business`,
         "name": "Premium Tech Security",
@@ -94,6 +95,14 @@ export default function CityLandingSEO({ path }) {
           "bestRating": "5",
           "worstRating": "1"
         }
+      }] : [{
+        "@type": "Service",
+        "@id": `${seo.canonical}#service`,
+        "name": seo.title,
+        "serviceType": "Instalación de alarmas y sistemas de seguridad",
+        "description": seo.description,
+        "provider": { "@id": "https://alarmasenbarcelona.com/#organization" },
+        "areaServed": { "@type": "City", "name": path === "/alarmas-girona" ? "Girona" : path === "/alarmas-tarragona" ? "Tarragona" : path === "/alarmas-lleida" ? "Lleida" : "Sabadell" }
       },
       {
         "@type": "Service",
