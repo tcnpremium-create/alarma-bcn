@@ -23,6 +23,8 @@ export default function AdvancedSEO({
   // específico de servicio se perdía en silencio y esas páginas solo
   // emitían el LocalBusiness/WebSite/Organization genérico.
   schema = null,
+  includeLocalBusiness = true,
+  serviceArea = null,
 }) {
   const canonical = canonicalUrl || SITE_URL;
   const extraNodes = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
@@ -30,7 +32,7 @@ export default function AdvancedSEO({
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
-      {
+      ...(includeLocalBusiness ? [{
         "@type": "LocalBusiness",
         "@id": `${SITE_URL}/#business`,
         "name": "Premium Tech Security",
@@ -82,13 +84,6 @@ export default function AdvancedSEO({
           { "@type": "City", "name": "Cornellà de Llobregat" },
           { "@type": "AdministrativeArea", "name": "Catalunya" }
         ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "19",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Servicios de Seguridad",
@@ -143,7 +138,15 @@ export default function AdvancedSEO({
           "https://www.instagram.com/premiumtechsecurity",
           "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
         ]
-      },
+      }] : [{
+        "@type": "Service",
+        "@id": `${canonical}#service`,
+        "name": title,
+        "description": description,
+        "serviceType": title,
+        "provider": { "@id": `${SITE_URL}/#organization` },
+        "areaServed": serviceArea || "Catalunya"
+      }]),
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
@@ -222,9 +225,9 @@ export default function AdvancedSEO({
       
       {/* Geo Tags */}
       <meta name="geo.region" content="ES-CT" />
-      <meta name="geo.placename" content="Barcelona" />
-      <meta name="geo.position" content="41.3851;2.1734" />
-      <meta name="ICBM" content="41.3851, 2.1734" />
+      <meta name="geo.placename" content={serviceArea || "Barcelona"} />
+      {includeLocalBusiness && <><meta name="geo.position" content="41.3851;2.1734" />
+      <meta name="ICBM" content="41.3851, 2.1734" /></>}
       
       {/* Robots */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
