@@ -64,7 +64,21 @@ if (corrupted) {
   process.exit(1);
 }
 
-const snapshotBody = snapshotHtml.match(/<body>([\s\S]*)<\/body>/)[1];
+// OJO: index.html lleva un comentario en el <head> que contiene el texto
+// literal "<body>" — un regex /<body>.../ casa ahí y se come todo el head
+// (hojas de estilo incluidas → web sin CSS: menú, cabecera fija y todo lo
+// demás se descolocan). Se usa el ÚLTIMO <body> real por índice.
+function bodyRange(html) {
+  const start = html.lastIndexOf('<body>');
+  const end = html.lastIndexOf('</body>');
+  if (start === -1 || end === -1 || end < start) {
+    console.error('No se pudo localizar <body>...</body> — abortando.');
+    process.exit(1);
+  }
+  return [start + '<body>'.length, end];
+}
+const [snapStart, snapEnd] = bodyRange(snapshotHtml);
+const snapshotBody = snapshotHtml.slice(snapStart, snapEnd);
 
 // BUG REAL (producción, oct-2026): el comentario de arriba decía "sin
 // tocar los <script> de assets... nunca hay riesgo de referenciar un
@@ -98,12 +112,18 @@ const snapshotBodyNoScripts = snapshotBody
   // en el <head> de baseHtml, sin tocar.
   .replace(/<link[^>]*rel="(?:stylesheet|modulepreload)"[^>]*>/g, '');
 
-let out = baseHtml.replace('</head>', helmetTags.join('\n    ') + '\n  </head>');
-out = out.replace(/<body>[\s\S]*<\/body>/, `<body>${snapshotBodyNoScripts}${realEntryScripts.join('')}</body>`);
+const headEnd = baseHtml.lastIndexOf('</head>');
+let out = baseHtml.slice(0, headEnd) + helmetTags.join('\n    ') + '\n  ' + baseHtml.slice(headEnd);
+const [outStart, outEnd] = bodyRange(out);
+out = out.slice(0, outStart) + snapshotBodyNoScripts + realEntryScripts.join('') + out.slice(outEnd);
 
 // Salvaguarda final: el index.html que se va a escribir debe referenciar
 // un asset que de verdad existe en ESTE dist/, nunca el de un snapshot
 // viejo (es exactamente el bug que se acaba de corregir arriba).
+if (!/<link rel="stylesheet"[^>]*href="\/assets\/[^"]+\.css"/.test(out)) {
+  console.error('dist/index.html perdió la hoja de estilos de la build — abortando para no desplegar una web sin CSS.');
+  process.exit(1);
+}
 const assetsDir = path.join(ROOT, 'dist/assets');
 const referencedAssets = [...out.matchAll(/\/assets\/([^"']+)/g)].map((m) => m[1]);
 const missing = referencedAssets.filter((f) => !existsSync(path.join(assetsDir, f)));
