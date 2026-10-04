@@ -59,17 +59,17 @@ export default function HomeSeoLocal() {
         </div>
 
         {/* Enlaces a páginas locales diferenciadas */}
-        <div className="bg-white rounded-2xl p-6" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+        <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm sm:p-6">
           <p style={{ color: "#9CA3AF", fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 14 }}>
             Páginas por ciudad
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-x-6 gap-y-2">
+          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
             {LOCAL_PAGES.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                style={{ color: "#4B5563", fontSize: 13, textDecoration: "none" }}
-                className="hover:text-[#E53E3E] hover:underline"
+                style={{ color: "#374151", textDecoration: "none" }}
+                className="flex min-h-11 items-center rounded-xl border border-gray-100 bg-gray-50 px-3 py-2 text-sm leading-snug transition-colors hover:border-red-200 hover:bg-red-50 hover:text-[#B91C1C]"
               >
                 {link.text}
               </Link>

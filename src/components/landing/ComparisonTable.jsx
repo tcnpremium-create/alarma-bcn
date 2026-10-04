@@ -2,10 +2,10 @@ import React from "react";
 import { Check, X } from "lucide-react";
 
 const ROWS = [
-  { label: "Cuota Mensual", us: "0€/mes (Propiedad del equipo)*", them: "45€ - 60€/mes (Alquiler eterno)*" },
-  { label: "Calidad de Vídeo", us: "Alta Definición 4K con IA", them: "Resolución estándar (verificación básica)" },
-  { label: "Permanencia", us: "Sin permanencia", them: "24 a 36 meses obligatorios" },
-  { label: "Garantía", us: "3 años en todos los productos", them: "Solo mientras pagues la cuota" },
+  { label: "Cuota mensual", us: "Equipo en propiedad, sin cuota de alquiler*", them: "Puede incluir cuotas según el servicio contratado" },
+  { label: "Sistema de vídeo", us: "Opciones 4K e IA según el sistema elegido", them: "Prestaciones según el equipo contratado" },
+  { label: "Permanencia", us: "Sin permanencia*", them: "Condiciones según contrato" },
+  { label: "Garantía", us: "3 años en los productos indicados*", them: "Condiciones según producto y contrato" },
 ];
 
 export default function ComparisonTable() {
@@ -16,22 +16,19 @@ export default function ComparisonTable() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
           <span className="inline-block bg-red-500/10 border border-red-500/30 text-red-500 text-[11px] font-bold tracking-widest uppercase rounded-full px-4 py-1.5 mb-4">
-            Premium Tech Security vs. Multinacionales
+            Premium Tech Security vs. modelos tradicionales
           </span>
           <h2 className="text-white text-2xl sm:text-3xl font-black tracking-tight mb-3">
-            El equipo es tuyo. No lo alquilas de por vida.
+            Elige el sistema y las condiciones que encajan contigo.
           </h2>
           <p className="text-slate-400 text-sm max-w-xl mx-auto">
-            Así de claro es comparar un instalador local sin cuotas frente a las grandes cadenas con permanencia.
+            Compara propiedad del equipo, prestaciones y condiciones antes de contratar. Cada oferta depende del proveedor y del sistema elegido.
           </p>
         </div>
 
-        <div className="overflow-x-auto">
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 min-w-[560px]">
-            <div
-              className="grid grid-cols-3 text-sm"
-              style={{ gridTemplateRows: `repeat(${totalRows}, auto)` }}
-            >
+        <div className="hidden overflow-x-auto sm:block">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10">
+            <div className="grid grid-cols-3 text-sm" style={{ gridTemplateRows: `repeat(${totalRows}, auto)` }}>
               {/* Header row */}
               <div className="bg-white/[0.03] text-slate-500 text-xs font-bold uppercase tracking-wider py-4 px-5">&nbsp;</div>
               <div className="bg-red-500/10 text-red-400 text-xs font-bold uppercase tracking-wider py-4 px-5 border-x border-white/10">
@@ -65,8 +62,26 @@ export default function ComparisonTable() {
           </div>
         </div>
 
+        <div className="space-y-4 sm:hidden">
+          {ROWS.map((row) => (
+            <article key={row.label} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+              <h3 className="mb-3 text-sm font-bold text-white">{row.label}</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-2 rounded-xl border border-red-400/20 bg-red-500/[0.08] p-3">
+                  <Check size={17} className="mt-0.5 shrink-0 text-red-400" strokeWidth={3} aria-hidden="true" />
+                  <div><p className="text-[11px] font-bold uppercase tracking-wide text-red-300">Premium Tech Security</p><p className="mt-1 text-sm font-medium leading-snug text-white">{row.us}</p></div>
+                </div>
+                <div className="flex items-start gap-2 rounded-xl bg-white/[0.03] p-3">
+                  <X size={17} className="mt-0.5 shrink-0 text-slate-500" strokeWidth={3} aria-hidden="true" />
+                  <div><p className="text-[11px] font-bold uppercase tracking-wide text-slate-400">Modelos tradicionales</p><p className="mt-1 text-sm leading-snug text-slate-400">{row.them}</p></div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
         <p className="text-center text-slate-600 text-xs mt-6">
-          * Precios sin IVA. Comparativa orientativa frente a modelos de alquiler de equipos habituales en el sector. Condiciones sujetas a presupuesto personalizado.
+          * Condiciones sujetas al equipo, producto y presupuesto contratados. Comprueba el detalle en cada propuesta.
         </p>
       </div>
     </section>

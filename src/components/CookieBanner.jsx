@@ -62,12 +62,12 @@ export default function CookieBanner() {
       role="dialog"
       aria-modal="false"
       aria-label="Preferencias de cookies"
-      className="fixed bottom-0 left-0 right-0 z-[10000] px-4 py-4 sm:px-6 border-t border-slate-800"
-      style={{ backdropFilter: "blur(12px)", background: "rgba(15, 23, 42, 0.96)" }}
+      className="fixed bottom-[max(4.5rem,calc(env(safe-area-inset-bottom)+4rem))] left-3 right-3 z-[9998] max-h-[60dvh] overflow-y-auto rounded-2xl border border-slate-700 px-3 py-2 shadow-2xl sm:bottom-6 sm:left-1/2 sm:right-auto sm:w-[min(42rem,calc(100vw-3rem))] sm:-translate-x-1/2 sm:px-6 sm:py-4"
+      style={{ backdropFilter: "blur(12px)", background: "rgba(15, 23, 42, 0.97)" }}
     >
       <div className="max-w-4xl mx-auto">
-        <p className="text-sm text-slate-300 mb-3">
-          Utilizamos cookies necesarias para el funcionamiento de la web y, si lo aceptas, cookies de analítica y publicidad para mejorar tu experiencia. Puedes aceptarlas todas, rechazarlas o configurar tus preferencias.
+        <p className="mb-1 text-[11px] leading-tight text-slate-300 sm:mb-3 sm:text-sm sm:leading-relaxed">
+          Cookies necesarias; analítica y publicidad, solo con permiso.
         </p>
 
         {showDetails && (
@@ -120,11 +120,11 @@ export default function CookieBanner() {
           </div>
         )}
 
-        <div className="flex flex-wrap items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2.5">
           {!showDetails && (
             <button
               onClick={() => setShowDetails(true)}
-              className="text-sm text-slate-300 underline underline-offset-2 hover:text-white transition-colors px-1 py-2"
+              className="min-h-9 rounded-lg px-2 py-1.5 text-[11px] text-slate-300 underline underline-offset-2 transition-colors hover:text-white sm:min-h-11 sm:px-2 sm:py-2 sm:text-sm"
             >
               Configurar
             </button>
@@ -132,21 +132,21 @@ export default function CookieBanner() {
           <div className="flex-1" />
           <button
             onClick={rejectAll}
-            className="shrink-0 bg-transparent border border-slate-600 hover:border-slate-400 text-slate-200 text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+            className="min-h-9 shrink-0 rounded-full border border-slate-600 bg-transparent px-3 py-1.5 text-[11px] font-semibold text-slate-200 transition-colors duration-200 hover:border-slate-400 sm:min-h-11 sm:px-5 sm:py-2 sm:text-sm"
           >
             Rechazar
           </button>
           {showDetails ? (
             <button
               onClick={saveConfigured}
-              className="shrink-0 bg-[#E53E3E] hover:bg-[#C53030] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+              className="min-h-9 shrink-0 rounded-full bg-[#E53E3E] px-3 py-1.5 text-[11px] font-semibold text-white transition-colors duration-200 hover:bg-[#C53030] sm:min-h-11 sm:px-5 sm:py-2 sm:text-sm"
             >
               Guardar preferencias
             </button>
           ) : (
             <button
               onClick={acceptAll}
-              className="shrink-0 bg-[#E53E3E] hover:bg-[#C53030] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+            className="min-h-9 shrink-0 rounded-full bg-[#E53E3E] px-3 py-1.5 text-[11px] font-semibold text-white transition-colors duration-200 hover:bg-[#C53030] sm:min-h-11 sm:px-5 sm:py-2 sm:text-sm"
             >
               Aceptar
             </button>
