@@ -11,7 +11,7 @@ export default function BarrioEixample() {
     <div className="min-h-screen bg-white">
       <LocalitySEO
         city="Eixample"
-        title="Alarmas en el Eixample (Barcelona) | Instalación Sistemas Seguridad Profesional 24/7"
+        title="Alarmas en el Eixample, Barcelona | Instalación 24/7"
         description="Instalación de alarmas y cámaras de seguridad en el barrio del Eixample, Barcelona. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Eixample, instalación alarmas Eixample Barcelona, sistemas seguridad Eixample, cámaras Eixample, videovigilancia Eixample"
         canonicalUrl="https://alarmasenbarcelona.com/BarrioEixample"

@@ -214,7 +214,10 @@ export default function BlogArticle() {
     );
   }
 
-  const seoTitle = seoData.seoTitle || `${article.title} | Alarmas Barcelona`;
+  // Google corta los títulos a ~60 caracteres: el sufijo de marca solo se
+  // añade cuando cabe entero.
+  const titleWithBrand = `${article.title} | Alarmas Barcelona`;
+  const seoTitle = seoData.seoTitle || (titleWithBrand.length <= 60 ? titleWithBrand : article.title);
   const metaDesc = seoData.metaDescription || article.excerpt;
   const keywords = (seoData.keywords || [article.category, 'alarmas Barcelona', 'instalación alarma Barcelona']).join(', ');
   const canonicalUrl = `${SITE_URL}/BlogArticle/${slug}`;

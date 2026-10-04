@@ -13,7 +13,7 @@ export default function Badalona() {
     <div className="min-h-screen bg-white">
       <LocalitySEO
         city="Badalona"
-        title="Alarmas en Badalona | Instalación Profesional 24/7 | PremiumTechSecurity"
+        title="Alarmas en Badalona | Instalación Profesional 24/7"
         description="Instalación de alarmas en Badalona. Sistemas AJAX, cámaras 4K, control de accesos para hogares y negocios. Presupuesto gratuito ☎ 638 10 99 47. Respuesta inmediata."
         keywords="alarmas Badalona, instalación alarmas Badalona, sistemas seguridad Badalona, cámaras seguridad Badalona, videovigilancia Badalona, alarma hogar Badalona"
         canonicalUrl="https://alarmasenbarcelona.com/Badalona"

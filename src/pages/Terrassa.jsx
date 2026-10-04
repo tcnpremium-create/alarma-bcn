@@ -12,7 +12,7 @@ export default function Terrassa() {
     <div className="min-h-screen bg-white">
       <LocalitySEO
         city="Terrassa"
-        title="Alarmas en Terrassa | Instalación Sistemas Seguridad Profesional 24/7"
+        title="Alarmas en Terrassa | Instalación Profesional 24/7"
         description="Instalación profesional de alarmas en Terrassa. Sistemas AJAX, cámaras Hikvision 4K, control de accesos para viviendas, naves y comercios. Presupuesto gratuito ☎ 638 10 99 47."
         keywords="alarmas Terrassa, instalación alarmas Terrassa, sistemas seguridad Terrassa, cámaras seguridad Terrassa, videovigilancia Terrassa, alarma nave industrial Terrassa"
         canonicalUrl="https://alarmasenbarcelona.com/Terrassa"

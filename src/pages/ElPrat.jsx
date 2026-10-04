@@ -11,7 +11,7 @@ export default function ElPratPage() {
     <div className="min-h-screen bg-gray-50">
       <LocalitySEO
         city="El Prat de Llobregat"
-        title="Alarmas en El Prat de Llobregat | Instalación Sistemas Seguridad Profesional 24/7"
+        title="Alarmas en El Prat de Llobregat | Instalación Profesional 24/7"
         description="Instalación de alarmas y cámaras de seguridad en El Prat de Llobregat. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas El Prat de Llobregat, instalación alarmas El Prat, sistemas seguridad El Prat, cámaras El Prat, videovigilancia El Prat"
         canonicalUrl="https://alarmasenbarcelona.com/ElPrat"

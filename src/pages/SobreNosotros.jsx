@@ -86,9 +86,15 @@ export default function SobreNosotros() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Sobre Nosotros | Premium Tech Security - Empresa de Seguridad en Barcelona</title>
+        <title>Sobre Nosotros | Premium Tech Security Barcelona</title>
         <meta name="description" content={`Premium Tech Security — Instaladores certificados de alarmas y cámaras en Barcelona con ${businessStats.experienceText.toLowerCase()}. Sin cuotas mensuales. Tel: 638 10 99 47.`} />
         <link rel="canonical" href="https://alarmasenbarcelona.com/SobreNosotros" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Sobre Nosotros | Premium Tech Security Barcelona" />
+        <meta property="og:description" content={`Premium Tech Security — Instaladores certificados de alarmas y cámaras en Barcelona con ${businessStats.experienceText.toLowerCase()}. Sin cuotas mensuales. Tel: 638 10 99 47.`} />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/SobreNosotros" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
         <script type="application/ld+json">{JSON.stringify(sobreSchema)}</script>
       </Helmet>
       <Navbar />

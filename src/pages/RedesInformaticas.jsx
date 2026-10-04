@@ -38,7 +38,7 @@ export default function RedesInformaticas() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Redes Informáticas en Barcelona | Cableado e Instalación de Red | Premium Tech Security"
+        title="Redes Informáticas en Barcelona | Cableado y WiFi Profesional"
         description="Instalación de redes informáticas en Barcelona: cableado estructurado, WiFi profesional, switches y racks para empresas, oficinas y viviendas. Presupuesto gratis 638 10 99 47."
         canonicalUrl="https://alarmasenbarcelona.com/redes-informaticas"
         keywords="redes informáticas Barcelona, instalación de redes Barcelona, cableado estructurado Barcelona, WiFi profesional Barcelona, redes para empresas"

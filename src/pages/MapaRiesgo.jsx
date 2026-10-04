@@ -175,9 +175,15 @@ export default function MapaRiesgo() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Mapa de Riesgo de Robos en Barcelona por Barrios 2026 | Alarmas Barcelona</title>
+        <title>Mapa de Riesgo de Robos en Barcelona por Barrios 2026</title>
         <meta name="description" content="Descubre el nivel de riesgo de robo de tu barrio en Barcelona. Estadísticas actualizadas 2026 por distrito: Eixample, Gràcia, Nou Barris y más." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/MapaRiesgo" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Mapa de Riesgo de Robos en Barcelona por Barrios 2026" />
+        <meta property="og:description" content="Descubre el nivel de riesgo de robo de tu barrio en Barcelona. Estadísticas actualizadas 2026 por distrito: Eixample, Gràcia, Nou Barris y más." />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/MapaRiesgo" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <Navbar />

@@ -5,7 +5,7 @@ export default function CamarasTarragona() {
   return (
     <CameraCityTemplate
       city="Tarragona"
-      seoTitle="Instalación Cámaras de Seguridad en Tarragona | Sin Cuotas | Premium Tech Security"
+      seoTitle="Cámaras de Seguridad en Tarragona | Sin Cuotas | Premium Tech"
       seoDescription="Cámaras de seguridad en Tarragona. Instalación profesional 4K. Sin cuotas mensuales. Garantía 3 años. Presupuesto gratis. Tel: 638 10 99 47"
       seoPath="/camaras-tarragona"
       intro="Servicio de instalación de cámaras de seguridad en Tarragona y la Costa Daurada. Resolución 4K, IA y visión nocturna. Sin cuotas mensuales."
