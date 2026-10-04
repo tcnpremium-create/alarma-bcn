@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Phone, ShieldCheck, MessageCircle } from "lucide-react";
+import { Phone, ShieldCheck, MessageCircle, Home, Store, Building2, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { businessStats } from "@/lib/businessStats";
 
@@ -7,27 +7,24 @@ const SLIDES = [
   {
     img: "/images/camaras-variedad-exterior.webp",
     pos: "center center",
-    badge: "Videovigilancia 4K · IA Avanzada",
-    h1a: "Instalación de Cámaras de Seguridad",
-    h1b: "en Barcelona",
-    sub: "Cámaras 4K Hikvision y Dahua con detección inteligente. Instalación profesional para viviendas, negocios y comunidades, control desde el móvil y presupuesto gratuito.",
+    label: "Videovigilancia 4K",
   },
   {
     img: "/images/hero-intruder.jpeg",
     pos: "65% center",
-    badge: "Sistema Activo · Barcelona y Área Metropolitana",
-    h1a: "Tu Hogar o Negocio",
-    h1b: "Blindado Sin Cuotas",
-    sub: "Cámaras 4K con IA y alarmas Ajax que detectan intrusos antes de que actúen. Alertas en tiempo real en tu móvil. Sin permanencia.",
+    label: "Protección perimetral",
   },
   {
     img: "/images/hero-ajax.jpeg",
     pos: "center center",
-    badge: "Alarmas Ajax · Grado 2 Certificado",
-    h1a: "Sistemas de Alarma en Barcelona",
-    h1b: "Alta Seguridad AJAX",
-    sub: "Ecosistema Ajax: tecnología avanzada de detección, cifrado end-to-end y verificación en la Central Receptora en menos de 15 segundos.",
+    label: "Alarmas Ajax",
   },
+];
+
+const PROTECTION = [
+  { Icon: Home, title: "Vivienda", text: "Casa, piso o chalet", lead: "Protección para vivienda" },
+  { Icon: Store, title: "Negocio", text: "Local, oficina o nave", lead: "Protección para negocio" },
+  { Icon: Building2, title: "Comunidad", text: "Zonas comunes y accesos", lead: "Protección para comunidad" },
 ];
 
 export default function HeroProf() {
@@ -35,231 +32,267 @@ export default function HeroProf() {
   const { openDrawer } = useLeadDrawer();
 
   useEffect(() => {
-    const id = setInterval(() => setActive(i => (i + 1) % SLIDES.length), 5500);
+    const id = setInterval(() => setActive((i) => (i + 1) % SLIDES.length), 5200);
     return () => clearInterval(id);
   }, []);
 
   return (
-    <section style={{ position: "relative", overflow: "hidden", minHeight: "100vh", background: "#020609" }}>
+    <section className="pt-hero">
       <style>{`
-        @keyframes hero-fade-in {
-          from { opacity: 0; transform: translateY(18px); }
-          to   { opacity: 1; transform: translateY(0); }
+        .pt-hero {
+          position: relative;
+          overflow: hidden;
+          min-height: 100svh;
+          background: #020609;
+          isolation: isolate;
         }
-        @keyframes hero-kenburns {
+        @keyframes pt-kenburns {
           0% { transform: scale(1.02) translate3d(0,0,0); }
-          50% { transform: scale(1.09) translate3d(-1.2%, -0.5%, 0); }
-          100% { transform: scale(1.04) translate3d(0.8%, 0.4%, 0); }
+          50% { transform: scale(1.1) translate3d(-1.1%,-.5%,0); }
+          100% { transform: scale(1.04) translate3d(.8%,.3%,0); }
         }
-        @keyframes badge-pulse {
-          0%, 100% { box-shadow: 0 0 0 0 rgba(229,62,62,0.3); }
-          50%       { box-shadow: 0 0 0 8px rgba(229,62,62,0); }
+        @keyframes pt-enter {
+          from { opacity:0; transform:translateY(18px); }
+          to { opacity:1; transform:translateY(0); }
         }
-        .hero-dot-btn { transition: all 0.3s ease; }
-        .hero-cta-glow { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .hero-cta-glow:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(229,62,62,0.55); }
-        .hero-cta-glow::after {
-          content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
-          background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
-          transform: skewX(-20deg);
+        @keyframes pt-pulse {
+          0%,100% { box-shadow:0 0 0 0 rgba(229,62,62,.28); }
+          50% { box-shadow:0 0 0 9px rgba(229,62,62,0); }
         }
-        .hero-cta-glow:hover::after { animation: hero-shine 0.9s ease; }
-        @keyframes hero-shine { from { left: -75%; } to { left: 125%; } }
-        @media (max-width: 640px) {
-          .hero-content-inner { padding: 100px 16px 80px !important; }
+        .pt-hero__grid {
+          position: relative;
+          z-index: 10;
+          max-width: 1240px;
+          margin: 0 auto;
+          padding: 138px 24px 98px;
+          display: grid;
+          grid-template-columns: minmax(0,1.12fr) minmax(330px,.68fr);
+          gap: 54px;
+          align-items: center;
+        }
+        .pt-hero__panel {
+          background: linear-gradient(180deg,rgba(11,18,30,.82),rgba(7,12,20,.72));
+          border: 1px solid rgba(255,255,255,.14);
+          border-radius: 24px;
+          padding: 24px;
+          backdrop-filter: blur(18px);
+          box-shadow: 0 30px 80px rgba(0,0,0,.42);
+          animation: pt-enter .85s .15s both;
+        }
+        .pt-protect-card {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          text-align: left;
+          border: 1px solid rgba(255,255,255,.09);
+          background: rgba(255,255,255,.045);
+          border-radius: 16px;
+          padding: 15px;
+          color: #fff;
+          cursor: pointer;
+          transition: transform .2s ease,border-color .2s ease,background .2s ease;
+        }
+        .pt-protect-card:hover {
+          transform: translateY(-2px);
+          border-color: rgba(229,62,62,.55);
+          background: rgba(229,62,62,.08);
+        }
+        .pt-main-cta {
+          position: relative;
+          overflow: hidden;
+          border: 0;
+          border-radius: 12px;
+          padding: 16px 26px;
+          background: #e53e3e;
+          color: white;
+          font-size: 15px;
+          font-weight: 900;
+          cursor: pointer;
+          box-shadow: 0 12px 34px rgba(229,62,62,.3);
+          transition: transform .2s ease,box-shadow .2s ease;
+        }
+        .pt-main-cta:hover { transform:translateY(-2px); box-shadow:0 16px 42px rgba(229,62,62,.42); }
+        .pt-secondary-cta {
+          display:inline-flex;
+          align-items:center;
+          justify-content:center;
+          gap:8px;
+          border:1px solid rgba(255,255,255,.16);
+          border-radius:12px;
+          padding:15px 18px;
+          color:#fff;
+          font-weight:800;
+          text-decoration:none;
+          background:rgba(255,255,255,.055);
+          backdrop-filter:blur(7px);
+        }
+        .pt-slide-button {
+          border: 1px solid rgba(255,255,255,.12);
+          color: rgba(255,255,255,.66);
+          background: rgba(6,10,18,.42);
+          backdrop-filter: blur(8px);
+          border-radius: 999px;
+          padding: 8px 12px;
+          font-size: 11px;
+          font-weight: 800;
+          cursor: pointer;
+          transition: all .25s ease;
+        }
+        .pt-slide-button[data-active="true"] {
+          color:#fff;
+          border-color:rgba(229,62,62,.6);
+          background:rgba(229,62,62,.14);
+        }
+        @media (max-width: 920px) {
+          .pt-hero__grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 112px 18px 78px;
+          }
+          .pt-hero__panel { max-width: 620px; }
+        }
+        @media (max-width: 560px) {
+          .pt-hero__grid { padding-top: 94px; }
+          .pt-hero__panel { padding: 18px; border-radius: 20px; }
+          .pt-main-cta,.pt-secondary-cta { width:100%; box-sizing:border-box; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .pt-hero img { animation:none !important; }
+          .pt-hero__panel { animation:none; }
         }
       `}</style>
 
-      {/* Slide images — stacked, crossfade */}
-      {SLIDES.map((s, i) => (
+      {SLIDES.map((slide, i) => (
         <div
-          key={i}
+          key={slide.img}
           style={{
-            position: "absolute", inset: 0, zIndex: 1,
-            transition: "opacity 1.4s ease",
+            position:"absolute", inset:0, zIndex:0,
             opacity: active === i ? 1 : 0,
+            transition:"opacity 1.15s ease",
           }}
         >
           <img
-            src={s.img}
+            src={slide.img}
             alt=""
             aria-hidden="true"
             style={{
-              position: "absolute", inset: 0, width: "100%", height: "100%",
-              objectFit: "cover", objectPosition: s.pos,
-              animation: active === i ? "hero-kenburns 7s ease-in-out both" : "none",
-              willChange: "transform"
+              width:"100%", height:"100%", objectFit:"cover", objectPosition:slide.pos,
+              animation: active === i ? "pt-kenburns 6.8s ease-in-out both" : "none",
+              willChange:"transform"
             }}
           />
         </div>
       ))}
 
-      {/* Left gradient overlay */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "linear-gradient(90deg, rgba(2,6,9,0.93) 0%, rgba(2,6,9,0.80) 38%, rgba(2,6,9,0.45) 65%, rgba(2,6,9,0.12) 100%)" }} />
-      {/* Bottom vignette */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "linear-gradient(to top, rgba(6,14,26,0.9) 0%, transparent 30%)" }} />
+      <div style={{position:"absolute",inset:0,zIndex:1,background:"linear-gradient(90deg,rgba(1,5,10,.97) 0%,rgba(3,8,14,.88) 40%,rgba(3,8,14,.56) 68%,rgba(3,8,14,.28) 100%)"}} />
+      <div style={{position:"absolute",inset:0,zIndex:1,background:"linear-gradient(to top,rgba(3,8,14,.98) 0%,transparent 38%)"}} />
+      <div style={{position:"absolute",left:"-8%",top:"10%",width:520,height:520,borderRadius:"50%",zIndex:1,background:"radial-gradient(circle,rgba(229,62,62,.13),transparent 68%)"}} />
 
-      {/* Glow sutil de marca — sin rejilla técnica ni patrones que compitan
-          con la fotografía */}
-      <div style={{ position: "absolute", top: "15%", left: "5%", width: 480, height: 480, borderRadius: "50%", background: "radial-gradient(circle, rgba(229,62,62,0.08) 0%, transparent 70%)", zIndex: 2, pointerEvents: "none" }} />
-
-      {/* Content */}
-      <div
-        className="hero-content-inner"
-        style={{ position: "relative", zIndex: 10, maxWidth: 1200, margin: "0 auto", padding: "160px 24px 100px" }}
-      >
-        <div style={{ maxWidth: 620 }}>
-          {/* Badge */}
-          <div
-            key={`badge-${active}`}
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(229,62,62,0.12)", border: "1px solid rgba(229,62,62,0.4)",
-              borderRadius: 100, padding: "6px 16px", marginBottom: 24,
-              animation: "badge-pulse 3s ease-in-out infinite, hero-fade-in 0.7s ease forwards",
-            }}
-          >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E", display: "inline-block", flexShrink: 0 }} />
-            <span style={{ color: "#FCA5A5", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              {SLIDES[active].badge}
+      <div className="pt-hero__grid">
+        <div>
+          <div style={{
+            display:"inline-flex",alignItems:"center",gap:9,
+            border:"1px solid rgba(229,62,62,.4)",background:"rgba(229,62,62,.1)",
+            borderRadius:999,padding:"7px 14px",marginBottom:22,
+            animation:"pt-pulse 3.2s ease-in-out infinite"
+          }}>
+            <span style={{width:7,height:7,borderRadius:"50%",background:"#ef4444"}} />
+            <span style={{color:"#fecaca",fontSize:11,fontWeight:900,letterSpacing:".09em",textTransform:"uppercase"}}>
+              Seguridad profesional · Barcelona y Catalunya
             </span>
           </div>
 
-          {/* Headline */}
-          <h1
-            key={`h1-${active}`}
-            style={{
-              fontWeight: 900, lineHeight: 1.08, margin: "0 0 18px",
-              fontSize: "clamp(2rem, 6vw, 3.8rem)", letterSpacing: "-0.03em",
-              animation: "hero-fade-in 0.8s ease 0.1s both",
-            }}
-          >
-            <span style={{ color: "#FFFFFF", display: "block" }}>{SLIDES[active].h1a}</span>
-            <span style={{ display: "block", color: "#E53E3E" }}>
-              {SLIDES[active].h1b}
-            </span>
+          <h1 style={{
+            margin:0,maxWidth:760,color:"#fff",fontWeight:950,lineHeight:.98,
+            letterSpacing:"-.045em",fontSize:"clamp(2.55rem,6.4vw,5.35rem)"
+          }}>
+            Instalación de Cámaras de Seguridad
+            <span style={{display:"block",color:"#ef4444"}}>y Alarmas en Barcelona</span>
           </h1>
 
-          {/* Subtext */}
-          <p
-            key={`sub-${active}`}
-            style={{
-              color: "rgba(255,255,255,0.62)", fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
-              lineHeight: 1.7, maxWidth: 480, margin: "0 0 36px",
-              animation: "hero-fade-in 0.8s ease 0.2s both",
-            }}
-          >
-            {SLIDES[active].sub}
+          <p style={{maxWidth:650,margin:"24px 0 0",color:"rgba(255,255,255,.68)",fontSize:"clamp(1rem,1.8vw,1.16rem)",lineHeight:1.7}}>
+            Diseñamos e instalamos sistemas Hikvision, Dahua y Ajax para viviendas, negocios y comunidades. Control desde el móvil, instalación certificada y presupuesto sin compromiso.
           </p>
 
-          {/* Confianza — texto plano, sin caja: instaladores homologados */}
-          <div style={{
-            display: "flex", alignItems: "flex-start", gap: 8,
-            marginBottom: 28, maxWidth: 460,
-            animation: "hero-fade-in 0.8s ease 0.25s both",
-          }}>
-            <ShieldCheck size={16} color="#E53E3E" style={{ flexShrink: 0, marginTop: 2 }} />
-            <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500, lineHeight: 1.55 }}>
-              Instaladores homologados en Barcelona y área metropolitana. Respuesta en 24/48h.
-            </span>
-          </div>
-
-          {/* Cifras clave — solo las 3 que importan de un vistazo */}
-          <div style={{ display: "flex", gap: 32, marginBottom: 36, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
+          <div style={{display:"flex",gap:18,flexWrap:"wrap",marginTop:26}}>
             {[
-              { val: businessStats.installTimeframe, label: "Instalación" },
-              { val: "4K", label: "Resolución" },
-              { val: `★ ${businessStats.googleRating}`, label: "En Google" },
-            ].map(s => (
-              <div key={s.val}>
-                <div style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.7rem)", fontWeight: 900, color: "#fff", lineHeight: 1 }}>{s.val}</div>
-                <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 4, fontWeight: 500 }}>{s.label}</div>
-              </div>
+              "Sin permanencia",
+              `Instalación ${businessStats.installTimeframe}`,
+              "Control desde el móvil",
+            ].map((item) => (
+              <span key={item} style={{display:"inline-flex",alignItems:"center",gap:7,color:"rgba(255,255,255,.82)",fontSize:13,fontWeight:750}}>
+                <CheckCircle2 size={15} color="#ef4444" /> {item}
+              </span>
             ))}
           </div>
 
-          {/* Mensaje comercial principal: servicio + ubicación + confianza */}
-          <p style={{ color: "rgba(255,255,255,0.72)", fontSize: 13, fontWeight: 700, margin: "-14px 0 22px" }}>
-            Sin permanencia · Presupuesto gratuito · Barcelona y Catalunya
-          </p>
-
-          {/* CTAs */}
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
-            <button
-              onClick={() => openDrawer()}
-              className="hero-cta-glow"
-              style={{
-                background: "#E53E3E", color: "#fff", border: "none",
-                borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
-                boxShadow: "0 0 20px rgba(229,62,62,0.35)",
-                position: "relative", overflow: "hidden", display: "inline-block",
-              }}
-            >
-              Solicitar presupuesto gratis →
+          <div style={{display:"flex",gap:12,flexWrap:"wrap",marginTop:32}}>
+            <button className="pt-main-cta" onClick={() => openDrawer("Presupuesto sistema de seguridad")}>
+              Quiero presupuesto gratuito <ArrowRight size={17} style={{display:"inline",verticalAlign:"middle",marginLeft:7}} />
             </button>
-            <a
-              href="tel:+34638109947"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
-                borderRadius: 8, padding: "15px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none",
-                background: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)",
-              }}
-            >
-              <Phone size={16} /> Llamar ahora
-            </a>
-            <a
-              href="https://wa.me/34638109947?text=Hola%2C%20quiero%20un%20presupuesto%20para%20un%20sistema%20de%20seguridad."
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
-                borderRadius: 8, padding: "15px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none",
-                background: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)",
-              }}
-            >
-              <MessageCircle size={16} /> WhatsApp
+            <a className="pt-secondary-cta" href="tel:+34638109947"><Phone size={17}/> Llamar</a>
+            <a className="pt-secondary-cta" href="https://wa.me/34638109947?text=Hola%2C%20quiero%20un%20presupuesto%20para%20un%20sistema%20de%20seguridad." target="_blank" rel="noopener noreferrer">
+              <MessageCircle size={17}/> WhatsApp
             </a>
           </div>
 
-          {/* Google reviews badge */}
-          <a
-            href="https://share.google/trjJFOqRhcldWdEbg"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: "8px 18px",
-              textDecoration: "none", animation: "hero-fade-in 0.8s ease 0.5s both",
-            }}
-          >
-            <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ {businessStats.googleRating}</span>
-            <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 12 }}>Reseñas en Google</span>
-            <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12 }}>Ver →</span>
-          </a>
-        </div>
-      </div>
+          <div style={{display:"flex",alignItems:"center",gap:14,flexWrap:"wrap",marginTop:28}}>
+            <a href="https://share.google/trjJFOqRhcldWdEbg" target="_blank" rel="noopener noreferrer" style={{textDecoration:"none",display:"inline-flex",alignItems:"center",gap:8}}>
+              <span style={{color:"#fbbf24",fontWeight:950}}>★ {businessStats.googleRating}</span>
+              <span style={{color:"rgba(255,255,255,.55)",fontSize:12}}>Google · {businessStats.googleReviewCount} reseñas</span>
+            </a>
+            <span style={{width:1,height:18,background:"rgba(255,255,255,.16)"}} />
+            <span style={{display:"inline-flex",alignItems:"center",gap:7,color:"rgba(255,255,255,.55)",fontSize:12}}>
+              <ShieldCheck size={15} color="#ef4444"/> Instalación profesional
+            </span>
+          </div>
 
-      {/* Slide dot indicators */}
-      <div style={{
-        position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)",
-        display: "flex", gap: 8, zIndex: 10,
-      }}>
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActive(i)}
-            className="hero-dot-btn"
-            aria-label={`Slide ${i + 1}`}
-            style={{
-              width: active === i ? 24 : 8, height: 8, borderRadius: 4,
-              background: active === i ? "#E53E3E" : "rgba(255,255,255,0.25)",
-              border: "none", cursor: "pointer", padding: 0,
-            }}
-          />
-        ))}
+          <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:30}}>
+            {SLIDES.map((slide,i)=>(
+              <button key={slide.img} className="pt-slide-button" data-active={active===i} onClick={()=>setActive(i)}>
+                {String(i+1).padStart(2,"0")} · {slide.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <aside className="pt-hero__panel" aria-label="Elige qué quieres proteger">
+          <span style={{color:"#f87171",fontSize:11,fontWeight:900,letterSpacing:".1em",textTransform:"uppercase"}}>Diagnóstico rápido</span>
+          <h2 style={{color:"#fff",fontSize:"clamp(1.5rem,3vw,2.1rem)",lineHeight:1.08,margin:"8px 0 8px",fontWeight:950,letterSpacing:"-.03em"}}>
+            ¿Qué quieres proteger?
+          </h2>
+          <p style={{color:"#94a3b8",fontSize:13.5,lineHeight:1.6,margin:"0 0 18px"}}>
+            Dinos el tipo de espacio y te preparamos una propuesta ajustada a tu instalación.
+          </p>
+
+          <div style={{display:"grid",gap:10}}>
+            {PROTECTION.map(({Icon,title,text,lead})=>(
+              <button key={title} className="pt-protect-card" onClick={()=>openDrawer(lead)}>
+                <span style={{width:44,height:44,borderRadius:13,display:"grid",placeItems:"center",background:"rgba(229,62,62,.12)",border:"1px solid rgba(229,62,62,.24)",flexShrink:0}}>
+                  <Icon size={20} color="#f87171"/>
+                </span>
+                <span style={{flex:1}}>
+                  <strong style={{display:"block",fontSize:15.5,color:"#fff"}}>{title}</strong>
+                  <span style={{fontSize:12,color:"#94a3b8"}}>{text}</span>
+                </span>
+                <ArrowRight size={18} color="#64748b"/>
+              </button>
+            ))}
+          </div>
+
+          <div style={{marginTop:16,padding:"14px 15px",borderRadius:14,background:"rgba(255,255,255,.035)",border:"1px solid rgba(255,255,255,.08)"}}>
+            <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"baseline"}}>
+              <span style={{color:"#cbd5e1",fontSize:12}}>Respuesta comercial</span>
+              <strong style={{color:"#fff",fontSize:13}}>{businessStats.installTimeframe}</strong>
+            </div>
+            <div style={{height:1,background:"rgba(255,255,255,.08)",margin:"11px 0"}} />
+            <div style={{display:"flex",justifyContent:"space-between",gap:12,alignItems:"baseline"}}>
+              <span style={{color:"#cbd5e1",fontSize:12}}>Presupuesto</span>
+              <strong style={{color:"#fff",fontSize:13}}>Gratuito</strong>
+            </div>
+          </div>
+        </aside>
       </div>
     </section>
   );
