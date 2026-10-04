@@ -502,7 +502,7 @@ export const newArticlesDataA = {
       "datePublished": "2026-03-05",
       "author": { "@type": "Organization", "name": "Premium Tech Security" },
       "publisher": { "@type": "Organization", "name": "Premium Tech Security", "logo": { "@type": "ImageObject", "url": "https://alarmasenbarcelona.com/logo.png" } },
-      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80",
+      "image": "https://alarmasenbarcelona.com/images/ajax-hero-dispositivos.jpeg",
       "mainEntityOfPage": "https://alarmasenbarcelona.com/blog/mejores-alarmas-casa-barcelona"
     },
     {

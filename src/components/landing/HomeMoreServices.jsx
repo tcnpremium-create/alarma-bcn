@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Fingerprint, Bell, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-// Sonorización, Redes y Cerraduras tienen fotografía profesional real
-// (composición principal + detalle). El resto de líneas sigue con tarjeta
-// de icono hasta que haya fotografía propia — mismo alto de "zona de
-// medios" para que la cuadrícula se lea como un solo sistema visual, no
-// como una mezcla de plantillas.
+// Todas las líneas de servicio tienen fotografía (composición principal +
+// detalle) — mismo alto de "zona de medios" para que la cuadrícula se lea
+// como un solo sistema visual, no como una mezcla de plantillas.
 const PHOTO_CARDS = [
   {
     href: "/sonorizacion",
@@ -35,11 +33,24 @@ const PHOTO_CARDS = [
     detailImg: "/images/cerradura-electronica-control-acceso.webp",
     detailAlt: "Solución de cerradura electrónica para control de acceso",
   },
-];
-
-const ICON_CARDS = [
-  { Icon: Fingerprint, title: "Control de accesos", desc: "Lectores biométricos, tarjetas y códigos", href: "/control-accesos" },
-  { Icon: Bell, title: "Videoporteros", desc: "Videoporteros IP para hogares y comunidades", href: "/videoporteros" },
+  {
+    href: "/control-accesos",
+    title: "CONTROL DE ACCESOS",
+    desc: "Lectores biométricos de huella y reconocimiento facial, tarjetas y códigos para empresas y comunidades.",
+    mainImg: "/images/control-accesos-biometrico.webp",
+    mainAlt: "Lector biométrico de huella dactilar en control de accesos",
+    detailImg: "/images/reconocimiento-facial.jpeg",
+    detailAlt: "Terminal de reconocimiento facial para control de accesos",
+  },
+  {
+    href: "/videoporteros",
+    title: "VIDEOPORTEROS",
+    desc: "Videoporteros IP para hogares y comunidades: ve quién llama y abre desde el móvil.",
+    mainImg: "/images/videoportero.jpeg",
+    mainAlt: "Videoportero instalado en una vivienda",
+    detailImg: "/images/bticino-videoportero.jpeg",
+    detailAlt: "Kit de videoportero Bticino con placa de calle y monitor",
+  },
 ];
 
 function PhotoCard({ title, desc, href, mainImg, mainAlt, detailImg, detailAlt }) {
@@ -89,22 +100,6 @@ function PhotoCard({ title, desc, href, mainImg, mainAlt, detailImg, detailAlt }
   );
 }
 
-function IconCard({ Icon, title, desc, href }) {
-  return (
-    <Link
-      to={href}
-      className="bg-white rounded-2xl text-center hover:shadow-lg transition-shadow"
-      style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)", textDecoration: "none", padding: "24px 18px", display: "flex", flexDirection: "column", justifyContent: "center", height: "100%" }}
-    >
-      <div style={{ width: 44, height: 44, borderRadius: 12, background: "rgba(229,62,62,0.08)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>
-        <Icon size={22} color="#E53E3E" />
-      </div>
-      <h3 style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A", marginBottom: 4 }}>{title}</h3>
-      <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.5, margin: 0 }}>{desc}</p>
-    </Link>
-  );
-}
-
 export default function HomeMoreServices() {
   return (
     <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
@@ -116,12 +111,8 @@ export default function HomeMoreServices() {
           Además de cámaras y alarmas, somos integradores de seguridad y tecnología
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" style={{ marginBottom: 20 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {PHOTO_CARDS.map((c) => <PhotoCard key={c.href} {...c} />)}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {ICON_CARDS.map((c) => <IconCard key={c.href} {...c} />)}
         </div>
       </div>
     </section>

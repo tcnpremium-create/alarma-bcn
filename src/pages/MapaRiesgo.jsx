@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';
 import { Helmet } from "react-helmet-async";
+import { Link } from 'react-router-dom';
+import { useLeadDrawer } from '@/context/LeadDrawerContext';
 
 const barrios = [
   {
@@ -166,6 +168,7 @@ const schema = {
 
 export default function MapaRiesgo() {
   const [selected, setSelected] = useState(null);
+  const { openDrawer } = useLeadDrawer();
   const [filter, setFilter] = useState('all');
 
   const filtered = filter === 'all' ? barrios : barrios.filter(b => b.risk === filter || b.risk.startsWith(filter));
@@ -318,6 +321,22 @@ export default function MapaRiesgo() {
                               <div className="text-xs font-semibold text-[#0A1628] mb-1">✅ Recomendación para este barrio</div>
                               <p className="text-gray-700 text-sm">{barrio.recomendacion}</p>
                             </div>
+                            <div className="mt-3 flex flex-col sm:flex-row gap-2">
+                              <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); openDrawer(`Seguridad en ${barrio.name}`); }}
+                                className="flex-1 bg-[#E63946] hover:bg-[#d32f3c] text-white font-bold text-sm rounded-lg px-4 py-3 transition-colors"
+                              >
+                                Presupuesto gratis para {barrio.name}
+                              </button>
+                              <Link
+                                to="/camaras-barcelona"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex-1 text-center border border-[#0A1628]/20 text-[#0A1628] hover:bg-[#0A1628]/5 font-semibold text-sm rounded-lg px-4 py-3 transition-colors"
+                              >
+                                Ver cámaras de seguridad
+                              </Link>
+                            </div>
                           </div>
                         </motion.div>
                       )}
@@ -376,10 +395,10 @@ export default function MapaRiesgo() {
               <Shield className="w-8 h-8 mb-3 opacity-80" />
               <h3 className="font-bold text-lg mb-2">¿Vives en zona de riesgo?</h3>
               <p className="text-white/80 text-sm mb-4">
-                Visita técnica gratuita: analizamos tu vivienda y te recomendamos el sistema adecuado para tu barrio.
+                Presupuesto gratuito: analizamos tu vivienda o negocio y te recomendamos las cámaras o la alarma adecuadas para tu barrio.
               </p>
-              <Button asChild className="w-full bg-white text-[#E63946] hover:bg-white/90 font-bold mb-2">
-                <a href="/#contacto">Solicitar Visita Gratuita</a>
+              <Button onClick={() => openDrawer("Seguridad en mi barrio")} className="w-full bg-white text-[#E63946] hover:bg-white/90 font-bold mb-2">
+                Solicitar presupuesto gratis
               </Button>
               <a href="tel:+34638109947" className="block text-center text-white/80 hover:text-white text-sm font-semibold mt-2">
                 📞 638 10 99 47

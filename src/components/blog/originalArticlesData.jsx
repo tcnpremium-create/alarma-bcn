@@ -4,7 +4,7 @@ export const originalArticlesData = {
     category: 'Seguridad Hogar',
     date: '15 Feb 2026',
     readTime: '8 min',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80',
+    image: '/images/ajax-hero-dispositivos.jpeg',
     excerpt: 'Los robos en viviendas de Catalunya subieron un 12% en 2025. Elegir la alarma adecuada depende del tamaño del inmueble, la tecnología y el presupuesto. Te lo explicamos todo.',
     content: `
 <!-- SLUG: elegir-alarma-hogar-barcelona -->
@@ -22,7 +22,7 @@ export const originalArticlesData = {
       "datePublished": "2026-02-15",
       "author": { "@type": "Organization", "name": "Premium Tech Security" },
       "publisher": { "@type": "Organization", "name": "Premium Tech Security", "logo": { "@type": "ImageObject", "url": "https://alarmasenbarcelona.com/logo.png" } },
-      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80",
+      "image": "https://alarmasenbarcelona.com/images/ajax-hero-dispositivos.jpeg",
       "mainEntityOfPage": "https://alarmasenbarcelona.com/blog/elegir-alarma-hogar-barcelona"
     },
     {

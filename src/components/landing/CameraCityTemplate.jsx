@@ -5,6 +5,7 @@ import FooterSection from "./FooterSection";
 import AdvancedSEO from "../seo/AdvancedSEO";
 import CameraKitsGrid from "./CameraKitsGrid";
 import Breadcrumbs from "./Breadcrumbs";
+import CameraLocalSections from "./CameraLocalSections";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
@@ -96,6 +97,18 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     {
       q: `¿Puedo ver las cámaras desde el móvil en tiempo real?`,
       a: `Sí. Instalamos la app correspondiente a la marca (iVMS-4500 para Hikvision, DMSS para Dahua) con acceso remoto desde cualquier lugar. Streaming en tiempo real, reproducción de grabaciones y alertas push incluidas, sin coste adicional.`,
+    },
+    {
+      q: `¿Es mejor un grabador propio o una cámara con cuota mensual?`,
+      a: `Con un grabador propio (NVR) las imágenes se guardan en un disco duro en tu casa o negocio y no pagas cuotas por almacenarlas. Los servicios en la nube cobran una cuota mensual por guardar las imágenes. En Premium Tech Security instalamos grabador local y la visualización desde el móvil sin coste adicional.`,
+    },
+    {
+      q: `¿Instaláis cámaras en comunidades de vecinos?`,
+      a: `Sí. Para comunidades instalamos cámaras en portal, garaje y zonas comunes, e incluimos la documentación RGPD completa y la señalética homologada.`,
+    },
+    {
+      q: `¿Instaláis cámaras fuera de ${city}?`,
+      a: `Sí. Instalamos en Barcelona y su área metropolitana y en el resto de Catalunya: Girona, Tarragona, Lleida, Sabadell y más. Pide presupuesto y te confirmamos la zona.`,
     },
     {
       q: `¿Necesito hacer obras para instalar las cámaras?`,
@@ -307,6 +320,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </div>
         </div>
       </section>
+
+      <CameraLocalSections city={city} currentPath={seoPath} onRequestQuote={() => openQuote()} />
 
       {/* ── FAQ ── */}
       <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>

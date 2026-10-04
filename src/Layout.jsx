@@ -6,16 +6,37 @@ import MobileFloatingCTA from "@/components/landing/MobileFloatingCTA";
 import LeadFormDrawer from "@/components/landing/LeadFormDrawer";
 import ExitIntentModal from "@/components/landing/ExitIntentModal";
 import { LeadDrawerProvider, useLeadDrawer } from "@/context/LeadDrawerContext";
+import { getServiceForPath } from "@/lib/serviceByPath";
 
 function LayoutInner({ children }) {
   const location = useLocation();
-  const { open, service, closeDrawer } = useLeadDrawer();
+  const { open, service, closeDrawer, openDrawer } = useLeadDrawer();
   const [exitIntentVisible, setExitIntentVisible] = useState(false);
   useHubSpotTracking();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [location.pathname]);
+
+  // Muchos botones de presupuesto (blog, mapa de riesgo, ciudades...) apuntan
+  // a "/#contacto", una sección embebida que la home ya no tiene: el click
+  // no hacía nada y se perdían solicitudes. Si no existe ningún elemento
+  // #contacto en la página, ese enlace abre el formulario de presupuesto
+  // (con el servicio de la página preseleccionado). Si existe (p. ej. las
+  // páginas de ciudad con su propio formulario), se respeta el scroll normal.
+  useEffect(() => {
+    const onClick = (e) => {
+      const a = e.target?.closest?.("a[href]");
+      if (!a) return;
+      const href = a.getAttribute("href");
+      if (href !== "/#contacto" && href !== "#contacto") return;
+      if (document.getElementById("contacto")) return;
+      e.preventDefault();
+      openDrawer(getServiceForPath(location.pathname) || "");
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, [openDrawer, location.pathname]);
 
   const hiddenPaths = ["/AdminLeads", "/AreaClientes"];
   // Se oculta también mientras el modal de recuperación de abandono está
