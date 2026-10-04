@@ -54,11 +54,6 @@ export default function AdvancedSEO({
           "postalCode": "08026",
           "addressCountry": "ES"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": 41.3851,
-          "longitude": 2.1734
-        },
         "openingHoursSpecification": [
           {
             "@type": "OpeningHoursSpecification",
@@ -226,8 +221,6 @@ export default function AdvancedSEO({
       {/* Geo Tags */}
       <meta name="geo.region" content="ES-CT" />
       <meta name="geo.placename" content={serviceArea || "Barcelona"} />
-      {includeLocalBusiness && <><meta name="geo.position" content="41.3851;2.1734" />
-      <meta name="ICBM" content="41.3851, 2.1734" /></>}
       
       {/* Robots */}
       <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
