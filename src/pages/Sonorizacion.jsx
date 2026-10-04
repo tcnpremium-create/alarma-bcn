@@ -87,7 +87,7 @@ export default function Sonorizacion() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Sonorización Profesional Barcelona | Altavoces Empotrados y de Techo | Premium Tech Security"
+        title="Sonorización Profesional Barcelona | Altavoces Empotrados"
         description="Sonorización profesional en Barcelona: instalación de altavoces empotrados y de techo con Bluetooth, amplificadores y sistemas multizona para restaurantes, comercios, oficinas y viviendas. Presupuesto gratis 638 10 99 47."
         canonicalUrl="https://alarmasenbarcelona.com/sonorizacion"
         keywords="sonorización Barcelona, sonorización profesional Barcelona, instalación de altavoces Barcelona, instalación altavoces techo Barcelona, altavoces empotrados Barcelona, altavoces empotrados Bluetooth Barcelona, altavoces de techo Bluetooth Barcelona, sonido ambiental Barcelona, sonorización restaurantes Barcelona, sonorización locales Barcelona, instalación sonido negocios Barcelona"

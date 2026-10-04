@@ -5,7 +5,7 @@ export default function CamarasBarcelona() {
   return (
     <CameraCityTemplate
       city="Barcelona"
-      seoTitle="Instalación Cámaras de Seguridad en Barcelona | Sin Cuotas | Premium Tech Security"
+      seoTitle="Cámaras de Seguridad en Barcelona | Sin Cuotas | Premium Tech"
       seoDescription="Instalación de cámaras de seguridad en Barcelona desde 689€. Hikvision, Dahua y Ajax 4K. Sin cuotas mensuales. Presupuesto gratis en 24h. Tel: 638 10 99 47"
       seoPath="/camaras-barcelona"
       intro="Instalamos cámaras de seguridad en Barcelona desde 689€. Hikvision, Dahua y Ajax. Sin cuotas mensuales. Presupuesto gratis en 24h."

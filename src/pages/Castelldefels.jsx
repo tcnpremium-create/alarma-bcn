@@ -11,7 +11,7 @@ export default function CastelldefelsPage() {
     <div className="min-h-screen bg-gray-50">
       <LocalitySEO
         city="Castelldefels"
-        title="Alarmas en Castelldefels | Instalación Sistemas Seguridad Profesional 24/7"
+        title="Alarmas en Castelldefels | Instalación Profesional 24/7"
         description="Instalación de alarmas y cámaras de seguridad en Castelldefels. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Castelldefels, instalación alarmas Castelldefels, sistemas seguridad Castelldefels, cámaras Castelldefels, videovigilancia Castelldefels"
         canonicalUrl="https://alarmasenbarcelona.com/Castelldefels"

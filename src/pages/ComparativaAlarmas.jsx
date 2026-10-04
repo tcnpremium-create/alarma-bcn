@@ -201,9 +201,15 @@ export default function ComparativaAlarmas() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Comparativa de Alarmas en Barcelona 2026 | Premium Tech Security</title>
+        <title>Comparativa de Alarmas en Barcelona 2026 | Premium Tech</title>
         <meta name="description" content="Comparativa de sistemas de alarma en Barcelona 2026. Ajax vs Hikvision vs Verisure. Sin cuotas mensuales. Instalación incluida. Presupuesto gratis." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/ComparativaAlarmas" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Comparativa de Alarmas en Barcelona 2026 | Premium Tech" />
+        <meta property="og:description" content="Comparativa de sistemas de alarma en Barcelona 2026. Ajax vs Hikvision vs Verisure. Sin cuotas mensuales. Instalación incluida. Presupuesto gratis." />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/ComparativaAlarmas" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
         <script type="application/ld+json">{JSON.stringify(schema)}</script>
       </Helmet>
       <Navbar />

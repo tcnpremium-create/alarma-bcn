@@ -12,7 +12,7 @@ export default function TecnologiaGuia() {
   return (
     <div className="min-h-screen bg-white">
       <AdvancedSEO
-        title="Tecnología de Cámaras de Seguridad | IA, 4K, Visión Nocturna | Premium Tech Security"
+        title="Tecnología de Cámaras de Seguridad | IA, 4K y Visión Nocturna"
         description="Descubre la tecnología de nuestras cámaras de seguridad: Inteligencia Artificial, resolución 4K, visión nocturna en color y control 24/7 desde el móvil. Marcas líderes: Hikvision, Dahua, Ajax Systems, Axis."
         keywords="tecnología cámaras seguridad, cámaras IA Barcelona, cámaras 4K, visión nocturna color, Hikvision, Dahua, Ajax Systems, RGPD cámaras"
         canonicalUrl="https://alarmasenbarcelona.com/tecnologia"

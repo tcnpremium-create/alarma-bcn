@@ -11,7 +11,7 @@ export default function SantCugatPage() {
     <div className="min-h-screen bg-gray-50">
       <LocalitySEO
         city="Sant Cugat del Vallès"
-        title="Alarmas en Sant Cugat del Vallès | Instalación Sistemas Seguridad Profesional 24/7"
+        title="Alarmas en Sant Cugat del Vallès | Instalación Profesional 24/7"
         description="Instalación de alarmas y cámaras de seguridad en Sant Cugat del Vallès. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Sant Cugat, instalación alarmas Sant Cugat del Vallès, sistemas seguridad Sant Cugat, cámaras Sant Cugat, videovigilancia Sant Cugat"
         canonicalUrl="https://alarmasenbarcelona.com/SantCugat"

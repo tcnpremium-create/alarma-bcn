@@ -21,7 +21,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white pb-32">
       <AdvancedSEO
-        title="Instalación de Cámaras de Seguridad y Alarmas en Barcelona | Premium Tech"
+        title="Cámaras de Seguridad y Alarmas en Barcelona | Premium Tech"
         description="Instalación profesional de cámaras de seguridad y alarmas en Barcelona. Hikvision, Dahua 4K y Ajax para viviendas, negocios y comunidades. Sin permanencia. Presupuesto gratis."
         keywords="cámaras de seguridad Barcelona, videovigilancia Barcelona, instalación de cámaras Barcelona, alarmas Barcelona, alarmas AJAX Barcelona, sistemas CCTV Barcelona"
         canonicalUrl="https://alarmasenbarcelona.com"

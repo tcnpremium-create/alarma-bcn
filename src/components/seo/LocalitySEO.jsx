@@ -16,7 +16,7 @@ export default function LocalitySEO({
   lng,
   pageUrl,
 }) {
-  const fullTitle = title || `Alarmas en ${city} | Instalación Sistemas Seguridad 24/7 | PremiumTechSecurity`;
+  const fullTitle = title || `Alarmas en ${city} | Instalación Profesional 24/7`;
   const fullDesc = description || `Instalación profesional de alarmas en ${city}. Sistemas de seguridad AJAX, cámaras 4K, control de accesos. Presupuesto gratuito ☎ 638 10 99 47.`;
   const fullKeywords = keywords || `alarmas ${city}, instalación alarmas ${city}, sistemas seguridad ${city}, cámaras seguridad ${city}, videovigilancia ${city}`;
 

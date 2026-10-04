@@ -78,6 +78,12 @@ export default function Promociones() {
           content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
         />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Promociones" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Kits de Alarmas y Cámaras de Seguridad Barcelona | Alarmas BCN" />
+        <meta property="og:description" content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47" />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/Promociones" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
         <script type="application/ld+json">{JSON.stringify(promoSchema)}</script>
       </Helmet>
 

@@ -9,9 +9,15 @@ export default function GuiaSeguridadBarcelona() {
   return (
     <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Guía Completa de Seguridad para Hogares y Negocios en Barcelona 2026</title>
+        <title>Guía de Seguridad para Hogares y Negocios en Barcelona 2026</title>
         <meta name="description" content="Todo lo que necesitas saber sobre sistemas de alarma, videovigilancia y control de accesos en Barcelona. Guía actualizada 2026 con precios, marcas y consejos de expertos." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/GuiaSeguridadBarcelona" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Guía de Seguridad para Hogares y Negocios en Barcelona 2026" />
+        <meta property="og:description" content="Todo lo que necesitas saber sobre sistemas de alarma, videovigilancia y control de accesos en Barcelona. Guía actualizada 2026 con precios, marcas y consejos de expertos." />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/GuiaSeguridadBarcelona" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
         {/* Article: refleja exactamente lo que hay visible en la página
             (titular, entradilla y autoría). Sin datePublished porque no
             existe una fecha real de publicación registrada para esta guía

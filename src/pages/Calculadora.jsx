@@ -104,6 +104,12 @@ export default function Calculadora() {
         <title>Calculadora de Presupuesto | Premium Tech Security</title>
         <meta name="description" content="Calcula el precio de tu sistema de seguridad en Barcelona. Presupuesto online gratuito para cámaras, alarmas y videoporteros. Sin compromiso." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Calculadora" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Calculadora de Presupuesto | Premium Tech Security" />
+        <meta property="og:description" content="Calcula el precio de tu sistema de seguridad en Barcelona. Presupuesto online gratuito para cámaras, alarmas y videoporteros. Sin compromiso." />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/Calculadora" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
         {/* WebApplication: la página es una herramienta de estimación
             gratuita, que es literalmente lo que hace y lo que dice su
             propio texto. Sin precios ni valoraciones inventadas. */}

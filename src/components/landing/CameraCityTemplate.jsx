@@ -108,7 +108,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
   return (
     <div className="min-h-screen bg-white pb-32">
       <AdvancedSEO
-        title={seoTitle || `Instalación Cámaras de Seguridad en ${city} | Sin Cuotas | Premium Tech Security`}
+        title={seoTitle || `Cámaras de Seguridad en ${city} | Sin Cuotas | Premium Tech`}
         description={seoDescription || `Instalamos cámaras de seguridad en ${city}. Hikvision y Dahua. 4K HD. Sin cuotas mensuales. Presupuesto gratis en 24h. Llama al 638 10 99 47.`}
         keywords={`cámaras seguridad ${city}, instalación cámaras ${city}, videovigilancia ${city}, CCTV ${city}`}
         canonicalUrl={`https://alarmasenbarcelona.com${seoPath}`}

@@ -38,7 +38,7 @@ export default function Cerraduras() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Cerraduras Inteligentes y Electrónicas en Barcelona | Premium Tech Security"
+        title="Cerraduras Inteligentes y Electrónicas en Barcelona"
         description="Instalación de cerraduras inteligentes, cilindros de seguridad y cilindros electrónicos en Barcelona para viviendas, negocios y oficinas. Presupuesto gratis 638 10 99 47."
         canonicalUrl="https://alarmasenbarcelona.com/cerraduras"
         keywords="cerraduras inteligentes Barcelona, cerraduras electrónicas Barcelona, cilindros de seguridad Barcelona, cerradura electrónica negocio"

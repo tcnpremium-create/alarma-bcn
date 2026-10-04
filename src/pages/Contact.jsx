@@ -13,6 +13,12 @@ export default function Contact() {
         <title>Contacto | Premium Tech Security - Alarmas Barcelona</title>
         <meta name="description" content="Contacta con Premium Tech Security. Instaladores de alarmas y cámaras en Barcelona. Presupuesto gratis en 24h. Tel: 638 10 99 47. Carrer de Coll i Vehí, 141, Barcelona." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Contact" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Contacto | Premium Tech Security - Alarmas Barcelona" />
+        <meta property="og:description" content="Contacta con Premium Tech Security. Instaladores de alarmas y cámaras en Barcelona. Presupuesto gratis en 24h. Tel: 638 10 99 47. Carrer de Coll i Vehí, 141, Barcelona." />
+        <meta property="og:url" content="https://alarmasenbarcelona.com/Contact" />
+        <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
+        <meta property="og:locale" content="es_ES" />
       </Helmet>
       <Navbar />
 

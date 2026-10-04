@@ -12,7 +12,7 @@ export default function Hospitalet() {
     <div className="min-h-screen bg-white">
       <LocalitySEO
         city="L'Hospitalet de Llobregat"
-        title="Alarmas en L'Hospitalet de Llobregat | Seguridad Profesional 24/7"
+        title="Alarmas en L'Hospitalet | Seguridad Profesional 24/7"
         description="Instalación de alarmas en L'Hospitalet de Llobregat. Sistemas AJAX, videovigilancia 4K, control de accesos. Técnicos certificados. Presupuesto gratuito ☎ 638 10 99 47."
         keywords="alarmas Hospitalet, instalación alarmas Hospitalet, sistemas seguridad Hospitalet, cámaras seguridad Hospitalet, videovigilancia Hospitalet Llobregat"
         canonicalUrl="https://alarmasenbarcelona.com/Hospitalet"

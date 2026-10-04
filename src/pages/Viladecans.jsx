@@ -11,7 +11,7 @@ export default function ViladecansPage() {
     <div className="min-h-screen bg-gray-50">
       <LocalitySEO
         city="Viladecans"
-        title="Alarmas en Viladecans | Instalación Sistemas Seguridad Profesional 24/7"
+        title="Alarmas en Viladecans | Instalación Profesional 24/7"
         description="Instalación de alarmas y cámaras de seguridad en Viladecans. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Viladecans, instalación alarmas Viladecans, sistemas seguridad Viladecans, cámaras Viladecans, videovigilancia Viladecans"
         canonicalUrl="https://alarmasenbarcelona.com/Viladecans"
