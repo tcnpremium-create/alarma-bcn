@@ -237,7 +237,7 @@ const ChatWidget = () => {
         transition={{ delay: 1, type: "spring" }}
         onClick={() => setIsOpen(!isOpen)}
         style={{ touchAction: "manipulation" }}
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 sm:w-14 sm:h-14 bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110"
+        className="fixed left-4 bottom-[calc(66px+env(safe-area-inset-bottom,0px))] z-[9999] w-14 h-14 bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110"
         aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
       >
         {isOpen ? (
@@ -255,7 +255,7 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed bottom-24 right-3 sm:right-6 z-50 w-[calc(100vw-1.5rem)] sm:w-[90vw] max-w-md h-[calc(100vh-150px)] sm:h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
+            className="fixed bottom-36 left-3 sm:left-6 z-[9999] w-[calc(100vw-1.5rem)] sm:w-[90vw] max-w-md h-[calc(100vh-150px)] sm:h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200"
             style={{ maxHeight: `calc(100vh - ${HEADER_BUTTON_SIZE + 40}px)` }}
           >
             {/* Header */}
