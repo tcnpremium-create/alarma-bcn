@@ -46,6 +46,11 @@ export default function HeroProf() {
           from { opacity: 0; transform: translateY(18px); }
           to   { opacity: 1; transform: translateY(0); }
         }
+        @keyframes hero-kenburns {
+          0% { transform: scale(1.02) translate3d(0,0,0); }
+          50% { transform: scale(1.09) translate3d(-1.2%, -0.5%, 0); }
+          100% { transform: scale(1.04) translate3d(0.8%, 0.4%, 0); }
+        }
         @keyframes badge-pulse {
           0%, 100% { box-shadow: 0 0 0 0 rgba(229,62,62,0.3); }
           50%       { box-shadow: 0 0 0 8px rgba(229,62,62,0); }
@@ -79,7 +84,12 @@ export default function HeroProf() {
             src={s.img}
             alt=""
             aria-hidden="true"
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: s.pos }}
+            style={{
+              position: "absolute", inset: 0, width: "100%", height: "100%",
+              objectFit: "cover", objectPosition: s.pos,
+              animation: active === i ? "hero-kenburns 7s ease-in-out both" : "none",
+              willChange: "transform"
+            }}
           />
         </div>
       ))}
