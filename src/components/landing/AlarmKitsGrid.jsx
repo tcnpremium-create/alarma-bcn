@@ -12,7 +12,7 @@ import { ALARM_KITS } from "@/data/alarmKits";
 const CERTIFICATIONS = [
   { label: "Grado 2 · EN 50131", icon: ShieldCheck },
   { label: "Ajax Certified Partner", icon: BadgeCheck },
-  { label: "CRA Homologada 24/7", icon: PhoneCall },
+  { label: "Compatible con CRA (opcional)", icon: PhoneCall },
   { label: "Cifrado AES-128", icon: Wifi },
   { label: "Instaladores Homologados", icon: Shield },
 ];

@@ -47,7 +47,7 @@ const barrios = [
     metodoPrincipal: 'Llave maestra (28%)',
     horarioPico: '20:00–22:00h',
     tendencia: 'subiendo',
-    recomendacion: 'Cerradura antibumping + alarma + CRA obligatoria',
+    recomendacion: 'Cerradura antibumping + alarma (con CRA opcional)',
     color: '#dc2626',
     tip: 'Mayor tasa de robo relativa. Edificios más antiguos con cerraduras básicas. Escaleras sin control de acceso.',
   },
@@ -418,7 +418,7 @@ export default function MapaRiesgo() {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
               { icon: '🚨', stat: '73%', label: 'de ladrones desisten al ver cartel de alarma visible', desc: 'El efecto disuasorio es el mayor beneficio. Un ladrón elige siempre la casa más fácil.' },
-              { icon: '⚡', stat: '<2 min', label: 'tiempo en notificar a Policía con CRA activa', desc: 'Con Central Receptora, la Policía recibe aviso antes de que el ladrón pueda actuar.' },
+              { icon: '⚡', stat: 'CRA', label: 'conexión opcional a central receptora', desc: 'Con una central receptora contratada, la alarma se vigila las 24 horas y se puede avisar a la Policía.' },
               { icon: '📱', stat: '3 seg', label: 'para recibir alerta en tu móvil', desc: 'Las alarmas modernas como AJAX notifican instantáneamente aunque estés al otro lado del mundo.' },
             ].map((item, i) => (
               <div key={i} className="bg-white/10 rounded-xl p-6">

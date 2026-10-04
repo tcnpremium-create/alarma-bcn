@@ -12,31 +12,31 @@ const ALARM_HIGH_PRICE = String(Math.max(...ALARM_PRICES));
 const SEO_DATA = {
   "/alarmas-barcelona": {
     title: "Alarmas y Cámaras de Seguridad Barcelona | Premium Tech",
-    description: "Alarmas de seguridad en Barcelona sin cuotas. Ajax, Hikvision. Respuesta en 15 segundos. Instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
+    description: "Alarmas de seguridad en Barcelona sin cuotas. Ajax, Hikvision. Alertas en tu móvil en tiempo real. Instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
     keywords: "alarmas Barcelona, cámaras seguridad Barcelona, instalación alarmas Barcelona, empresa seguridad Barcelona, AJAX Barcelona, Hikvision Barcelona",
     canonical: "https://alarmasenbarcelona.com/alarmas-barcelona"
   },
   "/alarmas-girona": {
     title: "Alarmas y Cámaras de Seguridad Girona | Premium Tech",
-    description: "Alarmas de seguridad en Girona. Sin cuotas mensuales. Respuesta CRA en 15 segundos. Instalación profesional certificada. Tel: 638 10 99 47",
+    description: "Alarmas de seguridad en Girona. Sin cuotas mensuales. Alertas en tu móvil en tiempo real. Instalación profesional certificada. Tel: 638 10 99 47",
     keywords: "alarmas Girona, cámaras seguridad Girona, instalación alarmas Girona, videovigilancia Girona, seguridad Costa Brava",
     canonical: "https://alarmasenbarcelona.com/alarmas-girona"
   },
   "/alarmas-tarragona": {
     title: "Alarmas y Videovigilancia Tarragona | Premium Tech",
-    description: "Instalación alarmas seguridad Tarragona. Ajax Systems. Sin cuotas. Central Receptora 24/7. Presupuesto gratis sin compromiso. Tel: 638 10 99 47",
+    description: "Instalación alarmas seguridad Tarragona. Ajax Systems. Sin cuotas. Conexión a CRA opcional. Presupuesto gratis sin compromiso. Tel: 638 10 99 47",
     keywords: "alarmas Tarragona, cámaras seguridad Tarragona, instalación alarmas Tarragona, videovigilancia Tarragona, seguridad Tarragona",
     canonical: "https://alarmasenbarcelona.com/alarmas-tarragona"
   },
   "/alarmas-lleida": {
     title: "Alarmas y Cámaras de Seguridad Lleida | Premium Tech",
-    description: "Alarmas de seguridad en Lleida sin cuotas mensuales. Ajax Hub. Respuesta en 15 segundos. Instalación incluida. Presupuesto gratis. Tel: 638 10 99 47",
+    description: "Alarmas de seguridad en Lleida sin cuotas mensuales. Ajax Hub. Alertas en tu móvil en tiempo real. Instalación incluida. Presupuesto gratis. Tel: 638 10 99 47",
     keywords: "alarmas Lleida, cámaras seguridad Lleida, instalación alarmas Lleida, videovigilancia Lleida, seguridad Lleida",
     canonical: "https://alarmasenbarcelona.com/alarmas-lleida"
   },
   "/alarmas-sabadell": {
     title: "Alarmas y Cámaras Seguridad Sabadell | Premium Tech Security",
-    description: "Sistemas de alarma en Sabadell. Ajax Hub. Sin permanencia ni cuotas. Central Receptora 24/7. Instalación incluida. Tel: 638 10 99 47",
+    description: "Sistemas de alarma en Sabadell. Ajax Hub. Sin permanencia ni cuotas. Conexión a CRA opcional. Instalación incluida. Tel: 638 10 99 47",
     keywords: "alarmas Sabadell, cámaras seguridad Sabadell, instalación alarmas Sabadell, videovigilancia Sabadell, seguridad Vallès Occidental",
     canonical: "https://alarmasenbarcelona.com/alarmas-sabadell"
   }
@@ -46,7 +46,7 @@ const ALARM_FAQS = [
   { q: "¿Cuánto tiempo tarda la instalación de una alarma Ajax?", a: "Una instalación residencial estándar se completa en 3-4 horas. Al ser 100% inalámbrica, no requiere obra ni canaletas. Instalaciones de oficinas o comunidades pueden requerir 1 día." },
   { q: "¿Necesito línea de teléfono fija?", a: "No. Ajax trabaja sobre WiFi, Ethernet y tiene SIM de respaldo integrada en el Hub. Si falla el internet, cambia a red móvil automáticamente sin intervención humana." },
   { q: "¿Qué pasa si cortan la luz?", a: "El Hub 2 tiene batería de respaldo interna de hasta 16 horas. Los sensores y detectores Ajax funcionan con pilas de larga duración (3-7 años) independientemente de la red eléctrica." },
-  { q: "¿Incluye servicio de CRA (Central Receptora de Alarmas)?", a: "Sí. Todos nuestros sistemas incluyen conexión a CRA homologada. Cuando salta la alarma, el operador verifica visualmente mediante MotionCam y coordina la respuesta policial en menos de 15 segundos." },
+  { q: "¿Incluye servicio de CRA (Central Receptora de Alarmas)?", a: "No. El precio del sistema no incluye la conexión a CRA: es un servicio opcional que se contrata aparte con una central receptora homologada. Si prefieres no conectarla, la alarma te avisa igualmente en el móvil y suena la sirena. Te lo explicamos sin compromiso al hacer el presupuesto." },
   { q: "¿Puedo controlar la alarma desde el móvil?", a: "Sí, mediante la app oficial Ajax Systems para iOS y Android. Armar, desarmar, recibir notificaciones, ver el historial de eventos y acceder a las imágenes MotionCam en tiempo real." },
   { q: "¿Qué diferencia hay entre alarma inalámbrica Ajax y sistemas cableados?", a: "Ajax no requiere obra, se instala en horas, es ampliable en cualquier momento y tiene comunicación redundante (WiFi + SIM). Para viviendas y pymes, Ajax ofrece el mejor equilibrio entre fiabilidad, facilidad y seguridad del mercado." },
   { q: "¿Son los sistemas Ajax compatibles con comunidades de vecinos?", a: "Sí. Ajax Hub 3 gestiona hasta 200 dispositivos en una sola instalación. Permite zonas independientes, administración multidispositivo y acceso diferenciado por usuario. Ideal para comunidades de vecinos y grandes empresas." },
@@ -96,7 +96,7 @@ export default function CityLandingSEO({ path }) {
         "@type": "Service",
         "name": "Instalación de Sistemas de Alarma Ajax",
         "serviceType": "Instalación de Alarmas de Seguridad Profesional",
-        "description": "Instalación de sistemas de alarma Ajax inalámbricos certificados. Respuesta CRA en 15 segundos.",
+        "description": "Instalación de sistemas de alarma Ajax inalámbricos certificados. Alertas en tiempo real en tu móvil.",
         "provider": { "@id": "https://alarmasenbarcelona.com/#organization" },
         "areaServed": ["Barcelona", "Girona", "Tarragona", "Lleida", "Sabadell", "Catalunya"],
         "offers": { "@type": "AggregateOffer", "lowPrice": ALARM_LOW_PRICE, "highPrice": ALARM_HIGH_PRICE, "priceCurrency": "EUR", "offerCount": String(ALARM_KITS.length) }

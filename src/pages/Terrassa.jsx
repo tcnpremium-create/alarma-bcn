@@ -101,7 +101,7 @@ export default function Terrassa() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
-                <span><strong>Conexión a CRA:</strong> Monitorización profesional 24/7 con aviso a Policía y propietario en tiempo real.</span>
+                <span><strong>Conexión a CRA (opcional):</strong> Si lo deseas, conectamos tu alarma a una central receptora. No está incluida en el precio.</span>
               </li>
             </ul>
 

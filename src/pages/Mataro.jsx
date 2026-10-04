@@ -102,7 +102,7 @@ export default function Mataro() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
-                <span><strong>Central receptora 24/7:</strong> Monitorización continua con verificación y aviso a propietario y autoridades.</span>
+                <span><strong>Central receptora (opcional):</strong> Si lo deseas, conectamos tu alarma a una central receptora homologada. No está incluida en el precio.</span>
               </li>
             </ul>
 

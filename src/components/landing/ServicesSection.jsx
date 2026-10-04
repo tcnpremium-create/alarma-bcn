@@ -25,8 +25,8 @@ const services = [
   },
   {
     icon: Siren,
-    title: "Conexión a Central Receptora",
-    description: "Tu alarma conectada a una central de alarmas 24/7 que actúa inmediatamente ante cualquier incidencia.",
+    title: "Conexión a Central Receptora (opcional)",
+    description: "Si lo deseas, tu alarma se puede conectar a una central receptora de alarmas. Es un servicio opcional que no está incluido en el precio.",
   },
   {
     icon: Wrench,

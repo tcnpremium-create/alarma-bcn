@@ -101,7 +101,7 @@ export const ALARM_KITS = [
       "Configuración ampliable según las necesidades de tu instalación.",
       "Podemos ampliar el sistema con dispositivos adicionales según las necesidades del espacio.",
     ],
-    tech: "Grado 2 · Antiinhibición · Verificación en 15s · Comunicación cifrada",
+    tech: "Grado 2 · Antiinhibición · Comunicación cifrada",
   },
   {
     id: "empresa",
@@ -122,6 +122,6 @@ export const ALARM_KITS = [
       "Configuración ampliable según las necesidades de tu instalación.",
       "Podemos ampliar el sistema con dispositivos adicionales según las necesidades del espacio.",
     ],
-    tech: "Grado 2 · Verificación fotográfica en Central Receptora",
+    tech: "Grado 2 · Fotoverificación (con CRA opcional)",
   },
 ];

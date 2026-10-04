@@ -6,9 +6,9 @@ export default function ValueProposition() {
   const features = [
   {
     icon: Clock,
-    title: "Respuesta en 15 segundos",
-    desc: "Nuestra central de alarmas reacciona inmediatamente ante cualquier incidencia",
-    highlight: "15s"
+    title: "Aviso inmediato en tu móvil",
+    desc: "Recibes una notificación en el momento en que el sistema detecta una incidencia",
+    highlight: "Al instante"
   },
   {
     icon: Shield,
