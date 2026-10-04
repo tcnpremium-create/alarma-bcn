@@ -40,12 +40,34 @@ if (!existsSync(DIST_ASSETS) || !existsSync(DIST_PRERENDERED)) {
 // nombre-base (sin el hash final de 8 caracteres) -> nombre de fichero real de esta build.
 const HASH_RE = /-[A-Za-z0-9_-]{8}(\.[a-z]+)$/;
 const currentByBaseName = new Map();
+// Nombres-base que corresponden a MÁS de un fichero (p. ej. varios chunks
+// "index-HASH.js"): remapear por nombre-base elegiría uno al azar, así que
+// se dejan fuera del mapa y solo se resuelven por casos explícitos.
+const ambiguousBaseNames = new Set();
 for (const file of readdirSync(DIST_ASSETS)) {
   const m = file.match(HASH_RE);
   if (!m) continue;
   const base = file.slice(0, file.length - m[0].length) + m[1]; // "<base>.<ext>"
+  if (currentByBaseName.has(base)) ambiguousBaseNames.add(base);
   currentByBaseName.set(base, file);
 }
+for (const base of ambiguousBaseNames) currentByBaseName.delete(base);
+
+// El entrypoint real de ESTA build es el <script type="module"> de
+// dist/index.html. Los snapshots tienen que apuntar a ese, nunca a otro
+// chunk que casualmente también se llame "index-HASH.js" (visto en
+// producción: los 70 snapshots cargaban un chunk compartido de 6 KB en vez
+// del entrypoint; funcionaba de rebote porque ese chunk importa el
+// entrypoint, pero era frágil).
+const DIST_INDEX = path.join(ROOT, 'dist/index.html');
+const entryMatch = existsSync(DIST_INDEX)
+  ? readFileSync(DIST_INDEX, 'utf8').match(/<script[^>]*type="module"[^>]*src="(\/assets\/[^"]+\.js)"/)
+  : null;
+if (!entryMatch) {
+  console.error('No se encontró el entrypoint <script type="module"> en dist/index.html.');
+  process.exit(1);
+}
+const REAL_ENTRY = entryMatch[1];
 
 const htmlFiles = readdirSync(DIST_PRERENDERED).filter((f) => f.endsWith('.html'));
 let rewritten = 0;
@@ -56,7 +78,18 @@ for (const file of htmlFiles) {
   const filePath = path.join(DIST_PRERENDERED, file);
   const html = readFileSync(filePath, 'utf8');
 
-  let updated = html.replace(/\/assets\/([^"'\s>]+)/g, (full, filename) => {
+  // 1) Entrypoint: el <script type="module"> de cada snapshot pasa a ser el real.
+  let updated = html.replace(
+    /(<script[^>]*type="module"[^>]*src=")\/assets\/[^"]+\.js(")/g,
+    (full, pre, post) => {
+      const next = `${pre}${REAL_ENTRY}${post}`;
+      if (next !== full) rewritten++;
+      return next;
+    },
+  );
+
+  // 2) Resto de referencias a assets, por nombre-base (sin ambiguos).
+  updated = updated.replace(/\/assets\/([^"'\s>]+)/g, (full, filename) => {
     const m = filename.match(HASH_RE);
     if (!m) return full; // no tiene pinta de asset con hash (no debería pasar)
     const base = filename.slice(0, filename.length - m[0].length) + m[1];
