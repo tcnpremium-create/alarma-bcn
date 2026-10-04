@@ -66,8 +66,51 @@ if (corrupted) {
 
 const snapshotBody = snapshotHtml.match(/<body>([\s\S]*)<\/body>/)[1];
 
+// BUG REAL (producción, oct-2026): el comentario de arriba decía "sin
+// tocar los <script> de assets... nunca hay riesgo de referenciar un
+// hash que ya no existe", pero el replace de más abajo sustituye TODO
+// el <body>, y el entrypoint de Vite (<script type="module"
+// src="/assets/index-HASH.js">) vive DENTRO del body, no del head. El
+// snapshot de home.html tiene su propio <script> con el hash de la
+// build en que se capturó — al reemplazar el body entero, ese script
+// viejo se colaba en el dist/index.html de la build actual, con un
+// hash que ya no existe en dist/assets/. Resultado real en producción:
+// index.html pedía un .js que daba 404 → la home nunca arrancaba React
+// (sin interactividad: menús, cookies, botones, nada funcionaba).
+//
+// Fix: el script real (el de ESTA build, recién generado por `vite
+// build`) se extrae de baseHtml antes de tocar nada, se quita cualquier
+// <script type="module"> que venga del snapshot, y se reinserta el
+// real al final del body ya sustituido.
+const realEntryScripts = [...baseHtml.matchAll(/<script[^>]*type="module"[^>]*>[\s\S]*?<\/script>/g)].map((m) => m[0]);
+if (realEntryScripts.length === 0) {
+  console.error('No se encontró el <script type="module"> real de esta build en dist/index.html — abortando para no dejar la home sin JS.');
+  process.exit(1);
+}
+const snapshotBodyNoScripts = snapshotBody
+  // El <script type="module"> del entrypoint (tratado arriba).
+  .replace(/<script[^>]*type="module"[^>]*>[\s\S]*?<\/script>/g, '')
+  // El snapshot puede llevar colado dentro del <body> un <link> de CSS o
+  // de modulepreload con el hash de la build en que se capturó — visto
+  // en producción en home.html (<link rel="stylesheet" ... index-HASH.css>
+  // duplicado dentro del body, no solo en el head). Cualquier <link> de
+  // asset dentro del body es sospechoso por definición: el real ya está
+  // en el <head> de baseHtml, sin tocar.
+  .replace(/<link[^>]*rel="(?:stylesheet|modulepreload)"[^>]*>/g, '');
+
 let out = baseHtml.replace('</head>', helmetTags.join('\n    ') + '\n  </head>');
-out = out.replace(/<body>[\s\S]*<\/body>/, `<body>${snapshotBody}</body>`);
+out = out.replace(/<body>[\s\S]*<\/body>/, `<body>${snapshotBodyNoScripts}${realEntryScripts.join('')}</body>`);
+
+// Salvaguarda final: el index.html que se va a escribir debe referenciar
+// un asset que de verdad existe en ESTE dist/, nunca el de un snapshot
+// viejo (es exactamente el bug que se acaba de corregir arriba).
+const assetsDir = path.join(ROOT, 'dist/assets');
+const referencedAssets = [...out.matchAll(/\/assets\/([^"']+)/g)].map((m) => m[1]);
+const missing = referencedAssets.filter((f) => !existsSync(path.join(assetsDir, f)));
+if (missing.length > 0) {
+  console.error('dist/index.html referenciaría assets que no existen en dist/assets/:', missing);
+  process.exit(1);
+}
 
 writeFileSync(DIST_INDEX, out);
-console.log(`dist/index.html actualizado con ${helmetTags.length} tags SEO + body prerenderizado de la home.`);
+console.log(`dist/index.html actualizado con ${helmetTags.length} tags SEO + body prerenderizado de la home (assets verificados).`);
