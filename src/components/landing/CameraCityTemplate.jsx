@@ -117,8 +117,10 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       />
       <Navbar />
 
-      {/* Breadcrumb fuera del hero de altura fija (70vh) para no arriesgar overflow */}
-      <div style={{ backgroundColor: "#0A0A1A", padding: "14px 20px 0" }}>
+      {/* Breadcrumb fuera del hero de altura fija (70vh) para no arriesgar overflow.
+          El padding superior deja sitio a la cabecera fija (80px): sin él
+          la miga de pan quedaba debajo del logo, solapada. */}
+      <div style={{ backgroundColor: "#0A0A1A", padding: "96px 20px 0" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <Breadcrumbs items={[{ label: "Cámaras", href: "/camaras-barcelona" }, { label: city }]} />
         </div>
