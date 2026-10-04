@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
 // alarmasenbarcelona.com - notificaciones van a tcnpremium@gmail.com
 // NO usar notificaciones@tsoapp.es (eso es del proyecto TSO Software, diferente)
@@ -30,6 +31,66 @@ function getResend() {
     resendClient = new Resend(key);
   }
   return resendClient;
+}
+
+/**
+ * Respaldo por Gmail (SMTP). Si Resend no está configurado o falla (cuenta
+ * suspendida, dominio sin verificar...), el correo se envía por Gmail con
+ * una contraseña de aplicación. Variables: GMAIL_USER y GMAIL_APP_PASSWORD.
+ */
+let gmailTransport;
+function getGmail() {
+  if (gmailTransport !== undefined) return gmailTransport;
+  const user = process.env.GMAIL_USER;
+  const pass = process.env.GMAIL_APP_PASSWORD;
+  gmailTransport = user && pass
+    ? nodemailer.createTransport({ service: 'gmail', auth: { user, pass } })
+    : null;
+  return gmailTransport;
+}
+
+/**
+ * Envía un correo probando Resend primero y Gmail después.
+ * Devuelve { ok, via, error } y nunca lanza.
+ */
+async function sendEmail({ to, subject, html }) {
+  const errors = [];
+  const resend = getResend();
+  if (resend) {
+    try {
+      const { data, error } = await resend.emails.send({
+        from: 'info@alarmasenbarcelona.com',
+        to,
+        reply_to: 'tcnpremium@gmail.com',
+        subject,
+        html,
+      });
+      if (!error) return { ok: true, via: 'resend', id: data?.id };
+      errors.push('resend: ' + JSON.stringify(error));
+      console.error('RESEND ERROR:', JSON.stringify(error));
+    } catch (e) {
+      errors.push('resend: ' + e.message);
+      console.error('RESEND FAILED:', e.message);
+    }
+  }
+  const gmail = getGmail();
+  if (gmail) {
+    try {
+      const info = await gmail.sendMail({
+        from: `"Premium Tech Security" <${process.env.GMAIL_USER}>`,
+        to,
+        replyTo: 'tcnpremium@gmail.com',
+        subject,
+        html,
+      });
+      return { ok: true, via: 'gmail', id: info.messageId };
+    } catch (e) {
+      errors.push('gmail: ' + e.message);
+      console.error('GMAIL FAILED:', e.message);
+    }
+  }
+  if (errors.length === 0) errors.push('ni RESEND_API_KEY ni GMAIL_USER/GMAIL_APP_PASSWORD configurados');
+  return { ok: false, error: errors.join(' | ') };
 }
 
 function buildNotifEmail(formData, phoneClean) {
@@ -154,52 +215,23 @@ export default async function handler(req, res) {
 
     if (dbError) throw dbError;
 
-    const resend = getResend();
-    let notifStatus = 'not_sent';
-    let notifError = null;
+    const notif = await sendEmail({
+      to: 'tcnpremium@gmail.com',
+      subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
+      html: buildNotifEmail(formData, phoneClean),
+    });
+    const notifStatus = notif.ok ? 'sent' : 'failed';
+    const notifError = notif.ok ? null : notif.error;
+    if (notif.ok) console.log('Notif email OK via', notif.via, 'id:', notif.id);
 
-    try {
-      if (!resend) throw new Error('RESEND_API_KEY no configurada');
-      const { data: notifData, error: notifErr } = await resend.emails.send({
-        from: 'info@alarmasenbarcelona.com',
-        to: 'tcnpremium@gmail.com',
-        reply_to: 'tcnpremium@gmail.com',
-        subject: 'NUEVO PRESUPUESTO - ' + formData.nombre.trim(),
-        html: buildNotifEmail(formData, phoneClean)
+    if (formData.email?.trim()) {
+      const confirm = await sendEmail({
+        to: formData.email.trim(),
+        // Si el cliente responde, la respuesta llega al buzón real.
+        subject: 'Solicitud recibida — te llamamos antes de 24h',
+        html: buildConfirmEmail(formData),
       });
-      if (notifErr) {
-        notifStatus = 'failed';
-        notifError = JSON.stringify(notifErr);
-        console.error('RESEND ERROR notif:', JSON.stringify(notifErr));
-      } else {
-        notifStatus = 'sent';
-        console.log('Notif email OK id:', notifData?.id);
-      }
-    } catch (emailErr) {
-      notifStatus = 'failed';
-      notifError = emailErr.message;
-      console.error('Notif email FAILED:', emailErr.message);
-    }
-
-    if (formData.email?.trim() && resend) {
-      try {
-        const { data: confirmData, error: confirmErr } = await resend.emails.send({
-          from: 'info@alarmasenbarcelona.com',
-          // Si el cliente responde a este email, la respuesta tiene que
-          // llegar al buzón real, no a info@ (que no se lee).
-          reply_to: 'tcnpremium@gmail.com',
-          to: formData.email.trim(),
-          subject: 'Solicitud recibida — te llamamos antes de 24h',
-          html: buildConfirmEmail(formData)
-        });
-        if (confirmErr) {
-          console.error('RESEND ERROR confirm:', JSON.stringify(confirmErr));
-        } else {
-          console.log('Confirm email OK id:', confirmData?.id, 'to:', formData.email.trim());
-        }
-      } catch (emailErr) {
-        console.error('Confirm email FAILED:', emailErr.message);
-      }
+      if (confirm.ok) console.log('Confirm email OK via', confirm.via, 'to:', formData.email.trim());
     }
 
     return res.status(200).json({
