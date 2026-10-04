@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Phone, ShieldCheck } from "lucide-react";
+import { Phone, ShieldCheck, MessageCircle } from "lucide-react";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { businessStats } from "@/lib/businessStats";
 
@@ -8,9 +8,9 @@ const SLIDES = [
     img: "/images/camaras-variedad-exterior.webp",
     pos: "center center",
     badge: "Videovigilancia 4K · IA Avanzada",
-    h1a: "Vigilancia Total",
-    h1b: "Sin Puntos Ciegos",
-    sub: "Cámaras 4K Hikvision con detección inteligente de personas y vehículos. Visión nocturna en color 30m. Control desde tu móvil.",
+    h1a: "Instalación de Cámaras de Seguridad",
+    h1b: "en Barcelona",
+    sub: "Cámaras 4K Hikvision y Dahua con detección inteligente. Instalación profesional para viviendas, negocios y comunidades, control desde el móvil y presupuesto gratuito.",
   },
   {
     img: "/images/hero-intruder.jpeg",
@@ -168,6 +168,11 @@ export default function HeroProf() {
             ))}
           </div>
 
+          {/* Mensaje comercial principal: servicio + ubicación + confianza */}
+          <p style={{ color: "rgba(255,255,255,0.72)", fontSize: 13, fontWeight: 700, margin: "-14px 0 22px" }}>
+            Sin permanencia · Presupuesto gratuito · Barcelona y Catalunya
+          </p>
+
           {/* CTAs */}
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 28, animation: "hero-fade-in 0.8s ease 0.4s both" }}>
             <button
@@ -192,6 +197,19 @@ export default function HeroProf() {
               }}
             >
               <Phone size={16} /> Llamar ahora
+            </a>
+            <a
+              href="https://wa.me/34638109947?text=Hola%2C%20quiero%20un%20presupuesto%20para%20un%20sistema%20de%20seguridad."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
+                borderRadius: 8, padding: "15px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none",
+                background: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)",
+              }}
+            >
+              <MessageCircle size={16} /> WhatsApp
             </a>
           </div>
 

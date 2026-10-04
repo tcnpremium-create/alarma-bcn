@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home -->
-  <url><loc>https://alarmasenbarcelona.com/</loc><lastmod>2026-08-22</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://alarmasenbarcelona.com/</loc><lastmod>2026-10-04</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
 
   <!-- Páginas de servicio principales -->
   <!-- Catálogo de servicios: página pública real del router que se quedó fuera
@@ -88,7 +88,5 @@
   <url><loc>https://alarmasenbarcelona.com/Contact</loc><lastmod>2026-08-22</lastmod><priority>0.6</priority><changefreq>monthly</changefreq></url>
 
   <!-- Legales (no indexar pero incluir para crawl) -->
-  <url><loc>https://alarmasenbarcelona.com/Privacidad</loc><lastmod>2026-08-22</lastmod><priority>0.2</priority><changefreq>yearly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/Cookies</loc><lastmod>2026-08-22</lastmod><priority>0.2</priority><changefreq>yearly</changefreq></url>
-  <url><loc>https://alarmasenbarcelona.com/AvisoLegal</loc><lastmod>2026-08-22</lastmod><priority>0.2</priority><changefreq>yearly</changefreq></url>
+  <!-- Las páginas legales se mantienen enlazadas y accesibles, pero no se incluyen en el sitemap porque no son URLs objetivo de búsqueda. -->
 </urlset>
