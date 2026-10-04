@@ -6,8 +6,35 @@ const css = `
   .a-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
   .a-cta-sec { transition: background .2s, border-color .2s; }
   .a-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
-  .a-kit-card { transition: border-color .2s ease; }
+  .a-kit-card { transition: border-color .2s ease, transform .15s ease, box-shadow .3s ease; }
   .a-kit-card:hover { border-color: rgba(255,255,255,.22)!important; }
+  .a-kit-card:active { transform: scale(.985); }
+  /* Tarjeta recomendada: late con un brillo rojo y una luz recorre su línea
+     superior; el resto reciben un destello suave que las cruza una tras otra. */
+  .a-kit-card--highlight { animation: aGlow 2.6s ease-in-out infinite; }
+  .a-kit-card--highlight:hover { animation: none; box-shadow: 0 0 0 1px rgba(229,62,62,.55), 0 10px 40px rgba(229,62,62,.26); }
+  .a-kit-line {
+    background: linear-gradient(90deg, transparent 0%, #ef4444 20%, #ffffff 50%, #ef4444 80%, transparent 100%);
+    background-size: 200% 100%;
+    animation: aLine 2.2s linear infinite;
+  }
+  .a-kit-card::after {
+    content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 34%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.10), transparent);
+    transform: translateX(-130%) skewX(-18deg);
+    animation: aSweep 6s ease-in-out infinite; pointer-events: none;
+  }
+  .a-kit-card:nth-of-type(2)::after { animation-delay: 1.6s; }
+  .a-kit-card:nth-of-type(3)::after { animation-delay: 3.2s; }
+  @keyframes aLine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+  @keyframes aGlow {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(229,62,62,.35), 0 8px 32px rgba(229,62,62,.16); }
+    50% { box-shadow: 0 0 0 1px rgba(229,62,62,.85), 0 10px 46px rgba(229,62,62,.40); }
+  }
+  @keyframes aSweep { 0% { transform: translateX(-130%) skewX(-18deg); } 40%, 100% { transform: translateX(330%) skewX(-18deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .a-kit-card, .a-kit-card--highlight, .a-kit-line, .a-kit-card::after { animation: none !important; transition: none; transform: none; }
+  }
   .a-accordion-btn { transition: background .2s; }
   .a-accordion-btn:hover { background: rgba(255,255,255,.04)!important; }
 `;
@@ -85,14 +112,18 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
             return (
               <div
                 key={kit.id}
-                className="a-kit-card"
+                className={`a-kit-card${kit.highlight ? " a-kit-card--highlight" : ""}`}
                 style={{
                   background:"rgba(255,255,255,.03)",
-                  border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : "rgba(255,255,255,.08)"}`,
+                  border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : kit.highlight ? "rgba(229,62,62,.35)" : "rgba(255,255,255,.08)"}`,
                   borderRadius:14,
                   overflow:"hidden",
+                  position:"relative",
                 }}
               >
+                {kit.highlight && (
+                  <div className="a-kit-line" style={{ position:"absolute",top:0,left:0,right:0,height:3,borderRadius:"14px 14px 0 0" }} />
+                )}
                 {/* Accordion header */}
                 <button
                   className="a-accordion-btn"
