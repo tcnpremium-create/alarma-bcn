@@ -170,7 +170,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       </section>
 
       {/* ── KITS DE CÁMARAS ── */}
-      <CameraKitsGrid city={city} onRequestQuote={() => openQuote()} />
+      <CameraKitsGrid city={city} onRequestQuote={(kit) => (kit?.title ? openDrawer(`${kit.title} (${kit.cameras}) — cámaras en ${city}`) : openQuote())} />
 
       {/* ── TODO LO QUE INSTALAMOS ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>

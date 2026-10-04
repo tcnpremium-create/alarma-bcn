@@ -3,7 +3,8 @@ import { motion } from "framer-motion";
 import { ChevronDown, Camera, HardDrive, ShieldCheck, Moon, Cpu, Radio } from "lucide-react";
 import { AnimatedGradientText } from "../magicui/animated-gradient-text";
 import { ShinyButton } from "../magicui/shiny-button";
-import { CAMERA_KITS } from "@/data/cameraKits";
+import { CAMERA_KITS, PRICE_DISCLAIMER } from "@/data/cameraKits";
+import KitFinder from "./KitFinder";
 
 function itemIcon(text) {
   const t = text.toLowerCase();
@@ -13,6 +14,50 @@ function itemIcon(text) {
   if (t.includes("nocturna")) return Moon;
   if (t.includes("certificad") || t.includes("homologad") || t.includes("placas")) return ShieldCheck;
   return Radio;
+}
+
+const FINDER_STEPS = [
+  { id: "tipo", question: "¿Qué quieres proteger?", options: [
+    { value: "vivienda", label: "Mi vivienda", hint: "Piso, casa o chalet" },
+    { value: "negocio", label: "Mi negocio", hint: "Tienda, oficina o local" },
+    { value: "grande", label: "Comunidad, nave o empresa", hint: "Portales, garajes y zonas amplias" },
+  ] },
+  { id: "zonas", question: "¿Cuántas zonas quieres vigilar?", options: [
+    { value: "1-2", label: "1 o 2 zonas", hint: "Por ejemplo, la entrada y el jardín" },
+    { value: "3-4", label: "3 o 4 zonas", hint: "Entrada, garaje, patio o interior" },
+    { value: "5+", label: "5 o más zonas", hint: "Varios accesos, edificio o nave" },
+  ] },
+  { id: "prioridad", question: "¿Qué es lo más importante para ti?", options: [
+    { value: "precio", label: "Ajustar el precio", hint: "Empezar con lo imprescindible" },
+    { value: "equilibrio", label: "Equilibrio calidad-precio", hint: "Detección por IA y visión nocturna" },
+    { value: "maxima", label: "Máxima cobertura y calidad", hint: "Más cámaras y mayor resolución" },
+  ] },
+];
+
+const TIPO_TXT = { vivienda: "tu vivienda", negocio: "tu negocio", grande: "una comunidad, nave o empresa" };
+const ZONAS_TXT = { "1-2": "1 o 2 zonas", "3-4": "3 o 4 zonas", "5+": "5 o más zonas" };
+
+// Kits en orden: Esencial (2 cámaras), Protección (4), Profesional (8).
+function recommendCameraKit(a) {
+  let idx = { "1-2": 0, "3-4": 1, "5+": 2 }[a.zonas];
+  if (a.tipo === "grande") idx += 1;
+  if (a.prioridad === "precio") idx -= 1;
+  if (a.prioridad === "maxima") idx += 1;
+  idx = Math.max(0, Math.min(CAMERA_KITS.length - 1, idx));
+  const kit = CAMERA_KITS[idx];
+  const reasons = [
+    `Para vigilar ${ZONAS_TXT[a.zonas]} en ${TIPO_TXT[a.tipo]}, el ${kit.title} (${kit.cameras}) es el punto de partida adecuado.`,
+    "Grabación en un disco duro propio y acceso desde el móvil, sin cuotas mensuales.",
+    "Instalación profesional incluida.",
+  ];
+  const notes = [];
+  if (a.zonas === "5+" && kit.id !== "empresarial") {
+    notes.push("Para 5 o más zonas puede hacer falta ampliar el kit: te lo presupuestamos a medida.");
+  }
+  if (a.prioridad === "precio") {
+    notes.push("Empiezas con lo imprescindible y el sistema se puede ampliar más adelante.");
+  }
+  return { kit, reasons, notes };
 }
 
 function KitItemBento({ item }) {
@@ -40,6 +85,13 @@ function KitItemBento({ item }) {
 
 export default function CameraKitsGrid({ city, onRequestQuote }) {
   const [openId, setOpenId] = useState(null);
+  const [pickedId, setPickedId] = useState(null);
+
+  // Al recomendar un kit se resalta su tarjeta y se despliegan sus componentes.
+  const handleRecommend = (id) => {
+    setPickedId(id);
+    setOpenId(id);
+  };
 
   return (
     <section id="camaras-kits" style={{ background: "#0A1120", padding: "64px 24px", scrollMarginTop: 90 }}>
@@ -62,12 +114,24 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
           <p style={{ fontSize: 14, color: "#94A3B8", margin: 0 }}>Precios claros. Sin sorpresas. Sin cuotas mensuales.</p>
         </div>
 
+        <KitFinder
+          title="¿Qué kit de cámaras necesito?"
+          subtitle="3 preguntas rápidas y te recomendamos el kit adecuado, con su precio."
+          steps={FINDER_STEPS}
+          recommend={recommendCameraKit}
+          kitSubtitle={(kit) => `${kit.cameras} · ${kit.description}`}
+          onRecommend={handleRecommend}
+          onRequestQuote={(kit) => onRequestQuote(kit)}
+          whatsappMessage={(kit, a) => `Hola, me interesa el ${kit.title} (${kit.cameras}) para ${TIPO_TXT[a.tipo]}, ${ZONAS_TXT[a.zonas]}. ¿Me podéis dar un presupuesto?`}
+          disclaimer={PRICE_DISCLAIMER}
+        />
+
         <div className="kits-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
           {CAMERA_KITS.map((kit) => {
             const isHighlighted = kit.highlight;
             const isOpen = openId === kit.id;
             return (
-              <div key={kit.id} className={`kit-card${isHighlighted ? " kit-card--highlight" : ""}`} style={{
+              <div key={kit.id} className={`kit-card${isHighlighted ? " kit-card--highlight" : ""}${pickedId === kit.id ? " kit-card--picked" : ""}`} style={{
                 background: isHighlighted ? "rgba(229,62,62,0.06)" : "rgba(255,255,255,0.03)",
                 border: isHighlighted ? "2px solid #E53E3E" : "1px solid rgba(255,255,255,0.08)",
                 borderRadius: 16, padding: "32px 26px",
@@ -75,6 +139,14 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                 boxShadow: isHighlighted ? "0 0 48px rgba(229,62,62,0.2)" : "none",
                 transition: "transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease"
               }}>
+                {pickedId === kit.id && (
+                  <div style={{
+                    position: "absolute", top: 12, right: 12, background: "#22C55E", color: "#fff",
+                    fontSize: 10, fontWeight: 800, borderRadius: 100, padding: "4px 10px", letterSpacing: "0.06em",
+                  }}>
+                    ✔ TU KIT
+                  </div>
+                )}
                 {kit.badge && (
                   <div style={{
                     position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
@@ -147,6 +219,9 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
              Recomendado) — un box-shadow fijo, no una animación en bucle.
              Se intensifica un poco al hover, igual que las demás tarjetas. */
           .kit-card--highlight:hover { box-shadow: 0 24px 56px rgba(229,62,62,0.3); }
+          /* Tarjeta elegida en el buscador: borde verde con un pulso breve. */
+          .kit-card--picked { border-color: #22C55E !important; animation: kitPicked 1.2s ease 2; }
+          @keyframes kitPicked { 0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.0); } 50% { box-shadow: 0 0 0 8px rgba(34,197,94,0.25); } }
           @media (max-width: 720px) {
             .kits-grid { grid-template-columns: 1fr !important; }
           }
@@ -154,7 +229,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
             .kits-grid { grid-template-columns: repeat(2, 1fr) !important; }
           }
           @media (prefers-reduced-motion: reduce) {
-            .kit-card, .kit-card:hover { transition: none !important; transform: none !important; }
+            .kit-card, .kit-card:hover { transition: none !important; transform: none !important; animation: none !important; }
           }
         `}</style>
       </div>
