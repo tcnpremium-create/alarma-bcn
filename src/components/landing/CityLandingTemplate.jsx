@@ -181,13 +181,13 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
           <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 560, margin: "0 0 32px", lineHeight: 1.6 }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio.</p>
 
           <div className="grid lg:grid-cols-5" style={{ gap: 32, alignItems: "start" }}>
-            <div className="lg:col-span-2" style={{ position: "relative", borderRadius: 16, overflow: "hidden", background: "#000" }}>
+            <div className="lg:col-span-2" style={{ position: "relative", borderRadius: 16, overflow: "hidden", background: "#E9ECF1" }}>
               <img
                 src="/images/ajax/kit-inicio.webp"
                 alt="Kit de inicio de alarma Ajax: central Hub, detector de movimiento, mando y contacto magnético"
                 loading="lazy"
                 decoding="async"
-                style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#fff" }}
+                style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#E9ECF1", mixBlendMode: "multiply" }}
               />
             </div>
             <dl className="lg:col-span-3" style={{ margin: 0 }}>
