@@ -30,7 +30,7 @@ const SECTORS = [
     image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=90",
     icon: "🏭",
     title: "Nave Industrial y Empresa",
-    features: ["Cámaras termográficas perimetrales", "Detección de intrusos por IA", "CCTV profesional certificado", "Integración con alarma y CRA", "Centro de control local o remoto"],
+    features: ["Cámaras termográficas perimetrales", "Detección de intrusos por IA", "CCTV profesional certificado", "Integración con alarma", "Centro de control local o remoto"],
   },
 ];
 

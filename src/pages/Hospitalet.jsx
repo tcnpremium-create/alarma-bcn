@@ -101,7 +101,7 @@ export default function Hospitalet() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
-                <span><strong>Central receptora de alarmas:</strong> Monitorización continua 24/7 con respuesta inmediata ante alertas.</span>
+                <span><strong>Central receptora de alarmas (opcional):</strong> Si lo deseas, conectamos tu alarma a una central receptora. No está incluida en el precio.</span>
               </li>
             </ul>
 

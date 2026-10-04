@@ -88,7 +88,7 @@ export default function AdvancedSEO({
               "itemOffered": {
                 "@type": "Service",
                 "name": "Instalación de Alarmas AJAX",
-                "description": "Sistemas de alarma inalámbricos AJAX con certificación Grado 2, detectores inmunes a mascotas y conexión a CRA 24/7"
+                "description": "Sistemas de alarma inalámbricos AJAX con certificación Grado 2, detectores inmunes a mascotas y conexión opcional a CRA"
               }
             },
             {

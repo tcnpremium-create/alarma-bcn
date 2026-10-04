@@ -14,7 +14,7 @@ export default function Badalona() {
       <LocalitySEO
         city="Badalona"
         title="Alarmas en Badalona | Instalación Profesional 24/7"
-        description="Instalación de alarmas en Badalona. Sistemas AJAX, cámaras 4K, control de accesos para hogares y negocios. Presupuesto gratuito ☎ 638 10 99 47. Respuesta inmediata."
+        description="Instalación de alarmas en Badalona. Sistemas AJAX, cámaras 4K, control de accesos para hogares y negocios. Presupuesto gratuito ☎ 638 10 99 47. Alertas en tu móvil."
         keywords="alarmas Badalona, instalación alarmas Badalona, sistemas seguridad Badalona, cámaras seguridad Badalona, videovigilancia Badalona, alarma hogar Badalona"
         canonicalUrl="https://alarmasenbarcelona.com/Badalona"
         lat={41.4501}
@@ -70,7 +70,7 @@ export default function Badalona() {
                 "Alarmas para segundas residencias",
                 "Control remoto desde cualquier lugar",
                 "Disuasión efectiva ante okupación",
-                "Respuesta inmediata ante alertas"
+                "Alertas inmediatas en tu móvil"
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 p-4 bg-[#F8F9FC] rounded-xl">
                   <CheckCircle className="w-5 h-5 text-[#E63946] mt-0.5 flex-shrink-0" />
@@ -102,7 +102,7 @@ export default function Badalona() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
-                <span><strong>Conexión a CRA 24/7:</strong> Central receptora de alarmas que actúa inmediatamente ante cualquier incidente.</span>
+                <span><strong>Conexión a CRA (opcional):</strong> Si lo deseas, conectamos tu alarma a una central receptora. No está incluida en el precio.</span>
               </li>
             </ul>
 

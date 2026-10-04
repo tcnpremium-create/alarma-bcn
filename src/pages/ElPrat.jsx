@@ -38,7 +38,7 @@ export default function ElPratPage() {
             </h1>
             
             <p className="text-xl text-white/80 mb-8">
-              Protección profesional para hogares y negocios cerca del aeropuerto. Sistemas de seguridad con respuesta inmediata 24/7.
+              Protección profesional para hogares y negocios cerca del aeropuerto. Sistemas de seguridad con alertas en tiempo real en tu móvil.
             </p>
             
             <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-full font-semibold">

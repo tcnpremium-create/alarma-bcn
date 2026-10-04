@@ -100,8 +100,8 @@ export default function CornellaPage() {
                   icon: Shield
                 },
                 {
-                  title: "Central Receptora",
-                  description: "Conexión a central de alarmas con respuesta inmediata ante cualquier incidencia.",
+                  title: "Central Receptora (opcional)",
+                  description: "Si lo deseas, conectamos tu alarma a una central de alarmas. Servicio opcional, no incluido en el precio.",
                   icon: Clock
                 },
                 {

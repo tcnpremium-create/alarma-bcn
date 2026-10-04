@@ -102,7 +102,7 @@ export default function BarrioEixample() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
-                <span><strong>Conexión a central receptora:</strong> Monitorización 24/7 con respuesta inmediata.</span>
+                <span><strong>Conexión a central receptora (opcional):</strong> Si lo deseas, conectamos tu alarma a una central receptora. No está incluida en el precio.</span>
               </li>
             </ul>
 

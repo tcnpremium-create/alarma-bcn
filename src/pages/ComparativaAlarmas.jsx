@@ -434,13 +434,13 @@ export default function ComparativaAlarmas() {
                 </div>
                 <div className="bg-white/10 rounded-xl p-4">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-white font-semibold">AJAX + CRA (nuestro)</span>
+                    <span className="text-white font-semibold">AJAX + CRA opcional (nuestro)</span>
                     <span className="text-blue-400 font-bold">3.400€ total</span>
                   </div>
                   <div className="h-2 bg-white/20 rounded-full">
                     <div className="h-2 bg-blue-400 rounded-full" style={{ width: '65%' }}></div>
                   </div>
-                  <p className="text-white/50 text-xs mt-1">Instalación + CRA 5 años. Equipo tuyo.</p>
+                  <p className="text-white/50 text-xs mt-1">Instalación + CRA opcional 5 años (se contrata aparte). Equipo tuyo.</p>
                 </div>
                 <div className="bg-white/10 rounded-xl p-4">
                   <div className="flex justify-between items-center mb-1">

@@ -75,7 +75,7 @@ export default function SantCugatPage() {
                   "Integración domótica para smart homes",
                   "Videovigilancia 4K con visión nocturna",
                   "Cerraduras inteligentes biométricas",
-                  "Central receptora con respuesta prioritaria",
+                  "Conexión a central receptora opcional",
                   "Instalación invisible sin obras"
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">

@@ -17,7 +17,7 @@ const servicios = [
   description: "Protege tu hogar o negocio con alarmas de última generación AJAX. Detectores de movimiento inmunes a mascotas, sensores de apertura magnéticos, sirenas potentes y notificaciones instantáneas en tu móvil. Sistema antijamming y anti-sabotaje para máxima fiabilidad.",
   beneficios: [
     "Notificaciones push en tiempo real",
-    "Conexión a central receptora 24/7",
+    "Conexión a central receptora (opcional)",
     "Inmunidad a mascotas hasta 20kg",
     "Instalación profesional incluida",
     "Batería de respaldo 12-24h",
@@ -259,7 +259,7 @@ export default function Servicios() {
     <div className="min-h-screen bg-white">
       <AdvancedSEO
         title="Servicios de Seguridad en Barcelona | Premium Tech Security"
-        description="Instalación profesional de alarmas AJAX, cámaras Hikvision, control de accesos y videoporteros en Barcelona y Catalunya. Tecnología de última generación con respuesta inmediata 24/7. Presupuesto gratis."
+        description="Instalación profesional de alarmas AJAX, cámaras Hikvision, control de accesos y videoporteros en Barcelona y Catalunya. Tecnología de última generación. Presupuesto gratis sin compromiso."
         keywords="alarmas Barcelona, cámaras seguridad Barcelona, control accesos Barcelona, videoporteros Barcelona, seguridad Catalunya, AJAX alarmas, Hikvision, instalación seguridad"
         canonicalUrl="https://alarmasenbarcelona.com/Servicios"
       />

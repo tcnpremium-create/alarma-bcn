@@ -26,7 +26,7 @@ const SLIDES = [
     badge: "Alarmas Ajax · Grado 2 Certificado",
     h1a: "Sistemas de Alarma en Barcelona",
     h1b: "Alta Seguridad AJAX",
-    sub: "Ecosistema Ajax: tecnología avanzada de detección, cifrado end-to-end y verificación en la Central Receptora en menos de 15 segundos.",
+    sub: "Ecosistema Ajax: tecnología avanzada de detección, cifrado end-to-end y alertas en tiempo real en tu móvil.",
   },
 ];
 
