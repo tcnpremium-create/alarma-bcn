@@ -5,6 +5,7 @@ import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
 import Breadcrumbs from "./Breadcrumbs";
 import LeadCaptureForm from "./LeadCaptureForm";
+import AlarmConnectionOptions from "./AlarmConnectionOptions";
 import AlarmKitsGrid from "./AlarmKitsGrid";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { businessStats } from "@/lib/businessStats";
@@ -57,7 +58,7 @@ const buildFaqs = (city) => [
   { q: "¿Cuánto tiempo tarda la instalación de una alarma Ajax?", a: `Una instalación residencial estándar se completa en 3-4 horas. Al ser 100% inalámbrica, no requiere obra ni canaletas. Instalaciones de oficinas o comunidades en ${city} pueden requerir 1 día.` },
   { q: "¿Necesito línea de teléfono fija?", a: "No. Ajax trabaja sobre WiFi, Ethernet y tiene SIM de respaldo integrada en el Hub. Si falla el internet, cambia a red móvil automáticamente sin intervención humana." },
   { q: "¿Qué pasa si cortan la luz?", a: "El Hub 2 tiene batería de respaldo interna de hasta 16 horas. Los sensores y detectores Ajax funcionan con pilas de larga duración (3-7 años) independientemente de la red eléctrica." },
-  { q: "¿Incluye servicio de CRA (Central Receptora de Alarmas)?", a: "No. El precio del sistema no incluye la conexión a CRA: es un servicio opcional que se contrata aparte con una central receptora homologada. Si prefieres no conectarla, la alarma te avisa igualmente en el móvil y suena la sirena. Te lo explicamos sin compromiso al hacer el presupuesto." },
+  { q: "¿Incluye servicio de CRA (Central Receptora de Alarmas)?", a: "Tienes dos opciones y decides tú. Sin conexión a CRA: la alarma te avisa en el móvil y suena la sirena, sin cuotas. Con conexión a CRA: una central receptora homologada vigila el sistema; es un servicio opcional que se contrata aparte y no está incluido en el precio. Instalamos las dos; te lo explicamos sin compromiso al hacer el presupuesto." },
   { q: "¿Puedo controlar la alarma desde el móvil?", a: "Sí, mediante la app oficial Ajax Systems para iOS y Android. Armar, desarmar, recibir notificaciones, ver el historial de eventos y acceder a las imágenes MotionCam en tiempo real." },
   { q: "¿Qué diferencia hay entre alarma inalámbrica Ajax y sistemas cableados?", a: "Ajax no requiere obra, se instala en horas, es ampliable en cualquier momento y tiene comunicación redundante (WiFi + SIM). Para viviendas y pymes, Ajax ofrece el mejor equilibrio entre fiabilidad, facilidad y seguridad del mercado." },
   { q: "¿Son los sistemas Ajax compatibles con comunidades de vecinos?", a: "Sí. Ajax Hub 3 gestiona hasta 200 dispositivos en una sola instalación. Permite zonas independientes, administración multidispositivo y acceso diferenciado por usuario. Ideal para comunidades de vecinos y grandes empresas." },
@@ -121,6 +122,9 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
 
       {/* KITS DE ALARMA AJAX */}
       <AlarmKitsGrid city={city} onRequestQuote={(kit) => openDrawer(kit.title)} />
+
+      {/* CON O SIN CRA: LO DECIDE EL CLIENTE */}
+      <AlarmConnectionOptions onRequestQuote={() => openDrawer(`Alarma en ${city}`)} />
 
       {/* SERVICES */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
