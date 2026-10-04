@@ -44,6 +44,14 @@ const WHAT_WE_DO = [
   { icon: <Camera className="w-5 h-5" />, title: "Cámaras IP y Analógicas HD", desc: "Instalamos cámaras IP o analógicas HD según las necesidades y el presupuesto de cada proyecto." },
 ];
 
+// Los tres tipos de cámara salen recortados de la misma foto de producto
+// (bullet a la izquierda, domo en el centro, PTZ a la derecha).
+const CAMERA_TYPES = [
+  { title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto, 360°, resistente al vandalismo.", alt: "Cámara de seguridad domo", pos: "50% 50%", zoom: 3.1, origin: "61% 58%" },
+  { title: "Cámara Bullet", desc: "Larga distancia, hasta 60m. Ideal para entradas, vallas y accesos exteriores.", alt: "Cámara de seguridad tipo bullet", pos: "50% 50%", zoom: 2.9, origin: "27% 55%" },
+  { title: "Cámara PTZ", desc: "Motorizada con zoom óptico 20x. Control remoto de pan, tilt y zoom.", alt: "Cámara de seguridad motorizada PTZ", pos: "50% 50%", zoom: 4.2, origin: "84% 62%" },
+];
+
 const BRANDS = [
   {
     name: "HIKVISION",
@@ -174,22 +182,40 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       {/* ── KITS DE CÁMARAS ── */}
       <CameraKitsGrid city={city} onRequestQuote={(kit) => (kit?.title ? openDrawer(`${kit.title} (${kit.cameras}) — cámaras en ${city}`) : openQuote())} />
 
-      {/* ── TODO LO QUE INSTALAMOS ── */}
+      {/* ── TODO LO QUE INSTALAMOS — fotos de los 3 tipos + lista limpia ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
           <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Todo lo que instalamos</h2>
           <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Desde una cámara hasta instalaciones profesionales completas — con o sin grabador, con o sin internet</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 32px" }} className="sm:grid-cols-2">
-            {WHAT_WE_DO.map((s, idx) => (
-              <div key={s.title} style={{ display: "flex", gap: 14, padding: "20px 0", borderBottom: "1px solid #F3F4F6", alignItems: "flex-start" }}>
-                <div style={{ color: "#E53E3E", flexShrink: 0, marginTop: 1 }}>{s.icon}</div>
-                <div>
-                  <h3 style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A", margin: "0 0 4px" }}>{s.title}</h3>
-                  <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.6, margin: 0 }}>{s.desc}</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" style={{ marginBottom: 36 }}>
+            {CAMERA_TYPES.map((t) => (
+              <figure key={t.title} style={{ margin: 0, borderRadius: 16, overflow: "hidden", background: "#fff", boxShadow: "0 2px 14px rgba(0,0,0,0.07)" }}>
+                <div style={{ position: "relative", height: 170, overflow: "hidden", background: "#0A0A1A" }}>
+                  <img
+                    src="/images/camaras-variedad-exterior.webp"
+                    alt={t.alt}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ position: "absolute", left: 0, top: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: t.pos, transform: `scale(${t.zoom})`, transformOrigin: t.origin }}
+                  />
                 </div>
-              </div>
+                <figcaption style={{ padding: "14px 16px 16px" }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 15, color: "#0A0A1A", margin: "0 0 4px" }}>{t.title}</h3>
+                  <p style={{ fontSize: 12.5, color: "#6B7280", lineHeight: 1.55, margin: 0 }}>{t.desc}</p>
+                </figcaption>
+              </figure>
             ))}
           </div>
+
+          <dl className="grid sm:grid-cols-2" style={{ margin: 0, columnGap: 40 }}>
+            {WHAT_WE_DO.slice(3).map((s) => (
+              <div key={s.title} style={{ padding: "14px 0", borderBottom: "1px solid #E5E7EB" }}>
+                <dt style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A" }}>{s.title}</dt>
+                <dd style={{ margin: "3px 0 0", fontSize: 13, color: "#6B7280", lineHeight: 1.55 }}>{s.desc}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
@@ -305,20 +331,26 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         </div>
       </section>
 
-      {/* ── WHY US ── */}
+      {/* ── WHY US — foto + razones en lista, sin iconos en cuadrados ── */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "56px 20px" }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 28px", textAlign: "center" }}>¿Por qué elegirnos en {city}?</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-            {BENEFITS.map((b) => (
-              <div key={b.title} style={{ textAlign: "center" }}>
-                <div style={{ width: 56, height: 56, borderRadius: 16, backgroundColor: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 12px" }}>
-                  <b.icon style={{ width: 28, height: 28, color: "#E53E3E" }} />
-                </div>
-                <h3 style={{ fontWeight: 800, fontSize: 14, color: "#0A0A1A", margin: "0 0 4px" }}>{b.title}</h3>
-                <p style={{ fontSize: 12, color: "#6B7280", margin: 0 }}>{b.desc}</p>
-              </div>
-            ))}
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2" style={{ gap: 32, alignItems: "center" }}>
+          <img
+            src="/images/camara-domo-pasillo.jpeg"
+            alt={`Cámara domo de seguridad instalada en un portal de ${city}`}
+            loading="lazy"
+            decoding="async"
+            style={{ width: "100%", height: 300, objectFit: "cover", objectPosition: "75% center", borderRadius: 18, display: "block", boxShadow: "0 8px 30px rgba(0,0,0,0.12)" }}
+          />
+          <div>
+            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 20px" }}>¿Por qué elegirnos en {city}?</h2>
+            <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
+              {BENEFITS.map((b) => (
+                <li key={b.title} style={{ padding: "12px 0 12px 16px", borderLeft: "3px solid #E53E3E", marginBottom: 10, background: "#fff", borderRadius: "0 10px 10px 0" }}>
+                  <h3 style={{ fontWeight: 800, fontSize: 15, color: "#0A0A1A", margin: "0 0 2px" }}>{b.title}</h3>
+                  <p style={{ fontSize: 13, color: "#6B7280", margin: 0, lineHeight: 1.5 }}>{b.desc}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

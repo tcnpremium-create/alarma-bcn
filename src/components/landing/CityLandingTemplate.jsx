@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, ChevronRight, Wifi, Clock, Smartphone, Lock, Zap, Eye, Radio, AlertTriangle } from "lucide-react";
+import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, ChevronRight, Eye, Radio, AlertTriangle } from "lucide-react";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
 import CityLandingSEO from "../seo/CityLandingSEO";
@@ -45,13 +45,17 @@ const AJAX_COMPONENTS = [
   { name: "ReX 2", desc: "Repetidor de señal radio Ajax. Duplica el alcance del sistema hasta 2.000m adicionales en instalaciones de gran superficie.", tag: "Repetidor" },
 ];
 
+const TECH_STATS = [
+  { value: "2.000 m", label: "alcance de la señal radio Jeweller" },
+  { value: "AES-128", label: "cifrado extremo a extremo" },
+  { value: "7 años", label: "de batería en los sensores" },
+  { value: "0 obras", label: "instalación 100% inalámbrica" },
+];
+
 const TECH_FEATURES = [
-  { icon: Wifi, title: "Jeweller Radio", desc: "Protocolo propietario doble vía con cifrado AES-128 y alcance de 2.000m" },
-  { icon: Clock, title: "Aviso en tiempo real", desc: "Notificación en tu móvil en el momento de la detección" },
-  { icon: Smartphone, title: "App Ajax 24/7", desc: "Armar, desarmar, historial y cámaras Ajax desde el móvil" },
-  { icon: Lock, title: "Antimanipulación", desc: "Detección de sabotaje físico y electrónico en cada dispositivo" },
-  { icon: Zap, title: "Batería 7 años", desc: "Sensores autónomos. Sin obras de mantenimiento en años" },
-  { icon: MapPin, title: "100% inalámbrico", desc: "Instalación en horas. Sin agujeros, sin canaletas, sin obras" },
+  { title: "Aviso en tiempo real", desc: "Notificación en tu móvil en el momento de la detección." },
+  { title: "App Ajax 24/7", desc: "Armar, desarmar, historial y cámaras Ajax desde el móvil." },
+  { title: "Antimanipulación", desc: "Detección de sabotaje físico y electrónico en cada dispositivo." },
 ];
 
 const buildFaqs = (city) => [
@@ -145,66 +149,74 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
         </div>
       </section>
 
-      {/* CÓMO FUNCIONA */}
+      {/* CÓMO FUNCIONA — línea de tiempo, sin cajas ni iconos repetidos */}
       <section style={{ backgroundColor: "#fff", padding: "64px 24px" }}>
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Proceso</span>
-          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 32px" }}>¿Cómo funciona el sistema Ajax?</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 2 }}>
-            {HOW_IT_WORKS.map((step, idx) => (
-              <div key={step.step} style={{ padding: "28px 22px", background: idx % 2 === 0 ? "#F8F9FA" : "#fff", borderTop: `3px solid ${idx === 0 ? "#E53E3E" : "#E5E7EB"}`, border: "1px solid #E5E7EB" }}>
-                <div style={{ fontSize: "2.4rem", fontWeight: 900, color: "#E5E7EB", lineHeight: 1, marginBottom: 12 }}>{step.step}</div>
-                <div style={{ width: 38, height: 38, background: "rgba(229,62,62,0.1)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 12 }}>
-                  <step.icon size={18} color="#E53E3E" />
-                </div>
-                <h3 style={{ fontSize: 15, fontWeight: 800, color: "#0A0A1A", margin: "0 0 8px" }}>{step.title}</h3>
-                <p style={{ fontSize: 12, color: "#6B7280", lineHeight: 1.65, margin: 0 }}>{step.desc}</p>
-              </div>
+          <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 36px" }}>¿Cómo funciona el sistema Ajax?</h2>
+          <ol style={{ listStyle: "none", margin: 0, padding: 0, position: "relative" }}>
+            <span aria-hidden="true" style={{ position: "absolute", left: 5, top: 8, bottom: 8, width: 2, background: "linear-gradient(to bottom, #E53E3E, #E5E7EB)" }} />
+            {HOW_IT_WORKS.map((step) => (
+              <li key={step.step} style={{ position: "relative", paddingLeft: 36, paddingBottom: 30 }}>
+                <span aria-hidden="true" style={{ position: "absolute", left: 0, top: 6, width: 12, height: 12, borderRadius: "50%", background: "#fff", border: "3px solid #E53E3E" }} />
+                <h3 style={{ fontSize: 17, fontWeight: 800, color: "#0A0A1A", margin: "0 0 6px" }}>
+                  <span style={{ color: "#E53E3E", fontSize: 13, fontWeight: 800, marginRight: 8 }}>{step.step}</span>{step.title}
+                </h3>
+                <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.7, margin: 0, maxWidth: 560 }}>{step.desc}</p>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      {/* COMPONENTES AJAX */}
+      {/* COMPONENTES AJAX — foto + ficha técnica, sin tarjetas con icono */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
           <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Dispositivos del ecosistema</span>
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 8px" }}>Componentes del sistema Ajax</h2>
-          <p style={{ fontSize: 13, color: "#6B7280", maxWidth: 560, margin: "0 0 24px" }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio en {city}.</p>
-          <img
-            src="/images/ajax-componentes.jpeg"
-            alt="Componentes sistema alarma Ajax: Hub 2, MotionProtect, DoorProtect, MotionCam"
-            loading="lazy"
-            decoding="async"
-            style={{ width: "100%", maxHeight: 220, objectFit: "contain", background: "#000", borderRadius: 14, display: "block", marginBottom: 32 }}
-          />
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4" style={{ gap: 12 }}>
-            {AJAX_COMPONENTS.map((c) => (
-              <div key={c.name} style={{ backgroundColor: "#fff", borderRadius: 12, padding: "20px 18px", border: "1px solid #E5E7EB" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-                  <div style={{ width: 36, height: 36, background: "rgba(229,62,62,0.1)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Shield size={16} color="#E53E3E" />
-                  </div>
-                  <span style={{ fontSize: 9, fontWeight: 700, color: "#E53E3E", background: "rgba(229,62,62,0.1)", borderRadius: 100, padding: "3px 8px", letterSpacing: "0.06em", textTransform: "uppercase" }}>{c.tag}</span>
+          <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 560, margin: "0 0 32px", lineHeight: 1.6 }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio.</p>
+
+          <div className="grid lg:grid-cols-5" style={{ gap: 32, alignItems: "start" }}>
+            <div className="lg:col-span-2" style={{ position: "relative", borderRadius: 16, overflow: "hidden", background: "#000" }}>
+              <img
+                src="/images/ajax-hero-dispositivos.jpeg"
+                alt="Dispositivos del sistema de alarma Ajax: hub, detectores, sirena y teclado"
+                loading="lazy"
+                decoding="async"
+                style={{ width: "100%", display: "block", aspectRatio: "4 / 3", objectFit: "cover" }}
+              />
+            </div>
+            <dl className="lg:col-span-3" style={{ margin: 0 }}>
+              {AJAX_COMPONENTS.map((c) => (
+                <div key={c.name} style={{ padding: "14px 0", borderBottom: "1px solid #E5E7EB" }}>
+                  <dt style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12 }}>
+                    <span style={{ fontSize: 15, fontWeight: 800, color: "#0A0A1A" }}>{c.name}</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.tag}</span>
+                  </dt>
+                  <dd style={{ margin: "4px 0 0", fontSize: 13, color: "#6B7280", lineHeight: 1.6 }}>{c.desc}</dd>
                 </div>
-                <h3 style={{ fontSize: 14, fontWeight: 800, color: "#0A0A1A", margin: "0 0 6px" }}>{c.name}</h3>
-                <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.55, margin: 0 }}>{c.desc}</p>
+              ))}
+            </dl>
+          </div>
+
+          {/* Cifras clave */}
+          <div className="grid grid-cols-2 lg:grid-cols-4" style={{ gap: 0, marginTop: 40, borderTop: "2px solid #0A0A1A" }}>
+            {TECH_STATS.map((t, i) => (
+              <div key={t.label} style={{ padding: "20px 16px 8px 0", borderRight: i % 2 === 0 ? "1px solid #E5E7EB" : "none", paddingLeft: i % 2 === 1 ? 16 : 0 }}>
+                <div style={{ fontSize: 30, fontWeight: 900, color: "#0A0A1A", letterSpacing: "-0.02em", lineHeight: 1 }}>{t.value}</div>
+                <div style={{ fontSize: 12, color: "#6B7280", marginTop: 6, lineHeight: 1.4 }}>{t.label}</div>
               </div>
             ))}
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 10, marginTop: 32 }}>
+
+          <ul style={{ listStyle: "none", margin: "28px 0 0", padding: 0 }} className="grid sm:grid-cols-3 gap-x-8 gap-y-5">
             {TECH_FEATURES.map((f) => (
-              <div key={f.title} style={{ backgroundColor: "#fff", borderRadius: 11, padding: "18px 16px", border: "1px solid #E5E7EB", display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <div style={{ width: 34, height: 34, background: "rgba(229,62,62,0.1)", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                  <f.icon size={16} color="#E53E3E" />
-                </div>
-                <div>
-                  <h4 style={{ fontSize: 12, fontWeight: 800, color: "#0A0A1A", margin: "0 0 4px" }}>{f.title}</h4>
-                  <p style={{ fontSize: 11, color: "#6B7280", lineHeight: 1.5, margin: 0 }}>{f.desc}</p>
-                </div>
-              </div>
+              <li key={f.title}>
+                <h4 style={{ fontSize: 14, fontWeight: 800, color: "#0A0A1A", margin: "0 0 3px" }}>{f.title}</h4>
+                <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.55, margin: 0 }}>{f.desc}</p>
+              </li>
             ))}
-          </div>
+          </ul>
           <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.8, marginTop: 28, maxWidth: 680 }}>
             El protocolo radio <strong style={{ color: "#374151" }}>Jeweller</strong> es propietario de doble vía con alcance de 2.000 metros y cifrado AES-128 end-to-end. Compatible con +50 CRA profesionales homologadas en España, integración nativa con Google Home y Amazon Alexa, y soporte técnico certificado en español disponible 24/7.
           </p>
