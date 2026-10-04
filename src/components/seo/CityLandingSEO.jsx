@@ -76,25 +76,13 @@ export default function CityLandingSEO({ path }) {
           "postalCode": "08026",
           "addressCountry": "ES"
         },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": "41.3874",
-          "longitude": "2.1686"
-        },
         "openingHours": "Mo-Sa 08:00-20:00",
         "priceRange": "€€",
         "hasMap": "https://maps.google.com/maps?cid=5715602764533889179",
         "sameAs": [
           "https://www.instagram.com/premiumtechsecurity",
           "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
-        ],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "19",
-          "bestRating": "5",
-          "worstRating": "1"
-        }
+        ]
       }] : [{
         "@type": "Service",
         "@id": `${seo.canonical}#service`,
@@ -103,7 +91,7 @@ export default function CityLandingSEO({ path }) {
         "description": seo.description,
         "provider": { "@id": "https://alarmasenbarcelona.com/#organization" },
         "areaServed": { "@type": "City", "name": path === "/alarmas-girona" ? "Girona" : path === "/alarmas-tarragona" ? "Tarragona" : path === "/alarmas-lleida" ? "Lleida" : "Sabadell" }
-      },
+      }]),
       {
         "@type": "Service",
         "name": "Instalación de Sistemas de Alarma Ajax",
