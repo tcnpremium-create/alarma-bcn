@@ -12,7 +12,7 @@
  *
  * - googleRating / googleReviewCount: VERIFIED against the live Google
  *   Business Profile listing (screenshot + Windsor.ai API pull,
- *   2026-08-21). Not a guess — use these everywhere a rating is shown.
+ *   2026-10-04). Not a guess — use these everywhere a rating is shown.
  *
  * - experienceText: the codebase had 3 conflicting figures (15 / 30 / 10
  *   años) with no way to determine which is correct. The "30 años" claim
@@ -41,8 +41,8 @@ export const businessStats = {
   phoneDisplay: "638 10 99 47",
   email: "tcnpremium@gmail.com",
 
-  googleRating: "4.8",
-  googleReviewCount: "19",
+  googleRating: "4.9",
+  googleReviewCount: "23",
 
   experienceText: "Amplia experiencia en el sector de la seguridad electrónica",
   installationsText: "Instalaciones realizadas en Barcelona y toda Catalunya",
