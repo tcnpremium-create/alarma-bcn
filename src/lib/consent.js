@@ -26,6 +26,19 @@
  */
 
 const STORAGE_KEY = "ptsec_cookie_consent_v1";
+const COOKIE_KEY = "ptsec_cookie_consent_v1";
+const ONE_YEAR = 60 * 60 * 24 * 365;
+
+function readCookie() {
+  try {
+    const prefix = COOKIE_KEY + "=";
+    const hit = document.cookie.split("; ").find((row) => row.startsWith(prefix));
+    if (!hit) return null;
+    return JSON.parse(decodeURIComponent(hit.slice(prefix.length)));
+  } catch {
+    return null;
+  }
+}
 const GA_MEASUREMENT_ID = "G-TKZQJRGRFR";
 const HUBSPOT_SCRIPT_SRC = "//js.hs-scripts.com/147919189.js";
 const ADSENSE_CLIENT = "ca-pub-9051549124466549";
@@ -34,8 +47,8 @@ const ADSENSE_CLIENT = "ca-pub-9051549124466549";
 export function getConsent() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
+    const parsed = raw ? JSON.parse(raw) : readCookie();
+    if (!parsed) return null;
     return { necessary: true, analytics: !!parsed.analytics, advertising: !!parsed.advertising };
   } catch {
     return null;
@@ -44,17 +57,20 @@ export function getConsent() {
 
 function persistConsent(consent) {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+    const value = {
       necessary: true,
       analytics: !!consent.analytics,
       advertising: !!consent.advertising,
       updatedAt: new Date().toISOString(),
-    }));
+    };
+    const serialized = JSON.stringify(value);
+    localStorage.setItem(STORAGE_KEY, serialized);
+    document.cookie = COOKIE_KEY + "=" + encodeURIComponent(serialized) + "; Max-Age=" + ONE_YEAR + "; Path=/; SameSite=Lax; Secure";
   } catch {
-    // Si localStorage no está disponible (modo privado estricto, etc.)
-    // simplemente no persiste — el usuario verá el banner de nuevo en
-    // su próxima visita, lo cual es el comportamiento seguro por
-    // defecto (no cargar trackers).
+    try {
+      const fallback = JSON.stringify({ necessary: true, analytics: !!consent.analytics, advertising: !!consent.advertising });
+      document.cookie = COOKIE_KEY + "=" + encodeURIComponent(fallback) + "; Max-Age=" + ONE_YEAR + "; Path=/; SameSite=Lax; Secure";
+    } catch {}
   }
 }
 
