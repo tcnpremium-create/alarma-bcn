@@ -10,13 +10,13 @@ export default function MobileFloatingCTA() {
   return (
     <>
     {/* Segundo acceso a WhatsApp: botón redondo flotante encima de la
-        barra, a la izquierda para no tapar el ChatWidget (abajo derecha). */}
+        barra, siempre a la derecha (el ChatWidget va a la izquierda). */}
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => markExitIntentConverted()}
-      className="fixed left-4 z-[9999] w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-transform"
+      className="fixed right-4 z-[9999] w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:scale-105 transition-transform"
       style={{
         backgroundColor: "#25D366",
         bottom: "calc(66px + env(safe-area-inset-bottom, 0px))",
