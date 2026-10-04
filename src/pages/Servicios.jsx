@@ -1,4 +1,5 @@
 import React from "react";
+import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
@@ -199,9 +200,9 @@ const servicios = [
 
 
 export default function Servicios() {
-  const handleContactClick = () => {
-    window.location.href = "/#contacto";
-  };
+  const { openDrawer } = useLeadDrawer();
+  // Antes enviaba a "/#contacto", una sección que la home ya no tiene.
+  const handleContactClick = () => openDrawer();
 
   const schemaData = {
     "@context": "https://schema.org",

@@ -9,7 +9,7 @@ export const articleSEOData = {
     metaDescription: 'Precio real alarma en Barcelona: 400€–3.500€ según inmueble. Tabla actualizada, ejemplos reales y cómo ahorrar en la instalación. Guía 2026.',
     keywords: ['precio alarma Barcelona', 'cuánto cuesta instalar alarma Barcelona', 'coste alarma piso Barcelona', 'presupuesto alarma Barcelona 2026', 'instalar alarma precio', 'alarma AJAX Barcelona precio'],
     inContentImages: [
-      { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80', alt: 'Central de alarma AJAX Hub 2 Plus instalada en vivienda de Barcelona', caption: 'Central AJAX Hub 2 Plus: la más instalada en Barcelona. Incluye batería de respaldo 12h y doble comunicación 4G + Ethernet.' },
+      { src: '/images/ajax-hero-dispositivos.jpeg', alt: 'Central de alarma AJAX Hub 2 Plus instalada en vivienda de Barcelona', caption: 'Central AJAX Hub 2 Plus: la más instalada en Barcelona. Incluye batería de respaldo 12h y doble comunicación 4G + Ethernet.' },
       { src: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80', alt: 'Técnico instalando sensor de movimiento en piso de Barcelona sin obras', caption: 'Instalación sin obras: sensores AJAX fijados con adhesivo de alta resistencia. Sin polvo, sin agujeros en paredes.' },
     ],
     faqs: [
@@ -25,7 +25,7 @@ export const articleSEOData = {
     metaDescription: 'Análisis experto de las mejores alarmas para hogar en Barcelona: AJAX, Hikvision, Paradox, DSC. Cuál elegir según tu vivienda y presupuesto.',
     keywords: ['mejor alarma casa Barcelona', 'alarmas para hogar Barcelona', 'AJAX alarma Barcelona', 'Hikvision AX Pro Barcelona', 'instalar alarma casa Barcelona', 'sistema seguridad hogar Barcelona 2026'],
     inContentImages: [
-      { src: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1200&q=80', alt: 'Sistema de alarma AJAX instalado en salón de vivienda moderna en Barcelona', caption: 'AJAX Systems: diseño minimalista que no desentona con ninguna decoración. App valorada 4.8/5.' },
+      { src: '/images/ajax-sistema-alarma.jpeg', alt: 'Sistema de alarma AJAX instalado en salón de vivienda moderna en Barcelona', caption: 'AJAX Systems: diseño minimalista que no desentona con ninguna decoración. App valorada 4.8/5.' },
       { src: 'https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1200&q=80', alt: 'Sensor MotionCam AJAX con cámara integrada en vivienda barcelonesa', caption: 'AJAX MotionCam: detector de movimiento con cámara integrada para verificación visual instantánea al activarse la alarma.' },
     ],
     faqs: [
@@ -108,7 +108,7 @@ export const articleSEOData = {
     metaDescription: 'Guía completa sensores movimiento alarmas 2026: PIR, microondas, duales, anti-mascota. Diferencias, precios y posición correcta para cero falsas alarmas.',
     keywords: ['sensor movimiento alarma', 'detector PIR alarma', 'sensor movimiento sin falsas alarmas', 'sensor anti-mascota alarma', 'AJAX MotionProtect Barcelona', 'mejor detector movimiento alarma'],
     inContentImages: [
-      { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1200&q=80', alt: 'Sensor PIR AJAX MotionProtect instalado en esquina superior de habitación', caption: 'Posición óptima del sensor PIR: esquina superior, cubriendo la diagonal de la habitación para máxima cobertura sin puntos ciegos.' },
+      { src: '/images/ajax-hero-dispositivos.jpeg', alt: 'Sensor PIR AJAX MotionProtect instalado en esquina superior de habitación', caption: 'Posición óptima del sensor PIR: esquina superior, cubriendo la diagonal de la habitación para máxima cobertura sin puntos ciegos.' },
     ],
     faqs: [
       { q: '¿Qué sensor de movimiento genera menos falsas alarmas?', a: 'Los sensores duales (PIR + microondas) tienen una tasa de falsas alarmas prácticamente cero al requerir que ambas tecnologías detecten simultáneamente. El AJAX MotionProtect también tiene excelente reputación. Para negocios con Grado 2, los sensores duales son obligatorios.' },
@@ -162,7 +162,7 @@ export const articleSEOData = {
     metaDescription: 'Cómo funciona el aviso automático a Policía con tu alarma: proceso en 6 pasos, tiempos respuesta, coste CRA y cómo evitar falsas alarmas en Barcelona.',
     keywords: ['alarma aviso policía Barcelona', 'central receptora alarmas Barcelona CRA', 'alarma conectada policía Barcelona', 'monitorización alarma 24/7 Barcelona', 'CRA homologada Barcelona', 'alarma central receptora precio'],
     inContentImages: [
-      { src: 'https://images.unsplash.com/photo-1580746738099-b2d3e0bc0d21?w=1200&q=80', alt: 'Central Receptora de Alarmas CRA monitorizando 24 horas en Barcelona', caption: 'Una CRA homologada monitoriza tu sistema 24/7 y coordina la respuesta policial en menos de 2 minutos desde la activación.' },
+      { src: '/images/ajax-products-lineup.jpeg', alt: 'Central Receptora de Alarmas CRA monitorizando 24 horas en Barcelona', caption: 'Una CRA homologada monitoriza tu sistema 24/7 y coordina la respuesta policial en menos de 2 minutos desde la activación.' },
     ],
     faqs: [
       { q: '¿Cuánto tarda la Policía en llegar si salta la alarma en Barcelona?', a: 'En Barcelona capital, la Guardia Urbana tarda entre 5 y 15 minutos tras el aviso de la CRA. En municipios del área metropolitana puede tardar más. Por eso algunas CRA ofrecen "servicio acuda" con vigilante privado que llega en 10–20 minutos.' },
@@ -188,7 +188,7 @@ export const articleSEOData = {
     metaDescription: 'Cómo proteger garajes en Barcelona: alarmas, cámaras y sensores para comunitarios e individuales. Soluciones desde 180€ para coches, motos y bicicletas.',
     keywords: ['alarma garaje Barcelona', 'seguridad garaje Barcelona', 'cámaras garaje comunitario Barcelona', 'proteger garaje Barcelona', 'robo garaje Barcelona cómo evitarlo', 'sensor garaje alarma'],
     inContentImages: [
-      { src: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1200&q=80', alt: 'Cámara de seguridad Full HD instalada en rampa de garaje comunitario en Barcelona', caption: 'Una cámara visible en el acceso al garaje reduce los intentos de robo en un 70% según estadísticas de Barcelona.' },
+      { src: '/images/ajax-sistema-alarma.jpeg', alt: 'Cámara de seguridad Full HD instalada en rampa de garaje comunitario en Barcelona', caption: 'Una cámara visible en el acceso al garaje reduce los intentos de robo en un 70% según estadísticas de Barcelona.' },
     ],
     faqs: [
       { q: '¿Qué sistema de seguridad es mejor para un garaje comunitario en Barcelona?', a: 'La combinación más efectiva es: 4 cámaras Full HD (rampa + plantas) + focos automáticos LED + control de acceso con mando o tarjeta RFID. La inversión total es de 2.900–4.700€ repartida entre vecinos.' },

@@ -11,7 +11,7 @@ export default function BlogPreview() {
       excerpt: "Descubre las mejores prácticas para proteger tu vivienda contra ataques cibernéticos, hackeos de dispositivos IoT y robo de datos personales.",
       date: "20 Feb 2024",
       author: "Premium Tech Security",
-      image: "https://images.unsplash.com/photo-1633356122544-f134324ef6db?w=600&q=80",
+      image: "/images/seguridad-digital.png",
       category: "Seguridad"
     },
     {

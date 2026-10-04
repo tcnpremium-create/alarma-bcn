@@ -87,7 +87,7 @@ export default function SantCugatPage() {
             </div>
             <div className="bg-gray-100 rounded-2xl p-8">
               <img
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80"
+                src="/images/ajax-hero-dispositivos.jpeg"
                 alt="Alarmas en Sant Cugat"
                 loading="lazy"
                 decoding="async"
