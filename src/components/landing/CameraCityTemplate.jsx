@@ -142,13 +142,15 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       {/* ── HERO ── */}
       <section style={{ position: "relative", width: "100%", overflow: "hidden", height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
         <img
-          src="/images/camaras-variedad-interior.webp"
-          alt={`Cámaras de seguridad profesionales instaladas en ${city}`}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", opacity: 0.45 }}
+          src="/images/camara-domo.jpeg"
+          alt={`Cámara de seguridad domo instalada en una vivienda de ${city}`}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "78% 35%", opacity: 0.92 }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 20%, rgba(10,10,26,0.55) 60%, rgba(10,10,26,0.2) 100%)" }} />
+        {/* Degradado: deja la cámara bien visible arriba y oscurece la parte
+            baja, donde va el texto, para que se lea. */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 24%, rgba(10,10,26,0.88) 47%, rgba(10,10,26,0.12) 74%, rgba(10,10,26,0) 100%)" }} />
         <div style={{ position: "relative", zIndex: 10, maxWidth: 800, margin: "0 auto", padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%", paddingBottom: 48, paddingTop: 80 }}>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.35)", borderRadius: 20, padding: "5px 14px", color: "#E53E3E", fontSize: 11, fontWeight: 700, letterSpacing: 1, width: "fit-content", marginBottom: 16 }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(10,10,26,0.78)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", border: "1px solid rgba(229,62,62,0.35)", borderRadius: 20, padding: "5px 14px", color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1, width: "fit-content", marginBottom: 16 }}>
             <span style={{ width: 7, height: 7, backgroundColor: "#E53E3E", borderRadius: "50%", display: "inline-block" }} />
             INSTALACIÓN PROFESIONAL EN {city.toUpperCase()}
           </span>
