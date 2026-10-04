@@ -18,7 +18,7 @@ const KEY_FACTS = [
   "Ecosistema Ajax",
   "Grado 2 certificado",
   "Anti-inhibición de señal",
-  "Conexión a CRA opcional (no incluida)",
+  "Con o sin central receptora: tú eliges",
   "App de control 24/7",
   "Sin cuotas ni permanencia",
 ];
@@ -62,7 +62,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
           Alta seguridad con el ecosistema Ajax
         </h2>
         <p style={{ color:"#94A3B8",fontSize:15.5,lineHeight:1.75,marginTop:14,maxWidth:480 }}>
-          Protegemos hogares, negocios y comunidades con detección avanzada y alertas en tiempo real en tu móvil. Conexión a central receptora opcional. Sin cuotas, sin permanencia.
+          Protegemos hogares, negocios y comunidades con detección avanzada y alertas en tiempo real en tu móvil. Con o sin conexión a central receptora, tú decides. Sin cuotas, sin permanencia.
         </p>
 
         {/* Lo importante, de un vistazo — sin cajas ni chips */}
