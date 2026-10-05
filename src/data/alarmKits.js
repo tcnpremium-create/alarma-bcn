@@ -63,6 +63,8 @@
  *   configuración base — solo para los kits "Desde" (Vivienda/Negocio
  *   y Profesional/Empresa). No es una lista de dispositivos concretos
  *   de ampliación, es una nota comercial genérica.
+ * - photos: fotos de lo que lleva el kit (img, label y qty opcional). Solo se
+ *   enseñan equipos que figuran en `items`.
  * - tech: resumen técnico de una línea (Grado, antiinhibición, batería, etc.)
  */
 export const ALARM_KITS = [
@@ -75,6 +77,13 @@ export const ALARM_KITS = [
     isFrom: false,
     highlight: false,
     ivaNote: true,
+    photos: [
+      { img: "/images/ajax/hub-2-blanco.webp", label: "Central Hub" },
+      { img: "/images/ajax/motionprotect.webp", label: "Detector de movimiento" },
+      { img: "/images/ajax/doorprotect.webp", label: "Contacto magnético" },
+      { img: "/images/ajax/spacecontrol.webp", label: "Mando" },
+      { img: "/images/ajax/homesiren.webp", label: "Sirena interior" },
+    ],
     items: [
       "Hub Ajax (central de control)",
       "1 detector de movimiento (sin cámara)",
@@ -96,6 +105,12 @@ export const ALARM_KITS = [
     isFrom: true,
     highlight: true,
     ivaNote: true,
+    photos: [
+      { img: "/images/ajax/motionprotect.webp", label: "Detector de movimiento", qty: 2 },
+      { img: "/images/ajax/doorprotect.webp", label: "Contacto magnético" },
+      { img: "/images/ajax/spacecontrol.webp", label: "Mando" },
+      { img: "/images/ajax/homesiren.webp", label: "Sirena interior" },
+    ],
     items: [
       "2 detectores de movimiento normales",
       "1 detector magnético para puerta principal",
@@ -119,6 +134,13 @@ export const ALARM_KITS = [
     isFrom: true,
     highlight: false,
     ivaNote: true,
+    photos: [
+      { img: "/images/ajax/motioncam.webp", label: "MotionCam", qty: 2 },
+      { img: "/images/ajax/motionprotect.webp", label: "Detector de movimiento", qty: 2 },
+      { img: "/images/ajax/doorprotect.webp", label: "Contacto magnético" },
+      { img: "/images/ajax/spacecontrol.webp", label: "Mando" },
+      { img: "/images/ajax/homesiren.webp", label: "Sirena interior" },
+    ],
     items: [
       "2 detectores MotionCam (verificación por imagen)",
       "2 detectores de movimiento normales",
