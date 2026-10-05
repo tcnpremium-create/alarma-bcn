@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ALARM_KITS as KITS } from "@/data/alarmKits";
-import KitPhotos from "./KitPhotos";
 
 const css = `
   .a-cta-primary { background: #E53E3E; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
@@ -155,7 +154,6 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                 {isOpen && (
                   <div style={{ padding:"0 18px 20px",borderTop:"1px solid rgba(239,68,68,.12)" }}>
                     <p style={{ color:"#94A3B8",fontSize:12,marginTop:12,marginBottom:10 }}>{kit.subtitle} — incluye:</p>
-                    <div style={{ marginBottom:14 }}><KitPhotos photos={kit.photos} size={56} /></div>
                     <ul style={{ listStyle:"none",margin:0,padding:0,display:"flex",flexDirection:"column",gap:7 }}>
                       {kit.items.map((item)=>(
                         <li key={item} style={{ display:"flex",alignItems:"flex-start",gap:8,color:"#E2E8F0",fontSize:13 }}>
