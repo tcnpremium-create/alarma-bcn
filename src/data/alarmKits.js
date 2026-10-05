@@ -106,12 +106,14 @@ export const ALARM_KITS = [
     highlight: true,
     ivaNote: true,
     photos: [
+      { img: "/images/ajax/hub-2-blanco.webp", label: "Central Hub" },
       { img: "/images/ajax/motionprotect.webp", label: "Detector de movimiento", qty: 2 },
       { img: "/images/ajax/doorprotect.webp", label: "Contacto magnético" },
       { img: "/images/ajax/spacecontrol.webp", label: "Mando" },
       { img: "/images/ajax/homesiren.webp", label: "Sirena interior" },
     ],
     items: [
+      "Hub Ajax (central de control)",
       "2 detectores de movimiento normales",
       "1 detector magnético para puerta principal",
       "1 mando a distancia",
@@ -135,6 +137,7 @@ export const ALARM_KITS = [
     highlight: false,
     ivaNote: true,
     photos: [
+      { img: "/images/ajax/hub-2-blanco.webp", label: "Central Hub" },
       { img: "/images/ajax/motioncam.webp", label: "MotionCam", qty: 2 },
       { img: "/images/ajax/motionprotect.webp", label: "Detector de movimiento", qty: 2 },
       { img: "/images/ajax/doorprotect.webp", label: "Contacto magnético" },
@@ -142,6 +145,7 @@ export const ALARM_KITS = [
       { img: "/images/ajax/homesiren.webp", label: "Sirena interior" },
     ],
     items: [
+      "Hub Ajax (central de control)",
       "2 detectores MotionCam (verificación por imagen)",
       "2 detectores de movimiento normales",
       "1 detector magnético para puerta principal",

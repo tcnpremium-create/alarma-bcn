@@ -8,9 +8,9 @@ import React from "react";
 export default function KitPhotos({ photos, size = 78 }) {
   if (!photos?.length) return null;
   return (
-    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexWrap: "wrap", gap: 10 }} aria-label="Fotos de lo que incluye el kit">
+    <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gridTemplateColumns: "repeat(3, minmax(0, 1fr))", gap: "14px 8px" }} aria-label="Fotos de lo que incluye el kit">
       {photos.map((p) => (
-        <li key={p.label} style={{ width: size + 8, textAlign: "center" }}>
+        <li key={p.label} style={{ textAlign: "center" }}>
           <div style={{ position: "relative", width: size, height: size, margin: "0 auto", overflow: "visible", borderRadius: 14, background: "radial-gradient(circle at 50% 45%, rgba(148,163,184,.26) 0%, rgba(148,163,184,.10) 55%, transparent 75%)" }}>
             <img src={p.img} alt={p.label} loading="lazy" decoding="async" width={size} height={size} style={{ width: "86%", height: "86%", margin: "7%", objectFit: "contain", display: "block", filter: "drop-shadow(0 4px 8px rgba(0,0,0,.45))" }} />
             {p.qty > 1 && (
