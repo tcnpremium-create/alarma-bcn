@@ -7,6 +7,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import LeadCaptureForm from "./LeadCaptureForm";
 import AlarmConnectionOptions from "./AlarmConnectionOptions";
 import AlarmKitsGrid from "./AlarmKitsGrid";
+import KitShowcase from "./KitShowcase";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { businessStats } from "@/lib/businessStats";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
@@ -132,6 +133,9 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
 
       {/* KITS DE ALARMA AJAX */}
       <AlarmKitsGrid city={city} onRequestQuote={(kit) => openDrawer(kit.title)} />
+
+      {/* FOTOS DE LOS EQUIPOS — después de los kits, nunca dentro */}
+      <KitShowcase onRequestQuote={() => openDrawer(`Alarma en ${city}`)} />
 
       {/* CON O SIN CRA: LO DECIDE EL CLIENTE */}
       <AlarmConnectionOptions onRequestQuote={() => openDrawer(`Alarma en ${city}`)} />
