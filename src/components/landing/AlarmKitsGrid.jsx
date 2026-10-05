@@ -9,6 +9,7 @@ import { Marquee } from "../magicui/marquee";
 import { ShinyButton } from "../magicui/shiny-button";
 import { ALARM_KITS } from "@/data/alarmKits";
 import KitFinder from "./KitFinder";
+import KitPhotos from "./KitPhotos";
 
 const CERTIFICATIONS = [
   { label: "Grado 2 · EN 50131", icon: ShieldCheck },
@@ -196,6 +197,8 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
                   <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price} €</div>
                   <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
                 </div>
+
+                <div style={{ marginBottom: 18 }}><KitPhotos photos={kit.photos} /></div>
 
                 <button
                   onClick={() => setOpenId(isOpen ? null : kit.id)}
