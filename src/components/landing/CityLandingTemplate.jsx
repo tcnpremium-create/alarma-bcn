@@ -40,8 +40,8 @@ const AJAX_COMPONENTS = [
   { name: "MotionProtect", img: "/images/ajax/motionprotect.webp", desc: "Detector PIR de movimiento con tecnología dual. Antimasking integrado. Inmunidad a mascotas hasta 20 kg. Alcance 12m × 90°.", tag: "Detector" },
   { name: "MotionProtect Outdoor", img: "/images/ajax/motionprotect-outdoor.webp", desc: "Detector de movimiento para exterior, pensado para jardines, terrazas y perímetros. Resistente a la intemperie.", tag: "Exterior" },
   { name: "DualCurtain Outdoor", img: "/images/ajax/dualcurtain-outdoor.webp", desc: "Detector de cortina para exterior. Vigila ventanas, puertas y fachadas sin invadir el resto del jardín.", tag: "Exterior" },
-  { name: "DoorProtect", desc: "Sensor magnético para puertas y ventanas. Detecta apertura, cierre y vibración simultáneamente. Batería 3,5 años.", tag: "Sensor" },
-  { name: "MotionCam", desc: "Detector con cámara Ajax integrada. Fotografía al intruso en el instante exacto del disparo; con CRA contratada, sirve para la fotoverificación.", tag: "Ajax Cam" },
+  { name: "DoorProtect", img: "/images/ajax/doorprotect.webp", desc: "Sensor magnético para puertas y ventanas. Detecta apertura, cierre y vibración simultáneamente. Batería 3,5 años.", tag: "Sensor" },
+  { name: "MotionCam", img: "/images/ajax/motioncam.webp", desc: "Detector con cámara Ajax integrada. Fotografía al intruso en el instante exacto del disparo; con CRA contratada, sirve para la fotoverificación.", tag: "Ajax Cam" },
   { name: "GlassProtect", desc: "Detector de rotura de cristal de amplio alcance. Identifica el sonido específico de rotura y vibración. Cubre hasta 9m².", tag: "Detector" },
   { name: "HomeSiren", img: "/images/ajax/homesiren.webp", desc: "Sirena interior inalámbrica con aviso sonoro y luminoso. Va incluida en nuestros kits de alarma.", tag: "Sirena" },
   { name: "StreetSiren", img: "/images/ajax/streetsiren.webp", desc: "Sirena exterior Ajax con señalización LED. 113 dB audibles a 400 metros. IP55 certificado para intemperie.", tag: "Sirena" },
@@ -187,20 +187,22 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
           <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 560, margin: "0 0 32px", lineHeight: 1.6 }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio.</p>
 
           <div className="grid lg:grid-cols-5" style={{ gap: 32, alignItems: "start" }}>
-            <div className="lg:col-span-2" style={{ position: "relative", borderRadius: 16, overflow: "hidden", background: "#E9ECF1", padding: 12 }}>
+            <div className="lg:col-span-2" style={{ position: "relative", borderRadius: 16, overflow: "hidden", background: "#111827", padding: 12 }}>
               <img
                 src="/images/ajax/kit-inicio.webp"
                 alt="Kit de inicio de alarma Ajax: central Hub, detector de movimiento, mando y contacto magnético"
                 loading="lazy"
                 decoding="async"
-                style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", background: "#fff", borderRadius: 10 }}
+                style={{ width: "100%", display: "block", aspectRatio: "1 / 1", objectFit: "contain", filter: "drop-shadow(0 6px 10px rgba(15,23,42,.25))" }}
               />
             </div>
             <dl className="lg:col-span-3" style={{ margin: 0 }}>
               {AJAX_COMPONENTS.map((c) => (
                 <div key={c.name} style={{ padding: "14px 0", borderBottom: "1px solid #E5E7EB", display: "flex", gap: 14, alignItems: "flex-start" }}>
-                  {c.img && (
-                    <img src={c.img} alt={`Ajax ${c.name}`} loading="lazy" decoding="async" width="64" height="64" style={{ width: 64, height: 64, objectFit: "contain", background: "#fff", borderRadius: 10, border: "1px solid #E5E7EB", flexShrink: 0 }} />
+                  {c.img ? (
+                    <img src={c.img} alt={`Ajax ${c.name}`} loading="lazy" decoding="async" width="64" height="64" style={{ width: 64, height: 64, objectFit: "contain", flexShrink: 0, filter: "drop-shadow(0 3px 5px rgba(15,23,42,.28))" }} />
+                  ) : (
+                    <span aria-hidden="true" style={{ width: 64, height: 64, flexShrink: 0 }} />
                   )}
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <dt style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12 }}>
