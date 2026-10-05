@@ -14,37 +14,16 @@ const css = `
   .c-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
   .c-cta-sec { transition: background .2s, border-color .2s; }
   .c-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
-  .c-kit-card { transition: border-color .2s ease, background .2s ease, box-shadow .3s ease, transform .15s ease; }
+  .c-kit-card { transition: border-color .2s ease, background .2s ease, box-shadow .3s ease; }
   .c-kit-card:hover { border-color: rgba(255,255,255,.22)!important; }
-  .c-kit-card:active { transform: scale(.985); }
-  /* Tarjeta protagonista: late con un brillo rojo y una luz recorre su
-     línea superior. El resto de tarjetas reciben un destello suave que las
-     cruza una tras otra, para que el bloque se vea vivo y no estático. */
-  .c-kit-card--highlight { animation: cGlow 2.6s ease-in-out infinite; }
-  .c-kit-card--highlight:hover { box-shadow: 0 0 0 1px rgba(229,62,62,.55), 0 10px 40px rgba(229,62,62,.26); animation: none; }
-  .c-kit-line {
-    height: 3px !important;
-    background-image: linear-gradient(90deg, transparent 0%, #ef4444 20%, #ffffff 50%, #ef4444 80%, transparent 100%) !important;
-    background-size: 200% 100% !important;
-    animation: cLine 2.2s linear infinite;
-  }
-  .c-kit-card::after {
-    content: ""; position: absolute; top: 0; bottom: 0; left: 0; width: 34%;
-    background: linear-gradient(100deg, transparent, rgba(255,255,255,.10), transparent);
-    transform: translateX(-130%) skewX(-18deg);
-    animation: cSweep 6s ease-in-out infinite; pointer-events: none;
-  }
-  .c-kit-card:nth-of-type(2)::after { animation-delay: 1.6s; }
-  .c-kit-card:nth-of-type(3)::after { animation-delay: 3.2s; }
-  @keyframes cLine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-  @keyframes cGlow {
-    0%, 100% { box-shadow: 0 0 0 1px rgba(229,62,62,.35), 0 8px 32px rgba(229,62,62,.16); }
-    50% { box-shadow: 0 0 0 1px rgba(229,62,62,.85), 0 10px 46px rgba(229,62,62,.40); }
-  }
-  @keyframes cSweep { 0% { transform: translateX(-130%) skewX(-18deg); } 40%, 100% { transform: translateX(330%) skewX(-18deg); } }
+  /* Glow sutil y constante en la tarjeta protagonista — no es una
+     animación en bucle, es un box-shadow fijo con transición suave al
+     entrar en pantalla y al hacer hover. Respeta prefers-reduced-motion:
+     con la preferencia activada solo cambia el borde, sin transición. */
+  .c-kit-card--highlight { box-shadow: 0 0 0 1px rgba(229,62,62,.35), 0 8px 32px rgba(229,62,62,.16); }
+  .c-kit-card--highlight:hover { box-shadow: 0 0 0 1px rgba(229,62,62,.55), 0 10px 40px rgba(229,62,62,.26); }
   @media (prefers-reduced-motion: reduce) {
     .c-kit-card, .c-kit-card:hover, .c-cta-primary, .c-cta-primary:hover { transition: none; transform: none; }
-    .c-kit-card, .c-kit-card--highlight, .c-kit-line, .c-kit-card::after { animation: none !important; }
   }
 `;
 
@@ -149,7 +128,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                   style={{ background:"rgba(255,255,255,.03)",border:`1px solid ${isOpen ? "rgba(255,255,255,.22)" : popular ? "rgba(229,62,62,.35)" : "rgba(255,255,255,.08)"}`,borderRadius:14,overflow:"hidden",position:"relative" }}
                 >
                   {popular && (
-                    <div className="c-kit-line" style={{ position:"absolute",top:0,left:0,right:0,height:2,background:"linear-gradient(to right,transparent,#ef4444 30%,#ef4444 70%,transparent)",borderRadius:"14px 14px 0 0" }} />
+                    <div style={{ position:"absolute",top:0,left:0,right:0,height:2,background:"linear-gradient(to right,transparent,#ef4444 30%,#ef4444 70%,transparent)",borderRadius:"14px 14px 0 0" }} />
                   )}
                   <button
                     onClick={() => setOpen(isOpen ? null : kit.id)}
