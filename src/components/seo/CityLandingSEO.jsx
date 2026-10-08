@@ -11,8 +11,8 @@ const ALARM_HIGH_PRICE = String(Math.max(...ALARM_PRICES));
 
 const SEO_DATA = {
   "/alarmas-barcelona": {
-    title: "Alarmas y Cámaras de Seguridad Barcelona | Premium Tech",
-    description: "Alarmas de seguridad en Barcelona sin cuotas. Ajax, Hikvision. Alertas en tu móvil en tiempo real. Instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
+    title: "Alarmas para Casa en Barcelona | Ajax sin Cuotas",
+    description: "Alarmas para casa y negocio en Barcelona con Ajax: sin cuotas, aviso al móvil en tiempo real e instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
     keywords: "alarmas Barcelona, cámaras seguridad Barcelona, instalación alarmas Barcelona, empresa seguridad Barcelona, AJAX Barcelona, Hikvision Barcelona",
     canonical: "https://alarmasenbarcelona.com/alarmas-barcelona"
   },
