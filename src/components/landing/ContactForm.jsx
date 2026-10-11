@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { base44 } from "@/api/api";
+import { base44, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
+import { useFormTracking } from "@/lib/useFormTracking";
 import { CheckCircle, Loader2, Phone } from "lucide-react";
 import { registerPhoneForTracking } from "@/components/tracking/useHubSpotTracking";
 
@@ -19,6 +20,8 @@ export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const tracking = useFormTracking("contacto_inline", { open: "visible" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +43,7 @@ export default function ContactForm() {
     }
 
     setLoading(true);
+    tracking.onSubmit();
     try {
       const lead = await base44.entities.Lead.create({
         ...formData,
@@ -59,12 +63,20 @@ export default function ContactForm() {
       });
 
       registerPhoneForTracking(formData.telefono);
+      tracking.onSuccess(lead);
+      setNotice(needsDelayedNotice(lead) ? NOTIFICATION_DELAYED_NOTICE : "");
       setSuccess(true);
       setFormData({ nombre: "", email: "", telefono: "", tipo_cliente: "hogar", zona: "", servicio_interes: "", mensaje: "" });
-      setTimeout(() => setSuccess(false), 6000);
+      // Con aviso de incidencia se deja más tiempo en pantalla para que se pueda leer.
+      setTimeout(() => setSuccess(false), needsDelayedNotice(lead) ? 25000 : 6000);
     } catch (err) {
       console.error("Error enviando formulario de contacto:", err);
-      setError("No hemos podido enviar tu solicitud. Llámanos o inténtalo de nuevo.");
+      tracking.onError(err);
+      setError(
+        err?.kind === "validation"
+          ? err.message
+          : "No hemos podido enviar tu solicitud y NO se ha registrado. Llámanos al 638 10 99 47 o inténtalo de nuevo."
+      );
     } finally {
       setLoading(false);
     }
@@ -85,7 +97,7 @@ export default function ContactForm() {
           ✅ Hemos recibido tu solicitud correctamente
         </p>
         <p className="text-sm sm:text-base text-green-700 mb-5 sm:mb-6">
-          Nos pondremos en contacto contigo en menos de 24 horas
+          {notice || "Nos pondremos en contacto contigo en menos de 24 horas"}
         </p>
         <a href="tel:+34638109947" className="bg-white rounded-xl p-4 inline-flex items-center gap-2 active:bg-gray-50 transition-colors" style={{ touchAction: "manipulation" }}>
           <Phone className="w-5 h-5 text-[#E63946]" />
@@ -98,7 +110,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4" noValidate>
+    <form ref={tracking.ref} onSubmit={handleSubmit} onFocusCapture={tracking.onStart} className="space-y-3 sm:space-y-4" noValidate>
       {/* Nombre y Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">

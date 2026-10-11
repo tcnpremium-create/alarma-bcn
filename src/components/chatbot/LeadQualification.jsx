@@ -4,7 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { base44 } from '@/api/api';
+import { base44, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from '@/api/api';
+import { trackEvent } from '@/lib/analytics';
 import { ChevronRight, Loader2 } from 'lucide-react';
 import { registerPhoneForTracking } from '@/components/tracking/useHubSpotTracking';
 
@@ -40,6 +41,7 @@ export default function LeadQualification({ onComplete }) {
     if (e && e.preventDefault) e.preventDefault();
     console.log("LeadQualification → handleSubmit ejecutado:", formData);
     setLoading(true);
+    trackEvent('form_submit', { form_name: 'chatbot_cualificacion', service: formData.servicio_interes });
 
     try {
       const leadData = {
@@ -55,40 +57,16 @@ export default function LeadQualification({ onComplete }) {
         estado: 'nuevo'
       };
 
-      await base44.entities.Lead.create(leadData);
+      const lead = await base44.entities.Lead.create(leadData);
+      trackEvent('form_success', { form_name: 'chatbot_cualificacion', service: formData.servicio_interes, notification: lead?.notification, duplicate: lead?.duplicate });
       registerPhoneForTracking(formData.telefono);
 
       // Sync to HubSpot CRM
       base44.functions.invoke('syncToHubspot', { leadData, dealStage: 'nuevo' }).catch(e => console.warn('HubSpot sync error:', e));
 
-      await base44.integrations.Core.SendEmail({
-        to: 'tcnpremium@gmail.com',
-        subject: `🔔 Lead Chatbot - ${formData.nombre} (${formData.servicio_interes})`,
-        body: `
-NUEVO LEAD DESDE CHATBOT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📋 DATOS DEL CLIENTE:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nombre: ${formData.nombre}
-Teléfono: ${formData.telefono}
-Email: ${formData.email || 'No proporcionado'}
-Tipo: ${formData.tipo_cliente}
-Zona: ${formData.zona || 'No especificada'}
-
-🎯 SERVICIO DE INTERÉS: ${formData.servicio_interes}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Urgencia: ${formData.urgencia}
-Estancias: ${formData.num_estancias || 'No especificado'}
-Cámaras: ${formData.num_camaras || 'No especificado'}
-
-💬 DETALLES:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${formData.detalles || 'Sin detalles adicionales'}
-
-⚡ ORIGEN: Chatbot web - Contactar en menos de 24h
-        `
-      });
+      // El aviso por correo lo envía y registra el servidor (/api/lead): antes aquí se llamaba a
+      // base44.integrations.Core.SendEmail, que no existe, y el error hacía creer que la solicitud
+      // había fallado aunque ya estuviera guardada.
 
       base44.analytics.track({
         eventName: 'chatbot_lead_qualified',
@@ -100,11 +78,12 @@ ${formData.detalles || 'Sin detalles adicionales'}
 
       onComplete({
         success: true,
-        message: `¡Perfecto ${formData.nombre}! Hemos recibido tu solicitud.\n\nTe contactaremos al ${formData.telefono} en menos de 24 horas para ofrecerte un presupuesto personalizado.\n\n¿Necesitas algo más?`
+        message: `¡Perfecto ${formData.nombre}! Hemos recibido tu solicitud.\n\n${needsDelayedNotice(lead) ? NOTIFICATION_DELAYED_NOTICE : `Te contactaremos al ${formData.telefono} en menos de 24 horas para ofrecerte un presupuesto personalizado.`}\n\n¿Necesitas algo más?`
       });
     } catch (error) {
       console.error('Error:', error);
-      alert('Error al enviar. Por favor llámanos al 638 10 99 47');
+      trackEvent('form_error', { form_name: 'chatbot_cualificacion', error_kind: error?.kind || 'unknown' });
+      alert(error?.kind === 'validation' ? error.message : 'No hemos podido registrar tu solicitud. Por favor llámanos al 638 10 99 47 o inténtalo de nuevo.');
     } finally {
       setLoading(false);
     }

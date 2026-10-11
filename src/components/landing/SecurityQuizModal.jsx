@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Home, Building2, Store, Warehouse, DoorOpen, Trees, AppWindow, Package,
   ShieldCheck, Camera, Bell, Fingerprint, Rocket, CalendarClock, CalendarSearch,
   Loader2, X, ChevronLeft, Check, User, Phone, Mail, MapPin,
 } from "lucide-react";
-import { LeadAPI } from "@/api/api";
+import { LeadAPI, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
+import { trackEvent } from "@/lib/analytics";
 
 const STEP1_OPTIONS = [
   { id: "piso", label: "Piso / Ático", icon: Building2 },
@@ -118,6 +119,11 @@ export default function SecurityQuizModal({ open, onClose }) {
   const [form, setForm] = useState({ nombre: "", municipio: "", telefono: "", email: "" });
   const [formError, setFormError] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [notice, setNotice] = useState("");
+
+  // Eventos del cuestionario: abrir (al mostrarse) y empezar (primera respuesta).
+  useEffect(() => { if (open) trackEvent("form_open", { form_name: "cuestionario_seguridad" }); }, [open]);
+  useEffect(() => { if (open && step === 2) trackEvent("form_start", { form_name: "cuestionario_seguridad" }); }, [open, step]);
 
   if (!open) return null;
 
@@ -126,6 +132,7 @@ export default function SecurityQuizModal({ open, onClose }) {
     setAnswers({ propiedad: null, vulnerabilidades: [], tecnologia: null, urgencia: null });
     setForm({ nombre: "", municipio: "", telefono: "", email: "" });
     setFormError("");
+    setNotice("");
     setSubmitting(false);
   };
 
@@ -163,12 +170,13 @@ export default function SecurityQuizModal({ open, onClose }) {
 
     setFormError("");
     setSubmitting(true);
+    trackEvent("form_submit", { form_name: "cuestionario_seguridad" });
     try {
       const vulnLabels = STEP2_OPTIONS.filter((o) => answers.vulnerabilidades.includes(o.id)).map((o) => o.label);
       const propiedadLabel = STEP1_OPTIONS.find((o) => o.id === answers.propiedad)?.label || "";
       const urgenciaLabel = STEP4_OPTIONS.find((o) => o.id === answers.urgencia)?.label || "";
 
-      await LeadAPI.create({
+      const result = await LeadAPI.create({
         nombre: form.nombre.trim(),
         telefono: phoneClean,
         email: form.email.trim(),
@@ -179,9 +187,12 @@ export default function SecurityQuizModal({ open, onClose }) {
         mensaje: `[Cuestionario web] Propiedad: ${propiedadLabel}. Vulnerabilidades: ${vulnLabels.join(", ") || "no especificadas"}. Urgencia: ${urgenciaLabel}.`,
         origen: "formulario_web",
       });
+      trackEvent("form_success", { form_name: "cuestionario_seguridad", notification: result?.notification, duplicate: result?.duplicate });
+      setNotice(needsDelayedNotice(result) ? NOTIFICATION_DELAYED_NOTICE : "");
       setStep(7);
     } catch (err) {
-      setFormError("No se ha podido enviar. Inténtalo de nuevo o llama al 638 10 99 47.");
+      trackEvent("form_error", { form_name: "cuestionario_seguridad", error_kind: err?.kind || "unknown" });
+      setFormError(err?.kind === "validation" ? err.message : "No se ha podido enviar y NO se ha registrado tu solicitud. Inténtalo de nuevo o llama al 638 10 99 47.");
     } finally {
       setSubmitting(false);
     }
@@ -321,6 +332,7 @@ export default function SecurityQuizModal({ open, onClose }) {
               <p style={{ color: "#94A3B8", fontSize: 14, lineHeight: 1.7, margin: "0 0 24px" }}>
                 Un técnico local te llamará en menos de 24h con tu propuesta sin cuotas para {form.municipio || "tu zona"}.
               </p>
+              {notice && <p style={{ color: "#FCD34D", fontSize: 13, lineHeight: 1.6, margin: "-12px 0 20px" }}>{notice}</p>}
               <button type="button" onClick={handleClose} style={submitBtnStyle}>Cerrar</button>
             </div>
           )}

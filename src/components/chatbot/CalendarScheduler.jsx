@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, MapPin, CheckCircle, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { base44 } from "@/api/api";
+import { base44, LeadAPI } from "@/api/api";
+import { trackEvent } from "@/lib/analytics";
 
 const timeSlots = {
   morning: ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30"],
@@ -85,31 +86,22 @@ export default function CalendarScheduler({ onSchedule, onClose }) {
         console.warn('⚠️ Error Google Calendar (no crítico):', calErr.message);
       }
 
-      // Enviar email de notificación al equipo
-      await base44.integrations.Core.SendEmail({
-        to: "tcnpremium@gmail.com",
-        subject: `📅 Nueva Cita Agendada - ${serviceType === 'llamada' ? 'Llamada' : 'Visita Técnica'}`,
-        body: `
-📅 NUEVA CITA AGENDADA DESDE CHATBOT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📋 DETALLES DE LA CITA:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Fecha: ${formatDate(selectedDate)}
-Hora: ${selectedTime}
-Tipo: ${serviceType === 'llamada' ? 'Llamada informativa' : 'Visita técnica presencial'}
-
-👤 DATOS DEL CLIENTE:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nombre: ${userData.nombre}
-Teléfono: ${userData.telefono}
-${userData.direccion ? `Dirección: ${userData.direccion}` : ''}
-
-${calendarResult.success ? `✅ Evento añadido a Google Calendar` : `⚠️ No se pudo añadir a Google Calendar: ${calendarResult.error}`}
-
-⚡ ACCIÓN REQUERIDA: Confirmar la cita llamando al cliente
-        `
+      // La cita se registra como solicitud en el servidor: queda guardada, se avisa al equipo
+      // por correo y, si el correo falla, se reintenta. (Antes se llamaba a
+      // base44.integrations.Core.SendEmail, que no existe: la cita nunca llegaba.)
+      const tipoCita = serviceType === 'llamada' ? 'Llamada informativa' : 'Visita técnica presencial';
+      trackEvent('form_submit', { form_name: 'chatbot_cita', service: tipoCita });
+      const saved = await LeadAPI.create({
+        nombre: userData.nombre,
+        telefono: userData.telefono,
+        email: userData.email || '',
+        zona: userData.direccion || '',
+        servicio_interes: `Cita: ${tipoCita}`,
+        mensaje: `CITA SOLICITADA DESDE EL CHATBOT\nTipo: ${tipoCita}\nFecha: ${formatDate(selectedDate)}\nHora: ${selectedTime}\n${userData.direccion ? `Dirección: ${userData.direccion}\n` : ''}${calendarResult.success ? 'Añadida a Google Calendar' : 'No añadida a Google Calendar'}\nACCIÓN: confirmar la cita llamando al cliente.`,
+        origen: 'chatbot',
+        urgencia: 'alta',
       });
+      trackEvent('form_success', { form_name: 'chatbot_cita', service: tipoCita, notification: saved?.notification, duplicate: saved?.duplicate });
 
       // Sync to HubSpot CRM
       const hubspotLead = {
@@ -142,7 +134,8 @@ ${calendarResult.success ? `✅ Evento añadido a Google Calendar` : `⚠️ No 
       
     } catch (error) {
       console.error("Error al agendar:", error);
-      setErrors({ submit: "Error al agendar. Intenta de nuevo." });
+      trackEvent('form_error', { form_name: 'chatbot_cita', error_kind: error?.kind || 'unknown' });
+      setErrors({ submit: error?.kind === 'validation' ? error.message : "No hemos podido registrar la cita. Inténtalo de nuevo o llámanos al 638 10 99 47." });
     } finally {
       setLoading(false);
     }

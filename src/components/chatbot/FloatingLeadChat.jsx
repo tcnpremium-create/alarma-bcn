@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
-import { base44 } from "@/api/api";
+import { base44, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
+import { trackEvent } from "@/lib/analytics";
 
 const SERVICES = [
   { label: "📹 Cámaras de seguridad", value: "Cámaras de seguridad" },
@@ -20,6 +21,7 @@ export default function FloatingLeadChat() {
   const [telefono, setTelefono] = useState("");
   const [sending, setSending] = useState(false);
   const [done, setDone] = useState(false);
+  const [notice, setNotice] = useState("");
   const [messages, setMessages] = useState([]);
   const bottomRef = useRef(null);
 
@@ -31,6 +33,10 @@ export default function FloatingLeadChat() {
       return () => clearTimeout(t);
     }
   }, [utmSource]);
+
+  useEffect(() => {
+    if (open) trackEvent("form_open", { form_name: "chat_flotante" });
+  }, [open]);
 
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -57,8 +63,10 @@ export default function FloatingLeadChat() {
     e.preventDefault();
     if (!nombre.trim() || !telefono.trim()) return;
     setSending(true);
+    trackEvent("form_submit", { form_name: "chat_flotante", service: selectedService });
+    let result;
     try {
-      await base44.entities.LeadChat.create({
+      result = await base44.entities.LeadChat.create({
         nombre: nombre.trim(),
         telefono: telefono.trim(),
         servicio_interes: selectedService,
@@ -68,12 +76,15 @@ export default function FloatingLeadChat() {
       });
     } catch (err) {
       setSending(false);
+      trackEvent("form_error", { form_name: "chat_flotante", error_kind: err?.kind || "unknown" });
       setMessages((prev) => [
         ...prev,
-        { role: "bot", text: "❌ Ha ocurrido un error. Por favor, inténtalo de nuevo." },
+        { role: "bot", text: err?.kind === "validation" ? `❌ ${err.message}` : "❌ No hemos podido registrar tu solicitud. Inténtalo de nuevo o llámanos al 638 10 99 47." },
       ]);
       return;
     }
+    trackEvent("form_success", { form_name: "chat_flotante", service: selectedService, notification: result?.notification, duplicate: result?.duplicate });
+    setNotice(needsDelayedNotice(result) ? NOTIFICATION_DELAYED_NOTICE : "");
     setMessages((prev) => [
       ...prev,
       { role: "user", text: `${nombre} — ${telefono}` },
@@ -194,7 +205,7 @@ export default function FloatingLeadChat() {
             {done && (
               <div className="space-y-3 pt-1">
                 <div className="px-3 py-2 rounded-xl text-sm leading-relaxed" style={{ backgroundColor: "#f1f1f1", color: "#1a1a1a" }}>
-                  ✅ ¡Gracias! Te llamamos en menos de 24h. También puedes escribirnos directamente:
+                  ✅ {notice || "¡Gracias! Te llamamos en menos de 24h."} También puedes escribirnos directamente:
                 </div>
                 <a
                   href={waLink}

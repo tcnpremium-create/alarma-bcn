@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { User, Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
-import { LeadAPI } from "@/api/api";
+import { LeadAPI, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
+import { useFormTracking } from "@/lib/useFormTracking";
 
 const inputStyle = {
   width: "100%", boxSizing: "border-box",
@@ -33,6 +34,8 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
   const [form, setForm] = useState({ nombre: "", email: "", telefono: "", zona: "", mensaje: "", espacio: "", tamano: "", necesidad: "" });
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const tracking = useFormTracking("presupuesto_drawer", { open: "mount", context: { service } });
 
   const set = (field) => (e) => setForm((f) => ({ ...f, [field]: e.target.value }));
 
@@ -48,6 +51,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
     }
     setError("");
     setStatus("loading");
+    tracking.onSubmit();
     try {
       const qualifiers = isSonorizacion
         ? [
@@ -57,7 +61,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
         ].filter(Boolean).join(" · ")
         : "";
 
-      await LeadAPI.create({
+      const result = await LeadAPI.create({
         nombre: form.nombre.trim(),
         email: form.email.trim(),
         telefono: form.telefono.replace(/\s/g, ""),
@@ -67,12 +71,19 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
         mensaje: [qualifiers, form.mensaje.trim()].filter(Boolean).join(" — "),
         origen: "formulario_web",
       });
+      tracking.onSuccess(result);
+      setNotice(needsDelayedNotice(result) ? NOTIFICATION_DELAYED_NOTICE : "");
       setStatus("success");
       onSuccess?.();
     } catch (err) {
       console.error("Error enviando formulario de presupuesto:", err);
+      tracking.onError(err);
       setStatus("error");
-      setError("No se ha podido enviar. Llámanos al 638 10 99 47 o inténtalo de nuevo.");
+      setError(
+        err?.kind === "validation"
+          ? err.message
+          : "No se ha podido enviar y NO se ha registrado tu solicitud. Llámanos al 638 10 99 47 o inténtalo de nuevo."
+      );
     }
   };
 
@@ -88,14 +99,14 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
           ¡Solicitud recibida, {form.nombre.split(" ")[0]}!
         </p>
         <p style={{ color: "#94A3B8", fontSize: 13, margin: 0 }}>
-          Te llamamos en menos de 24h. Revisa también tu email.
+          {notice || "Te llamamos en menos de 24h. Revisa también tu email."}
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} onFocusCapture={tracking.onStart}>
       {service && (
         <div style={{
           display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 16,

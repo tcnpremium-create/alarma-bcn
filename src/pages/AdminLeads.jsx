@@ -29,37 +29,30 @@ export default function AdminLeads() {
     applyFilters();
   }, [leads, filters]);
 
+  // Acceso por token de administración (variable ADMIN_TOKEN del servidor). Antes se usaba el
+  // login de Base44, que ya no existe: el panel no cargaba y /api/leads era público.
   const checkAuthAndLoad = async () => {
-    try {
-      const isAuth = await base44.auth.isAuthenticated();
-      if (!isAuth) {
-        base44.auth.redirectToLogin(window.location.href);
-        return;
-      }
-      const userData = await base44.auth.me();
-      
-      // Solo admins pueden acceder
-      if (userData.role !== 'admin') {
-        alert('Acceso denegado. Solo administradores.');
-        window.location.href = '/';
-        return;
-      }
-      
-      setUser(userData);
-      await loadLeads();
-    } catch (error) {
-      console.error('Error:', error);
-      base44.auth.redirectToLogin(window.location.href);
+    let token = '';
+    try { token = sessionStorage.getItem('ptsec_admin_token') || ''; } catch { /* sin storage */ }
+    if (!token) {
+      token = window.prompt('Token de administración (ADMIN_TOKEN)') || '';
+      if (!token) { setLoading(false); return; }
+      try { sessionStorage.setItem('ptsec_admin_token', token); } catch { /* sin storage */ }
     }
+    setUser({ role: 'admin' });
+    await loadLeads();
   };
 
   const loadLeads = async () => {
     try {
-      const allLeads = await base44.entities.Lead.list('-created_date', 500);
+      const allLeads = await base44.entities.Lead.list();
       setLeads(allLeads);
     } catch (error) {
       console.error('Error cargando leads:', error);
-      alert('Error al cargar leads');
+      if (error?.kind === 'auth') {
+        try { sessionStorage.removeItem('ptsec_admin_token'); } catch { /* sin storage */ }
+      }
+      alert(error?.kind === 'auth' ? error.message : 'Error al cargar leads');
     } finally {
       setLoading(false);
     }
@@ -84,7 +77,7 @@ export default function AdminLeads() {
     }
     if (filters.fecha_desde) {
       filtered = filtered.filter(l => 
-        new Date(l.created_date) >= new Date(filters.fecha_desde)
+        new Date(l.created_at) >= new Date(filters.fecha_desde)
       );
     }
 
@@ -240,7 +233,7 @@ export default function AdminLeads() {
                     <div className="flex-1">
                       <h3 className="font-bold text-[#0A1628] text-lg">{lead.nombre}</h3>
                       <p className="text-sm text-gray-500">
-                        {new Date(lead.created_date).toLocaleDateString('es-ES', {
+                        {new Date(lead.created_at).toLocaleDateString('es-ES', {
                           year: 'numeric',
                           month: 'short',
                           day: 'numeric',
@@ -250,6 +243,18 @@ export default function AdminLeads() {
                       </p>
                     </div>
                     <div className="flex flex-col gap-2">
+                      <span
+                        title={lead.notif_error || ''}
+                        className={`text-xs font-semibold px-3 py-1 rounded-full border ${
+                          lead.notif_status === 'sent' ? 'bg-green-50 text-green-700 border-green-200'
+                            : lead.notif_status === 'legacy' ? 'bg-gray-50 text-gray-500 border-gray-200'
+                              : 'bg-red-50 text-red-700 border-red-300'
+                        }`}
+                      >
+                        {lead.notif_status === 'sent' ? `Aviso enviado${lead.delivery_status && lead.delivery_status !== 'sent' ? ` · ${lead.delivery_status}` : ''}`
+                          : lead.notif_status === 'legacy' ? 'Aviso sin registro'
+                            : `⚠ Aviso ${lead.notif_status || 'pendiente'}`}
+                      </span>
                       <span className={`text-xs font-semibold px-3 py-1 rounded-full border ${getEstadoColor(lead.estado)}`}>
                         {lead.estado}
                       </span>
@@ -358,7 +363,7 @@ export default function AdminLeads() {
                       <div className="flex items-center gap-2">
                         <Calendar className="w-4 h-4 text-gray-500" />
                         <span className="text-sm text-gray-700">
-                          {new Date(selectedLead.created_date).toLocaleDateString('es-ES', {
+                          {new Date(selectedLead.created_at).toLocaleDateString('es-ES', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',

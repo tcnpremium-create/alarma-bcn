@@ -44,3 +44,23 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER leads_updated_at
   BEFORE UPDATE ON leads
   FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+-- ===== Seguimiento del aviso por correo (migración leads_notification_tracking, aplicada 2026-10-11) =====
+-- notif_status: pending | sent | failed | failed_final | legacy (anteriores al seguimiento: no se reenvían)
+ALTER TABLE leads
+  ADD COLUMN IF NOT EXISTS notif_status text,
+  ADD COLUMN IF NOT EXISTS notif_attempts integer NOT NULL DEFAULT 0,
+  ADD COLUMN IF NOT EXISTS notif_last_attempt_at timestamptz,
+  ADD COLUMN IF NOT EXISTS notif_sent_at timestamptz,
+  ADD COLUMN IF NOT EXISTS notif_via text,            -- resend | gmail
+  ADD COLUMN IF NOT EXISTS notif_provider_id text,
+  ADD COLUMN IF NOT EXISTS notif_error text,
+  ADD COLUMN IF NOT EXISTS delivery_status text,      -- Resend: delivered, bounced...; gmail: accepted_smtp
+  ADD COLUMN IF NOT EXISTS delivery_checked_at timestamptz,
+  ADD COLUMN IF NOT EXISTS confirm_status text,       -- confirmación al cliente: sent | failed | skipped
+  ADD COLUMN IF NOT EXISTS idempotency_key text,
+  ADD COLUMN IF NOT EXISTS is_test boolean NOT NULL DEFAULT false,
+  ADD COLUMN IF NOT EXISTS source_page text;
+ALTER TABLE leads ALTER COLUMN notif_status SET DEFAULT 'pending';
+CREATE UNIQUE INDEX IF NOT EXISTS leads_idempotency_key_uidx ON leads (idempotency_key) WHERE idempotency_key IS NOT NULL;
+CREATE INDEX IF NOT EXISTS leads_notif_retry_idx ON leads (created_at) WHERE notif_status IN ('pending','failed');

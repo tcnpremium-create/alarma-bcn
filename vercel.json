@@ -393,7 +393,7 @@
         },
         {
           "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
+          "value": "Content-Type, Authorization"
         }
       ]
     }
@@ -402,7 +402,19 @@
     {
       "path": "/api/cron/keepalive",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/retry-notifs",
+      "schedule": "30 6 * * *"
     }
   ],
-  "trailingSlash": false
+  "trailingSlash": false,
+  "functions": {
+    "api/lead.js": {
+      "maxDuration": 30
+    },
+    "api/cron/retry-notifs.js": {
+      "maxDuration": 30
+    }
+  }
 }

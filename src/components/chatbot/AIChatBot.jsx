@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { base44 } from "@/api/api";
+import { trackEvent } from "@/lib/analytics";
 
 const QUICK_BUTTONS = [
   { emoji: "📹", label: "Quiero cámaras", id: "camaras" },
@@ -39,6 +40,7 @@ export default function AIChatBot() {
       return;
     }
     if (id === "tecnico") {
+      trackEvent("click_phone", { placement: "sticky" });
       window.location.href = "tel:+34638109947";
       return;
     }

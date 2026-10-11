@@ -11,6 +11,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { base44 } from "@/api/api";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation } from "react-router-dom";
 import CalendarScheduler from "./CalendarScheduler";
 import LeadQualification from "./LeadQualification";
@@ -160,6 +161,7 @@ const ChatWidget = () => {
     const message = encodeURIComponent(
       "Hola, vengo desde la web y me interesa información sobre sistemas de seguridad"
     );
+    trackEvent("click_whatsapp", { placement: "sticky" });
     window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
   };
 

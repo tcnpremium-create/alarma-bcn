@@ -3,7 +3,7 @@ import { Phone, Mail, Clock, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { base44 } from '@/api/api';
+import { LeadAPI } from '@/api/api';
 
 export default function ContactoTab({ user }) {
   const [form, setForm] = useState({ asunto: '', mensaje: '' });
@@ -20,28 +20,15 @@ export default function ContactoTab({ user }) {
 
     setSending(true);
     try {
-      await base44.integrations.Core.SendEmail({
-        to: 'tcnpremium@gmail.com',
-        subject: `📧 Consulta Cliente: ${form.asunto} | ${user.email}`,
-        body: `
-CONSULTA DESDE ÁREA DE CLIENTES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-👤 CLIENTE:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nombre: ${user.full_name}
-Email: ${user.email}
-
-📋 ASUNTO:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${form.asunto}
-
-💬 MENSAJE:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${form.mensaje}
-
-⏰ Fecha: ${new Date().toLocaleString('es-ES')}
-        `
+      // Se registra como solicitud en el servidor (guardada + aviso por correo + reintentos).
+      // Antes se llamaba a base44.integrations.Core.SendEmail, que no existe: el mensaje nunca llegaba.
+      await LeadAPI.create({
+        nombre: user.full_name || user.email || 'Cliente',
+        email: user.email || '',
+        telefono: user.telefono || user.phone || '-',
+        servicio_interes: `Consulta de cliente: ${form.asunto}`,
+        mensaje: form.mensaje,
+        origen: 'otro',
       });
 
       setSuccess(true);
@@ -50,7 +37,7 @@ ${form.mensaje}
       setTimeout(() => setSuccess(false), 5000);
     } catch (error) {
       console.error('Error:', error);
-      alert('Error al enviar mensaje. Intenta de nuevo o llámanos al 638 10 99 47');
+      alert('No hemos podido registrar tu mensaje. Inténtalo de nuevo o llámanos al 638 10 99 47');
     } finally {
       setSending(false);
     }

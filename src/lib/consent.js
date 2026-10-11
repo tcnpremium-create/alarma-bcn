@@ -83,13 +83,19 @@ function loadScriptOnce(src, attrs = {}) {
   document.head.appendChild(s);
 }
 
-function enableAnalytics() {
+function enableAnalytics({ sendPageView = false } = {}) {
   // Google Analytics
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
   window[`ga-disable-${GA_MEASUREMENT_ID}`] = false;
   window.gtag("js", new Date());
-  window.gtag("config", GA_MEASUREMENT_ID);
+  // send_page_view:false — las páginas vistas las envía NavigationTracker en cada ruta. Antes
+  // "config" enviaba una y NavigationTracker otra: la primera página se contaba por duplicado.
+  window.gtag("config", GA_MEASUREMENT_ID, { send_page_view: false });
+  // Si el usuario acepta con la página ya abierta, NavigationTracker ya pasó: se envía aquí.
+  if (sendPageView) {
+    window.gtag("event", "page_view", { page_path: location.pathname, page_title: document.title });
+  }
   loadScriptOnce(`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`);
   // HubSpot
   loadScriptOnce(HUBSPOT_SCRIPT_SRC, { id: "hs-script-loader", defer: "" });
@@ -110,8 +116,8 @@ function enableAdvertising() {
 }
 
 /** Aplica un consentimiento: carga (o mantiene desactivados) los scripts correspondientes. */
-export function applyConsent(consent) {
-  if (consent.analytics) enableAnalytics();
+export function applyConsent(consent, { sendPageView = false } = {}) {
+  if (consent.analytics) enableAnalytics({ sendPageView });
   else disableAnalytics();
 
   if (consent.advertising) enableAdvertising();
@@ -122,7 +128,7 @@ export function applyConsent(consent) {
 /** Guarda y aplica un consentimiento (usado por Aceptar/Rechazar/Configurar). */
 export function setConsent(consent) {
   persistConsent(consent);
-  applyConsent(consent);
+  applyConsent(consent, { sendPageView: true });
 }
 
 /** Arranque de la app: si ya hay una decisión guardada, aplícala. Si no, no carga nada. */
