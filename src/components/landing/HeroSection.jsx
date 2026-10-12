@@ -65,7 +65,7 @@ export default function HeroSection() {
 
             <Button
               size="lg"
-              className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-[#E63946]/25 transition-all hover:shadow-xl hover:shadow-[#E63946]/30 hover:scale-[1.02]"
+              className="bg-[#C53030] hover:bg-[#A82828] text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg shadow-[#E63946]/25 transition-all hover:shadow-xl hover:shadow-[#E63946]/30 hover:scale-[1.02]"
               onClick={() => document.getElementById("contacto")?.scrollIntoView({ behavior: "smooth" })}>
 
               Solicitar Presupuesto Gratis

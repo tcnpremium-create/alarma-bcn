@@ -41,7 +41,7 @@ export default function WhyChooseUsCards() {
               key={card.title}
               className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center hover:bg-white/10 transition-colors duration-300"
             >
-              <div className="w-14 h-14 rounded-xl bg-[#E53E3E]/15 flex items-center justify-center mx-auto mb-5">
+              <div className="w-14 h-14 rounded-xl bg-[#C53030]/15 flex items-center justify-center mx-auto mb-5">
                 <card.icon className="w-7 h-7 text-[#E53E3E]" />
               </div>
               <h3 className="text-lg font-bold text-white mb-2">{card.title}</h3>

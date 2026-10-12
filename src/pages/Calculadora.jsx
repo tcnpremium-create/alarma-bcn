@@ -141,7 +141,7 @@ export default function Calculadora() {
 
           {/* Progress bar */}
           <div className="h-2 bg-gray-100 rounded-full mb-10 overflow-hidden">
-            <motion.div className="h-full rounded-full" style={{ backgroundColor: "#E53E3E" }} animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
+            <motion.div className="h-full rounded-full" style={{ backgroundColor: "#C53030" }} animate={{ width: `${progress}%` }} transition={{ duration: 0.3 }} />
           </div>
 
           {!showResult ? (
@@ -227,7 +227,7 @@ export default function Calculadora() {
                 )}
                 <button onClick={nextStep} disabled={!canNext()}
                   className="flex-1 flex items-center justify-center gap-1 px-5 py-3 rounded-full text-sm font-bold text-white transition-colors disabled:opacity-40"
-                  style={{ backgroundColor: "#E53E3E" }}>
+                  style={{ backgroundColor: "#C53030" }}>
                   {isCityStep ? "Ver presupuesto" : "Siguiente"} <ChevronRight className="w-4 h-4" />
                 </button>
               </div>

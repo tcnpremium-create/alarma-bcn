@@ -66,7 +66,7 @@ export default function BlogDestacados() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-[#0A1628]/30 to-transparent" />
               <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                <span className="inline-block bg-[#E63946] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
+                <span className="inline-block bg-[#C53030] text-white text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
                   {main.category}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-white leading-snug mb-2 group-hover:text-white/90">

@@ -61,7 +61,7 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
           <div style={{
             display: "inline-block",
             marginBottom: 16 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#EF4444", }}>
               Kits de Alarmas Ajax — Precios Transparentes
             </span>
           </div>
@@ -108,7 +108,7 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
                 {kit.badge && (
                   <div style={{
                     position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
-                    background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800,
+                    background: "#C53030", color: "#fff", fontSize: 10, fontWeight: 800,
                     borderRadius: 100, padding: "4px 14px", whiteSpace: "nowrap",
                     letterSpacing: "0.08em"
                   }}>
@@ -126,7 +126,7 @@ export default function AlarmKitsGrid({ city, onRequestQuote }) {
                     </span>
                   )}
                   <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price} €</div>
-                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
+                  <span style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
                 </div>
 
                 <button

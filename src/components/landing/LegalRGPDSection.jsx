@@ -60,7 +60,7 @@ export default function LegalRGPDSection() {
             href="https://wa.me/34638109947"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold text-sm transition-colors duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C53030] hover:bg-[#9B2C2C] text-white font-bold text-sm transition-colors duration-300"
           >
             Consulta gratuita sin compromiso →
           </a>

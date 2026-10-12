@@ -46,7 +46,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
           <div style={{
             display: "inline-block",
             marginBottom: 16 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#EF4444", }}>
               Kits Profesionales de Videovigilancia — Precios Transparentes
             </span>
           </div>
@@ -74,7 +74,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                 {kit.badge && (
                   <div style={{
                     position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)",
-                    background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800,
+                    background: "#C53030", color: "#fff", fontSize: 10, fontWeight: 800,
                     borderRadius: 100, padding: "4px 14px", whiteSpace: "nowrap", letterSpacing: "0.08em"
                   }}>
                     {kit.badge}
@@ -83,7 +83,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
 
                 <div style={{ marginBottom: 4 }}>
                   <span style={{ color: "#F1F5F9", fontSize: 16, fontWeight: 800 }}>{kit.title}</span>
-                  <span style={{ color: "#E53E3E", fontSize: 15, fontWeight: 800, marginLeft: 8 }}>— {kit.cameras}</span>
+                  <span style={{ color: "#EF4444", fontSize: 15, fontWeight: 800, marginLeft: 8 }}>— {kit.cameras}</span>
                 </div>
                 <div style={{ color: "#94A3B8", fontSize: 12.5, lineHeight: 1.5, marginTop: 6, marginBottom: 20 }}>{kit.description}</div>
 
@@ -94,7 +94,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                     </span>
                   )}
                   <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price} €</div>
-                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
+                  <span style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
                 </div>
 
                 <button
@@ -122,7 +122,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                     {kit.items.map((item) => <KitItemBento key={item} item={item} />)}
                   </div>
                   {kit.storageNote && (
-                    <p style={{ color: "#64748B", fontSize: 11.5, marginTop: 10, marginBottom: 0, lineHeight: 1.5 }}>
+                    <p style={{ color: "#94A3B8", fontSize: 11.5, marginTop: 10, marginBottom: 0, lineHeight: 1.5 }}>
                       {kit.storageNote}
                     </p>
                   )}

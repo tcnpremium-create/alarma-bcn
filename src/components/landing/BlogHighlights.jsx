@@ -44,7 +44,7 @@ export default function BlogHighlights() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {ARTICLES.map((a, i) => (
             <div key={i} className="bg-white flex flex-col" style={{ border: "1px solid #E5E7EB", borderRadius: 16, padding: 24 }}>
-              <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-semibold text-white mb-3" style={{ backgroundColor: "#E53E3E" }}>
+              <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-semibold text-white mb-3" style={{ backgroundColor: "#C53030" }}>
                 {a.category}
               </span>
               <h3 className="mb-2" style={{ fontWeight: 700, fontSize: 18, color: "#0A0A1A", lineHeight: 1.3 }}>

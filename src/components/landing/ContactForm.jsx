@@ -130,7 +130,7 @@ export default function ContactForm() {
           />
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700">Email <span className="text-gray-400">(opcional)</span></label>
+          <label htmlFor="email" className="text-sm font-medium text-gray-700">Email <span className="text-gray-500">(opcional)</span></label>
           <input
             id="email"
             type="email"
@@ -212,7 +212,7 @@ export default function ContactForm() {
 
       {/* Mensaje */}
       <div className="flex flex-col gap-1">
-        <label htmlFor="mensaje" className="text-sm font-medium text-gray-700">Mensaje <span className="text-gray-400">(opcional)</span></label>
+        <label htmlFor="mensaje" className="text-sm font-medium text-gray-700">Mensaje <span className="text-gray-500">(opcional)</span></label>
         <textarea
           id="mensaje"
           placeholder="Cuéntanos qué necesitas..."
@@ -230,7 +230,7 @@ export default function ContactForm() {
         type="submit"
         disabled={loading}
         style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
-        className="w-full bg-[#E63946] hover:bg-[#d32f3c] active:bg-[#c12f3a] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl h-14 sm:h-14 text-base font-bold shadow-lg hover:shadow-xl transition-all duration-200 active:scale-[0.98] min-h-[56px]"
+        className="w-full bg-[#C53030] hover:bg-[#9B2C2C] active:bg-[#c12f3a] disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl h-14 sm:h-14 text-base font-bold shadow-lg hover:shadow-xl transition-all duration-200 active:scale-[0.98] min-h-[56px]"
       >
         {loading ? (
           <>

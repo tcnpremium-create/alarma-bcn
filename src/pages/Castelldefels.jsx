@@ -28,7 +28,7 @@ export default function CastelldefelsPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 bg-[#E63946]/20 rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#C53030]/20 rounded-full px-4 py-2 mb-6">
               <MapPin className="w-4 h-4 text-[#E63946]" />
               <span className="text-white text-sm font-semibold">Castelldefels</span>
             </div>
@@ -41,7 +41,7 @@ export default function CastelldefelsPage() {
               Protección premium para viviendas de lujo y segundas residencias en la costa. Alarmas inteligentes y videovigilancia avanzada.
             </p>
             
-            <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#E63946] text-white px-8 py-4 rounded-full font-semibold">
+            <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#C53030] text-white px-8 py-4 rounded-full font-semibold">
               <Phone className="w-5 h-5" />
               Llámanos: 638 10 99 47
             </a>

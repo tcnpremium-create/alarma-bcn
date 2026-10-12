@@ -124,7 +124,7 @@ export default function Mataro() {
               </p>
               <a 
                 href="tel:+34638109947"
-                className="inline-flex items-center gap-2 bg-[#E63946] hover:bg-[#d32f3c] text-white px-6 py-3 rounded-full font-semibold transition-all"
+                className="inline-flex items-center gap-2 bg-[#C53030] hover:bg-[#9B2C2C] text-white px-6 py-3 rounded-full font-semibold transition-all"
               >
                 <Phone className="w-4 h-4" />
                 Contacta: 638 10 99 47

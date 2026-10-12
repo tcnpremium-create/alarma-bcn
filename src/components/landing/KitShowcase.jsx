@@ -22,7 +22,7 @@ export default function KitShowcase({ onRequestQuote }) {
           ))}
         </div>
         <div style={{ textAlign: "center", marginTop: 26 }}>
-          <button type="button" onClick={onRequestQuote} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer" }}>
+          <button type="button" onClick={onRequestQuote} style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer" }}>
             Pedir presupuesto de alarma →
           </button>
         </div>

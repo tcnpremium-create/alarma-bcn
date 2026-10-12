@@ -28,7 +28,7 @@ export default function CitiesGrid() {
               to={city.path}
               className="flex items-center gap-4 bg-white border border-gray-200 rounded-xl p-5 hover:border-[#E53E3E]/40 hover:shadow-lg hover:shadow-[#E53E3E]/5 transition-all duration-300 group"
             >
-              <div className="w-10 h-10 rounded-lg bg-[#E53E3E]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53E3E]/20 transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-[#C53030]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#E53E3E]/20 transition-colors">
                 <MapPin className="w-5 h-5 text-[#E53E3E]" />
               </div>
               <div>

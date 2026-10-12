@@ -54,8 +54,8 @@ const TOTAL_STEPS = 4;
 const iconInsideStyle = { position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: "#64748B", pointerEvents: "none" };
 const inputStyle = { width: "100%", boxSizing: "border-box", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, padding: "13px 16px 13px 40px", fontSize: 14, color: "#F1F5F9", outline: "none" };
 const backBtnStyle = { display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 50, padding: "10px 18px", color: "#94A3B8", fontSize: 13, fontWeight: 600, cursor: "pointer" };
-const nextBtnStyle = { flex: 1, background: "#E53E3E", border: "none", borderRadius: 50, padding: "12px 18px", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer" };
-const submitBtnStyle = { width: "100%", background: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 14.5, borderRadius: 50, padding: "16px 0", border: "none", cursor: "pointer", boxShadow: "0 0 32px rgba(229,62,62,0.3)" };
+const nextBtnStyle = { flex: 1, background: "#C53030", border: "none", borderRadius: 50, padding: "12px 18px", color: "#fff", fontSize: 14, fontWeight: 700, cursor: "pointer" };
+const submitBtnStyle = { width: "100%", background: "#C53030", color: "#fff", fontWeight: 700, fontSize: 14.5, borderRadius: 50, padding: "16px 0", border: "none", cursor: "pointer", boxShadow: "0 0 32px rgba(229,62,62,0.3)" };
 
 function QuizStep({ title, subtitle, options, selected, onSelect, multi }) {
   return (
@@ -216,7 +216,7 @@ export default function SecurityQuizModal({ open, onClose }) {
         {step <= TOTAL_STEPS && (
           <div style={{ padding: "28px 28px 0" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-              <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>Paso {step} de {TOTAL_STEPS}</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: "#EF4444", }}>Paso {step} de {TOTAL_STEPS}</span>
               <span style={{ fontSize: 11, color: "#64748B" }}>{Math.round(progress)}%</span>
             </div>
             <div style={{ height: 6, background: "rgba(255,255,255,0.08)", borderRadius: 100, overflow: "hidden" }}>

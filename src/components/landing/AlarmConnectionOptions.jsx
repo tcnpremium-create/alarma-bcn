@@ -36,7 +36,7 @@ export default function AlarmConnectionOptions({ onRequestQuote }) {
                 <span style={{ width: 40, height: 40, borderRadius: 12, background: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Icon size={20} color="#E53E3E" />
                 </span>
-                <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E" }}>{badge}</span>
+                <span style={{ fontSize: 13, fontWeight: 600, color: "#C53030" }}>{badge}</span>
               </div>
               <h3 style={{ fontWeight: 800, fontSize: 17, color: "#0A0A1A", margin: "0 0 8px" }}>{title}</h3>
               <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>{desc}</p>
@@ -47,7 +47,7 @@ export default function AlarmConnectionOptions({ onRequestQuote }) {
           <button
             type="button"
             onClick={onRequestQuote}
-            style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer" }}
+            style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer" }}
           >
             Pedir presupuesto de alarma →
           </button>

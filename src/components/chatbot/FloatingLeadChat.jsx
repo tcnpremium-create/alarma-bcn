@@ -102,7 +102,7 @@ export default function FloatingLeadChat() {
         <button
           onClick={() => setOpen(true)}
           className="fixed bottom-20 lg:bottom-6 right-4 z-50 flex items-center gap-2 px-5 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition-transform"
-          style={{ backgroundColor: "#E63946" }}
+          style={{ backgroundColor: "#C53030" }}
         >
           <MessageCircle className="w-5 h-5" />
           <span className="hidden sm:inline">¿Necesitas protección?</span>
@@ -140,7 +140,7 @@ export default function FloatingLeadChat() {
                   className="max-w-[85%] px-3 py-2 rounded-xl text-sm leading-relaxed"
                   style={
                     m.role === "user"
-                      ? { backgroundColor: "#E63946", color: "#fff" }
+                      ? { backgroundColor: "#C53030", color: "#fff" }
                       : { backgroundColor: "#f1f1f1", color: "#1a1a1a" }
                   }
                 >
@@ -193,7 +193,7 @@ export default function FloatingLeadChat() {
                   type="submit"
                   disabled={sending}
                   className="w-full flex items-center justify-center gap-2 py-2 rounded-lg text-white text-sm font-bold transition-opacity disabled:opacity-60"
-                  style={{ backgroundColor: "#E63946" }}
+                  style={{ backgroundColor: "#C53030" }}
                 >
                   <Send className="w-4 h-4" />
                   {sending ? "Enviando…" : "Enviar y recibir presupuesto"}

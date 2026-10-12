@@ -63,7 +63,7 @@ export default function ProcessSection() {
 
                   {/* Icon */}
                   <div className="flex justify-center mb-4">
-                    <div className="w-12 h-12 bg-[#E63946]/10 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-[#C53030]/10 rounded-lg flex items-center justify-center">
                       <Icon className="w-6 h-6 text-[#E63946]" />
                     </div>
                   </div>

@@ -135,7 +135,7 @@ export default function Navbar() {
                       >
                         {SERVICE_GROUPS.map((group) => (
                           <div key={group.label} className="min-w-[150px]">
-                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] mb-2">{group.label}</p>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#C53030] mb-2">{group.label}</p>
                             <ul className="space-y-1.5">
                               {group.links.map((l) => (
                                 <li key={l.href}>
@@ -167,7 +167,7 @@ export default function Navbar() {
                 <Phone className="w-4 h-4 text-[#E63946]" />
                 Llamar
               </a>
-              <button onClick={handlePresupuesto} className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
+              <button onClick={handlePresupuesto} className="bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
                 Presupuesto →
               </button>
             </div>
@@ -224,7 +224,7 @@ export default function Navbar() {
                       >
                         {SERVICE_GROUPS.map((group) => (
                           <div key={group.label} className="py-2">
-                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] px-2 mb-1">{group.label}</p>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#C53030] px-2 mb-1">{group.label}</p>
                             {group.links.map((l) => (
                               <Link
                                 key={l.href}
@@ -257,7 +257,7 @@ export default function Navbar() {
                 <li>
                   <button
                     onClick={() => { setMobileOpen(false); handlePresupuesto(); }}
-                    className="block w-full bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
+                    className="block w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
                   >
                     Presupuesto →
                   </button>

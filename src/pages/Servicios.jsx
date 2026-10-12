@@ -286,7 +286,7 @@ export default function Servicios() {
             transition={{ duration: 0.6 }}
             className="text-center">
 
-            <div className="inline-flex items-center gap-2 bg-[#E63946]/20 rounded-full px-5 py-2 mb-8">
+            <div className="inline-flex items-center gap-2 bg-[#C53030]/20 rounded-full px-5 py-2 mb-8">
               <Shield className="w-5 h-5 text-[#E63946]" />
               <span className="text-white text-sm font-semibold tracking-wide">Soluciones Profesionales</span>
             </div>
@@ -347,7 +347,7 @@ export default function Servicios() {
                   {/* Contenido */}
                   <div className={!isEven ? 'lg:col-start-1 lg:row-start-1' : ''}>
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="bg-[#E63946]/10 p-4 rounded-2xl">
+                      <div className="bg-[#C53030]/10 p-4 rounded-2xl">
                         <Icon className="w-10 h-10 text-[#E63946]" />
                       </div>
                       <div>
@@ -378,7 +378,7 @@ export default function Servicios() {
                     <div className="flex flex-col sm:flex-row gap-4">
                       <Button
                         onClick={handleContactClick}
-                        className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
+                        className="bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
 
                         Solicitar Presupuesto Gratis
                         <ArrowRight className="w-5 h-5 ml-2" />
@@ -417,7 +417,7 @@ export default function Servicios() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}>
 
-            <div className="inline-flex items-center gap-2 bg-[#E63946]/20 rounded-full px-5 py-2 mb-8">
+            <div className="inline-flex items-center gap-2 bg-[#C53030]/20 rounded-full px-5 py-2 mb-8">
               <Phone className="w-4 h-4 text-[#E63946]" />
               <span className="text-white text-sm font-semibold">Atención Personalizada</span>
             </div>
@@ -430,7 +430,7 @@ export default function Servicios() {
             <div className="flex flex-col sm:flex-row gap-5 justify-center">
               <Button
                 onClick={handleContactClick}
-                className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-10 py-7 text-lg font-semibold shadow-2xl hover:shadow-[#E63946]/50 transition-all hover:scale-105">
+                className="bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full px-10 py-7 text-lg font-semibold shadow-2xl hover:shadow-[#E63946]/50 transition-all hover:scale-105">
 
                 Solicitar Asesoramiento Gratis
                 <ArrowRight className="w-5 h-5 ml-2" />

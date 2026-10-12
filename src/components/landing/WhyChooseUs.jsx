@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
                 key={idx}
                 className="bg-white rounded-xl p-8 border border-gray-200 hover:border-[#E63946] hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-14 h-14 bg-[#E63946]/10 rounded-lg flex items-center justify-center mb-6">
+                <div className="w-14 h-14 bg-[#C53030]/10 rounded-lg flex items-center justify-center mb-6">
                   <Icon className="w-7 h-7 text-[#E63946]" />
                 </div>
                 <h3 className="text-xl font-bold text-[#0A1628] mb-3">{benefit.title}</h3>

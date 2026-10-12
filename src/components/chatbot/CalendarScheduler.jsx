@@ -330,7 +330,7 @@ export default function CalendarScheduler({ onSchedule, onClose }) {
           className={`w-full rounded-lg py-3 font-semibold text-sm transition-all active:scale-95 ${
             loading
               ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              : 'bg-[#E63946] hover:bg-[#d32f3c] text-white'
+              : 'bg-[#C53030] hover:bg-[#9B2C2C] text-white'
           }`}
         >
           {loading ? (

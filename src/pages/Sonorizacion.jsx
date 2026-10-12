@@ -127,7 +127,7 @@ export default function Sonorizacion() {
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={scrollToContact}
-              className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
+              className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
             >
               Solicitar presupuesto
               <ArrowRight className="w-5 h-5" />
@@ -214,7 +214,7 @@ export default function Sonorizacion() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={scrollToContact}
-                className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
+                className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 rounded-lg font-bold flex items-center justify-center gap-2 transition-colors"
               >
                 Quiero instalar altavoces empotrados
                 <ArrowRight className="w-5 h-5" />

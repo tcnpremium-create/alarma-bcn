@@ -47,7 +47,7 @@ function ReviewCard({ stars, text, name, location, hidden }) {
         </div>
         <div>
           <p style={{ color: "#fff", fontSize: 13, fontWeight: 700, margin: 0 }}>{name}</p>
-          <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, margin: 0, marginTop: 2 }}>{location}</p>
+          <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 11, margin: 0, marginTop: 2 }}>{location}</p>
         </div>
         <svg width="14" height="14" viewBox="0 0 24 24" style={{ marginLeft: "auto", flexShrink: 0 }} aria-label="Google">
           <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -76,9 +76,9 @@ export default function MarqueeSocial() {
         <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
           <span style={{ color: "#F59E0B", fontSize: 18, letterSpacing: 2 }}>★★★★★</span>
           <span style={{ color: "#fff", fontWeight: 900, fontSize: 22 }}>{businessStats.googleRating}</span>
-          <span style={{ color: "rgba(255,255,255,0.35)", fontSize: 14 }}>/ 5 en Google</span>
+          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 14 }}>/ 5 en Google</span>
         </div>
-        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 13, margin: 0 }}>
+        <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, margin: 0 }}>
           {businessStats.installationsText}
         </p>
       </div>

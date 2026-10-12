@@ -287,7 +287,7 @@ export default function BlogArticle() {
                 <ChevronRight className="w-3 h-3" />
                 <span className="text-white/80 truncate max-w-[200px]">{article.title}</span>
               </nav>
-              <span className="inline-block bg-[#E63946] text-white text-sm font-semibold px-3 py-1.5 rounded-full mb-3 ">
+              <span className="inline-block bg-[#C53030] text-white text-sm font-semibold px-3 py-1.5 rounded-full mb-3 ">
                 {article.category}
               </span>
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4" itemProp="name">
@@ -400,7 +400,7 @@ export default function BlogArticle() {
 
               {/* Final CTA */}
               <div className="mt-12 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a] rounded-2xl p-8 sm:p-12 text-center">
-                <div className="inline-flex items-center gap-2 bg-[#E63946]/20 text-[#E63946] font-semibold px-4 py-2 rounded-full text-sm mb-4">
+                <div className="inline-flex items-center gap-2 bg-[#C53030]/20 text-[#E63946] font-semibold px-4 py-2 rounded-full text-sm mb-4">
                   <CheckCircle className="w-4 h-4" />
                   {businessStats.googleRating}/5 en Google · {businessStats.googleReviewCount} reseñas
                 </div>
@@ -410,7 +410,7 @@ export default function BlogArticle() {
                 <p className="text-white/70 mb-2">Visita técnica gratuita · Sin compromiso · Instalación en 24–48h</p>
                 <p className="text-white/50 text-sm mb-8">Técnicos certificados AJAX · Sin permanencias · El equipo es tuyo desde el día 1</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button asChild className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 text-base font-bold">
+                  <Button asChild className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 text-base font-bold">
                     <a href="/#contacto">Solicitar Presupuesto Gratis</a>
                   </Button>
                   <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#0A1628] px-8 py-4 text-base font-bold">
@@ -459,7 +459,7 @@ export default function BlogArticle() {
                               href={`#${item.id}`}
                               className="flex items-start gap-2 text-sm text-gray-600 hover:text-[#E63946] transition-colors leading-snug"
                             >
-                              <span className="flex-shrink-0 w-5 h-5 bg-[#E63946]/10 text-[#E63946] rounded-full text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                              <span className="flex-shrink-0 w-5 h-5 bg-[#C53030]/10 text-[#E63946] rounded-full text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
                               {item.text}
                             </a>
                           </li>

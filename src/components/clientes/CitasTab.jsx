@@ -42,7 +42,7 @@ export default function CitasTab({ userEmail }) {
         </p>
         <div className="flex flex-col gap-3">
           <Button 
-            className="bg-[#E63946] hover:bg-[#d32f3c] text-white"
+            className="bg-[#C53030] hover:bg-[#9B2C2C] text-white"
             onClick={() => window.location.href = 'tel:+34638109947'}
           >
             <Phone className="w-4 h-4 mr-2" />

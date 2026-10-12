@@ -91,7 +91,7 @@ function PhotoCard({ title, desc, href, mainImg, mainAlt, detailImg, detailAlt }
       <div style={{ padding: "16px 18px 18px", borderRadius: "0 0 20px 20px", overflow: "hidden" }}>
         <h3 style={{ fontWeight: 900, fontSize: 15, letterSpacing: "0.03em", color: "#0A0A1A", marginBottom: 6 }}>{title}</h3>
         <p style={{ fontSize: 13, color: "#6B7280", lineHeight: 1.5, margin: "0 0 12px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{desc}</p>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 800, color: "#E53E3E" }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 800, color: "#C53030" }}>
           Ver soluciones
           <ArrowRight size={14} className="group-hover:translate-x-1" style={{ transition: "transform 0.2s ease" }} />
         </span>
