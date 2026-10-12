@@ -1,5 +1,5 @@
 {
- "combined": "8b32bf425ff5311a",
+ "combined": "d90ac6d962f56feb",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "52a20645c83846e1",
@@ -207,7 +207,7 @@
   "src/pages/Cornella.jsx": "78c6d8e8960565cf",
   "src/pages/ElPrat.jsx": "380f6217a93de60a",
   "src/pages/GuiaSeguridadBarcelona.jsx": "ea634fd920e7e5c6",
-  "src/pages/Home.jsx": "906bd9e17890c9b5",
+  "src/pages/Home.jsx": "f0d32e84148714b4",
   "src/pages/Hospitalet.jsx": "360b01dcac72b485",
   "src/pages/MantenimientoSoporte.jsx": "d63f1b1311592a35",
   "src/pages/MapaRiesgo.jsx": "539bc9536927b7d6",
