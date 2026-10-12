@@ -40,7 +40,7 @@ export default function Contact() {
               <h2 className="text-2xl font-bold text-[#0A1628] mb-6">Información de Contacto</h2>
 
               <a href="tel:+34638109947" className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-                <div className="bg-[#E63946] p-3 rounded-lg flex-shrink-0">
+                <div className="bg-[#C53030] p-3 rounded-lg flex-shrink-0">
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -50,7 +50,7 @@ export default function Contact() {
               </a>
 
               <a href="mailto:tcnpremium@gmail.com" className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
-                <div className="bg-[#E63946] p-3 rounded-lg flex-shrink-0">
+                <div className="bg-[#C53030] p-3 rounded-lg flex-shrink-0">
                   <Mail className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -70,7 +70,7 @@ export default function Contact() {
               </a>
 
               <div className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl">
-                <div className="bg-[#E63946] p-3 rounded-lg flex-shrink-0">
+                <div className="bg-[#C53030] p-3 rounded-lg flex-shrink-0">
                   <MapPin className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -81,7 +81,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl">
-                <div className="bg-[#E63946] p-3 rounded-lg flex-shrink-0">
+                <div className="bg-[#C53030] p-3 rounded-lg flex-shrink-0">
                   <Clock className="w-5 h-5 text-white" />
                 </div>
                 <div>

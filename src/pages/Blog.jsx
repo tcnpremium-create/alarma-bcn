@@ -247,7 +247,7 @@ export default function Blog() {
           <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
             <button
               onClick={() => { setActiveCategory("all"); setCurrentPage(1); }}
-              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all ${activeCategory === "all" ? "border-[#E63946] bg-[#E63946] text-white" : "border-gray-200 hover:border-[#E63946] hover:bg-[#E63946]/5"}`}
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all ${activeCategory === "all" ? "border-[#E63946] bg-[#C53030] text-white" : "border-gray-200 hover:border-[#E63946] hover:bg-[#E63946]/5"}`}
             >
               <span className="text-xs sm:text-sm font-medium">Todos ({combinedStaticArticles.length})</span>
             </button>
@@ -259,7 +259,7 @@ export default function Blog() {
                 <button
                   key={cat.id}
                   onClick={() => { setActiveCategory(cat.name); setCurrentPage(1); }}
-                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all ${activeCategory === cat.name ? "border-[#E63946] bg-[#E63946] text-white" : "border-gray-200 hover:border-[#E63946] hover:bg-[#E63946]/5"}`}
+                  className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full border transition-all ${activeCategory === cat.name ? "border-[#E63946] bg-[#C53030] text-white" : "border-gray-200 hover:border-[#E63946] hover:bg-[#E63946]/5"}`}
                 >
                   <Icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0 ${activeCategory === cat.name ? "text-white" : "text-[#E63946]"}`} />
                   <span className="text-xs sm:text-sm font-medium">{cat.name} ({count})</span>
@@ -292,7 +292,7 @@ export default function Blog() {
                   <img src={article.image} alt={article.alt || article.title} loading="lazy" width="800" height="450"
                     className="w-full h-52 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-[#E63946] text-white text-xs font-semibold px-3 py-1.5 rounded-full">{article.category}</span>
+                    <span className="bg-[#C53030] text-white text-xs font-semibold px-3 py-1.5 rounded-full">{article.category}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
@@ -315,7 +315,7 @@ export default function Blog() {
                 <button
                   key={page}
                   onClick={() => { setCurrentPage(page); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                  className={`w-10 h-10 rounded-full font-semibold text-sm transition-all ${currentPage === page ? "bg-[#E63946] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
+                  className={`w-10 h-10 rounded-full font-semibold text-sm transition-all ${currentPage === page ? "bg-[#C53030] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
                 >
                   {page}
                 </button>
@@ -356,7 +356,7 @@ export default function Blog() {
             <div className="flex flex-wrap gap-2 justify-center mb-10">
               {ENTITY_FILTERS.map((f) => (
                 <button key={f.id} onClick={() => setTipFilter(f.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${tipFilter === f.id ? "bg-[#E63946] border-[#E63946] text-white" : "border-gray-200 text-gray-600 hover:border-[#E63946]"}`}>
+                  className={`px-4 py-2 rounded-full text-sm font-medium border transition-all ${tipFilter === f.id ? "bg-[#C53030] border-[#E63946] text-white" : "border-gray-200 text-gray-600 hover:border-[#E63946]"}`}>
                   {f.name}
                 </button>
               ))}
@@ -365,7 +365,7 @@ export default function Blog() {
               {filteredTips.map((tip) => (
                 <div key={tip.id} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="bg-[#E63946]/10 text-[#E63946] text-sm font-semibold px-3 py-1 rounded-full ">{tip.category}</span>
+                    <span className="bg-[#C53030]/10 text-[#E63946] text-sm font-semibold px-3 py-1 rounded-full ">{tip.category}</span>
                     {tip.difficulty && <span className="bg-gray-100 text-gray-500 text-xs font-medium px-2 py-1 rounded-full">{tip.difficulty}</span>}
                   </div>
                   <h3 className="font-bold text-[#0A1628] text-lg mb-2">{tip.title}</h3>

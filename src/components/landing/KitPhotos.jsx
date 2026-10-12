@@ -12,9 +12,9 @@ export default function KitPhotos({ photos, size = 78 }) {
       {photos.map((p) => (
         <li key={p.label} style={{ textAlign: "center" }}>
           <div style={{ position: "relative", width: size, height: size, margin: "0 auto", overflow: "visible", borderRadius: 14, background: "radial-gradient(circle at 50% 45%, rgba(148,163,184,.26) 0%, rgba(148,163,184,.10) 55%, transparent 75%)" }}>
-            <img src={p.img} alt={p.label} loading="lazy" decoding="async" width={size} height={size} style={{ width: "86%", height: "86%", margin: "7%", objectFit: "contain", display: "block", filter: "drop-shadow(0 4px 8px rgba(0,0,0,.45))" }} />
+            <img src={p.img} alt="" loading="lazy" decoding="async" width={size} height={size} style={{ width: "86%", height: "86%", margin: "7%", objectFit: "contain", display: "block", filter: "drop-shadow(0 4px 8px rgba(0,0,0,.45))" }} />
             {p.qty > 1 && (
-              <span style={{ position: "absolute", right: 3, bottom: 3, background: "#E53E3E", color: "#fff", fontSize: 10, fontWeight: 800, borderRadius: 10, padding: "1px 6px" }}>×{p.qty}</span>
+              <span style={{ position: "absolute", right: 3, bottom: 3, background: "#C53030", color: "#fff", fontSize: 10, fontWeight: 800, borderRadius: 10, padding: "1px 6px" }}>×{p.qty}</span>
             )}
           </div>
           <span style={{ display: "block", marginTop: 5, fontSize: 10.5, lineHeight: 1.25, color: "#94A3B8", fontWeight: 600 }}>{p.label}</span>

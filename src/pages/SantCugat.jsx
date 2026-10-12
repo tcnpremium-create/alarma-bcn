@@ -33,7 +33,7 @@ export default function SantCugatPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 bg-[#E63946]/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center gap-2 bg-[#C53030]/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
               <MapPin className="w-4 h-4 text-[#E63946]" />
               <span className="text-white text-sm font-semibold">Servicio en Sant Cugat del Vallès</span>
             </div>
@@ -47,7 +47,7 @@ export default function SantCugatPage() {
             </p>
             
             <div className="flex flex-wrap gap-4 justify-center">
-              <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-4 rounded-full font-semibold">
+              <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 rounded-full font-semibold">
                 <Phone className="w-5 h-5" />
                 638 10 99 47
               </a>

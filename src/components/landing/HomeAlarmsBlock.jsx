@@ -70,7 +70,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
         <div style={{ display:"flex", flexWrap:"wrap", gap:"8px 22px", marginTop:24 }}>
           {KEY_FACTS.map((fact) => (
             <span key={fact} style={{ display:"inline-flex", alignItems:"center", gap:7, color:"#CBD5E0", fontSize:13.5, fontWeight:600 }}>
-              <span style={{ width:4, height:4, borderRadius:"50%", background:"#E53E3E", flexShrink:0 }} />
+              <span style={{ width:4, height:4, borderRadius:"50%", background:"#C53030", flexShrink:0 }} />
               {fact}
             </span>
           ))}

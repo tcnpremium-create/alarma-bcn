@@ -7,7 +7,7 @@ export default function HomeAccessBlock({ onOpenModal }) {
         <span
           style={{
             display: "inline-block",
-            backgroundColor: "#E53E3E",
+            backgroundColor: "#C53030",
             color: "#fff",
             borderRadius: 20,
             fontSize: 11,

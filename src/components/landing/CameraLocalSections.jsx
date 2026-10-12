@@ -62,7 +62,7 @@ export default function CameraLocalSections({ city, currentPath, onRequestQuote 
             <button
               type="button"
               onClick={onRequestQuote}
-              style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, border: "none", cursor: "pointer" }}
+              style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, border: "none", cursor: "pointer" }}
             >
               Pedir presupuesto de cámaras →
             </button>
@@ -87,7 +87,7 @@ export default function CameraLocalSections({ city, currentPath, onRequestQuote 
             {STEPS.map(({ Icon, title, desc }, i) => (
               <li key={title} style={{ background: "#fff", borderRadius: 16, padding: 20, boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                  <span style={{ width: 28, height: 28, borderRadius: "50%", background: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
+                  <span style={{ width: 28, height: 28, borderRadius: "50%", background: "#C53030", color: "#fff", fontWeight: 800, fontSize: 13, display: "flex", alignItems: "center", justifyContent: "center" }}>{i + 1}</span>
                   <Icon size={20} color="#E53E3E" />
                 </div>
                 <h3 style={{ fontWeight: 800, fontSize: 15, color: "#0A0A1A", margin: "0 0 4px" }}>{title}</h3>

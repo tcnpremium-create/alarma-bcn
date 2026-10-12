@@ -20,7 +20,7 @@ export default function TecnologiaTeaser() {
         </p>
         <Link
           to="/tecnologia"
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#E53E3E] hover:bg-[#C53030] text-white font-bold text-base transition-colors duration-300"
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#C53030] hover:bg-[#9B2C2C] text-white font-bold text-base transition-colors duration-300"
         >
           Descubre nuestra tecnología
           <ArrowRight className="w-5 h-5" />

@@ -62,7 +62,7 @@ export default function SistemasIncluidos() {
             const Icon = feature.icon;
             return (
               <div key={idx} className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 rounded-xl p-8 hover:shadow-lg transition-all hover:border-[#E63946]/30">
-                <div className="w-14 h-14 bg-[#E63946]/10 rounded-lg flex items-center justify-center mb-4">
+                <div className="w-14 h-14 bg-[#C53030]/10 rounded-lg flex items-center justify-center mb-4">
                   <Icon className="w-7 h-7 text-[#E63946]" />
                 </div>
                 <h3 className="text-lg font-bold text-[#0A1628] mb-2">{feature.title}</h3>

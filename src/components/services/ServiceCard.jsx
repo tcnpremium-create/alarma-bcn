@@ -48,7 +48,7 @@ export default function ServiceCard({
       {/* Contenido */}
       <div className={!isEven ? 'lg:col-start-1' : ''}>
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 rounded-lg bg-[#E63946]/10 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-[#C53030]/10 flex items-center justify-center">
             <Icon className="w-6 h-6 text-[#E63946]" />
           </div>
           <div>
@@ -93,7 +93,7 @@ export default function ServiceCard({
                 className="mt-4 space-y-4"
               >
                 {testimonials.map((testimonial, idx) => (
-                  <div key={idx} className="border-l-4 border-[#E63946] bg-[#E63946]/5 rounded-lg p-4">
+                  <div key={idx} className="border-l-4 border-[#E63946] bg-[#C53030]/5 rounded-lg p-4">
                     <div className="flex items-start gap-3">
                       <Quote className="w-5 h-5 text-[#E63946] flex-shrink-0 mt-1" />
                       <div>
@@ -112,7 +112,7 @@ export default function ServiceCard({
         <div className="flex flex-col sm:flex-row gap-4">
           <Button
             onClick={onContactClick}
-            className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all"
+            className="bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all"
           >
             Solicitar Presupuesto Gratis
             <ArrowRight className="w-5 h-5 ml-2" />

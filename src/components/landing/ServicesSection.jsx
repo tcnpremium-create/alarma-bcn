@@ -67,7 +67,7 @@ export default function ServicesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative p-8 rounded-2xl border border-gray-100 bg-white hover:bg-[#0A1628] transition-all duration-500 hover:border-[#0A1628] hover:shadow-2xl hover:shadow-[#0A1628]/10"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#E63946]/10 group-hover:bg-[#E63946]/20 flex items-center justify-center transition-colors duration-500">
+              <div className="w-12 h-12 rounded-xl bg-[#C53030]/10 group-hover:bg-[#E63946]/20 flex items-center justify-center transition-colors duration-500">
                 <service.icon className="w-6 h-6 text-[#E63946]" />
               </div>
               <h3 className="mt-6 text-xl font-semibold text-[#0A1628] group-hover:text-white transition-colors duration-500">

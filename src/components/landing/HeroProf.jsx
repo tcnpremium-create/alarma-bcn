@@ -115,7 +115,7 @@ export default function HeroProf() {
               display: "inline-flex", alignItems: "center", gap: 8,
               marginBottom: 24 }}
           >
-            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E", display: "inline-block", flexShrink: 0 }} />
+            <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#C53030", display: "inline-block", flexShrink: 0 }} />
             <span style={{ color: "#FCA5A5", fontSize: 13, fontWeight: 600, }}>
               {SLIDES[active].badge}
             </span>
@@ -185,7 +185,7 @@ export default function HeroProf() {
               onClick={() => openDrawer()}
               className="hero-cta-glow"
               style={{
-                background: "#E53E3E", color: "#fff", border: "none",
+                background: "#C53030", color: "#fff", border: "none",
                 borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
                                 position: "relative", overflow: "hidden", display: "inline-block",
               }}

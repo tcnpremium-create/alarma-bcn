@@ -155,7 +155,7 @@ export default function KitFinder({ title, subtitle, steps, recommend, kitSubtit
               <button
                 type="button"
                 onClick={() => onRequestQuote(result.kit)}
-                style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 15, border: "none", cursor: "pointer" }}
+                style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 15, border: "none", cursor: "pointer" }}
               >
                 Pedir presupuesto de este kit →
               </button>

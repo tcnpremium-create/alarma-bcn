@@ -71,7 +71,7 @@ export default function InteractiveMap() {
               </div>
               <button
                 onClick={handleGetDirections}
-                className="mt-3 w-full bg-[#E63946] hover:bg-[#d32f3c] text-white px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition-all"
+                className="mt-3 w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white px-3 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-2 transition-all"
               >
                 <Navigation className="w-3 h-3" />
                 Cómo llegar

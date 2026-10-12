@@ -13,7 +13,7 @@ export default function ProfessionalHero() {
   return (
     <div className="relative w-full pt-20 bg-gradient-to-br from-[#0A1628] via-[#0A1628] to-[#1a2a3a]">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#E63946] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C53030] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
       </div>
 
@@ -21,7 +21,7 @@ export default function ProfessionalHero() {
         {/* Contenido izquierdo */}
         <div className="space-y-8">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-            <span className="w-2 h-2 bg-[#E63946] rounded-full"></span>
+            <span className="w-2 h-2 bg-[#C53030] rounded-full"></span>
             <span className="text-sm text-white font-medium">Protección 24/7 en toda Catalunya</span>
           </div>
 
@@ -37,7 +37,7 @@ export default function ProfessionalHero() {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button
               onClick={scrollToContact}
-              className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-6 rounded-lg font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center gap-2 group"
+              className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-6 rounded-lg font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center gap-2 group"
             >
               Solicitar presupuesto
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

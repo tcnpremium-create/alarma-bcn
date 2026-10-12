@@ -71,7 +71,7 @@ export default function TestimonialsSection() {
                 "{t.text}"
               </p>
               <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#E63946]/20 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-[#C53030]/20 flex items-center justify-center">
                   <span className="text-[#E63946] font-semibold text-sm">
                     {t.name.charAt(0)}
                   </span>

@@ -159,7 +159,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 24%, rgba(10,10,26,0.88) 47%, rgba(10,10,26,0.12) 74%, rgba(10,10,26,0) 100%)" }} />
         <div style={{ position: "relative", zIndex: 10, maxWidth: 800, margin: "0 auto", padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%", paddingBottom: 48, paddingTop: 80 }}>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 14, fontWeight: 600, textShadow: "0 1px 4px rgba(0,0,0,.7)", width: "fit-content", marginBottom: 16 }}>
-            <span style={{ width: 7, height: 7, backgroundColor: "#E53E3E", borderRadius: "50%", display: "inline-block" }} />
+            <span style={{ width: 7, height: 7, backgroundColor: "#C53030", borderRadius: "50%", display: "inline-block" }} />
             Instalación profesional en {city}
           </span>
           <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 46px)", color: "#fff", lineHeight: 1.15, margin: "0 0 12px" }}>
@@ -169,7 +169,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
             {intro || `Videovigilancia HD 4K para hogar, negocio y comunidades. Sin cuotas mensuales. Grabador local incluido. Presupuesto gratis en 24h.`}
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10, maxWidth: 380 }}>
-            <button onClick={() => openQuote()} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 24px", border: "none", cursor: "pointer" }}>
+            <button onClick={() => openQuote()} style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "15px 24px", border: "none", cursor: "pointer" }}>
               Solicitar presupuesto de cámaras →
             </button>
             <a href="tel:+34638109947" style={{ backgroundColor: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "13px 24px", textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
@@ -227,7 +227,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           <div className="grid sm:grid-cols-2 gap-6">
             {BRANDS.map((b) => (
               <div key={b.name} style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: 16, padding: 28 }}>
-                <h3 style={{ fontWeight: 900, fontSize: 18, color: "#E53E3E", letterSpacing: 1, margin: "0 0 10px" }}>{b.name}</h3>
+                <h3 style={{ fontWeight: 900, fontSize: 18, color: "#C53030", letterSpacing: 1, margin: "0 0 10px" }}>{b.name}</h3>
                 <p style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6, margin: "0 0 16px" }}>{b.desc}</p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                   {b.specs.map((s) => (
@@ -288,7 +288,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
                   <motion.div
                     layoutId="camera-tab-pill"
                     transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                    style={{ position: "absolute", inset: 0, background: "#E53E3E", borderRadius: 100, zIndex: -1 }}
+                    style={{ position: "absolute", inset: 0, background: "#C53030", borderRadius: 100, zIndex: -1 }}
                   />
                 )}
                 {s.title}
@@ -307,7 +307,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
                 transition={{ duration: 0.25 }}
                 style={{ backgroundColor: "#F8F9FA", borderRadius: 16, padding: 28, border: "1px solid #E5E7EB" }}
               >
-                <div style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: "#E53E3E", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
+                <div style={{ width: 40, height: 40, borderRadius: 12, backgroundColor: "#C53030", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14 }}>
                   <span style={{ color: "#fff", fontWeight: 900, fontSize: 13 }}>{SERVICES[activeTab].num}</span>
                 </div>
                 <h3 style={{ fontWeight: 800, fontSize: 18, color: "#0A0A1A", margin: "0 0 10px" }}>{SERVICES[activeTab].title}</h3>
@@ -324,7 +324,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </div>
 
           <div style={{ textAlign: "center", marginTop: 28 }}>
-            <button onClick={() => openQuote()} style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
+            <button onClick={() => openQuote()} style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 32px", border: "none", cursor: "pointer" }}>
               Ver precios y solicitar presupuesto →
             </button>
           </div>
@@ -383,7 +383,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 8px" }}>¿Necesitas Cámaras de Seguridad en {city}?</h2>
           <p style={{ color: "rgba(255,255,255,0.88)", fontSize: 15, margin: "0 0 28px" }}>Presupuesto gratuito · Instalación incluida · Sin cuotas mensuales</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <button onClick={() => openQuote()} style={{ backgroundColor: "#fff", color: "#E53E3E", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
+            <button onClick={() => openQuote()} style={{ backgroundColor: "#fff", color: "#C53030", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
               Solicitar presupuesto de cámaras →
             </button>
             <a href="tel:+34638109947" style={{ border: "2px solid rgba(255,255,255,0.5)", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: 16, textAlign: "center", textDecoration: "none", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, backgroundColor: "transparent" }}>

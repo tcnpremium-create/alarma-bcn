@@ -217,10 +217,6 @@
   ],
   "rewrites": [
     {
-      "source": "/About",
-      "destination": "/__prerendered__/About.html"
-    },
-    {
       "source": "/Badalona",
       "destination": "/__prerendered__/Badalona.html"
     },

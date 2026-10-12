@@ -239,7 +239,7 @@ const ChatWidget = () => {
         transition={{ delay: 1, type: "spring" }}
         onClick={() => setIsOpen(!isOpen)}
         style={{ touchAction: "manipulation" }}
-        className="fixed right-4 bottom-[calc(66px+env(safe-area-inset-bottom,0px))] z-[9999] w-14 h-14 bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110"
+        className="fixed right-4 bottom-[calc(66px+env(safe-area-inset-bottom,0px))] z-[9999] w-14 h-14 bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110"
         aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
       >
         {isOpen ? (
@@ -262,7 +262,7 @@ const ChatWidget = () => {
           >
             {/* Header */}
             <div className="bg-[#0A1628] text-white p-4 flex items-center gap-3 flex-shrink-0">
-              <div className="w-10 h-10 rounded-full bg-[#E63946] flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-[#C53030] flex items-center justify-center">
                 <MessageCircle className="w-5 h-5" />
               </div>
               <div className="flex-1">
@@ -434,7 +434,7 @@ const ChatWidget = () => {
                 className={`rounded-xl flex items-center justify-center transition-all active:scale-95 ${
                   loading || !input.trim()
                     ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                    : "bg-[#E63946] hover:bg-[#d32f3c] text-white shadow-md"
+                    : "bg-[#C53030] hover:bg-[#9B2C2C] text-white shadow-md"
                 }`}
               >
                 {loading ? (

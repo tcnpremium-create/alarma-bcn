@@ -97,7 +97,7 @@ export default function LeadQualification({ onComplete }) {
             <div
               key={s}
               className={`h-1.5 rounded-full transition-all ${
-                s <= step ? 'bg-[#E63946] w-12' : 'bg-gray-200 w-8'
+                s <= step ? 'bg-[#C53030] w-12' : 'bg-gray-200 w-8'
               }`}
             />
           ))}
@@ -141,7 +141,7 @@ export default function LeadQualification({ onComplete }) {
               <Button
                 type="button"
                 onClick={handleNextStep}
-                className="w-full bg-[#E63946] hover:bg-[#d32f3c] text-white h-10 text-sm"
+                className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white h-10 text-sm"
               >
                 Continuar
                 <ChevronRight className="w-4 h-4 ml-2" />
@@ -207,7 +207,7 @@ export default function LeadQualification({ onComplete }) {
                 <Button
                   type="button"
                   onClick={handleNextStep}
-                  className="flex-1 bg-[#E63946] hover:bg-[#d32f3c] text-white h-10 text-sm"
+                  className="flex-1 bg-[#C53030] hover:bg-[#9B2C2C] text-white h-10 text-sm"
                 >
                   Continuar
                   <ChevronRight className="w-4 h-4 ml-2" />
@@ -282,7 +282,7 @@ export default function LeadQualification({ onComplete }) {
                    type="button"
                    onClick={handleSubmit}
                    disabled={loading}
-                   className="flex-1 bg-[#E63946] hover:bg-[#d32f3c] text-white h-10 text-sm"
+                   className="flex-1 bg-[#C53030] hover:bg-[#9B2C2C] text-white h-10 text-sm"
                 >
                   {loading ? (
                     <>

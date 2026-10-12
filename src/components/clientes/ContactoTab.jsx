@@ -93,7 +93,7 @@ export default function ContactoTab({ user }) {
         <Button
           type="submit"
           disabled={sending}
-          className="w-full bg-[#E63946] hover:bg-[#d32f3c] text-white h-12 text-base font-semibold"
+          className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white h-12 text-base font-semibold"
         >
           {sending ? (
             <>

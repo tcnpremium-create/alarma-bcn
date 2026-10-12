@@ -47,7 +47,7 @@ export default function AlarmConnectionOptions({ onRequestQuote }) {
           <button
             type="button"
             onClick={onRequestQuote}
-            style={{ backgroundColor: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer" }}
+            style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "14px 28px", border: "none", cursor: "pointer" }}
           >
             Pedir presupuesto de alarma →
           </button>

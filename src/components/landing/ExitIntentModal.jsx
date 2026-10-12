@@ -177,7 +177,7 @@ export default function ExitIntentModal({ onVisibleChange }) {
                 <button
                   onClick={goToKits}
                   style={{
-                    background: "#E53E3E", color: "#fff", fontWeight: 800, fontSize: 15,
+                    background: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15,
                     borderRadius: 50, padding: "14px 0", border: "none", cursor: "pointer",
                     boxShadow: "0 0 24px rgba(229,62,62,0.35)",
                   }}

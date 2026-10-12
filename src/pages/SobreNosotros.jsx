@@ -130,7 +130,7 @@ export default function SobreNosotros() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-flex items-center gap-2 bg-[#E63946]/10 rounded-full px-4 py-2 mb-6">
+              <div className="inline-flex items-center gap-2 bg-[#C53030]/10 rounded-full px-4 py-2 mb-6">
                 <Award className="w-4 h-4 text-[#E63946]" />
                 <span className="text-[#E63946] text-sm font-semibold">{businessStats.experienceText}</span>
               </div>
@@ -194,7 +194,7 @@ export default function SobreNosotros() {
                 className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="flex items-start gap-4">
-                  <div className="bg-[#E63946]/10 p-3 rounded-lg flex-shrink-0">
+                  <div className="bg-[#C53030]/10 p-3 rounded-lg flex-shrink-0">
                     <CheckCircle className="w-6 h-6 text-[#E63946]" />
                   </div>
                   <div>
@@ -328,7 +328,7 @@ export default function SobreNosotros() {
                     href="tel:+34638109947"
                     className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all group"
                   >
-                    <div className="bg-[#E63946] p-3 rounded-lg group-hover:scale-110 transition-transform">
+                    <div className="bg-[#C53030] p-3 rounded-lg group-hover:scale-110 transition-transform">
                       <Phone className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -341,7 +341,7 @@ export default function SobreNosotros() {
                     href="mailto:tcnpremium@gmail.com"
                     className="flex items-center gap-4 p-4 bg-white/5 hover:bg-white/10 rounded-xl transition-all group"
                   >
-                    <div className="bg-[#E63946] p-3 rounded-lg group-hover:scale-110 transition-transform">
+                    <div className="bg-[#C53030] p-3 rounded-lg group-hover:scale-110 transition-transform">
                       <Mail className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -351,7 +351,7 @@ export default function SobreNosotros() {
                   </a>
 
                   <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl">
-                    <div className="bg-[#E63946] p-3 rounded-lg flex-shrink-0">
+                    <div className="bg-[#C53030] p-3 rounded-lg flex-shrink-0">
                       <MapPin className="w-5 h-5 text-white" />
                     </div>
                     <div>

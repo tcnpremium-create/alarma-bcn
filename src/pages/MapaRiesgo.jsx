@@ -210,7 +210,7 @@ export default function MapaRiesgo() {
       </section>
 
       {/* Stats bar */}
-      <div className="bg-[#E63946] py-6">
+      <div className="bg-[#C53030] py-6">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-white">
           {[
             { label: 'Robos en viviendas/año', value: '+12.400' },
@@ -325,7 +325,7 @@ export default function MapaRiesgo() {
                               <button
                                 type="button"
                                 onClick={(e) => { e.stopPropagation(); openDrawer(`Seguridad en ${barrio.name}`); }}
-                                className="flex-1 bg-[#E63946] hover:bg-[#d32f3c] text-white font-bold text-sm rounded-lg px-4 py-3 transition-colors"
+                                className="flex-1 bg-[#C53030] hover:bg-[#9B2C2C] text-white font-bold text-sm rounded-lg px-4 py-3 transition-colors"
                               >
                                 Presupuesto gratis para {barrio.name}
                               </button>

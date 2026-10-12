@@ -47,7 +47,7 @@ export default function PageNotFound({}) {
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <a
                             href="tel:+34638109947"
-                            className="flex items-center justify-center gap-2 bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-6 py-3 font-semibold transition-colors"
+                            className="flex items-center justify-center gap-2 bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full px-6 py-3 font-semibold transition-colors"
                         >
                             📞 638 10 99 47
                         </a>

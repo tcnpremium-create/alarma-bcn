@@ -218,7 +218,7 @@ export default function ComparativaAlarmas() {
       <section className="pt-32 pb-16 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-            <span className="inline-block bg-[#E63946]/20 text-[#E63946] font-semibold px-4 py-2 rounded-full text-sm mb-6">
+            <span className="inline-block bg-[#C53030]/20 text-[#E63946] font-semibold px-4 py-2 rounded-full text-sm mb-6">
               Actualizado Marzo 2026
             </span>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
@@ -234,13 +234,13 @@ export default function ComparativaAlarmas() {
             <div className="flex gap-3 justify-center">
               <button
                 onClick={() => setView('cards')}
-                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${view === 'cards' ? 'bg-[#E63946] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${view === 'cards' ? 'bg-[#C53030] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
               >
                 Vista por tarjetas
               </button>
               <button
                 onClick={() => setView('table')}
-                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${view === 'table' ? 'bg-[#E63946] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                className={`px-6 py-2.5 rounded-full font-semibold text-sm transition-all ${view === 'table' ? 'bg-[#C53030] text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
               >
                 Tabla comparativa
               </button>
@@ -269,7 +269,7 @@ export default function ComparativaAlarmas() {
                 className={`relative rounded-2xl border-2 overflow-hidden ${brand.highlight ? 'border-[#E63946] shadow-xl shadow-[#E63946]/10' : 'border-gray-200'}`}
               >
                 {brand.highlight && (
-                  <div className="bg-[#E63946] text-white text-center py-2 text-sm font-bold">
+                  <div className="bg-[#C53030] text-white text-center py-2 text-sm font-bold">
                     ⭐ MEJOR OPCIÓN EN BARCELONA
                   </div>
                 )}
@@ -331,7 +331,7 @@ export default function ComparativaAlarmas() {
                   </div>
 
                   {brand.highlight && (
-                    <Button asChild className="w-full bg-[#E63946] hover:bg-[#d32f3c] text-white">
+                    <Button asChild className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white">
                       <a href="/#contacto">Pedir Presupuesto <ArrowRight className="w-4 h-4 ml-1" /></a>
                     </Button>
                   )}
@@ -346,7 +346,7 @@ export default function ComparativaAlarmas() {
                 <tr className="bg-[#0A1628] text-white">
                   <th className="p-4 text-left">Característica</th>
                   {brands.map(b => (
-                    <th key={b.id} className={`p-4 text-center ${b.highlight ? 'bg-[#E63946]' : ''}`}>
+                    <th key={b.id} className={`p-4 text-center ${b.highlight ? 'bg-[#C53030]' : ''}`}>
                       {b.name}
                       {b.highlight && <div className="text-xs font-normal opacity-80">⭐ Recomendado</div>}
                     </th>
@@ -455,10 +455,10 @@ export default function ComparativaAlarmas() {
               </div>
             </div>
             <div className="text-center">
-              <div className="bg-[#E63946]/20 rounded-2xl p-8 border border-[#E63946]/30">
+              <div className="bg-[#C53030]/20 rounded-2xl p-8 border border-[#E63946]/30">
                 <h3 className="text-2xl font-bold text-white mb-4">¿Aún tienes dudas?</h3>
                 <p className="text-white/70 mb-6">Te ayudamos a elegir el sistema perfecto para tu caso en 5 minutos</p>
-                <Button asChild className="w-full bg-[#E63946] hover:bg-[#d32f3c] text-white py-4 text-base font-bold mb-3">
+                <Button asChild className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white py-4 text-base font-bold mb-3">
                   <a href="/#contacto">Solicitar Asesoría Gratuita</a>
                 </Button>
                 <Button asChild variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 py-4">

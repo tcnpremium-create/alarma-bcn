@@ -167,7 +167,7 @@ export default function Navbar() {
                 <Phone className="w-4 h-4 text-[#E63946]" />
                 Llamar
               </a>
-              <button onClick={handlePresupuesto} className="bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
+              <button onClick={handlePresupuesto} className="bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full px-5 py-2.5 text-sm font-bold shadow-md transition-all duration-200 whitespace-nowrap">
                 Presupuesto →
               </button>
             </div>
@@ -257,7 +257,7 @@ export default function Navbar() {
                 <li>
                   <button
                     onClick={() => { setMobileOpen(false); handlePresupuesto(); }}
-                    className="block w-full bg-[#E63946] hover:bg-[#d32f3c] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
+                    className="block w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white rounded-full font-bold py-3 text-base transition-colors text-center"
                   >
                     Presupuesto →
                   </button>

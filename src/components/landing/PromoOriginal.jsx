@@ -7,7 +7,7 @@ export default function PromoOriginal() {
     <section className="py-16 sm:py-20 bg-gradient-to-br from-[#0A1628] to-[#1a2f4a]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="flex justify-center mb-6">
-          <div className="w-16 h-16 rounded-full bg-[#E63946]/20 flex items-center justify-center">
+          <div className="w-16 h-16 rounded-full bg-[#C53030]/20 flex items-center justify-center">
             <Tag className="w-8 h-8 text-[#E63946]" />
           </div>
         </div>
@@ -19,7 +19,7 @@ export default function PromoOriginal() {
         </p>
         <Link
           to="/Promociones"
-          className="inline-flex items-center gap-3 bg-[#E63946] hover:bg-[#d32f3c] text-white font-bold text-lg rounded-full px-8 py-4 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+          className="inline-flex items-center gap-3 bg-[#C53030] hover:bg-[#9B2C2C] text-white font-bold text-lg rounded-full px-8 py-4 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
         >
           Ver todas las promociones
           <ArrowRight className="w-5 h-5" />

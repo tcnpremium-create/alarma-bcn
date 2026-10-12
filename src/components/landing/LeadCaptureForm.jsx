@@ -160,14 +160,14 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
         </div>
         <div className="grid sm:grid-cols-2" style={{ gap: 14 }}>
           <div>
-            <label style={labelStyle} htmlFor="lcf-email">Email <span style={{ fontWeight: 400, color: "#64748B" }}>(opcional)</span></label>
+            <label style={labelStyle} htmlFor="lcf-email">Email <span style={{ fontWeight: 400, color: "#94A3B8" }}>(opcional)</span></label>
             <div style={{ position: "relative" }}>
               <Mail size={16} style={iconStyle} />
               <input id="lcf-email" type="email" autoComplete="email" value={form.email} onChange={set("email")} style={inputStyle} />
             </div>
           </div>
           <div>
-            <label style={labelStyle} htmlFor="lcf-zona">Zona / localidad <span style={{ fontWeight: 400, color: "#64748B" }}>(opcional)</span></label>
+            <label style={labelStyle} htmlFor="lcf-zona">Zona / localidad <span style={{ fontWeight: 400, color: "#94A3B8" }}>(opcional)</span></label>
             <div style={{ position: "relative" }}>
               <MapPin size={16} style={iconStyle} />
               <input id="lcf-zona" type="text" autoComplete="address-level2" placeholder="Ej: Eixample, Sabadell..." value={form.zona} onChange={set("zona")} style={inputStyle} />
@@ -175,7 +175,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
           </div>
         </div>
         <div>
-          <label style={labelStyle} htmlFor="lcf-mensaje">Mensaje <span style={{ fontWeight: 400, color: "#64748B" }}>(opcional)</span></label>
+          <label style={labelStyle} htmlFor="lcf-mensaje">Mensaje <span style={{ fontWeight: 400, color: "#94A3B8" }}>(opcional)</span></label>
           <div style={{ position: "relative" }}>
             <MessageSquare size={16} style={iconStyle} />
             <textarea
@@ -197,7 +197,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
         disabled={status === "loading"}
         style={{
           width: "100%", marginTop: 20,
-          background: "#E53E3E", color: "#fff", fontWeight: 700, fontSize: 15.5,
+          background: "#C53030", color: "#fff", fontWeight: 700, fontSize: 15.5,
           borderRadius: 50, padding: "15px 0", border: "none",
           cursor: status === "loading" ? "not-allowed" : "pointer",
           opacity: status === "loading" ? 0.7 : 1,
@@ -206,7 +206,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
       >
         {status === "loading" ? "Enviando..." : "Solicitar presupuesto gratis"}
       </button>
-      <p style={{ fontSize: 11.5, color: "#64748B", textAlign: "center", marginTop: 12, marginBottom: 0 }}>
+      <p style={{ fontSize: 11.5, color: "#94A3B8", textAlign: "center", marginTop: 12, marginBottom: 0 }}>
         🔒 Tus datos están protegidos. Solo se usarán para contactarte.
       </p>
     </form>

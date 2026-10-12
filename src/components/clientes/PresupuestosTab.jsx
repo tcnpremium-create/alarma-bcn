@@ -77,7 +77,7 @@ export default function PresupuestosTab({ userEmail }) {
           Solicita tu primer presupuesto desde nuestra página principal
         </p>
         <Button 
-          className="bg-[#E63946] hover:bg-[#d32f3c] text-white"
+          className="bg-[#C53030] hover:bg-[#9B2C2C] text-white"
           onClick={() => window.location.href = '/#contacto'}
         >
           Solicitar Presupuesto

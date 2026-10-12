@@ -25,7 +25,7 @@ export default function EnhancedHero() {
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-8">
-            <span className="w-2 h-2 bg-[#E63946] rounded-full animate-pulse"></span>
+            <span className="w-2 h-2 bg-[#C53030] rounded-full animate-pulse"></span>
             <span className="text-sm text-white font-medium">Barcelona y toda Catalunya</span>
           </div>
 
@@ -59,7 +59,7 @@ export default function EnhancedHero() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
               onClick={scrollToContact}
-              className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-6 rounded-lg font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 group"
+              className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-6 rounded-lg font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 group"
             >
               Solicitar presupuesto
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

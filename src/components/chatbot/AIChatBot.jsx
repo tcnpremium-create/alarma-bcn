@@ -122,7 +122,7 @@ export default function AIChatBot() {
         <button
           onClick={() => setOpen(true)}
           className="fixed z-[9998] flex items-center justify-center"
-          style={{ bottom: 70, right: 20, width: 56, height: 56, borderRadius: "50%", backgroundColor: "#E53E3E", boxShadow: "0 4px 20px rgba(229,62,62,0.4)" }}
+          style={{ bottom: 70, right: 20, width: 56, height: 56, borderRadius: "50%", backgroundColor: "#C53030", boxShadow: "0 4px 20px rgba(229,62,62,0.4)" }}
         >
           <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/><path d="M7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
         </button>
@@ -193,7 +193,7 @@ export default function AIChatBot() {
                   placeholder={step === "collect_phone" ? "Tu número de teléfono..." : "Escribe tu pregunta..."}
                   className="flex-1 px-4 py-2.5 bg-gray-50 rounded-full text-sm outline-none focus:ring-2 focus:ring-[#E53E3E]/30"
                 />
-                <button onClick={handleSubmit} className="px-4 py-2.5 bg-[#E53E3E] text-white rounded-full text-sm font-bold hover:bg-[#d32f3c] transition-colors">
+                <button onClick={handleSubmit} className="px-4 py-2.5 bg-[#C53030] text-white rounded-full text-sm font-bold hover:bg-[#9B2C2C] transition-colors">
                   Enviar
                 </button>
               </div>

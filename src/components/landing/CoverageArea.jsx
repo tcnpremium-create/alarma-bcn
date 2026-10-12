@@ -60,7 +60,7 @@ export default function CoverageArea() {
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
             Aunque tu ciudad no aparezca aquí, es posible que cubramos tu zona. Contáctanos y te informaremos sobre disponibilidad de servicio.
           </p>
-          <Button className="bg-[#E63946] hover:bg-[#d32f3c] text-white px-8 py-3 font-bold inline-flex items-center gap-2 group">
+          <Button className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-3 font-bold inline-flex items-center gap-2 group">
             Consultar disponibilidad
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>

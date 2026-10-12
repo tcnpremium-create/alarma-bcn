@@ -90,7 +90,7 @@ export default function AreaClientes() {
           <div className="absolute top-0 right-0 w-64 h-full bg-white shadow-xl" onClick={e => e.stopPropagation()}>
             <div className="p-4 border-b border-gray-200">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12 bg-[#E63946] rounded-full flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#C53030] rounded-full flex items-center justify-center">
                   <User className="w-6 h-6 text-white" />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -125,7 +125,7 @@ export default function AreaClientes() {
                     }}
                     className={`flex items-center gap-3 w-full px-4 py-3 rounded-lg font-medium transition-all ${
                       activeTab === tab.id
-                        ? 'bg-[#E63946] text-white'
+                        ? 'bg-[#C53030] text-white'
                         : 'text-gray-700 hover:bg-gray-50'
                     }`}
                   >
@@ -145,7 +145,7 @@ export default function AreaClientes() {
           <div className="hidden lg:block bg-white rounded-2xl shadow-sm p-8 mb-8">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-[#E63946] rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 bg-[#C53030] rounded-full flex items-center justify-center">
                   <User className="w-8 h-8 text-white" />
                 </div>
                 <div>
@@ -175,7 +175,7 @@ export default function AreaClientes() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex flex-col items-center gap-1 px-4 py-2 rounded-lg font-semibold transition-all whitespace-nowrap flex-shrink-0 min-w-[90px] ${
                     activeTab === tab.id
-                      ? 'bg-[#E63946] text-white shadow-lg'
+                      ? 'bg-[#C53030] text-white shadow-lg'
                       : 'bg-white text-gray-600'
                   }`}
                 >
@@ -201,7 +201,7 @@ export default function AreaClientes() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all whitespace-nowrap ${
                     activeTab === tab.id
-                      ? 'bg-[#E63946] text-white shadow-lg'
+                      ? 'bg-[#C53030] text-white shadow-lg'
                       : 'bg-white text-gray-600 hover:bg-gray-50'
                   }`}
                 >
