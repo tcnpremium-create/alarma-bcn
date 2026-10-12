@@ -17,7 +17,7 @@ export default function WhyChooseUs() {
     {
       icon: Zap,
       title: "Respuesta Ultrarrápida",
-      description: `Centro de monitoreo 24/7 con respuesta en menos de ${businessStats.incidentResponseTime} ante cualquier alerta.`
+      description: "Alertas en tiempo real en tu móvil. Si lo prefieres, puedes añadir conexión a central receptora, un servicio opcional que se contrata aparte."
     },
     {
       icon: Award,

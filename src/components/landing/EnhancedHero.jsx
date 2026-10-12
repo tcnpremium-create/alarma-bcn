@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Phone, MessageCircle } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 export default function EnhancedHero() {
   const scrollToContact = () => {
@@ -41,16 +42,16 @@ export default function EnhancedHero() {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-4 mb-12 py-8 border-y border-white/10">
             <div>
-              <div className="text-4xl font-bold text-[#E63946]">15+</div>
-              <div className="text-sm text-gray-300">Años de experiencia</div>
+              <div className="text-4xl font-bold text-[#E63946]">{businessStats.googleRating}★</div>
+              <div className="text-sm text-gray-300">Valoración en Google ({businessStats.googleReviewCount} reseñas)</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-[#E63946]">2500+</div>
-              <div className="text-sm text-gray-300">Clientes protegidos</div>
+              <div className="text-4xl font-bold text-[#E63946]">{businessStats.warrantyYears} años</div>
+              <div className="text-sm text-gray-300">Garantía</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-[#E63946]">24/7</div>
-              <div className="text-sm text-gray-300">Soporte técnico</div>
+              <div className="text-4xl font-bold text-[#E63946]">{businessStats.installTimeframe}</div>
+              <div className="text-sm text-gray-300">Plazo de instalación</div>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { businessStats } from "@/lib/businessStats";
 
 /**
  * LocalitySEO - Full SEO component for locality-specific pages.
@@ -73,8 +74,8 @@ export default function LocalitySEO({
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "19",
+      "ratingValue": businessStats.googleRating,
+      "reviewCount": businessStats.googleReviewCount,
       "bestRating": "5",
       "worstRating": "1"
     },

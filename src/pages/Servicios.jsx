@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { Shield, Camera, Fingerprint, MonitorPlay, Bell, Home, Building2, CheckCircle, Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { businessStats } from "@/lib/businessStats";
 
 
 const servicios = [
@@ -449,9 +450,9 @@ export default function Servicios() {
             {/* Trust indicators */}
             <div className="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
               {[
-              { value: "500+", label: "Instalaciones" },
-              { value: "24/7", label: "Soporte" },
-              { value: "10 años", label: "Experiencia" }].
+              { value: `${businessStats.googleRating}★`, label: `Valoración Google (${businessStats.googleReviewCount} reseñas)` },
+              { value: businessStats.installTimeframe, label: "Plazo de instalación" },
+              { value: `${businessStats.warrantyYears} años`, label: "Garantía" }].
               map((stat) =>
               <div key={stat.label} className="text-center">
                   <div className="text-3xl font-bold text-white mb-2">{stat.value}</div>

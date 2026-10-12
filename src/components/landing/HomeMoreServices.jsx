@@ -46,7 +46,7 @@ const PHOTO_CARDS = [
     href: "/videoporteros",
     title: "VIDEOPORTEROS",
     desc: "Videoporteros IP para hogares y comunidades: ve quién llama y abre desde el móvil.",
-    mainImg: "/images/videoportero.jpeg",
+    mainImg: "/images/videoportero.webp",
     mainAlt: "Videoportero instalado en una vivienda",
     detailImg: "/images/bticino-videoportero.jpeg",
     detailAlt: "Kit de videoportero Bticino con placa de calle y monitor",

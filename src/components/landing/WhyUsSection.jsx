@@ -44,8 +44,8 @@ export default function WhyUsSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent rounded-2xl" />
               <div className="absolute bottom-6 left-6 right-6">
-                <p className="text-white font-semibold text-lg">Más de 10 años</p>
-                <p className="text-white/70">protegiendo hogares en Barcelona</p>
+                <p className="text-white font-semibold text-lg">Instalación profesional</p>
+                <p className="text-white/70">en hogares de Barcelona y toda Catalunya</p>
               </div>
             </div>
           </motion.div>

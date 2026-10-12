@@ -34,6 +34,8 @@ export function createSupabaseDb(env = process.env) {
         .in('notif_status', ['pending', 'failed', 'failed_final']).eq('is_test', false);
       return { data, error };
     }),
+    countConfirmationsSince: (sinceISO) => wrap((s) =>
+      s.from('leads').select('id', { count: 'exact', head: true }).eq('confirm_status', 'sent').gte('created_at', sinceISO)),
     ping: () => wrap((s) => s.from('leads').select('id').limit(1)),
     list: ({ includeTest }) => wrap((s) => {
       let q = s.from('leads').select('*').order('created_at', { ascending: false });

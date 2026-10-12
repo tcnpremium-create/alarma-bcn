@@ -110,6 +110,18 @@ for (const file of htmlFiles) {
     return '';
   });
 
+  // 3) Fuentes sin bloqueo: index.html carga la hoja de Google Fonts con
+  // rel="preload" + onload para no bloquear el primer pintado. Al prerenderizar, el
+  // navegador ya ejecutó ese onload y serializó el enlace como rel="stylesheet" (bloqueante
+  // otra vez), así que se devuelve a su forma original en cada snapshot.
+  updated = updated.replace(
+    /<link rel="stylesheet" as="style" href="(https:\/\/fonts\.googleapis\.com\/[^"]+)" onload="[^"]*">/g,
+    (full, href) => {
+      rewritten++;
+      return `<link rel="preload" as="style" href="${href}" onload="this.onload=null;this.rel='stylesheet'">`;
+    },
+  );
+
   if (updated !== html) {
     writeFileSync(filePath, updated);
     filesTouched++;

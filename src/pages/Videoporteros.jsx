@@ -7,6 +7,7 @@ import AdvancedSEO from "../components/seo/AdvancedSEO";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Smartphone, Eye, Wifi, Shield, Star, ChevronRight, Bell, Key, Clock, Camera, Users, Building2, Lock, Home, ScanFace, Fingerprint, CreditCard, Hash, PackageCheck, ClipboardList } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 const SOLUTIONS = [
   {
@@ -131,8 +132,8 @@ export default function Videoporteros() {
             Instalamos videoporteros IP de última generación con control de accesos biométrico, reconocimiento facial y apertura remota desde el móvil. Para hogares, comunidades y empresas en Barcelona y toda Catalunya.
           </p>
           <div style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, paddingBottom: 20, borderTop: "1px solid rgba(255,255,255,0.15)", flexWrap: "wrap" }}>
-            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>+2500</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Instalaciones</div></div>
-            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>15+</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Años experiencia</div></div>
+            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>{businessStats.googleRating}★</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Valoración en Google ({businessStats.googleReviewCount} reseñas)</div></div>
+            <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>{businessStats.installTimeframe}</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Plazo de instalación</div></div>
             <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>3 años</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Garantía</div></div>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 16 }}>
@@ -172,10 +173,10 @@ export default function Videoporteros() {
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Líder en España desde 1956</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Fabricante español</span>
                 </div>
                 <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
-                  Fermax nació en Valencia y es hoy uno de los mayores fabricantes de videoporteros del mundo. Su gama <strong style={{ color: "#fff" }}>DUOX Plus</strong> moderniza instalaciones de 2 hilos existentes sin obra, añadiendo imagen HD y la app <strong style={{ color: "#fff" }}>MEET</strong> para apertura remota. La serie <strong style={{ color: "#fff" }}>VEO</strong> incorpora pantalla táctil de 7&quot; con visión nocturna automática. ISO 9001 · Presencia en más de 70 países.
+                  Fermax es un fabricante español de videoporteros con origen en Valencia. Su gama <strong style={{ color: "#fff" }}>DUOX Plus</strong> moderniza instalaciones de 2 hilos existentes sin obra, añadiendo imagen HD y la app <strong style={{ color: "#fff" }}>MEET</strong> para apertura remota. La serie <strong style={{ color: "#fff" }}>VEO</strong> incorpora pantalla táctil de 7&quot; con visión nocturna automática. ISO 9001 · Presencia en más de 70 países.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {["DUOX Plus 2 hilos", "VEO 7\" táctil", "App MEET", "Sistema IP"].map(tag => (
@@ -215,10 +216,10 @@ export default function Videoporteros() {
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Made in Spain · Desde 1971</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Marca española</span>
                 </div>
                 <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
-                  Golmar es una marca española fundada en 1971, con sede en Barcelona, especializada en comunidades de vecinos. Su gama <strong style={{ color: "#fff" }}>Sixty5</strong> incorpora pantalla táctil de 5&quot;, protocolo SIP y tecnología de cámara <strong style={{ color: "#fff" }}>WDR</strong> para visión perfecta incluso con fuerte contraluz. La app <strong style={{ color: "#fff" }}>G2Call</strong> permite contestar al portero desde el smartphone. Ideal para grandes comunidades.
+                  Golmar es una marca española especializada en comunidades de vecinos. Su gama <strong style={{ color: "#fff" }}>Sixty5</strong> incorpora pantalla táctil de 5&quot;, protocolo SIP y tecnología de cámara <strong style={{ color: "#fff" }}>WDR</strong> para visión perfecta incluso con fuerte contraluz. La app <strong style={{ color: "#fff" }}>G2Call</strong> permite contestar al portero desde el smartphone. Ideal para grandes comunidades.
                 </p>
                 <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {["Gama Sixty5", "Cámara WDR", "App G2Call", "Protocolo SIP"].map(tag => (

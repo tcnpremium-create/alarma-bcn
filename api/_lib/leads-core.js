@@ -16,6 +16,9 @@ import { BUSINESS_INBOX } from './mailer.js';
 
 export const NOTIF_MAX_ATTEMPTS = 5;
 const DEDUPE_WINDOW_MS = 10 * 60 * 1000;
+// Tope de confirmaciones automáticas al cliente por hora: el formulario no debe poder usarse
+// para enviar correo a terceros en masa. Pasado el tope, la solicitud se guarda y se avisa igual.
+const CONFIRM_MAX_PER_HOUR = 20;
 const ORIGENES = new Set(['formulario_web', 'chatbot', 'whatsapp', 'telefono', 'otro']);
 const URGENCIAS = new Set(['baja', 'media', 'alta', 'urgente']);
 const TEST_PHONE = '000000000';
@@ -103,7 +106,8 @@ export function createLeadService({ db, mailer, now = () => new Date(), log = co
         notif_sent_at: now().toISOString(),
         notif_via: result.via,
         notif_provider_id: result.id || null,
-        notif_error: null,
+        // Si el canal principal falló y salvó el de respaldo, se deja anotado el motivo.
+        notif_error: result.fallbackErrors?.length ? ('respaldo usado: ' + result.fallbackErrors.join(' | ')).slice(0, 500) : null,
         // Resend permite comprobar la entrega después; SMTP solo confirma aceptación.
         delivery_status: result.via === 'resend' ? 'sent' : 'accepted_smtp',
         delivery_checked_at: null,
@@ -120,6 +124,12 @@ export function createLeadService({ db, mailer, now = () => new Date(), log = co
 
   async function sendConfirmation(row) {
     if (row.is_test || !row.email) return 'skipped';
+    const since = new Date(now().getTime() - 60 * 60 * 1000).toISOString();
+    const { count } = await db.countConfirmationsSince(since);
+    if ((count || 0) >= CONFIRM_MAX_PER_HOUR) {
+      await db.update(row.id, { confirm_status: 'skipped' });
+      return 'skipped';
+    }
     const result = await mailer.send({
       to: row.email,
       subject: 'Solicitud recibida — Premium Tech Security',

@@ -35,6 +35,7 @@ function fakeDb({ failInsert = false, now = () => new Date() } = {}) {
       data: rows.filter((r) => r.notif_status === 'sent' && r.notif_via === 'resend' && ['sent', null, undefined].includes(r.delivery_status)),
       error: null,
     }),
+    countConfirmationsSince: async (sinceISO) => ({ count: rows.filter((r) => r.confirm_status === 'sent' && r.created_at >= sinceISO).length, error: null }),
     ping: async () => ({ data: [], error: null }),
   };
   return db;
@@ -255,4 +256,26 @@ test('GET /api/lead informa de canales sin revelar secretos; POST responde con e
 
   const bad = fakeRes(); await handler({ method: 'POST', body: { nombre: 'x' } }, bad);
   assert.equal(bad.code, 400);
+});
+
+test('si Resend falla y Gmail salva el aviso, queda anotado el motivo', async () => {
+  const { service, db, mailer } = setup();
+  mailer.send = async (m) => { mailer.sent.push(m); return { ok: true, via: 'gmail', id: 'g1', fallbackErrors: ['resend: account suspended'] }; };
+  await service.submit(validBody({ email: '' }));
+  assert.equal(db.rows[0].notif_status, 'sent');
+  assert.match(db.rows[0].notif_error, /respaldo usado: resend: account suspended/);
+});
+
+test('tope de confirmaciones al cliente: pasado el límite se guarda y se avisa, pero no se escribe al cliente', async () => {
+  const { service, db, mailer } = setup();
+  for (let i = 0; i < 20; i++) {
+    await service.submit(validBody({ idempotency_key: undefined, nombre: 'Cliente ' + i, telefono: '6001234' + String(10 + i), email: `c${i}@example.com` }));
+  }
+  assert.equal(db.rows.filter((r) => r.confirm_status === 'sent').length, 20);
+  const before = mailer.sent.length;
+  const r = await service.submit(validBody({ idempotency_key: undefined, nombre: 'Cliente 21', telefono: '600999999', email: 'c21@example.com' }));
+  assert.equal(r.body.saved, true);
+  assert.equal(r.body.notification, 'sent');
+  assert.equal(r.body.confirmation, 'skipped');
+  assert.equal(mailer.sent.length, before + 1); // solo el aviso al negocio
 });
