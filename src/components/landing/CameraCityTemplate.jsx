@@ -6,6 +6,7 @@ import AdvancedSEO from "../seo/AdvancedSEO";
 import CameraKitsGrid from "./CameraKitsGrid";
 import Breadcrumbs from "./Breadcrumbs";
 import CameraLocalSections from "./CameraLocalSections";
+import CamerasBarcelonaGuide, { BARCELONA_EXTRA_FAQS } from "./CamerasBarcelonaGuide";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Smartphone, Clock, CheckCircle, Camera, Wifi, Eye, HardDrive, Lock, Sun } from "lucide-react";
@@ -100,7 +101,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Cumplen con el RGPD las cámaras de seguridad?`,
-      a: `Sí. Nos encargamos de toda la tramitación: señalética homologada, configuración correcta de ángulo de visión (solo zona privada), documentación RGPD y registro si procede. Para comunidades de vecinos incluimos la documentación completa para la junta.`,
+      a: `Sí. Te ayudamos con lo necesario: cartel informativo de zona videovigilada, encuadre limitado a tu propio espacio y grabador configurado para borrar las imágenes en el plazo legal. Para comunidades de vecinos incluimos la documentación completa para la junta.`,
     },
     {
       q: `¿Puedo ver las cámaras desde el móvil en tiempo real?`,
@@ -124,7 +125,27 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
   ];
 
-  const faqList = faqs || defaultFaqs;
+  const isHub = city === "Barcelona";
+  const faqList = faqs || (isHub ? [...defaultFaqs, ...BARCELONA_EXTRA_FAQS] : defaultFaqs);
+
+  // FAQPage + Service: las preguntas ya se muestran en la página, así que el
+  // marcado describe exactamente lo que ve el usuario.
+  const pageSchema = [
+    {
+      "@type": "Service",
+      "@id": `https://alarmasenbarcelona.com${seoPath}#service`,
+      "name": `Instalación de cámaras de seguridad en ${city}`,
+      "serviceType": "Instalación de cámaras de seguridad y videovigilancia",
+      "provider": { "@id": "https://alarmasenbarcelona.com/#business" },
+      "areaServed": { "@type": "City", "name": city },
+      "url": `https://alarmasenbarcelona.com${seoPath}`,
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `https://alarmasenbarcelona.com${seoPath}#faq`,
+      "mainEntity": faqList.map((f) => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })),
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-white pb-32">
@@ -135,6 +156,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         canonicalUrl={`https://alarmasenbarcelona.com${seoPath}`}
         includeLocalBusiness={city === "Barcelona"}
         serviceArea={city}
+        schema={pageSchema}
       />
       <Navbar />
 
@@ -354,6 +376,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           </div>
         </div>
       </section>
+
+      {isHub && <CamerasBarcelonaGuide onRequestQuote={() => openQuote()} />}
 
       <CameraLocalSections city={city} currentPath={seoPath} onRequestQuote={() => openQuote()} />
 
