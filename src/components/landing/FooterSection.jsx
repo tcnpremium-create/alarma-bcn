@@ -50,7 +50,7 @@ export default function FooterSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Column 1 - Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <img src={LOGO_BLANCO} alt="Premium Tech Security" loading="lazy" decoding="async" className="h-12 mb-4" />
+            <img src={LOGO_BLANCO} alt="Premium Tech Security" width={1024} height={683} loading="lazy" decoding="async" className="h-12 w-auto mb-4" />
             <p className="text-white/60 text-sm leading-relaxed">
               Instaladores certificados en Barcelona y Catalunya
             </p>
@@ -58,7 +58,7 @@ export default function FooterSection() {
 
           {/* Column 2 - Seguridad */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Seguridad</h4>
+            <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Seguridad</h3>
             <ul className="space-y-2">
               {SEGURIDAD.map((s) => (
                 <li key={s.href}>
@@ -70,7 +70,7 @@ export default function FooterSection() {
 
           {/* Column 3 - Tecnología + Sonido */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Tecnología</h4>
+            <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Tecnología</h3>
             <ul className="space-y-2 mb-6">
               {TECNOLOGIA.map((t) => (
                 <li key={t.href}>
@@ -78,7 +78,7 @@ export default function FooterSection() {
                 </li>
               ))}
             </ul>
-            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Sonido</h4>
+            <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Sonido</h3>
             <ul className="space-y-2">
               {SONIDO.map((s) => (
                 <li key={s.href}>
@@ -90,7 +90,7 @@ export default function FooterSection() {
 
           {/* Column 4 - Alarmas por zona */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Alarmas por zona</h4>
+            <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Alarmas por zona</h3>
             <ul className="space-y-2">
               {ZONAS_ALARMAS.map((z) => (
                 <li key={z.href}>
@@ -102,7 +102,7 @@ export default function FooterSection() {
 
           {/* Column 5 - Cámaras por zona */}
           <div>
-            <h4 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Cámaras por zona</h4>
+            <h3 className="text-white font-bold text-sm mb-4 uppercase tracking-wider">Cámaras por zona</h3>
             <ul className="space-y-2">
               {ZONAS_CAMARAS.map((z) => (
                 <li key={z.href}>
@@ -117,7 +117,7 @@ export default function FooterSection() {
       {/* Bottom bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-white/40 text-xs">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-white/70 text-xs">
             <span>© 2026 Premium Tech Security · NIF B67014076</span>
             <div className="flex items-center gap-4">
               <Link to="/AvisoLegal" className="hover:text-white transition-colors">Aviso Legal</Link>

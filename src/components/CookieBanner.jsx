@@ -139,14 +139,14 @@ export default function CookieBanner() {
           {showDetails ? (
             <button
               onClick={saveConfigured}
-              className="shrink-0 bg-[#E53E3E] hover:bg-[#C53030] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+              className="shrink-0 bg-[#C53030] hover:bg-[#9B2C2C] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
             >
               Guardar preferencias
             </button>
           ) : (
             <button
               onClick={acceptAll}
-              className="shrink-0 bg-[#E53E3E] hover:bg-[#C53030] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
+              className="shrink-0 bg-[#C53030] hover:bg-[#9B2C2C] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors duration-200"
             >
               Aceptar
             </button>

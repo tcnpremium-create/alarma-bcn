@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { ALARM_KITS as KITS } from "@/data/alarmKits";
 
 const css = `
-  .a-cta-primary { background: #E53E3E; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
-  .a-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
+  .a-cta-primary { background: #C53030; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
+  .a-cta-primary:hover { background: #A82828; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
   .a-cta-sec { transition: background .2s, border-color .2s; }
   .a-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
   .a-kit-card { transition: border-color .2s ease; }
@@ -114,7 +115,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                   <div style={{ textAlign:"right",marginLeft:12,flexShrink:0 }}>
                     {kit.isFrom && <div style={{ color:"#94A3B8",fontSize:9,fontWeight:700,letterSpacing:".04em",textTransform:"uppercase" }}>Desde</div>}
                     <div style={{ color:"#ef4444",fontSize:17,fontWeight:900,lineHeight:1 }}>{kit.price} €</div>
-                    {kit.ivaNote && <div style={{ color:"#64748B",fontSize:9,marginTop:1 }}>+ IVA</div>}
+                    {kit.ivaNote && <div style={{ color:"#94A3B8",fontSize:9,marginTop:1 }}>+ IVA</div>}
                     <div style={{ color:"rgba(255,255,255,.35)",fontSize:18,marginTop:4,transition:"transform .25s",transform: isOpen ? "rotate(180deg)" : "rotate(0)" }}>▾</div>
                   </div>
                 </button>
@@ -136,7 +137,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                       <span style={{ color:"#94A3B8",fontSize:11 }}>{kit.tech}</span>
                     </div>
                     {kit.expandNote && kit.expandNote.map((note) => (
-                      <p key={note} style={{ color:"#64748B",fontSize:11.5,marginTop:10,marginBottom:0,lineHeight:1.5 }}>{note}</p>
+                      <p key={note} style={{ color:"#94A3B8",fontSize:11.5,marginTop:10,marginBottom:0,lineHeight:1.5 }}>{note}</p>
                     ))}
                     <button
                       onClick={() => onOpenModal(`${kit.title}`)}
@@ -169,6 +170,12 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
             Llamar ahora
           </a>
         </div>
+        <Link
+          to="/alarmas-barcelona"
+          style={{ display:"block",marginTop:16,textAlign:"center",color:"#CBD5E1",fontWeight:600,fontSize:15,textDecoration:"underline",textUnderlineOffset:4 }}
+        >
+          Alarmas Ajax para casa y negocio en Barcelona →
+        </Link>
       </div>
     </section>
   );

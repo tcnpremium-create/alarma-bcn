@@ -39,7 +39,7 @@ export default function AnimatedSecurityBeam() {
           <h2 style={{ color: "#fff", fontWeight: 900, fontSize: 22, margin: 0 }}>
             Así protegemos tu hogar en tiempo real
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 14, marginTop: 10 }}>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 14, marginTop: 10 }}>
             Detección instantánea · Transmisión de la alerta en segundos · Control desde tu móvil
           </p>
         </div>
@@ -113,7 +113,7 @@ export default function AnimatedSecurityBeam() {
           {STEPS.map((step, i) => (
             <p key={i} style={{
               flex: 1, textAlign: "center",
-              color: "rgba(255,255,255,0.45)", fontSize: 11.5, fontWeight: 600, margin: 0, lineHeight: 1.4,
+              color: "rgba(255,255,255,0.7)", fontSize: 11.5, fontWeight: 600, margin: 0, lineHeight: 1.4,
             }}>
               {step}
             </p>

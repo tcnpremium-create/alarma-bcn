@@ -65,7 +65,7 @@ export default function ComparisonTable() {
           </div>
         </div>
 
-        <p className="text-center text-slate-600 text-xs mt-6">
+        <p className="text-center text-slate-400 text-xs mt-6">
           * Precios sin IVA. Comparativa orientativa frente a modelos de alquiler de equipos habituales en el sector. Condiciones sujetas a presupuesto personalizado.
         </p>
       </div>

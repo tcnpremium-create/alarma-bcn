@@ -135,7 +135,7 @@ export default function Navbar() {
                       >
                         {SERVICE_GROUPS.map((group) => (
                           <div key={group.label} className="min-w-[150px]">
-                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] mb-2">{group.label}</p>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#C53030] mb-2">{group.label}</p>
                             <ul className="space-y-1.5">
                               {group.links.map((l) => (
                                 <li key={l.href}>
@@ -224,7 +224,7 @@ export default function Navbar() {
                       >
                         {SERVICE_GROUPS.map((group) => (
                           <div key={group.label} className="py-2">
-                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#E63946] px-2 mb-1">{group.label}</p>
+                            <p className="text-[11px] font-bold uppercase tracking-wide text-[#C53030] px-2 mb-1">{group.label}</p>
                             {group.links.map((l) => (
                               <Link
                                 key={l.href}

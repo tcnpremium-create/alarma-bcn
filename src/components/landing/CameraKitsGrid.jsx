@@ -94,7 +94,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                     </span>
                   )}
                   <div style={{ color: "#E53E3E", fontSize: 42, fontWeight: 900, lineHeight: 1, letterSpacing: "-0.02em" }}>{kit.price} €</div>
-                  <span style={{ color: "#64748B", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
+                  <span style={{ color: "#94A3B8", fontSize: 11, marginTop: 4, display: "block" }}>+ IVA{kit.isFrom ? " · precio orientativo" : " (IVA no incluido)"}</span>
                 </div>
 
                 <button
@@ -122,7 +122,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
                     {kit.items.map((item) => <KitItemBento key={item} item={item} />)}
                   </div>
                   {kit.storageNote && (
-                    <p style={{ color: "#64748B", fontSize: 11.5, marginTop: 10, marginBottom: 0, lineHeight: 1.5 }}>
+                    <p style={{ color: "#94A3B8", fontSize: 11.5, marginTop: 10, marginBottom: 0, lineHeight: 1.5 }}>
                       {kit.storageNote}
                     </p>
                   )}

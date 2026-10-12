@@ -21,8 +21,8 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white pb-32">
       <AdvancedSEO
-        title="Instalación de Cámaras de Seguridad Barcelona | Premium Tech"
-        description="Instalación profesional de cámaras de seguridad en Barcelona para viviendas, negocios y comunidades. Videovigilancia Hikvision y Dahua, alarmas Ajax y presupuesto sin compromiso. Tel. 638 10 99 47."
+        title="Alarmas y Cámaras de Seguridad en Barcelona | Premium Tech"
+        description="Instaladores de alarmas Ajax y cámaras de seguridad en Barcelona para viviendas, negocios y comunidades. Visita técnica y presupuesto sin compromiso. Tel. 638 10 99 47."
         keywords="cámaras de seguridad Barcelona, videovigilancia Barcelona, instalación de cámaras Barcelona, alarmas Barcelona, alarmas AJAX Barcelona, sistemas CCTV Barcelona"
         canonicalUrl="https://alarmasenbarcelona.com"
       />

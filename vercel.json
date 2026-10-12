@@ -15,6 +15,136 @@
       "permanent": true
     },
     {
+      "source": "/about",
+      "destination": "/About",
+      "permanent": true
+    },
+    {
+      "source": "/avisolegal",
+      "destination": "/AvisoLegal",
+      "permanent": true
+    },
+    {
+      "source": "/badalona",
+      "destination": "/Badalona",
+      "permanent": true
+    },
+    {
+      "source": "/barrioeixample",
+      "destination": "/BarrioEixample",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/Blog",
+      "permanent": true
+    },
+    {
+      "source": "/calculadora",
+      "destination": "/Calculadora",
+      "permanent": true
+    },
+    {
+      "source": "/castelldefels",
+      "destination": "/Castelldefels",
+      "permanent": true
+    },
+    {
+      "source": "/comparativaalarmas",
+      "destination": "/ComparativaAlarmas",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/Contact",
+      "permanent": true
+    },
+    {
+      "source": "/cookies",
+      "destination": "/Cookies",
+      "permanent": true
+    },
+    {
+      "source": "/cornella",
+      "destination": "/Cornella",
+      "permanent": true
+    },
+    {
+      "source": "/elprat",
+      "destination": "/ElPrat",
+      "permanent": true
+    },
+    {
+      "source": "/guiaseguridadbarcelona",
+      "destination": "/GuiaSeguridadBarcelona",
+      "permanent": true
+    },
+    {
+      "source": "/hospitalet",
+      "destination": "/Hospitalet",
+      "permanent": true
+    },
+    {
+      "source": "/mantenimientosoporte",
+      "destination": "/MantenimientoSoporte",
+      "permanent": true
+    },
+    {
+      "source": "/mapariesgo",
+      "destination": "/MapaRiesgo",
+      "permanent": true
+    },
+    {
+      "source": "/mataro",
+      "destination": "/Mataro",
+      "permanent": true
+    },
+    {
+      "source": "/privacidad",
+      "destination": "/Privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/promociones",
+      "destination": "/Promociones",
+      "permanent": true
+    },
+    {
+      "source": "/santcugat",
+      "destination": "/SantCugat",
+      "permanent": true
+    },
+    {
+      "source": "/servicios",
+      "destination": "/Servicios",
+      "permanent": true
+    },
+    {
+      "source": "/sobrenosotros",
+      "destination": "/SobreNosotros",
+      "permanent": true
+    },
+    {
+      "source": "/terrassa",
+      "destination": "/Terrassa",
+      "permanent": true
+    },
+    {
+      "source": "/viladecans",
+      "destination": "/Viladecans",
+      "permanent": true
+    },
+    {
+      "source": "/blogarticle/:slug",
+      "destination": "/BlogArticle/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/contacto",
+      "destination": "/Contact",
+      "permanent": true
+    },
+    {
       "source": "/videovigilancia",
       "destination": "/camaras-barcelona",
       "permanent": true
@@ -89,10 +219,6 @@
     {
       "source": "/About",
       "destination": "/__prerendered__/About.html"
-    },
-    {
-      "source": "/AvisoLegal",
-      "destination": "/__prerendered__/AvisoLegal.html"
     },
     {
       "source": "/Badalona",
@@ -243,10 +369,6 @@
       "destination": "/__prerendered__/Contact.html"
     },
     {
-      "source": "/Cookies",
-      "destination": "/__prerendered__/Cookies.html"
-    },
-    {
       "source": "/Cornella",
       "destination": "/__prerendered__/Cornella.html"
     },
@@ -273,10 +395,6 @@
     {
       "source": "/Mataro",
       "destination": "/__prerendered__/Mataro.html"
-    },
-    {
-      "source": "/Privacidad",
-      "destination": "/__prerendered__/Privacidad.html"
     },
     {
       "source": "/Promociones",

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Cpu, Moon, HardDrive, Smartphone } from "lucide-react";
 import { CAMERA_KITS } from "@/data/cameraKits";
 
@@ -10,8 +11,8 @@ const BENEFITS = [
 ];
 
 const css = `
-  .c-cta-primary { background: #E53E3E; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
-  .c-cta-primary:hover { background: #d32f3c; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
+  .c-cta-primary { background: #C53030; transition: background .2s ease, box-shadow .25s ease, transform .2s ease; }
+  .c-cta-primary:hover { background: #A82828; box-shadow: 0 8px 24px rgba(229,62,62,.35); transform: translateY(-1px); }
   .c-cta-sec { transition: background .2s, border-color .2s; }
   .c-cta-sec:hover { background: rgba(255,255,255,.12)!important; border-color: rgba(255,255,255,.3)!important; }
   .c-kit-card { transition: border-color .2s ease, background .2s ease, box-shadow .3s ease; }
@@ -111,6 +112,12 @@ export default function HomeCamerasBlock({ onOpenModal }) {
             Llamar ahora
           </a>
         </div>
+        <Link
+          to="/camaras-barcelona"
+          style={{ display:"block",marginTop:16,textAlign:"center",color:"#CBD5E1",fontWeight:600,fontSize:15,textDecoration:"underline",textUnderlineOffset:4 }}
+        >
+          Instalación de cámaras de seguridad en Barcelona: precios y proceso →
+        </Link>
 
         {/* ── KIT CARDS ── */}
         <div id="camaras-kits" style={{ marginTop:32, scrollMarginTop: 90 }}>
@@ -142,12 +149,12 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                         <span style={{ color:"#fff",fontSize:16,fontWeight:800 }}>{kit.title}</span>
                         <span style={{ color:"#ef4444",fontSize:16,fontWeight:800,marginLeft:8 }}>— {kit.cameras}</span>
                       </div>
-                      <div style={{ color:"#64748B",fontSize:11.5,marginTop:3,lineHeight:1.4,maxWidth:"90%" }}>{kit.description}</div>
+                      <div style={{ color:"#94A3B8",fontSize:11.5,marginTop:3,lineHeight:1.4,maxWidth:"90%" }}>{kit.description}</div>
                     </div>
                     <div style={{ textAlign:"right",marginLeft:12,flexShrink:0 }}>
                       {kit.isFrom && <div style={{ color:"#94A3B8",fontSize:9,fontWeight:700,letterSpacing:".04em",textTransform:"uppercase" }}>Desde</div>}
                       <div style={{ color:"#ef4444",fontSize:17,fontWeight:900,lineHeight:1 }}>{kit.price} €</div>
-                      <div style={{ color:"#64748B",fontSize:10 }}>+ IVA</div>
+                      <div style={{ color:"#94A3B8",fontSize:10 }}>+ IVA</div>
                       <div style={{ color:"rgba(255,255,255,.35)",fontSize:18,marginTop:4,transition:"transform .25s",transform:isOpen ? "rotate(180deg)" : "rotate(0)" }}>▾</div>
                     </div>
                   </button>
@@ -163,7 +170,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
                         ))}
                       </ul>
                       {kit.storageNote && (
-                        <p style={{ color:"#64748B",fontSize:11.5,marginTop:10,marginBottom:0,lineHeight:1.5 }}>{kit.storageNote}</p>
+                        <p style={{ color:"#94A3B8",fontSize:11.5,marginTop:10,marginBottom:0,lineHeight:1.5 }}>{kit.storageNote}</p>
                       )}
                       <button
                         onClick={() => onOpenModal && onOpenModal(kit.title)}

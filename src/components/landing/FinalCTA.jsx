@@ -27,7 +27,7 @@ export default function FinalCTA({ onOpenModal }) {
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
           <Button
             onClick={handlePresupuesto}
-            className="w-full sm:w-auto bg-white hover:bg-gray-100 active:bg-gray-200 text-[#E63946] px-8 sm:px-10 py-5 sm:py-6 rounded-xl font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto bg-white hover:bg-gray-100 active:bg-gray-200 text-[#C53030] px-8 sm:px-10 py-5 sm:py-6 rounded-xl font-bold text-base shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 group"
             style={{ touchAction: "manipulation" }}
           >
             Solicitar presupuesto →

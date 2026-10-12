@@ -232,7 +232,7 @@ export default function HeroProf() {
           >
             <span style={{ color: "#FBBF24", fontWeight: 700, fontSize: 14 }}>★ {businessStats.googleRating}</span>
             <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 12 }}>Reseñas en Google</span>
-            <span style={{ color: "rgba(255,255,255,0.3)", fontSize: 12 }}>Ver →</span>
+            <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 12 }}>Ver →</span>
           </a>
         </div>
       </div>
@@ -240,7 +240,7 @@ export default function HeroProf() {
       {/* Slide dot indicators */}
       <div style={{
         position: "absolute", bottom: 32, left: "50%", transform: "translateX(-50%)",
-        display: "flex", gap: 8, zIndex: 10,
+        display: "flex", gap: 0, zIndex: 10,
       }}>
         {SLIDES.map((_, i) => (
           <button
@@ -249,9 +249,11 @@ export default function HeroProf() {
             className="hero-dot-btn"
             aria-label={`Slide ${i + 1}`}
             style={{
+              // Punto visible de 8 px con zona táctil de 24 px (WCAG 2.5.8)
               width: active === i ? 24 : 8, height: 8, borderRadius: 4,
               background: active === i ? "#E53E3E" : "rgba(255,255,255,0.25)",
-              border: "none", cursor: "pointer", padding: 0,
+              backgroundClip: "content-box", boxSizing: "content-box",
+              border: "none", cursor: "pointer", padding: 8,
             }}
           />
         ))}

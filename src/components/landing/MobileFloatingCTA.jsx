@@ -15,7 +15,7 @@ export default function MobileFloatingCTA() {
       onClick={() => markExitIntentConverted()}
       className="fixed bottom-0 left-0 right-0 z-[9999] flex items-center justify-center gap-2 text-white font-bold text-base"
       style={{
-        backgroundColor: "#25D366",
+        backgroundColor: "#15803D", // verde WhatsApp oscurecido: texto blanco con contraste AA (5:1)
         boxShadow: "0 -2px 12px rgba(0,0,0,0.15)",
         paddingTop: 14,
         paddingBottom: "calc(14px + env(safe-area-inset-bottom, 0px))",
