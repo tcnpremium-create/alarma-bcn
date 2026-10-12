@@ -2,8 +2,13 @@ import { Resend } from 'resend';
 import nodemailer from 'nodemailer';
 
 /**
- * Envío de correo con dos canales: Resend primero y Gmail SMTP de respaldo.
+ * Envío de correo con dos canales: Gmail SMTP primero y Resend de respaldo.
  * Nunca lanza: devuelve { ok, via, id, error }.
+ *
+ * Gmail es el canal principal desde oct. 2026: la clave de Resend que se usó
+ * hasta septiembre está suspendida y la de Vercel ya no es válida, mientras
+ * que Gmail (GMAIL_USER / GMAIL_APP_PASSWORD) es el que ha entregado todos los
+ * avisos desde el 4 de octubre. Resend queda de reserva por si se renueva.
  *
  * "ok" significa que el proveedor ACEPTÓ el correo, no que llegó al buzón.
  * La entrega real se comprueba aparte (getDeliveryStatus, solo Resend).
@@ -71,8 +76,9 @@ export function createMailer(env = process.env, { timeoutMs = 6000 } = {}) {
     }
   }
 
-  async function send(message, { preferGmail = false } = {}) {
-    const order = preferGmail ? [viaGmail, viaResend] : [viaResend, viaGmail];
+  // `preferGmail` se mantiene por compatibilidad: Gmail ya va siempre primero.
+  async function send(message, { preferGmail = true } = {}) {
+    const order = [viaGmail, viaResend];
     const errors = [];
     for (const channel of order) {
       const result = await channel(message);
