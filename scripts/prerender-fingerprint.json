@@ -1,5 +1,5 @@
 {
- "combined": "1eef44b349e5d898",
+ "combined": "d6e6b18a100d58dd",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "3e336d7d5eb0acdb",
@@ -200,7 +200,7 @@
   "src/pages/CamarasTarragona.jsx": "eb96f7cb9ce01474",
   "src/pages/Castelldefels.jsx": "a428976ac8a10842",
   "src/pages/Cerraduras.jsx": "d4ae9e9e26f0ed64",
-  "src/pages/ComparativaAlarmas.jsx": "13f1e3d2fa3869d9",
+  "src/pages/ComparativaAlarmas.jsx": "098dd9251ccb311b",
   "src/pages/Contact.jsx": "f52580f2fecbff3a",
   "src/pages/ControlAccesos.jsx": "061c970743bdee3c",
   "src/pages/Cookies.jsx": "885bca81922f6a68",

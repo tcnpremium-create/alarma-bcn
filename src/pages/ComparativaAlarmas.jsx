@@ -229,7 +229,9 @@ export default function ComparativaAlarmas() {
             </p>
             <p className="text-sm text-white/50 max-w-2xl mx-auto mb-8">
               Los precios de esta comparativa son una referencia orientativa de mercado por marca, no la tarifa de Premium Tech Security. Consulta nuestros kits Ajax con precio actualizado en{" "}
-              <a href="/Promociones" className="underline hover:text-white">Promociones</a>.
+              <a href="/Promociones" className="underline hover:text-white">Promociones</a>{" "}
+              o mira cómo trabajamos en{" "}
+              <Link to="/alarmas-barcelona" className="underline hover:text-white">instalación de alarmas Ajax en Barcelona</Link>.
             </p>
             <div className="flex gap-3 justify-center">
               <button
