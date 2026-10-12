@@ -13,12 +13,10 @@ export default function TecnologiaTeaser() {
         transition={{ duration: 0.5 }}
         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
       >
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-5" style={{ backgroundColor: "rgba(229,62,62,0.15)", color: "#E53E3E" }}>
-          <span className="w-2 h-2 bg-[#E53E3E] rounded-full animate-pulse" /> INNOVACIÓN
-        </span>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">Tecnología Premium</h2>
+        <span className="block text-sm font-semibold mb-5" style={{ color: "#F87171" }}>Tecnología</span>
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">Qué tecnología instalamos</h2>
         <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto mb-8">
-          Inteligencia Artificial, resolución 4K, visión nocturna en color y control total desde tu móvil. Descubre por qué somos diferentes.
+          Detección de personas y vehículos, resolución 4K, visión nocturna en color y control desde el móvil. Te explicamos cómo funciona cada equipo.
         </p>
         <Link
           to="/tecnologia"

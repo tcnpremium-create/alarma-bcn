@@ -216,7 +216,7 @@ export default function SecurityQuizModal({ open, onClose }) {
         {step <= TOTAL_STEPS && (
           <div style={{ padding: "28px 28px 0" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.08em", textTransform: "uppercase" }}>Paso {step} de {TOTAL_STEPS}</span>
+              <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>Paso {step} de {TOTAL_STEPS}</span>
               <span style={{ fontSize: 11, color: "#64748B" }}>{Math.round(progress)}%</span>
             </div>
             <div style={{ height: 6, background: "rgba(255,255,255,0.08)", borderRadius: 100, overflow: "hidden" }}>

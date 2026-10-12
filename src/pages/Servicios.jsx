@@ -15,7 +15,7 @@ const servicios = [
   icon: Shield,
   title: "Instalación de Alarmas",
   subtitle: "Sistemas inteligentes para tu máxima seguridad",
-  description: "Protege tu hogar o negocio con alarmas de última generación AJAX. Detectores de movimiento inmunes a mascotas, sensores de apertura magnéticos, sirenas potentes y notificaciones instantáneas en tu móvil. Sistema antijamming y anti-sabotaje para máxima fiabilidad.",
+  description: "Protege tu hogar o negocio con alarmas AJAX. Detectores de movimiento inmunes a mascotas, sensores de apertura magnéticos, sirenas potentes y notificaciones instantáneas en tu móvil. Sistema antijamming y anti-sabotaje para máxima fiabilidad.",
   beneficios: [
     "Notificaciones push en tiempo real",
     "Conexión a central receptora (opcional)",
@@ -72,7 +72,7 @@ const servicios = [
   icon: MonitorPlay,
   title: "Instalación de Videoporteros",
   subtitle: "Control de acceso visual para tu entrada",
-  description: "Videoporteros digitales IP de última generación que te permiten ver, hablar y abrir la puerta desde tu smartphone estés donde estés. Pantalla táctil de 7'' con grabación automática de visitas. Compatible con múltiples viviendas y sistemas de comunidad.",
+  description: "Videoporteros digitales IP que te permiten ver, hablar y abrir la puerta desde tu smartphone estés donde estés. Pantalla táctil de 7'' con grabación automática de visitas. Compatible con múltiples viviendas y sistemas de comunidad.",
   beneficios: [
     "Pantalla táctil Full HD 7 pulgadas",
     "Apertura remota desde el móvil",
@@ -260,7 +260,7 @@ export default function Servicios() {
     <div className="min-h-screen bg-white">
       <AdvancedSEO
         title="Servicios de Seguridad en Barcelona | Premium Tech Security"
-        description="Instalación profesional de alarmas AJAX, cámaras Hikvision, control de accesos y videoporteros en Barcelona y Catalunya. Tecnología de última generación. Presupuesto gratis sin compromiso."
+        description="Instalación profesional de alarmas AJAX, cámaras Hikvision, control de accesos y videoporteros en Barcelona y Catalunya. Presupuesto gratis y sin compromiso."
         keywords="alarmas Barcelona, cámaras seguridad Barcelona, control accesos Barcelona, videoporteros Barcelona, seguridad Catalunya, AJAX alarmas, Hikvision, instalación seguridad"
         canonicalUrl="https://alarmasenbarcelona.com/Servicios"
       />
@@ -294,7 +294,7 @@ export default function Servicios() {
               Servicios de Seguridad<br />en Barcelona y Catalunya
             </h1>
             <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
-              Instalación profesional de alarmas, videovigilancia, videoporteros y control de accesos con tecnología líder mundial.
+              Instalación profesional de alarmas, videovigilancia, videoporteros y control de accesos con equipos de marcas reconocidas.
             </p>
           </motion.div>
         </div>
@@ -361,7 +361,7 @@ export default function Servicios() {
                     </p>
 
                     <div className="mb-10">
-                      <h3 className="text-sm font-bold text-[#0A1628] uppercase tracking-wide mb-5 flex items-center gap-2">
+                      <h3 className="text-sm font-bold text-[#0A1628] mb-5 flex items-center gap-2">
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         Características Principales
                       </h3>

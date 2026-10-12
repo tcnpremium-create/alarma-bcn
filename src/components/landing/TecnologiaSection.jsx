@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 const CARDS = [
   {
     image: "https://images.unsplash.com/photo-1585206031650-9e9a7c87dcfe?w=1200&q=90",
-    badge: "CERO FALSAS ALARMAS",
+    badge: "Menos falsas alarmas",
     icon: "🤖",
-    title: "Inteligencia Artificial",
+    title: "Detección de personas",
     text: "Detecta personas y vehículos automáticamente. Filtra lluvia, hojas y animales. Solo alertas reales cuando importa.",
   },
   {
@@ -18,7 +18,7 @@ const CARDS = [
   },
   {
     image: "https://images.unsplash.com/photo-1549109926-58f039549485?w=1200&q=90",
-    badge: "OSCURIDAD TOTAL",
+    badge: "Visión nocturna",
     icon: "🌙",
     title: "Visión Nocturna en Color",
     text: "Color real en oscuridad total mediante IA. No solo infrarrojo. Cámaras termográficas disponibles para máxima seguridad perimetral.",
@@ -42,11 +42,9 @@ export default function TecnologiaSection() {
     <section id="tecnologia" className="py-20 lg:py-28" style={{ backgroundColor: "#0A0A1A" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-white" style={{ backgroundColor: "rgba(229,62,62,0.15)", color: "#E53E3E" }}>
-            <span className="w-2 h-2 bg-[#E53E3E] rounded-full animate-pulse" /> TECNOLOGÍA PREMIUM
-          </span>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-5 mb-4">Tecnología que Trabaja por Ti</h1>
-          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">Sistemas de última generación con Inteligencia Artificial integrada</p>
+          <span className="text-sm font-semibold" style={{ color: "#F87171" }}>Tecnología</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mt-5 mb-4">Qué equipos instalamos</h1>
+          <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto">Cámaras, alarmas y control de accesos de Hikvision, Dahua y Ajax</p>
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">

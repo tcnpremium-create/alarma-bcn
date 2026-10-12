@@ -106,9 +106,9 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
           <div style={{ marginBottom: 16 }}>
             <Breadcrumbs items={[{ label: "Alarmas", href: "/alarmas-barcelona" }, { label: city }]} />
           </div>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "5px 14px", marginBottom: 20 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
             <MapPin style={{ width: 13, height: 13, color: "#F87171" }} />
-            <span style={{ color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1 }}>Catalunya • {city}</span>
+            <span style={{ color: "#F87171", fontSize: 11, fontWeight: 700 }}>Catalunya • {city}</span>
           </div>
           <h1 style={{ fontWeight: 900, fontSize: "clamp(28px, 5vw, 52px)", color: "#fff", lineHeight: 1.1, margin: "0 0 16px" }}>
             Instalación de Alarmas de Seguridad en {city}
@@ -147,7 +147,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
           <span style={{ display: "inline-block", backgroundColor: "#E53E3E", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
-            SERVICIOS EN {city.toUpperCase()}
+            Servicios en {city}
           </span>
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "0 0 32px" }}>Todo lo que instalamos</h2>
           <div className="grid sm:grid-cols-2" style={{ gap: 20 }}>
@@ -165,7 +165,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       {/* CÓMO FUNCIONA — línea de tiempo, sin cajas ni iconos repetidos */}
       <section style={{ backgroundColor: "#fff", padding: "64px 24px" }}>
         <div className="max-w-3xl mx-auto">
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Proceso</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>Proceso</span>
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 36px" }}>¿Cómo funciona el sistema Ajax?</h2>
           <ol style={{ listStyle: "none", margin: 0, padding: 0, position: "relative" }}>
             <span aria-hidden="true" style={{ position: "absolute", left: 5, top: 8, bottom: 8, width: 2, background: "linear-gradient(to bottom, #E53E3E, #E5E7EB)" }} />
@@ -185,7 +185,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       {/* COMPONENTES AJAX — foto + ficha técnica, sin tarjetas con icono */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
         <div className="max-w-5xl mx-auto">
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>Dispositivos del ecosistema</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>Dispositivos del ecosistema</span>
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 8px" }}>Componentes del sistema Ajax</h2>
           <p style={{ fontSize: 14, color: "#6B7280", maxWidth: 560, margin: "0 0 32px", lineHeight: 1.6 }}>Cada dispositivo trabaja en conjunto dentro del ecosistema Ajax. Adaptamos los componentes a la geometría exacta de tu espacio.</p>
 
@@ -210,7 +210,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <dt style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between", gap: 12 }}>
                       <span style={{ fontSize: 15, fontWeight: 800, color: "#0A0A1A" }}>{c.name}</span>
-                      <span style={{ fontSize: 11, fontWeight: 700, color: "#9CA3AF", letterSpacing: "0.08em", textTransform: "uppercase" }}>{c.tag}</span>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: "#9CA3AF", }}>{c.tag}</span>
                     </dt>
                     <dd style={{ margin: "4px 0 0", fontSize: 13, color: "#6B7280", lineHeight: 1.6 }}>{c.desc}</dd>
                   </div>
@@ -248,11 +248,11 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
         <div className="max-w-5xl mx-auto">
           <div className="grid sm:grid-cols-2" style={{ gap: 40, alignItems: "center" }}>
             <div>
-              <span style={{ display: "inline-block", backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", color: "#F87171", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", letterSpacing: 1, marginBottom: 16 }}>
-                ¿POR QUÉ ELEGIRNOS?
+              <span style={{ display: "inline-block", color: "#F87171", fontSize: 11, fontWeight: 700, marginBottom: 16 }}>
+                ¿Por qué elegirnos?
               </span>
               <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 24px" }}>
-                La empresa de referencia en {city}
+                Instalación de alarmas en {city}
               </h2>
               <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                 {WHY_US.map(item => (
@@ -278,7 +278,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
       {/* FAQ */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
         <div className="max-w-3xl mx-auto">
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>FAQ</span>
+          <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>FAQ</span>
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#0A0A1A", margin: "10px 0 8px" }}>Preguntas frecuentes sobre alarmas Ajax en {city}</h2>
           <p style={{ fontSize: 13, color: "#6B7280", marginBottom: 28 }}>Todo lo que necesitas saber antes de instalar tu sistema de alarma</p>
           <Accordion type="single" collapsible className="space-y-2">
@@ -302,7 +302,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
         <div className="max-w-lg mx-auto">
           <div className="text-center" style={{ marginBottom: 28 }}>
             <span style={{ display: "inline-block", backgroundColor: "#E53E3E", color: "#fff", borderRadius: 4, fontSize: 11, fontWeight: 800, padding: "5px 12px", letterSpacing: "0.08em", marginBottom: 16 }}>
-              PRESUPUESTO GRATUITO
+              Presupuesto gratuito
             </span>
             <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: "0 0 8px" }}>
               Solicita tu presupuesto en {city}

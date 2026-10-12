@@ -74,11 +74,11 @@ export default function HomeCamerasBlock({ onOpenModal }) {
         </div>
 
         {/* Badge + Title */}
-        <span style={{ display:"inline-block",color:"#F87171",fontSize:12,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",marginBottom:10 }}>
+        <span style={{ display:"inline-block",color:"#F87171",fontSize: 13,fontWeight: 600,marginBottom:10 }}>
           Cámaras de seguridad · Barcelona
         </span>
         <h2 style={{ fontWeight:900,fontSize:30,color:"#FFFFFF",lineHeight:1.15,margin:0 }}>
-          Vigilancia profesional con Inteligencia Artificial
+          Cámaras de seguridad instaladas a medida
         </h2>
         <p style={{ color:"#94A3B8",fontSize:15.5,lineHeight:1.75,marginTop:14,maxWidth:480 }}>
           Detectan personas y vehículos en tiempo real, ven de noche en color y graban sin depender de la nube. Instalación certificada, sin cuotas mensuales.
@@ -114,7 +114,7 @@ export default function HomeCamerasBlock({ onOpenModal }) {
 
         {/* ── KIT CARDS ── */}
         <div id="camaras-kits" style={{ marginTop:32, scrollMarginTop: 90 }}>
-          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:".1em",textTransform:"uppercase",margin:"0 0 12px" }}>
+          <p style={{ color:"#94A3B8",fontSize: 13,fontWeight: 600,margin:"0 0 12px" }}>
             Kits Profesionales de Videovigilancia — Precios Transparentes
           </p>
           <div style={{ display:"flex",flexDirection:"column",gap:10 }}>

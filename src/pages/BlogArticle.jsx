@@ -287,7 +287,7 @@ export default function BlogArticle() {
                 <ChevronRight className="w-3 h-3" />
                 <span className="text-white/80 truncate max-w-[200px]">{article.title}</span>
               </nav>
-              <span className="inline-block bg-[#E63946] text-white text-xs font-bold px-3 py-1.5 rounded-full mb-3 uppercase tracking-wide">
+              <span className="inline-block bg-[#E63946] text-white text-sm font-semibold px-3 py-1.5 rounded-full mb-3 ">
                 {article.category}
               </span>
               <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4" itemProp="name">
@@ -448,7 +448,7 @@ export default function BlogArticle() {
                 {/* Table of Contents */}
                 {tocItems.length > 2 && (
                   <div className="bg-gray-50 rounded-2xl p-5 border border-gray-200">
-                    <h3 className="font-bold text-[#0A1628] text-sm uppercase tracking-wide mb-4 flex items-center gap-2">
+                    <h3 className="font-bold text-[#0A1628] text-sm mb-4 flex items-center gap-2">
                       📋 Índice del artículo
                     </h3>
                     <nav aria-label="Tabla de contenidos">

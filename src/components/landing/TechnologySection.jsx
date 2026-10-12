@@ -35,14 +35,14 @@ export default function TechnologySection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
-          <span className="text-[#E63946] font-semibold text-sm tracking-widest uppercase">
-            Tecnología de Primer Nivel
+          <span className="text-[#E63946] font-semibold text-sm ">
+            Marcas con las que trabajamos
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#0A1628] tracking-tight">
-            Trabajamos con las mejores marcas
+            Marcas que instalamos
           </h2>
           <p className="mt-4 text-gray-500 text-lg">
-            Instalamos equipos de última generación de los fabricantes líderes mundiales en seguridad.
+            Instalamos equipos de Hikvision, Dahua, Ajax y otros fabricantes reconocidos.
           </p>
         </motion.div>
 

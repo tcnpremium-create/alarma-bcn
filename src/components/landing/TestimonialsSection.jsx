@@ -40,7 +40,7 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-[#E63946] font-semibold text-sm tracking-widest uppercase">
+          <span className="text-[#E63946] font-semibold text-sm ">
             Testimonios
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-white tracking-tight">

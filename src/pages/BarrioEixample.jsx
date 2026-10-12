@@ -36,7 +36,7 @@ export default function BarrioEixample() {
               Instalación de Alarmas en el Eixample
             </h1>
             <p className="text-xl text-white/70 max-w-3xl">
-              Protege tu vivienda o negocio en el Eixample con sistemas de seguridad de última generación. 
+              Protege tu vivienda o negocio en el Eixample con sistemas de seguridad. 
               Instalación en 24-48h por técnicos certificados.
             </p>
           </motion.div>

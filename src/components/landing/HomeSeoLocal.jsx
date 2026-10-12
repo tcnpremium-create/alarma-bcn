@@ -32,7 +32,7 @@ export default function HomeSeoLocal() {
         <div style={{ textAlign: "center", marginBottom: 32 }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
             <MapPin style={{ width: 20, height: 20, color: "#E53E3E" }} />
-            <span style={{ color: "#E53E3E", fontWeight: 800, fontSize: 13, letterSpacing: 1, textTransform: "uppercase" }}>
+            <span style={{ color: "#E53E3E", fontWeight: 600, fontSize: 13, }}>
               Cobertura
             </span>
           </div>
@@ -60,7 +60,7 @@ export default function HomeSeoLocal() {
 
         {/* Enlaces a páginas locales diferenciadas */}
         <div className="bg-white rounded-2xl p-6" style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-          <p style={{ color: "#9CA3AF", fontSize: 12, fontWeight: 700, letterSpacing: 0.5, textTransform: "uppercase", marginBottom: 14 }}>
+          <p style={{ color: "#9CA3AF", fontSize: 13, fontWeight: 600, marginBottom: 14 }}>
             Páginas por ciudad
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-x-6 gap-y-2">

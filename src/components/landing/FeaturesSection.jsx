@@ -50,7 +50,7 @@ export default function FeaturesSection() {
             Características técnicas profesionales
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
-            Todos nuestros sistemas incluyen componentes de última generación con funcionalidades avanzadas certificadas.
+            Equipos de marcas reconocidas, con las certificaciones que indica el fabricante en cada modelo.
           </p>
         </motion.div>
 

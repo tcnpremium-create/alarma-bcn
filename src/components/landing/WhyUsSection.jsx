@@ -7,7 +7,7 @@ const reasons = [
   { icon: Clock, title: "Instalación en 24-48h", desc: "Rapidez y eficiencia. Tu sistema de alarma operativo en menos de 48 horas." },
   { icon: FileText, title: "Presupuesto Sin Compromiso", desc: "Estudio y valoración gratuita adaptada a tus necesidades reales de seguridad." },
   { icon: Users, title: "Atención Personalizada", desc: "Trato cercano y directo. Somos una empresa local que conoce Barcelona." },
-  { icon: Cpu, title: "Última Tecnología", desc: "Sistemas de alarma de última generación con conectividad smart y IA." },
+  { icon: Cpu, title: "Equipos actuales", desc: "Alarmas Ajax con aviso al móvil en tiempo real y control desde la app." },
   { icon: Ban, title: "Sin Permanencia", desc: "Flexibilidad total. Sin contratos de permanencia obligatorios." },
 ];
 
@@ -23,15 +23,15 @@ export default function WhyUsSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[#E63946] font-semibold text-sm tracking-widest uppercase">
+            <span className="text-[#E63946] font-semibold text-sm ">
               ¿Por qué elegirnos?
             </span>
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#0A1628] tracking-tight leading-tight">
-              Tu seguridad es nuestra prioridad absoluta
+              Instalamos y configuramos tu sistema de seguridad
             </h2>
             <p className="mt-5 text-gray-500 text-lg leading-relaxed">
-              Somos una empresa de alarmas en Barcelona comprometida con la protección de hogares y negocios. 
-              Combinamos tecnología avanzada con un servicio cercano y profesional.
+              Somos una empresa de alarmas en Barcelona dedicada a hogares y negocios. 
+              Instalamos equipos de marcas reconocidas y te atendemos de forma cercana.
             </p>
 
             <div className="mt-10 relative rounded-2xl overflow-hidden">

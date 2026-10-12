@@ -36,7 +36,7 @@ export default function AlarmConnectionOptions({ onRequestQuote }) {
                 <span style={{ width: 40, height: 40, borderRadius: 12, background: "rgba(229,62,62,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <Icon size={20} color="#E53E3E" />
                 </span>
-                <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.04em", textTransform: "uppercase", color: "#E53E3E" }}>{badge}</span>
+                <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E" }}>{badge}</span>
               </div>
               <h3 style={{ fontWeight: 800, fontSize: 17, color: "#0A0A1A", margin: "0 0 8px" }}>{title}</h3>
               <p style={{ fontSize: 14, color: "#4B5563", lineHeight: 1.6, margin: 0 }}>{desc}</p>

@@ -37,7 +37,7 @@ export default function ValueProposition() {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-red-50 px-4 py-2 rounded-full mb-4">
             <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-            <span className="text-sm font-bold text-red-600">PRIMERA VISITA GRATUITA</span>
+            <span className="text-sm font-bold text-red-600">Primera visita gratuita</span>
           </div>
           <h2 className="text-3xl lg:text-4xl font-black text-[#0A1628] mb-4">
             Un sistema de alarma diseñado para proteger lo que más quieres

@@ -81,7 +81,7 @@ export default function CornellaPage() {
               {[
                 {
                   title: "Alarmas para Viviendas",
-                  description: "Protección integral para pisos y casas en Cornellà. Sensores de última generación y control remoto desde tu móvil.",
+                  description: "Protección integral para pisos y casas en Cornellà. Sensores y control remoto desde tu móvil.",
                   icon: Shield
                 },
                 {

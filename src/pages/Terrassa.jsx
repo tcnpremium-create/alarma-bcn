@@ -131,7 +131,7 @@ export default function Terrassa() {
             </div>
 
             <h3 className="text-2xl font-bold text-[#0A1628] mt-10 mb-4">
-              Tecnología Líder en Seguridad
+              Marcas que instalamos
             </h3>
 
             <p className="text-gray-600 leading-relaxed mb-6">

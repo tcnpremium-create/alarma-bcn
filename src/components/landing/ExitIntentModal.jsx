@@ -153,11 +153,9 @@ export default function ExitIntentModal({ onVisibleChange }) {
             <div style={{ padding: "32px 26px 26px" }}>
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: 7,
-                background: "rgba(229,62,62,0.12)", border: "1px solid rgba(229,62,62,0.3)",
-                borderRadius: 9999, padding: "5px 14px", marginBottom: 16,
-              }}>
+                marginBottom: 16 }}>
                 <Tag size={13} color="#F87171" />
-                <span style={{ color: "#F87171", fontSize: 11, fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+                <span style={{ color: "#F87171", fontSize: 13, fontWeight: 600, }}>
                   Promoción online
                 </span>
               </div>

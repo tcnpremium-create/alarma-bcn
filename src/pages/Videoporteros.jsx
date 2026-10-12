@@ -119,9 +119,9 @@ export default function Videoporteros() {
           <div style={{ marginBottom: 20 }}>
             <Breadcrumbs items={[{ label: "Servicios" }, { label: "Videoporteros" }]} />
           </div>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "6px 14px", marginBottom: 24 }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#E53E3E", boxShadow: "0 0 8px #E53E3E" }} />
-            <span style={{ color: "#F87171", fontSize: 12, fontWeight: 700, letterSpacing: 1 }}>VIDEOPORTEROS · CONTROL DE ACCESOS · BARCELONA</span>
+            <span style={{ color: "#F87171", fontSize: 12, fontWeight: 700 }}>Videoporteros · Control de accesos · Barcelona</span>
           </div>
 
           <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 44px)", color: "#fff", lineHeight: 1.15, margin: 0, maxWidth: 640 }}>
@@ -129,7 +129,7 @@ export default function Videoporteros() {
             <span style={{ color: "#E53E3E" }}>Ve quién llama</span> desde cualquier lugar.
           </h1>
           <p style={{ color: "#CBD5E0", fontSize: 16, lineHeight: 1.75, marginTop: 14, maxWidth: 560 }}>
-            Instalamos videoporteros IP de última generación con control de accesos biométrico, reconocimiento facial y apertura remota desde el móvil. Para hogares, comunidades y empresas en Barcelona y toda Catalunya.
+            Instalamos videoporteros IP con control de accesos biométrico, reconocimiento facial y apertura remota desde el móvil. Para hogares, comunidades y empresas en Barcelona y toda Catalunya.
           </p>
           <div style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, paddingBottom: 20, borderTop: "1px solid rgba(255,255,255,0.15)", flexWrap: "wrap" }}>
             <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>{businessStats.googleRating}★</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Valoración en Google ({businessStats.googleReviewCount} reseñas)</div></div>
@@ -150,7 +150,7 @@ export default function Videoporteros() {
             background: "rgba(6,14,26,0.6)", backdropFilter: "blur(10px)",
             border: "1px solid rgba(229,62,62,0.3)", borderRadius: 100, padding: "8px 18px"
           }}>
-            <span style={{ fontSize: 11, color: "#FC8181", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>Instalación real</span>
+            <span style={{ fontSize: 13, color: "#FC8181", fontWeight: 600, }}>Instalación real</span>
             <span style={{ fontSize: 12, color: "#94A3B8" }}>BTicino Classe 300 · Barcelona</span>
           </div>
         </div>
@@ -173,7 +173,7 @@ export default function Videoporteros() {
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Fabricante español</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#94A3B8", }}>Fabricante español</span>
                 </div>
                 <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
                   Fermax es un fabricante español de videoporteros con origen en Valencia. Su gama <strong style={{ color: "#fff" }}>DUOX Plus</strong> moderniza instalaciones de 2 hilos existentes sin obra, añadiendo imagen HD y la app <strong style={{ color: "#fff" }}>MEET</strong> para apertura remota. La serie <strong style={{ color: "#fff" }}>VEO</strong> incorpora pantalla táctil de 7&quot; con visión nocturna automática. ISO 9001 · Presencia en más de 70 países.
@@ -195,7 +195,7 @@ export default function Videoporteros() {
                 <div style={{ fontWeight: 900, fontSize: 16, color: "#FFFFFF", marginBottom: 6 }}>BTicino · Classe 300</div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Diseño italiano · Grupo Legrand</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#94A3B8", }}>Diseño italiano · Grupo Legrand</span>
                 </div>
                 <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
                   BTicino pertenece al Grupo Legrand y es sinónimo de diseño italiano de alta gama. El <strong style={{ color: "#fff" }}>Classe 300 X13E</strong> incorpora pantalla táctil vertical de <strong style={{ color: "#fff" }}>7 pulgadas</strong>, cámara de <strong style={{ color: "#fff" }}>5MP</strong> con ángulo de 150° y tecnología WDR. La app <strong style={{ color: "#fff" }}>Home+ Door</strong> gestiona la puerta de forma remota e incluye llaveros RFID para apertura sin manos.
@@ -216,7 +216,7 @@ export default function Videoporteros() {
               <div style={{ padding: "20px 20px 24px" }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
                   <Star className="w-4 h-4" style={{ color: "#F59E0B", fill: "#F59E0B" }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: "#94A3B8", textTransform: "uppercase", letterSpacing: 0.5 }}>Marca española</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#94A3B8", }}>Marca española</span>
                 </div>
                 <p style={{ fontSize: 13, color: "#CBD5E0", lineHeight: 1.7, margin: 0 }}>
                   Golmar es una marca española especializada en comunidades de vecinos. Su gama <strong style={{ color: "#fff" }}>Sixty5</strong> incorpora pantalla táctil de 5&quot;, protocolo SIP y tecnología de cámara <strong style={{ color: "#fff" }}>WDR</strong> para visión perfecta incluso con fuerte contraluz. La app <strong style={{ color: "#fff" }}>G2Call</strong> permite contestar al portero desde el smartphone. Ideal para grandes comunidades.
@@ -242,7 +242,7 @@ export default function Videoporteros() {
       <section style={{ backgroundColor: "#0F1923", padding: "56px 20px", overflow: "hidden" }}>
         <div className="max-w-5xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 40 }}>
-            <span style={{ display: "inline-block", backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", color: "#F87171", borderRadius: 20, fontSize: 11, fontWeight: 700, padding: "5px 14px", marginBottom: 14, letterSpacing: 1 }}>
+            <span style={{ display: "inline-block", color: "#F87171", fontSize: 11, fontWeight: 700, marginBottom: 14 }}>
               CONTROL DE ACCESOS AVANZADO
             </span>
             <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", margin: 0 }}>
@@ -291,7 +291,7 @@ export default function Videoporteros() {
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               { Icon: ScanFace, title: "Reconocimiento Facial", desc: "Identifica y da acceso automático a empleados y residentes autorizados en menos de 0,3 segundos." },
-              { Icon: Fingerprint, title: "Huella Dactilar", desc: "Lector biométrico de última generación. Acceso intransferible, sin tarjetas que perder ni pines que olvidar." },
+              { Icon: Fingerprint, title: "Huella Dactilar", desc: "Lector biométrico. Acceso intransferible, sin tarjetas que perder ni pines que olvidar." },
               { Icon: CreditCard, title: "Tarjeta RFID / NFC", desc: "Tarjetas de proximidad y llaveros NFC para comunidades y empresas con mucho personal rotativo." },
               { Icon: Hash, title: "Teclado PIN", desc: "Acceso con código numérico como método secundario o para zonas de menor seguridad." },
               { Icon: PackageCheck, title: "Acceso Temporal", desc: "Código QR o PIN de un solo uso para repartidores, técnicos o visitas puntuales. Caduca automáticamente." },

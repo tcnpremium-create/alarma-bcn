@@ -14,7 +14,7 @@ export default function MarcasSection() {
     <section id="marcas" className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gray-100 text-gray-600 mb-4">TECNOLOGÍA CERTIFICADA</span>
+          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-gray-100 text-gray-600 mb-4">Marcas con las que trabajamos</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A0A1A] mb-4">Trabajamos con las Mejores Marcas</h2>
           <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">Instalación profesional con equipos de primera línea mundial</p>
         </motion.div>

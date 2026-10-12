@@ -135,7 +135,7 @@ export default function MantenimientoSoporte() {
           <div className="text-center bg-gradient-to-r from-[#E63946] to-[#d32f3c] text-white rounded-2xl p-12 shadow-2xl">
             <h2 className="text-3xl lg:text-4xl font-black mb-4">🛠️ Soporte 24/7 para tu sistema de seguridad</h2>
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-              Primera consulta gratuita. Elige el plan de mantenimiento ideal y disfruta de tranquilidad total.
+              Primera consulta gratuita. Elige el plan de mantenimiento ideal y olvídate del mantenimiento.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button

@@ -41,7 +41,7 @@ export default function CertificationsSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-2xl mx-auto mb-14"
         >
-          <span className="text-[#E63946] font-semibold text-sm tracking-widest uppercase">
+          <span className="text-[#E63946] font-semibold text-sm ">
             Certificaciones y Cumplimiento
           </span>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-[#0A1628] tracking-tight">

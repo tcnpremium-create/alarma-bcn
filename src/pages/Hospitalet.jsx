@@ -37,7 +37,7 @@ export default function Hospitalet() {
               Instalación de Alarmas en L'Hospitalet de Llobregat
             </h1>
             <p className="text-xl text-white/70 max-w-3xl">
-              Protección profesional para hogares y negocios en L'Hospitalet. Sistemas de seguridad de última generación con instalación en 24-48h.
+              Protección profesional para hogares y negocios en L'Hospitalet. Sistemas de seguridad con instalación en 24-48h.
             </p>
           </motion.div>
         </div>
@@ -47,7 +47,7 @@ export default function Hospitalet() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <h2 className="text-3xl font-bold text-[#0A1628] mb-6">
-              Empresa Líder en Sistemas de Seguridad en L'Hospitalet
+              Sistemas de seguridad en L'Hospitalet
             </h2>
             
             <p className="text-gray-600 leading-relaxed mb-6">

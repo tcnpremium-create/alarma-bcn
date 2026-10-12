@@ -8,7 +8,7 @@ import { ArrowRight } from "lucide-react";
 const PHOTO_CARDS = [
   {
     href: "/sonorizacion",
-    title: "SONORIZACIÓN PROFESIONAL",
+    title: "Sonorización profesional",
     desc: "Diseño e instalación de sistemas de sonido para negocios, restaurantes, oficinas y viviendas.",
     mainImg: "/images/sonorizacion-hero-restaurante.webp",
     mainAlt: "Instalación de sonorización profesional en restaurante moderno",
@@ -17,7 +17,7 @@ const PHOTO_CARDS = [
   },
   {
     href: "/redes-informaticas",
-    title: "REDES INFORMÁTICAS",
+    title: "Redes informáticas",
     desc: "Diseño, instalación y configuración de redes profesionales para empresas, oficinas, negocios y viviendas.",
     mainImg: "/images/redes-rack-cableado-estructurado.webp",
     mainAlt: "Rack de comunicaciones con cableado estructurado",
@@ -26,7 +26,7 @@ const PHOTO_CARDS = [
   },
   {
     href: "/cerraduras",
-    title: "CERRADURAS INTELIGENTES",
+    title: "Cerraduras inteligentes",
     desc: "Soluciones modernas para proteger y controlar el acceso a viviendas, negocios y espacios profesionales.",
     mainImg: "/images/cerradura-inteligente-puerta.webp",
     mainAlt: "Cerradura inteligente instalada en puerta",
@@ -35,7 +35,7 @@ const PHOTO_CARDS = [
   },
   {
     href: "/control-accesos",
-    title: "CONTROL DE ACCESOS",
+    title: "Control de accesos",
     desc: "Lectores biométricos de huella y reconocimiento facial, tarjetas y códigos para empresas y comunidades.",
     mainImg: "/images/control-accesos-biometrico.webp",
     mainAlt: "Lector biométrico de huella dactilar en control de accesos",
@@ -44,7 +44,7 @@ const PHOTO_CARDS = [
   },
   {
     href: "/videoporteros",
-    title: "VIDEOPORTEROS",
+    title: "Videoporteros",
     desc: "Videoporteros IP para hogares y comunidades: ve quién llama y abre desde el móvil.",
     mainImg: "/images/videoportero.webp",
     mainAlt: "Videoportero instalado en una vivienda",

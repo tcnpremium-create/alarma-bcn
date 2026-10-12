@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Camera, Shield, Bell, Key } from "lucide-react";
 
 const SERVICES = [
-  { icon: Camera, title: "Cámaras 4K con IA", text: "Detecta intrusos al instante. Visión nocturna en color. Control desde el móvil.", link: "/camaras-barcelona", cta: "Ver cámaras →" },
-  { icon: Shield, title: "Alarmas Conectadas", text: "Blindadas contra inhibidores. Alertas en tiempo real en tu móvil. Con o sin central receptora, tú eliges.", link: "/alarmas-barcelona", cta: "Ver alarmas →" },
+  { icon: Camera, title: "Cámaras 4K", text: "Detección de personas, visión nocturna en color y control desde el móvil.", link: "/camaras-barcelona", cta: "Ver cámaras →" },
+  { icon: Shield, title: "Alarmas Conectadas", text: "Detectan inhibidores de señal. Alertas en tiempo real en tu móvil. Con o sin central receptora, tú eliges.", link: "/alarmas-barcelona", cta: "Ver alarmas →" },
   { icon: Bell, title: "Videoporteros IP", text: "Ve quién llama desde tu móvil. Apertura remota. Fermax, Bticino y Golmar.", link: "/videoporteros", cta: "Ver videoporteros →" },
   { icon: Key, title: "Control de Accesos", text: "Biometría facial, tarjetas RFID y apertura remota para empresas y comunidades.", link: "/control-accesos", cta: "Ver accesos →" },
 ];

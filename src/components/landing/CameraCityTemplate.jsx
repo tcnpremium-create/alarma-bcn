@@ -60,7 +60,7 @@ const BRANDS = [
   },
   {
     name: "DAHUA",
-    desc: "Tecnología de alta gama con IA avanzada. Reconocimiento facial, detección perimetral y full-color nocturno.",
+    desc: "Cámaras con detección de personas y vehículos, detección perimetral y visión nocturna en color.",
     specs: ["Reconocimiento facial IA", "Detección perimetral activa", "Visión nocturna Full Color", "App DMSS multidispositivo"],
   },
 ];
@@ -84,7 +84,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Qué marcas de cámaras instaláis en ${city}?`,
-      a: `Trabajamos con las mejores marcas del mercado: Hikvision y Dahua, líderes mundiales en videovigilancia. Todas nuestras cámaras son de resolución mínima 4MPx (2K), con visión nocturna en color y resistencia IP66 para exteriores.`,
+      a: `Trabajamos con las mejores marcas del mercado: Hikvision y Dahua, dos de los fabricantes más extendidos en videovigilancia. Todas nuestras cámaras son de resolución mínima 4MPx (2K), con visión nocturna en color y resistencia IP66 para exteriores.`,
     },
     {
       q: `¿Las cámaras necesitan conexión a internet para funcionar?`,
@@ -158,9 +158,9 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
             baja, donde va el texto, para que se lea. */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 24%, rgba(10,10,26,0.88) 47%, rgba(10,10,26,0.12) 74%, rgba(10,10,26,0) 100%)" }} />
         <div style={{ position: "relative", zIndex: 10, maxWidth: 800, margin: "0 auto", padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%", paddingBottom: 48, paddingTop: 80 }}>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(10,10,26,0.78)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", border: "1px solid rgba(229,62,62,0.35)", borderRadius: 20, padding: "5px 14px", color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1, width: "fit-content", marginBottom: 16 }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 14, fontWeight: 600, textShadow: "0 1px 4px rgba(0,0,0,.7)", width: "fit-content", marginBottom: 16 }}>
             <span style={{ width: 7, height: 7, backgroundColor: "#E53E3E", borderRadius: "50%", display: "inline-block" }} />
-            INSTALACIÓN PROFESIONAL EN {city.toUpperCase()}
+            Instalación profesional en {city}
           </span>
           <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 46px)", color: "#fff", lineHeight: 1.15, margin: "0 0 12px" }}>
             Instalación de Cámaras de Seguridad en <span style={{ color: "#E53E3E" }}>{city}</span>
@@ -223,7 +223,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       <section style={{ backgroundColor: "#fff", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
           <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: "0 0 8px" }}>Marcas que instalamos en {city}</h2>
-          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Trabajamos solo con líderes mundiales en videovigilancia IP</p>
+          <p style={{ color: "#6B7280", fontSize: 14, marginBottom: 28 }}>Instalamos Hikvision y Dahua, dos de los fabricantes más extendidos de videovigilancia IP</p>
           <div className="grid sm:grid-cols-2 gap-6">
             {BRANDS.map((b) => (
               <div key={b.name} style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: 16, padding: 28 }}>
@@ -246,12 +246,12 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       <section style={{ backgroundColor: "#0A0A1A", padding: "40px 20px 0" }}>
         <div className="max-w-4xl mx-auto">
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.3)", borderRadius: 20, padding: "5px 14px", color: "#F87171", fontSize: 11, fontWeight: 700, letterSpacing: 1, width: "fit-content" }}>
+            <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 11, fontWeight: 700, width: "fit-content" }}>
               INSTALACIÓN EN INTERIORES Y EXTERIORES
             </span>
             <h2 style={{ fontWeight: 900, fontSize: 24, color: "#fff", margin: 0 }}>Vigilancia total, día y noche</h2>
             <p style={{ color: "#94A3B8", fontSize: 15, lineHeight: 1.7, margin: 0, maxWidth: 540 }}>
-              Cámaras domo de última generación con visión nocturna en color. Cobertura completa de portales, pasillos, ascensores, garajes y zonas comunes. Imagen nítida en cualquier condición de luz.
+              Cámaras domo con visión nocturna en color. Cobertura completa de portales, pasillos, ascensores, garajes y zonas comunes. Imagen nítida en cualquier condición de luz.
             </p>
           </div>
           <img

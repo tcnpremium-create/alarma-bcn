@@ -112,7 +112,7 @@ export default function Promociones() {
             }}
           >
             <Shield size={16} color={RED} />
-            <span style={{ color: RED, fontSize: 13, fontWeight: 700, letterSpacing: "0.06em" }}>
+            <span style={{ color: RED, fontSize: 13, fontWeight: 700 }}>
               INSTALACIÓN CERTIFICADA · BARCELONA
             </span>
           </div>
@@ -284,7 +284,7 @@ export default function Promociones() {
                     )}
 
                     <div style={{ marginTop: kit.badge ? 12 : 0 }}>
-                      <p style={{ color: RED, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", margin: "0 0 6px", textTransform: "uppercase" }}>
+                      <p style={{ color: RED, fontSize: 13, fontWeight: 600, margin: "0 0 6px", }}>
                         Alarma Ajax
                       </p>
                       <h3 style={{ color: "#fff", fontSize: 20, fontWeight: 800, margin: "0 0 4px" }}>
@@ -297,7 +297,7 @@ export default function Promociones() {
 
                     <div style={{ marginBottom: 4 }}>
                       {kit.isFrom && (
-                        <span style={{ display: "block", color: TEXT_DIM, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>
+                        <span style={{ display: "block", color: TEXT_DIM, fontSize: 13, fontWeight: 600, marginBottom: 2 }}>
                           Desde
                         </span>
                       )}
@@ -419,7 +419,7 @@ export default function Promociones() {
                 Sistemas de Videovigilancia
               </h2>
               <p style={{ color: TEXT_DIM, fontSize: 16, maxWidth: 520, margin: "0 auto" }}>
-                Grabación 24/7 · Inteligencia Artificial · Sin cuotas mensuales
+                Grabación continua · Detección de personas · Sin cuotas mensuales
               </p>
             </div>
 
@@ -471,7 +471,7 @@ export default function Promociones() {
                     )}
 
                     <div style={{ marginTop: kit.badge ? 12 : 0 }}>
-                      <p style={{ color: RED, fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", margin: "0 0 6px", textTransform: "uppercase" }}>
+                      <p style={{ color: RED, fontSize: 13, fontWeight: 600, margin: "0 0 6px", }}>
                         {kit.cameras}
                       </p>
                       <h3 style={{ color: "#fff", fontSize: 20, fontWeight: 800, margin: "0 0 4px" }}>
@@ -484,7 +484,7 @@ export default function Promociones() {
 
                     <div style={{ marginBottom: 4 }}>
                       {kit.isFrom && (
-                        <span style={{ display: "block", color: TEXT_DIM, fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: 2 }}>
+                        <span style={{ display: "block", color: TEXT_DIM, fontSize: 13, fontWeight: 600, marginBottom: 2 }}>
                           Desde
                         </span>
                       )}

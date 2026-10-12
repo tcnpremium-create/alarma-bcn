@@ -55,7 +55,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
         </div>
 
         {/* Badge + Heading */}
-        <span style={{ display:"inline-block",color:"#F87171",fontSize:12,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",marginBottom:10 }}>
+        <span style={{ display:"inline-block",color:"#F87171",fontSize: 13,fontWeight: 600,marginBottom:10 }}>
           Alarmas Ajax · Barcelona
         </span>
         <h2 style={{ color:"#fff",fontWeight:900,fontSize:30,lineHeight:1.15,margin:0 }}>
@@ -77,7 +77,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
 
         {/* ② Promo kit cards — accordion */}
         <div style={{ marginTop:24,display:"flex",flexDirection:"column",gap:10 }}>
-          <p style={{ color:"#94A3B8",fontSize:11,fontWeight:700,letterSpacing:"0.1em",textTransform:"uppercase",margin:"0 0 4px" }}>
+          <p style={{ color:"#94A3B8",fontSize: 13,fontWeight: 600,margin:"0 0 4px" }}>
             Kits de Alarmas Ajax — Precios Transparentes
           </p>
           {KITS.map((kit) => {
@@ -132,7 +132,7 @@ export default function HomeAlarmsBlock({ onOpenModal }) {
                       ))}
                     </ul>
                     <div style={{ marginTop:14,padding:"10px 14px",background:"rgba(239,68,68,.08)",borderRadius:8,border:"1px solid rgba(239,68,68,.2)" }}>
-                      <span style={{ color:"#f87171",fontSize:11,fontWeight:700 }}>ESPECIFICACIONES TÉCNICAS: </span>
+                      <span style={{ color:"#f87171",fontSize:11,fontWeight:700 }}>Especificaciones técnicas: </span>
                       <span style={{ color:"#94A3B8",fontSize:11 }}>{kit.tech}</span>
                     </div>
                     {kit.expandNote && kit.expandNote.map((note) => (

@@ -34,7 +34,7 @@ export default function LegalRGPDSection() {
     <section id="legal" className="py-20 lg:py-28" style={{ backgroundColor: "#F8F9FA" }}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-green-100 text-green-700 mb-4">✓ ASESORAMIENTO LEGAL INCLUIDO</span>
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-semibold bg-green-100 text-green-700 mb-4">Asesoramiento legal incluido</span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A0A1A] mb-4">Cámaras de Seguridad y la Ley</h2>
           <p className="text-gray-500 text-base sm:text-lg max-w-2xl mx-auto">Instalamos siempre cumpliendo la normativa LOPD/RGPD vigente en España. Sin sorpresas legales.</p>
         </motion.div>

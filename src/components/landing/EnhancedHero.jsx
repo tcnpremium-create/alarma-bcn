@@ -26,17 +26,17 @@ export default function EnhancedHero() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 mb-8">
             <span className="w-2 h-2 bg-[#E63946] rounded-full animate-pulse"></span>
-            <span className="text-sm text-white font-medium">Protección 24/7 en toda Catalunya</span>
+            <span className="text-sm text-white font-medium">Barcelona y toda Catalunya</span>
           </div>
 
           {/* Main headline */}
           <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
-            Protegemos tu hogar o negocio con <span className="text-[#E63946]">tecnología de última generación</span>
+            Alarmas, cámaras y control de accesos <span className="text-[#E63946]">para tu casa o tu negocio</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-xl lg:text-2xl text-gray-200 mb-8 leading-relaxed max-w-2xl">
-            Alarmas inteligentes, cámaras 4K, control de accesos e instalación certificada. Seguridad integral para toda Catalunya con respuesta 24/7.
+            Instalamos alarmas Ajax, cámaras Hikvision y Dahua y control de accesos en Barcelona y toda Catalunya. Presupuesto gratis y sin permanencia.
           </p>
 
           {/* Stats */}

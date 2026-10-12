@@ -74,7 +74,7 @@ export default function SobreNosotros() {
       desc: "Entendemos que cada cliente tiene necesidades únicas, por lo que proporcionamos sistemas adaptados a tu hogar, negocio o industria."
     },
     {
-      title: "Tecnología de Vanguardia",
+      title: "Equipos actuales",
       desc: "Trabajamos con las mejores marcas del mercado, como FERMAX para videoporteros, AJAX sistemas de alarma, y DAHUA o HIKVISION cámaras de seguridad de última tecnología."
     },
     {
@@ -144,7 +144,7 @@ export default function SobreNosotros() {
                 Con <strong>{businessStats.experienceText.toLowerCase()}</strong>, nos especializamos en la instalación de videoporteros, cámaras de seguridad, alarmas y sistemas de control de accesos en Barcelona y toda su área metropolitana.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Nuestra misión es proporcionar <strong>tranquilidad y protección</strong> mediante sistemas de seguridad de última generación, fiables y fáciles de usar. Nos adaptamos a las necesidades particulares de cada cliente, ofreciendo soluciones personalizadas que superan las expectativas.
+                Nuestra misión es proporcionar <strong>tranquilidad y protección</strong> mediante sistemas de seguridad, fiables y fáciles de usar. Nos adaptamos a las necesidades particulares de cada cliente, ofreciendo soluciones personalizadas que superan las expectativas.
               </p>
             </motion.div>
 

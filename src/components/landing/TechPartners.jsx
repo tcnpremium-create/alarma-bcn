@@ -5,7 +5,7 @@ export default function TechPartners() {
     {
       name: "HIKVISION",
       logo: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/e80e1bbb0_Hikvision.png",
-      desc: "Cámaras 4K y sistemas de videovigilancia de última generación"
+      desc: "Cámaras 4K y sistemas de videovigilancia"
     },
     {
       name: "DAHUA",

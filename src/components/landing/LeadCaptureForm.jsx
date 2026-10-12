@@ -109,10 +109,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
     <form onSubmit={handleSubmit} onFocusCapture={tracking.onStart}>
       {service && (
         <div style={{
-          display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 16,
-          background: "rgba(229,62,62,0.1)", border: "1px solid rgba(229,62,62,0.28)",
-          borderRadius: 20, padding: "6px 14px",
-        }}>
+          display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
           <span style={{ color: "#94A3B8", fontSize: 12 }}>Presupuesto de</span>
           <span style={{ color: "#F87171", fontSize: 12.5, fontWeight: 800 }}>{service}</span>
         </div>

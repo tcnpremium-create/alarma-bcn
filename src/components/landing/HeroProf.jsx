@@ -7,26 +7,26 @@ const SLIDES = [
   {
     img: "/images/camaras-variedad-exterior.webp",
     pos: "center center",
-    badge: "Videovigilancia 4K · IA Avanzada",
+    badge: "Cámaras de seguridad",
     h1a: "Instalación de Cámaras de Seguridad",
     h1b: "en Barcelona",
-    sub: "Cámaras 4K Hikvision y Dahua con detección inteligente. Instalación profesional para viviendas, negocios y comunidades, control desde el móvil y presupuesto gratuito.",
+    sub: "Instalamos cámaras Hikvision y Dahua en viviendas, negocios y comunidades. Grabas en tu propio disco, ves las imágenes desde el móvil y el presupuesto es gratis.",
   },
   {
     img: "/images/hero-intruder.jpeg",
     pos: "65% center",
-    badge: "Sistema Activo · Barcelona y Área Metropolitana",
-    h1a: "Tu Hogar o Negocio",
-    h1b: "Blindado Sin Cuotas",
-    sub: "Cámaras 4K con IA y alarmas Ajax que detectan intrusos antes de que actúen. Alertas en tiempo real en tu móvil. Sin permanencia.",
+    badge: "Barcelona y área metropolitana",
+    h1a: "Alarmas y cámaras",
+    h1b: "sin cuotas mensuales",
+    sub: "Instalamos alarmas Ajax y cámaras con aviso directo a tu móvil. Sin permanencia y sin cuotas por el sistema.",
   },
   {
     img: "/images/hero-ajax.jpeg",
     pos: "center center",
-    badge: "Alarmas Ajax · Grado 2 Certificado",
-    h1a: "Sistemas de Alarma en Barcelona",
-    h1b: "Alta Seguridad AJAX",
-    sub: "Ecosistema Ajax: tecnología avanzada de detección, cifrado end-to-end y alertas en tiempo real en tu móvil.",
+    badge: "Alarmas Ajax",
+    h1a: "Alarmas para casa y negocio",
+    h1b: "en Barcelona",
+    sub: "Instalamos y configuramos tu alarma Ajax. Cuando salta, te avisa al móvil. Con o sin conexión a central receptora: lo eliges tú.",
   },
 ];
 
@@ -57,7 +57,6 @@ export default function HeroProf() {
         }
         .hero-dot-btn { transition: all 0.3s ease; }
         .hero-cta-glow { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .hero-cta-glow:hover { transform: translateY(-2px); box-shadow: 0 0 32px rgba(229,62,62,0.55); }
         .hero-cta-glow::after {
           content: ""; position: absolute; top: 0; left: -75%; width: 50%; height: 100%;
           background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
@@ -114,13 +113,10 @@ export default function HeroProf() {
             key={`badge-${active}`}
             style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(229,62,62,0.12)", border: "1px solid rgba(229,62,62,0.4)",
-              borderRadius: 100, padding: "6px 16px", marginBottom: 24,
-              animation: "badge-pulse 3s ease-in-out infinite, hero-fade-in 0.7s ease forwards",
-            }}
+              marginBottom: 24 }}
           >
             <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#E53E3E", display: "inline-block", flexShrink: 0 }} />
-            <span style={{ color: "#FCA5A5", fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+            <span style={{ color: "#FCA5A5", fontSize: 13, fontWeight: 600, }}>
               {SLIDES[active].badge}
             </span>
           </div>
@@ -159,8 +155,8 @@ export default function HeroProf() {
             animation: "hero-fade-in 0.8s ease 0.25s both",
           }}>
             <ShieldCheck size={16} color="#E53E3E" style={{ flexShrink: 0, marginTop: 2 }} />
-            <span style={{ color: "rgba(255,255,255,0.55)", fontSize: 13, fontWeight: 500, lineHeight: 1.55 }}>
-              Instaladores homologados en Barcelona y área metropolitana. Respuesta en 24/48h.
+            <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 14, fontWeight: 400, lineHeight: 1.55 }}>
+              Instalamos en Barcelona y área metropolitana, normalmente en 24-48h.
             </span>
           </div>
 
@@ -168,7 +164,7 @@ export default function HeroProf() {
           <div style={{ display: "flex", gap: 32, marginBottom: 36, flexWrap: "wrap", animation: "hero-fade-in 0.8s ease 0.3s both" }}>
             {[
               { val: businessStats.installTimeframe, label: "Instalación" },
-              { val: "4K", label: "Resolución" },
+              { val: `${businessStats.warrantyYears} años`, label: "Garantía" },
               { val: `★ ${businessStats.googleRating}`, label: "En Google" },
             ].map(s => (
               <div key={s.val}>
@@ -191,8 +187,7 @@ export default function HeroProf() {
               style={{
                 background: "#E53E3E", color: "#fff", border: "none",
                 borderRadius: 8, padding: "15px 32px", fontSize: 15, fontWeight: 800, cursor: "pointer",
-                boxShadow: "0 0 20px rgba(229,62,62,0.35)",
-                position: "relative", overflow: "hidden", display: "inline-block",
+                                position: "relative", overflow: "hidden", display: "inline-block",
               }}
             >
               Solicitar presupuesto gratis →
@@ -203,7 +198,7 @@ export default function HeroProf() {
                 display: "inline-flex", alignItems: "center", gap: 8,
                 color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
                 borderRadius: 8, padding: "15px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none",
-                background: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)",
+                background: "transparent",
               }}
             >
               <Phone size={16} /> Llamar ahora
@@ -216,7 +211,7 @@ export default function HeroProf() {
                 display: "inline-flex", alignItems: "center", gap: 8,
                 color: "#fff", border: "1.5px solid rgba(255,255,255,0.2)",
                 borderRadius: 8, padding: "15px 24px", fontSize: 15, fontWeight: 700, textDecoration: "none",
-                background: "rgba(255,255,255,0.05)", backdropFilter: "blur(6px)",
+                background: "transparent",
               }}
             >
               <MessageCircle size={16} /> WhatsApp
@@ -230,7 +225,7 @@ export default function HeroProf() {
             rel="noopener noreferrer"
             style={{
               display: "inline-flex", alignItems: "center", gap: 8,
-              background: "rgba(255,255,255,0.06)", backdropFilter: "blur(8px)",
+              background: "transparent",
               border: "1px solid rgba(255,255,255,0.12)", borderRadius: 100, padding: "8px 18px",
               textDecoration: "none", animation: "hero-fade-in 0.8s ease 0.5s both",
             }}

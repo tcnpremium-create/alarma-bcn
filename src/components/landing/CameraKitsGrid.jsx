@@ -28,9 +28,7 @@ function KitItemBento({ item }) {
       }}
     >
       <div style={{
-        width: 30, height: 30, borderRadius: 8, background: "rgba(229,62,62,0.12)",
-        border: "1px solid rgba(229,62,62,0.25)", display: "flex", alignItems: "center", justifyContent: "center",
-      }}>
+        width: 30, height: 30, display: "flex", alignItems: "center", justifyContent: "center" }}>
         <Icon size={15} color="#E53E3E" />
       </div>
       <span style={{ color: "#CBD5E0", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>{item}</span>
@@ -47,10 +45,8 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <div style={{
             display: "inline-block",
-            background: "rgba(229,62,62,0.1)", border: "1px solid rgba(229,62,62,0.3)",
-            borderRadius: 100, padding: "5px 18px", marginBottom: 16
-          }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: "#E53E3E", letterSpacing: "0.14em", textTransform: "uppercase" }}>
+            marginBottom: 16 }}>
+            <span style={{ fontSize: 13, fontWeight: 600, color: "#E53E3E", }}>
               Kits Profesionales de Videovigilancia — Precios Transparentes
             </span>
           </div>
@@ -93,7 +89,7 @@ export default function CameraKitsGrid({ city, onRequestQuote }) {
 
                 <div style={{ marginBottom: 20 }}>
                   {kit.isFrom && (
-                    <span style={{ color: "#94A3B8", fontSize: 12, fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase", display: "block", marginBottom: 2 }}>
+                    <span style={{ color: "#94A3B8", fontSize: 13, fontWeight: 600, display: "block", marginBottom: 2 }}>
                       Desde
                     </span>
                   )}

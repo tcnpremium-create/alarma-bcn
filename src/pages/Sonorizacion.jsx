@@ -114,7 +114,7 @@ export default function Sonorizacion() {
           <div className="mb-6">
             <Breadcrumbs items={[{ label: "Servicios" }, { label: "Sonorización" }]} />
           </div>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, backgroundColor: "rgba(229,62,62,0.15)", border: "1px solid rgba(229,62,62,0.35)", borderRadius: 20, padding: "6px 16px", color: "#F87171", fontSize: 11, fontWeight: 800, letterSpacing: 1, marginBottom: 20 }}>
+          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 11, fontWeight: 800, marginBottom: 20 }}>
             <Volume2 size={14} />
             INSTALACIÓN PROFESIONAL DE SONIDO
           </span>
@@ -264,12 +264,12 @@ export default function Sonorizacion() {
                 </p>
               </div>
               <div>
-                <p style={{ color: "#64748B", fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 14 }}>
+                <p style={{ color: "#64748B", fontSize: 13, fontWeight: 600, marginBottom: 14 }}>
                   Aplicaciones
                 </p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
                   {multizonaAplicaciones.map((a) => (
-                    <span key={a} style={{ display: "inline-block", background: "rgba(229,62,62,0.08)", border: "1px solid rgba(229,62,62,0.2)", borderRadius: 20, padding: "8px 16px", color: "#F87171", fontSize: 13, fontWeight: 700 }}>
+                    <span key={a} style={{ display: "inline-block", color: "#F87171", fontSize: 13, fontWeight: 700 }}>
                       {a}
                     </span>
                   ))}

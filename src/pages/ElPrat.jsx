@@ -56,7 +56,7 @@ export default function ElPratPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <Shield className="w-12 h-12 text-[#E63946] mb-4" />
               <h3 className="text-xl font-bold mb-3">Alarmas para Hogares</h3>
-              <p className="text-gray-600">Protección completa para viviendas en El Prat con tecnología inalámbrica de última generación.</p>
+              <p className="text-gray-600">Protección completa para viviendas en El Prat con tecnología inalámbrica.</p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <Shield className="w-12 h-12 text-[#E63946] mb-4" />

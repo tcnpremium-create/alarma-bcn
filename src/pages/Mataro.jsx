@@ -38,7 +38,7 @@ export default function Mataro() {
               Instalación de Alarmas en Mataró
             </h1>
             <p className="text-xl text-white/70 max-w-3xl">
-              Protección integral para hogares y negocios en Mataró. Sistemas de alarma inteligentes con tecnología de vanguardia.
+              Protección integral para hogares y negocios en Mataró. Sistemas de alarma inteligentes.
             </p>
           </motion.div>
         </div>
@@ -48,7 +48,7 @@ export default function Mataro() {
         <div className="max-w-4xl mx-auto px-6 lg:px-8">
           <div className="prose prose-lg max-w-none">
             <h2 className="text-3xl font-bold text-[#0A1628] mb-6">
-              Empresa Líder en Alarmas en Mataró
+              Alarmas en Mataró
             </h2>
             
             <p className="text-gray-600 leading-relaxed mb-6">
@@ -132,7 +132,7 @@ export default function Mataro() {
             </div>
 
             <h3 className="text-2xl font-bold text-[#0A1628] mt-10 mb-4">
-              Tecnología Avanzada Resistente al Clima Marino
+              Equipos preparados para el clima marino
             </h3>
 
             <p className="text-gray-600 leading-relaxed mb-6">

@@ -38,7 +38,7 @@ export default function Badalona() {
               Instalación de Alarmas en Badalona
             </h1>
             <p className="text-xl text-white/70 max-w-3xl">
-              Sistemas de seguridad profesionales para hogares y negocios en Badalona. Protección 24/7 con tecnología de vanguardia.
+              Sistemas de seguridad profesionales para hogares y negocios en Badalona. Protección 24/7.
             </p>
           </motion.div>
         </div>
@@ -132,7 +132,7 @@ export default function Badalona() {
             </div>
 
             <h3 className="text-2xl font-bold text-[#0A1628] mt-10 mb-4">
-              Marcas Líderes en Seguridad
+              Marcas que instalamos
             </h3>
 
             <p className="text-gray-600 leading-relaxed mb-6">

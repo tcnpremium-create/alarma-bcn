@@ -16,7 +16,7 @@ export default function HomeAccessBlock({ onOpenModal }) {
             marginBottom: 12,
           }}
         >
-          🚪 CONTROL DE ACCESOS
+          Control de accesos
         </span>
 
         <h2 style={{ fontWeight: 900, fontSize: 24, color: "#0A0A1A", margin: 0 }}>

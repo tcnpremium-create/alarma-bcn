@@ -365,7 +365,7 @@ export default function Blog() {
               {filteredTips.map((tip) => (
                 <div key={tip.id} className="bg-white rounded-2xl border border-gray-200 p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="bg-[#E63946]/10 text-[#E63946] text-xs font-bold px-3 py-1 rounded-full uppercase">{tip.category}</span>
+                    <span className="bg-[#E63946]/10 text-[#E63946] text-sm font-semibold px-3 py-1 rounded-full ">{tip.category}</span>
                     {tip.difficulty && <span className="bg-gray-100 text-gray-500 text-xs font-medium px-2 py-1 rounded-full">{tip.difficulty}</span>}
                   </div>
                   <h3 className="font-bold text-[#0A1628] text-lg mb-2">{tip.title}</h3>

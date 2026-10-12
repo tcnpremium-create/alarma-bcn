@@ -32,7 +32,7 @@ export default function BlogDestacados() {
         {/* Header */}
         <div className="flex items-center justify-between mb-10">
           <div>
-            <div className="flex items-center gap-2 text-[#E63946] font-semibold text-sm uppercase tracking-wide mb-2">
+            <div className="flex items-center gap-2 text-[#E63946] font-semibold text-sm mb-2">
               <TrendingUp className="w-4 h-4" />
               Artículos más leídos
             </div>
