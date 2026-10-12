@@ -5,11 +5,6 @@
     "ok": true
   },
   {
-    "route": "/About",
-    "file": "About.html",
-    "ok": true
-  },
-  {
     "route": "/Badalona",
     "file": "Badalona.html",
     "ok": true

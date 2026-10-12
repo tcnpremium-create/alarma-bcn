@@ -15,8 +15,13 @@
       "permanent": true
     },
     {
+      "source": "/About",
+      "destination": "/SobreNosotros",
+      "permanent": true
+    },
+    {
       "source": "/about",
-      "destination": "/About",
+      "destination": "/SobreNosotros",
       "permanent": true
     },
     {
