@@ -1,5 +1,5 @@
 {
- "combined": "d6e6b18a100d58dd",
+ "combined": "2e03c12870c08816",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "3e336d7d5eb0acdb",
@@ -38,9 +38,10 @@
   "src/components/landing/BlogHighlights.jsx": "992a7d79191b698a",
   "src/components/landing/BlogPreview.jsx": "51b173d81d3e327d",
   "src/components/landing/Breadcrumbs.jsx": "84832a1faa9c2f81",
-  "src/components/landing/CameraCityTemplate.jsx": "cd879c8b442f002e",
+  "src/components/landing/CameraCityTemplate.jsx": "e9f9d59ac0ab81da",
   "src/components/landing/CameraKitsGrid.jsx": "3e489a287b7c655d",
   "src/components/landing/CameraLocalSections.jsx": "664cb7c8b83e3e75",
+  "src/components/landing/CamerasBarcelonaGuide.jsx": "61f309c2a1414cbf",
   "src/components/landing/CertificationsSection.jsx": "69ba7b2605d2ea40",
   "src/components/landing/CitiesGrid.jsx": "d86a0025a25d673e",
   "src/components/landing/CityLandingTemplate.jsx": "5b1387ac89604d62",
@@ -193,7 +194,7 @@
   "src/pages/Blog.jsx": "3737b81dadaf99b5",
   "src/pages/BlogArticle.jsx": "d51397b65e18ec8b",
   "src/pages/Calculadora.jsx": "b469c65f6582fabe",
-  "src/pages/CamarasBarcelona.jsx": "6d5cda2e14efa269",
+  "src/pages/CamarasBarcelona.jsx": "fbbb831720c61ded",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",
   "src/pages/CamarasLleida.jsx": "7435754e2d9d74d3",
   "src/pages/CamarasSabadell.jsx": "8c0b998ec16dc141",

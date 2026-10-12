@@ -205,6 +205,26 @@
       "permanent": true
     },
     {
+      "source": "/girona",
+      "destination": "/alarmas-girona",
+      "permanent": true
+    },
+    {
+      "source": "/sabadell",
+      "destination": "/alarmas-sabadell",
+      "permanent": true
+    },
+    {
+      "source": "/tarragona",
+      "destination": "/alarmas-tarragona",
+      "permanent": true
+    },
+    {
+      "source": "/lleida",
+      "destination": "/alarmas-lleida",
+      "permanent": true
+    },
+    {
       "source": "/Home",
       "destination": "/",
       "permanent": true
