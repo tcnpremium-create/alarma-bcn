@@ -1,5 +1,5 @@
 {
- "combined": "d90ac6d962f56feb",
+ "combined": "fac8a4391058214f",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "52a20645c83846e1",
@@ -43,7 +43,7 @@
   "src/components/landing/CameraLocalSections.jsx": "aa83f3c78e6cc918",
   "src/components/landing/CertificationsSection.jsx": "302b3440157a53a4",
   "src/components/landing/CitiesGrid.jsx": "b830ef20dca8bfee",
-  "src/components/landing/CityLandingTemplate.jsx": "303bf31091d13d84",
+  "src/components/landing/CityLandingTemplate.jsx": "246ccfd561e1c2d8",
   "src/components/landing/ClientsSlider.jsx": "7cf08b88078a58af",
   "src/components/landing/ComparisonTable.jsx": "c9a44bcc1da9e7fd",
   "src/components/landing/ContactForm.jsx": "523db50fe5e340d7",

@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, ChevronRight, Eye, Radio, AlertTriangle } from "lucide-react";
 import Navbar from "./Navbar";
 import FooterSection from "./FooterSection";
@@ -90,6 +91,8 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#fff", paddingBottom: 128 }}>
       <CityLandingSEO path={seoPath} />
+      {/* La imagen del hero es un background-image en línea: sin esto el navegador la descubre tarde (LCP). */}
+      <Helmet><link rel="preload" as="image" href="/images/ajax-hero-dispositivos.jpeg" fetchPriority="high" /></Helmet>
       <Navbar />
 
       {/* HERO (full-width imagen AJAX) */}
