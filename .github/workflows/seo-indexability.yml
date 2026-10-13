@@ -1,0 +1,20 @@
+name: SEO indexability guard
+on:
+  pull_request:
+    paths:
+      - 'public/sitemap.xml'
+      - 'public/robots.txt'
+      - 'public/__prerendered__/**'
+      - 'scripts/prerender-manifest.json'
+      - 'scripts/audit-indexability.mjs'
+      - 'vercel.json'
+  workflow_dispatch:
+jobs:
+  indexability:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check static HTML, canonicals and sitemap
+        run: node scripts/audit-indexability.mjs
