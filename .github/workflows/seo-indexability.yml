@@ -1,0 +1,29 @@
+name: SEO indexability guard
+on:
+  pull_request:
+    paths:
+      - 'public/sitemap.xml'
+      - 'public/robots.txt'
+      - 'public/__prerendered__/**'
+      - 'scripts/prerender-manifest.json'
+      - 'scripts/audit-indexability.mjs'
+      - 'vercel.json'
+      - 'src/**'
+      - 'index.html'
+      - 'scripts/prerender-fingerprint.*'
+      - 'scripts/audit-live-seo.mjs'
+  workflow_dispatch:
+jobs:
+  indexability:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check static HTML, canonicals and sitemap
+        run: node scripts/audit-indexability.mjs
+      - name: Prevent stale prerender snapshots
+        run: node scripts/prerender-fingerprint.mjs --check
+      - name: Probe production HTTP SEO (non-blocking diagnostic)
+        continue-on-error: true
+        run: node scripts/audit-live-seo.mjs
