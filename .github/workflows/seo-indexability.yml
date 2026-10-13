@@ -11,6 +11,7 @@ on:
       - 'src/**'
       - 'index.html'
       - 'scripts/prerender-fingerprint.*'
+      - 'scripts/audit-live-seo.mjs'
   workflow_dispatch:
 jobs:
   indexability:
@@ -23,3 +24,6 @@ jobs:
         run: node scripts/audit-indexability.mjs
       - name: Prevent stale prerender snapshots
         run: node scripts/prerender-fingerprint.mjs --check
+      - name: Probe production HTTP SEO (non-blocking diagnostic)
+        continue-on-error: true
+        run: node scripts/audit-live-seo.mjs
