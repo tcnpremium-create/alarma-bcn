@@ -21,6 +21,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check static HTML, canonicals and sitemap
         run: node scripts/audit-indexability.mjs
-      - name: Detect stale prerender snapshots (diagnostic)
-        continue-on-error: true
+      - name: Prevent stale prerender snapshots
         run: node scripts/prerender-fingerprint.mjs --check
