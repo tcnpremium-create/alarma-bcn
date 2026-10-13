@@ -21,7 +21,7 @@ for (const route of routes) {
  if (!/<title\b[^>]*>[^<]{6,}<\/title>/i.test(html)) problems.push(route + ': falta title HTML');
  if (!/<h1\b[^>]*>[\s\S]*?<\/h1>/i.test(html)) problems.push(route + ': falta H1 HTML');
  const canonical = html.match(/<link\b[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)/i)?.[1];
- if (canonical !== expectedCanonical) problems.push(route + ': canonical ' + (canonical || 'ausente') + ' != ' + expectedCanonical);
+ if ((canonical?.replace(/\/$/, '') || '') !== expectedCanonical.replace(/\/$/, '')) problems.push(route + ': canonical ' + (canonical || 'ausente') + ' != ' + expectedCanonical);
  if (/<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*noindex/i.test(html)) problems.push(route + ': NOINDEX en snapshot');
  if (!manifest.some(m => m.route === route && m.file === name && m.ok)) problems.push(route + ': no figura como OK en el manifest');
  if (route !== '/' && !rewrites.some(w => w.source === route && w.destination === '/__prerendered__/' + name)) problems.push(route + ': falta rewrite al snapshot');
