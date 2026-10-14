@@ -1,8 +1,8 @@
 {
- "combined": "d0811b8c49d1cf72",
+ "combined": "7af3e040f5520bb9",
  "files": {
   "index.html": "0c69c5f744af1c37",
-  "public/sitemap.xml": "cf19c17a0ea56f53",
+  "public/sitemap.xml": "4187fd3685037b4d",
   "src/App.jsx": "c9bdce7d8d4d5888",
   "src/Layout.jsx": "1cea5b23a50c83c7",
   "src/api/api.js": "aa85d8c7c6694f94",
@@ -102,7 +102,7 @@
   "src/components/magicui/neon-gradient-card.jsx": "c39eb5d09d8770fc",
   "src/components/magicui/shiny-button.jsx": "c703658d3ae02dea",
   "src/components/seo/AdvancedSEO.jsx": "b1074c9f59913345",
-  "src/components/seo/CityLandingSEO.jsx": "4c2cd571262a2f2b",
+  "src/components/seo/CityLandingSEO.jsx": "62796a66505fb749",
   "src/components/seo/LocalitySEO.jsx": "68a2611635b6816d",
   "src/components/seo/PageSEO.jsx": "2dd935134d5f30ce",
   "src/components/seo/SEOHead.jsx": "0eeae4e02be12b01",
@@ -197,7 +197,7 @@
   "src/pages/CamarasBarcelona.jsx": "28281d11d15c8372",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",
   "src/pages/CamarasLleida.jsx": "7435754e2d9d74d3",
-  "src/pages/CamarasSabadell.jsx": "8c0b998ec16dc141",
+  "src/pages/CamarasSabadell.jsx": "0d369794880376ab",
   "src/pages/CamarasTarragona.jsx": "eb96f7cb9ce01474",
   "src/pages/Castelldefels.jsx": "a428976ac8a10842",
   "src/pages/Cerraduras.jsx": "d4ae9e9e26f0ed64",
