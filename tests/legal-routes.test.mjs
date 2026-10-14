@@ -18,7 +18,7 @@ test('las páginas legales enlazadas desde el pie no devuelven 404 por falta de 
     assert.equal(route[0].destination, destination);
     const snapshot = path.join(root, 'public', '__prerendered__', `${name}.html`);
     assert.ok(existsSync(snapshot), `${url}: falta snapshot estático`);
-    assert.match(readFileSync(snapshot, 'utf8'), /<h1(?:\\s|>)/i, `${url}: HTML sin H1`);
+    assert.match(readFileSync(snapshot, 'utf8'), /<h1(?:\s|>)/i, `${url}: HTML sin H1`);
   }
 });
 
