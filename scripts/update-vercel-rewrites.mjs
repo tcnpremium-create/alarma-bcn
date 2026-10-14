@@ -29,7 +29,7 @@
  * nunca se aplicaría. La home se resuelve inyectando el prerender dentro
  * de dist/index.html en cada build (scripts/inject-home-prerender.mjs).
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -54,10 +54,22 @@ const prerenderedRewrites = manifest
   .filter((r) => r.ok && r.route !== '/')
   .map((r) => ({ source: r.route, destination: `/__prerendered__/${r.file}` }));
 
+// Las páginas legales existen en el router y en snapshots estáticos, pero
+// no están en el sitemap comercial. Evitar que los enlaces del footer den 404.
+const LEGAL_ROUTES = ['AvisoLegal', 'Cookies', 'Privacidad'];
+const legalRewrites = LEGAL_ROUTES.map((route) => {
+  const file = `${route}.html`;
+  if (!existsSync(path.join(ROOT, 'public/__prerendered__', file))) {
+    throw new Error(`Falta snapshot de página legal: ${file}`);
+  }
+  return { source: `/${route}`, destination: `/__prerendered__/${file}` };
+});
+
 const spaRewrites = SPA_ONLY_ROUTES.map((r) => ({ source: r, destination: '/index.html' }));
 
 config.rewrites = [
   ...prerenderedRewrites,
+  ...legalRewrites,
   ...spaRewrites,
   { source: '/api/(.*)', destination: '/api/$1' },
 ];
@@ -70,6 +82,6 @@ config.trailingSlash = false;
 
 writeFileSync(vercelConfigPath, JSON.stringify(config, null, 2) + '\n');
 console.log(
-  `vercel.json: ${prerenderedRewrites.length} rewrites de prerender + ${spaRewrites.length} rutas SPA + api. ` +
+  `vercel.json: ${prerenderedRewrites.length} rewrites de prerender + ${legalRewrites.length} legales + ${spaRewrites.length} rutas SPA + api. ` +
   `Sin catch-all. trailingSlash=false.`
 );
