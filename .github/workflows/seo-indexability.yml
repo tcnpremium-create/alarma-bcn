@@ -24,6 +24,8 @@ jobs:
         run: node scripts/audit-indexability.mjs
       - name: Prevent stale prerender snapshots
         run: node scripts/prerender-fingerprint.mjs --check
+      - name: Verify commercial SEO metadata matches crawler HTML
+        run: node --test tests/seo-commercial-landing.test.mjs
       - name: Probe production HTTP SEO (non-blocking diagnostic)
         continue-on-error: true
         run: node scripts/audit-live-seo.mjs
