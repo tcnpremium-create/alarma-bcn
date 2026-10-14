@@ -35,8 +35,8 @@ const SEO_DATA = {
     canonical: "https://alarmasenbarcelona.com/alarmas-lleida"
   },
   "/alarmas-sabadell": {
-    title: "Alarmas y Cámaras Seguridad Sabadell | Premium Tech Security",
-    description: "Sistemas de alarma en Sabadell. Ajax Hub. Sin permanencia ni cuotas. Conexión a CRA opcional. Instalación incluida. Tel: 638 10 99 47",
+    title: "Instaladores de Alarmas en Sabadell | Ajax sin Cuotas",
+    description: "Instalación de alarmas Ajax en Sabadell y Vallès Occidental para viviendas, negocios y comunidades. Sin cuotas obligatorias; CRA opcional. Presupuesto gratis.",
     keywords: "alarmas Sabadell, cámaras seguridad Sabadell, instalación alarmas Sabadell, videovigilancia Sabadell, seguridad Vallès Occidental",
     canonical: "https://alarmasenbarcelona.com/alarmas-sabadell"
   }
