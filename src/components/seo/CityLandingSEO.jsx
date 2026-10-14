@@ -11,8 +11,8 @@ const ALARM_HIGH_PRICE = String(Math.max(...ALARM_PRICES));
 
 const SEO_DATA = {
   "/alarmas-barcelona": {
-    title: "Alarmas para Casa en Barcelona | Ajax sin Cuotas",
-    description: "Alarmas para casa y negocio en Barcelona con Ajax: sin cuotas, aviso al móvil en tiempo real e instalación certificada. Presupuesto gratis. Tel: 638 10 99 47",
+    title: "Empresa de Alarmas en Barcelona | Instalación Ajax sin Cuotas",
+    description: "Instaladores de alarmas Ajax en Barcelona para hogares, negocios y comunidades. Kits desde 399 € + IVA con instalación. CRA opcional. Presupuesto gratis.",
     keywords: "alarmas Barcelona, cámaras seguridad Barcelona, instalación alarmas Barcelona, empresa seguridad Barcelona, AJAX Barcelona, Hikvision Barcelona",
     canonical: "https://alarmasenbarcelona.com/alarmas-barcelona"
   },
