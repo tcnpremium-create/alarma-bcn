@@ -506,6 +506,18 @@
       "destination": "/__prerendered__/videoporteros.html"
     },
     {
+      "source": "/AvisoLegal",
+      "destination": "/__prerendered__/AvisoLegal.html"
+    },
+    {
+      "source": "/Cookies",
+      "destination": "/__prerendered__/Cookies.html"
+    },
+    {
+      "source": "/Privacidad",
+      "destination": "/__prerendered__/Privacidad.html"
+    },
+    {
       "source": "/AdminLeads",
       "destination": "/index.html"
     },
