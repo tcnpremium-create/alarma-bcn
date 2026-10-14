@@ -24,7 +24,21 @@ const PAGES = [
     "route": "/camaras-barcelona",
     "title": "Instaladores de Cámaras en Barcelona | CCTV y Videovigilancia",
     "description": "Empresa instaladora de cámaras de seguridad y videovigilancia en Barcelona. Sistemas CCTV IP y NVR para negocios, viviendas y comunidades. Presupuesto gratis."
-  }
+  },
+{
+  "source": "src/components/seo/CityLandingSEO.jsx",
+  "snapshot": "alarmas-sabadell.html",
+  "route": "/alarmas-sabadell",
+  "title": "Instaladores de Alarmas en Sabadell | Ajax sin Cuotas",
+  "description": "Instalación de alarmas Ajax en Sabadell y Vallès Occidental para viviendas, negocios y comunidades. Sin cuotas obligatorias; CRA opcional. Presupuesto gratis."
+},
+{
+  "source": "src/pages/CamarasSabadell.jsx",
+  "snapshot": "camaras-sabadell.html",
+  "route": "/camaras-sabadell",
+  "title": "Instaladores de Cámaras de Seguridad en Sabadell | CCTV",
+  "description": "Instaladores de cámaras de seguridad, videovigilancia IP y CCTV en Sabadell. Sistemas para hogares, empresas y comunidades con acceso móvil. Presupuesto gratis."
+}
 ];
 const sitemap = readFileSync('public/sitemap.xml', 'utf8');
 
