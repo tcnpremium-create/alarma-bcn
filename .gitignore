@@ -28,4 +28,7 @@ dist-ssr
 *.sw?
 
 .env
-.claude/
+
+# Claude Code local restore points
+.claude/restore/
+.claude/settings.local.json
