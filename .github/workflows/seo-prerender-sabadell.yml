@@ -1,0 +1,44 @@
+name: Regenerate SEO HTML on isolated branch
+on:
+  push:
+    branches:
+      - seo/sabadell-prerender-verified-20261015
+    paths:
+      - '.github/workflows/seo-prerender-sabadell.yml'
+  workflow_dispatch:
+jobs:
+  prerender:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Install temporary headless browser for prerender
+        run: |
+          npm install --no-save --package-lock=false playwright
+          npx playwright install --with-deps chromium
+          echo "PW_CHROMIUM_PATH=$(node -e 'console.log(require("playwright").chromium.executablePath())')" >> "$GITHUB_ENV"
+      - name: Regenerate HTML snapshots, route rewrites, and fingerprint
+        run: npm run prerender
+      - name: Verify consistent HTML and canonical
+        run: |
+          node scripts/audit-indexability.mjs
+          node scripts/prerender-fingerprint.mjs --check
+          node --test tests/seo-commercial-landing.test.mjs
+          grep -F 'Estudiamos los accesos' public/__prerendered__/camaras-sabadell.html > /dev/null
+      - name: Commit generated HTML only on isolated branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/__prerendered__/ scripts/prerender-manifest.json scripts/prerender-fingerprint.json vercel.json
+          if ! git diff --cached --quiet; then
+            git commit -m "seo: sincronizar snapshots HTML con el contenido local Sabadell"
+            git push origin HEAD:seo/sabadell-prerender-verified-20261015
+          fi
