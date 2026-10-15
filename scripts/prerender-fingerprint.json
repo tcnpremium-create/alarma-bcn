@@ -1,5 +1,5 @@
 {
- "combined": "b71b940911ee4744",
+ "combined": "eb9638cdc017ed84",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -192,7 +192,7 @@
   "src/pages/Badalona.jsx": "637f93102a566e3b",
   "src/pages/BarrioEixample.jsx": "910678f9dce884f1",
   "src/pages/Blog.jsx": "3737b81dadaf99b5",
-  "src/pages/BlogArticle.jsx": "5a7b93cb2c61f730",
+  "src/pages/BlogArticle.jsx": "e1cb225e7860dada",
   "src/pages/Calculadora.jsx": "b469c65f6582fabe",
   "src/pages/CamarasBarcelona.jsx": "28281d11d15c8372",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",
@@ -201,7 +201,7 @@
   "src/pages/CamarasTarragona.jsx": "eb96f7cb9ce01474",
   "src/pages/Castelldefels.jsx": "a428976ac8a10842",
   "src/pages/Cerraduras.jsx": "d4ae9e9e26f0ed64",
-  "src/pages/ComparativaAlarmas.jsx": "d44aae24c97aeb7a",
+  "src/pages/ComparativaAlarmas.jsx": "536cf0d0b4447fd7",
   "src/pages/Contact.jsx": "f52580f2fecbff3a",
   "src/pages/ControlAccesos.jsx": "061c970743bdee3c",
   "src/pages/Cookies.jsx": "885bca81922f6a68",

@@ -462,7 +462,7 @@ export default function ComparativaAlarmas() {
               <div className="bg-[#C53030]/20 rounded-2xl p-8 border border-[#E63946]/30">
                 <h3 className="text-2xl font-bold text-white mb-4">¿Aún tienes dudas?</h3>
                 <p className="text-white/70 mb-6">Te ayudamos a elegir el sistema perfecto para tu caso en 5 minutos</p>
-                <Button type="button" onClick={() => openDrawer("Alarma")} className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white py-4 text-base font-bold mb-3">
+                <Button type="button" onClick={() => openDrawer("Alarma")} className="h-auto w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white py-4 text-base font-bold mb-3">
                   Solicitar Asesoría Gratuita
                 </Button>
                 <Button asChild variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 py-4">

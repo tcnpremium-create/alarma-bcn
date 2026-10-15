@@ -412,7 +412,7 @@ export default function BlogArticle() {
                 <p className="text-white/70 mb-2">Visita técnica gratuita · Sin compromiso · Instalación en 24–48h</p>
                 <p className="text-white/50 text-sm mb-8">Técnicos certificados AJAX · Sin permanencias · El equipo es tuyo desde el día 1</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button type="button" onClick={() => openDrawer("Alarma")} className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 text-base font-bold">
+                  <Button type="button" onClick={() => openDrawer("Alarma")} className="h-auto bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 text-base font-bold">
                     Solicitar Presupuesto Gratis
                   </Button>
                   <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#0A1628] px-8 py-4 text-base font-bold">
