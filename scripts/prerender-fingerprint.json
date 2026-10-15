@@ -1,5 +1,5 @@
 {
- "combined": "7af3e040f5520bb9",
+ "combined": "c0232ddfa093b7b8",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -197,7 +197,7 @@
   "src/pages/CamarasBarcelona.jsx": "28281d11d15c8372",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",
   "src/pages/CamarasLleida.jsx": "7435754e2d9d74d3",
-  "src/pages/CamarasSabadell.jsx": "0d369794880376ab",
+  "src/pages/CamarasSabadell.jsx": "aa8f70c1c7e2ef9c",
   "src/pages/CamarasTarragona.jsx": "eb96f7cb9ce01474",
   "src/pages/Castelldefels.jsx": "a428976ac8a10842",
   "src/pages/Cerraduras.jsx": "d4ae9e9e26f0ed64",
