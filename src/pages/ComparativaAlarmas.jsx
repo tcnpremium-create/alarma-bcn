@@ -6,6 +6,7 @@ import Navbar from '@/components/landing/Navbar';
 import FooterSection from '@/components/landing/FooterSection';
 import { Helmet } from "react-helmet-async";
 import { Link } from 'react-router-dom';
+import { useLeadDrawer } from '@/context/LeadDrawerContext';
 
 const brands = [
   {
@@ -196,6 +197,7 @@ const schema = {
 };
 
 export default function ComparativaAlarmas() {
+  const { openDrawer } = useLeadDrawer();
   const [view, setView] = useState('cards');
 
   return (
@@ -333,8 +335,8 @@ export default function ComparativaAlarmas() {
                   </div>
 
                   {brand.highlight && (
-                    <Button asChild className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white">
-                      <a href="/#contacto">Pedir Presupuesto <ArrowRight className="w-4 h-4 ml-1" /></a>
+                    <Button type="button" onClick={() => openDrawer("Alarma")} className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white">
+                      Pedir Presupuesto <ArrowRight className="w-4 h-4 ml-1" />
                     </Button>
                   )}
                 </div>
@@ -460,8 +462,8 @@ export default function ComparativaAlarmas() {
               <div className="bg-[#C53030]/20 rounded-2xl p-8 border border-[#E63946]/30">
                 <h3 className="text-2xl font-bold text-white mb-4">¿Aún tienes dudas?</h3>
                 <p className="text-white/70 mb-6">Te ayudamos a elegir el sistema perfecto para tu caso en 5 minutos</p>
-                <Button asChild className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white py-4 text-base font-bold mb-3">
-                  <a href="/#contacto">Solicitar Asesoría Gratuita</a>
+                <Button type="button" onClick={() => openDrawer("Alarma")} className="w-full bg-[#C53030] hover:bg-[#9B2C2C] text-white py-4 text-base font-bold mb-3">
+                  Solicitar Asesoría Gratuita
                 </Button>
                 <Button asChild variant="outline" className="w-full border-white/30 text-white hover:bg-white/10 py-4">
                   <a href="tel:+34638109947">

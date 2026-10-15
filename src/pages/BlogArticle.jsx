@@ -11,6 +11,7 @@ import { articleSEOData } from '@/components/blog/articleSEOData';
 import AdSenseInArticle from '@/components/ads/AdSenseInArticle';
 import AdSenseDisplay from '@/components/ads/AdSenseDisplay';
 import { businessStats } from '@/lib/businessStats';
+import { useLeadDrawer } from '@/context/LeadDrawerContext';
 import ArticleServiceLinks from '@/components/blog/articleServiceLinks';
 
 const allArticles = { ...originalArticlesData, ...newArticlesData };
@@ -193,6 +194,7 @@ function ArticleContentWithImages({ html, inContentImages }) {
 
 export default function BlogArticle() {
   const { slug } = useParams();
+  const { openDrawer } = useLeadDrawer();
   const article = allArticles[slug];
   const seoData = articleSEOData[slug] || {};
 
@@ -343,9 +345,9 @@ export default function BlogArticle() {
                     <Phone className="w-4 h-4" />
                     638 10 99 47
                   </a>
-                  <a href="/#contacto" className="inline-flex items-center justify-center gap-2 bg-white/20 border border-white text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/30 transition-colors whitespace-nowrap">
+                  <button type="button" onClick={() => openDrawer("Alarma")} className="inline-flex items-center justify-center gap-2 bg-white/20 border border-white text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/30 transition-colors whitespace-nowrap">
                     Presupuesto gratis
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -410,8 +412,8 @@ export default function BlogArticle() {
                 <p className="text-white/70 mb-2">Visita técnica gratuita · Sin compromiso · Instalación en 24–48h</p>
                 <p className="text-white/50 text-sm mb-8">Técnicos certificados AJAX · Sin permanencias · El equipo es tuyo desde el día 1</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button asChild className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 text-base font-bold">
-                    <a href="/#contacto">Solicitar Presupuesto Gratis</a>
+                  <Button type="button" onClick={() => openDrawer("Alarma")} className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 text-base font-bold">
+                    Solicitar Presupuesto Gratis
                   </Button>
                   <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#0A1628] px-8 py-4 text-base font-bold">
                     <a href="tel:+34638109947">
@@ -477,9 +479,9 @@ export default function BlogArticle() {
                   <a href="tel:+34638109947" className="block w-full bg-white text-[#E63946] text-center font-bold py-3 rounded-xl hover:bg-white/90 transition-colors mb-2 text-sm">
                     📞 638 10 99 47
                   </a>
-                  <a href="/#contacto" className="block w-full border border-white/50 text-white text-center font-semibold py-2.5 rounded-xl hover:bg-white/10 transition-colors text-sm">
-                    Enviar mensaje
-                  </a>
+                  <button type="button" onClick={() => openDrawer("Alarma")} className="block w-full border border-white/50 text-white text-center font-semibold py-2.5 rounded-xl hover:bg-white/10 transition-colors text-sm">
+                    Pedir presupuesto
+                  </button>
                 </div>
 
                 {/* Trust signals */}

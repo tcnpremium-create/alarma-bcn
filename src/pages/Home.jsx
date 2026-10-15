@@ -20,6 +20,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white pb-32">
+      {/* NO cambiar title/description sin datos de Search Console: ya se cambiaron 8 veces en 7
+          semanas. Ver docs/SEO-DECISIONES.md. */}
       <AdvancedSEO
         title="Instaladores de Alarmas y Cámaras en Barcelona | Premium Tech"
         description="Empresa instaladora de alarmas Ajax y cámaras de seguridad en Barcelona. Protegemos viviendas, negocios y comunidades. Presupuesto gratis: 638 10 99 47."
