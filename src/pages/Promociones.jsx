@@ -634,9 +634,9 @@ export default function Promociones() {
                     <Phone size={16} />
                     Llamar ahora
                   </a>
-                  <button
-                    type="button"
-                    onClick={() => openDrawer("Alarma")}
+                  <a
+                    href="/#contacto"
+                    onClick={(e) => { e.preventDefault(); openDrawer("Alarma"); }}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -652,7 +652,7 @@ export default function Promociones() {
                     }}
                   >
                     Solicitar presupuesto
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -705,9 +705,9 @@ export default function Promociones() {
               <Phone size={18} />
               Llamar ahora
             </a>
-            <button
-              type="button"
-              onClick={() => openDrawer("Alarma")}
+            <a
+              href="/#contacto"
+                    onClick={(e) => { e.preventDefault(); openDrawer("Alarma"); }}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -722,7 +722,7 @@ export default function Promociones() {
               }}
             >
               Solicitar presupuesto
-            </button>
+            </a>
           </div>
         </div>
       </section>
