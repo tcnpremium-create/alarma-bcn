@@ -163,14 +163,14 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
       {/* Breadcrumb fuera del hero de altura fija (70vh) para no arriesgar overflow.
           El padding superior deja sitio a la cabecera fija (80px): sin él
           la miga de pan quedaba debajo del logo, solapada. */}
-      <div style={{ backgroundColor: "#0A0A1A", padding: "96px 20px 0" }}>
+      <div style={{ backgroundColor: "#0A0A1A", padding: "112px 20px 16px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <Breadcrumbs items={[{ label: "Cámaras", href: "/camaras-barcelona" }, { label: city }]} />
         </div>
       </div>
 
       {/* ── HERO ── */}
-      <section style={{ position: "relative", width: "100%", overflow: "hidden", height: "70vh", maxHeight: "70vh", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
+      <section style={{ position: "relative", width: "100%", overflow: "hidden", minHeight: "min(680px, 85svh)", height: "auto", backgroundColor: "#0A0A1A", paddingTop: 0 }}>
         <img
           src="/images/camara-domo.jpeg"
           alt={`Cámara de seguridad domo instalada en una vivienda de ${city}`}
@@ -178,8 +178,8 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
         />
         {/* Degradado: deja la cámara bien visible arriba y oscurece la parte
             baja, donde va el texto, para que se lea. */}
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 24%, rgba(10,10,26,0.88) 47%, rgba(10,10,26,0.12) 74%, rgba(10,10,26,0) 100%)" }} />
-        <div style={{ position: "relative", zIndex: 10, maxWidth: 800, margin: "0 auto", padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "flex-end", height: "100%", paddingBottom: 48, paddingTop: 80 }}>
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #0A0A1A 5%, rgba(10,10,26,0.90) 48%, rgba(10,10,26,0.45) 100%)" }} />
+        <div style={{ position: "relative", zIndex: 10, maxWidth: 800, margin: "0 auto", padding: "0 20px", display: "flex", flexDirection: "column", justifyContent: "flex-end", minHeight: "min(680px, 85svh)", paddingBottom: 48, paddingTop: 44 }}>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 14, fontWeight: 600, textShadow: "0 1px 4px rgba(0,0,0,.7)", width: "fit-content", marginBottom: 16 }}>
             <span style={{ width: 7, height: 7, backgroundColor: "#C53030", borderRadius: "50%", display: "inline-block" }} />
             Instalación profesional en {city}
