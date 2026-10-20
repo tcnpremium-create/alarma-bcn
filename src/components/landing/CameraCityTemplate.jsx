@@ -36,7 +36,7 @@ const WHAT_WE_DO = [
   { icon: <Camera className="w-5 h-5" />, title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto, 360°, resistente al vandalismo." },
   { icon: <Eye className="w-5 h-5" />, title: "Cámara Bullet", desc: "Larga distancia, hasta 60m. Ideal para entradas, vallas y accesos exteriores." },
   { icon: <Wifi className="w-5 h-5" />, title: "Cámara PTZ", desc: "Motorizada con zoom óptico 20x. Control remoto de pan, tilt y zoom." },
-  { icon: <Sun className="w-5 h-5" />, title: "Visión Nocturna Color", desc: "Imagen en color incluso en oscuridad total gracias a infrarrojos avanzados." },
+  { icon: <Sun className="w-5 h-5" />, title: "Visión Nocturna Color", desc: "Imagen en color con modelos compatibles y suficiente iluminación o luz blanca integrada; los infrarrojos convencionales muestran imagen monocroma." },
   { icon: <HardDrive className="w-5 h-5" />, title: "Grabador NVR / DVR", desc: "Almacenamiento local seguro de 1 a 16TB. Sin depender de la nube." },
   { icon: <Smartphone className="w-5 h-5" />, title: "App Móvil / Acceso Remoto", desc: "Visualización en tiempo real desde iOS y Android, desde cualquier lugar. Sin coste adicional." },
   { icon: <Lock className="w-5 h-5" />, title: "Sin Cuotas Mensuales", desc: "Pago único, sin sorpresas. El sistema es tuyo para siempre." },
@@ -57,7 +57,7 @@ const BRANDS = [
   {
     name: "HIKVISION",
     desc: "La marca nº1 en videovigilancia mundial. Cámaras con IA integrada, grabación 4K y compresión H.265+.",
-    specs: ["Resolución 4K Ultra HD – 8MP", "Compresión inteligente H.265+", "Análisis de comportamiento IA", "App iVMS-4500 profesional"],
+    specs: ["Resolución 4K Ultra HD – 8MP", "Compresión inteligente H.265+", "Análisis de comportamiento IA", "Acceso móvil mediante la aplicación compatible con el equipo"],
   },
   {
     name: "DAHUA",
@@ -85,7 +85,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Qué marcas de cámaras instaláis en ${city}?`,
-      a: `Trabajamos con las mejores marcas del mercado: Hikvision y Dahua, dos de los fabricantes más extendidos en videovigilancia. Todas nuestras cámaras son de resolución mínima 4MPx (2K), con visión nocturna en color y resistencia IP66 para exteriores.`,
+      a: `Trabajamos con las mejores marcas del mercado: Hikvision y Dahua, dos de los fabricantes más extendidos en videovigilancia. Todas nuestras cámaras son de resolución mínima 4MPx (2K), con características de visión nocturna y protección exterior según el modelo elegido.`,
     },
     {
       q: `¿Las cámaras necesitan conexión a internet para funcionar?`,
@@ -105,7 +105,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Puedo ver las cámaras desde el móvil en tiempo real?`,
-      a: `Sí. Instalamos la app correspondiente a la marca (iVMS-4500 para Hikvision, DMSS para Dahua) con acceso remoto desde cualquier lugar. Streaming en tiempo real, reproducción de grabaciones y alertas push incluidas, sin coste adicional.`,
+      a: `Sí. Instalamos la app correspondiente a la marca (Hik-Connect para equipos Hikvision compatibles y DMSS para Dahua) con acceso remoto desde cualquier lugar. Streaming en tiempo real, reproducción de grabaciones y alertas push incluidas, sin coste adicional.`,
     },
     {
       q: `¿Es mejor un grabador propio o una cámara con cuota mensual?`,
