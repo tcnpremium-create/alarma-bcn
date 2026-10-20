@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { openCookiePreferences } from "@/components/CookieBanner";
+import { businessStats } from "@/lib/businessStats";
 
 const LOGO_BLANCO = "/images/logo-premium-blanco.webp";
 
@@ -54,6 +55,11 @@ export default function FooterSection() {
             <p className="text-white/60 text-sm leading-relaxed">
               Instaladores certificados en Barcelona y Catalunya
             </p>
+            <address className="not-italic text-white/60 text-sm leading-relaxed mt-4 space-y-1">
+              <p>{businessStats.addressText}</p>
+              <p><a href={`tel:${businessStats.phone}`} className="hover:text-white transition-colors">{businessStats.phoneDisplay}</a></p>
+              <p><a href={`mailto:${businessStats.email}`} className="hover:text-white transition-colors">{businessStats.email}</a></p>
+            </address>
           </div>
 
           {/* Column 2 - Seguridad */}

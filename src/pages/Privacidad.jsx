@@ -3,6 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import { motion } from "framer-motion";
+import { businessStats } from "@/lib/businessStats";
 
 export default function Privacidad() {
   return (
@@ -36,7 +37,7 @@ export default function Privacidad() {
               </p>
               <ul className="list-disc pl-6 text-gray-600 mb-6">
                 <li><strong>Identidad:</strong> Premium Tech Security</li>
-                <li><strong>Dirección:</strong> Carrer de Balmes, 150, 08008 Barcelona</li>
+                <li><strong>Dirección:</strong> {businessStats.addressText}</li>
                 <li><strong>Email:</strong> tcnpremium@gmail.com</li>
                 <li><strong>Teléfono:</strong> 638 10 99 47</li>
               </ul>
@@ -92,7 +93,7 @@ export default function Privacidad() {
                 <li><strong>Portabilidad:</strong> Derecho a recibir los datos en un formato estructurado</li>
               </ul>
               <p className="text-gray-600 mb-6">
-                Para ejercer estos derechos, puede enviar una solicitud a tcnpremium@gmail.com o por correo postal a Carrer de Balmes, 150, 08008 Barcelona, acompañando copia de su DNI.
+                Para ejercer estos derechos, puede enviar una solicitud a tcnpremium@gmail.com o por correo postal a {businessStats.addressText}, acompañando copia de su DNI.
               </p>
               <p className="text-gray-600 mb-6">
                 Asimismo, le informamos de que puede presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es) si considera que el tratamiento de sus datos personales vulnera la normativa.

@@ -3,6 +3,7 @@ import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import AdvancedSEO from "../components/seo/AdvancedSEO";
 import { motion } from "framer-motion";
+import { businessStats } from "@/lib/businessStats";
 
 export default function Cookies() {
   return (
@@ -103,7 +104,7 @@ export default function Cookies() {
               <ul className="list-disc pl-6 text-gray-600 mb-6">
                 <li><strong>Email:</strong> tcnpremium@gmail.com</li>
                 <li><strong>Teléfono:</strong> 638 10 99 47</li>
-                <li><strong>Dirección:</strong> Carrer de Balmes, 150, 08008 Barcelona</li>
+                <li><strong>Dirección:</strong> {businessStats.addressText}</li>
               </ul>
             </div>
           </motion.div>

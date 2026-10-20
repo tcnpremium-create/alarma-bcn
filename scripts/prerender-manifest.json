@@ -5,6 +5,11 @@
     "ok": true
   },
   {
+    "route": "/AvisoLegal",
+    "file": "AvisoLegal.html",
+    "ok": true
+  },
+  {
     "route": "/Badalona",
     "file": "Badalona.html",
     "ok": true
@@ -190,6 +195,11 @@
     "ok": true
   },
   {
+    "route": "/Cookies",
+    "file": "Cookies.html",
+    "ok": true
+  },
+  {
     "route": "/Cornella",
     "file": "Cornella.html",
     "ok": true
@@ -222,6 +232,11 @@
   {
     "route": "/Mataro",
     "file": "Mataro.html",
+    "ok": true
+  },
+  {
+    "route": "/Privacidad",
+    "file": "Privacidad.html",
     "ok": true
   },
   {

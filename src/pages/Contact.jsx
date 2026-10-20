@@ -5,6 +5,7 @@ import ContactForm from "../components/landing/ContactForm";
 import Breadcrumbs from "../components/landing/Breadcrumbs";
 import { Helmet } from "react-helmet-async";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 export default function Contact() {
   return (
@@ -77,6 +78,7 @@ export default function Contact() {
                   <p className="text-sm text-gray-500 mb-1">Zona de cobertura</p>
                   <p className="font-semibold text-[#0A1628]">Barcelona y área metropolitana</p>
                   <p className="text-sm text-gray-500 mt-1">Sabadell, Badalona, Hospitalet, Terrassa, Mataró, Sant Cugat y más</p>
+                  <p className="text-sm text-gray-500 mt-1">Oficina: {businessStats.addressText}</p>
                 </div>
               </div>
 

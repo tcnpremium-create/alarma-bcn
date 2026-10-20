@@ -57,7 +57,11 @@ function loadRoutes() {
   const sitemap = readFileSync(path.join(ROOT, 'public/sitemap.xml'), 'utf8');
   const matches = [...sitemap.matchAll(/<loc>https:\/\/alarmasenbarcelona\.com([^<]*)<\/loc>/g)];
   const routes = matches.map((m) => (m[1] === '' ? '/' : m[1]));
-  return [...new Set(routes)].sort();
+  // Páginas legales: no van en el sitemap, pero se sirven como snapshot estático
+  // (ver update-vercel-rewrites.mjs). Se regeneran aquí para que reflejen el código
+  // (p. ej. la dirección de la empresa) y no se queden como copias antiguas.
+  const LEGAL_ROUTES = ['/AvisoLegal', '/Cookies', '/Privacidad'];
+  return [...new Set([...routes, ...LEGAL_ROUTES])].sort();
 }
 
 function waitForServer(url, tries = 60) {

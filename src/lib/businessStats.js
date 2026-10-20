@@ -41,6 +41,15 @@ export const businessStats = {
   phoneDisplay: "638 10 99 47",
   email: "tcnpremium@gmail.com",
 
+  // Dirección oficial (la de Carrer de Balmes, 150 es antigua y no debe aparecer).
+  // Debe coincidir con el JSON-LD de AdvancedSEO / CityLandingSEO / LocalitySEO / SobreNosotros.
+  address: {
+    street: "Carrer de Coll i Vehí, 141",
+    postalCode: "08026",
+    city: "Barcelona",
+  },
+  addressText: "Carrer de Coll i Vehí, 141, 08026 Barcelona",
+
   googleRating: "4.9",
   googleReviewCount: "23",
 
