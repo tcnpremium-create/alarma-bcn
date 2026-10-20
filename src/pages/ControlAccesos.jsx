@@ -57,7 +57,7 @@ export default function ControlAccesos() {
             Volver a inicio
           </Link>
           <div className="mb-6">
-            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Control de Accesos" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Control de Accesos" }]} />
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Sistemas de Control de Accesos Biométrico Barcelona</h1>
           <p className="text-xl text-gray-300 max-w-2xl">Control de accesos biométrico facial, lector de huellas y tarjetas RFID. La tecnología más avanzada para gestionar quién entra en tu propiedad.</p>

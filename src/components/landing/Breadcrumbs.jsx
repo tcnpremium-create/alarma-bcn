@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 
@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet-async";
  * en texto secundario sobre blanco).
  *
  * Example:
- *   <Breadcrumbs items={[{ label: "Servicios" }, { label: "Sonorización" }]} />
+ *   <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Sonorización" }]} />
  *   → Inicio → Servicios → Sonorización
  */
 export default function Breadcrumbs({ items = [], theme = "dark" }) {
@@ -23,14 +23,26 @@ export default function Breadcrumbs({ items = [], theme = "dark" }) {
     ? { link: "#6B7280", current: "#374151", chevron: 0.5 }
     : { link: "#94A3B8", current: "#CBD5E0", chevron: 0.6 };
 
+  const { pathname } = useLocation();
+
+  // Google exige `item` (URL) en cada ListItem: Search Console marcaba "Falta el campo item"
+  // cuando un paso intermedio no tenía enlace. El último paso usa la URL de la página actual
+  // y cualquier paso intermedio sin enlace se deja fuera del marcado (sigue siendo visible).
+  const schemaTrail = trail
+    .map((item, idx) => {
+      const isLast = idx === trail.length - 1;
+      const href = item.href || (isLast ? pathname : null);
+      return href ? { name: item.label, url: `https://alarmasenbarcelona.com${href === "/" ? "" : href}` } : null;
+    })
+    .filter(Boolean);
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": trail.map((item, idx) => ({
+    "itemListElement": schemaTrail.map((step, idx) => ({
       "@type": "ListItem",
       "position": idx + 1,
-      "name": item.label,
-      ...(item.href ? { "item": `https://alarmasenbarcelona.com${item.href}` } : {}),
+      "name": step.name,
+      "item": step.url,
     })),
   };
 

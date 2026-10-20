@@ -66,7 +66,7 @@ export default function RedesInformaticas() {
             Volver a inicio
           </Link>
           <div className="mb-6">
-            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Redes Informáticas" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Redes Informáticas" }]} />
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Redes Informáticas en Barcelona</h1>
           <p className="text-xl text-gray-300 max-w-2xl">Instalación de redes, cableado estructurado y WiFi profesional para empresas, oficinas, negocios y viviendas.</p>

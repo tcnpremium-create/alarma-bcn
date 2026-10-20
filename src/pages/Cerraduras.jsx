@@ -66,7 +66,7 @@ export default function Cerraduras() {
             Volver a inicio
           </Link>
           <div className="mb-6">
-            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Cerraduras" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Cerraduras" }]} />
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Cerraduras Inteligentes y Electrónicas</h1>
           <p className="text-xl text-gray-300 max-w-2xl">Cerraduras electrónicas, cilindros de seguridad y sistemas de apertura para viviendas, negocios y oficinas en Barcelona.</p>

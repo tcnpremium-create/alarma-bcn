@@ -112,7 +112,7 @@ export default function Sonorizacion() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.55) 40%, rgba(6,14,26,0.96) 100%)" }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-8" style={{ position: "relative", zIndex: 2, paddingTop: 140, paddingBottom: 56, width: "100%" }}>
           <div className="mb-6">
-            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Sonorización" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Sonorización" }]} />
           </div>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 11, fontWeight: 800, marginBottom: 20 }}>
             <Volume2 size={14} />

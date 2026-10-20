@@ -117,7 +117,7 @@ export default function Videoporteros() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ marginBottom: 20 }}>
-            <Breadcrumbs items={[{ label: "Servicios" }, { label: "Videoporteros" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Videoporteros" }]} />
           </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#C53030", boxShadow: "0 0 8px #E53E3E" }} />

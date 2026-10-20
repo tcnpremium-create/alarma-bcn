@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Building2, Store, Users, Wrench, Network, ArrowRight } from "lucide-react";
+import { businessStats } from "@/lib/businessStats";
 
 // Contenido propio de /camaras-barcelona, la página central de cámaras.
 // La auditoría de Search Console (oct. 2026) mostró que Google llevaba a la
@@ -15,7 +16,7 @@ const SEGMENTS = [
     id: "empresas",
     Icon: Store,
     title: "Videovigilancia para negocios y empresas",
-    text: "Tiendas, oficinas, restaurantes, naves y despachos. Planificamos qué zonas cubrir (accesos, caja, almacén, exterior), dimensionamos el grabador para grabación continua y dejamos el acceso desde el móvil para cada responsable, con sus propios permisos.",
+    text: "Tiendas, oficinas, restaurantes, almacenes, naves y despachos. Planificamos qué zonas cubrir (accesos, caja, almacén, exterior), dimensionamos el grabador para grabación continua y dejamos el acceso desde el móvil para cada responsable, con sus propios permisos.",
     points: ["Cámaras con detección de personas y vehículos", "Grabador NVR dimensionado para grabación 24/7", "Usuarios con permisos distintos (gerencia, encargados)", "Cartel informativo de zona videovigilada"],
     link: { to: "/BlogArticle/videovigilancia-empresas-barcelona", label: "Guía de videovigilancia para empresas" },
   },
@@ -23,7 +24,7 @@ const SEGMENTS = [
     id: "comunidades",
     Icon: Users,
     title: "Cámaras de seguridad para comunidades de vecinos",
-    text: "Portales, garajes, trasteros y zonas comunes. Antes de instalar, la comunidad debe aprobar la instalación en junta de propietarios. Nosotros preparamos el presupuesto y la propuesta técnica para presentarla, y dejamos el sistema con el acceso limitado a las personas que la comunidad designe.",
+    text: "Accesos, portales, garajes, ascensores, trasteros y zonas comunes. Antes de instalar, la comunidad debe aprobar la instalación en junta de propietarios. Nosotros preparamos el presupuesto y la propuesta técnica para presentarla, y dejamos el sistema con el acceso limitado a las personas que la comunidad designe.",
     points: ["Propuesta técnica y presupuesto para la junta", "Cámaras domo antivandálicas para interiores y garaje", "Encuadre limitado a zonas comunes", "Cartel informativo y acceso restringido a las grabaciones"],
     link: { to: "/BlogArticle/alarmas-comunidades-vecinos", label: "Seguridad en comunidades de vecinos" },
   },
@@ -118,6 +119,31 @@ export default function CamerasBarcelonaGuide({ onRequestQuote }) {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── CTA PRESUPUESTO ── acceso directo a formulario, WhatsApp y teléfono
+          justo después de los segmentos, que es donde se decide el tipo de instalación. */}
+      <section id="presupuesto" style={{ backgroundColor: "#fff", padding: "0 20px 56px" }}>
+        <div className="max-w-5xl mx-auto" style={{ background: "#0A0A1A", borderRadius: 20, padding: "28px 24px" }}>
+          <h2 style={{ ...h2, color: "#fff", fontSize: 22 }}>Solicita presupuesto gratuito para instalar cámaras de seguridad</h2>
+          <p style={{ color: "rgba(255,255,255,0.78)", fontSize: 15, lineHeight: 1.65, margin: "0 0 18px", maxWidth: 680 }}>
+            Cuéntanos si es para un negocio, una comunidad o una vivienda y cuántas zonas quieres cubrir. Te respondemos con una propuesta y, si hace falta, una visita sin compromiso en Barcelona, L'Hospitalet, Sabadell y el resto del área metropolitana.
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            <button type="button" onClick={onRequestQuote} style={{ backgroundColor: "#C53030", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "13px 24px", border: "none", cursor: "pointer" }}>
+              Pedir presupuesto gratis →
+            </button>
+            <a href={`https://wa.me/${businessStats.phone.replace("+", "")}?text=${encodeURIComponent("Hola, quiero presupuesto para instalar cámaras de seguridad.")}`} target="_blank" rel="noopener noreferrer" style={{ backgroundColor: "#25D366", color: "#fff", fontWeight: 800, fontSize: 15, borderRadius: 50, padding: "13px 22px", textDecoration: "none" }}>
+              WhatsApp
+            </a>
+            <a href={`tel:${businessStats.phone}`} style={{ border: "1px solid rgba(255,255,255,0.3)", color: "#fff", fontWeight: 700, fontSize: 15, borderRadius: 50, padding: "12px 22px", textDecoration: "none" }}>
+              Llamar al {businessStats.phoneDisplay}
+            </a>
+          </div>
+          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 13, margin: "16px 0 0" }}>
+            También instalamos en <Link to="/Hospitalet" style={{ color: "#F87171" }}>L'Hospitalet</Link> y <Link to="/camaras-sabadell" style={{ color: "#F87171" }}>Sabadell</Link>.
+          </p>
         </div>
       </section>
 
