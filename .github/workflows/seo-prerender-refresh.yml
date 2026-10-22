@@ -1,0 +1,76 @@
+name: Refresh prerender snapshots for SEO PR 58
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '.github/workflows/seo-prerender-refresh.yml'
+      - 'src/**'
+      - 'public/__prerendered__/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-prerender-pr-58
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.head_ref == 'seo/landing-content-breadcrumbs-oct-2026'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out the PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Check snapshot freshness
+        id: freshness
+        shell: bash
+        run: |
+          if node scripts/prerender-fingerprint.mjs --check; then
+            echo 'needs_refresh=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'needs_refresh=true' >> "$GITHUB_OUTPUT"
+          fi
+      - name: Install dependencies
+        if: steps.freshness.outputs.needs_refresh == 'true'
+        run: npm ci
+      - name: Install pinned Playwright
+        if: steps.freshness.outputs.needs_refresh == 'true'
+        run: npm install --no-save --package-lock=false playwright@1.56.1
+      - name: Install Chromium and OS packages
+        if: steps.freshness.outputs.needs_refresh == 'true'
+        run: npx playwright install --with-deps chromium
+      - name: Regenerate SEO prerender HTML
+        if: steps.freshness.outputs.needs_refresh == 'true'
+        shell: bash
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright').chromium.executablePath())")"
+          npm run prerender
+      - name: Verify SEO snapshots and tests
+        if: steps.freshness.outputs.needs_refresh == 'true'
+        shell: bash
+        run: |
+          node scripts/prerender-fingerprint.mjs --check
+          node scripts/audit-indexability.mjs
+          npm test
+      - name: Commit generated SEO snapshots to feature branch
+        if: steps.freshness.outputs.needs_refresh == 'true'
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/__prerendered/ scripts/prerender-fingerprint.json scripts/prerender-manifest.json vercel.json
+          if git diff --cached --quiet; then
+            echo 'No generated prerender changes; refusing to mark stale fingerprint fixed'
+            exit 1
+          fi
+          git commit -m 'chore(prerender): regenerate SEO snapshots for PR 58'
+          git push origin HEAD:seo/landing-content-breadcrumbs-oct-2026
