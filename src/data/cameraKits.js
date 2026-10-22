@@ -73,20 +73,23 @@ export const CAMERA_KITS = [
     badge: "★ MÁS RECOMENDADO",
     title: "Kit Protección",
     cameras: "4 cámaras",
-    description: "La opción más equilibrada para proteger tu vivienda o negocio.",
+    // Oferta aprobada por la empresa (22/10/2026): 4 Dahua Pro 5 Mpx por
+    // 899 € + IVA con instalación estándar. Precio cerrado dentro de las
+    // condiciones de storageNote; lo que salga de ellas se presupuesta aparte.
+    description: "Tu negocio, siempre bajo control. Consulta tus cámaras desde el móvil.",
     price: "899",
-    isFrom: true,
+    isFrom: false,
     highlight: true,
     ctaLabel: "Solicitar presupuesto",
     items: [
-      "4 cámaras profesionales 4MP",
-      "Grabador NVR profesional",
-      "Disco duro 1TB incluido",
-      "Detección inteligente por Inteligencia Artificial",
-      "Visión nocturna optimizada",
-      "Instalación y configuración certificada incluida",
+      "4 cámaras Dahua Pro de 5 Mpx",
+      "Grabador NVR",
+      "Disco duro de 1 TB incluido",
+      "Alimentadores incluidos",
+      "Acceso a las cámaras desde el móvil",
+      "Instalación estándar incluida",
     ],
-    storageNote: "Cableado incluido según condiciones del kit. Ampliación de almacenamiento disponible según necesidad.",
+    storageNote: "Incluye hasta 10 m de cableado por cámara, sin obras ni entubado especial y con paso de cables accesible. Las adaptaciones adicionales se presupuestan aparte.",
   },
   {
     id: "empresarial",

@@ -43,7 +43,7 @@ export const newArticlesDataA = {
         { "@type": "ListItem", "position": 3, "name": "Precio Instalar Alarma Barcelona", "item": "https://alarmasenbarcelona.com/blog/precio-instalar-alarma-barcelona" }
       ]
     },
-    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947", "addressLocality": "Barcelona", "addressCountry": "ES" }
+    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34624625523", "addressLocality": "Barcelona", "addressCountry": "ES" }
   ]
 }
 </script>
@@ -218,7 +218,7 @@ export const newArticlesDataA = {
         { "@type": "ListItem", "position": 3, "name": "Control Accesos Biométrico Empresas", "item": "https://alarmasenbarcelona.com/blog/control-accesos-biometrico-empresas" }
       ]
     },
-    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947", "addressLocality": "Barcelona", "addressCountry": "ES" }
+    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34624625523", "addressLocality": "Barcelona", "addressCountry": "ES" }
   ]
 }
 </script>
@@ -375,7 +375,7 @@ export const newArticlesDataA = {
         { "@type": "ListItem", "position": 3, "name": "Zonas Riesgo Robo Barcelona 2026", "item": "https://alarmasenbarcelona.com/blog/zonas-riesgo-robo-barcelona-2026" }
       ]
     },
-    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947", "addressLocality": "Barcelona", "addressCountry": "ES" }
+    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34624625523", "addressLocality": "Barcelona", "addressCountry": "ES" }
   ]
 }
 </script>
@@ -523,7 +523,7 @@ export const newArticlesDataA = {
         { "@type": "ListItem", "position": 3, "name": "Mejores Alarmas Casa Barcelona", "item": "https://alarmasenbarcelona.com/blog/mejores-alarmas-casa-barcelona" }
       ]
     },
-    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947", "addressLocality": "Barcelona", "addressCountry": "ES" }
+    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34624625523", "addressLocality": "Barcelona", "addressCountry": "ES" }
   ]
 }
 </script>
@@ -670,7 +670,7 @@ export const newArticlesDataA = {
         { "@type": "ListItem", "position": 3, "name": "Alarmas Sin Cuota Mensual Barcelona", "item": "https://alarmasenbarcelona.com/blog/alarmas-sin-cuota-mensual" }
       ]
     },
-    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34638109947", "addressLocality": "Barcelona", "addressCountry": "ES" }
+    { "@type": "LocalBusiness", "name": "Premium Tech Security", "telephone": "+34624625523", "addressLocality": "Barcelona", "addressCountry": "ES" }
   ]
 }
 </script>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { ALARM_KITS } from "@/data/alarmKits";
+import { businessStats } from "@/lib/businessStats";
 
 // lowPrice/highPrice del JSON-LD se calculan desde la fuente única de
 // datos en vez de hardcodearse aquí — así nunca vuelven a quedar
@@ -62,11 +63,12 @@ export default function CityLandingSEO({ path }) {
     "@graph": [
       ...(isBarcelona ? [{
         "@type": "LocalBusiness",
-        "@id": `${seo.canonical}#business`,
+        "@id": "https://alarmasenbarcelona.com/#business",
         "name": "Premium Tech Security",
         "description": seo.description,
         "url": seo.canonical,
-        "telephone": "+34638109947",
+        "telephone": businessStats.gbpPhone,
+        "contactPoint": { "@type": "ContactPoint", "telephone": "+34638109947", "contactType": "sales", "areaServed": "ES", "availableLanguage": ["Spanish", "Catalan"] },
         "email": "tcnpremium@gmail.com",
         "address": {
           "@type": "PostalAddress",
@@ -76,9 +78,10 @@ export default function CityLandingSEO({ path }) {
           "postalCode": "08026",
           "addressCountry": "ES"
         },
-        "openingHours": "Mo-Sa 08:00-20:00",
+        "openingHoursSpecification": businessStats.openingHoursSpecification,
+        "geo": businessStats.geo,
         "priceRange": "€€",
-        "hasMap": "https://maps.google.com/maps?cid=5715602764533889179",
+        "hasMap": businessStats.mapsUrl,
         "sameAs": [
           "https://www.instagram.com/premiumtechsecurity",
           "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"

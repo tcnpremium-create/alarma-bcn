@@ -50,6 +50,21 @@ export const businessStats = {
   },
   addressText: "Carrer de Coll i Vehí, 141, 08026 Barcelona",
 
+  // Ficha de Google Business Profile de Barcelona (Coll i Vehí 141),
+  // cid 4037912173356516535. La de Polinyà (Av. de Sentmenat, 76) es
+  // otra ficha: no enlazarla como mapa de esta dirección.
+  mapsUrl: "https://maps.google.com/?cid=4037912173356516535",
+  // Teléfono publicado en esa ficha. El JSON-LD LocalBusiness usa este para
+  // que web y ficha coincidan (NAP); el 638 sigue para WhatsApp y formularios.
+  gbpPhone: "+34624625523",
+  gbpPhoneDisplay: "624 62 55 23",
+  geo: { "@type": "GeoCoordinates", latitude: 41.4165711, longitude: 2.1845199 },
+  // Horario publicado en la ficha de Google (comprobado 22/10/2026).
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "20:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "09:00", closes: "17:00" },
+  ],
+
   googleRating: "4.9",
   googleReviewCount: "23",
 

@@ -16,7 +16,8 @@ const sobreSchema = {
   "name": "Premium Tech Security",
   "description": `Empresa especializada en instalación de sistemas de seguridad en Barcelona y Catalunya. ${businessStats.experienceText} en alarmas, cámaras, videoporteros y control de accesos.`,
   "url": "https://alarmasenbarcelona.com/SobreNosotros",
-  "telephone": "+34638109947",
+  "telephone": businessStats.gbpPhone,
+  "contactPoint": { "@type": "ContactPoint", "telephone": "+34638109947", "contactType": "sales", "areaServed": "ES", "availableLanguage": ["Spanish", "Catalan"] },
   "email": "tcnpremium@gmail.com",
   "areaServed": "Barcelona, Catalunya",
   "priceRange": "€€",
@@ -28,6 +29,10 @@ const sobreSchema = {
     "addressRegion": "Catalunya",
     "addressCountry": "ES"
   },
+  "@id": "https://alarmasenbarcelona.com/#business",
+  "geo": businessStats.geo,
+  "hasMap": businessStats.mapsUrl,
+  "openingHoursSpecification": businessStats.openingHoursSpecification,
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Servicios de Seguridad",

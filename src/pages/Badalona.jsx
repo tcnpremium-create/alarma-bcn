@@ -1,3 +1,4 @@
+import GoogleReviewsList from "@/components/landing/GoogleReviewsList";
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
@@ -149,42 +150,8 @@ export default function Badalona() {
           </div>
 
           <div className="mt-16 bg-[#F8F9FC] rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-[#0A1628] mb-6">Opiniones de Clientes en Badalona</h3>
-            <div className="space-y-4 mb-8">
-              <div className="p-6 bg-white rounded-xl border-l-4 border-[#E63946]">
-                <div className="flex items-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-[#E63946]">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-3">
-                  "Vivo en Montigalà y necesitaba seguridad para mi casa. La instalación fue rapidísima y ahora controlo todo desde el móvil. Muy recomendables."
-                </p>
-                <p className="text-sm font-semibold text-[#0A1628]">— Laura S., Montigalà (Badalona)</p>
-              </div>
-              <div className="p-6 bg-white rounded-xl border-l-4 border-gray-300">
-                <div className="flex items-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-[#E63946]">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-3">
-                  "Instalaron alarma y 4 cámaras en mi comercio del centro de Badalona. Profesionales, rápidos y el sistema funciona perfecto."
-                </p>
-                <p className="text-sm font-semibold text-[#0A1628]">— Carlos M., Centre (Badalona)</p>
-              </div>
-              <div className="p-6 bg-white rounded-xl border-l-4 border-gray-300">
-                <div className="flex items-center gap-1 mb-2">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-[#E63946]">★</span>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-3">
-                  "Tengo piso cerca del mar y me preocupaba la okupación. El sistema AJAX me da tranquilidad total aunque esté de viaje."
-                </p>
-                <p className="text-sm font-semibold text-[#0A1628]">— Isabel R., La Pau (Badalona)</p>
-              </div>
-            </div>
+            <h3 className="text-2xl font-bold text-[#0A1628] mb-6">Opiniones de clientes</h3>
+            <GoogleReviewsList topic="camaras" />
             
             <h3 className="text-2xl font-bold text-[#0A1628] mb-6 text-center">
               Solicita tu Presupuesto para Badalona

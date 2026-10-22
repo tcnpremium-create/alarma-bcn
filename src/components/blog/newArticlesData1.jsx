@@ -46,7 +46,7 @@ export const newArticlesData1 = {
     {
       "@type": "LocalBusiness",
       "name": "Premium Tech Security",
-      "telephone": "+34638109947",
+      "telephone": "+34624625523",
       "addressLocality": "Barcelona",
       "addressCountry": "ES"
     }
@@ -217,7 +217,7 @@ export const newArticlesData1 = {
     {
       "@type": "LocalBusiness",
       "name": "Premium Tech Security",
-      "telephone": "+34638109947",
+      "telephone": "+34624625523",
       "addressLocality": "Barcelona",
       "addressCountry": "ES"
     }
@@ -380,7 +380,7 @@ export const newArticlesData1 = {
     {
       "@type": "LocalBusiness",
       "name": "Premium Tech Security",
-      "telephone": "+34638109947",
+      "telephone": "+34624625523",
       "addressLocality": "Barcelona",
       "addressCountry": "ES"
     }
@@ -534,7 +534,7 @@ export const newArticlesData1 = {
     {
       "@type": "LocalBusiness",
       "name": "Premium Tech Security",
-      "telephone": "+34638109947",
+      "telephone": "+34624625523",
       "addressLocality": "Barcelona",
       "addressCountry": "ES"
     }
@@ -685,7 +685,7 @@ export const newArticlesData1 = {
     {
       "@type": "LocalBusiness",
       "name": "Premium Tech Security",
-      "telephone": "+34638109947",
+      "telephone": "+34624625523",
       "addressLocality": "Barcelona",
       "addressCountry": "ES"
     }

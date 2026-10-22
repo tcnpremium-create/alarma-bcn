@@ -1,3 +1,4 @@
+import GoogleReviewsList from "@/components/landing/GoogleReviewsList";
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -171,50 +172,9 @@ export default function CornellaPage() {
         <section className="py-20 bg-gray-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0A1628] mb-12 text-center">
-              Opiniones de Clientes en Cornellà
+              Opiniones de clientes
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                {
-                  name: "María G.",
-                  barrio: "Cornellà Centre",
-                  text: "Instalación rápida y profesional. El técnico me explicó todo perfectamente. Muy contenta con el servicio.",
-                  rating: 5
-                },
-                {
-                  name: "Josep M.",
-                  barrio: "Almeda",
-                  text: "Tengo alarma en mi negocio desde hace un año. Funciona perfectamente y el servicio de atención es excelente.",
-                  rating: 5
-                },
-                {
-                  name: "Laura S.",
-                  barrio: "Sant Ildefons",
-                  text: "Muy profesionales. Me asesoraron bien sobre qué sistema necesitaba para mi casa. Totalmente recomendable.",
-                  rating: 5
-                }
-              ].map((testimonio, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className="bg-white rounded-2xl p-6 shadow-lg"
-                >
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonio.rating)].map((_, i) => (
-                      <span key={i} className="text-yellow-400 text-xl">★</span>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 mb-4 italic">"{testimonio.text}"</p>
-                  <div>
-                    <div className="font-semibold text-[#0A1628]">{testimonio.name}</div>
-                    <div className="text-sm text-gray-500">{testimonio.barrio}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+            <GoogleReviewsList topic="camaras" className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" />
           </div>
         </section>
 
@@ -222,11 +182,11 @@ export default function CornellaPage() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <h2 className="text-3xl lg:text-4xl font-bold text-[#0A1628] mb-8 text-center">
-              Nuestra Ubicación en Cornellà
+              Zona de servicio en Cornellà
             </h2>
             <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-xl h-96">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11972.345678!2d2.0745!3d41.3579!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4981c6b3c3d5b%3A0x4c8a8c8c8c8c8c8c!2sCornell%C3%A0%20de%20Llobregat%2C%20Barcelona!5e0!3m2!1ses!2ses!4v1234567890"
+                src="https://www.google.com/maps?q=Cornell%C3%A0%20de%20Llobregat&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

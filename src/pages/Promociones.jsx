@@ -13,9 +13,9 @@ const VALID_TABS = ["alarmas", "camaras", "controles"];
 const promoSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": "Kits de Seguridad Barcelona - Alarmas y Cámaras | Alarmas BCN",
+  "name": "Kits de alarmas y cámaras de seguridad en Barcelona",
   "description": "Kits de alarmas Ajax y videovigilancia profesional con instalación incluida en Barcelona.",
-  "url": "https://www.alarmasenbarcleona.com/Promociones",
+  "url": "https://alarmasenbarcelona.com/Promociones",
   "itemListElement": [
     ...ALARM_KITS.map((kit, i) => ({
       "@type": "ListItem",
@@ -29,7 +29,8 @@ const promoSchema = {
           "price": kit.price.replace(".", ""),
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "seller": { "@type": "Organization", "name": "Alarmas BCN" },
+          "seller": { "@type": "Organization", "name": "Premium Tech Security" },
+          "priceSpecification": { "@type": "PriceSpecification", "price": kit.price.replace(".", ""), "priceCurrency": "EUR", "valueAddedTaxIncluded": false },
         },
       },
     })),
@@ -39,12 +40,14 @@ const promoSchema = {
       "item": {
         "@type": "Product",
         "name": `${kit.title} — ${kit.cameras}`,
+        "description": kit.description,
         "offers": {
           "@type": "Offer",
           "price": kit.price.replace(".", ""),
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
-          "seller": { "@type": "Organization", "name": "Alarmas BCN" },
+          "seller": { "@type": "Organization", "name": "Premium Tech Security" },
+          "priceSpecification": { "@type": "PriceSpecification", "price": kit.price.replace(".", ""), "priceCurrency": "EUR", "valueAddedTaxIncluded": false },
         },
       },
     })),
@@ -72,14 +75,14 @@ export default function Promociones() {
   return (
     <div style={{ minHeight: "100vh", background: BG, color: TEXT }}>
       <Helmet>
-        <title>Kits de Alarmas y Cámaras de Seguridad Barcelona | Alarmas BCN</title>
+        <title>Kits de Alarmas y Cámaras de Seguridad Barcelona | Premium Tech</title>
         <meta
           name="description"
           content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
         />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Promociones" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kits de Alarmas y Cámaras de Seguridad Barcelona | Alarmas BCN" />
+        <meta property="og:title" content="Kits de Alarmas y Cámaras de Seguridad Barcelona | Premium Tech" />
         <meta property="og:description" content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47" />
         <meta property="og:url" content="https://alarmasenbarcelona.com/Promociones" />
         <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />

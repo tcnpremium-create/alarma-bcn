@@ -8,6 +8,13 @@ import { motion } from "framer-motion";
 import { Shield, Camera, Fingerprint, MonitorPlay, Bell, Home, Building2, CheckCircle, Phone, Mail, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { businessStats } from "@/lib/businessStats";
+import { GOOGLE_REVIEWS } from "@/data/googleReviews";
+
+// Solo reseñas reales de Google que hablan de ese servicio (sin inventar).
+const realReviews = (topic) =>
+  GOOGLE_REVIEWS.filter((r) => r.topics.includes(topic)).slice(0, 2)
+    .map((r) => ({ text: r.text, author: r.name, role: `Reseña en Google · ${r.date}` }));
+
 
 
 const servicios = [
@@ -26,18 +33,7 @@ const servicios = [
     "Sistema antijamming integrado",
     "Certificación Grado 2"
   ],
-  testimonios: [
-    {
-      text: "Después de instalar AJAX en nuestra vivienda en Gràcia, dormimos mucho más tranquilos. La app es súper intuitiva y recibimos las alertas al instante.",
-      author: "María G.",
-      role: "Cliente residencial - Gràcia"
-    },
-    {
-      text: "Llevo 2 años con su sistema y cero falsas alarmas. Tengo dos perros grandes y el sistema los ignora perfectamente. Muy recomendable.",
-      author: "Carlos M.",
-      role: "Cliente residencial - Sant Cugat"
-    }
-  ],
+  testimonios: realReviews("alarmas"),
   tecnologia: "AJAX Systems, DSC, Paradox",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/809d1e8d7_IMG_8315.jpeg",
   precio: "Desde 399€"
@@ -57,13 +53,7 @@ const servicios = [
     "Analítica de vídeo con IA",
     "Resistencia IP67 exterior"
   ],
-  testimonios: [
-    {
-      text: "Instalé 8 cámaras Hikvision en mi negocio y la calidad de imagen es impresionante, incluso de noche. Puedo ver todo desde el móvil en tiempo real.",
-      author: "Josep T.",
-      role: "Propietario comercio - Hospitalet"
-    }
-  ],
+  testimonios: realReviews("camaras"),
   tecnologia: "HIKVISION, DAHUA, AJAX",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/38f56c395_IMG_8316.jpeg",
   precio: null
@@ -83,13 +73,7 @@ const servicios = [
     "Multi-vivienda compatible",
     "Intercomunicación interna"
   ],
-  testimonios: [
-    {
-      text: "Nunca más me pierdo un paquete. Veo quién llama aunque esté en el trabajo y puedo abrir la puerta remotamente. Una maravilla.",
-      author: "Laura P.",
-      role: "Cliente residencial - Eixample"
-    }
-  ],
+  testimonios: [],
   tecnologia: "FERMAX, TEGUI, COMELIT",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/7ec95bf45_IMG_8318.jpeg",
   precio: null
@@ -109,13 +93,7 @@ const servicios = [
     "Hasta 10,000 usuarios",
     "Modo offline disponible"
   ],
-  testimonios: [
-    {
-      text: "Gestionamos 120 empleados con el sistema de control de accesos. Generamos informes automáticos para nóminas. Nos ahorra horas cada mes.",
-      author: "David R.",
-      role: "Responsable RRHH - Empresa 22@"
-    }
-  ],
+  testimonios: [],
   tecnologia: "ZKTeco, HIKVISION, FERMAX",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/118acf3ea_IMG_8317.jpeg",
   precio: null
@@ -135,13 +113,7 @@ const servicios = [
     "Alerta preventiva inmediata",
     "Certificación exterior IP65"
   ],
-  testimonios: [
-    {
-      text: "Instalamos sensores perimetrales en nuestra finca y ahora detectamos cualquier aproximación antes de que lleguen a la casa. Seguridad total.",
-      author: "Antonio F.",
-      role: "Propietario finca - Vallès"
-    }
-  ],
+  testimonios: [],
   tecnologia: "AJAX, OPTEX, HIKVISION",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/185a69b5e_IMG_8319.jpeg",
   precio: null
@@ -161,13 +133,7 @@ const servicios = [
     "Integración con alarma",
     "Programación horaria"
   ],
-  testimonios: [
-    {
-      text: "Con una sola app controlo alarma, cámaras, luces y persianas. Cuando salgo de casa, todo se apaga automáticamente. Comodidad total.",
-      author: "Mireia S.",
-      role: "Cliente residencial - Pedralbes"
-    }
-  ],
+  testimonios: [],
   tecnologia: "KNX, AJAX, SHELLY, SONOFF",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/db886e567_IMG_8320.png",
   precio: null
@@ -187,13 +153,7 @@ const servicios = [
     "Registro completo de accesos",
     "Cumplimiento normativa RGPD"
   ],
-  testimonios: [
-    {
-      text: "Instalamos el sistema completo en nuestra comunidad de 40 viviendas. Acabamos con los problemas de okupación y el parking está completamente vigilado.",
-      author: "Manuel L.",
-      role: "Presidente comunidad - Sants"
-    }
-  ],
+  testimonios: realReviews("comunidades"),
   tecnologia: "FERMAX, HIKVISION, CAME",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/a23233802_IMG_8321.jpeg",
   precio: null
@@ -233,7 +193,7 @@ export default function Servicios() {
           "provider": {
             "@type": "LocalBusiness",
             "name": "Premium Tech Security",
-            "telephone": "+34638109947",
+            "telephone": "+34624625523",
             "address": {
               "@type": "PostalAddress",
               "addressLocality": "Barcelona",
@@ -245,7 +205,7 @@ export default function Servicios() {
         }
       }))
     },
-    "telephone": "+34638109947",
+    "telephone": "+34624625523",
     "priceRange": "€€",
     "address": {
       "@type": "PostalAddress",

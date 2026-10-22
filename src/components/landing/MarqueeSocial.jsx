@@ -1,14 +1,9 @@
 import React from "react";
 import { businessStats } from "@/lib/businessStats";
+import { GOOGLE_REVIEWS, GOOGLE_REVIEWS_URL } from "@/data/googleReviews";
 
-const REVIEWS = [
-  { stars: 5, text: "Instalaron 4 cámaras HD en nuestra comunidad en un solo día. Todo perfecto, app configurada y precio cerrado desde el principio.", name: "Adam H.", location: "Sants, Barcelona" },
-  { stars: 5, text: "Necesitaba cámaras para mi local sin cuotas mensuales. Vinieron el mismo día, en 2 horas funcionando desde el móvil.", name: "Carlos R.", location: "Eixample, Barcelona" },
-  { stars: 5, text: "Buscaba instalador en Hospitalet y vinieron el mismo día. Presupuesto sin sorpresas, instalación impecable.", name: "Camila Y.", location: "Hospitalet" },
-  { stars: 5, text: "Alarma Ajax en mi negocio de Sabadell. Profesionales, rápidos y sin letra pequeña. La app funciona perfectamente.", name: "Lorena M.", location: "Sabadell" },
-  { stars: 5, text: "Cámaras para el portal y azotea de nuestra comunidad en Poblenou. RGPD gestionado por ellos. Muy recomendables.", name: "Oier K.", location: "Poblenou, Barcelona" },
-  { stars: 5, text: "Vivimos en un ático en Sarrià con terraza y patio trasero. Nos protegieron los puntos débiles sin obras y sin cuotas.", name: "Marta S.", location: "Sarrià, Barcelona" },
-];
+// Solo reseñas reales de la ficha de Google (ver src/data/googleReviews.js).
+const REVIEWS = GOOGLE_REVIEWS.map((r) => ({ stars: r.stars, text: r.text, name: r.name, location: `Reseña en Google · ${r.date}` }));
 
 function Stars({ count }) {
   return (
@@ -76,7 +71,7 @@ export default function MarqueeSocial() {
         <div style={{ display: "inline-flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
           <span style={{ color: "#F59E0B", fontSize: 18, letterSpacing: 2 }}>★★★★★</span>
           <span style={{ color: "#fff", fontWeight: 900, fontSize: 22 }}>{businessStats.googleRating}</span>
-          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 14 }}>/ 5 en Google</span>
+          <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 14 }}>/ 5 en Google · {businessStats.googleReviewCount} reseñas</span>
         </div>
         <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, margin: 0 }}>
           {businessStats.installationsText}
@@ -93,7 +88,7 @@ export default function MarqueeSocial() {
       {/* CTA */}
       <div style={{ textAlign: "center", padding: "0 20px" }}>
         <a
-          href="https://share.google/trjJFOqRhcldWdEbg"
+          href={GOOGLE_REVIEWS_URL}
           target="_blank"
           rel="noopener noreferrer"
           style={{

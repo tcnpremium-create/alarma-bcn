@@ -24,11 +24,12 @@ export default function LocalitySEO({
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": `Premium Tech Security - Alarmas ${city}`,
+    "name": "Premium Tech Security",
     "image": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/b61d56d39_UNETEALIMPERIO.png",
-    "@id": pageUrl || `https://alarmasenbarcelona.com/${city.toLowerCase()}`,
+    "@id": "https://alarmasenbarcelona.com/#business",
     "url": pageUrl || `https://alarmasenbarcelona.com/${city.toLowerCase()}`,
-    "telephone": "+34638109947",
+    "telephone": businessStats.gbpPhone,
+    "contactPoint": { "@type": "ContactPoint", "telephone": "+34638109947", "contactType": "sales", "areaServed": "ES", "availableLanguage": ["Spanish", "Catalan"] },
     "email": "tcnpremium@gmail.com",
     "priceRange": "€€",
     "address": {
@@ -39,30 +40,13 @@ export default function LocalitySEO({
       "addressRegion": province,
       "addressCountry": "ES"
     },
-    "geo": lat && lng ? {
-      "@type": "GeoCoordinates",
-      "latitude": lat,
-      "longitude": lng
-    } : undefined,
+    "geo": businessStats.geo,
     "areaServed": [
       { "@type": "City", "name": city },
       { "@type": "State", "name": "Catalunya" }
     ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "20:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "10:00",
-        "closes": "14:00"
-      }
-    ],
-    "hasMap": "https://maps.google.com/maps?cid=5715602764533889179",
+    "openingHoursSpecification": businessStats.openingHoursSpecification,
+    "hasMap": businessStats.mapsUrl,
     "serviceArea": {
       "@type": "GeoCircle",
       "geoMidpoint": lat && lng ? {

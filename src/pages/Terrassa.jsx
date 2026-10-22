@@ -1,3 +1,4 @@
+import GoogleReviewsList from "@/components/landing/GoogleReviewsList";
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
@@ -148,13 +149,7 @@ export default function Terrassa() {
           </div>
 
           <div className="mt-16 bg-[#F8F9FC] rounded-2xl p-8">
-            <div className="mb-6 p-6 bg-white rounded-xl border-l-4 border-[#E63946]">
-              <p className="text-sm text-gray-500 mb-2">Opinión verificada</p>
-              <p className="text-gray-700 italic mb-3">
-                "Protegieron mi nave industrial en Can Parellada con un sistema completo. La instalación fue impecable y el precio muy competitivo."
-              </p>
-              <p className="text-sm font-semibold text-[#0A1628]">— Marc T., Terrassa</p>
-            </div>
+            <GoogleReviewsList topic="camaras" count={2} className="space-y-4 mb-6" />
             
             <h3 className="text-2xl font-bold text-[#0A1628] mb-6 text-center">
               Pide tu Presupuesto Gratis para Terrassa

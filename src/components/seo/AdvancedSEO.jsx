@@ -41,7 +41,8 @@ export default function AdvancedSEO({
         "image": ogImage,
         "logo": LOGO_URL,
         "url": SITE_URL,
-        "telephone": "+34638109947",
+        "telephone": businessStats.gbpPhone,
+        "contactPoint": { "@type": "ContactPoint", "telephone": "+34638109947", "contactType": "sales", "areaServed": "ES", "availableLanguage": ["Spanish", "Catalan"] },
         "email": "tcnpremium@gmail.com",
         "priceRange": "€€",
         "currenciesAccepted": "EUR",
@@ -54,10 +55,9 @@ export default function AdvancedSEO({
           "postalCode": "08026",
           "addressCountry": "ES"
         },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "openingHoursSpecification": businessStats.openingHoursSpecification,
+        "geo": businessStats.geo,
+        "hasMap": businessStats.mapsUrl,
             "opens": "09:00",
             "closes": "19:00"
           },

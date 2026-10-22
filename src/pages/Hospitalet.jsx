@@ -1,3 +1,5 @@
+import GoogleReviewsList from "@/components/landing/GoogleReviewsList";
+import { Link } from "react-router-dom";
 import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Shield, CheckCircle } from "lucide-react";
@@ -12,8 +14,8 @@ export default function Hospitalet() {
     <div className="min-h-screen bg-white">
       <LocalitySEO
         city="L'Hospitalet de Llobregat"
-        title="Alarmas en L'Hospitalet | Seguridad Profesional 24/7"
-        description="Instalación de alarmas en L'Hospitalet de Llobregat. Sistemas AJAX, videovigilancia 4K, control de accesos. Técnicos certificados. Presupuesto gratuito ☎ 638 10 99 47."
+        title="Cámaras de Seguridad y Alarmas en L'Hospitalet | Premium Tech"
+        description="Instalación de cámaras de seguridad y alarmas Ajax en L'Hospitalet de Llobregat para negocios, comunidades y viviendas. Presupuesto gratis ☎ 638 10 99 47."
         keywords="alarmas Hospitalet, instalación alarmas Hospitalet, sistemas seguridad Hospitalet, cámaras seguridad Hospitalet, videovigilancia Hospitalet Llobregat"
         canonicalUrl="https://alarmasenbarcelona.com/Hospitalet"
         lat={41.3598}
@@ -34,7 +36,7 @@ export default function Hospitalet() {
               <span className="text-sm">Catalunya • L'Hospitalet de Llobregat</span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Instalación de Alarmas en L'Hospitalet de Llobregat
+              Cámaras de Seguridad y Alarmas en L'Hospitalet de Llobregat
             </h1>
             <p className="text-xl text-white/70 max-w-3xl">
               Protección profesional para hogares y negocios en L'Hospitalet. Sistemas de seguridad con instalación en 24-48h.
@@ -97,7 +99,7 @@ export default function Hospitalet() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
-                <span><strong>Videovigilancia profesional:</strong> Cámaras 4K con visión nocturna y grabación en la nube.</span>
+                <span><strong>Cámaras de seguridad:</strong> Dahua y Hikvision con grabador en el propio local y acceso desde el móvil. <Link to="/camaras-barcelona" className="text-[#E63946] font-semibold">Ver kits de cámaras</Link>.</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#E63946] mt-1">•</span>
@@ -119,7 +121,7 @@ export default function Hospitalet() {
                 <h4 className="text-2xl font-bold">Instalación Express en L'Hospitalet</h4>
               </div>
               <p className="text-white/80 mb-6">
-                Nos desplazamos a cualquier barrio de L'Hospitalet en menos de 2 horas. Instalación completa y funcional en 24-48h sin necesidad de obras.
+                Damos servicio en todos los barrios de L'Hospitalet. Una vez aceptado el presupuesto, la instalación habitual se hace en 24-48 h y, en la mayoría de casos, sin obras.
               </p>
               <a 
                 href="tel:+34638109947"
@@ -157,13 +159,7 @@ export default function Hospitalet() {
           </div>
 
           <div className="mt-16 bg-[#F8F9FC] rounded-2xl p-8">
-            <div className="mb-6 p-6 bg-white rounded-xl border-l-4 border-[#E63946]">
-              <p className="text-sm text-gray-500 mb-2">Testimonio verificado</p>
-              <p className="text-gray-700 italic mb-3">
-                "Instalaron mi alarma en el negocio de La Florida en un solo día. Funcionamiento perfecto y atención muy profesional."
-              </p>
-              <p className="text-sm font-semibold text-[#0A1628]">— Javier R., L'Hospitalet de Llobregat</p>
-            </div>
+            <GoogleReviewsList topic="camaras" count={2} className="space-y-4 mb-6" />
             
             <h3 className="text-2xl font-bold text-[#0A1628] mb-6 text-center">
               Solicita tu Presupuesto Gratis para L'Hospitalet
