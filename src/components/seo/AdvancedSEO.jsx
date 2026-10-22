@@ -168,17 +168,30 @@ export default function AdvancedSEO({
     ]
   };
 
+  // Breadcrumb real de la URL canónica: la home tiene un nivel, las fichas dos.
+  // Antes todas las páginas emitían únicamente "Inicio", aunque su URL
+  // fuera /camaras-barcelona, /alarmas-sabadell, etc.
+  const isHomepage = new URL(canonical).pathname === "/";
+  const breadcrumbItems = [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": SITE_URL
+    }
+  ];
+  if (!isHomepage) {
+    breadcrumbItems.push({
+      "@type": "ListItem",
+      "position": 2,
+      "name": title.split("|")[0].trim(),
+      "item": canonical
+    });
+  }
   const breadcrumbData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Inicio",
-        "item": SITE_URL
-      }
-    ]
+    "itemListElement": breadcrumbItems
   };
 
   return (
