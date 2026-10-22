@@ -1,5 +1,5 @@
 {
- "combined": "b82852a6e678050c",
+ "combined": "0273f06c38db6f77",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -38,7 +38,7 @@
   "src/components/landing/BlogHighlights.jsx": "992a7d79191b698a",
   "src/components/landing/BlogPreview.jsx": "51b173d81d3e327d",
   "src/components/landing/Breadcrumbs.jsx": "820f99f3efcdd529",
-  "src/components/landing/CameraCityTemplate.jsx": "e9f9d59ac0ab81da",
+  "src/components/landing/CameraCityTemplate.jsx": "95371622c9e91ff1",
   "src/components/landing/CameraKitsGrid.jsx": "3e489a287b7c655d",
   "src/components/landing/CameraLocalSections.jsx": "664cb7c8b83e3e75",
   "src/components/landing/CamerasBarcelonaGuide.jsx": "351f41ff853e8e00",
@@ -58,7 +58,7 @@
   "src/components/landing/FooterSection.jsx": "d8aafb86d2a587dc",
   "src/components/landing/GoogleMapEmbed.jsx": "ab7503cf70d407e1",
   "src/components/landing/GoogleReviewsList.jsx": "a6f2dc97fd45e19e",
-  "src/components/landing/HeroProf.jsx": "7e96ab0c6720f972",
+  "src/components/landing/HeroProf.jsx": "3b7d03142bc06fd0",
   "src/components/landing/HeroSection.jsx": "dddab067baa77a22",
   "src/components/landing/HomeAccessBlock.jsx": "0d9080fab17f7860",
   "src/components/landing/HomeAlarmsBlock.jsx": "71ec5bea943097aa",
@@ -100,7 +100,7 @@
   "src/components/magicui/marquee.jsx": "f7cf12600ef2baf7",
   "src/components/magicui/neon-gradient-card.jsx": "c39eb5d09d8770fc",
   "src/components/magicui/shiny-button.jsx": "c703658d3ae02dea",
-  "src/components/seo/AdvancedSEO.jsx": "1175fa953a055b7e",
+  "src/components/seo/AdvancedSEO.jsx": "1e6888e7b100744f",
   "src/components/seo/CityLandingSEO.jsx": "19131871211b06c1",
   "src/components/seo/LocalitySEO.jsx": "29886024bdbb80ba",
   "src/components/seo/PageSEO.jsx": "2dd935134d5f30ce",
