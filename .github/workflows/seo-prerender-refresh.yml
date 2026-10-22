@@ -67,7 +67,17 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/__prerendered/ scripts/prerender-fingerprint.json scripts/prerender-manifest.json vercel.json
+          test -f public/__prerendered__/home.html
+          echo 'Diagnostic: generated HTML and Git tracking:'
+          ls -ld public/__prerendered__
+          git status --short | head -60
+          git ls-files public/__prerendered__ | head -5
+          git add -A
+          git diff --cached --name-only > /tmp/seo-changed-paths.txt
+          if grep -E -v '^(public/__prerendered__/[^/]+\.html|scripts/prerender-fingerprint\.json|scripts/prerender-manifest\.json|vercel\.json) /tmp/seo-changed-paths.txt; then
+            echo 'Unexpected changes staged; refusing unsafe commit.'
+            exit 1
+          fi
           if git diff --cached --quiet; then
             echo 'No generated prerender changes; refusing to mark stale fingerprint fixed'
             exit 1
