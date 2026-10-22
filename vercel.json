@@ -242,6 +242,10 @@
   ],
   "rewrites": [
     {
+      "source": "/AvisoLegal",
+      "destination": "/__prerendered__/AvisoLegal.html"
+    },
+    {
       "source": "/Badalona",
       "destination": "/__prerendered__/Badalona.html"
     },
@@ -390,6 +394,10 @@
       "destination": "/__prerendered__/Contact.html"
     },
     {
+      "source": "/Cookies",
+      "destination": "/__prerendered__/Cookies.html"
+    },
+    {
       "source": "/Cornella",
       "destination": "/__prerendered__/Cornella.html"
     },
@@ -416,6 +424,10 @@
     {
       "source": "/Mataro",
       "destination": "/__prerendered__/Mataro.html"
+    },
+    {
+      "source": "/Privacidad",
+      "destination": "/__prerendered__/Privacidad.html"
     },
     {
       "source": "/Promociones",
@@ -504,18 +516,6 @@
     {
       "source": "/videoporteros",
       "destination": "/__prerendered__/videoporteros.html"
-    },
-    {
-      "source": "/AvisoLegal",
-      "destination": "/__prerendered__/AvisoLegal.html"
-    },
-    {
-      "source": "/Cookies",
-      "destination": "/__prerendered__/Cookies.html"
-    },
-    {
-      "source": "/Privacidad",
-      "destination": "/__prerendered__/Privacidad.html"
     },
     {
       "source": "/AdminLeads",
