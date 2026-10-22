@@ -45,8 +45,18 @@ export default function Contact() {
                   <Phone className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">Teléfono</p>
+                  <p className="text-sm text-gray-500 mb-1">Teléfono y WhatsApp</p>
                   <p className="text-lg font-semibold text-[#0A1628]">638 10 99 47</p>
+                </div>
+              </a>
+
+              <a href={`tel:${businessStats.gbpPhone}`} className="flex items-start gap-4 p-5 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors">
+                <div className="bg-[#C53030] p-3 rounded-lg flex-shrink-0">
+                  <Phone className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Teléfono (oficina)</p>
+                  <p className="text-lg font-semibold text-[#0A1628]">{businessStats.gbpPhoneDisplay}</p>
                 </div>
               </a>
 

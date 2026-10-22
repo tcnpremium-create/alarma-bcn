@@ -58,16 +58,6 @@ export default function AdvancedSEO({
         "openingHoursSpecification": businessStats.openingHoursSpecification,
         "geo": businessStats.geo,
         "hasMap": businessStats.mapsUrl,
-            "opens": "09:00",
-            "closes": "19:00"
-          },
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": "Saturday",
-            "opens": "10:00",
-            "closes": "14:00"
-          }
-        ],
         "areaServed": [
           { "@type": "City", "name": "Barcelona" },
           { "@type": "City", "name": "Badalona" },

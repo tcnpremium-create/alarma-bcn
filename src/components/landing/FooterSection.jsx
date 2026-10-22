@@ -58,6 +58,8 @@ export default function FooterSection() {
             <address className="not-italic text-white/60 text-sm leading-relaxed mt-4 space-y-1">
               <p>{businessStats.addressText}</p>
               <p><a href={`tel:${businessStats.phone}`} className="hover:text-white transition-colors">{businessStats.phoneDisplay}</a></p>
+              <p><a href={`tel:${businessStats.gbpPhone}`} className="hover:text-white transition-colors">{businessStats.gbpPhoneDisplay}</a></p>
+              <p><a href={businessStats.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Ver en Google Maps · {businessStats.googleRating}★ ({businessStats.googleReviewCount} reseñas)</a></p>
               <p><a href={`mailto:${businessStats.email}`} className="hover:text-white transition-colors">{businessStats.email}</a></p>
             </address>
           </div>
