@@ -8,9 +8,9 @@ const SLIDES = [
     img: "/images/camaras-variedad-exterior.webp",
     pos: "center center",
     badge: "Cámaras de seguridad",
-    h1a: "Instalación de Cámaras de Seguridad",
+    h1a: "Instalación de Alarmas y Cámaras",
     h1b: "en Barcelona",
-    sub: "Instalamos cámaras Hikvision y Dahua en viviendas, negocios y comunidades. Grabas en tu propio disco, ves las imágenes desde el móvil y el presupuesto es gratis.",
+    sub: "Instalamos alarmas Ajax y cámaras Hikvision y Dahua para viviendas, negocios y comunidades. Control desde tu móvil y presupuesto gratuito.",
   },
   {
     img: "/images/hero-intruder.jpeg",
