@@ -74,10 +74,12 @@ jobs:
           git ls-files public/__prerendered__ | head -5
           git add -A
           git diff --cached --name-only > /tmp/seo-changed-paths.txt
-          if grep -E -v '^(public/__prerendered__/[^/]+\.html|scripts/prerender-fingerprint\.json|scripts/prerender-manifest\.json|vercel\.json) /tmp/seo-changed-paths.txt; then
-            echo 'Unexpected changes staged; refusing unsafe commit.'
-            exit 1
-          fi
+          while IFS= read -r staged_path; do
+            case "$staged_path" in
+              public/__prerendered__/*.html|scripts/prerender-fingerprint.json|scripts/prerender-manifest.json|vercel.json) ;;
+              *) echo "Unexpected file staged: $staged_path"; exit 1 ;;
+            esac
+          done < /tmp/seo-changed-paths.txt
           if git diff --cached --quiet; then
             echo 'No generated prerender changes; refusing to mark stale fingerprint fixed'
             exit 1
