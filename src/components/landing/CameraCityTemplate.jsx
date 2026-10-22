@@ -33,10 +33,10 @@ const SERVICES = [
 ];
 
 const WHAT_WE_DO = [
-  { icon: <Camera className="w-5 h-5" />, title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto, 360°, resistente al vandalismo." },
-  { icon: <Eye className="w-5 h-5" />, title: "Cámara Bullet", desc: "Larga distancia, hasta 60m. Ideal para entradas, vallas y accesos exteriores." },
-  { icon: <Wifi className="w-5 h-5" />, title: "Cámara PTZ", desc: "Motorizada con zoom óptico 20x. Control remoto de pan, tilt y zoom." },
-  { icon: <Sun className="w-5 h-5" />, title: "Visión Nocturna Color", desc: "Imagen en color incluso en oscuridad total gracias a infrarrojos avanzados." },
+  { icon: <Camera className="w-5 h-5" />, title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto; disponibles modelos antivandálicos." },
+  { icon: <Eye className="w-5 h-5" />, title: "Cámara Bullet", desc: "Ideal para entradas, vallas y accesos exteriores. Alcance según modelo." },
+  { icon: <Wifi className="w-5 h-5" />, title: "Cámara PTZ", desc: "Motorizada, con giro, inclinación y zoom óptico según modelo." },
+  { icon: <Sun className="w-5 h-5" />, title: "Visión Nocturna Color", desc: "Visión nocturna en color en modelos con luz blanca; el infrarrojo habitual graba en blanco y negro." },
   { icon: <HardDrive className="w-5 h-5" />, title: "Grabador NVR / DVR", desc: "Almacenamiento local seguro de 1 a 16TB. Sin depender de la nube." },
   { icon: <Smartphone className="w-5 h-5" />, title: "App Móvil / Acceso Remoto", desc: "Visualización en tiempo real desde iOS y Android, desde cualquier lugar. Sin coste adicional." },
   { icon: <Lock className="w-5 h-5" />, title: "Sin Cuotas Mensuales", desc: "Pago único, sin sorpresas. El sistema es tuyo para siempre." },
@@ -48,16 +48,16 @@ const WHAT_WE_DO = [
 // Los tres tipos de cámara salen recortados de la misma foto de producto
 // (bullet a la izquierda, domo en el centro, PTZ a la derecha).
 const CAMERA_TYPES = [
-  { title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto, 360°, resistente al vandalismo.", alt: "Cámara de seguridad domo", pos: "50% 50%", zoom: 3.1, origin: "61% 58%" },
-  { title: "Cámara Bullet", desc: "Larga distancia, hasta 60m. Ideal para entradas, vallas y accesos exteriores.", alt: "Cámara de seguridad tipo bullet", pos: "50% 50%", zoom: 2.9, origin: "27% 55%" },
-  { title: "Cámara PTZ", desc: "Motorizada con zoom óptico 20x. Control remoto de pan, tilt y zoom.", alt: "Cámara de seguridad motorizada PTZ", pos: "50% 50%", zoom: 4.2, origin: "84% 62%" },
+  { title: "Cámara Domo", desc: "Para interiores y exteriores. Diseño discreto; disponibles modelos antivandálicos.", alt: "Cámara de seguridad domo", pos: "50% 50%", zoom: 3.1, origin: "61% 58%" },
+  { title: "Cámara Bullet", desc: "Ideal para entradas, vallas y accesos exteriores. Alcance según modelo.", alt: "Cámara de seguridad tipo bullet", pos: "50% 50%", zoom: 2.9, origin: "27% 55%" },
+  { title: "Cámara PTZ", desc: "Motorizada, con giro, inclinación y zoom óptico según modelo.", alt: "Cámara de seguridad motorizada PTZ", pos: "50% 50%", zoom: 4.2, origin: "84% 62%" },
 ];
 
 const BRANDS = [
   {
     name: "HIKVISION",
     desc: "La marca nº1 en videovigilancia mundial. Cámaras con IA integrada, grabación 4K y compresión H.265+.",
-    specs: ["Resolución 4K Ultra HD – 8MP", "Compresión inteligente H.265+", "Análisis de comportamiento IA", "App iVMS-4500 profesional"],
+    specs: ["Resolución 4K Ultra HD – 8MP", "Compresión inteligente H.265+", "Análisis de comportamiento IA", "App Hik-Connect para acceso remoto"],
   },
   {
     name: "DAHUA",
