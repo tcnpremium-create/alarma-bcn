@@ -53,7 +53,7 @@ const TECH = [
   },
   {
     title: "Acceso remoto desde el móvil",
-    text: "Con la app del fabricante (Hik-Connect o iVMS en Hikvision, DMSS en Dahua) ves las cámaras en directo, revisas grabaciones y recibes avisos, desde cualquier lugar con conexión.",
+    text: "Configuramos la app compatible: Hik-Connect para Hikvision y DMSS para Dahua. Con conexión, podrás ver las cámaras y, cuando el equipo lo permita, consultar grabaciones y recibir avisos.",
   },
 ];
 
