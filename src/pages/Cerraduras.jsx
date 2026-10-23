@@ -19,8 +19,8 @@ export default function Cerraduras() {
     { Icon: KeyRound, title: "Cerraduras inteligentes", desc: "Sistemas de apertura electrónica para vivienda y negocio" },
     { Icon: Plug, title: "Cerraduras electrónicas", desc: "Cerraduras con apertura eléctrica para puertas de viviendas y negocios" },
     { Icon: ShieldCheck, title: "Cilindros de seguridad", desc: "Cilindros de alta seguridad para puertas de acceso" },
-    { Icon: BatteryCharging, title: "Cilindros electrónicos", desc: "Apertura electrónica sin necesidad de llave física" },
-    { Icon: Smartphone, title: "Apertura mediante móvil", desc: "Abre tu puerta desde el smartphone, sin llave física" },
+    { Icon: BatteryCharging, title: "Cilindros electrónicos", desc: "Apertura mediante credenciales o móvil en modelos compatibles" },
+    { Icon: Smartphone, title: "Apertura mediante móvil", desc: "Control desde una app compatible según modelo y conectividad" },
     { Icon: Building2, title: "Soluciones para negocios", desc: "Sistemas de cierre para locales, oficinas y comunidades" },
   ];
 
@@ -38,13 +38,13 @@ export default function Cerraduras() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Cerraduras Inteligentes y Electrónicas en Barcelona"
-        description="Instalación de cerraduras inteligentes, cilindros de seguridad y cilindros electrónicos en Barcelona para viviendas, negocios y oficinas. Presupuesto gratis 638 10 99 47."
+        title="Instalación de Cerraduras Electrónicas en Barcelona | Inteligentes"
+        description="Instalamos cerraduras electrónicas e inteligentes en Barcelona: cilindros de seguridad, apertura por móvil o PIN según puerta. Viviendas, oficinas y apartamentos. Presupuesto gratis."
         canonicalUrl="https://alarmasenbarcelona.com/cerraduras"
         keywords="cerraduras inteligentes Barcelona, cerraduras electrónicas Barcelona, cilindros de seguridad Barcelona, cerradura electrónica negocio"
         schema={{
           "@type": "Service",
-          "name": "Cerraduras Inteligentes y Electrónicas",
+          "name": "Instalación de cerraduras electrónicas e inteligentes en Barcelona",
           "serviceType": "Instalación de cerraduras inteligentes y cilindros de seguridad",
           "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security" },
           "areaServed": "Barcelona, Catalunya"
@@ -68,8 +68,8 @@ export default function Cerraduras() {
           <div className="mb-6">
             <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Cerraduras" }]} />
           </div>
-          <h1 className="text-5xl lg:text-6xl font-bold mb-6">Cerraduras Inteligentes y Electrónicas</h1>
-          <p className="text-xl text-gray-300 max-w-2xl">Cerraduras electrónicas, cilindros de seguridad y sistemas de apertura para viviendas, negocios y oficinas en Barcelona.</p>
+          <h1 className="text-5xl lg:text-6xl font-bold mb-6">Instalación de Cerraduras Electrónicas en Barcelona</h1>
+          <p className="text-xl text-gray-300 max-w-2xl">Instalamos cerraduras inteligentes, cilindros electrónicos y sistemas de apertura para viviendas, negocios y oficinas de Barcelona y alrededores. Estudiamos la puerta antes de elegir el equipo.</p>
         </div>
       </section>
 
@@ -116,9 +116,23 @@ export default function Cerraduras() {
           <div style={{ marginBottom: 80, textAlign: "center" }}>
             <p style={{ color: "#94A3B8", fontSize: 14 }}>
               ¿Necesitas gestionar el acceso de varias personas con tarjetas, códigos o lectores biométricos? Eso lo resuelve nuestra página de{" "}
-              <Link to="/control-accesos" style={{ color: "#E63946", fontWeight: 700 }}>control de accesos</Link>.
+              <Link to="/control-accesos" style={{ color: "#E63946", fontWeight: 700 }}>control de accesos</Link>. Para comunidades también instalamos <Link to="/videoporteros" style={{ color: "#E63946", fontWeight: 700 }}>videoporteros en Barcelona</Link>.
             </p>
           </div>
+
+          <section aria-labelledby="faq-cerraduras" style={{ marginBottom: 80 }}>
+            <h2 id="faq-cerraduras" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 24, textAlign: "center" }}>Preguntas frecuentes sobre cerraduras inteligentes</h2>
+            {[
+              { q: "¿Se puede poner una cerradura electrónica en mi puerta actual?", a: "Depende de la cerradura, el cilindro, la protección exterior y el grosor de la puerta. Estudiamos fotos del interior y exterior antes de presupuestar." },
+              { q: "¿Una cerradura inteligente necesita conexión Wi-Fi?", a: "No siempre. Algunas funcionan con Bluetooth, códigos o tarjetas. Para acceso desde fuera puede hacer falta un puente o conexión adicional compatible." },
+              { q: "¿Qué ocurre si se agota la batería?", a: "Cada fabricante dispone de mecanismos distintos, como alertas, llave mecánica o alimentación auxiliar. Comprobamos el sistema de emergencia del modelo elegido." },
+              { q: "¿Instaláis cerraduras para apartamentos turísticos?", a: "Sí, podemos estudiar modelos con códigos temporales o usuarios configurables, siempre que sean compatibles con la puerta y las necesidades de gestión." },
+              { q: "¿Cuánto cuesta instalar una cerradura electrónica en Barcelona?", a: "Depende del equipo, cilindro, accesorios y posibles adaptaciones. Indicamos por separado el coste de material y de instalación en un presupuesto personalizado." },
+            ].map(({ q, a }) => <article key={q} style={{ padding: "18px 22px", marginBottom: 12, border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, background: "rgba(255,255,255,0.04)" }}>
+              <h3 style={{ fontWeight: 750, color: "#fff", fontSize: 16, marginBottom: 8 }}>{q}</h3>
+              <p style={{ color: "#CBD5E0", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{a}</p>
+            </article>)}
+          </section>
 
           <style>{`
             .magic-card:hover { transform: translateY(-6px); border-color: rgba(229,62,62,0.55); box-shadow: 0 20px 48px rgba(229,62,62,0.18); }

@@ -36,7 +36,7 @@ export default function Sonorizacion() {
   const altavocesFeatures = [
     { Icon: PanelTop, title: "Empotrados en techo", desc: "Integrados en el techo, sin ocupar espacio visible en la estancia." },
     { Icon: PanelLeft, title: "Empotrados en pared", desc: "Instalación en pared para espacios donde el techo no es una opción." },
-    { Icon: Bluetooth, title: "Conectividad Bluetooth", desc: "Reproduce música desde el móvil sin cables ni instalaciones adicionales." },
+    { Icon: Bluetooth, title: "Conectividad Bluetooth", desc: "Envía audio por Bluetooth a equipos compatibles; la instalación fija puede requerir cableado, alimentación y amplificación." },
     { Icon: Waves, title: "Sonido ambiental", desc: "Cobertura uniforme pensada para crear ambiente sonoro en todo el espacio." },
     { Icon: Grid3x3, title: "Sistemas multizona", desc: "Control independiente de volumen y fuente por zona, cuando el proyecto lo requiere." },
     { Icon: Smartphone, title: "Control desde el móvil", desc: "Gestiona la reproducción desde tu smartphone cuando el modelo sea compatible." },
@@ -87,13 +87,13 @@ export default function Sonorizacion() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Sonorización Profesional Barcelona | Altavoces Empotrados"
-        description="Sonorización profesional en Barcelona: instalación de altavoces empotrados y de techo con Bluetooth, amplificadores y sistemas multizona para restaurantes, comercios, oficinas y viviendas. Presupuesto gratis 638 10 99 47."
+        title="Instalación de Sonorización en Barcelona | Altavoces y Megafonía"
+        description="Instalamos sonorización y megafonía en Barcelona: altavoces de techo, sonido ambiental, amplificadores y audio multizona para restaurantes, tiendas y oficinas. Presupuesto gratis."
         canonicalUrl="https://alarmasenbarcelona.com/sonorizacion"
         keywords="sonorización Barcelona, sonorización profesional Barcelona, instalación de altavoces Barcelona, instalación altavoces techo Barcelona, altavoces empotrados Barcelona, altavoces empotrados Bluetooth Barcelona, altavoces de techo Bluetooth Barcelona, sonido ambiental Barcelona, sonorización restaurantes Barcelona, sonorización locales Barcelona, instalación sonido negocios Barcelona"
         schema={{
           "@type": "Service",
-          "name": "Sonorización Profesional",
+          "name": "Instalación de sonorización y megafonía en Barcelona",
           "serviceType": "Instalación de sistemas de sonido, altavoces empotrados en techo y pared con Bluetooth para negocios, comunidades y eventos",
           "provider": { "@type": "LocalBusiness", "name": "Premium Tech Security" },
           "areaServed": "Barcelona, Catalunya"
@@ -119,10 +119,10 @@ export default function Sonorizacion() {
             INSTALACIÓN PROFESIONAL DE SONIDO
           </span>
           <h1 className="text-5xl lg:text-6xl font-black text-white mb-6" style={{ lineHeight: 1.08, letterSpacing: "-0.02em" }}>
-            Sonorización Profesional
+            Instalación de Sonorización en Barcelona
           </h1>
           <p className="text-xl text-gray-300 max-w-2xl mb-10">
-            Diseñamos e instalamos sistemas de sonido para viviendas, negocios, restaurantes, oficinas, comunidades y espacios profesionales.
+            Instalamos altavoces de techo, megafonía, sonido ambiental y audio multizona en Barcelona y alrededores. Diseñamos proyectos para restaurantes, comercios, oficinas, comunidades y viviendas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <button
@@ -176,7 +176,7 @@ export default function Sonorizacion() {
                   Altavoces Empotrados con Bluetooth
                 </h2>
                 <p style={{ color: "#94A3B8", fontSize: "1.05rem", lineHeight: 1.75 }}>
-                  Disfruta de un sistema de sonido integrado en techo o pared, con conectividad Bluetooth y control sencillo desde dispositivos compatibles.
+                  Integramos altavoces en techo o pared. Con equipos compatibles, puedes enviar música por Bluetooth al receptor; los sistemas fijos requieren estudiar la alimentación y el cableado.
                 </p>
               </div>
               <img
@@ -327,11 +327,25 @@ export default function Sonorizacion() {
             </div>
           </div>
 
+          <section aria-labelledby="faq-sonorizacion" style={{ marginBottom: 80 }}>
+            <h2 id="faq-sonorizacion" style={{ fontSize: "clamp(1.6rem,3vw,2.25rem)", fontWeight: 800, color: "#FFFFFF", marginBottom: 24, textAlign: "center" }}>Preguntas frecuentes: instalación de sonido en Barcelona</h2>
+            {[
+              { q: "¿Instaláis altavoces de techo en restaurantes y comercios de Barcelona?", a: "Sí. Estudiamos las dimensiones, los puntos de instalación y el ambiente deseado para elegir amplificador, distribución y control." },
+              { q: "¿Puedo controlar el sonido de terraza y sala por separado?", a: "Sí, con una instalación multizona compatible que permita ajustar volumen y fuentes de sonido de cada área." },
+              { q: "¿Los altavoces empotrados Bluetooth funcionan sin cables?", a: "Bluetooth transmite la música de forma inalámbrica al receptor, pero los altavoces de instalación y amplificadores suelen requerir alimentación y cableado." },
+              { q: "¿Cuánto cuesta instalar megafonía o sonorización?", a: "El coste depende del espacio, número de altavoces y zonas, tendido de cable y equipos. Preparamos un presupuesto a medida." },
+              { q: "¿Puedo reproducir música comercial en un negocio?", a: "El equipo de sonido no incluye automáticamente derechos de comunicación pública de música. Conviene comprobar las licencias aplicables a la actividad." },
+            ].map(({ q, a }) => <article key={q} style={{ padding: "18px 22px", marginBottom: 12, border: "1px solid rgba(255,255,255,0.08)", borderRadius: 12, background: "rgba(255,255,255,0.04)" }}>
+              <h3 style={{ fontWeight: 750, color: "#fff", fontSize: 16, marginBottom: 8 }}>{q}</h3>
+              <p style={{ color: "#CBD5E0", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{a}</p>
+            </article>)}
+          </section>
+
           {/* Relacionados */}
           <div style={{ marginBottom: 80, textAlign: "center" }}>
             <p style={{ color: "#94A3B8", fontSize: 14 }}>
               ¿También necesitas cableado o red para tu sistema de sonido? Consulta nuestra página de{" "}
-              <Link to="/redes-informaticas" style={{ color: "#E63946", fontWeight: 700 }}>redes informáticas</Link>.
+              <Link to="/redes-informaticas" style={{ color: "#E63946", fontWeight: 700 }}>redes informáticas</Link>. Para entradas de oficinas y comunidades consulta también <Link to="/videoporteros" style={{ color: "#E63946", fontWeight: 700 }}>videoporteros</Link>.
             </p>
           </div>
 
