@@ -152,18 +152,18 @@ const barrios = [
 ];
 
 const riskConfig = {
-  'alto': { label: 'Riesgo Alto', bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200', dot: 'bg-red-500' },
-  'medio-alto': { label: 'Riesgo Medio-Alto', bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200', dot: 'bg-orange-500' },
-  'medio': { label: 'Riesgo Medio', bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-200', dot: 'bg-amber-500' },
-  'bajo-medio': { label: 'Riesgo Bajo-Medio', bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-200', dot: 'bg-yellow-500' },
-  'bajo': { label: 'Riesgo Bajo', bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200', dot: 'bg-green-500' },
+  'alto': { label: 'Nivel orientativo 1', bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200', dot: 'bg-red-500' },
+  'medio-alto': { label: 'Nivel orientativo 2', bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200', dot: 'bg-orange-500' },
+  'medio': { label: 'Nivel orientativo 3', bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-200', dot: 'bg-amber-500' },
+  'bajo-medio': { label: 'Nivel orientativo 4', bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-200', dot: 'bg-yellow-500' },
+  'bajo': { label: 'Nivel orientativo 5', bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200', dot: 'bg-green-500' },
 };
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   'headline': 'Mapa de Riesgo de Robos por Barrios en Barcelona 2026',
-  'description': 'Estadísticas de robos en viviendas y negocios por barrios de Barcelona. Descubre el nivel de riesgo de tu zona y qué sistema de seguridad necesitas.',
+  'description': 'Guía orientativa de prevención y seguridad por barrios. Las puntuaciones son ilustrativas y no equivalen a datos policiales oficiales.',
 };
 
 export default function MapaRiesgo() {
@@ -224,9 +224,9 @@ export default function MapaRiesgo() {
         <div className="flex flex-wrap gap-2 mb-8 justify-center">
           {[
             { id: 'all', label: 'Todos los barrios' },
-            { id: 'alto', label: '🔴 Riesgo Alto' },
-            { id: 'medio', label: '🟡 Riesgo Medio' },
-            { id: 'bajo', label: '🟢 Riesgo Bajo' },
+            { id: 'alto', label: '🔴 Ejemplos nivel 1' },
+            { id: 'medio', label: '🟡 Ejemplos nivel 3' },
+            { id: 'bajo', label: '🟢 Ejemplos nivel 5' },
           ].map(f => (
             <button
               key={f.id}
@@ -371,9 +371,9 @@ export default function MapaRiesgo() {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">¿Cómo reduce una alarma el riesgo de robo?</h2>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
-              { icon: '🚨', stat: '73%', label: 'de ladrones desisten al ver cartel de alarma visible', desc: 'El efecto disuasorio es el mayor beneficio. Un ladrón elige siempre la casa más fácil.' },
+              { icon: '🚨', stat: 'Prevención', label: 'disuasión y medidas físicas', desc: 'Una alarma visible puede complementar cerraduras, puertas y buenos hábitos. No atribuimos tasas de reducción sin una fuente verificable.' },
               { icon: '⚡', stat: 'CRA', label: 'conexión opcional a central receptora', desc: 'Con una central receptora contratada, la alarma se vigila las 24 horas y se puede avisar a la Policía.' },
-              { icon: '📱', stat: '3 seg', label: 'para recibir alerta en tu móvil', desc: 'Las alarmas modernas como AJAX notifican instantáneamente aunque estés al otro lado del mundo.' },
+              { icon: '📱', stat: 'Avisos', label: 'notificaciones al móvil', desc: 'Un equipo compatible puede enviar alertas con internet operativo y la configuración adecuada; el tiempo de llegada no está garantizado.' },
             ].map((item, i) => (
               <div key={i} className="bg-white/10 rounded-xl p-6">
                 <div className="text-4xl mb-3">{item.icon}</div>
