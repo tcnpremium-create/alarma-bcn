@@ -27,7 +27,7 @@ jobs:
           npm install --no-save --package-lock=false playwright@1.56.1
       - name: Regenerate crawler HTML + fingerprint
         run: |
-          echo "PW_CHROMIUM_PATH=$(node --input-type=module -e \"import('playwright').then(m=>console.log(m.chromium.executablePath()))\")" >> "$GITHUB_ENV"
+          export PW_CHROMIUM_PATH=$(node -p 'require("playwright").chromium.executablePath()')
           npm run prerender
       - name: Validate generated snapshots
         run: |
