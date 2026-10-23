@@ -40,8 +40,12 @@ jobs:
           # La build Vite, lint, tests y snapshots se verifican por separado.
       - name: Commit regenerated snapshots to feature branch
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cd "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rev-parse --show-toplevel
+          git status --short
           git add public/__prerendered__/ scripts/prerender-fingerprint.json scripts/prerender-manifest.json vercel.json
           if ! git diff --cached --quiet; then
             git commit -m "chore(seo): refresh prerender HTML and fingerprint [prerender-ok]"
