@@ -1,0 +1,46 @@
+name: Temporary regenerate prerender SEO on feature branch
+on:
+  push:
+    branches:
+      - fix/seo-tech-camaras-20261023
+jobs:
+  regenerate:
+    if: "!contains(github.event.head_commit.message, '[prerender-ok]')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/seo-tech-camaras-20261023
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install headless Chromium
+        run: |
+          npm install --no-save --package-lock=false playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Regenerate crawler HTML + fingerprint
+        run: |
+          echo "PW_CHROMIUM_PATH=$(node --input-type=module -e \"import('playwright').then(m=>console.log(m.chromium.executablePath()))\")" >> "$GITHUB_ENV"
+          npm run prerender
+      - name: Validate generated snapshots
+        run: |
+          node scripts/audit-indexability.mjs
+          node scripts/prerender-fingerprint.mjs --check
+          npm test
+          npm run lint
+          npm run typecheck
+      - name: Commit regenerated snapshots to feature branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/__prerendered__/ scripts/prerender-fingerprint.json scripts/prerender-manifest.json vercel.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(seo): refresh prerender HTML and fingerprint [prerender-ok]"
+            git push origin HEAD:fix/seo-tech-camaras-20261023
+          fi
