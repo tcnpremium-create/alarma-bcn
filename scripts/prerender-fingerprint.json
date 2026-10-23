@@ -1,5 +1,5 @@
 {
- "combined": "0273f06c38db6f77",
+ "combined": "faa1f3b5c007102f",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -38,10 +38,10 @@
   "src/components/landing/BlogHighlights.jsx": "992a7d79191b698a",
   "src/components/landing/BlogPreview.jsx": "51b173d81d3e327d",
   "src/components/landing/Breadcrumbs.jsx": "820f99f3efcdd529",
-  "src/components/landing/CameraCityTemplate.jsx": "95371622c9e91ff1",
+  "src/components/landing/CameraCityTemplate.jsx": "d2eca1b4e8660e33",
   "src/components/landing/CameraKitsGrid.jsx": "3e489a287b7c655d",
   "src/components/landing/CameraLocalSections.jsx": "664cb7c8b83e3e75",
-  "src/components/landing/CamerasBarcelonaGuide.jsx": "351f41ff853e8e00",
+  "src/components/landing/CamerasBarcelonaGuide.jsx": "fcd4e6667e534117",
   "src/components/landing/CertificationsSection.jsx": "69ba7b2605d2ea40",
   "src/components/landing/CitiesGrid.jsx": "d86a0025a25d673e",
   "src/components/landing/CityLandingTemplate.jsx": "5b1387ac89604d62",
@@ -194,7 +194,7 @@
   "src/pages/Blog.jsx": "3737b81dadaf99b5",
   "src/pages/BlogArticle.jsx": "db3bfc22f0a8e068",
   "src/pages/Calculadora.jsx": "b469c65f6582fabe",
-  "src/pages/CamarasBarcelona.jsx": "28281d11d15c8372",
+  "src/pages/CamarasBarcelona.jsx": "528bfcd7261a9773",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",
   "src/pages/CamarasLleida.jsx": "7435754e2d9d74d3",
   "src/pages/CamarasSabadell.jsx": "aa8f70c1c7e2ef9c",
