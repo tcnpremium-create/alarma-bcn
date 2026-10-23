@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "playwright": { "command": "sh", "args": [".claude/mcp/playwright.sh"] },
+    "chrome-devtools": { "command": "sh", "args": [".claude/mcp/chrome-devtools.sh"] },
+    "shadcn": { "command": "npx", "args": ["-y", "shadcn@latest", "mcp"] },
+    "magicui": { "command": "npx", "args": ["-y", "@magicuidesign/mcp@latest"] }
+  }
+}
