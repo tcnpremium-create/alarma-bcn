@@ -152,18 +152,18 @@ const barrios = [
 ];
 
 const riskConfig = {
-  'alto': { label: 'Riesgo Alto', bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200', dot: 'bg-red-500' },
-  'medio-alto': { label: 'Riesgo Medio-Alto', bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200', dot: 'bg-orange-500' },
-  'medio': { label: 'Riesgo Medio', bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-200', dot: 'bg-amber-500' },
-  'bajo-medio': { label: 'Riesgo Bajo-Medio', bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-200', dot: 'bg-yellow-500' },
-  'bajo': { label: 'Riesgo Bajo', bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200', dot: 'bg-green-500' },
+  'alto': { label: 'Nivel orientativo 1', bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200', dot: 'bg-red-500' },
+  'medio-alto': { label: 'Nivel orientativo 2', bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200', dot: 'bg-orange-500' },
+  'medio': { label: 'Nivel orientativo 3', bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-amber-200', dot: 'bg-amber-500' },
+  'bajo-medio': { label: 'Nivel orientativo 4', bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-200', dot: 'bg-yellow-500' },
+  'bajo': { label: 'Nivel orientativo 5', bg: 'bg-green-100', text: 'text-green-700', border: 'border-green-200', dot: 'bg-green-500' },
 };
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   'headline': 'Mapa de Riesgo de Robos por Barrios en Barcelona 2026',
-  'description': 'Estadísticas de robos en viviendas y negocios por barrios de Barcelona. Descubre el nivel de riesgo de tu zona y qué sistema de seguridad necesitas.',
+  'description': 'Guía orientativa de prevención y seguridad por barrios. Las puntuaciones son ilustrativas y no equivalen a datos policiales oficiales.',
 };
 
 export default function MapaRiesgo() {
@@ -179,11 +179,11 @@ export default function MapaRiesgo() {
     <div className="min-h-screen bg-white">
       <Helmet>
         <title>Mapa de Riesgo de Robos en Barcelona por Barrios 2026</title>
-        <meta name="description" content="Descubre el nivel de riesgo de robo de tu barrio en Barcelona. Estadísticas actualizadas 2026 por distrito: Eixample, Gràcia, Nou Barris y más." />
+        <meta name="description" content="Guía orientativa de prevención de robos por barrios de Barcelona. Revisa accesos y medidas de seguridad y consulta el visor oficial de Mossos d Esquadra." />
         <link rel="canonical" href="https://alarmasenbarcelona.com/MapaRiesgo" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Mapa de Riesgo de Robos en Barcelona por Barrios 2026" />
-        <meta property="og:description" content="Descubre el nivel de riesgo de robo de tu barrio en Barcelona. Estadísticas actualizadas 2026 por distrito: Eixample, Gràcia, Nou Barris y más." />
+        <meta property="og:description" content="Guía de prevención por barrios. Las recomendaciones no son un ranking oficial de delitos: enlazamos las cifras abiertas de Mossos d Esquadra." />
         <meta property="og:url" content="https://alarmasenbarcelona.com/MapaRiesgo" />
         <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
         <meta property="og:locale" content="es_ES" />
@@ -197,32 +197,25 @@ export default function MapaRiesgo() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
             <span className="inline-flex items-center gap-2 bg-red-500/20 text-red-400 font-semibold px-4 py-2 rounded-full text-sm mb-6">
               <AlertTriangle className="w-4 h-4" />
-              Datos Mossos d'Esquadra — Actualizado 2026
+              Guía orientativa · No es una estadística oficial
             </span>
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
               Mapa de Riesgo de Robos<br />en Barcelona por Barrios
             </h1>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Estadísticas reales de robos en viviendas y negocios por distrito. Descubre el nivel de riesgo de tu zona y qué protección necesitas.
+              Consejos de prevención y seguridad para inmuebles de Barcelona. No presentamos estas orientaciones como cifras oficiales de robos ni predicciones por calle.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats bar */}
-      <div className="bg-[#C53030] py-6">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-white">
-          {[
-            { label: 'Robos en viviendas/año', value: '+12.400' },
-            { label: 'Robos en negocios/año', value: '+8.900' },
-            { label: 'Hora pico de robos', value: '10–14h' },
-            { label: 'Reducción con alarma', value: '–73%' },
-          ].map((s, i) => (
-            <div key={i}>
-              <div className="text-2xl font-bold">{s.value}</div>
-              <div className="text-sm opacity-80">{s.label}</div>
-            </div>
-          ))}
+      <div className="bg-[#C53030] py-5">
+        <div className="max-w-5xl mx-auto px-5 text-center text-white">
+          <p className="text-sm sm:text-base leading-relaxed">
+            Esta es una guía comercial ilustrativa, no un ranking policial de barrios.
+            Para estadísticas delictivas con fuente y periodo, consulta el{" "}
+            <a href="https://mossos.gencat.cat/ca/els_mossos_desquadra/indicadors_i_qualitat/dades_obertes/Visors_altres_dades/visor-de-dades/" target="_blank" rel="noopener noreferrer" className="font-bold underline underline-offset-4">visor oficial de Mossos d'Esquadra</a>.
+          </p>
         </div>
       </div>
 
@@ -231,9 +224,9 @@ export default function MapaRiesgo() {
         <div className="flex flex-wrap gap-2 mb-8 justify-center">
           {[
             { id: 'all', label: 'Todos los barrios' },
-            { id: 'alto', label: '🔴 Riesgo Alto' },
-            { id: 'medio', label: '🟡 Riesgo Medio' },
-            { id: 'bajo', label: '🟢 Riesgo Bajo' },
+            { id: 'alto', label: '🔴 Ejemplos nivel 1' },
+            { id: 'medio', label: '🟡 Ejemplos nivel 3' },
+            { id: 'bajo', label: '🟢 Ejemplos nivel 5' },
           ].map(f => (
             <button
               key={f.id}
@@ -271,17 +264,7 @@ export default function MapaRiesgo() {
                         </div>
                       </div>
                       <div className="flex items-center gap-4">
-                        {/* Risk bar */}
-                        <div className="hidden sm:block">
-                          <div className="text-xs text-gray-500 mb-1 text-right">Índice de riesgo</div>
-                          <div className="w-32 h-3 bg-gray-100 rounded-full overflow-hidden">
-                            <div
-                              className="h-full rounded-full transition-all"
-                              style={{ width: `${barrio.riskScore}%`, backgroundColor: barrio.color }}
-                            ></div>
-                          </div>
-                          <div className="text-xs text-gray-500 mt-1 text-right">{barrio.riskScore}/100</div>
-                        </div>
+                        <span className="hidden sm:block text-xs text-gray-500">Orientación ilustrativa</span>
                         <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${selected === barrio.id ? 'rotate-180' : ''}`} />
                       </div>
                     </div>
@@ -295,30 +278,13 @@ export default function MapaRiesgo() {
                           className="overflow-hidden"
                         >
                           <div className="mt-4 pt-4 border-t border-gray-100">
-                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
-                              <div className="bg-gray-50 rounded-lg p-3">
-                                <div className="text-xs text-gray-500 mb-1">Robos viviendas/año</div>
-                                <div className="font-bold text-[#0A1628]">{barrio.robosVivienda.toLocaleString()}</div>
-                              </div>
-                              <div className="bg-gray-50 rounded-lg p-3">
-                                <div className="text-xs text-gray-500 mb-1">Robos negocios/año</div>
-                                <div className="font-bold text-[#0A1628]">{barrio.robosNegocio.toLocaleString()}</div>
-                              </div>
-                              <div className="bg-gray-50 rounded-lg p-3">
-                                <div className="text-xs text-gray-500 mb-1">Hora pico</div>
-                                <div className="font-bold text-[#0A1628]">{barrio.horarioPico}</div>
-                              </div>
-                            </div>
-                            <div className="bg-gray-50 rounded-lg p-3 mb-3">
-                              <div className="text-xs text-gray-500 mb-1">Método más frecuente</div>
-                              <div className="font-semibold text-[#0A1628]">{barrio.metodoPrincipal}</div>
-                            </div>
+                            <p className="text-sm text-gray-600 mb-4">Los números de delitos, horarios y métodos no se muestran porque no están respaldados por una fuente verificable por barrio. La seguridad real requiere revisar el inmueble.</p>
                             <div className={`${cfg.bg} rounded-lg p-3 mb-3`}>
                               <div className={`text-xs font-semibold mb-1 ${cfg.text}`}>💡 Lo que debes saber</div>
-                              <p className="text-gray-700 text-sm">{barrio.tip}</p>
+                              <p className="text-gray-700 text-sm">La protección adecuada depende de los accesos, puertas y ventanas, usos del edificio y la evaluación técnica del lugar.</p>
                             </div>
                             <div className="bg-[#0A1628]/5 rounded-lg p-3">
-                              <div className="text-xs font-semibold text-[#0A1628] mb-1">✅ Recomendación para este barrio</div>
+                              <div className="text-xs font-semibold text-[#0A1628] mb-1">✅ Opción a valorar para el inmueble</div>
                               <p className="text-gray-700 text-sm">{barrio.recomendacion}</p>
                             </div>
                             <div className="mt-3 flex flex-col sm:flex-row gap-2">
@@ -370,24 +336,12 @@ export default function MapaRiesgo() {
               </div>
             </div>
 
-            {/* Top stats */}
             <div className="bg-gray-50 rounded-2xl p-6">
-              <h3 className="font-bold text-[#0A1628] mb-4">Datos generales Barcelona 2026</h3>
-              <div className="space-y-3 text-sm">
-                {[
-                  { label: 'Barrio con más robos', value: 'Eixample' },
-                  { label: 'Mayor tasa relativa', value: 'Nou Barris' },
-                  { label: 'Método más usado', value: 'Palanca en puerta (60%)' },
-                  { label: 'Día de mayor riesgo', value: 'Miércoles–Jueves' },
-                  { label: 'Meses de mayor riesgo', value: 'Julio–Agosto' },
-                  { label: 'Reducción con alarma visible', value: '–73% intentos' },
-                ].map((s, i) => (
-                  <div key={i} className="flex justify-between py-2 border-b border-gray-200 last:border-0">
-                    <span className="text-gray-500">{s.label}</span>
-                    <span className="font-semibold text-[#0A1628]">{s.value}</span>
-                  </div>
-                ))}
-              </div>
+              <h3 className="font-bold text-[#0A1628] mb-3">Datos oficiales y asesoramiento</h3>
+              <p className="text-sm text-gray-700 leading-relaxed">Consulta las estadísticas por territorio y periodo en el visor oficial. Estas categorías son solo ejemplos ilustrativos de prevención.</p>
+              <a href="https://mossos.gencat.cat/ca/els_mossos_desquadra/indicadors_i_qualitat/dades_obertes/Visors_altres_dades/visor-de-dades/" target="_blank" rel="noopener noreferrer" className="mt-4 block font-semibold text-[#C53030] underline">Visor de Mossos d'Esquadra →</a>
+              <Link to="/alarmas-barcelona" className="mt-4 block font-semibold text-[#0A1628] underline">Instalación de alarmas en Barcelona →</Link>
+              <Link to="/camaras-barcelona" className="mt-3 block font-semibold text-[#0A1628] underline">Instalación de cámaras en Barcelona →</Link>
             </div>
 
             {/* CTA */}
@@ -417,9 +371,9 @@ export default function MapaRiesgo() {
           <h2 className="text-3xl font-bold text-white mb-8 text-center">¿Cómo reduce una alarma el riesgo de robo?</h2>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
-              { icon: '🚨', stat: '73%', label: 'de ladrones desisten al ver cartel de alarma visible', desc: 'El efecto disuasorio es el mayor beneficio. Un ladrón elige siempre la casa más fácil.' },
+              { icon: '🚨', stat: 'Prevención', label: 'disuasión y medidas físicas', desc: 'Una alarma visible puede complementar cerraduras, puertas y buenos hábitos. No atribuimos tasas de reducción sin una fuente verificable.' },
               { icon: '⚡', stat: 'CRA', label: 'conexión opcional a central receptora', desc: 'Con una central receptora contratada, la alarma se vigila las 24 horas y se puede avisar a la Policía.' },
-              { icon: '📱', stat: '3 seg', label: 'para recibir alerta en tu móvil', desc: 'Las alarmas modernas como AJAX notifican instantáneamente aunque estés al otro lado del mundo.' },
+              { icon: '📱', stat: 'Avisos', label: 'notificaciones al móvil', desc: 'Un equipo compatible puede enviar alertas con internet operativo y la configuración adecuada; el tiempo de llegada no está garantizado.' },
             ].map((item, i) => (
               <div key={i} className="bg-white/10 rounded-xl p-6">
                 <div className="text-4xl mb-3">{item.icon}</div>

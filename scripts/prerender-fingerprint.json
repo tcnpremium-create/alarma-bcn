@@ -1,5 +1,5 @@
 {
- "combined": "45fd24026728c4a0",
+ "combined": "4d53b3ef76314e7b",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -211,10 +211,10 @@
   "src/pages/Home.jsx": "ea3ea17d69678fd8",
   "src/pages/Hospitalet.jsx": "8ad09f301ba8540d",
   "src/pages/MantenimientoSoporte.jsx": "bb14582e8b408bf2",
-  "src/pages/MapaRiesgo.jsx": "7dc1f9e4b4fe4659",
+  "src/pages/MapaRiesgo.jsx": "34444da8addc64bd",
   "src/pages/Mataro.jsx": "0ae64d8605b8e814",
   "src/pages/Privacidad.jsx": "5a92353297ce31f4",
-  "src/pages/Promociones.jsx": "16fd5901dd2038e8",
+  "src/pages/Promociones.jsx": "29b3eca859dd3ee0",
   "src/pages/RedesInformaticas.jsx": "2a17c1605ebbe1bc",
   "src/pages/SantCugat.jsx": "2b0719f652ee807c",
   "src/pages/Servicios.jsx": "edf687acd65b6f86",

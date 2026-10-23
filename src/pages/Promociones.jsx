@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
 import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
@@ -130,7 +130,7 @@ export default function Promociones() {
               letterSpacing: "-0.02em",
             }}
           >
-            Kits de Seguridad Profesional
+            Kits de Alarmas y Cámaras de Seguridad en Barcelona
           </h1>
           <p
             style={{
@@ -141,7 +141,7 @@ export default function Promociones() {
               lineHeight: 1.65,
             }}
           >
-            Alarmas Ajax y videovigilancia con instalación incluida. Sin cuotas mensuales. Presupuesto gratuito en 24h.
+            Sistemas Ajax y videovigilancia con grabación local e instalación profesional. Consulta los componentes incluidos y las condiciones de cada kit antes de contratar.
           </p>
 
           <a
@@ -163,6 +163,23 @@ export default function Promociones() {
             <Phone size={18} />
             Llamar ahora
           </a>
+        </div>
+      </section>
+
+      <section aria-labelledby="servicios-instalacion-barcelona" style={{ background: BG, borderBottom: `1px solid ${BORDER}`, padding: "32px 24px" }}>
+        <div style={{ maxWidth: 1020, margin: "0 auto" }}>
+          <h2 id="servicios-instalacion-barcelona" style={{ fontSize: "clamp(20px, 3vw, 28px)", color: "#fff", fontWeight: 800, marginBottom: 12 }}>
+            Instalación de alarmas y cámaras en Barcelona
+          </h2>
+          <p style={{ color: TEXT_DIM, lineHeight: 1.7, marginBottom: 18 }}>
+            En viviendas, locales y comunidades valoramos los accesos, el cableado,
+            la cobertura y el almacenamiento antes de presupuestar. Los servicios opcionales,
+            como central receptora o mantenimiento, se explican por separado.
+          </p>
+          <nav aria-label="Servicios profesionales en Barcelona" style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+            <Link to="/camaras-barcelona" style={{ color: "#fff", fontWeight: 700, border: `1px solid ${BORDER}`, padding: "12px 16px", borderRadius: 10 }}>Instaladores de cámaras de seguridad →</Link>
+            <Link to="/alarmas-barcelona" style={{ color: "#fff", fontWeight: 700, border: `1px solid ${BORDER}`, padding: "12px 16px", borderRadius: 10 }}>Instalación de alarmas Ajax →</Link>
+          </nav>
         </div>
       </section>
 
