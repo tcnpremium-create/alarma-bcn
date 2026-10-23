@@ -27,15 +27,15 @@ const SOLUTIONS = [
   {
     icon: <Users className="w-7 h-7" style={{ color: "#E53E3E" }} />,
     title: "Comunidad de Vecinos",
-    desc: "Sistema profesional para edificios y comunidades. Compatible con cableado 2 hilos existente, sin obras.",
+    desc: "Videoporteros para comunidades: estudiamos si el cableado de dos hilos existente puede reutilizarse y qué necesita cada vivienda.",
     features: [
-      "Compatible con instalación 2 hilos existente",
+      "Reutilización de dos hilos tras comprobación técnica",
       "Directorio digital de vecinos",
       "Cámara WDR anti-contraluz",
       "Control de garaje integrado",
       "Tarjetas RFID / llaveros NFC",
       "App individual por propietario",
-      "Cumplimiento RGPD incluido",
+      "Orientación sobre privacidad de imágenes",
       "Gestión centralizada",
     ],
     price: "Presupuesto personalizado",
@@ -43,16 +43,16 @@ const SOLUTIONS = [
   {
     icon: <Building2 className="w-7 h-7" style={{ color: "#E53E3E" }} />,
     title: "Empresa / Oficina",
-    desc: "Seguridad de nivel corporativo. Control de accesos biométrico, registro de entradas y gestión desde panel web.",
+    desc: "Sistemas de videoportero IP y control de acceso para oficinas, con permisos de apertura adecuados a cada proyecto.",
     features: [
       "Sistema IP puro con cifrado",
-      "Control biométrico: huella y facial",
+      "Alternativas de tarjeta, móvil o PIN compatibles",
       "Registro de entradas y salidas",
       "Acceso temporal para visitas",
       "Integración con alarma y CCTV",
       "Panel de gestión web centralizado",
       "App multidispositivo para directivos",
-      "Mantenimiento preventivo incluido",
+      "Mantenimiento disponible según presupuesto",
     ],
     price: "Presupuesto a medida",
   },
@@ -64,13 +64,13 @@ const ALL_SERVICES = [
   { icon: <Bell className="w-5 h-5" />, title: "Notificación Instantánea", desc: "Recibes un aviso en el móvil en el momento en que alguien pulsa el pulsador." },
   { icon: <Eye className="w-5 h-5" />, title: "Visión Nocturna", desc: "Cámara con infrarrojos automáticos. Visión perfecta de noche sin iluminación adicional." },
   { icon: <Key className="w-5 h-5" />, title: "RFID / Tarjetas NFC", desc: "Apertura sin manos con tarjeta, llavero o smartphone por NFC. Sin cables de más." },
-  { icon: <Users className="w-5 h-5" />, title: "Reconocimiento Facial", desc: "Acceso automático por reconocimiento de cara. Ideal para oficinas y empresas con mucho personal." },
-  { icon: <Lock className="w-5 h-5" />, title: "Huella Dactilar", desc: "Lector biométrico de huella para acceso seguro e intransferible. 0% riesgo de copia." },
+  { icon: <Users className="w-5 h-5" />, title: "Biometría: evaluación previa", desc: "No se implanta sin justificar la base jurídica, la necesidad y el análisis de riesgos. Priorizamos alternativas menos invasivas." },
+  { icon: <Lock className="w-5 h-5" />, title: "Teclado PIN", desc: "Códigos o credenciales configurables según el sistema elegido." },
   { icon: <Clock className="w-5 h-5" />, title: "Historial de Visitas", desc: "Log completo con foto, hora y método de apertura de cada entrada registrada." },
   { icon: <Building2 className="w-5 h-5" />, title: "Control de Garaje", desc: "Integración directa con la barrera o puerta de garaje desde la misma app o panel." },
   { icon: <Wifi className="w-5 h-5" />, title: "Acceso Temporal / QR", desc: "Genera un código temporal para visitas, repartidores o trabajadores. Caduca automáticamente." },
-  { icon: <Shield className="w-5 h-5" />, title: "Integración con Alarma", desc: "El videoportero se comunica con tu sistema de alarma. Una sola app lo controla todo." },
-  { icon: <Star className="w-5 h-5" />, title: "Mantenimiento Preventivo", desc: "Revisión anual incluida, actualizaciones de firmware remoto y soporte técnico prioritario." },
+  { icon: <Shield className="w-5 h-5" />, title: "Integración con Alarma", desc: "Antes de integrar alarma, cámaras y videoportero comprobamos la compatibilidad de los modelos y aplicaciones." },
+  { icon: <Star className="w-5 h-5" />, title: "Mantenimiento Preventivo", desc: "Revisión y soporte disponibles según equipo y condiciones de mantenimiento contratadas." },
 ];
 
 const TECH = [
@@ -81,13 +81,13 @@ const TECH = [
 ];
 
 const FAQS = [
-  { q: "¿Puedo modernizar mi videoportero de 2 hilos sin cambiar el cableado?", a: "Sí. Instalamos módulos IP que convierten tu instalación de 2 hilos existente en un sistema inteligente con app, sin necesidad de cambiar el cableado. Es la solución más económica para comunidades que quieren modernizarse y permite mantener toda la infraestructura existente." },
+  { q: "¿Puedo modernizar mi videoportero de 2 hilos sin cambiar el cableado?", a: "En muchos casos sí, pero depende del estado y tecnología del cableado. Revisamos la placa y los terminales antes de recomendar Fermax DUOX Plus, BTicino u otra solución compatible." },
   { q: "¿Cuánto cuesta instalar un videoportero en una comunidad de vecinos?", a: "Depende del número de viviendas y del sistema actual. Ofrecemos presupuesto gratuito y personalizado sin compromiso y sin letra pequeña, adaptado al tamaño de tu comunidad." },
-  { q: "¿El reconocimiento facial es legal en España? ¿Cumple el RGPD?", a: "Sí, es completamente legal si se implementa correctamente. Nosotros nos encargamos de todo: instalación de señalética informativa obligatoria, configuración de los plazos de retención de datos, y documentación RGPD lista para presentar a inspección. El sistema no comparte datos con terceros." },
-  { q: "¿El videoportero se puede integrar con mis cámaras de seguridad?", a: "Sí, todos nuestros sistemas IP se integran nativamente con cámaras CCTV y sistemas de alarma, creando una plataforma de seguridad unificada gestionable desde una sola app." },
-  { q: "¿Qué pasa si me llaman cuando estoy fuera?", a: "Con nuestros sistemas recibes una notificación instantánea en tu móvil, ves al visitante en tiempo real con vídeo HD y puedes abrir la puerta remotamente desde cualquier lugar del mundo." },
-  { q: "¿Cuánto tarda la instalación?", a: "Una vivienda unifamiliar se instala en pocas horas. Una comunidad de vecinos de 10-20 pisos se completa en 1 día. Para empresas con control de accesos avanzado, entre 1 y 2 días. Trabajamos de manera limpia y ordenada, sin obras ni molestias." },
-  { q: "¿Puedo dar acceso temporal a un repartidor o técnico?", a: "Sí. Los sistemas que instalamos permiten generar códigos QR o PIN de acceso con caducidad programada. Perfectos para repartidores de paquetería, técnicos de mantenimiento o inquilinos temporales. El acceso se registra con foto y hora." },
+  { q: "¿El reconocimiento facial es legal en España? ¿Cumple el RGPD?", a: "El reconocimiento facial y la huella son tratamientos especialmente sensibles según el RGPD y los criterios de la AEPD. No basta con señalizar: hay que justificar la base jurídica, necesidad y proporcionalidad, evaluar riesgos y estudiar alternativas como tarjeta o PIN antes de instalarlo." },
+  { q: "¿El videoportero se puede integrar con mis cámaras de seguridad?", a: "Depende de la marca, protocolos y generación. Verificamos la compatibilidad de los equipos existentes antes de presupuestar integración; no todos se gestionan desde una misma app." },
+  { q: "¿Qué pasa si me llaman cuando estoy fuera?", a: "Con un sistema conectado compatible, conexión a internet y la app configurada, puedes atender llamadas y abrir la puerta a distancia según el modelo." },
+  { q: "¿Cuánto tarda la instalación?", a: "El plazo depende del estado del cableado, el número de viviendas, las modificaciones de la placa y el sistema elegido. Indicamos la duración en el presupuesto." },
+  { q: "¿Puedo dar acceso temporal a un repartidor o técnico?", a: "Algunos equipos permiten códigos PIN o QR temporales. Comprobamos la disponibilidad en cada modelo y configuramos permisos y caducidad respetando la privacidad." },
 ];
 
 export default function Videoporteros() {
@@ -97,9 +97,9 @@ export default function Videoporteros() {
   return (
     <div style={{ minHeight: "100vh", background: "#060e1a", paddingBottom: 70 }}>
       <AdvancedSEO
-        title="Videoporteros en Barcelona | Fermax, Bticino, Golmar"
-        description="Instalamos videoporteros IP, control de accesos biométrico y reconocimiento facial en Barcelona y toda Catalunya. Fermax, Bticino, Golmar. Presupuesto gratis 638 10 99 47."
-        keywords="videoporteros Barcelona, instalación videoportero, Fermax Barcelona, Bticino, Golmar, videoportero IP, control accesos biométrico, reconocimiento facial"
+        title="Instalación de Videoporteros en Barcelona | Fermax y BTicino"
+        description="Instalación y cambio de videoporteros en Barcelona para viviendas y comunidades. Fermax, BTicino y Golmar, sistemas de 2 hilos o IP y apertura móvil según modelo. Presupuesto gratis."
+        keywords="instalación videoporteros Barcelona, cambiar portero automático Barcelona, Fermax DUOX Plus, BTicino, Golmar, videoportero comunidad Barcelona, videoportero 2 hilos"
         canonicalUrl="https://alarmasenbarcelona.com/videoporteros"
         ogImage="https://alarmasenbarcelona.com/images/bticino-videoportero.jpeg"
       />
@@ -125,11 +125,11 @@ export default function Videoporteros() {
           </div>
 
           <h1 style={{ fontWeight: 900, fontSize: "clamp(26px, 5vw, 44px)", color: "#fff", lineHeight: 1.15, margin: 0, maxWidth: 640 }}>
-            Videoporteros Inteligentes.<br />
+            Instalación de Videoporteros en Barcelona.<br />
             <span style={{ color: "#E53E3E" }}>Ve quién llama</span> desde cualquier lugar.
           </h1>
           <p style={{ color: "#CBD5E0", fontSize: 16, lineHeight: 1.75, marginTop: 14, maxWidth: 560 }}>
-            Instalamos videoporteros IP con control de accesos biométrico, reconocimiento facial y apertura remota desde el móvil. Para hogares, comunidades y empresas en Barcelona y toda Catalunya.
+            Instalamos o sustituimos videoporteros de dos hilos o IP para viviendas, comunidades y empresas de Barcelona. Revisamos el cableado existente y configuramos la app móvil cuando el equipo lo permite.
           </p>
           <div style={{ display: "flex", gap: 28, marginTop: 24, paddingTop: 20, paddingBottom: 20, borderTop: "1px solid rgba(255,255,255,0.15)", flexWrap: "wrap" }}>
             <div><div style={{ fontSize: 26, fontWeight: 900, color: "#E53E3E" }}>{businessStats.googleRating}★</div><div style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", marginTop: 3 }}>Valoración en Google ({businessStats.googleReviewCount} reseñas)</div></div>
@@ -160,8 +160,8 @@ export default function Videoporteros() {
       <section style={{ background: "#0a1120", padding: "56px 20px" }}>
         <div className="max-w-4xl mx-auto">
           <div style={{ textAlign: "center", marginBottom: 36 }}>
-            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#FFFFFF", margin: 0 }}>Marcas Oficiales que Instalamos</h2>
-            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 8 }}>Distribuidores oficiales de las mejores marcas europeas de videoporteros</p>
+            <h2 style={{ fontWeight: 900, fontSize: 24, color: "#FFFFFF", margin: 0 }}>Marcas de videoporteros que instalamos</h2>
+            <p style={{ color: "#94A3B8", fontSize: 14, marginTop: 8 }}>Soluciones Fermax, BTicino y Golmar según instalación, número de viviendas y compatibilidad</p>
           </div>
           <div className="grid sm:grid-cols-3 gap-6">
 
@@ -406,7 +406,7 @@ export default function Videoporteros() {
       <section style={{ background: "linear-gradient(135deg, #E53E3E, #C53030)", padding: "48px 20px" }}>
         <div className="max-w-2xl mx-auto text-center">
           <h2 style={{ fontWeight: 900, fontSize: 26, color: "#fff", marginBottom: 8 }}>¿Necesitas Videoportero o Control de Accesos en Barcelona?</h2>
-          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, marginBottom: 28 }}>Presupuesto gratuito · Instalación en 1 día · Garantía 3 años</p>
+          <p style={{ color: "rgba(255,255,255,0.85)", fontSize: 15, marginBottom: 28 }}>Presupuesto gratuito · Plazo según instalación · Garantía según condiciones</p>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <button onClick={openQuote} style={{ backgroundColor: "#fff", color: "#C53030", fontWeight: 800, fontSize: 16, borderRadius: 50, padding: 18, border: "none", cursor: "pointer" }}>
               Solicitar presupuesto gratis →
