@@ -15,20 +15,20 @@ const SERVICES = [
   {
     num: "01",
     title: "Cámaras para Hogar",
-    desc: "Protege tu vivienda con cámaras HD 4K en puntos clave: acceso principal, garaje, jardín. Control total desde el móvil, visión nocturna en color y grabación local sin cuotas.",
-    features: ["Cámaras domo y bala HD 4K exteriores e interiores", "Visión nocturna en color hasta 30m", "Grabador NVR con disco duro local", "App móvil iOS y Android gratuita", "Alertas por movimiento en tiempo real", "Sin cuotas mensuales"],
+    desc: "Protege el acceso, el garaje o el jardín con cámaras adecuadas al espacio. Grabación en equipo local, acceso desde el móvil y visión nocturna según el modelo elegido.",
+    features: ["Cámaras domo y bala desde 2 MP; opciones 5 MP y 4K", "Infrarrojos o visión nocturna en color con iluminación compatible", "Grabador DVR o NVR según la tecnología", "App oficial en iOS y Android", "Alertas configurables por movimiento o detección inteligente", "Grabación local sin cuota de almacenamiento"],
   },
   {
     num: "02",
     title: "Cámaras para Negocio y Empresa",
     desc: "Instalaciones profesionales para tiendas, oficinas, empresas y locales comerciales. Grabación continua 24/7, acceso multiusuario y alta resolución para identificar detalles con claridad.",
-    features: ["Resolución 4K Ultra HD para identificación de detalles", "Grabación continua 24/7 con grabador profesional", "Cámaras PTZ motorizadas con zoom óptico", "Acceso remoto multiusuario desde cualquier dispositivo", "Compatible con central receptora de alarmas", "Cumplimiento normativa RGPD incluido"],
+    features: ["Resoluciones y ópticas elegidas según las distancias y el proyecto", "Grabación continua 24/7 si el sistema se configura para ello", "Opciones PTZ con zoom óptico según necesidad", "Usuarios y permisos de acceso remoto configurables", "Integración con otros sistemas cuando sean compatibles", "Ayuda con cartel de videovigilancia y configuración respetuosa con RGPD"],
   },
   {
     num: "03",
     title: "Cámaras para Comunidades",
     desc: "Solución completa para portales, garajes, escaleras y zonas comunes. Gestión RGPD incluida, señalética homologada y acceso restringido por perfiles.",
-    features: ["Cobertura de portal, garaje y zonas comunes", "Cámaras domo antivandálicas IP66", "Grabador NVR con almacenamiento RAID", "Gestión legal RGPD con documentación incluida", "Señalética homologada incluida", "Acceso restringido por roles (presidente, administrador)"],
+    features: ["Estudio de portal, garaje y zonas comunes", "Cámaras antivandálicas según ubicación y exposición", "Grabador y almacenamiento adaptados al número de cámaras", "Orientación sobre acuerdos comunitarios y protección de datos", "Carteles informativos según la instalación", "Acceso limitado a personas autorizadas"],
   },
 ];
 
@@ -56,13 +56,13 @@ const CAMERA_TYPES = [
 const BRANDS = [
   {
     name: "HIKVISION",
-    desc: "La marca nº1 en videovigilancia mundial. Cámaras con IA integrada, grabación 4K y compresión H.265+.",
-    specs: ["Resolución 4K Ultra HD – 8MP", "Compresión inteligente H.265+", "Análisis de comportamiento IA", "App Hik-Connect para acceso remoto"],
+    desc: "Fabricante de videovigilancia con cámaras IP y analógicas, opciones de analítica inteligente y modelos de hasta 4K.",
+    specs: ["Opciones de hasta 4K (8 MP) según gama", "H.265+ en equipos compatibles", "Analítica inteligente según cámara y firmware", "App Hik-Connect para acceso remoto"],
   },
   {
     name: "DAHUA",
-    desc: "Cámaras con detección de personas y vehículos, detección perimetral y visión nocturna en color.",
-    specs: ["Reconocimiento facial IA", "Detección perimetral activa", "Visión nocturna Full Color", "App DMSS multidispositivo"],
+    desc: "Fabricante con cámaras para viviendas, comercios y comunidades; detección inteligente y visión nocturna en color disponibles según modelo.",
+    specs: ["Detección inteligente según modelo", "Detección perimetral en gamas compatibles", "Visión nocturna Full Color en modelos específicos", "App DMSS para acceso remoto"],
   },
 ];
 
@@ -85,7 +85,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Qué marcas de cámaras instaláis en ${city}?`,
-      a: `Trabajamos con las mejores marcas del mercado: Hikvision y Dahua, dos de los fabricantes más extendidos en videovigilancia. Todas nuestras cámaras son de resolución mínima 4MPx (2K), con visión nocturna en color y resistencia IP66 para exteriores.`,
+      a: `Trabajamos con Hikvision y Dahua. Elegimos resolución, óptica y protección de cada cámara según el espacio: desde opciones de 2 MP hasta sistemas de 5 MP o 4K. El infrarrojo convencional graba de noche en blanco y negro; el color nocturno depende de un modelo compatible y de la iluminación disponible.`,
     },
     {
       q: `¿Las cámaras necesitan conexión a internet para funcionar?`,
@@ -93,7 +93,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Cuántos días de grabación almacena el sistema?`,
-      a: `Depende del número de cámaras y la capacidad del disco. Un disco de 1TB con 2 cámaras graba aproximadamente 15-20 días continuos. Con discos de 4TB y 8 cámaras, entre 7 y 10 días en grabación continua 24/7.`,
+      a: `No existe una duración fija: depende del número de cámaras, resolución, compresión, tasa de imágenes, grabación continua o por eventos y capacidad del disco. Calculamos el almacenamiento antes de presupuestar el sistema y ajustamos la retención a la finalidad y las obligaciones de protección de datos.`,
     },
     {
       q: `¿Cuánto tarda la instalación en ${city}?`,
@@ -105,7 +105,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
     },
     {
       q: `¿Puedo ver las cámaras desde el móvil en tiempo real?`,
-      a: `Sí. Instalamos la app correspondiente a la marca (iVMS-4500 para Hikvision, DMSS para Dahua) con acceso remoto desde cualquier lugar. Streaming en tiempo real, reproducción de grabaciones y alertas push incluidas, sin coste adicional.`,
+      a: `Sí. Configuramos la aplicación compatible con el equipo, normalmente Hik-Connect para Hikvision o DMSS para Dahua. Con conexión a internet puedes consultar el directo y, si el grabador lo permite, las grabaciones y avisos configurados. No necesitas contratar almacenamiento en la nube para utilizar un grabador local.`,
     },
     {
       q: `¿Es mejor un grabador propio o una cámara con cuota mensual?`,
