@@ -1,5 +1,5 @@
 {
- "combined": "4d53b3ef76314e7b",
+ "combined": "ccf0fd4c951a2f4e",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -15,7 +15,7 @@
   "src/components/ads/AdSenseInArticle.jsx": "87713dd9f5c4d2e7",
   "src/components/ads/AdSenseInFeed.jsx": "b1fea1b21432df0c",
   "src/components/blog/articleSEOData.jsx": "775798cdea65be19",
-  "src/components/blog/articleServiceLinks.jsx": "d0bb7d4ad804b1fe",
+  "src/components/blog/articleServiceLinks.jsx": "f532c3a655573bc6",
   "src/components/blog/newArticlesData.jsx": "a28760d468822c22",
   "src/components/blog/newArticlesData1.jsx": "0fd20638e05ffafe",
   "src/components/blog/newArticlesDataA.jsx": "32d1e7a87ce6dec5",
@@ -192,7 +192,7 @@
   "src/pages/Badalona.jsx": "5323ea4f7259e3de",
   "src/pages/BarrioEixample.jsx": "910678f9dce884f1",
   "src/pages/Blog.jsx": "3737b81dadaf99b5",
-  "src/pages/BlogArticle.jsx": "db3bfc22f0a8e068",
+  "src/pages/BlogArticle.jsx": "1f785d03eb0e998f",
   "src/pages/Calculadora.jsx": "b469c65f6582fabe",
   "src/pages/CamarasBarcelona.jsx": "528bfcd7261a9773",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",

@@ -12,7 +12,7 @@ import AdSenseInArticle from '@/components/ads/AdSenseInArticle';
 import AdSenseDisplay from '@/components/ads/AdSenseDisplay';
 import { businessStats } from '@/lib/businessStats';
 import { useLeadDrawer } from '@/context/LeadDrawerContext';
-import ArticleServiceLinks from '@/components/blog/articleServiceLinks';
+import ArticleServiceLinks, { getArticlePrimaryService } from '@/components/blog/articleServiceLinks';
 
 const allArticles = { ...originalArticlesData, ...newArticlesData };
 
@@ -197,6 +197,7 @@ export default function BlogArticle() {
   const { openDrawer } = useLeadDrawer();
   const article = allArticles[slug];
   const seoData = articleSEOData[slug] || {};
+  const primaryService = getArticlePrimaryService(slug);
 
   const schema = useMemo(() => article ? buildSchema(slug, article, seoData) : null, [slug, article]);
   const tocItems = useMemo(() => article ? extractH2s(article.content) : [], [article]);
@@ -337,7 +338,7 @@ export default function BlogArticle() {
               {/* Mid-article CTA */}
               <div className="my-12 bg-gradient-to-r from-[#E63946] to-[#c02e3a] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
                 <div>
-                  <p className="text-white font-bold text-xl mb-1">¿Listo para instalar tu alarma en Barcelona?</p>
+                  <p className="text-white font-bold text-xl mb-1">¿Necesitas instalar {primaryService.name} en Barcelona?</p>
                   <p className="text-white/80 text-sm">Visita técnica gratuita · Sin compromiso · Respuesta en 24h</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
@@ -345,11 +346,19 @@ export default function BlogArticle() {
                     <Phone className="w-4 h-4" />
                     638 10 99 47
                   </a>
-                  <a href="/#contacto" onClick={(e) => { e.preventDefault(); openDrawer("Alarma"); }} className="inline-flex items-center justify-center gap-2 bg-white/20 border border-white text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/30 transition-colors whitespace-nowrap">
+                  <a href="/#contacto" onClick={(e) => { e.preventDefault(); openDrawer(primaryService.drawer); }} className="inline-flex items-center justify-center gap-2 bg-white/20 border border-white text-white font-semibold px-6 py-3 rounded-xl hover:bg-white/30 transition-colors whitespace-nowrap">
                     Presupuesto gratis
                   </a>
                 </div>
               </div>
+
+              <p className="mb-9 text-sm leading-relaxed text-gray-600">
+                Si buscas una instalación y no solo información, consulta
+                {" "}<Link to={primaryService.href} className="font-semibold text-[#C53030] underline underline-offset-2">
+                  el servicio de {primaryService.name} en Barcelona
+                </Link>{" "}.
+                El presupuesto se prepara según las necesidades técnicas de tu inmueble.
+              </p>
 
               {/* Ad before FAQ */}
               <AdSenseDisplay />
@@ -407,13 +416,13 @@ export default function BlogArticle() {
                   {businessStats.googleRating}/5 en Google · {businessStats.googleReviewCount} reseñas
                 </div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-                  Instala tu alarma en Barcelona con nosotros
+                  Instalamos {primaryService.name} en Barcelona
                 </h2>
                 <p className="text-white/70 mb-2">Visita técnica gratuita · Sin compromiso · Instalación en 24–48h</p>
                 <p className="text-white/50 text-sm mb-8">Técnicos certificados AJAX · Sin permanencias · El equipo es tuyo desde el día 1</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button asChild className="bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 text-base font-bold">
-                    <a href="/#contacto" onClick={(e) => { e.preventDefault(); openDrawer("Alarma"); }}>Solicitar Presupuesto Gratis</a>
+                    <a href="/#contacto" onClick={(e) => { e.preventDefault(); openDrawer(primaryService.drawer); }}>Solicitar Presupuesto Gratis</a>
                   </Button>
                   <Button asChild variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[#0A1628] px-8 py-4 text-base font-bold">
                     <a href="tel:+34638109947">
@@ -423,6 +432,12 @@ export default function BlogArticle() {
                   </Button>
                 </div>
               </div>
+
+              <p className="mt-6 text-center text-sm text-gray-700">
+                Consulta también{" "}<Link to={primaryService.href} className="font-semibold text-[#C53030] underline underline-offset-2">
+                  la instalación de {primaryService.name} en Barcelona
+                </Link>.
+              </p>
 
               {/* Related articles */}
               {relatedArticles.length > 0 && (

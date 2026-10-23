@@ -87,6 +87,23 @@ const ARTICLE_SERVICES = {
   "normativa-videovigilancia-rgpd-catalunya": ["camaras", "accesos"],
 };
 
+/**
+ * Destino comercial principal por artículo. Se reutiliza el mismo mapa
+ * editorial que alimenta los enlaces internos: un artículo de CCTV no debe
+ * llevar un CTA de alarmas que no corresponda a su intención de búsqueda.
+ */
+export function getArticlePrimaryService(slug) {
+  const keys = ARTICLE_SERVICES[slug] || [];
+  const key = keys.find((item) => ["alarmas", "camaras", "videoporteros", "accesos"].includes(item));
+  const options = {
+    alarmas: { name: "alarmas Ajax", href: "/alarmas-barcelona", drawer: "Alarma" },
+    camaras: { name: "cámaras de seguridad", href: "/camaras-barcelona", drawer: "Cámaras de seguridad" },
+    videoporteros: { name: "videoporteros", href: "/videoporteros", drawer: "Videoportero" },
+    accesos: { name: "control de accesos", href: "/control-accesos", drawer: "Control de accesos" },
+  };
+  return options[key] || options.alarmas;
+}
+
 /** Reparte las variantes de anchor de forma estable por slug. */
 function pickAnchor(anchors, slug, index) {
   let h = 0;
