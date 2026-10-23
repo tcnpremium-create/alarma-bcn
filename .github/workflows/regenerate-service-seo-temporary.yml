@@ -1,0 +1,48 @@
+name: Temporary prerender service SEO
+on:
+  push:
+    branches:
+      - fix/seo-services-audio-video-locks-20261023
+jobs:
+  regenerate:
+    if: "!contains(github.event.head_commit.message, '[prerender-ok]')"
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.56.1-noble
+    timeout-minutes: 25
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/seo-services-audio-video-locks-20261023
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Set up Playwright
+        run: npm install --no-save --package-lock=false playwright@1.56.1
+      - name: Regenerate all crawler HTML
+        run: |
+          export NODE_OPTIONS=--dns-result-order=ipv4first
+          export PW_CHROMIUM_PATH=$(node -p 'require("playwright").chromium.executablePath()')
+          npm run prerender
+      - name: Validate SEO and regression tests
+        run: |
+          node scripts/audit-indexability.mjs
+          node scripts/prerender-fingerprint.mjs --check
+          npm test
+          npm run lint
+      - name: Commit generated HTML
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/__prerendered__/ scripts/prerender-fingerprint.json scripts/prerender-manifest.json vercel.json
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(seo): refresh service landing crawler HTML [prerender-ok]"
+            git push origin HEAD:fix/seo-services-audio-video-locks-20261023
+          fi
