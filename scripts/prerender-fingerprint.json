@@ -1,5 +1,5 @@
 {
- "combined": "5e8fc83dabd9a5a0",
+ "combined": "4d53b3ef76314e7b",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -211,7 +211,7 @@
   "src/pages/Home.jsx": "ea3ea17d69678fd8",
   "src/pages/Hospitalet.jsx": "8ad09f301ba8540d",
   "src/pages/MantenimientoSoporte.jsx": "bb14582e8b408bf2",
-  "src/pages/MapaRiesgo.jsx": "9ee6f8dd76b8f95b",
+  "src/pages/MapaRiesgo.jsx": "34444da8addc64bd",
   "src/pages/Mataro.jsx": "0ae64d8605b8e814",
   "src/pages/Privacidad.jsx": "5a92353297ce31f4",
   "src/pages/Promociones.jsx": "29b3eca859dd3ee0",
