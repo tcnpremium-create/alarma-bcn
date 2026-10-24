@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { MapPin, Phone, CheckCircle, Shield, Camera, Fingerprint, Wrench, ChevronRight, Eye, Radio, AlertTriangle } from "lucide-react";
 import Navbar from "./Navbar";
@@ -142,6 +143,47 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
 
       {/* CON O SIN CRA: LO DECIDE EL CLIENTE */}
       <AlarmConnectionOptions onRequestQuote={() => openDrawer(`Alarma en ${city}`)} />
+
+      {/* Barcelona: información comercial propia, distinta del template de otras ciudades. */}
+      {seoPath === "/alarmas-barcelona" && (
+        <section aria-labelledby="alarma-ajax-barcelona" style={{ backgroundColor: "#fff", padding: "60px 24px", borderBottom: "1px solid #E5E7EB" }}>
+          <div className="max-w-5xl mx-auto">
+            <p style={{ fontSize: 12, fontWeight: 800, color: "#C53030", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+              Instalación de alarmas en Barcelona
+            </p>
+            <h2 id="alarma-ajax-barcelona" style={{ color: "#0A0A1A", fontSize: 27, fontWeight: 900, margin: "12px 0 16px" }}>
+              Alarmas Ajax para viviendas, negocios y comunidades en Barcelona
+            </h2>
+            <p style={{ color: "#374151", fontSize: 16, lineHeight: 1.7, maxWidth: 850 }}>
+              El presupuesto depende de los accesos, la distribución de la propiedad, los puntos de entrada
+              y la necesidad de avisos o supervisión. Primero definimos qué debe detectar la instalación;
+              después seleccionamos central, sensores, sirenas y comunicación. Puedes elegir una solución
+              con o sin conexión a central receptora de alarmas según tus necesidades.
+            </p>
+            <div className="grid md:grid-cols-3" style={{ gap: 16, marginTop: 24 }}>
+              {[
+                { title: "Alarmas para viviendas", text: "Estudiamos puertas, ventanas, zonas de paso y accesos al patio o terraza. Dimensionamos sensores de apertura y movimiento para cada espacio." },
+                { title: "Alarmas para tiendas y oficinas", text: "Revisamos horarios, personal autorizado, entradas de mercancías y accesos del local. Configuramos usuarios y notificaciones según la operativa del negocio." },
+                { title: "Alarmas para comunidades", text: "Analizamos accesos comunes y zonas técnicas para proponer protección compatible con el uso del edificio, sin prometer coberturas antes de visitar la instalación." },
+              ].map(({ title, text }) => (
+                <article key={title} style={{ border: "1px solid #E5E7EB", borderRadius: 14, padding: 22, backgroundColor: "#F8F9FA" }}>
+                  <h3 style={{ color: "#0A0A1A", fontSize: 17, fontWeight: 800, margin: "0 0 12px" }}>{title}</h3>
+                  <p style={{ color: "#4B5563", fontSize: 14, lineHeight: 1.65, margin: 0 }}>{text}</p>
+                </article>
+              ))}
+            </div>
+            <p style={{ color: "#4B5563", fontSize: 14, lineHeight: 1.7, marginTop: 20 }}>
+              Si también necesitas grabación de imágenes, consulta por separado la{" "}
+              <Link to="/camaras-barcelona" style={{ color: "#C53030", fontWeight: 700, textDecoration: "underline" }}>
+                instalación de cámaras de seguridad en Barcelona
+              </Link>. Te indicamos qué equipos y trabajos están incluidos en cada presupuesto.
+            </p>
+            <button type="button" onClick={scrollToContact} style={{ marginTop: 16, backgroundColor: "#C53030", color: "#fff", padding: "14px 24px", borderRadius: 32, border: 0, fontWeight: 800, cursor: "pointer" }}>
+              Solicitar estudio para instalar una alarma en Barcelona →
+            </button>
+          </div>
+        </section>
+      )}
 
       {/* SERVICES */}
       <section style={{ backgroundColor: "#F8F9FA", padding: "64px 24px" }}>
