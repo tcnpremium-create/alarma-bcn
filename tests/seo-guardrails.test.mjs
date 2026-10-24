@@ -11,7 +11,7 @@ test('la portada distingue alarmas y camaras de la landing especifica', () => {
   assert.match(hero, /h1a: "Instalación de Alarmas y Cámaras"/);
   assert.match(home, /title="Instaladores de Alarmas y Cámaras en Barcelona \| Premium Tech"/);
   assert.match(camera, /seoPath="\/camaras-barcelona"/);
-  assert.match(camera, /seoTitle="Instaladores de Cámaras en Barcelona/);
+  assert.match(camera, /seoTitle="Instalación de Cámaras de Seguridad en Barcelona/);
 });
 
 test('las principales URLs comerciales del sitemap son unicas', () => {
