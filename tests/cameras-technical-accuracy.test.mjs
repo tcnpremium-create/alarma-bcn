@@ -23,5 +23,5 @@ test("características y almacenamiento se especifican según los equipos", () =
 test("la oferta local respeta precios y metas existentes", () => {
   assert.match(city, /689 € \+ IVA según condiciones/);
   assert.match(city, /seoPath="\/camaras-barcelona"/);
-  assert.match(city, /seoTitle="Instaladores de Cámaras en Barcelona/);
+  assert.match(city, /seoTitle="Instalación de Cámaras de Seguridad en Barcelona/);
 });
