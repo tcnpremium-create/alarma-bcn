@@ -38,6 +38,24 @@ El tráfico de Google llega sobre todo a páginas informativas (home, MapaRiesgo
 Ajax vs Hikvision), no a las comerciales. Por eso los botones de presupuesto de esas páginas
 abren el formulario en el mismo sitio (`openDrawer`) en vez de enviar a `/#contacto`.
 
+## Prueba controlada en landing de cámaras Barcelona — 24/10/2026
+
+No se cambia la home. Solo cambia title y description de `/camaras-barcelona`
+para acercarlos a la intención transaccional «instalación de cámaras de seguridad
+en Barcelona» y clarificar que atendemos viviendas, negocios y comunidades.
+
+**Referencia GSC:** ventana consultada 25/09–23/10/2026 con último día
+de datos 22/10. Home: 9.162 impresiones, posición media 14,94.
+`/camaras-barcelona`: 533 impresiones, 2 clics, posición media 61,33.
+La home muestra la consulta «instalacion de cámaras de seguridad en barcelona»
+en posición media 8,08 con 52 impresiones y 1 clic.
+Son promedios, **no posiciones fijas ni prueba de canibalización**.
+
+Validar el HTML prerenderizado y el despliegue; observar por consulta × URL
+en Search Console tras el próximo rastreo. Evitar nuevos cambios de título
+durante 3–4 semanas salvo problema técnico demostrable. La página de alarmas
+y la portada se mantienen estables.
+
 ## Cómo medir
 
 - Las solicitudes llevan `source_page` (página de origen) desde el 11/10.
