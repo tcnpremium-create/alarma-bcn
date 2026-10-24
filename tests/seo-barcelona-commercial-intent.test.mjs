@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 test("CCTV Barcelona points title, canonical path and description at installation", () => {
   const source = readFileSync(new URL("../src/pages/CamarasBarcelona.jsx", import.meta.url), "utf8");
-  assert.match(source, /seoTitle="Instalación de Cámaras de Seguridad en Barcelona/);
+  assert.match(source, /seoTitle="Instaladores de Cámaras en Barcelona/);
   assert.match(source, /seoPath="\/camaras-barcelona"/);
 });
 test("Ajax Barcelona has unique actionable content, not an extra duplicate city page", () => {
