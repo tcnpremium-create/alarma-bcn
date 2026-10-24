@@ -1,5 +1,5 @@
 {
- "combined": "ccf0fd4c951a2f4e",
+ "combined": "4536486b77d2d2d5",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -44,7 +44,7 @@
   "src/components/landing/CamerasBarcelonaGuide.jsx": "fcd4e6667e534117",
   "src/components/landing/CertificationsSection.jsx": "69ba7b2605d2ea40",
   "src/components/landing/CitiesGrid.jsx": "d86a0025a25d673e",
-  "src/components/landing/CityLandingTemplate.jsx": "5b1387ac89604d62",
+  "src/components/landing/CityLandingTemplate.jsx": "ed4307f2f81828be",
   "src/components/landing/ClientsSlider.jsx": "7cf08b88078a58af",
   "src/components/landing/ComparisonTable.jsx": "e601c7d1414ed872",
   "src/components/landing/ContactForm.jsx": "3449f9783a5783aa",
