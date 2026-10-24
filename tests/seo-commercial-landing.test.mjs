@@ -22,8 +22,8 @@ const PAGES = [
     "source": "src/pages/CamarasBarcelona.jsx",
     "snapshot": "camaras-barcelona.html",
     "route": "/camaras-barcelona",
-    "title": "Instaladores de Cámaras en Barcelona | CCTV y Videovigilancia",
-    "description": "Empresa instaladora de cámaras de seguridad y videovigilancia en Barcelona. Sistemas CCTV IP y NVR para negocios, viviendas y comunidades. Presupuesto gratis."
+    "title": "Instalación de Cámaras de Seguridad en Barcelona | Premium Tech",
+    "description": "Instalamos cámaras de seguridad en Barcelona para viviendas, negocios y comunidades. Videovigilancia IP, grabación NVR y presupuesto personalizado."
   },
 {
   "source": "src/components/seo/CityLandingSEO.jsx",
