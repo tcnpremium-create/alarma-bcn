@@ -23,7 +23,7 @@ const PAGES = [
     "snapshot": "camaras-barcelona.html",
     "route": "/camaras-barcelona",
     "title": "Instalación de Cámaras de Seguridad en Barcelona | Premium Tech",
-    "description": "Instalamos cámaras de seguridad en Barcelona para viviendas, negocios y comunidades. Videovigilancia IP, grabación NVR y presupuesto personalizado."
+    "description": "Instalación profesional de cámaras de seguridad en Barcelona para parkings, comunidades, negocios y viviendas. Sistemas Hikvision y Dahua, grabación NVR y presupuesto a medida."
   },
 {
   "source": "src/components/seo/CityLandingSEO.jsx",
