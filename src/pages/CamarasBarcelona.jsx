@@ -6,9 +6,9 @@ export default function CamarasBarcelona() {
     <CameraCityTemplate
       city="Barcelona"
       seoTitle="Instalación de Cámaras de Seguridad en Barcelona | Premium Tech"
-      seoDescription="Instalamos cámaras de seguridad en Barcelona para viviendas, negocios y comunidades. Videovigilancia IP, grabación NVR y presupuesto personalizado."
+      seoDescription="Instalación profesional de cámaras de seguridad en Barcelona para parkings, comunidades, negocios y viviendas. Sistemas Hikvision y Dahua, grabación NVR y presupuesto a medida."
       seoPath="/camaras-barcelona"
-      intro="Instalación de cámaras de seguridad Hikvision y Dahua en Barcelona. Kits desde 689 € + IVA según condiciones, grabación local sin cuota de almacenamiento y presupuesto gratuito."
+      intro="Instalamos cámaras de seguridad en Barcelona para parkings, comunidades de vecinos, comercios y viviendas. Diseñamos el recorrido del cableado, protegemos los equipos según el entorno y configuramos la grabación local NVR y el acceso desde el móvil. Presupuesto personalizado sin compromiso."
     />
   );
 }
