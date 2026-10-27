@@ -1,5 +1,5 @@
 {
- "combined": "cdf323a41535c2c2",
+ "combined": "6d7e6ef2ad3288de",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "4187fd3685037b4d",
@@ -194,7 +194,7 @@
   "src/pages/Blog.jsx": "3737b81dadaf99b5",
   "src/pages/BlogArticle.jsx": "1f785d03eb0e998f",
   "src/pages/Calculadora.jsx": "b469c65f6582fabe",
-  "src/pages/CamarasBarcelona.jsx": "87910772a5425732",
+  "src/pages/CamarasBarcelona.jsx": "583399ab68ada4e4",
   "src/pages/CamarasGirona.jsx": "de05b1e9c0f4fa6d",
   "src/pages/CamarasLleida.jsx": "7435754e2d9d74d3",
   "src/pages/CamarasSabadell.jsx": "aa8f70c1c7e2ef9c",
