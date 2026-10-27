@@ -18,6 +18,14 @@ const ESPACIOS = ["Vivienda", "Restaurante", "Comercio", "Oficina", "Comunidad",
 const TAMANOS = ["Menos de 50 m²", "50–150 m²", "150–300 m²", "300–500 m²", "Más de 500 m²"];
 const NECESIDADES = ["Música ambiental", "Altavoces empotrados", "Altavoces Bluetooth", "Megafonía", "Sistema multizona", "Sonido profesional", "Otro"];
 
+// Normaliza números españoles pegados o autocompletados con +34 / 0034.
+function normalizeSpanishPhone(value) {
+  let digits = String(value || "").replace(/\D/g, "");
+  if (digits.startsWith("0034")) digits = digits.slice(4);
+  else if (digits.startsWith("34") && digits.length > 9) digits = digits.slice(2);
+  return digits.slice(0, 9);
+}
+
 function tipoClienteFor(espacio) {
   if (espacio === "Vivienda") return "hogar";
   if (espacio === "Comunidad") return "comunidad";
@@ -64,7 +72,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
       const result = await LeadAPI.create({
         nombre: form.nombre.trim(),
         email: form.email.trim(),
-        telefono: form.telefono.replace(/\s/g, ""),
+        telefono: normalizeSpanishPhone(form.telefono),
         zona: form.zona.trim(),
         tipo_cliente: isSonorizacion ? tipoClienteFor(form.espacio) : "hogar",
         servicio_interes: service || "",
