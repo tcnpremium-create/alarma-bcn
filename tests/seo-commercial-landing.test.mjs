@@ -40,6 +40,8 @@ const PAGES = [
   "description": "Instaladores de cámaras de seguridad, videovigilancia IP y CCTV en Sabadell. Sistemas para hogares, empresas y comunidades con acceso móvil. Presupuesto gratis."
 }
 ];
+// PR #66 records the substantive Oct 27 update; other pages retain their dates.
+const lastmodByRoute = { '/camaras-barcelona': '2026-10-27' };
 const sitemap = readFileSync('public/sitemap.xml', 'utf8');
 
 for (const page of PAGES) {
@@ -53,6 +55,6 @@ for (const page of PAGES) {
     assert.ok(html.includes(`property="og:title" content="${page.title}"`), 'El Open Graph no coincide');
     assert.ok(html.includes(`name="twitter:description" content="${page.description}"`), 'La descripción de Twitter no coincide');
     assert.ok(html.includes(`rel="canonical" href="https://alarmasenbarcelona.com${page.route === '/' ? '' : page.route}"`), 'Canonical inesperada');
-    assert.ok(sitemap.includes(`<loc>https://alarmasenbarcelona.com${page.route}</loc><lastmod>2026-10-14</lastmod>`), 'Fecha de sitemap incorrecta');
+    assert.ok(sitemap.includes(`<loc>https://alarmasenbarcelona.com${page.route}</loc><lastmod>${lastmodByRoute[page.route] || '2026-10-14'}</lastmod>`), 'Fecha de sitemap incorrecta');
   });
 }

@@ -1,0 +1,394 @@
+{
+  "source": "Windsor.ai Search Console",
+  "property": "sc-domain:alarmasenbarcelona.com",
+  "retrieved": "2026-10-29",
+  "latestData": "2026-10-27",
+  "comparison": [
+    "2026-10-01/2026-10-13",
+    "2026-10-15/2026-10-27"
+  ],
+  "notes": [
+    "13-day equivalent windows; Oct 28 unavailable.",
+    "Position weighted by impressions; query totals must not be computed by summing URL-level results.",
+    "Sep 21–28 missing in connector response; no complete previous 28-day comparison."
+  ],
+  "queries": [
+    {
+      "query": "instalacion de camaras de seguridad barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 16,
+        "ctr": 0,
+        "position": 9.31250625
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 18,
+        "ctr": 0,
+        "position": 22.66666111111111
+      }
+    },
+    {
+      "query": "instalacion de cámaras de seguridad en barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "late": {
+        "clicks": 2,
+        "impressions": 22,
+        "ctr": 9.090909090909092,
+        "position": 8.363645454545455
+      }
+    },
+    {
+      "query": "camaras de seguridad barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 33,
+        "ctr": 0,
+        "position": 21.272736363636362
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 44,
+        "ctr": 0,
+        "position": 28.227256818181818
+      }
+    },
+    {
+      "query": "instaladores camaras de vigilancia barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 38,
+        "ctr": 0,
+        "position": 11.263157894736842
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 47,
+        "ctr": 0,
+        "position": 11.340431914893616
+      }
+    },
+    {
+      "query": "videovigilancia en barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 41,
+        "ctr": 0,
+        "position": 12.658539024390244
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 69,
+        "ctr": 0,
+        "position": 13.521730434782611
+      }
+    },
+    {
+      "query": "cctv barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 45,
+        "ctr": 0,
+        "position": 26.844424444444446
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 79,
+        "ctr": 0,
+        "position": 28.037969620253165
+      }
+    },
+    {
+      "query": "instalación de alarmas barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 53,
+        "ctr": 0,
+        "position": 17.00001132075472
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 49,
+        "ctr": 0,
+        "position": 16.612244897959183
+      }
+    },
+    {
+      "query": "alarmas sabadell",
+      "early": {
+        "clicks": 0,
+        "impressions": 11,
+        "ctr": 0,
+        "position": 12.181818181818182
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 23,
+        "ctr": 0,
+        "position": 16.086969565217395
+      }
+    },
+    {
+      "query": "alarmas ajax barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": null
+      }
+    },
+    {
+      "query": "videoporteros barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": null
+      }
+    }
+  ],
+  "pages": [
+    {
+      "page": "https://alarmasenbarcelona.com/",
+      "early": {
+        "clicks": 22,
+        "impressions": 5367,
+        "ctr": 0.40991242779951553,
+        "position": 13.387359828582076
+      },
+      "late": {
+        "clicks": 23,
+        "impressions": 4458,
+        "ctr": 0.515926424405563,
+        "position": 18.657017003140417
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/Promociones",
+      "early": {
+        "clicks": 1,
+        "impressions": 521,
+        "ctr": 0.19193857965451055,
+        "position": 72.22647869481766
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 1067,
+        "ctr": 0,
+        "position": 69.62137085285848
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/camaras-barcelona",
+      "early": {
+        "clicks": 2,
+        "impressions": 208,
+        "ctr": 0.9615384615384616,
+        "position": 58.836519230769234
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 538,
+        "ctr": 0,
+        "position": 60.8828873605948
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/BlogArticle/mejores-alarmas-casa-barcelona",
+      "early": {
+        "clicks": 3,
+        "impressions": 577,
+        "ctr": 0.5199306759098787,
+        "position": 16.36913760831889
+      },
+      "late": {
+        "clicks": 3,
+        "impressions": 462,
+        "ctr": 0.6493506493506493,
+        "position": 16.76406103896104
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/BlogArticle/comparativa-alarmas-espana-2026",
+      "early": {
+        "clicks": 5,
+        "impressions": 402,
+        "ctr": 1.243781094527363,
+        "position": 6.057217412935324
+      },
+      "late": {
+        "clicks": 6,
+        "impressions": 441,
+        "ctr": 1.3605442176870748,
+        "position": 6.061230158730159
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/MapaRiesgo",
+      "early": {
+        "clicks": 22,
+        "impressions": 391,
+        "ctr": 5.626598465473146,
+        "position": 7.322263938618925
+      },
+      "late": {
+        "clicks": 19,
+        "impressions": 406,
+        "ctr": 4.679802955665025,
+        "position": 8.586193596059113
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/control-accesos",
+      "early": {
+        "clicks": 0,
+        "impressions": 254,
+        "ctr": 0,
+        "position": 32.66929566929134
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 356,
+        "ctr": 0,
+        "position": 37.126416292134834
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/BlogArticle/comparativa-ajax-hikvision",
+      "early": {
+        "clicks": 9,
+        "impressions": 234,
+        "ctr": 3.8461538461538463,
+        "position": 5.581192735042735
+      },
+      "late": {
+        "clicks": 10,
+        "impressions": 287,
+        "ctr": 3.484320557491289,
+        "position": 5.351916376306621
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/alarmas-tarragona",
+      "early": {
+        "clicks": 0,
+        "impressions": 0,
+        "ctr": 0,
+        "position": null
+      },
+      "late": {
+        "clicks": 2,
+        "impressions": 199,
+        "ctr": 1.0050251256281406,
+        "position": 28.532648743718592
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/alarmas-sabadell",
+      "early": {
+        "clicks": 0,
+        "impressions": 116,
+        "ctr": 0,
+        "position": 19.96553103448276
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 187,
+        "ctr": 0,
+        "position": 22.572195721925134
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/BlogArticle/elegir-alarma-hogar-barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 70,
+        "ctr": 0,
+        "position": 75.71429142857144
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 131,
+        "ctr": 0,
+        "position": 72.12214503816794
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/ComparativaAlarmas",
+      "early": {
+        "clicks": 1,
+        "impressions": 191,
+        "ctr": 0.5235602094240838,
+        "position": 32.16229685863874
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 121,
+        "ctr": 0,
+        "position": 25.115695867768597
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/BlogArticle/precio-instalar-alarma-barcelona",
+      "early": {
+        "clicks": 1,
+        "impressions": 17,
+        "ctr": 5.882352941176471,
+        "position": 3.5882176470588236
+      },
+      "late": {
+        "clicks": 3,
+        "impressions": 104,
+        "ctr": 2.8846153846153846,
+        "position": 9.240373076923076
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/alarmas-barcelona",
+      "early": {
+        "clicks": 0,
+        "impressions": 336,
+        "ctr": 0,
+        "position": 55.36903898809524
+      },
+      "late": {
+        "clicks": 0,
+        "impressions": 95,
+        "ctr": 0,
+        "position": 44.92632
+      }
+    },
+    {
+      "page": "https://alarmasenbarcelona.com/camaras-sabadell",
+      "early": {
+        "clicks": 0,
+        "impressions": 70,
+        "ctr": 0,
+        "position": 40.11428
+      },
+      "late": {
+        "clicks": 3,
+        "impressions": 86,
+        "ctr": 3.488372093023256,
+        "position": 33.953484883720925
+      }
+    }
+  ]
+}

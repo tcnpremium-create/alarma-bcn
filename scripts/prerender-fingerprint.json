@@ -1,8 +1,8 @@
 {
- "combined": "6d7e6ef2ad3288de",
+ "combined": "50360dc68f182d94",
  "files": {
   "index.html": "0c69c5f744af1c37",
-  "public/sitemap.xml": "4187fd3685037b4d",
+  "public/sitemap.xml": "335642272e2a672b",
   "src/App.jsx": "c9bdce7d8d4d5888",
   "src/Layout.jsx": "1cea5b23a50c83c7",
   "src/api/api.js": "aa85d8c7c6694f94",
@@ -71,7 +71,7 @@
   "src/components/landing/KitFinder.jsx": "dea21b4667bb7fb0",
   "src/components/landing/KitPhotos.jsx": "02ff2bae663c1811",
   "src/components/landing/KitShowcase.jsx": "fd83433032e06744",
-  "src/components/landing/LeadCaptureForm.jsx": "37eaf7cae62754c8",
+  "src/components/landing/LeadCaptureForm.jsx": "283a351713c60aa3",
   "src/components/landing/LeadFormDrawer.jsx": "5ea1c0c60c448d56",
   "src/components/landing/LegalRGPDSection.jsx": "9c919330688107ff",
   "src/components/landing/MarcasSection.jsx": "0fe2516202b0b2a6",
