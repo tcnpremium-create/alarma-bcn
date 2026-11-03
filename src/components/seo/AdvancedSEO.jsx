@@ -28,6 +28,11 @@ export default function AdvancedSEO({
 }) {
   const canonical = canonicalUrl || SITE_URL;
   const extraNodes = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+  // Evita emitir dos Service con el mismo @id cuando la página ya aporta uno.
+  const hasExplicitService = extraNodes.some((node) => {
+    const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+    return types.includes("Service");
+  });
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -123,7 +128,7 @@ export default function AdvancedSEO({
           "https://www.instagram.com/premiumtechsecurity",
           "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
         ]
-      }] : [{
+      }] : (hasExplicitService ? [] : [{
         "@type": "Service",
         "@id": `${canonical}#service`,
         "name": title,
@@ -131,7 +136,7 @@ export default function AdvancedSEO({
         "serviceType": title,
         "provider": { "@id": `${SITE_URL}/#organization` },
         "areaServed": serviceArea || "Catalunya"
-      }]),
+      }])),
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
