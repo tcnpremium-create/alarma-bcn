@@ -38,6 +38,7 @@ jobs:
         run: |
           node scripts/audit-indexability.mjs
           node scripts/prerender-fingerprint.mjs --check
+          node --test tests/seo-service-dedup.test.mjs
           npm test
           npm run lint
       - name: Guardar snapshots SOLO en rama de revisión
