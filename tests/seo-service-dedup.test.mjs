@@ -14,7 +14,7 @@ const cameraRoutes = [
 function structuredData(route) {
   const filename = route.slice(1) + ".html";
   const html = readFileSync(new URL(`../public/__prerendered__/${filename}`, import.meta.url), "utf8");
-  const tags = [...html.matchAll(/<script\\b[^>]*type=["']application\\/ld\\+json["'][^>]*>([\\s\\S]*?)<\\/script>/gi)];
+  const tags = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
   assert.ok(tags.length > 0, `Sin datos estructurados: ${route}`);
   return tags.map((match) => JSON.parse(match[1]));
 }
