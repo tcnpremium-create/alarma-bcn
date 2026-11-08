@@ -10,6 +10,7 @@ import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 const VALID_TABS = ["alarmas", "camaras", "controles"];
 
+// La disponibilidad física se confirma al presupuestar: no anunciar InStock en JSON-LD sin inventario verificado.
 const promoSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -28,7 +29,6 @@ const promoSchema = {
           "@type": "Offer",
           "price": kit.price.replace(".", ""),
           "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
           "seller": { "@type": "Organization", "name": "Premium Tech Security" },
           "priceSpecification": { "@type": "PriceSpecification", "price": kit.price.replace(".", ""), "priceCurrency": "EUR", "valueAddedTaxIncluded": false },
         },
@@ -45,7 +45,6 @@ const promoSchema = {
           "@type": "Offer",
           "price": kit.price.replace(".", ""),
           "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
           "seller": { "@type": "Organization", "name": "Premium Tech Security" },
           "priceSpecification": { "@type": "PriceSpecification", "price": kit.price.replace(".", ""), "priceCurrency": "EUR", "valueAddedTaxIncluded": false },
         },

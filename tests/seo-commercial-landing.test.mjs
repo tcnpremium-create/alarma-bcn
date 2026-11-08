@@ -41,7 +41,7 @@ const PAGES = [
 }
 ];
 // PR #66 records the substantive Oct 27 update; other pages retain their dates.
-const lastmodByRoute = { '/camaras-barcelona': '2026-10-27' };
+const lastmodByRoute = { '/camaras-barcelona': '2026-10-27', '/camaras-sabadell': '2026-11-08' };
 const sitemap = readFileSync('public/sitemap.xml', 'utf8');
 
 for (const page of PAGES) {

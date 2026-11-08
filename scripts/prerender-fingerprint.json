@@ -1,8 +1,8 @@
 {
- "combined": "62579ab5b5b9c046",
+ "combined": "a9c6deef71a0da97",
  "files": {
   "index.html": "0c69c5f744af1c37",
-  "public/sitemap.xml": "335642272e2a672b",
+  "public/sitemap.xml": "eb07045b06b8672f",
   "src/App.jsx": "c9bdce7d8d4d5888",
   "src/Layout.jsx": "1cea5b23a50c83c7",
   "src/api/api.js": "aa85d8c7c6694f94",
@@ -214,7 +214,7 @@
   "src/pages/MapaRiesgo.jsx": "34444da8addc64bd",
   "src/pages/Mataro.jsx": "0ae64d8605b8e814",
   "src/pages/Privacidad.jsx": "5a92353297ce31f4",
-  "src/pages/Promociones.jsx": "29b3eca859dd3ee0",
+  "src/pages/Promociones.jsx": "3e0206a461273409",
   "src/pages/RedesInformaticas.jsx": "2a17c1605ebbe1bc",
   "src/pages/SantCugat.jsx": "2b0719f652ee807c",
   "src/pages/Servicios.jsx": "edf687acd65b6f86",
