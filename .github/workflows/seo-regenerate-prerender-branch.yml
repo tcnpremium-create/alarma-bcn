@@ -51,7 +51,7 @@ jobs:
           test -s public/__prerendered__/Badalona.html
           git status --short | head -100
           git add -A
-          unwanted="$(git diff --cached --name-only | grep -Ev '^(public/__prerendered__/|scripts/prerender-(fingerprint\\.json|manifest\\.json)$|vercel\\.json$)' || true)"
+          unwanted="$(git diff --cached --name-only | grep -Ev '^(public/__prerendered__/|scripts/prerender-(fingerprint|manifest)[.]json$|vercel[.]json$)' || true)"
           if [ -n "$unwanted" ]; then
             printf 'ERROR: cambios fuera de snapshots esperados: %s\\n' "$unwanted"
             exit 1
