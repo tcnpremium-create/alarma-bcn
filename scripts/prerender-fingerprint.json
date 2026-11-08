@@ -1,5 +1,5 @@
 {
- "combined": "50360dc68f182d94",
+ "combined": "8d8362a1ec361215",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "335642272e2a672b",
@@ -102,7 +102,7 @@
   "src/components/magicui/shiny-button.jsx": "c703658d3ae02dea",
   "src/components/seo/AdvancedSEO.jsx": "1e6888e7b100744f",
   "src/components/seo/CityLandingSEO.jsx": "19131871211b06c1",
-  "src/components/seo/LocalitySEO.jsx": "29886024bdbb80ba",
+  "src/components/seo/LocalitySEO.jsx": "3b6b5455cf98a64c",
   "src/components/seo/PageSEO.jsx": "2dd935134d5f30ce",
   "src/components/seo/SEOHead.jsx": "0eeae4e02be12b01",
   "src/components/services/ServiceCard.jsx": "d2856681afe55e85",
