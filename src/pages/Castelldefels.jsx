@@ -5,13 +5,14 @@ import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, MapPin, Phone } from "lucide-react";
 import LocalitySEO from "../components/seo/LocalitySEO";
+import { Link } from "react-router-dom";
 
 export default function CastelldefelsPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <LocalitySEO
         city="Castelldefels"
-        title="Alarmas en Castelldefels | Instalación Profesional 24/7"
+        title="Instalación de Alarmas y Cámaras en Castelldefels | Premium Tech"
         description="Instalación de alarmas y cámaras de seguridad en Castelldefels. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas Castelldefels, instalación alarmas Castelldefels, sistemas seguridad Castelldefels, cámaras Castelldefels, videovigilancia Castelldefels"
         canonicalUrl="https://alarmasenbarcelona.com/Castelldefels"
@@ -34,11 +35,11 @@ export default function CastelldefelsPage() {
             </div>
             
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Sistemas de Seguridad en Castelldefels
+              Instalación de Alarmas y Cámaras en Castelldefels
             </h1>
             
             <p className="text-xl text-white/80 mb-8">
-              Protección premium para viviendas de lujo y segundas residencias en la costa. Alarmas inteligentes y videovigilancia avanzada.
+              Instalación profesional de alarmas Ajax y cámaras de seguridad para viviendas, segundas residencias, comunidades y negocios de Castelldefels. Estudiamos el acceso, la cobertura y las zonas que necesitas proteger.
             </p>
             
             <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#C53030] text-white px-8 py-4 rounded-full font-semibold">
@@ -53,9 +54,9 @@ export default function CastelldefelsPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Seguridad Costera Premium</h2>
+              <h2 className="text-3xl font-bold mb-6">Alarmas y videovigilancia cerca del mar</h2>
               <p className="text-lg text-gray-700 mb-4">
-                Castelldefels requiere soluciones especiales adaptadas al entorno costero. Nuestros sistemas resisten la humedad y salinidad mientras ofrecen máxima protección.
+                En instalaciones exteriores próximas al mar revisamos la exposición a la humedad y al ambiente salino antes de escoger la ubicación, el cableado y el grado de protección de las cámaras. No todos los equipos son adecuados para cualquier fachada o terraza: el presupuesto se adapta al entorno y a la propiedad.
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2">
@@ -71,6 +72,9 @@ export default function CastelldefelsPage() {
                   <span>Control remoto desde cualquier lugar</span>
                 </li>
               </ul>
+              <p className="text-lg text-gray-700 mt-5">
+                Para el interior podemos instalar alarmas Ajax con avisos en el móvil y conexión a central receptora opcional. Para cámaras, proponemos grabación local mediante NVR y acceso remoto configurado según las necesidades. Consulta también nuestra <Link to="/alarmas-barcelona" className="underline font-semibold">instalación de alarmas</Link> y el servicio de <Link to="/camaras-barcelona" className="underline font-semibold">cámaras de seguridad</Link>.
+              </p>
             </div>
             <div className="bg-gray-100 rounded-2xl p-8">
               <img

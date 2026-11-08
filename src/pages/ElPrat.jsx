@@ -5,13 +5,14 @@ import ContactForm from "../components/landing/ContactForm";
 import { motion } from "framer-motion";
 import { Shield, MapPin, Phone } from "lucide-react";
 import LocalitySEO from "../components/seo/LocalitySEO";
+import { Link } from "react-router-dom";
 
 export default function ElPratPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       <LocalitySEO
         city="El Prat de Llobregat"
-        title="Alarmas en El Prat de Llobregat | Instalación Profesional 24/7"
+        title="Alarmas y Cámaras en El Prat de Llobregat | Premium Tech"
         description="Instalación de alarmas y cámaras de seguridad en El Prat de Llobregat. Sin cuotas mensuales. Ajax y Hikvision. Presupuesto gratis 638 10 99 47."
         keywords="alarmas El Prat de Llobregat, instalación alarmas El Prat, sistemas seguridad El Prat, cámaras El Prat, videovigilancia El Prat"
         canonicalUrl="https://alarmasenbarcelona.com/ElPrat"
@@ -38,7 +39,7 @@ export default function ElPratPage() {
             </h1>
             
             <p className="text-xl text-white/80 mb-8">
-              Protección profesional para hogares y negocios cerca del aeropuerto. Sistemas de seguridad con alertas en tiempo real en tu móvil.
+              Instalamos alarmas y cámaras de seguridad en El Prat de Llobregat para pisos, comercios, oficinas y naves. Diseñamos el sistema según los accesos y zonas que necesitas vigilar, con control desde el móvil.
             </p>
             
             <a href="tel:+34638109947" className="inline-flex items-center gap-2 bg-[#C53030] hover:bg-[#9B2C2C] text-white px-8 py-4 rounded-full font-semibold">
@@ -56,14 +57,17 @@ export default function ElPratPage() {
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <Shield className="w-12 h-12 text-[#E63946] mb-4" />
               <h3 className="text-xl font-bold mb-3">Alarmas para Hogares</h3>
-              <p className="text-gray-600">Protección completa para viviendas en El Prat con tecnología inalámbrica.</p>
+              <p className="text-gray-600">Alarmas Ajax para pisos, casas y segundas residencias. Valoramos los puntos de entrada y los detectores que necesita cada inmueble; puedes recibir alertas en el móvil sin cuota obligatoria o solicitar conexión a una CRA como servicio opcional.</p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-lg">
               <Shield className="w-12 h-12 text-[#E63946] mb-4" />
               <h3 className="text-xl font-bold mb-3">Seguridad para Empresas</h3>
-              <p className="text-gray-600">Sistemas profesionales para naves industriales y comercios en la zona del aeropuerto.</p>
+              <p className="text-gray-600">Instalamos videovigilancia para comercios, oficinas y naves: estudiamos el cableado, la ubicación de las cámaras Hikvision o Dahua y la grabación en NVR. El tiempo de almacenamiento depende del número de cámaras, la calidad de imagen y la capacidad del disco.</p>
             </div>
           </div>
+          <p className="mt-8 text-gray-700 text-base leading-relaxed">
+            También instalamos sistemas para comunidades y zonas comunes, con asesoramiento sobre la ubicación de cámaras y la señalización de videovigilancia. Puedes consultar nuestras páginas de <Link to="/alarmas-barcelona" className="underline font-semibold">instalación de alarmas Ajax</Link> y <Link to="/camaras-barcelona" className="underline font-semibold">cámaras de seguridad profesionales</Link>, o pedirnos una visita de valoración sin compromiso.
+          </p>
         </div>
       </section>
 
