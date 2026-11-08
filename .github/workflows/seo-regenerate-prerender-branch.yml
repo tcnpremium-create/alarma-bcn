@@ -45,7 +45,17 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add public/__prerendered scripts/prerender-manifest.json scripts/prerender-fingerprint.json vercel.json
+          echo 'Comprobación de archivos generados:'
+          ls -ld public public/__prerendered__ || true
+          test -s public/__prerendered__/home.html
+          test -s public/__prerendered__/Badalona.html
+          git status --short | head -100
+          git add -A
+          unwanted="$(git diff --cached --name-only | grep -Ev '^(public/__prerendered__/|scripts/prerender-(fingerprint\\.json|manifest\\.json)$|vercel\\.json$)' || true)"
+          if [ -n "$unwanted" ]; then
+            printf 'ERROR: cambios fuera de snapshots esperados: %s\\n' "$unwanted"
+            exit 1
+          fi
           if ! git diff --cached --quiet; then
             git commit -m "build(seo): regenerate reviewed prerendered HTML snapshots"
             git push origin HEAD:seo/locality-review-markup-20261108
