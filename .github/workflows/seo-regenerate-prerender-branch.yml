@@ -1,0 +1,64 @@
+name: Regenerar prerender SEO en rama segura
+on:
+  push:
+    branches:
+      - seo/service-schema-dedup-20261108
+    paths:
+      - '.github/workflows/seo-regenerate-prerender-branch.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: github.repository == 'tcnpremium-create/alarma-bcn' && github.ref == 'refs/heads/seo/service-schema-dedup-20261108'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - name: Checkout rama (sin tocar main)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependencias
+        run: npm ci
+      - name: Instalar Playwright temporalmente (sin modificar package-lock)
+        run: npm install --no-save --no-package-lock --ignore-scripts playwright@1.56.1
+      - name: Instalar Chromium para el prerender
+        run: npx playwright install --with-deps chromium
+      - name: Generar todas las páginas HTML reales
+        shell: bash
+        run: |
+          export PW_CHROMIUM_PATH="$(node -e "console.log(require('playwright').chromium.executablePath())")"
+          npm run prerender
+      - name: Comprobar HTML, sitemap, canonical y huella
+        run: |
+          node scripts/audit-indexability.mjs
+          node scripts/prerender-fingerprint.mjs --check
+          npm test
+          npm run lint
+      - name: Guardar snapshots SOLO en rama de revisión
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          echo 'Comprobación de archivos generados:'
+          ls -ld public public/__prerendered__ || true
+          test -s public/__prerendered__/home.html
+          test -s public/__prerendered__/Badalona.html
+          git status --short | head -100
+          git add -A
+          unwanted="$(git diff --cached --name-only | grep -Ev '^(public/__prerendered__/|scripts/prerender-(fingerprint|manifest)[.]json$|vercel[.]json$)' || true)"
+          if [ -n "$unwanted" ]; then
+            printf 'ERROR: cambios fuera de snapshots esperados: %s\\n' "$unwanted"
+            exit 1
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m "build(seo): regenerate reviewed prerendered HTML snapshots"
+            git push origin HEAD:seo/service-schema-dedup-20261108
+          else
+            echo "Snapshots ya actualizados."
+          fi
