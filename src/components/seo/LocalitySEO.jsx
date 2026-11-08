@@ -56,13 +56,8 @@ export default function LocalitySEO({
       } : undefined,
       "geoRadius": "15000"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": businessStats.googleRating,
-      "reviewCount": businessStats.googleReviewCount,
-      "bestRating": "5",
-      "worstRating": "1"
-    },
+    // No incluir AggregateRating de la propia empresa en LocalBusiness:
+    // Google considera las reseñas autocontroladas no aptas para estrellas enriquecidas.
     "sameAs": [
       "https://www.instagram.com/premiumtechsecurity",
       "https://www.facebook.com/p/Alarmas-en-barcelona-premium-100086091741859/"
