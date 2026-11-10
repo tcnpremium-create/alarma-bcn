@@ -40,10 +40,7 @@ export default function ControlAccesos() {
           "@type": "Service",
           "name": "Control de Accesos Biométrico",
           "serviceType": "Sistemas de Control de Accesos para Empresas",
-          "provider": {
-            "@type": "LocalBusiness",
-            "name": "PremiumTechSecurity"
-          },
+          "provider": { "@id": "https://alarmasenbarcelona.com/#business" },
           "areaServed": "Barcelona, Catalunya"
         }}
       />
@@ -57,7 +54,7 @@ export default function ControlAccesos() {
             Volver a inicio
           </Link>
           <div className="mb-6">
-            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Control de Accesos" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Control de Accesos" }]} emitSchema={false} />
           </div>
           <h1 className="text-5xl lg:text-6xl font-bold mb-6">Sistemas de Control de Accesos Biométrico Barcelona</h1>
           <p className="text-xl text-gray-300 max-w-2xl">Control de accesos biométrico facial, lector de huellas y tarjetas RFID. La tecnología más avanzada para gestionar quién entra en tu propiedad.</p>
@@ -156,6 +153,21 @@ export default function ControlAccesos() {
               ))}
             </div>
           </div>
+
+          {/* Orientación antes del presupuesto */}
+          <section aria-labelledby="faq-control-accesos" style={{ marginBottom: 48 }}>
+            <h2 id="faq-control-accesos" style={{ color: "#fff", fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, marginBottom: 20 }}>Antes de instalar un control de accesos en Barcelona</h2>
+            <div style={{ display: "grid", gap: 16 }}>
+              <div>
+                <h3 style={{ color: "#fff", fontSize: 17, fontWeight: 700, marginBottom: 6 }}>¿Tarjeta RFID, llavero, PIN o huella?</h3>
+                <p style={{ color: "#CBD5E0", lineHeight: 1.65 }}>La elección depende del número de usuarios, los horarios y las puertas. Las tarjetas, llaveros o códigos pueden ser suficientes sin recurrir a biometría; esta requiere valorar requisitos adicionales de protección de datos.</p>
+              </div>
+              <div>
+                <h3 style={{ color: "#fff", fontSize: 17, fontWeight: 700, marginBottom: 6 }}>¿Cómo se prepara una instalación para comunidad, empresa o parking?</h3>
+                <p style={{ color: "#CBD5E0", lineHeight: 1.65 }}>Revisamos los accesos, el tipo de cierre, la alimentación, el cableado y cómo se gestionarán las altas y bajas de usuarios. Si el proyecto lo necesita, estudiamos la compatibilidad con <Link to="/videoporteros" style={{ color: "#E63946", fontWeight: 700 }}>videoporteros</Link> y <Link to="/camaras-barcelona" style={{ color: "#E63946", fontWeight: 700 }}>cámaras de seguridad</Link>, sin prometer integraciones antes de comprobar los equipos.</p>
+              </div>
+            </div>
+          </section>
 
           {/* Relacionados */}
           <div style={{ marginBottom: 48, textAlign: "center" }}>
