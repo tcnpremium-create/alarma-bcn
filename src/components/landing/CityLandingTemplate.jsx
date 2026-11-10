@@ -105,7 +105,7 @@ export default function CityLandingTemplate({ city, seoPath, intro }) {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,11,20,0.55) 0%, rgba(6,11,20,0.8) 60%, #0A0A1A 100%)" }} />
         <div className="max-w-5xl mx-auto" style={{ position: "relative", zIndex: 2, padding: "112px 24px 64px" }}>
           <div style={{ marginBottom: 16 }}>
-            <Breadcrumbs items={[{ label: "Alarmas", href: "/alarmas-barcelona" }, { label: city }]} />
+            <Breadcrumbs items={city === "Barcelona" ? [{ label: "Alarmas en Barcelona" }] : [{ label: "Alarmas", href: "/alarmas-barcelona" }, { label: city }]} />
           </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 20 }}>
             <MapPin style={{ width: 13, height: 13, color: "#F87171" }} />
