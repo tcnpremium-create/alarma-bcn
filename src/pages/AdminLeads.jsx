@@ -9,6 +9,9 @@ import FooterSection from '@/components/landing/FooterSection';
 
 export default function AdminLeads() {
   const [user, setUser] = useState(null);
+  const [tokenInput, setTokenInput] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [loggingIn, setLoggingIn] = useState(false);
   const [leads, setLeads] = useState([]);
   const [filteredLeads, setFilteredLeads] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -29,33 +32,48 @@ export default function AdminLeads() {
     applyFilters();
   }, [leads, filters]);
 
-  // Acceso por token de administración (variable ADMIN_TOKEN del servidor). Antes se usaba el
-  // login de Base44, que ya no existe: el panel no cargaba y /api/leads era público.
+  // Acceso privado: nunca exponer la clave ni los leads en el navegador sin autorización.
   const checkAuthAndLoad = async () => {
     let token = '';
-    try { token = sessionStorage.getItem('ptsec_admin_token') || ''; } catch { /* sin storage */ }
-    if (!token) {
-      token = window.prompt('Token de administración (ADMIN_TOKEN)') || '';
-      if (!token) { setLoading(false); return; }
-      try { sessionStorage.setItem('ptsec_admin_token', token); } catch { /* sin storage */ }
-    }
-    setUser({ role: 'admin' });
-    await loadLeads();
+    try { token = sessionStorage.getItem('ptsec_admin_token') || ''; } catch { /* storage bloqueado */ }
+    if (!token) { setLoading(false); return; }
+    await loadLeads(token);
   };
 
-  const loadLeads = async () => {
+  const loadLeads = async (token) => {
+    setLoggingIn(true);
+    setLoginError('');
     try {
-      const allLeads = await base44.entities.Lead.list();
-      setLeads(allLeads);
+      const response = await fetch('/api/leads', {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: 'no-store'
+      });
+      if (response.status === 401) throw new Error('La clave no es correcta. Compruébala e inténtalo de nuevo.');
+      if (response.status === 503) throw new Error('El acceso de administración no está configurado en el servidor. Contacta con el administrador.');
+      if (!response.ok) throw new Error('No se han podido cargar las solicitudes. Inténtalo de nuevo.');
+      const data = await response.json();
+      if (!Array.isArray(data)) throw new Error('Respuesta inesperada del servidor.');
+      try { sessionStorage.setItem('ptsec_admin_token', token); } catch { /* storage bloqueado */ }
+      setLeads(data);
+      setUser({ role: 'admin' });
+      setTokenInput('');
     } catch (error) {
-      console.error('Error cargando leads:', error);
-      if (error?.kind === 'auth') {
-        try { sessionStorage.removeItem('ptsec_admin_token'); } catch { /* sin storage */ }
-      }
-      alert(error?.kind === 'auth' ? error.message : 'Error al cargar leads');
+      try { sessionStorage.removeItem('ptsec_admin_token'); } catch { /* storage bloqueado */ }
+      setUser(null);
+      setLoginError(error.message || 'No se ha podido acceder al panel.');
     } finally {
       setLoading(false);
+      setLoggingIn(false);
     }
+  };
+
+  const signOut = () => {
+    try { sessionStorage.removeItem('ptsec_admin_token'); } catch { /* storage bloqueado */ }
+    setUser(null);
+    setLeads([]);
+    setSelectedLead(null);
+    setTokenInput('');
+    setLoginError('');
   };
 
   const applyFilters = () => {
@@ -143,6 +161,33 @@ export default function AdminLeads() {
     );
   }
 
+  if (!user) {
+    return (
+      <>
+        <Navbar />
+        <main className="min-h-screen bg-gray-50 pt-28 pb-16 px-4 flex justify-center">
+          <section className="w-full max-w-md h-fit bg-white rounded-2xl shadow-lg border border-gray-200 p-6 sm:p-8">
+            <h1 className="text-2xl font-bold text-[#0A1628]">Acceso a solicitudes</h1>
+            <p className="mt-2 text-gray-600 text-sm">Panel privado de Premium Tech Security. Introduce tu clave de administración para consultar los contactos.</p>
+            <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); if (tokenInput.trim()) loadLeads(tokenInput.trim()); }}>
+              <label htmlFor="admin-token" className="block text-sm font-semibold text-gray-800">Clave de administración</label>
+              <input id="admin-token" type="password" autoComplete="off" autoCapitalize="none" spellCheck={false}
+                value={tokenInput} onChange={(e) => setTokenInput(e.target.value)}
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-red-500"
+                placeholder="Introduce tu clave" required />
+              {loginError && <p role="alert" className="text-sm text-red-700 bg-red-50 rounded-lg p-3">{loginError}</p>}
+              <button type="submit" disabled={loggingIn || !tokenInput.trim()}
+                className="w-full rounded-lg bg-[#E63946] text-white font-semibold py-3 disabled:opacity-50">
+                {loggingIn ? 'Comprobando acceso…' : 'Entrar al panel'}
+              </button>
+            </form>
+            <p className="mt-5 text-xs text-gray-500">La clave se conserva solo durante esta sesión del navegador. No introduzcas aquí tu contraseña de correo electrónico.</p>
+          </section>
+        </main>
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
@@ -152,6 +197,7 @@ export default function AdminLeads() {
             <h1 className="text-3xl font-bold text-[#0A1628] mb-2">
               Gestión de Leads
             </h1>
+            <button type="button" onClick={signOut} className="mt-2 text-sm font-semibold text-[#E63946] underline">Cerrar sesión</button>
             <p className="text-gray-600">
               Total: {filteredLeads.length} leads {filters.estado !== 'todos' || filters.tipo_cliente !== 'todos' || filters.zona ? '(filtrado)' : ''}
             </p>
