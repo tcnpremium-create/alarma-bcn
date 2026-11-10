@@ -112,7 +112,7 @@ export default function Sonorizacion() {
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(6,14,26,0.55) 0%, rgba(6,14,26,0.55) 40%, rgba(6,14,26,0.96) 100%)" }} />
         <div className="max-w-7xl mx-auto px-6 lg:px-8" style={{ position: "relative", zIndex: 2, paddingTop: 140, paddingBottom: 56, width: "100%" }}>
           <div className="mb-6">
-            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Sonorización" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Sonorización" }]} emitSchema={false} />
           </div>
           <span style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#F87171", fontSize: 11, fontWeight: 800, marginBottom: 20 }}>
             <Volume2 size={14} />
@@ -345,7 +345,7 @@ export default function Sonorizacion() {
           <div style={{ marginBottom: 80, textAlign: "center" }}>
             <p style={{ color: "#94A3B8", fontSize: 14 }}>
               ¿También necesitas cableado o red para tu sistema de sonido? Consulta nuestra página de{" "}
-              <Link to="/redes-informaticas" style={{ color: "#E63946", fontWeight: 700 }}>redes informáticas</Link>. Para entradas de oficinas y comunidades consulta también <Link to="/videoporteros" style={{ color: "#E63946", fontWeight: 700 }}>videoporteros</Link>.
+              <Link to="/redes-informaticas" style={{ color: "#E63946", fontWeight: 700 }}>redes informáticas</Link>. Si el proyecto incluye entradas de oficinas o comunidades, consulta nuestros <Link to="/videoporteros" style={{ color: "#E63946", fontWeight: 700 }}>videoporteros</Link> y el <Link to="/control-accesos" style={{ color: "#E63946", fontWeight: 700 }}>control de accesos</Link> para planificar las instalaciones conjuntamente.
             </p>
           </div>
 
