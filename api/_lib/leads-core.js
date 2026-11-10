@@ -226,9 +226,13 @@ export function createLeadService({ db, mailer, now = () => new Date(), log = co
       const res = await mailer.getDeliveryStatus(row.notif_provider_id);
       if (!res.ok) { outcomes.push({ id: row.id, error: res.error }); continue; }
       const patch = { delivery_status: res.status, delivery_checked_at: now().toISOString() };
-      if (['bounced', 'complained', 'suppressed'].includes(res.status)) {
-        patch.notif_status = 'failed';
+      // Un HTTP 200 de Resend solo significa que aceptó el mensaje. Su estado
+      // posterior puede ser "failed" sin bounce, por ejemplo por una restricción
+      // del proveedor. Nunca contarlo como notificación entregada.
+      if (['failed', 'bounced', 'complained', 'suppressed'].includes(res.status)) {
+        patch.notif_status = (row.notif_attempts || 0) >= NOTIF_MAX_ATTEMPTS ? 'failed_final' : 'failed';
         patch.notif_error = `Resend informó: ${res.status}`;
+        log.error('ENTREGA FALLIDA de aviso', row.id, res.status);
       }
       await db.update(row.id, patch);
       outcomes.push({ id: row.id, status: res.status });
