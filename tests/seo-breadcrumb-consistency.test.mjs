@@ -15,7 +15,7 @@ const paths = [
 ];
 
 function jsonLdNodes(html) {
-  const scripts = [...html.matchAll(/<script\\b[^>]*type="application\\/ld\\+json"[^>]*>([\\s\\S]*?)<\\/script>/gi)];
+  const scripts = [...html.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)];
   return scripts.flatMap(([, raw]) => {
     const value = JSON.parse(raw);
     return Array.isArray(value['@graph']) ? value['@graph'] : [value];
