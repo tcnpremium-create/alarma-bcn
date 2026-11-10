@@ -87,6 +87,7 @@ const FAQS = [
   { q: "¿El videoportero se puede integrar con mis cámaras de seguridad?", a: "Depende de la marca, protocolos y generación. Verificamos la compatibilidad de los equipos existentes antes de presupuestar integración; no todos se gestionan desde una misma app." },
   { q: "¿Qué pasa si me llaman cuando estoy fuera?", a: "Con un sistema conectado compatible, conexión a internet y la app configurada, puedes atender llamadas y abrir la puerta a distancia según el modelo." },
   { q: "¿Cuánto tarda la instalación?", a: "El plazo depende del estado del cableado, el número de viviendas, las modificaciones de la placa y el sistema elegido. Indicamos la duración en el presupuesto." },
+  { q: "¿Trabajáis con videoporteros IP Dahua?", a: "Podemos estudiar una instalación Dahua IP para viviendas, comunidades o empresas. Antes de recomendar equipos verificamos red, alimentación, cableado y compatibilidad con la placa, monitores o sistemas existentes." },
   { q: "¿Puedo dar acceso temporal a un repartidor o técnico?", a: "Algunos equipos permiten códigos PIN o QR temporales. Comprobamos la disponibilidad en cada modelo y configuramos permisos y caducidad respetando la privacidad." },
 ];
 
@@ -118,7 +119,7 @@ export default function Videoporteros() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6" style={{ position: "relative", zIndex: 2 }}>
           <div style={{ marginBottom: 20 }}>
-            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Videoporteros" }]} />
+            <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Videoporteros" }]} emitSchema={false} />
           </div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginBottom: 24 }}>
             <div style={{ width: 8, height: 8, borderRadius: "50%", backgroundColor: "#C53030", boxShadow: "0 0 8px #E53E3E" }} />
@@ -400,7 +401,7 @@ export default function Videoporteros() {
         <p style={{ color: "#94A3B8", fontSize: 14 }}>
           Combina tu videoportero con un sistema de{" "}
           <Link to="/control-accesos" style={{ color: "#E63946", fontWeight: 700 }}>control de accesos</Link>{" "}
-          para gestionar quién entra y sale de tu edificio.
+          para gestionar quién entra y sale de tu edificio. Si también necesitas supervisar el portal o el garaje, consulta la <Link to="/camaras-barcelona" style={{ color: "#E63946", fontWeight: 700 }}>instalación de cámaras de seguridad</Link>.
         </p>
       </div>
 
