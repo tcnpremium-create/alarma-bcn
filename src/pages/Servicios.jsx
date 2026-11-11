@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 import Navbar from "../components/landing/Navbar";
 import FooterSection from "../components/landing/FooterSection";
@@ -160,6 +161,19 @@ const servicios = [
 }];
 
 
+// Enlaces comerciales explícitos desde el catálogo general. Ayudan al usuario
+// a encontrar el servicio concreto sin abrir un formulario genérico y permiten
+// que los buscadores descubran las páginas transaccionales desde /Servicios.
+const LANDINGS_COMERCIALES = [
+  { href: "/camaras-barcelona", titulo: "Instalación de cámaras de seguridad", detalle: "Videovigilancia IP y CCTV en Barcelona para viviendas, comercios, naves y comunidades." },
+  { href: "/alarmas-barcelona", titulo: "Instalación de alarmas Ajax", detalle: "Alarmas para casa, negocio y comunidades con o sin central receptora." },
+  { href: "/videoporteros", titulo: "Instalación y sustitución de videoporteros", detalle: "Renovación de porteros automáticos de 2 hilos, videoporteros IP y comunidades." },
+  { href: "/control-accesos", titulo: "Sistemas de control de accesos", detalle: "Apertura de puertas con tarjetas, PIN y alternativas compatibles para empresas y edificios." },
+  { href: "/cerraduras", titulo: "Cerraduras electrónicas e inteligentes", detalle: "Instalación de cerraduras para viviendas, negocios y apartamentos." },
+  { href: "/redes-informaticas", titulo: "Redes informáticas y WiFi profesional", detalle: "Cableado estructurado, puntos de acceso y redes para negocios y oficinas." },
+  { href: "/sonorizacion", titulo: "Sonorización profesional y megafonía", detalle: "Altavoces, sonido ambiental y sistemas de audio para locales y empresas." },
+];
+
 export default function Servicios() {
   const { openDrawer } = useLeadDrawer();
   // Antes enviaba a "/#contacto", una sección que la home ya no tiene.
@@ -259,6 +273,34 @@ export default function Servicios() {
           </motion.div>
         </div>
       </section>
+
+      {/* Acceso directo a las páginas especializadas: cada servicio tiene su
+          propio presupuesto, información y canonical; /Servicios es el índice. */}
+      <nav aria-label="Ver servicios especializados" className="bg-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#0A1628] mb-3">
+            Elige el servicio que necesitas
+          </h2>
+          <p className="text-slate-600 mb-8 max-w-3xl">
+            Accede a la información y solicita presupuesto para cada instalación en Barcelona y su área metropolitana.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {LANDINGS_COMERCIALES.map((servicio) => (
+              <Link
+                key={servicio.href}
+                to={servicio.href}
+                className="group block rounded-2xl border border-slate-200 p-5 bg-slate-50 hover:border-[#C53030] hover:shadow-md transition-colors"
+              >
+                <h3 className="font-bold text-[#0A1628] text-base mb-2">{servicio.titulo}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed mb-3">{servicio.detalle}</p>
+                <span className="inline-flex items-center gap-1 text-[#C53030] text-sm font-bold">
+                  Ver servicio y presupuesto <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
 
       {/* Servicios Detallados */}
       <section className="py-24">

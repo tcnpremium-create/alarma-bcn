@@ -37,13 +37,17 @@ function collectFiles() {
   const out = [];
   const exts = new Set(['.js', '.jsx', '.css', '.html', '.xml']);
   const skip = new Set(['node_modules', 'dist', '__prerendered__', '.git']);
+  // El panel privado de leads no forma parte de ninguna página pública
+  // prerenderizada. Sus cambios de UX no deben invalidar 70 URLs SEO.
+  const skipFiles = new Set(['src/pages/AdminLeads.jsx']);
 
   const walk = (dir) => {
     for (const entry of readdirSync(dir)) {
       if (skip.has(entry)) continue;
       const full = path.join(dir, entry);
       if (statSync(full).isDirectory()) walk(full);
-      else if (exts.has(path.extname(entry))) out.push(full);
+      else if (exts.has(path.extname(entry)) &&
+               !skipFiles.has(path.relative(ROOT, full).split(path.sep).join('/'))) out.push(full);
     }
   };
   walk(path.join(ROOT, 'src'));

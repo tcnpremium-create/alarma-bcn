@@ -1,5 +1,5 @@
 {
- "combined": "a9c6deef71a0da97",
+ "combined": "884770fb8299ed19",
  "files": {
   "index.html": "0c69c5f744af1c37",
   "public/sitemap.xml": "eb07045b06b8672f",
@@ -181,7 +181,6 @@
   "src/main.jsx": "f2800bcfca85487b",
   "src/pages.config.js": "99b443b4c660e32b",
   "src/pages/About.jsx": "5932dd6d0480e764",
-  "src/pages/AdminLeads.jsx": "85cb2794a637f828",
   "src/pages/AlarmasBarcelona.jsx": "ca850edad2dad0de",
   "src/pages/AlarmasGirona.jsx": "68cf77bceda1f22b",
   "src/pages/AlarmasLleida.jsx": "b0a603958efa6158",
@@ -217,7 +216,7 @@
   "src/pages/Promociones.jsx": "3e0206a461273409",
   "src/pages/RedesInformaticas.jsx": "2a17c1605ebbe1bc",
   "src/pages/SantCugat.jsx": "2b0719f652ee807c",
-  "src/pages/Servicios.jsx": "edf687acd65b6f86",
+  "src/pages/Servicios.jsx": "0232417ea9ee1759",
   "src/pages/SobreNosotros.jsx": "9ce04fdbc4c9a112",
   "src/pages/Sonorizacion.jsx": "6ecb39122df513e5",
   "src/pages/TecnologiaGuia.jsx": "19d605d8ad42920c",
