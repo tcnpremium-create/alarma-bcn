@@ -160,7 +160,7 @@ export default function ControlAccesos() {
           {/* Relacionados */}
           <div style={{ marginBottom: 48, textAlign: "center" }}>
             <p style={{ color: "#94A3B8", fontSize: 14 }}>
-              ¿Buscas también renovar la <Link to="/cerraduras" style={{ color: "#E63946", fontWeight: 700 }}>cerradura</Link> de tu puerta de acceso? Consulta nuestra página de cerraduras inteligentes y electrónicas.
+              ¿Buscas también renovar la <Link to="/cerraduras" style={{ color: "#E63946", fontWeight: 700 }}>cerradura</Link> de tu puerta de acceso? Consulta nuestra página de cerraduras inteligentes y electrónicas.{" "} Si además necesitas atender visitas antes de abrir, consulta nuestra <Link to="/videoporteros" style={{ color: "#E63946", fontWeight: 700 }}>instalación de videoporteros en Barcelona</Link> para viviendas, comunidades y empresas.
             </p>
           </div>
 
