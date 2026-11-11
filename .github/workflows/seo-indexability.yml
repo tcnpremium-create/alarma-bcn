@@ -13,6 +13,9 @@ on:
       - 'scripts/prerender-fingerprint.*'
       - 'scripts/audit-live-seo.mjs'
   workflow_dispatch:
+  schedule:
+    # Vigila cada día las rutas SEO más importantes ya publicadas (UTC).
+    - cron: '25 7 * * *'
 jobs:
   indexability:
     runs-on: ubuntu-latest
@@ -27,5 +30,6 @@ jobs:
       - name: Verify commercial SEO metadata matches crawler HTML
         run: node --test tests/seo-commercial-landing.test.mjs
       - name: Probe production HTTP SEO (non-blocking diagnostic)
-        continue-on-error: true
+        # En PR es informativo; en la revisión diaria debe alertar si falla producción.
+        continue-on-error: ${{ github.event_name != 'schedule' }}
         run: node scripts/audit-live-seo.mjs
