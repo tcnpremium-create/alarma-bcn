@@ -6,6 +6,7 @@ on:
       - seo/servicios-enlaces-prerender-20261111
     paths:
       - src/pages/Servicios.jsx
+      - scripts/prerender-fingerprint.mjs
       - .github/workflows/seo-servicios-prerender.yml
 
 permissions:
