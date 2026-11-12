@@ -165,7 +165,7 @@ export default function CameraCityTemplate({ city, seoTitle, seoDescription, seo
           la miga de pan quedaba debajo del logo, solapada. */}
       <div style={{ backgroundColor: "#0A0A1A", padding: "96px 20px 0" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
-          <Breadcrumbs items={[{ label: "Cámaras", href: "/camaras-barcelona" }, { label: city }]} />
+          <Breadcrumbs items={city === "Barcelona" ? [{ label: "Cámaras en Barcelona" }] : [{ label: "Cámaras", href: "/camaras-barcelona" }, { label: city }]} emitSchema={false} />
         </div>
       </div>
 

@@ -17,7 +17,7 @@ import { Helmet } from "react-helmet-async";
  *   <Breadcrumbs items={[{ label: "Servicios", href: "/Servicios" }, { label: "Sonorización" }]} />
  *   → Inicio → Servicios → Sonorización
  */
-export default function Breadcrumbs({ items = [], theme = "dark" }) {
+export default function Breadcrumbs({ items = [], theme = "dark", emitSchema = true }) {
   const trail = [{ label: "Inicio", href: "/" }, ...items];
   const colors = theme === "light"
     ? { link: "#6B7280", current: "#374151", chevron: 0.5 }
@@ -48,9 +48,11 @@ export default function Breadcrumbs({ items = [], theme = "dark" }) {
 
   return (
     <>
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
+      {emitSchema && (
+        <Helmet>
+          <script type="application/ld+json">{JSON.stringify(schema)}</script>
+        </Helmet>
+      )}
       <nav aria-label="Breadcrumb">
         <ol style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 6, listStyle: "none", margin: 0, padding: 0, fontSize: 13, color: colors.link }}>
           {trail.map((item, idx) => {
