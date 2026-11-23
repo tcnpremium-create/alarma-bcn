@@ -56,7 +56,7 @@ export const CAMERA_KITS = [
     title: "Kit Esencial",
     cameras: "2 cámaras",
     description: "La solución económica para empezar a proteger tu vivienda o pequeño negocio.",
-    price: "689",
+    price: "723",
     isFrom: true,
     highlight: false,
     ctaLabel: "Quiero esta promoción",
@@ -77,7 +77,7 @@ export const CAMERA_KITS = [
     // 899 € + IVA con instalación estándar. Precio cerrado dentro de las
     // condiciones de storageNote; lo que salga de ellas se presupuesta aparte.
     description: "Tu negocio, siempre bajo control. Consulta tus cámaras desde el móvil.",
-    price: "899",
+    price: "944",
     isFrom: false,
     highlight: true,
     ctaLabel: "Solicitar presupuesto",
@@ -97,7 +97,7 @@ export const CAMERA_KITS = [
     title: "Kit Profesional",
     cameras: "8 cámaras",
     description: "Para empresas, naves, comunidades y grandes superficies.",
-    price: "1.499",
+    price: "1.574",
     isFrom: true,
     highlight: false,
     ctaLabel: "Solicitar presupuesto",

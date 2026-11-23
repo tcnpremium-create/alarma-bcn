@@ -16,7 +16,7 @@ const PAGES = [
     "snapshot": "alarmas-barcelona.html",
     "route": "/alarmas-barcelona",
     "title": "Empresa de Alarmas en Barcelona | Instalación Ajax sin Cuotas",
-    "description": "Instaladores de alarmas Ajax en Barcelona para hogares, negocios y comunidades. Kits desde 399 € + IVA con instalación. CRA opcional. Presupuesto gratis."
+    "description": "Instaladores de alarmas Ajax en Barcelona para hogares, negocios y comunidades. Kits desde 419 € + IVA con instalación. CRA opcional. Presupuesto gratis."
   },
   {
     "source": "src/pages/CamarasBarcelona.jsx",

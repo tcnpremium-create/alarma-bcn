@@ -575,6 +575,9 @@
     },
     "api/cron/retry-notifs.js": {
       "maxDuration": 30
+    },
+    "api/black-friday.js": {
+      "maxDuration": 30
     }
   }
 }

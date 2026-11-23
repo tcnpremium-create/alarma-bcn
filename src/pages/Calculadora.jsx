@@ -4,6 +4,8 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/landing/Navbar";
 import FooterSection from "@/components/landing/FooterSection";
 import { Helmet } from "react-helmet-async";
+import { ALARM_KITS } from "@/data/alarmKits";
+import { CAMERA_KITS } from "@/data/cameraKits";
 
 const SPACE_OPTIONS = [
   { id: "hogar", emoji: "🏠", label: "Mi hogar" },
@@ -20,31 +22,26 @@ const SERVICE_OPTIONS = [
 
 const CITY_OPTIONS = ["Barcelona", "Sabadell", "Girona", "Tarragona", "Lleida", "Otra"];
 
-// Umbrales alineados con los precios reales de src/data/alarmKits.js y
-// src/data/cameraKits.js — antes esta función tenía sus propios importes
-// hardcodeados que habían quedado desincronizados. Actualizado tras la
-// revisión "producto gancho" de cámaras: Kit Esencial (2 cámaras) 689€,
-// Kit Protección (4 cámaras) 899€, Kit Profesional (8 cámaras) 1.499€
-// (ver informe entregado). El importe combinado cámaras+alarma se
-// mantiene anclado al precio de entrada de cámaras, mismo criterio que
-// ya usaba esta función antes de esta revisión — no es una suma real,
-// es solo la cifra "desde" más baja para no sobreestimar antes del
-// presupuesto real.
+// Estimaciones vinculadas al catálogo único, sin duplicar precios.
+const ALARM_ENTRY = ALARM_KITS.find((k) => k.id === "hogar");
+const CAMERA_ENTRY = CAMERA_KITS.find((k) => k.id === "basico");
+const CAMERA_FOUR = CAMERA_KITS.find((k) => k.id === "profesional");
+const CAMERA_EIGHT = CAMERA_KITS.find((k) => k.id === "empresarial");
 function getEstimate(services, cameraCount) {
   const hasCam = services.includes("camaras");
   const hasAlarm = services.includes("alarma");
   const hasAccess = services.includes("accesos");
 
-  if (hasCam && hasAlarm && hasAccess) return "999€";
-  if (hasCam && hasAlarm) return "689€";
-  if (hasAlarm && !hasCam) return "399€";
+  if (hasCam && hasAlarm && hasAccess) return "1.049€";
+  if (hasCam && hasAlarm) return `${CAMERA_ENTRY.price}€`;
+  if (hasAlarm && !hasCam) return `${ALARM_ENTRY.price}€`;
   if (hasCam) {
-    if (cameraCount <= 2) return "689€";
-    if (cameraCount <= 4) return "899€";
-    return "1.499€";
+    if (cameraCount <= 2) return `${CAMERA_ENTRY.price}€`;
+    if (cameraCount <= 4) return `${CAMERA_FOUR.price}€`;
+    return `${CAMERA_EIGHT.price}€`;
   }
-  if (hasAccess) return "499€";
-  return "399€";
+  if (hasAccess) return "524€";
+  return `${ALARM_ENTRY.price}€`;
 }
 
 export default function Calculadora() {

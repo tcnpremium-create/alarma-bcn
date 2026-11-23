@@ -10,6 +10,7 @@ import { Shield, Camera, Fingerprint, MonitorPlay, Bell, Home, Building2, CheckC
 import { Button } from "@/components/ui/button";
 import { businessStats } from "@/lib/businessStats";
 import { GOOGLE_REVIEWS } from "@/data/googleReviews";
+import { ALARM_KITS } from "@/data/alarmKits";
 
 // Solo reseñas reales de Google que hablan de ese servicio (sin inventar).
 const realReviews = (topic) =>
@@ -37,7 +38,7 @@ const servicios = [
   testimonios: realReviews("alarmas"),
   tecnologia: "AJAX Systems, DSC, Paradox",
   image: "https://media.base44.com/images/public/6995a701232755a2d5e24b39/809d1e8d7_IMG_8315.jpeg",
-  precio: "Desde 399€"
+  precio: `Desde ${ALARM_KITS.find((kit) => kit.id === "hogar").price}€`
 },
 {
   icon: Camera,

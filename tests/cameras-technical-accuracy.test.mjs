@@ -23,7 +23,7 @@ test("características y almacenamiento se especifican según los equipos", () =
 });
 
 test("la oferta local respeta precios y metas existentes", () => {
-  assert.ok(CAMERA_KITS.some(kit => kit.price === "689"), "Se conserva el precio existente del kit");
+  assert.ok(CAMERA_KITS.some(kit => kit.price === "723"), "El precio actual del kit figura en el catálogo");
   assert.match(camera, /<CameraKitsGrid/);
   assert.match(city, /seoPath="\/camaras-barcelona"/);
   assert.match(city, /seoTitle="Instalación de Cámaras de Seguridad en Barcelona/);

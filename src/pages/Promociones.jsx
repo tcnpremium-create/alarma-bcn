@@ -6,6 +6,7 @@ import { Shield, Camera, Fingerprint, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { ALARM_KITS } from "@/data/alarmKits";
 import { CAMERA_KITS } from "@/data/cameraKits";
+import BlackFridayWheel from "@/components/landing/BlackFridayWheel";
 import { useLeadDrawer } from "@/context/LeadDrawerContext";
 
 const VALID_TABS = ["alarmas", "camaras", "controles"];
@@ -77,12 +78,12 @@ export default function Promociones() {
         <title>Kits de Alarmas y Cámaras de Seguridad Barcelona | Premium Tech</title>
         <meta
           name="description"
-          content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
+          content="Kits de alarmas Ajax desde 419€ y videovigilancia profesional desde 723€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47"
         />
         <link rel="canonical" href="https://alarmasenbarcelona.com/Promociones" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Kits de Alarmas y Cámaras de Seguridad Barcelona | Premium Tech" />
-        <meta property="og:description" content="Kits de alarmas Ajax desde 399€ y videovigilancia profesional desde 689€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47" />
+        <meta property="og:description" content="Kits de alarmas Ajax desde 419€ y videovigilancia profesional desde 723€ con instalación incluida en Barcelona. Sin cuotas mensuales. Tel: 638 10 99 47" />
         <meta property="og:url" content="https://alarmasenbarcelona.com/Promociones" />
         <meta property="og:image" content="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6995a701232755a2d5e24b39/0a79ea220_UNETEALIMPERIO1.png" />
         <meta property="og:locale" content="es_ES" />
@@ -164,6 +165,8 @@ export default function Promociones() {
           </a>
         </div>
       </section>
+
+      <BlackFridayWheel />
 
       <section aria-labelledby="servicios-instalacion-barcelona" style={{ background: BG, borderBottom: `1px solid ${BORDER}`, padding: "32px 24px" }}>
         <div style={{ maxWidth: 1020, margin: "0 auto" }}>

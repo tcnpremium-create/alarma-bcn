@@ -13,13 +13,13 @@
  * Esta revisión sustituye una configuración anterior que el cliente
  * indicó como incorrecta. Configuración final, sin interpretación:
  *
- * - Alarma Hogar: 399€, precio cerrado. Configuración sin tocar.
- * - Alarma Vivienda / Negocio: DESDE 699€. Configuración BASE = 2
+ * - Alarma Hogar: 419€, precio cerrado (revisión ordinaria de tarifa noviembre 2026). Configuración sin tocar.
+ * - Alarma Vivienda / Negocio: DESDE 734€. Configuración BASE = 2
  *   detectores normales + 1 detector magnético para puerta principal +
  *   1 mando a distancia + sirena interior HomeSiren + instalación +
  *   configuración y puesta en marcha. NO lleva MotionCam. NO lleva
  *   detectores adicionales.
- * - Alarma Profesional / Empresa: DESDE 1.399€. Configuración BASE = 2
+ * - Alarma Profesional / Empresa: DESDE 1.469€. Configuración BASE = 2
  *   MotionCam + 2 detectores normales + 1 detector magnético para puerta
  *   principal + 1 mando a distancia + sirena interior HomeSiren +
  *   instalación + configuración y puesta en marcha. NO son 4 MotionCam.
@@ -73,7 +73,7 @@ export const ALARM_KITS = [
     badge: "MÁS POPULAR",
     title: "Alarma Hogar",
     subtitle: "Protección completa para viviendas",
-    price: "399",
+    price: "419",
     isFrom: false,
     highlight: false,
     ivaNote: true,
@@ -101,7 +101,7 @@ export const ALARM_KITS = [
     badge: "RECOMENDADO",
     title: "Alarma Vivienda / Negocio",
     subtitle: "2 detectores",
-    price: "699",
+    price: "734",
     isFrom: true,
     highlight: true,
     ivaNote: true,
@@ -132,7 +132,7 @@ export const ALARM_KITS = [
     badge: "PARA EMPRESAS",
     title: "Alarma Profesional / Empresa",
     subtitle: "2 MotionCam + 2 detectores",
-    price: "1.399",
+    price: "1.469",
     isFrom: true,
     highlight: false,
     ivaNote: true,

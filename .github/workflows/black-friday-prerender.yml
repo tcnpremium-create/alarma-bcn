@@ -1,0 +1,51 @@
+name: Regenerate Black Friday SEO snapshots
+
+on:
+  push:
+    branches:
+      - feat/black-friday-2026-wheel
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: black-friday-prerender
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install project and Playwright
+        run: |
+          npm ci
+          npm install --no-save --no-package-lock playwright@1.56.1
+          npx playwright install chromium
+      - name: Test campaign logic before building
+        run: node --test tests/black-friday.test.mjs
+      - name: Regenerate prerender, redirects, and fingerprint
+        run: |
+          export PW_CHROMIUM_PATH="$(node -p "require('playwright').chromium.executablePath()")"
+          export PLAYWRIGHT_MODULE=playwright
+          npm run prerender
+          npm run build
+      - name: Test complete site against refreshed SEO snapshots
+        run: npm test
+      - name: Commit generated snapshots to promotion branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/__prerendered__ scripts/prerender-fingerprint.json scripts/prerender-manifest.json vercel.json
+          if ! git diff --cached --quiet; then
+            git commit -m "build(seo): regenerate snapshots for Black Friday 2026"
+            git push
+          fi
