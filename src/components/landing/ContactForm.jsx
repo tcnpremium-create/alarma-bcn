@@ -160,7 +160,7 @@ export default function ContactForm() {
             autoComplete="tel"
             placeholder="6XX XXX XXX"
             value={formData.telefono}
-            onChange={(e) => setFormData({ ...formData, telefono: e.target.value.replace(/\D/g, '').slice(0, 9) })}
+            onChange={(e) => setFormData({ ...formData, telefono: e.target.value.slice(0, 32) })}
             required
             style={{ fontSize: 16 }}
             className="h-12 px-4 rounded-xl bg-white border-2 border-gray-200 text-gray-900 placeholder:text-gray-400 focus:border-[#E63946] focus:outline-none transition-colors"
