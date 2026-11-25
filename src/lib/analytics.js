@@ -13,6 +13,7 @@ export const EVENTS = Object.freeze([
   "form_start",
   "form_submit",
   "form_success",
+  "generate_lead",
   "form_error",
   "click_phone",
   "click_whatsapp",
