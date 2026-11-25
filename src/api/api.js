@@ -3,7 +3,16 @@
 // Mensaje que se muestra cuando la solicitud está guardada pero el aviso al equipo
 // por correo no ha salido todavía (se reintenta solo). Solo se usa si notification !== 'sent'.
 export const NOTIFICATION_DELAYED_NOTICE =
-  "Tu solicitud está guardada. Hemos tenido una incidencia al avisar a nuestro equipo y se reintentará automáticamente. Si es urgente, llámanos al 638 10 99 47.";
+  "Tu solicitud está guardada, pero el aviso por correo todavía no está confirmado. Si es urgente, llámanos al 638 10 99 47.";
+
+export const EMAIL_ONLY_NOTICE =
+  "Hemos enviado el aviso por correo, pero no hemos podido registrar tu solicitud en el sistema. Para confirmarla, llámanos al 638 10 99 47.";
+
+export function getLeadNotice(result) {
+  if (!result) return "";
+  if (result.saved === false) return EMAIL_ONLY_NOTICE;
+  return result.notification === "sent" ? "" : NOTIFICATION_DELAYED_NOTICE;
+}
 
 /** true si hay que enseñar el aviso de incidencia (guardada, pero sin aviso confirmado). */
 export const needsDelayedNotice = (result) => !!result && result.notification !== "sent";

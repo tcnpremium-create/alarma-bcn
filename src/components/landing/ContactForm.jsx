@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { base44, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
+import { base44, getLeadNotice } from "@/api/api";
 import { useFormTracking } from "@/lib/useFormTracking";
 import { CheckCircle, Loader2, Phone } from "lucide-react";
 import { registerPhoneForTracking } from "@/components/tracking/useHubSpotTracking";
+import { normalizeSpanishPhone, isValidSpanishPhone } from "@/lib/phone";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -37,7 +38,7 @@ export default function ContactForm() {
         return;
       }
     }
-    if (!/^\d{9}$/.test(formData.telefono.replace(/\s/g, ''))) {
+    if (!isValidSpanishPhone(formData.telefono)) {
       alert("Por favor, ingresa un teléfono válido (9 dígitos)");
       return;
     }
@@ -47,6 +48,7 @@ export default function ContactForm() {
     try {
       const lead = await base44.entities.Lead.create({
         ...formData,
+        telefono: normalizeSpanishPhone(formData.telefono),
         urgencia: "media",
         origen: "formulario_web"
       });
@@ -62,20 +64,22 @@ export default function ContactForm() {
         properties: { tipo_cliente: formData.tipo_cliente, zona: formData.zona, leadId: lead.id }
       });
 
-      registerPhoneForTracking(formData.telefono);
+      registerPhoneForTracking(normalizeSpanishPhone(formData.telefono));
       tracking.onSuccess(lead);
-      setNotice(needsDelayedNotice(lead) ? NOTIFICATION_DELAYED_NOTICE : "");
+      setNotice(getLeadNotice(lead));
       setSuccess(true);
       setFormData({ nombre: "", email: "", telefono: "", tipo_cliente: "hogar", zona: "", servicio_interes: "", mensaje: "" });
       // Con aviso de incidencia se deja más tiempo en pantalla para que se pueda leer.
-      setTimeout(() => setSuccess(false), needsDelayedNotice(lead) ? 25000 : 6000);
+      setTimeout(() => setSuccess(false), getLeadNotice(lead) ? 25000 : 6000);
     } catch (err) {
       console.error("Error enviando formulario de contacto:", err);
       tracking.onError(err);
       setError(
         err?.kind === "validation"
           ? err.message
-          : "No hemos podido enviar tu solicitud y NO se ha registrado. Llámanos al 638 10 99 47 o inténtalo de nuevo."
+          : err?.kind === "network"
+            ? "No hemos podido confirmar si se recibió tu solicitud. Antes de volver a enviarla, llámanos al 638 10 99 47 para comprobarlo."
+            : "No hemos podido registrar tu solicitud. Llámanos al 638 10 99 47 o inténtalo de nuevo."
       );
     } finally {
       setLoading(false);
