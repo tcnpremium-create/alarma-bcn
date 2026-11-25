@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { User, Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
 import { LeadAPI, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
 import { useFormTracking } from "@/lib/useFormTracking";
+import { normalizeSpanishPhone, isValidSpanishPhone } from "@/lib/phone";
 
 const inputStyle = {
   width: "100%", boxSizing: "border-box",
@@ -17,14 +18,6 @@ const labelStyle = { display: "block", fontSize: 12.5, fontWeight: 700, color: "
 const ESPACIOS = ["Vivienda", "Restaurante", "Comercio", "Oficina", "Comunidad", "Nave", "Evento", "Otro"];
 const TAMANOS = ["Menos de 50 m²", "50–150 m²", "150–300 m²", "300–500 m²", "Más de 500 m²"];
 const NECESIDADES = ["Música ambiental", "Altavoces empotrados", "Altavoces Bluetooth", "Megafonía", "Sistema multizona", "Sonido profesional", "Otro"];
-
-// Normaliza números españoles pegados o autocompletados con +34 / 0034.
-function normalizeSpanishPhone(value) {
-  let digits = String(value || "").replace(/\D/g, "");
-  if (digits.startsWith("0034")) digits = digits.slice(4);
-  else if (digits.startsWith("34") && digits.length > 9) digits = digits.slice(2);
-  return digits.slice(0, 9);
-}
 
 function tipoClienteFor(espacio) {
   if (espacio === "Vivienda") return "hogar";
@@ -53,7 +46,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
       setError("Nombre y teléfono son obligatorios.");
       return;
     }
-    if (!/^[6789]\d{8}$/.test(normalizeSpanishPhone(form.telefono))) {
+    if (!isValidSpanishPhone(form.telefono)) {
       setError("Indica un teléfono válido (9 dígitos).");
       return;
     }
@@ -163,7 +156,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
           <label style={labelStyle} htmlFor="lcf-telefono">Teléfono *</label>
           <div style={{ position: "relative" }}>
             <Phone size={16} style={iconStyle} />
-            <input id="lcf-telefono" type="tel" inputMode="tel" autoComplete="tel" placeholder="612 345 678" required value={form.telefono} onChange={(e) => setForm((f) => ({ ...f, telefono: normalizeSpanishPhone(e.target.value) }))} style={inputStyle} />
+            <input id="lcf-telefono" type="tel" inputMode="tel" autoComplete="tel" placeholder="612 345 678" required value={form.telefono} onChange={(e) => setForm((f) => ({ ...f, telefono: e.target.value.slice(0, 32) }))} style={inputStyle} />
           </div>
         </div>
         <div className="grid sm:grid-cols-2" style={{ gap: 14 }}>
