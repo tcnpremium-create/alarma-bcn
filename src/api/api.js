@@ -46,6 +46,17 @@ function keyFor(data) {
   return submissionKeys.get(fingerprint);
 }
 
+const sourcePageForLead = () => {
+  if (typeof location === "undefined") return "";
+  try {
+    return leadSourcePage(location.pathname, typeof window !== "undefined" ? window.sessionStorage : null);
+  } catch {
+    // Algunos modos privados bloquean incluso la lectura de sessionStorage.
+    // La atribución es opcional: nunca debe bloquear el presupuesto.
+    return location.pathname;
+  }
+};
+
 const adminHeaders = () => {
   let token = "";
   try { token = sessionStorage.getItem("ptsec_admin_token") || ""; } catch { /* sin storage */ }
@@ -63,7 +74,7 @@ export const LeadAPI = {
           ...data,
           origen: origen || data.origen,
           idempotency_key: keyFor(data),
-          source_page: typeof location !== "undefined" ? leadSourcePage(location.pathname, typeof window !== "undefined" ? window.sessionStorage : null) : "",
+          source_page: sourcePageForLead(),
         }),
       });
     } catch (err) {
