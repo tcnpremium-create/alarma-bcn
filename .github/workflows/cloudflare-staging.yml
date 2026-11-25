@@ -1,0 +1,45 @@
+name: Cloudflare staging - build only (no deploy)
+
+on:
+  push:
+    branches:
+      - chore/cloudflare-staging-no-cutover-20261125
+  pull_request:
+    paths:
+      - 'cloudflare/**'
+      - 'functions/**'
+      - 'scripts/generate-cloudflare-redirects.mjs'
+      - 'public/_redirects'
+      - 'wrangler.jsonc'
+      - 'api/**'
+      - 'tests/cloudflare-staging.test.mjs'
+      - 'package.json'
+      - '.github/workflows/cloudflare-staging.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  safety-gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout without write token
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install exact locked dependencies
+        run: npm ci
+      - name: Ensure SEO redirects match production rules
+        run: node scripts/generate-cloudflare-redirects.mjs --check
+      - name: Regression tests (no real emails or customers)
+        run: npm test
+      - name: Build static pages with full prerender
+        run: npm run cf:build
+      - name: Compile Cloudflare API without deploying
+        run: npx --yes wrangler@4.167.0 pages functions build functions --outdir=.cloudflare-bundle --compatibility-date=2026-11-25 --compatibility-flags=nodejs_compat

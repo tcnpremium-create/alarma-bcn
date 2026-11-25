@@ -14,7 +14,7 @@ import nodemailer from 'nodemailer';
  * La entrega real se comprueba aparte (getDeliveryStatus, solo Resend).
  */
 
-const BUSINESS_INBOX = 'tcnpremium@gmail.com';
+import { BUSINESS_INBOX } from './constants.js';
 
 export function withTimeout(promise, ms, label) {
   let timer;

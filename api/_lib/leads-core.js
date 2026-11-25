@@ -1,5 +1,5 @@
 import { buildNotifEmail, buildConfirmEmail, buildAlertEmail, notifSubject } from './emails.js';
-import { BUSINESS_INBOX } from './mailer.js';
+import { BUSINESS_INBOX } from './constants.js';
 
 /**
  * Lógica de negocio de las solicitudes (leads), sin dependencias de red:
