@@ -38,7 +38,14 @@ export function useFormTracking(formName, { open = "mount", context = {} } = {})
       trackEvent("form_start", base.current);
     },
     onSubmit: () => trackEvent("form_submit", base.current),
-    onSuccess: (result) => trackEvent("form_success", { ...base.current, notification: result?.notification, duplicate: result?.duplicate }),
+    onSuccess: (result) => {
+      trackEvent("form_success", { ...base.current, notification: result?.notification, duplicate: result?.duplicate });
+      // GA4: medir solo una nueva solicitud guardada, no reintentos ni
+      // fallbacks por email sin registro persistente en Supabase.
+      if (result?.saved === true && result?.duplicate !== true) {
+        trackEvent("generate_lead", base.current);
+      }
+    },
     onError: (err) => trackEvent("form_error", { ...base.current, error_kind: err?.kind || "unknown" }),
   };
 }
