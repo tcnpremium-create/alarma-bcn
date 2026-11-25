@@ -70,7 +70,7 @@ export default function ContactForm() {
       setSuccess(true);
       setFormData({ nombre: "", email: "", telefono: "", tipo_cliente: "hogar", zona: "", servicio_interes: "", mensaje: "" });
       // Con aviso de incidencia se deja más tiempo en pantalla para que se pueda leer.
-      setTimeout(() => setSuccess(false), needsDelayedNotice(lead) ? 25000 : 6000);
+      setTimeout(() => setSuccess(false), getLeadNotice(lead) ? 25000 : 6000);
     } catch (err) {
       console.error("Error enviando formulario de contacto:", err);
       tracking.onError(err);
