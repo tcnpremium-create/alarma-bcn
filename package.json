@@ -11,7 +11,10 @@
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -p ./jsconfig.json",
     "preview": "vite preview",
-    "prerender": "vite build && node scripts/prerender.mjs && node scripts/update-vercel-rewrites.mjs && vite build && node scripts/sync-prerendered-assets.mjs && node scripts/inject-home-prerender.mjs"
+    "prerender": "vite build && node scripts/prerender.mjs && node scripts/update-vercel-rewrites.mjs && vite build && node scripts/sync-prerendered-assets.mjs && node scripts/inject-home-prerender.mjs",
+    "cf:redirects": "node scripts/generate-cloudflare-redirects.mjs",
+    "cf:build": "npm run cf:redirects && npm run build",
+    "cf:check": "node scripts/generate-cloudflare-redirects.mjs --check && npm run test && npm run build"
   },
   "dependencies": {
     "@base44/vite-plugin": "^1.0.23",
