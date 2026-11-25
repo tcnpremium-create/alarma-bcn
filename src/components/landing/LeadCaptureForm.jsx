@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { User, Mail, Phone, MapPin, MessageSquare, CheckCircle } from "lucide-react";
-import { LeadAPI, needsDelayedNotice, NOTIFICATION_DELAYED_NOTICE } from "@/api/api";
+import { LeadAPI, getLeadNotice } from "@/api/api";
 import { useFormTracking } from "@/lib/useFormTracking";
 import { normalizeSpanishPhone, isValidSpanishPhone } from "@/lib/phone";
 
@@ -73,7 +73,7 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
         origen: "formulario_web",
       });
       tracking.onSuccess(result);
-      setNotice(needsDelayedNotice(result) ? NOTIFICATION_DELAYED_NOTICE : "");
+      setNotice(getLeadNotice(result));
       setStatus("success");
       onSuccess?.();
     } catch (err) {
@@ -83,7 +83,9 @@ export default function LeadCaptureForm({ service = "", onSuccess = null }) {
       setError(
         err?.kind === "validation"
           ? err.message
-          : "No se ha podido enviar y NO se ha registrado tu solicitud. Llámanos al 638 10 99 47 o inténtalo de nuevo."
+          : err?.kind === "network"
+            ? "No podemos confirmar si recibimos tu solicitud. Antes de reenviarla, llámanos al 638 10 99 47 para comprobarlo."
+            : "No se ha podido registrar tu solicitud. Llámanos al 638 10 99 47 o inténtalo de nuevo."
       );
     }
   };
