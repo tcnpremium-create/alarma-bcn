@@ -9,8 +9,10 @@
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(import.meta.dirname || path.dirname(new URL(import.meta.url).pathname), '..');
+const THIS_FILE = fileURLToPath(import.meta.url);
+const ROOT = path.resolve(path.dirname(THIS_FILE), '..');
 const CONFIG = path.join(ROOT, 'vercel.json');
 const OUTPUT = path.join(ROOT, 'public', '_redirects');
 
@@ -44,14 +46,16 @@ export function buildCloudflareRedirects(config) {
   return out.join('\n') + '\n';
 }
 
-const generated = buildCloudflareRedirects(JSON.parse(readFileSync(CONFIG, 'utf8')));
-if (process.argv.includes('--check')) {
-  const actual = readFileSync(OUTPUT, 'utf8');
-  if (actual !== generated) {
-    console.error('public/_redirects está desactualizado: ejecuta npm run cf:redirects');
-    process.exitCode = 1;
-  } else console.log('Cloudflare _redirects actualizado.');
-} else {
-  writeFileSync(OUTPUT, generated);
-  console.log('Cloudflare Pages: ' + generated.split('\n').filter(x => x.startsWith('/')).length + ' reglas generadas.');
+if (process.argv[1] && path.resolve(process.argv[1]) === THIS_FILE) {
+  const generated = buildCloudflareRedirects(JSON.parse(readFileSync(CONFIG, 'utf8')));
+  if (process.argv.includes('--check')) {
+    const actual = readFileSync(OUTPUT, 'utf8');
+    if (actual !== generated) {
+      console.error('public/_redirects está desactualizado: ejecuta npm run cf:redirects');
+      process.exitCode = 1;
+    } else console.log('Cloudflare _redirects actualizado.');
+  } else {
+    writeFileSync(OUTPUT, generated);
+    console.log('Cloudflare Pages: ' + generated.split('\n').filter(x => x.startsWith('/')).length + ' reglas generadas.');
+  }
 }
