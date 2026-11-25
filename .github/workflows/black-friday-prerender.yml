@@ -4,6 +4,13 @@ on:
   push:
     branches:
       - feat/black-friday-2026-wheel
+      - fix/leads-telefono-y-avisos-20261125
+    # El commit automático solo toca artefactos generados: evita bucle de CI.
+    paths-ignore:
+      - 'public/__prerendered__/**'
+      - 'scripts/prerender-fingerprint.json'
+      - 'scripts/prerender-manifest.json'
+      - 'vercel.json'
   workflow_dispatch:
 
 permissions:
